@@ -76,9 +76,8 @@ com/lindum/mlkit/vision/demo/InferenceInfoGraphic.java
  com.lindum.mlkit.vision.demo.InferenceInfoGraphic
 com/lindum/mlkit/vision/demo/java/segmenter/SegmentationGraphic.java
  com.lindum.mlkit.vision.demo.java.segmenter.SegmentationGraphic
-com/lindum/mlkit/vision/demo/java/posedetector/PoseDetectorProcessor.java
- com.lindum.mlkit.vision.demo.java.posedetector.PoseDetectorProcessor
- com.lindum.mlkit.vision.demo.java.posedetector.PoseDetectorProcessor$PoseWithClassification
+com/lindum/mlkit/vision/demo/java/posedetector/classification/EMASmoothing.java
+ com.lindum.mlkit.vision.demo.java.posedetector.classification.EMASmoothing
 com/lindum/mlkit/vision/demo/java/posedetector/classification/PoseClassifier.java
  com.lindum.mlkit.vision.demo.java.posedetector.classification.PoseClassifier
 com/lindum/mlkit/vision/demo/java/posedetector/PoseDataUtils.java
@@ -89,9 +88,10 @@ com/lindum/mlkit/vision/demo/CameraXViewModel.java
  com.lindum.mlkit.vision.demo.CameraXViewModel
 com/lindum/mlkit/vision/demo/java/posedetector/PoseAngleDetector.java
  com.lindum.mlkit.vision.demo.java.posedetector.PoseAngleDetector
-com/lindum/mlkit/vision/demo/java/posedetector/classification/PoseClassifierProcessor.java
- com.lindum.mlkit.vision.demo.java.posedetector.classification.PoseClassifierProcessor
 com/lindum/mlkit/vision/demo/java/posedetector/classification/ClassificationResult.java
  com.lindum.mlkit.vision.demo.java.posedetector.classification.ClassificationResult
-com/lindum/mlkit/vision/demo/java/posedetector/classification/EMASmoothing.java
- com.lindum.mlkit.vision.demo.java.posedetector.classification.EMASmoothing
+com/lindum/mlkit/vision/demo/java/posedetector/PoseDetectorProcessor.java
+ com.lindum.mlkit.vision.demo.java.posedetector.PoseDetectorProcessor
+ com.lindum.mlkit.vision.demo.java.posedetector.PoseDetectorProcessor$PoseWithClassification
+com/lindum/mlkit/vision/demo/java/posedetector/classification/PoseClassifierProcessor.java
+ com.lindum.mlkit.vision.demo.java.posedetector.classification.PoseClassifierProcessor

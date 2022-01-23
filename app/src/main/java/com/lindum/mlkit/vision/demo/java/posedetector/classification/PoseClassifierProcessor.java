@@ -190,66 +190,7 @@ public class PoseClassifierProcessor {
                 PoseEntity poseEntity = CameraXLivePreviewActivity.getPoseEntityList().get(CameraXLivePreviewActivity.nowPoseIndex);
 
 
-                for (PosePart posePart : poseEntity.getMonitorPosePartList()) {
 
-                    if (posePart.getPoseIndex() == -1) {
-                        int poseType = posePart.getPoseType();
-                        // 动态部位
-                        if (poseType == 1) {
-                            if (posePart.getFirstStandardRange()[0] < poseAngleDetector.getAnyAngleBy3Point(posePart.getThreePointIndex()) && posePart.getFirstStandardRange()[1] > poseAngleDetector.getAnyAngleBy3Point(posePart.getThreePointIndex())) {
-                                // 计数
-                                if (!CameraXLivePreviewActivity.isPose1()) {
-                                    CameraXLivePreviewActivity.addCount();
-                                }
-                                CameraXLivePreviewActivity.setPose1(true);
-                            }
-                            if (posePart.getSecondStandardRange()[0] < poseAngleDetector.getAnyAngleBy3Point(posePart.getThreePointIndex()) && posePart.getSecondStandardRange()[1] > poseAngleDetector.getAnyAngleBy3Point(posePart.getThreePointIndex())) {
-                                // 计数
-                                if (CameraXLivePreviewActivity.isPose1()) {
-                                    CameraXLivePreviewActivity.addCount();
-                                    CameraXLivePreviewActivity.setPose1(false);
-                                }
-                            }
-                        } else if (poseType == 0) {    // 固定部位
-                            int poseIndex = posePart.getPoseIndex();
-                            // 当前部位角度不满足规定
-                            if (posePart.getFixedRange()[0] > poseAngleDetector.getPoseAngleFromPartIndex(poseIndex) ||
-                                    posePart.getFixedRange()[1] < poseAngleDetector.getPoseAngleFromPartIndex(poseIndex)) {
-                                Log.e("angle", poseAngleDetector.getPoseAngleFromPartIndex(poseIndex) + "");
-                                CameraXLivePreviewActivity.addWarnPart(poseIndex);
-                            }
-                        }
-                    } else {
-                        int poseIndex = posePart.getPoseIndex();
-                        int poseType = posePart.getPoseType();
-                        // 监测保持型动作
-                        if (poseType == 0) {
-                            // 当前部位角度不满足规定
-                            if (posePart.getFixedRange()[0] > poseAngleDetector.getPoseAngleFromPartIndex(poseIndex) ||
-                                    posePart.getFixedRange()[1] < poseAngleDetector.getPoseAngleFromPartIndex(poseIndex)) {
-                                Log.e("angle", poseAngleDetector.getPoseAngleFromPartIndex(poseIndex) + "");
-                                CameraXLivePreviewActivity.addWarnPart(poseIndex);
-                            }
-                        } else if (poseType == 1) {
-                            // 监测计数型动作
-                            // 当前部位角度不满足规定
-                            if (posePart.getFirstStandardRange()[0] < poseAngleDetector.getPoseAngleFromPartIndex(poseIndex) && posePart.getFirstStandardRange()[1] > poseAngleDetector.getPoseAngleFromPartIndex(poseIndex)) {
-                                // 计数
-                                if (!CameraXLivePreviewActivity.isPose1()) {
-                                    CameraXLivePreviewActivity.addCount();
-                                }
-                                CameraXLivePreviewActivity.setPose1(true);
-                            }
-                            if (posePart.getFirstStandardRange()[0] < poseAngleDetector.getPoseAngleFromPartIndex(poseIndex) && posePart.getSecondStandardRange()[1] > poseAngleDetector.getPoseAngleFromPartIndex(poseIndex)) {
-                                // 计数
-                                if (CameraXLivePreviewActivity.isPose1()) {
-                                    CameraXLivePreviewActivity.addCount();
-                                    CameraXLivePreviewActivity.setPose1(false);
-                                }
-                            }
-                        }
-                    }
-                }
                 result.add(angleText1);
                 result.add(angleText2);
                 result.add(angleText3);
