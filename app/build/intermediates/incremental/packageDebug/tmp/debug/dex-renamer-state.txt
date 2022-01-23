@@ -1,4 +1,4 @@
-#Mon Jan 24 05:41:18 CST 2022
+#Mon Jan 24 06:32:44 CST 2022
 base.2=D\:\\Project\\Android\\AiTrainer\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes2.dex
 path.2=classes2.dex
 base.1=D\:\\Project\\Android\\AiTrainer\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\classes.dex
