@@ -189,15 +189,13 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
 //        }
 
 
-
-
         // 使主线程可以进行简单的网络请求
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
         Document document = null;
         try {
             document = Jsoup.connect("http://lindum.top/poseData.html").get();
-            Log.e("html",document.toString());
+            Log.e("html", document.toString());
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -371,14 +369,30 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
 //                    break;
 //
 //            }
-            if (partIndex == 10) {
+            if (partIndex == 12) {
+                warnPart.add(new int[]{25, 27, 31});
+            } else if (partIndex == 11) {
+                warnPart.add(new int[]{26, 28, 32});
+            } else if (partIndex == 10) {
                 warnPart.add(new int[]{23, 25, 27});
             } else if (partIndex == 9) {
                 warnPart.add(new int[]{24, 26, 28});
-            } else if (partIndex == 2) {
-                warnPart.add(new int[]{12, 14, 16});
+            } else if (partIndex == 8) {
+                warnPart.add(new int[]{11, 23, 25});
+            } else if (partIndex == 7) {
+                warnPart.add(new int[]{12, 24, 26});
+            } else if (partIndex == 6) {
+                warnPart.add(new int[]{13, 15, 19});
             } else if (partIndex == 5) {
                 warnPart.add(new int[]{11, 13, 15});
+            } else if (partIndex == 4) {
+                warnPart.add(new int[]{13, 11, 23});
+            } else if (partIndex == 3) {
+                warnPart.add(new int[]{14, 12, 24});
+            } else if (partIndex == 2) {
+                warnPart.add(new int[]{12, 14, 16});
+            } else if (partIndex == 1) {
+                warnPart.add(new int[]{20, 16, 14});
             }
         }
 //        Log.e("sys","添加了"+partIndex);
@@ -508,11 +522,6 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
             switch (selectedModel) {
 
 
-
-
-
-
-
                 case POSE_DETECTION:
                     PoseDetectorOptionsBase poseDetectorOptions =
                             PreferenceUtils.getPoseDetectorOptionsForLivePreview(this);
@@ -583,6 +592,7 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
 
         cameraProvider.bindToLifecycle(/* lifecycleOwner= */ this, cameraSelector, analysisUseCase);
     }
+
     /**
      * Android6.0之后需要动态申请权限
      */
@@ -615,6 +625,7 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
             }
         }
     }
+
     private String[] getRequiredPermissions() {
         try {
             PackageInfo info =

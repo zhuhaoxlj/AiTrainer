@@ -20,7 +20,7 @@ public class PoseEntity {
         this.poseName = poseName;
     }
 
-    public List<PosePart> getMonitorPosePartList() {
+    public List<PosePart> getMonitoringPosePartList() {
         return monitorPosePartList;
     }
 
