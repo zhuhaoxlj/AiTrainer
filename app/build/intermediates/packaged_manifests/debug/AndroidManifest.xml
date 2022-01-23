@@ -13,7 +13,7 @@
     APIs.
     -->
     <uses-sdk
-        android:minSdkVersion="16"
+        android:minSdkVersion="19"
         android:targetSdkVersion="30" />
 
     <uses-feature android:name="android.hardware.camera" />
@@ -42,6 +42,7 @@
         android:debuggable="true"
         android:icon="@drawable/train"
         android:label="AiTrainer"
+        android:testOnly="true"
         android:theme="@style/Theme.AppCompat"
         android:usesCleartextTraffic="true" >
         <meta-data

@@ -5,7 +5,7 @@ android {
 
     defaultConfig {
         applicationId 'com.lindum.mlkit.vision.demo'
-        minSdkVersion 16
+        minSdkVersion 19
         multiDexEnabled true
         targetSdkVersion 30
 
@@ -59,9 +59,9 @@ dependencies {
     implementation 'androidx.multidex:multidex:2.0.1'
 
     // Pose detection with default models
-    implementation 'com.google.mlkit:pose-detection:17.0.1-beta5'
+    implementation 'com.google.mlkit:pose-detection:17.0.1-beta7'
     // Pose detection with accurate models
-    implementation 'com.google.mlkit:pose-detection-accurate:17.0.1-beta5'
+    implementation 'com.google.mlkit:pose-detection-accurate:17.0.1-beta7'
 
     // -------------------------------------------------------
 

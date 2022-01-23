@@ -5,18 +5,18 @@ INJECTED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:2:1-
 INJECTED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:2:1-83:12
 INJECTED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:2:1-83:12
 MERGED from [androidx.multidex:multidex:2.0.1] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\ce8dd2100ffd5b4eae657f5daec65fe0\multidex-2.0.1\AndroidManifest.xml:17:1-22:12
-MERGED from [com.google.mlkit:pose-detection:17.0.1-beta5] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\746d4aa3eacbfc46a58a5d036049032a\jetified-pose-detection-17.0.1-beta5\AndroidManifest.xml:2:1-9:12
-MERGED from [com.google.mlkit:pose-detection-accurate:17.0.1-beta5] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\7626dfe5a6065afd75a9e2519974869e\jetified-pose-detection-accurate-17.0.1-beta5\AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.mlkit:pose-detection:17.0.1-beta7] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\517993b0d5296829f7cbe7f6abd7e6f3\jetified-pose-detection-17.0.1-beta7\AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.mlkit:pose-detection-accurate:17.0.1-beta7] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\7c58f35bc872adba6db8e917af7a6910\jetified-pose-detection-accurate-17.0.1-beta7\AndroidManifest.xml:2:1-9:12
 MERGED from [androidx.camera:camera-camera2:1.0.0-SNAPSHOT] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\a79eacb4f9e3eb4ff16a31afe7544a3c\jetified-camera-camera2-1.0.0-SNAPSHOT\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.camera:camera-view:1.0.0-SNAPSHOT] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\04ff762b9ca9fb8ba3bf113fb69afde0\jetified-camera-view-1.0.0-SNAPSHOT\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.camera:camera-lifecycle:1.0.0-SNAPSHOT] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\6dfdb750f99ed412a460f88fd385d7cb\jetified-camera-lifecycle-1.0.0-SNAPSHOT\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.camera:camera-core:1.0.0-SNAPSHOT] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\edf2685ef6e99abf636b786d93061186\jetified-camera-core-1.0.0-SNAPSHOT\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.constraintlayout:constraintlayout:2.0.4] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\74d3dfb417b8176313f67b6d530795eb\constraintlayout-2.0.4\AndroidManifest.xml:2:1-11:12
 MERGED from [androidx.appcompat:appcompat:1.2.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f1f33b62267c75a6f99331b460a092b0\appcompat-1.2.0\AndroidManifest.xml:17:1-24:12
-MERGED from [com.google.mlkit:pose-detection-common:17.1.0-beta4] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\8976c1d99ab8924368a94481ca9b3792\jetified-pose-detection-common-17.1.0-beta4\AndroidManifest.xml:2:1-17:12
-MERGED from [com.google.mlkit:mediapipe-internal:17.0.0-beta3] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\df8a2096bd2a9f77fac4a782c21cbccd\jetified-mediapipe-internal-17.0.0-beta3\AndroidManifest.xml:2:1-8:12
-MERGED from [com.google.mlkit:vision-common:16.5.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\9d4e0dc432589b71f2bd37b6d95fa8ae\jetified-vision-common-16.5.0\AndroidManifest.xml:2:1-18:12
-MERGED from [com.google.mlkit:common:17.3.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\ab101af748c6d9db6ce6955893f3fdd1\jetified-common-17.3.0\AndroidManifest.xml:2:1-26:12
+MERGED from [com.google.mlkit:pose-detection-common:17.1.0-beta6] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\3b6679dec26695f7d039fe6f8f3f86f1\jetified-pose-detection-common-17.1.0-beta6\AndroidManifest.xml:2:1-20:12
+MERGED from [com.google.mlkit:mediapipe-internal:17.0.0-beta5] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\ed020d4efc5651fd91889d48e91909ab\jetified-mediapipe-internal-17.0.0-beta5\AndroidManifest.xml:2:1-8:12
+MERGED from [com.google.mlkit:vision-common:16.7.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\4d8191450686fc5dc76910707f056c94\jetified-vision-common-16.7.0\AndroidManifest.xml:2:1-18:12
+MERGED from [com.google.mlkit:common:17.5.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\ce093c27faad48a4857ab5776b01a085\jetified-common-17.5.0\AndroidManifest.xml:2:1-26:12
 MERGED from [com.google.android.gms:play-services-base:17.6.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\eb3695de7646208bc64e4426ddd573a3\jetified-play-services-base-17.6.0\AndroidManifest.xml:17:1-29:12
 MERGED from [com.google.android.gms:play-services-tasks:17.2.1] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\10e87295e8f9b5a0655fcff0e5839f0e\jetified-play-services-tasks-17.2.1\AndroidManifest.xml:2:1-9:12
 MERGED from [com.google.android.gms:play-services-basement:17.6.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\a2e4059bb053660265454733f2ea3145\jetified-play-services-basement-17.6.0\AndroidManifest.xml:17:1-28:12
@@ -74,10 +74,10 @@ INJECTED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:11:5
 INJECTED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:11:5-13:63
 MERGED from [androidx.multidex:multidex:2.0.1] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\ce8dd2100ffd5b4eae657f5daec65fe0\multidex-2.0.1\AndroidManifest.xml:20:5-43
 MERGED from [androidx.multidex:multidex:2.0.1] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\ce8dd2100ffd5b4eae657f5daec65fe0\multidex-2.0.1\AndroidManifest.xml:20:5-43
-MERGED from [com.google.mlkit:pose-detection:17.0.1-beta5] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\746d4aa3eacbfc46a58a5d036049032a\jetified-pose-detection-17.0.1-beta5\AndroidManifest.xml:5:5-44
-MERGED from [com.google.mlkit:pose-detection:17.0.1-beta5] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\746d4aa3eacbfc46a58a5d036049032a\jetified-pose-detection-17.0.1-beta5\AndroidManifest.xml:5:5-44
-MERGED from [com.google.mlkit:pose-detection-accurate:17.0.1-beta5] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\7626dfe5a6065afd75a9e2519974869e\jetified-pose-detection-accurate-17.0.1-beta5\AndroidManifest.xml:5:5-44
-MERGED from [com.google.mlkit:pose-detection-accurate:17.0.1-beta5] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\7626dfe5a6065afd75a9e2519974869e\jetified-pose-detection-accurate-17.0.1-beta5\AndroidManifest.xml:5:5-44
+MERGED from [com.google.mlkit:pose-detection:17.0.1-beta7] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\517993b0d5296829f7cbe7f6abd7e6f3\jetified-pose-detection-17.0.1-beta7\AndroidManifest.xml:5:5-44
+MERGED from [com.google.mlkit:pose-detection:17.0.1-beta7] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\517993b0d5296829f7cbe7f6abd7e6f3\jetified-pose-detection-17.0.1-beta7\AndroidManifest.xml:5:5-44
+MERGED from [com.google.mlkit:pose-detection-accurate:17.0.1-beta7] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\7c58f35bc872adba6db8e917af7a6910\jetified-pose-detection-accurate-17.0.1-beta7\AndroidManifest.xml:5:5-44
+MERGED from [com.google.mlkit:pose-detection-accurate:17.0.1-beta7] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\7c58f35bc872adba6db8e917af7a6910\jetified-pose-detection-accurate-17.0.1-beta7\AndroidManifest.xml:5:5-44
 MERGED from [androidx.camera:camera-camera2:1.0.0-SNAPSHOT] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\a79eacb4f9e3eb4ff16a31afe7544a3c\jetified-camera-camera2-1.0.0-SNAPSHOT\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.camera:camera-camera2:1.0.0-SNAPSHOT] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\a79eacb4f9e3eb4ff16a31afe7544a3c\jetified-camera-camera2-1.0.0-SNAPSHOT\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.camera:camera-view:1.0.0-SNAPSHOT] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\04ff762b9ca9fb8ba3bf113fb69afde0\jetified-camera-view-1.0.0-SNAPSHOT\AndroidManifest.xml:20:5-22:41
@@ -90,14 +90,14 @@ MERGED from [androidx.constraintlayout:constraintlayout:2.0.4] C:\Users\Administ
 MERGED from [androidx.constraintlayout:constraintlayout:2.0.4] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\74d3dfb417b8176313f67b6d530795eb\constraintlayout-2.0.4\AndroidManifest.xml:5:5-7:41
 MERGED from [androidx.appcompat:appcompat:1.2.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f1f33b62267c75a6f99331b460a092b0\appcompat-1.2.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.appcompat:appcompat:1.2.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f1f33b62267c75a6f99331b460a092b0\appcompat-1.2.0\AndroidManifest.xml:20:5-22:41
-MERGED from [com.google.mlkit:pose-detection-common:17.1.0-beta4] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\8976c1d99ab8924368a94481ca9b3792\jetified-pose-detection-common-17.1.0-beta4\AndroidManifest.xml:5:5-44
-MERGED from [com.google.mlkit:pose-detection-common:17.1.0-beta4] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\8976c1d99ab8924368a94481ca9b3792\jetified-pose-detection-common-17.1.0-beta4\AndroidManifest.xml:5:5-44
-MERGED from [com.google.mlkit:mediapipe-internal:17.0.0-beta3] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\df8a2096bd2a9f77fac4a782c21cbccd\jetified-mediapipe-internal-17.0.0-beta3\AndroidManifest.xml:6:5-44
-MERGED from [com.google.mlkit:mediapipe-internal:17.0.0-beta3] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\df8a2096bd2a9f77fac4a782c21cbccd\jetified-mediapipe-internal-17.0.0-beta3\AndroidManifest.xml:6:5-44
-MERGED from [com.google.mlkit:vision-common:16.5.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\9d4e0dc432589b71f2bd37b6d95fa8ae\jetified-vision-common-16.5.0\AndroidManifest.xml:6:5-44
-MERGED from [com.google.mlkit:vision-common:16.5.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\9d4e0dc432589b71f2bd37b6d95fa8ae\jetified-vision-common-16.5.0\AndroidManifest.xml:6:5-44
-MERGED from [com.google.mlkit:common:17.3.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\ab101af748c6d9db6ce6955893f3fdd1\jetified-common-17.3.0\AndroidManifest.xml:6:5-44
-MERGED from [com.google.mlkit:common:17.3.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\ab101af748c6d9db6ce6955893f3fdd1\jetified-common-17.3.0\AndroidManifest.xml:6:5-44
+MERGED from [com.google.mlkit:pose-detection-common:17.1.0-beta6] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\3b6679dec26695f7d039fe6f8f3f86f1\jetified-pose-detection-common-17.1.0-beta6\AndroidManifest.xml:5:5-44
+MERGED from [com.google.mlkit:pose-detection-common:17.1.0-beta6] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\3b6679dec26695f7d039fe6f8f3f86f1\jetified-pose-detection-common-17.1.0-beta6\AndroidManifest.xml:5:5-44
+MERGED from [com.google.mlkit:mediapipe-internal:17.0.0-beta5] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\ed020d4efc5651fd91889d48e91909ab\jetified-mediapipe-internal-17.0.0-beta5\AndroidManifest.xml:6:5-44
+MERGED from [com.google.mlkit:mediapipe-internal:17.0.0-beta5] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\ed020d4efc5651fd91889d48e91909ab\jetified-mediapipe-internal-17.0.0-beta5\AndroidManifest.xml:6:5-44
+MERGED from [com.google.mlkit:vision-common:16.7.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\4d8191450686fc5dc76910707f056c94\jetified-vision-common-16.7.0\AndroidManifest.xml:6:5-44
+MERGED from [com.google.mlkit:vision-common:16.7.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\4d8191450686fc5dc76910707f056c94\jetified-vision-common-16.7.0\AndroidManifest.xml:6:5-44
+MERGED from [com.google.mlkit:common:17.5.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\ce093c27faad48a4857ab5776b01a085\jetified-common-17.5.0\AndroidManifest.xml:6:5-44
+MERGED from [com.google.mlkit:common:17.5.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\ce093c27faad48a4857ab5776b01a085\jetified-common-17.5.0\AndroidManifest.xml:6:5-44
 MERGED from [com.google.android.gms:play-services-base:17.6.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\eb3695de7646208bc64e4426ddd573a3\jetified-play-services-base-17.6.0\AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-base:17.6.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\eb3695de7646208bc64e4426ddd573a3\jetified-play-services-base-17.6.0\AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-tasks:17.2.1] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\10e87295e8f9b5a0655fcff0e5839f0e\jetified-play-services-tasks-17.2.1\AndroidManifest.xml:5:5-44
@@ -176,12 +176,16 @@ ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:15:5-60
 		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:15:19-57
 uses-permission#android.permission.INTERNET
 ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:16:5-67
+MERGED from [com.google.mlkit:pose-detection-common:17.1.0-beta6] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\3b6679dec26695f7d039fe6f8f3f86f1\jetified-pose-detection-common-17.1.0-beta6\AndroidManifest.xml:8:5-67
+MERGED from [com.google.mlkit:pose-detection-common:17.1.0-beta6] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\3b6679dec26695f7d039fe6f8f3f86f1\jetified-pose-detection-common-17.1.0-beta6\AndroidManifest.xml:8:5-67
 MERGED from [com.google.android.datatransport:transport-backend-cct:2.3.3] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\b0b07d668fb05669fea93be346cdaca2\jetified-transport-backend-cct-2.3.3\AndroidManifest.xml:26:5-67
 MERGED from [com.google.android.datatransport:transport-backend-cct:2.3.3] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\b0b07d668fb05669fea93be346cdaca2\jetified-transport-backend-cct-2.3.3\AndroidManifest.xml:26:5-67
 	android:name
 		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:16:22-64
 uses-permission#android.permission.ACCESS_NETWORK_STATE
 ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:17:5-79
+MERGED from [com.google.mlkit:pose-detection-common:17.1.0-beta6] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\3b6679dec26695f7d039fe6f8f3f86f1\jetified-pose-detection-common-17.1.0-beta6\AndroidManifest.xml:7:5-79
+MERGED from [com.google.mlkit:pose-detection-common:17.1.0-beta6] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\3b6679dec26695f7d039fe6f8f3f86f1\jetified-pose-detection-common-17.1.0-beta6\AndroidManifest.xml:7:5-79
 MERGED from [com.google.android.datatransport:transport-backend-cct:2.3.3] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\b0b07d668fb05669fea93be346cdaca2\jetified-transport-backend-cct-2.3.3\AndroidManifest.xml:25:5-79
 MERGED from [com.google.android.datatransport:transport-backend-cct:2.3.3] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\b0b07d668fb05669fea93be346cdaca2\jetified-transport-backend-cct-2.3.3\AndroidManifest.xml:25:5-79
 MERGED from [com.google.android.datatransport:transport-runtime:2.2.6] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\0b67044ceabbcacea62e90fd6e1fc6a0\jetified-transport-runtime-2.2.6\AndroidManifest.xml:22:5-79
@@ -208,18 +212,18 @@ ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:28:5-65
 		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:28:22-62
 application
 ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:30:5-76:19
-MERGED from [com.google.mlkit:pose-detection:17.0.1-beta5] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\746d4aa3eacbfc46a58a5d036049032a\jetified-pose-detection-17.0.1-beta5\AndroidManifest.xml:7:5-20
-MERGED from [com.google.mlkit:pose-detection:17.0.1-beta5] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\746d4aa3eacbfc46a58a5d036049032a\jetified-pose-detection-17.0.1-beta5\AndroidManifest.xml:7:5-20
-MERGED from [com.google.mlkit:pose-detection-accurate:17.0.1-beta5] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\7626dfe5a6065afd75a9e2519974869e\jetified-pose-detection-accurate-17.0.1-beta5\AndroidManifest.xml:7:5-20
-MERGED from [com.google.mlkit:pose-detection-accurate:17.0.1-beta5] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\7626dfe5a6065afd75a9e2519974869e\jetified-pose-detection-accurate-17.0.1-beta5\AndroidManifest.xml:7:5-20
+MERGED from [com.google.mlkit:pose-detection:17.0.1-beta7] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\517993b0d5296829f7cbe7f6abd7e6f3\jetified-pose-detection-17.0.1-beta7\AndroidManifest.xml:7:5-20
+MERGED from [com.google.mlkit:pose-detection:17.0.1-beta7] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\517993b0d5296829f7cbe7f6abd7e6f3\jetified-pose-detection-17.0.1-beta7\AndroidManifest.xml:7:5-20
+MERGED from [com.google.mlkit:pose-detection-accurate:17.0.1-beta7] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\7c58f35bc872adba6db8e917af7a6910\jetified-pose-detection-accurate-17.0.1-beta7\AndroidManifest.xml:7:5-20
+MERGED from [com.google.mlkit:pose-detection-accurate:17.0.1-beta7] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\7c58f35bc872adba6db8e917af7a6910\jetified-pose-detection-accurate-17.0.1-beta7\AndroidManifest.xml:7:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.0.4] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\74d3dfb417b8176313f67b6d530795eb\constraintlayout-2.0.4\AndroidManifest.xml:9:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.0.4] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\74d3dfb417b8176313f67b6d530795eb\constraintlayout-2.0.4\AndroidManifest.xml:9:5-20
-MERGED from [com.google.mlkit:pose-detection-common:17.1.0-beta4] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\8976c1d99ab8924368a94481ca9b3792\jetified-pose-detection-common-17.1.0-beta4\AndroidManifest.xml:7:5-15:19
-MERGED from [com.google.mlkit:pose-detection-common:17.1.0-beta4] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\8976c1d99ab8924368a94481ca9b3792\jetified-pose-detection-common-17.1.0-beta4\AndroidManifest.xml:7:5-15:19
-MERGED from [com.google.mlkit:vision-common:16.5.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\9d4e0dc432589b71f2bd37b6d95fa8ae\jetified-vision-common-16.5.0\AndroidManifest.xml:8:5-16:19
-MERGED from [com.google.mlkit:vision-common:16.5.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\9d4e0dc432589b71f2bd37b6d95fa8ae\jetified-vision-common-16.5.0\AndroidManifest.xml:8:5-16:19
-MERGED from [com.google.mlkit:common:17.3.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\ab101af748c6d9db6ce6955893f3fdd1\jetified-common-17.3.0\AndroidManifest.xml:8:5-24:19
-MERGED from [com.google.mlkit:common:17.3.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\ab101af748c6d9db6ce6955893f3fdd1\jetified-common-17.3.0\AndroidManifest.xml:8:5-24:19
+MERGED from [com.google.mlkit:pose-detection-common:17.1.0-beta6] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\3b6679dec26695f7d039fe6f8f3f86f1\jetified-pose-detection-common-17.1.0-beta6\AndroidManifest.xml:10:5-18:19
+MERGED from [com.google.mlkit:pose-detection-common:17.1.0-beta6] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\3b6679dec26695f7d039fe6f8f3f86f1\jetified-pose-detection-common-17.1.0-beta6\AndroidManifest.xml:10:5-18:19
+MERGED from [com.google.mlkit:vision-common:16.7.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\4d8191450686fc5dc76910707f056c94\jetified-vision-common-16.7.0\AndroidManifest.xml:8:5-16:19
+MERGED from [com.google.mlkit:vision-common:16.7.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\4d8191450686fc5dc76910707f056c94\jetified-vision-common-16.7.0\AndroidManifest.xml:8:5-16:19
+MERGED from [com.google.mlkit:common:17.5.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\ce093c27faad48a4857ab5776b01a085\jetified-common-17.5.0\AndroidManifest.xml:8:5-24:19
+MERGED from [com.google.mlkit:common:17.5.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\ce093c27faad48a4857ab5776b01a085\jetified-common-17.5.0\AndroidManifest.xml:8:5-24:19
 MERGED from [com.google.android.gms:play-services-base:17.6.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\eb3695de7646208bc64e4426ddd573a3\jetified-play-services-base-17.6.0\AndroidManifest.xml:22:5-27:19
 MERGED from [com.google.android.gms:play-services-base:17.6.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\eb3695de7646208bc64e4426ddd573a3\jetified-play-services-base-17.6.0\AndroidManifest.xml:22:5-27:19
 MERGED from [com.google.android.gms:play-services-tasks:17.2.1] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\10e87295e8f9b5a0655fcff0e5839f0e\jetified-play-services-tasks-17.2.1\AndroidManifest.xml:7:5-20
@@ -297,47 +301,47 @@ ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:79:13-7
 	android:name
 		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:79:21-70
 service#com.google.mlkit.common.internal.MlKitComponentDiscoveryService
-ADDED from [com.google.mlkit:pose-detection-common:17.1.0-beta4] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\8976c1d99ab8924368a94481ca9b3792\jetified-pose-detection-common-17.1.0-beta4\AndroidManifest.xml:8:9-14:19
-MERGED from [com.google.mlkit:vision-common:16.5.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\9d4e0dc432589b71f2bd37b6d95fa8ae\jetified-vision-common-16.5.0\AndroidManifest.xml:9:9-15:19
-MERGED from [com.google.mlkit:vision-common:16.5.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\9d4e0dc432589b71f2bd37b6d95fa8ae\jetified-vision-common-16.5.0\AndroidManifest.xml:9:9-15:19
-MERGED from [com.google.mlkit:common:17.3.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\ab101af748c6d9db6ce6955893f3fdd1\jetified-common-17.3.0\AndroidManifest.xml:15:9-23:19
-MERGED from [com.google.mlkit:common:17.3.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\ab101af748c6d9db6ce6955893f3fdd1\jetified-common-17.3.0\AndroidManifest.xml:15:9-23:19
+ADDED from [com.google.mlkit:pose-detection-common:17.1.0-beta6] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\3b6679dec26695f7d039fe6f8f3f86f1\jetified-pose-detection-common-17.1.0-beta6\AndroidManifest.xml:11:9-17:19
+MERGED from [com.google.mlkit:vision-common:16.7.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\4d8191450686fc5dc76910707f056c94\jetified-vision-common-16.7.0\AndroidManifest.xml:9:9-15:19
+MERGED from [com.google.mlkit:vision-common:16.7.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\4d8191450686fc5dc76910707f056c94\jetified-vision-common-16.7.0\AndroidManifest.xml:9:9-15:19
+MERGED from [com.google.mlkit:common:17.5.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\ce093c27faad48a4857ab5776b01a085\jetified-common-17.5.0\AndroidManifest.xml:15:9-23:19
+MERGED from [com.google.mlkit:common:17.5.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\ce093c27faad48a4857ab5776b01a085\jetified-common-17.5.0\AndroidManifest.xml:15:9-23:19
 	android:exported
-		ADDED from [com.google.mlkit:pose-detection-common:17.1.0-beta4] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\8976c1d99ab8924368a94481ca9b3792\jetified-pose-detection-common-17.1.0-beta4\AndroidManifest.xml:10:13-37
+		ADDED from [com.google.mlkit:pose-detection-common:17.1.0-beta6] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\3b6679dec26695f7d039fe6f8f3f86f1\jetified-pose-detection-common-17.1.0-beta6\AndroidManifest.xml:13:13-37
 	tools:targetApi
-		ADDED from [com.google.mlkit:common:17.3.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\ab101af748c6d9db6ce6955893f3fdd1\jetified-common-17.3.0\AndroidManifest.xml:19:13-32
+		ADDED from [com.google.mlkit:common:17.5.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\ce093c27faad48a4857ab5776b01a085\jetified-common-17.5.0\AndroidManifest.xml:19:13-32
 	android:directBootAware
-		ADDED from [com.google.mlkit:common:17.3.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\ab101af748c6d9db6ce6955893f3fdd1\jetified-common-17.3.0\AndroidManifest.xml:17:13-43
+		ADDED from [com.google.mlkit:common:17.5.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\ce093c27faad48a4857ab5776b01a085\jetified-common-17.5.0\AndroidManifest.xml:17:13-43
 	android:name
-		ADDED from [com.google.mlkit:pose-detection-common:17.1.0-beta4] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\8976c1d99ab8924368a94481ca9b3792\jetified-pose-detection-common-17.1.0-beta4\AndroidManifest.xml:9:13-91
+		ADDED from [com.google.mlkit:pose-detection-common:17.1.0-beta6] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\3b6679dec26695f7d039fe6f8f3f86f1\jetified-pose-detection-common-17.1.0-beta6\AndroidManifest.xml:12:13-91
 meta-data#com.google.firebase.components:com.google.mlkit.vision.pose.internal.PoseRegistrar
-ADDED from [com.google.mlkit:pose-detection-common:17.1.0-beta4] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\8976c1d99ab8924368a94481ca9b3792\jetified-pose-detection-common-17.1.0-beta4\AndroidManifest.xml:11:13-13:85
+ADDED from [com.google.mlkit:pose-detection-common:17.1.0-beta6] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\3b6679dec26695f7d039fe6f8f3f86f1\jetified-pose-detection-common-17.1.0-beta6\AndroidManifest.xml:14:13-16:85
 	android:value
-		ADDED from [com.google.mlkit:pose-detection-common:17.1.0-beta4] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\8976c1d99ab8924368a94481ca9b3792\jetified-pose-detection-common-17.1.0-beta4\AndroidManifest.xml:13:17-82
+		ADDED from [com.google.mlkit:pose-detection-common:17.1.0-beta6] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\3b6679dec26695f7d039fe6f8f3f86f1\jetified-pose-detection-common-17.1.0-beta6\AndroidManifest.xml:16:17-82
 	android:name
-		ADDED from [com.google.mlkit:pose-detection-common:17.1.0-beta4] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\8976c1d99ab8924368a94481ca9b3792\jetified-pose-detection-common-17.1.0-beta4\AndroidManifest.xml:12:17-114
+		ADDED from [com.google.mlkit:pose-detection-common:17.1.0-beta6] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\3b6679dec26695f7d039fe6f8f3f86f1\jetified-pose-detection-common-17.1.0-beta6\AndroidManifest.xml:15:17-114
 meta-data#com.google.firebase.components:com.google.mlkit.vision.common.internal.VisionCommonRegistrar
-ADDED from [com.google.mlkit:vision-common:16.5.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\9d4e0dc432589b71f2bd37b6d95fa8ae\jetified-vision-common-16.5.0\AndroidManifest.xml:12:13-14:85
+ADDED from [com.google.mlkit:vision-common:16.7.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\4d8191450686fc5dc76910707f056c94\jetified-vision-common-16.7.0\AndroidManifest.xml:12:13-14:85
 	android:value
-		ADDED from [com.google.mlkit:vision-common:16.5.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\9d4e0dc432589b71f2bd37b6d95fa8ae\jetified-vision-common-16.5.0\AndroidManifest.xml:14:17-82
+		ADDED from [com.google.mlkit:vision-common:16.7.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\4d8191450686fc5dc76910707f056c94\jetified-vision-common-16.7.0\AndroidManifest.xml:14:17-82
 	android:name
-		ADDED from [com.google.mlkit:vision-common:16.5.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\9d4e0dc432589b71f2bd37b6d95fa8ae\jetified-vision-common-16.5.0\AndroidManifest.xml:13:17-124
+		ADDED from [com.google.mlkit:vision-common:16.7.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\4d8191450686fc5dc76910707f056c94\jetified-vision-common-16.7.0\AndroidManifest.xml:13:17-124
 provider#com.google.mlkit.common.internal.MlKitInitProvider
-ADDED from [com.google.mlkit:common:17.3.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\ab101af748c6d9db6ce6955893f3fdd1\jetified-common-17.3.0\AndroidManifest.xml:9:9-13:38
+ADDED from [com.google.mlkit:common:17.5.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\ce093c27faad48a4857ab5776b01a085\jetified-common-17.5.0\AndroidManifest.xml:9:9-13:38
 	android:authorities
-		ADDED from [com.google.mlkit:common:17.3.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\ab101af748c6d9db6ce6955893f3fdd1\jetified-common-17.3.0\AndroidManifest.xml:11:13-69
+		ADDED from [com.google.mlkit:common:17.5.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\ce093c27faad48a4857ab5776b01a085\jetified-common-17.5.0\AndroidManifest.xml:11:13-69
 	android:exported
-		ADDED from [com.google.mlkit:common:17.3.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\ab101af748c6d9db6ce6955893f3fdd1\jetified-common-17.3.0\AndroidManifest.xml:12:13-37
+		ADDED from [com.google.mlkit:common:17.5.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\ce093c27faad48a4857ab5776b01a085\jetified-common-17.5.0\AndroidManifest.xml:12:13-37
 	android:initOrder
-		ADDED from [com.google.mlkit:common:17.3.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\ab101af748c6d9db6ce6955893f3fdd1\jetified-common-17.3.0\AndroidManifest.xml:13:13-35
+		ADDED from [com.google.mlkit:common:17.5.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\ce093c27faad48a4857ab5776b01a085\jetified-common-17.5.0\AndroidManifest.xml:13:13-35
 	android:name
-		ADDED from [com.google.mlkit:common:17.3.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\ab101af748c6d9db6ce6955893f3fdd1\jetified-common-17.3.0\AndroidManifest.xml:10:13-78
+		ADDED from [com.google.mlkit:common:17.5.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\ce093c27faad48a4857ab5776b01a085\jetified-common-17.5.0\AndroidManifest.xml:10:13-78
 meta-data#com.google.firebase.components:com.google.mlkit.common.internal.CommonComponentRegistrar
-ADDED from [com.google.mlkit:common:17.3.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\ab101af748c6d9db6ce6955893f3fdd1\jetified-common-17.3.0\AndroidManifest.xml:20:13-22:85
+ADDED from [com.google.mlkit:common:17.5.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\ce093c27faad48a4857ab5776b01a085\jetified-common-17.5.0\AndroidManifest.xml:20:13-22:85
 	android:value
-		ADDED from [com.google.mlkit:common:17.3.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\ab101af748c6d9db6ce6955893f3fdd1\jetified-common-17.3.0\AndroidManifest.xml:22:17-82
+		ADDED from [com.google.mlkit:common:17.5.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\ce093c27faad48a4857ab5776b01a085\jetified-common-17.5.0\AndroidManifest.xml:22:17-82
 	android:name
-		ADDED from [com.google.mlkit:common:17.3.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\ab101af748c6d9db6ce6955893f3fdd1\jetified-common-17.3.0\AndroidManifest.xml:21:17-120
+		ADDED from [com.google.mlkit:common:17.5.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\ce093c27faad48a4857ab5776b01a085\jetified-common-17.5.0\AndroidManifest.xml:21:17-120
 activity#com.google.android.gms.common.api.GoogleApiActivity
 ADDED from [com.google.android.gms:play-services-base:17.6.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\eb3695de7646208bc64e4426ddd573a3\jetified-play-services-base-17.6.0\AndroidManifest.xml:23:9-26:75
 	android:exported

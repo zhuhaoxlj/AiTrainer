@@ -1,7 +1,7 @@
-#Mon Jan 24 06:43:17 CST 2022
-base.1=D\:\\Project\\Android\\AiTrainer\\app\\build\\intermediates\\dex\\debug\\mergeDexDebug\\classes2.dex
-path.1=classes2.dex
-base.0=D\:\\Project\\Android\\AiTrainer\\app\\build\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
+#Mon Jan 24 06:53:26 CST 2022
+base.1=D\:\\Project\\Android\\AiTrainer\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\classes.dex
+path.1=classes.dex
+base.0=D\:\\Project\\Android\\AiTrainer\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
 renamed.1=classes2.dex
 renamed.0=classes.dex
 path.0=classes.dex

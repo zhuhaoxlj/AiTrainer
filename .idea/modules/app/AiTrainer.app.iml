@@ -90,6 +90,8 @@
     <orderEntry type="library" name="Gradle: androidx.annotation:annotation:1.2.0" level="project" />
     <orderEntry type="library" name="Gradle: javax.inject:javax.inject:1" level="project" />
     <orderEntry type="library" name="Gradle: com.google.firebase:firebase-annotations:16.0.0" level="project" />
+    <orderEntry type="library" name="Gradle: com.squareup.okhttp3:okhttp:3.0.0" level="project" />
+    <orderEntry type="library" name="Gradle: com.squareup.okio:okio:1.6.0" level="project" />
     <orderEntry type="library" name="Gradle: com.google.code.gson:gson:2.8.6" level="project" />
     <orderEntry type="library" name="Gradle: com.google.guava:guava:27.1-android" level="project" />
     <orderEntry type="library" name="Gradle: com.google.guava:failureaccess:1.0.1" level="project" />
@@ -100,12 +102,12 @@
     <orderEntry type="library" name="Gradle: org.codehaus.mojo:animal-sniffer-annotations:1.17" level="project" />
     <orderEntry type="library" name="Gradle: androidx.constraintlayout:constraintlayout-solver:2.0.4" level="project" />
     <orderEntry type="library" name="Gradle: androidx.multidex:multidex:2.0.1@aar" level="project" />
-    <orderEntry type="library" name="Gradle: com.google.mlkit:pose-detection:17.0.1-beta5@aar" level="project" />
-    <orderEntry type="library" name="Gradle: com.google.mlkit:pose-detection-accurate:17.0.1-beta5@aar" level="project" />
-    <orderEntry type="library" name="Gradle: com.google.mlkit:pose-detection-common:17.1.0-beta4@aar" level="project" />
-    <orderEntry type="library" name="Gradle: com.google.mlkit:mediapipe-internal:17.0.0-beta3@aar" level="project" />
-    <orderEntry type="library" name="Gradle: com.google.mlkit:vision-common:16.5.0@aar" level="project" />
-    <orderEntry type="library" name="Gradle: com.google.mlkit:common:17.3.0@aar" level="project" />
+    <orderEntry type="library" name="Gradle: com.google.mlkit:pose-detection:17.0.1-beta7@aar" level="project" />
+    <orderEntry type="library" name="Gradle: com.google.mlkit:pose-detection-accurate:17.0.1-beta7@aar" level="project" />
+    <orderEntry type="library" name="Gradle: com.google.mlkit:pose-detection-common:17.1.0-beta6@aar" level="project" />
+    <orderEntry type="library" name="Gradle: com.google.mlkit:mediapipe-internal:17.0.0-beta5@aar" level="project" />
+    <orderEntry type="library" name="Gradle: com.google.mlkit:vision-common:16.7.0@aar" level="project" />
+    <orderEntry type="library" name="Gradle: com.google.mlkit:common:17.5.0@aar" level="project" />
     <orderEntry type="library" name="Gradle: com.google.android.gms:play-services-base:17.6.0@aar" level="project" />
     <orderEntry type="library" name="Gradle: com.google.android.gms:play-services-tasks:17.2.1@aar" level="project" />
     <orderEntry type="library" name="Gradle: com.google.android.gms:play-services-basement:17.6.0@aar" level="project" />
