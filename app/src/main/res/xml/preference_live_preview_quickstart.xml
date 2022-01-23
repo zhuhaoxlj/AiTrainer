@@ -29,7 +29,7 @@
         android:title="@string/pref_title_camerax_front_camera_target_resolution"/>
 
     <SwitchPreference
-        android:defaultValue="false"
+        android:defaultValue="true"
         android:key="@string/pref_key_camera_live_viewport"
         android:persistent="true"
         android:summary="@string/pref_summary_camera_live_viewport"
@@ -50,17 +50,17 @@
         android:summary="%s"/>
 
     <SwitchPreference
-        android:defaultValue="true"
+        android:defaultValue="false"
         android:key="@string/pref_key_live_preview_pose_detector_show_in_frame_likelihood"
         android:persistent="true"
         android:title="@string/pref_title_pose_detector_show_in_frame_likelihood"/>
     <SwitchPreference
-        android:defaultValue="true"
+        android:defaultValue="false"
         android:key="@string/pref_key_pose_detector_visualize_z"
         android:persistent="true"
         android:title="@string/pref_title_pose_detector_visualize_z"/>
     <SwitchPreference
-        android:defaultValue="true"
+        android:defaultValue="false"
         android:key="@string/pref_key_pose_detector_rescale_z"
         android:persistent="true"
         android:title="@string/pref_title_pose_detector_rescale_z"/>
@@ -72,11 +72,4 @@
         android:summary="@string/pref_summary_pose_detector_run_classification"/>
   </PreferenceCategory>
 
-  <PreferenceCategory android:title="@string/pref_category_segmentation">
-    <SwitchPreference
-        android:defaultValue="false"
-        android:key="@string/pref_key_segmentation_raw_size_mask"
-        android:persistent="true"
-        android:title="@string/pref_title_segmentation_raw_size_mask"/>
-  </PreferenceCategory>
 </PreferenceScreen>

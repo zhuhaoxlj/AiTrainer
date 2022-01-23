@@ -72,7 +72,6 @@ import com.lindum.mlkit.vision.demo.R;
 import com.lindum.mlkit.vision.demo.VisionImageProcessor;
 import com.lindum.mlkit.vision.demo.java.posedetector.PoseDetectorProcessor;
 import com.lindum.mlkit.vision.demo.java.posedetector.PoseEntity;
-import com.lindum.mlkit.vision.demo.java.segmenter.SegmenterProcessor;
 import com.lindum.mlkit.vision.demo.preference.PreferenceUtils;
 import com.lindum.mlkit.vision.demo.preference.SettingsActivity;
 
@@ -539,9 +538,6 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
                                     rescaleZ,
                                     runClassification,
                                     /* isStreamMode = */ true);
-                    break;
-                case SELFIE_SEGMENTATION:
-                    imageProcessor = new SegmenterProcessor(this);
                     break;
                 default:
                     throw new IllegalStateException("Invalid model name");

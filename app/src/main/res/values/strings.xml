@@ -47,7 +47,7 @@
     <string name="pref_title_front_camera_preview_size" translatable="false">前置（自拍）摄像头画面尺寸</string>
     <string name="pref_title_camerax_rear_camera_target_resolution" translatable="false">CameraX rear camera target resolution</string>
     <string name="pref_title_camerax_front_camera_target_resolution" translatable="false">CameraX front camera target resolution</string>
-    <string name="pref_title_camera_live_viewport" translatable="false">Enable live viewport</string>
+    <string name="pref_title_camera_live_viewport" translatable="false">Enable live viewport 开启可加速</string>
     <string name="pref_summary_camera_live_viewport" translatable="false">Do not block camera preview drawing on detection</string>
 
     <!-- Strings for info preference. -->
@@ -135,12 +135,10 @@
     <string name="pref_key_pose_detector_rescale_z" translatable="false">pdrz</string>
 
     <!-- Strings for pose classification preference. -->
-    <string name="pref_title_pose_detector_run_classification" translatable="false">深蹲计数模式</string>
+    <string name="pref_title_pose_detector_run_classification" translatable="false">动作训练计数模式</string>
     <string name="pref_key_pose_detector_run_classification" translatable="false">pdrc</string>
     <string name="pref_summary_pose_detector_run_classification" translatable="false">深蹲、俯卧撑、仰卧起坐、引体向上、高抬腿、平板支撑、压腿，AI健身计数。</string>
 
-    <!-- Strings for segmentation preference. -->
-    <string name="pref_title_segmentation_raw_size_mask" translatable="false">开启原始尺寸mask</string>
-    <string name="pref_key_segmentation_raw_size_mask" translatable="false">srsm</string>
+
 
 </resources>

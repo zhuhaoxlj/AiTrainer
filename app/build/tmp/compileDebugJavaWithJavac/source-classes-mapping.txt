@@ -34,8 +34,6 @@ com/lindum/mlkit/vision/demo/CameraSourcePreview.java
 com/lindum/mlkit/vision/demo/java/VisionProcessorBase.java
  com.lindum.mlkit.vision.demo.java.VisionProcessorBase
  com.lindum.mlkit.vision.demo.java.VisionProcessorBase$1
-com/lindum/mlkit/vision/demo/java/segmenter/SegmenterProcessor.java
- com.lindum.mlkit.vision.demo.java.segmenter.SegmenterProcessor
 com/lindum/mlkit/vision/demo/preference/SettingsActivity.java
  com.lindum.mlkit.vision.demo.preference.SettingsActivity
  com.lindum.mlkit.vision.demo.preference.SettingsActivity$LaunchSource
@@ -70,8 +68,6 @@ com/lindum/mlkit/vision/demo/preference/PreferenceUtils.java
  com.lindum.mlkit.vision.demo.preference.PreferenceUtils
 com/lindum/mlkit/vision/demo/InferenceInfoGraphic.java
  com.lindum.mlkit.vision.demo.InferenceInfoGraphic
-com/lindum/mlkit/vision/demo/java/segmenter/SegmentationGraphic.java
- com.lindum.mlkit.vision.demo.java.segmenter.SegmentationGraphic
 com/lindum/mlkit/vision/demo/java/posedetector/PoseDetectorProcessor.java
  com.lindum.mlkit.vision.demo.java.posedetector.PoseDetectorProcessor
  com.lindum.mlkit.vision.demo.java.posedetector.PoseDetectorProcessor$PoseWithClassification
