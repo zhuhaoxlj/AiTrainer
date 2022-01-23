@@ -2799,4 +2799,3 @@ int styleable ViewStubCompat_android_id 0
 int styleable ViewStubCompat_android_layout 1
 int styleable ViewStubCompat_android_inflatedId 2
 int xml preference_live_preview_quickstart 0x7f110000
-int xml preference_still_image 0x7f110001

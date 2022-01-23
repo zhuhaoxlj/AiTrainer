@@ -1643,6 +1643,21 @@
             ]
         },
         {
+            "outputFile": "D:\\Project\\Android\\AiTrainer\\app\\build\\intermediates\\res\\merged\\debug\\values-night-v8_values-night-v8.arsc.flat",
+            "map": [
+                {
+                    "source": "C:\\Users\\Administrator\\.gradle\\caches\\transforms-2\\files-2.1\\f1f33b62267c75a6f99331b460a092b0\\appcompat-1.2.0\\res\\values-night-v8\\values-night-v8.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,125,209,293,389,491,593,687",
+                        "endColumns": "69,83,83,95,101,101,93,88",
+                        "endOffsets": "120,204,288,384,486,588,682,771"
+                    }
+                }
+            ]
+        },
+        {
             "outputFile": "D:\\Project\\Android\\AiTrainer\\app\\build\\intermediates\\res\\merged\\debug\\values-vi_values-vi.arsc.flat",
             "map": [
                 {
@@ -1711,21 +1726,6 @@
                         "startOffsets": "3978",
                         "endColumns": "194",
                         "endOffsets": "4168"
-                    }
-                }
-            ]
-        },
-        {
-            "outputFile": "D:\\Project\\Android\\AiTrainer\\app\\build\\intermediates\\res\\merged\\debug\\values-night-v8_values-night-v8.arsc.flat",
-            "map": [
-                {
-                    "source": "C:\\Users\\Administrator\\.gradle\\caches\\transforms-2\\files-2.1\\f1f33b62267c75a6f99331b460a092b0\\appcompat-1.2.0\\res\\values-night-v8\\values-night-v8.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7,8,9",
-                        "startColumns": "4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,125,209,293,389,491,593,687",
-                        "endColumns": "69,83,83,95,101,101,93,88",
-                        "endOffsets": "120,204,288,384,486,588,682,771"
                     }
                 }
             ]
