@@ -50,8 +50,6 @@ com/lindum/mlkit/vision/demo/java/posedetector/classification/PoseEmbedding.java
  com.lindum.mlkit.vision.demo.java.posedetector.classification.PoseEmbedding
 com/lindum/mlkit/vision/demo/java/posedetector/PoseGraphic.java
  com.lindum.mlkit.vision.demo.java.posedetector.PoseGraphic
-com/lindum/mlkit/vision/demo/preference/FaceDetectionUtils.java
- com.lindum.mlkit.vision.demo.preference.FaceDetectionUtils
 com/lindum/mlkit/vision/demo/FrameMetadata.java
  com.lindum.mlkit.vision.demo.FrameMetadata
  com.lindum.mlkit.vision.demo.FrameMetadata$1

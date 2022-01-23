@@ -38,7 +38,6 @@ public class LivePreviewPreferenceFragment extends PreferenceFragment {
 
     addPreferencesFromResource(R.xml.preference_live_preview_quickstart);
     setUpCameraPreferences();
-    FaceDetectionUtils.setUpFaceDetectionPreferences(this, /* isStreamMode = */ true);
   }
 
   void setUpCameraPreferences() {
