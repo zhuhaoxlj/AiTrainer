@@ -94,5 +94,6 @@
     <!-- Strings for segmentation preference. -->
     <string name="pref_title_segmentation_raw_size_mask" translatable="false">开启原始尺寸mask</string>
     <string name="pref_key_segmentation_raw_size_mask" translatable="false">srsm</string>
+    <string name="lookExplanation">查看\n讲解</string>
 
 </resources>

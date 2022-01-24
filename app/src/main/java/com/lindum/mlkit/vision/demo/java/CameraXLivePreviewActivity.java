@@ -30,7 +30,9 @@ import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CompoundButton;
+import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
 import android.widget.ToggleButton;
@@ -86,7 +88,6 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
 
     private static final String POSE_DETECTION = "姿态检测";
     private static final String OBJECT_DETECTION = "Object Detection";
-    private static final String SELFIE_SEGMENTATION = "Selfie Segmentation";
 
 
     private static final String STATE_SELECTED_MODEL = "selected_model";
@@ -288,27 +289,37 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
                     startActivity(intent);
                 });
 
-        //        // 初始化控件
-        Button nextPoseButton = findViewById(R.id.nextButton);
-        Button prePoseButton = findViewById(R.id.preButton);
-        nextPoseButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (nowPoseIndex + 1 < poseEntityList.size()) {
-                    nowPoseIndex++;
-                    setNowPoseName(poseEntityList.get(nowPoseIndex).getPoseName());
-                    count = 0;
-                }
+        // 初始化控件
+        LinearLayout nextPoseButton = findViewById(R.id.nextButton);
+        LinearLayout prePoseButton = findViewById(R.id.preButton);
+        Button prePoseImageButton = findViewById(R.id.prePoseImage);
+        Button nextPoseImageButton = findViewById(R.id.nextPoseImage);
+        nextPoseImageButton.setOnClickListener(view -> {
+            if (nowPoseIndex + 1 < poseEntityList.size()) {
+                nowPoseIndex++;
+                setNowPoseName(poseEntityList.get(nowPoseIndex).getPoseName());
+                count = 0;
             }
         });
-        prePoseButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (nowPoseIndex - 1 >= 0) {
-                    nowPoseIndex--;
-                    setNowPoseName(poseEntityList.get(nowPoseIndex).getPoseName());
-                    count = 0;
-                }
+        prePoseImageButton.setOnClickListener(view -> {
+            if (nowPoseIndex - 1 >= 0) {
+                nowPoseIndex--;
+                setNowPoseName(poseEntityList.get(nowPoseIndex).getPoseName());
+                count = 0;
+            }
+        });
+        nextPoseButton.setOnClickListener(view -> {
+            if (nowPoseIndex + 1 < poseEntityList.size()) {
+                nowPoseIndex++;
+                setNowPoseName(poseEntityList.get(nowPoseIndex).getPoseName());
+                count = 0;
+            }
+        });
+        prePoseButton.setOnClickListener(view -> {
+            if (nowPoseIndex - 1 >= 0) {
+                nowPoseIndex--;
+                setNowPoseName(poseEntityList.get(nowPoseIndex).getPoseName());
+                count = 0;
             }
         });
         if (!allPermissionsGranted()) {

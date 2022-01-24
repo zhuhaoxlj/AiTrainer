@@ -276,6 +276,9 @@ public class PoseClassifierProcessor {
                 result.add(angleText5);
                 result.add(angleText6);
                 result.add("有效动作个数：" + CameraXLivePreviewActivity.getCount());
+                result.add("");
+                result.add("");
+                result.add("");
             }
 
 

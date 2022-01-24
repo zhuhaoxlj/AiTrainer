@@ -40,8 +40,6 @@ com/lindum/mlkit/vision/demo/java/CameraXLivePreviewActivity.java
  com.lindum.mlkit.vision.demo.java.CameraXLivePreviewActivity$1
  com.lindum.mlkit.vision.demo.java.CameraXLivePreviewActivity$2
  com.lindum.mlkit.vision.demo.java.CameraXLivePreviewActivity$3
- com.lindum.mlkit.vision.demo.java.CameraXLivePreviewActivity$4
- com.lindum.mlkit.vision.demo.java.CameraXLivePreviewActivity$5
 com/lindum/mlkit/vision/demo/java/posedetector/classification/PoseEmbedding.java
  com.lindum.mlkit.vision.demo.java.posedetector.classification.PoseEmbedding
 com/lindum/mlkit/vision/demo/java/posedetector/PoseGraphic.java

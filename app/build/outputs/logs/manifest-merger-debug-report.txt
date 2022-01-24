@@ -25,6 +25,7 @@ MERGED from [androidx.loader:loader:1.0.0] C:\Users\Administrator\.gradle\caches
 MERGED from [androidx.lifecycle:lifecycle-livedata:2.3.1] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\ad92ae74d7aaeb7ba0204c5e256b8367\lifecycle-livedata-2.3.1\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.activity:activity:1.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\1ea209558858cd4fa192ea7324b54f32\jetified-activity-1.0.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.3.1] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\4bcab31ffa1f267c0ebcfc4e01545746\lifecycle-viewmodel-2.3.1\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\bc97950d719cef5aad9004493b26296c\cardview-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.3.1] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\2b3d5037db0438599433d82a784eb6bf\lifecycle-livedata-core-2.3.1\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.arch.core:core-runtime:2.1.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\d8762380457f4e044046181ed6cb1daf\core-runtime-2.1.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.appcompat:appcompat-resources:1.2.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\dfb5faf4fa113f52011900c6d037c232\jetified-appcompat-resources-1.2.0\AndroidManifest.xml:17:1-24:12
@@ -114,6 +115,8 @@ MERGED from [androidx.activity:activity:1.0.0] C:\Users\Administrator\.gradle\ca
 MERGED from [androidx.activity:activity:1.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\1ea209558858cd4fa192ea7324b54f32\jetified-activity-1.0.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.3.1] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\4bcab31ffa1f267c0ebcfc4e01545746\lifecycle-viewmodel-2.3.1\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.3.1] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\4bcab31ffa1f267c0ebcfc4e01545746\lifecycle-viewmodel-2.3.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\bc97950d719cef5aad9004493b26296c\cardview-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\bc97950d719cef5aad9004493b26296c\cardview-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.3.1] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\2b3d5037db0438599433d82a784eb6bf\lifecycle-livedata-core-2.3.1\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.3.1] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\2b3d5037db0438599433d82a784eb6bf\lifecycle-livedata-core-2.3.1\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.arch.core:core-runtime:2.1.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\d8762380457f4e044046181ed6cb1daf\core-runtime-2.1.0\AndroidManifest.xml:20:5-22:41
