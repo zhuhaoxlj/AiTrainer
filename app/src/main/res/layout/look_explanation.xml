@@ -7,12 +7,13 @@
     <androidx.cardview.widget.CardView
         android:layout_width="60dp"
         android:layout_height="60dp"
+        android:alpha="0.9"
+        app:cardBackgroundColor="#75FFFFFF"
         app:cardCornerRadius="30dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#d8d8e0"
             android:gravity="center">
 
             <TextView

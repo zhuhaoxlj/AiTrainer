@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:keepScreenOn="true">
 
-
+    <!--    相机视图    -->
     <androidx.camera.view.PreviewView
         android:id="@+id/preview_view"
         android:layout_width="match_parent"
@@ -14,7 +14,7 @@
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
+    <!--    mlkit 绘制图层  -->
     <com.lindum.mlkit.vision.demo.GraphicOverlay
         android:id="@+id/graphic_overlay"
         android:layout_width="0dp"
@@ -23,8 +23,7 @@
         app:layout_constraintLeft_toLeftOf="@id/preview_view"
         app:layout_constraintRight_toRightOf="@id/preview_view"
         app:layout_constraintTop_toTopOf="@id/preview_view" />
-
-
+    <!--    右侧按钮    -->
     <LinearLayout
         android:layout_width="60dp"
         android:layout_height="wrap_content"
@@ -46,7 +45,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
     </LinearLayout>
-
+    <!--    下方卡片    -->
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
         android:layout_width="match_parent"
@@ -123,6 +122,7 @@
 
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
+    
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
