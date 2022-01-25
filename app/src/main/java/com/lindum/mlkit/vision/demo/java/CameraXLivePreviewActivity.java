@@ -90,6 +90,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
+import io.github.muddz.quickshot.QuickShot;
+
 /**
  * Live preview demo app for ML Kit APIs using CameraX.
  *
@@ -103,7 +105,7 @@ import java.util.Random;
 public final class CameraXLivePreviewActivity extends AppCompatActivity
         implements OnRequestPermissionsResultCallback,
         OnItemSelectedListener,
-        CompoundButton.OnCheckedChangeListener {
+        CompoundButton.OnCheckedChangeListener, QuickShot.QuickShotListener {
     private static final String TAG = "CameraXLivePreview";
     private static final int PERMISSION_REQUESTS = 1;
 
@@ -315,6 +317,12 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
                         new Thread("截图图片并保存") {
                             @Override
                             public void run() {
+                                QuickShot.of(graphicOverlay).setResultListener(CameraXLivePreviewActivity.this)
+                                        .enableLogging()
+                                        .setFilename("QuickShot")
+                                        .setPath("MyApp")
+                                        .toPNG()
+                                        .save();
                                 Random random = new Random();
                                 String filePath = Environment.getExternalStorageDirectory().getPath() + "/AiTrainer";
                                 saveBitmap(filePath, random.nextInt() + "", bitmap);
@@ -788,5 +796,15 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
         }
         Log.i(TAG, "Permission NOT granted: " + permission);
         return false;
+    }
+
+    @Override
+    public void onQuickShotSuccess(String path) {
+
+    }
+
+    @Override
+    public void onQuickShotFailed(String path, String errorMsg) {
+
     }
 }

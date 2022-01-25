@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="Gradle: io.github.muddz:quickshot:1.4.0@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/f0efebb283bc821cc49e0a4b714eeb5a/jetified-quickshot-1.4.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/f0efebb283bc821cc49e0a4b714eeb5a/jetified-quickshot-1.4.0/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/f0efebb283bc821cc49e0a4b714eeb5a/jetified-quickshot-1.4.0/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.github.muddz/quickshot/1.4.0/b3894601209de31e56bebba5b842a39c939eba31/quickshot-1.4.0-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.github.muddz/quickshot/1.4.0/f273ce0e25479c6bec94ace38887888bf4557a4f/quickshot-1.4.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

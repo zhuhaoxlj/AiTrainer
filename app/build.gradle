@@ -51,7 +51,7 @@ repositories {
 }
 
 dependencies {
-
+    implementation 'io.github.muddz:quickshot:1.4.0'
     // jsoup
     implementation 'org.jsoup:jsoup:1.12.1'
     // fastJson
