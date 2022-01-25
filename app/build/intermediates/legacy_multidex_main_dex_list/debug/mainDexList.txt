@@ -73,16 +73,19 @@ androidx/camera/camera2/internal/SynchronizedCaptureSessionOpener$SynchronizedSe
 androidx/camera/camera2/internal/annotation/CameraExecutor.class
 androidx/camera/camera2/internal/compat/CameraAccessExceptionCompat$AccessError.class
 androidx/camera/camera2/internal/compat/params/SessionConfigurationCompat$SessionMode.class
+androidx/camera/camera2/internal/compat/workaround/TargetAspectRatio$Ratio.class
 androidx/camera/camera2/interop/ExperimentalCamera2Interop.class
 androidx/camera/core/AspectRatio$Ratio.class
 androidx/camera/core/Camera.class
 androidx/camera/core/CameraInfo$ImplementationType.class
 androidx/camera/core/CameraSelector$LensFacing.class
 androidx/camera/core/CameraUnavailableException$Reason.class
+androidx/camera/core/ExperimentalAvailableCamerasLimiter.class
 androidx/camera/core/ExperimentalCameraFilter.class
 androidx/camera/core/ExperimentalCustomizableThreads.class
 androidx/camera/core/ExperimentalExposureCompensation.class
 androidx/camera/core/ExperimentalGetImage.class
+androidx/camera/core/ExperimentalLogging.class
 androidx/camera/core/ExperimentalUseCaseGroup.class
 androidx/camera/core/FocusMeteringAction$MeteringMode.class
 androidx/camera/core/ImageAnalysis$BackpressureStrategy.class
@@ -101,7 +104,11 @@ androidx/camera/lifecycle/ExperimentalCameraProviderConfiguration.class
 androidx/camera/lifecycle/ExperimentalUseCaseGroupLifecycle.class
 androidx/camera/lifecycle/LifecycleCamera.class
 androidx/camera/lifecycle/LifecycleCameraRepository$LifecycleCameraRepositoryObserver.class
+androidx/camera/view/CameraController$UseCases.class
 androidx/camera/view/CameraXModule$1.class
+androidx/camera/view/TransformExperimental.class
+androidx/camera/view/video/ExperimentalVideo.class
+androidx/camera/view/video/OnVideoSavedCallback$VideoCaptureError.class
 androidx/core/app/CoreComponentFactory$CompatWrapped.class
 androidx/core/app/CoreComponentFactory.class
 androidx/core/app/FrameMetricsAggregator$MetricType.class
@@ -133,6 +140,7 @@ androidx/lifecycle/Lifecycle$1.class
 androidx/lifecycle/Lifecycle$Event.class
 androidx/lifecycle/Lifecycle$State.class
 androidx/lifecycle/LifecycleObserver.class
+androidx/lifecycle/LifecycleOwner.class
 androidx/lifecycle/OnLifecycleEvent.class
 androidx/multidex/MultiDex$V14$ElementConstructor.class
 androidx/multidex/MultiDex$V14$ICSElementConstructor.class
@@ -251,6 +259,10 @@ com/google/android/gms/internal/mlkit_common/zzbc.class
 com/google/android/gms/internal/mlkit_common/zzbg.class
 com/google/android/gms/internal/mlkit_common/zzbh.class
 com/google/android/gms/internal/mlkit_common/zzkx.class
+com/google/android/gms/internal/mlkit_vision_camera/zzh.class
+com/google/android/gms/internal/mlkit_vision_camera/zzhs.class
+com/google/android/gms/internal/mlkit_vision_camera/zzl.class
+com/google/android/gms/internal/mlkit_vision_camera/zzm.class
 com/google/android/gms/internal/mlkit_vision_common/zzab.class
 com/google/android/gms/internal/mlkit_vision_common/zzaf.class
 com/google/android/gms/internal/mlkit_vision_common/zzag.class
@@ -330,6 +342,8 @@ com/google/j2objc/annotations/RetainedWith.class
 com/google/j2objc/annotations/Weak.class
 com/google/j2objc/annotations/WeakOuter.class
 com/google/mlkit/common/MlKitException$ErrorCode.class
+com/google/mlkit/vision/camera/CameraSourceConfig$CameraFacing.class
+com/google/mlkit/vision/camera/CameraXSource.class
 com/google/mlkit/vision/common/Detector$DetectorType.class
 com/google/mlkit/vision/common/Detector.class
 com/google/mlkit/vision/common/InputImage$ImageFormat.class
@@ -383,4 +397,3 @@ org/checkerframework/checker/nullness/compatqual/NullableDecl.class
 org/checkerframework/checker/nullness/compatqual/NullableType.class
 org/checkerframework/checker/nullness/compatqual/PolyNullDecl.class
 org/checkerframework/checker/nullness/compatqual/PolyNullType.class
-org/codehaus/mojo/animal_sniffer/IgnoreJRERequirement.class
