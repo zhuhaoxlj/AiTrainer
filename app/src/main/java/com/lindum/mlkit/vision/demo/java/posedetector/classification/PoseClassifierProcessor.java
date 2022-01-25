@@ -171,7 +171,7 @@ public class PoseClassifierProcessor {
 //                result.add(angleText3);
 //                result.add(angleText4);
 //                result.add(angleText5);
-                result.add(CameraXLivePreviewActivity.getCount()+"个");
+//                result.add(CameraXLivePreviewActivity.getCount()+"个");
 //            }
             // 二维和三维同时显示
             {
@@ -193,86 +193,90 @@ public class PoseClassifierProcessor {
                   !!!!!!!! 这个类可以理解每次截取一张图片进行判断 ！！！！！！！
                   !!!!!!!! 这个类可以理解每次截取一张图片进行判断 ！！！！！！！
                  */
+                Log.e("TEST", CameraXLivePreviewActivity.countdownSeconds + "S");
+                // 倒计时结束，开始训练
+                if (CameraXLivePreviewActivity.countdownSeconds == -1) {
+                    Log.e("TEST","检测开始...");
+                    // 动作模式： 普通模式 1 严格模式 2
+                    // 普通模式 待定 todo
+                    // 如果严格模式，则要求每个部位都要精准才算一个有效动作
+                    int mode = 2;
+                    // 获取监测的动作实体
+                    PoseEntity poseEntity = CameraXLivePreviewActivity.getPoseEntityList().get(CameraXLivePreviewActivity.nowPoseIndex);
 
 
-                // 动作模式： 普通模式 1 严格模式 2
-                // 普通模式 待定 todo
-                // 如果严格模式，则要求每个部位都要精准才算一个有效动作
-                int mode = 2;
-                // 获取监测的动作实体
-                PoseEntity poseEntity = CameraXLivePreviewActivity.getPoseEntityList().get(CameraXLivePreviewActivity.nowPoseIndex);
-                // 获取监测部位列表
-                List<PosePart> monitoringList = poseEntity.getMonitoringPosePartList();
-                // 固定部位列表
-                List<PosePart> fixedPartList = new ArrayList<>();
-                // 动态部位列表
-                List<PosePart> dynamicPart = new ArrayList<>();
-                // 将固定部位和动态部位分别筛选出来
-                for (PosePart part : monitoringList) {
-                    if (part.getPoseType() == 0)
-                        fixedPartList.add(part);
-                    if (part.getPoseType() == 1)
-                        dynamicPart.add(part);
-                }
-                Log.e("测试", fixedPartList.size() + "");
-                if (mode == 2) {
-                    boolean dynamicPartJudge1 = true;
-                    boolean dynamicPartJudge2 = true;
-                    boolean fixedPartJudge = true;
-                    // 判断是否全部满足固定部位标准
-                    for (PosePart part : fixedPartList) {
-                        int partIndex = part.getPoseIndex();
-                        // 当前帧的角度
-                        int nowFrameAngle;
-                        // 自定义角度的情况
-                        if (partIndex == -1) {
-                            nowFrameAngle = poseAngleDetector.getAnyAngleBy3Point(part.getThreePointIndex());
+
+                    // 获取监测部位列表
+                    List<PosePart> monitoringList = poseEntity.getMonitoringPosePartList();
+                    // 固定部位列表
+                    List<PosePart> fixedPartList = new ArrayList<>();
+                    // 动态部位列表
+                    List<PosePart> dynamicPart = new ArrayList<>();
+                    // 将固定部位和动态部位分别筛选出来
+                    for (PosePart part : monitoringList) {
+                        if (part.getPoseType() == 0)
+                            fixedPartList.add(part);
+                        if (part.getPoseType() == 1)
+                            dynamicPart.add(part);
+                    }
+                    Log.e("测试", fixedPartList.size() + "");
+                    if (mode == 2) {
+                        boolean dynamicPartJudge1 = true;
+                        boolean dynamicPartJudge2 = true;
+                        boolean fixedPartJudge = true;
+                        // 判断是否全部满足固定部位标准
+                        for (PosePart part : fixedPartList) {
+                            int partIndex = part.getPoseIndex();
+                            // 当前帧的角度
+                            int nowFrameAngle;
+                            // 自定义角度的情况
+                            if (partIndex == -1) {
+                                nowFrameAngle = poseAngleDetector.getAnyAngleBy3Point(part.getThreePointIndex());
+                            }
+                            // 常规角度的情况
+                            else {
+                                nowFrameAngle = poseAngleDetector.getPoseAngleFromPartIndex(partIndex);
+                            }
+                            if (!(nowFrameAngle > part.getFixedRange()[0] && nowFrameAngle < part.getFixedRange()[1])) {
+                                // 固定部位不满足标准的时候报红，那么动态部位什么情况下报红呢？ todo 我觉得是超过这个动态的总范围就报红
+                                CameraXLivePreviewActivity.addWarnPart(partIndex);
+                                Log.e("TEST", "当前角度" + nowFrameAngle + "部位:" + partIndex);
+                                fixedPartJudge = false;
+                            }
                         }
-                        // 常规角度的情况
-                        else {
-                            nowFrameAngle = poseAngleDetector.getPoseAngleFromPartIndex(partIndex);
-                        }
-                        if (!(nowFrameAngle > part.getFixedRange()[0] && nowFrameAngle < part.getFixedRange()[1])) {
-                            // 固定部位不满足标准的时候报红，那么动态部位什么情况下报红呢？ todo 我觉得是超过这个动态的总范围就报红
-                            CameraXLivePreviewActivity.addWarnPart(partIndex);
-                            fixedPartJudge = false;
+                        // 判断是否全部满足动态部位第一个标准
+                        for (PosePart part : dynamicPart) {
+                            int partIndex = part.getPoseIndex();
+                            // 当前帧的角度
+                            int nowFrameAngle;
+                            // 自定义角度的情况
+                            if (partIndex == -1) {
+                                nowFrameAngle = poseAngleDetector.getAnyAngleBy3Point(part.getThreePointIndex());
+                            }
+                            // 常规部位角度情况
+                            else {
+                                nowFrameAngle = poseAngleDetector.getPoseAngleFromPartIndex(partIndex);
+                            }
+                            // 判断当前的角度是否满足第一个标准
+                            if (!(nowFrameAngle > part.getFirstStandardRange()[0] && nowFrameAngle < part.getFirstStandardRange()[1])) {
+                                dynamicPartJudge1 = false;
+                            }
+                            if (dynamicPartJudge1 && !CameraXLivePreviewActivity.isPose1() && fixedPartJudge) {
+                                CameraXLivePreviewActivity.addCount();
+                                CameraXLivePreviewActivity.setPose1(true);
+                            }
+                            // 判断当前的角度是否满足第二个标准
+                            if (!(nowFrameAngle > part.getSecondStandardRange()[0] && nowFrameAngle < part.getSecondStandardRange()[1])) {
+                                dynamicPartJudge2 = false;
+                            }
+                            if (dynamicPartJudge2 && CameraXLivePreviewActivity.isPose1() && fixedPartJudge) {
+                                CameraXLivePreviewActivity.addCount();
+                                CameraXLivePreviewActivity.setPose1(false);
+                            }
                         }
                     }
-                    // 判断是否全部满足动态部位第一个标准
-                    for (PosePart part : dynamicPart) {
-                        int partIndex = part.getPoseIndex();
-                        // 当前帧的角度
-                        int nowFrameAngle;
-                        // 自定义角度的情况
-                        if (partIndex == -1) {
-                            nowFrameAngle = poseAngleDetector.getAnyAngleBy3Point(part.getThreePointIndex());
-                        }
-                        // 常规部位角度情况
-                        else {
-                            nowFrameAngle = poseAngleDetector.getPoseAngleFromPartIndex(partIndex);
-                        }
-                        // 判断当前的角度是否满足第一个标准
-                        if (!(nowFrameAngle > part.getFirstStandardRange()[0] && nowFrameAngle < part.getFirstStandardRange()[1])) {
-                            dynamicPartJudge1 = false;
-                        }
-                        if (dynamicPartJudge1 && !CameraXLivePreviewActivity.isPose1() && fixedPartJudge) {
-                            CameraXLivePreviewActivity.addCount();
-                            CameraXLivePreviewActivity.setPose1(true);
-                        }
-                        // 判断当前的角度是否满足第二个标准
-                        if (!(nowFrameAngle > part.getSecondStandardRange()[0] && nowFrameAngle < part.getSecondStandardRange()[1])) {
-                            dynamicPartJudge2 = false;
-                        }
-                        if (dynamicPartJudge2 && CameraXLivePreviewActivity.isPose1() && fixedPartJudge) {
-                            CameraXLivePreviewActivity.addCount();
-                            CameraXLivePreviewActivity.setPose1(false);
-                        }
-                    }
                 }
-
             }
-
-
         }
         return result;
     }

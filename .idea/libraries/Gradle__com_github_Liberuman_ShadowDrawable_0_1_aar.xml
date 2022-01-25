@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Gradle: com.github.Liberuman:ShadowDrawable:0.1@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/41158b785ca0e71b354941a366f10012/jetified-ShadowDrawable-0.1/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/41158b785ca0e71b354941a366f10012/jetified-ShadowDrawable-0.1/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/41158b785ca0e71b354941a366f10012/jetified-ShadowDrawable-0.1/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.Liberuman/ShadowDrawable/0.1/cc6801d7c1a0475f93f6b2a3298e9286a5dcf992/ShadowDrawable-0.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

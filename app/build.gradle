@@ -51,12 +51,16 @@ repositories {
 }
 
 dependencies {
+
     // jsoup
     implementation 'org.jsoup:jsoup:1.12.1'
     // fastJson
     implementation 'com.alibaba:fastjson:1.2.79'
 
     implementation 'androidx.multidex:multidex:2.0.1'
+
+    // 阴影
+    implementation 'com.github.Liberuman:ShadowDrawable:0.1'
 
     // Pose detection with default models
     implementation 'com.google.mlkit:pose-detection:17.0.1-beta7'

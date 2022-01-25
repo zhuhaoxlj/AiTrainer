@@ -989,6 +989,7 @@ id content
 id contentPanel
 id control
 id cos
+id countdownSecondsText
 id custom
 id customPanel
 id dark
@@ -1089,6 +1090,10 @@ id postLayout
 id preButton
 id prePoseImage
 id preview_view
+id processBar1
+id processBar2
+id processBar3
+id processBar4
 id progress_circular
 id progress_horizontal
 id radio
@@ -1151,6 +1156,7 @@ id tag_transition_group
 id tag_unhandled_key_event_manager
 id tag_unhandled_key_listeners
 id take_photo_using_camera
+id testImage
 id text
 id text2
 id textSpacerNoButtons
@@ -1222,6 +1228,7 @@ layout activity_vision_camerax_live_preview
 layout custom_dialog
 layout login
 layout look_explanation
+layout my_process_bar
 layout next_button
 layout notification_action
 layout notification_action_tombstone
@@ -1230,6 +1237,7 @@ layout notification_template_icon_group
 layout notification_template_part_chronometer
 layout notification_template_part_time
 layout pose_info
+layout pose_result
 layout pre_button
 layout select_dialog_item_material
 layout select_dialog_multichoice_material

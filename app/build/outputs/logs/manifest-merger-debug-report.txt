@@ -1,10 +1,11 @@
 -- Merging decision tree log ---
 manifest
-ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:2:1-83:12
-INJECTED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:2:1-83:12
-INJECTED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:2:1-83:12
-INJECTED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:2:1-83:12
+ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:2:1-69:12
+INJECTED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:2:1-69:12
+INJECTED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:2:1-69:12
+INJECTED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:2:1-69:12
 MERGED from [androidx.multidex:multidex:2.0.1] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\ce8dd2100ffd5b4eae657f5daec65fe0\multidex-2.0.1\AndroidManifest.xml:17:1-22:12
+MERGED from [com.github.Liberuman:ShadowDrawable:0.1] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\41158b785ca0e71b354941a366f10012\jetified-ShadowDrawable-0.1\AndroidManifest.xml:2:1-11:12
 MERGED from [com.google.mlkit:pose-detection:17.0.1-beta7] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\517993b0d5296829f7cbe7f6abd7e6f3\jetified-pose-detection-17.0.1-beta7\AndroidManifest.xml:2:1-9:12
 MERGED from [com.google.mlkit:pose-detection-accurate:17.0.1-beta7] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\7c58f35bc872adba6db8e917af7a6910\jetified-pose-detection-accurate-17.0.1-beta7\AndroidManifest.xml:2:1-9:12
 MERGED from [com.google.mlkit:camera:16.0.0-beta1] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\ebdf43113743875641aee584777c8abd\jetified-camera-16.0.0-beta1\AndroidManifest.xml:2:1-8:12
@@ -49,22 +50,22 @@ MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\Ad
 MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\8ddc9952f727e6b4648fb3647c864837\interpolator-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [com.google.android.odml:image:1.0.0-beta1] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\4f7cc3f0a1b8fce3778652a3c48c4b4d\jetified-image-1.0.0-beta1\AndroidManifest.xml:2:1-9:12
 MERGED from [androidx.annotation:annotation-experimental:1.0.0-rc01] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\fa4db84754af4843073ca2c53070619f\jetified-annotation-experimental-1.0.0-rc01\AndroidManifest.xml:17:1-24:12
-INJECTED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:2:1-83:12
-INJECTED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:2:1-83:12
-INJECTED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:2:1-83:12
+INJECTED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:2:1-69:12
+INJECTED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:2:1-69:12
+INJECTED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:2:1-69:12
 	package
 		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:4:5-43
 		INJECTED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml
 		INJECTED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml
-		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:2:1-83:12
+		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:2:1-69:12
 		INJECTED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml
 	xmlns:tools
 		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:3:5-51
 	android:versionCode
 		INJECTED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml
-		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:2:1-83:12
+		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:2:1-69:12
 		INJECTED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:2:11-69
@@ -76,6 +77,8 @@ INJECTED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:11:5
 INJECTED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:11:5-13:63
 MERGED from [androidx.multidex:multidex:2.0.1] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\ce8dd2100ffd5b4eae657f5daec65fe0\multidex-2.0.1\AndroidManifest.xml:20:5-43
 MERGED from [androidx.multidex:multidex:2.0.1] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\ce8dd2100ffd5b4eae657f5daec65fe0\multidex-2.0.1\AndroidManifest.xml:20:5-43
+MERGED from [com.github.Liberuman:ShadowDrawable:0.1] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\41158b785ca0e71b354941a366f10012\jetified-ShadowDrawable-0.1\AndroidManifest.xml:7:5-9:41
+MERGED from [com.github.Liberuman:ShadowDrawable:0.1] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\41158b785ca0e71b354941a366f10012\jetified-ShadowDrawable-0.1\AndroidManifest.xml:7:5-9:41
 MERGED from [com.google.mlkit:pose-detection:17.0.1-beta7] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\517993b0d5296829f7cbe7f6abd7e6f3\jetified-pose-detection-17.0.1-beta7\AndroidManifest.xml:5:5-44
 MERGED from [com.google.mlkit:pose-detection:17.0.1-beta7] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\517993b0d5296829f7cbe7f6abd7e6f3\jetified-pose-detection-17.0.1-beta7\AndroidManifest.xml:5:5-44
 MERGED from [com.google.mlkit:pose-detection-accurate:17.0.1-beta7] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\7c58f35bc872adba6db8e917af7a6910\jetified-pose-detection-accurate-17.0.1-beta7\AndroidManifest.xml:5:5-44
@@ -217,7 +220,7 @@ ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:28:5-65
 	android:name
 		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:28:22-62
 application
-ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:30:5-76:19
+ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:30:5-62:19
 MERGED from [com.google.mlkit:pose-detection:17.0.1-beta7] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\517993b0d5296829f7cbe7f6abd7e6f3\jetified-pose-detection-17.0.1-beta7\AndroidManifest.xml:7:5-20
 MERGED from [com.google.mlkit:pose-detection:17.0.1-beta7] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\517993b0d5296829f7cbe7f6abd7e6f3\jetified-pose-detection-17.0.1-beta7\AndroidManifest.xml:7:5-20
 MERGED from [com.google.mlkit:pose-detection-accurate:17.0.1-beta7] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\7c58f35bc872adba6db8e917af7a6910\jetified-pose-detection-accurate-17.0.1-beta7\AndroidManifest.xml:7:5-20
@@ -281,7 +284,7 @@ ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:48:9-56
 	android:theme
 		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:51:13-44
 	android:name
-		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:49:13-88
+		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:49:13-60
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
 ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:52:13-55:29
 action#android.intent.action.MAIN
@@ -293,19 +296,19 @@ ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:54:17-7
 	android:name
 		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:54:27-74
 activity#com.lindum.mlkit.vision.demo.preference.SettingsActivity
-ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:72:9-74:40
+ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:58:9-60:40
 	android:exported
-		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:74:13-37
+		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:60:13-37
 	android:name
-		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:73:13-84
+		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:59:13-84
 queries
-ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:77:5-81:15
+ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:63:5-67:15
 intent#action:name:android.media.action.IMAGE_CAPTURE
-ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:78:9-80:18
+ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:64:9-66:18
 action#android.media.action.IMAGE_CAPTURE
-ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:79:13-73
+ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:65:13-73
 	android:name
-		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:79:21-70
+		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:65:21-70
 service#com.google.mlkit.common.internal.MlKitComponentDiscoveryService
 ADDED from [com.google.mlkit:pose-detection-common:17.1.0-beta6] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\3b6679dec26695f7d039fe6f8f3f86f1\jetified-pose-detection-common-17.1.0-beta6\AndroidManifest.xml:11:9-17:19
 MERGED from [com.google.mlkit:vision-common:16.7.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\4d8191450686fc5dc76910707f056c94\jetified-vision-common-16.7.0\AndroidManifest.xml:9:9-15:19

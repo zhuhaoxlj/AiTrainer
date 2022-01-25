@@ -26,7 +26,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
-
+<!--    android:name="com.lindum.mlkit.vision.demo.java.CameraXLivePreviewActivity"-->
     <application
         android:usesCleartextTraffic="true"
         android:name="androidx.multidex.MultiDexApplication"
@@ -46,7 +46,7 @@
             android:value="barcode,face,ocr,ica" />
 
         <activity
-            android:name="com.lindum.mlkit.vision.demo.java.CameraXLivePreviewActivity"
+            android:name=".java.CameraXLivePreviewActivity"
             android:exported="true"
             android:theme="@style/AppTheme">
             <intent-filter>
@@ -54,20 +54,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-
-        <!--        <activity-->
-        <!--            android:name=".java.LivePreviewActivity"-->
-        <!--            android:exported="true"-->
-        <!--            android:theme="@style/AppTheme">-->
-        <!--        </activity>-->
-
-        <!--        <activity-->
-        <!--            android:name=".java.CameraXLivePreviewActivity"-->
-        <!--            android:exported="true"-->
-        <!--            android:theme="@style/AppTheme">-->
-        <!--        </activity>-->
-
 
         <activity
             android:name="com.lindum.mlkit.vision.demo.preference.SettingsActivity"

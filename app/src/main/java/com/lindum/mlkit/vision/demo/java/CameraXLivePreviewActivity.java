@@ -9,6 +9,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
@@ -21,12 +23,15 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.os.Environment;
+import android.os.FileUtils;
 import android.os.Handler;
 import android.os.StrictMode;
 import android.provider.Settings;
 import android.util.Log;
 import android.util.Size;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
@@ -59,6 +64,7 @@ import com.lindum.mlkit.vision.demo.CameraXViewModel;
 import com.lindum.mlkit.vision.demo.GraphicOverlay;
 import com.lindum.mlkit.vision.demo.R;
 import com.lindum.mlkit.vision.demo.VisionImageProcessor;
+import com.lindum.mlkit.vision.demo.java.posedetector.PoseDataUtils;
 import com.lindum.mlkit.vision.demo.java.posedetector.PoseDetectorProcessor;
 import com.lindum.mlkit.vision.demo.java.posedetector.PoseEntity;
 import com.lindum.mlkit.vision.demo.preference.PreferenceUtils;
@@ -71,15 +77,27 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
+import java.util.Random;
 
 /**
  * Live preview demo app for ML Kit APIs using CameraX.
- */
+ *
+ * @author: MarkGosling
+ * @date: 2022/1/25 16:13
+ **/
+
+
 @KeepName
 @RequiresApi(VERSION_CODES.LOLLIPOP)
 public final class CameraXLivePreviewActivity extends AppCompatActivity
@@ -91,7 +109,6 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
 
     private static final String POSE_DETECTION = "姿态检测";
     private static final String OBJECT_DETECTION = "Object Detection";
-
 
     private static final String STATE_SELECTED_MODEL = "selected_model";
     private static float count = 0;
@@ -117,12 +134,26 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
     public static List<PoseEntity> poseEntityList;
     public static String nowPoseName = "AiTrainer";
     public static int nowPoseIndex = 0;
-
-    // 左下角信息
-    // 动作名称
+    public static int countdownSeconds = 10;
+    // 给截图延时 调整检测截图灵敏度
+    private int delayScreenCapture = 0;
+    /**
+     * 左下角信息
+     * 动作名称
+     */
     private TextView poseName;
-    // 第几个动作
+    /**
+     * 第几个动作
+     */
     private TextView poseIndexText;
+    // 当前动作进度
+    private TextView poseProcessInfo;
+    // 倒计时秒数
+    private TextView countdownSecondsTextView;
+    // 现在动作进行的秒数
+    private int nowPoseProcessSeconds = 0;
+    // 训练总时间
+    private int totalTrainingTime = 0;
 
     public static boolean isPose1() {
         return pose1;
@@ -165,8 +196,8 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
         cameraSelector = new CameraSelector.Builder().requireLensFacing(lensFacing).build();
         // 设置布局
         setContentView(R.layout.activity_vision_camerax_live_preview);
-
-
+        // 隐藏状态栏
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         // 初始化变量
         warnPart = new ArrayList<>();
         tempWarnPart = new ArrayList<>();
@@ -174,13 +205,16 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
         pose1 = false;
         poseName = findViewById(R.id.poseName);
         poseIndexText = findViewById(R.id.nowPoseIndexText);
+        graphicOverlay = findViewById(R.id.graphic_overlay);
+        poseProcessInfo = findViewById(R.id.poseProcessInfo);
+        countdownSecondsTextView = findViewById(R.id.countdownSecondsText);
         //适配安卓11及以下版本的存储权限请求
 //        if (Build.VERSION.SDK_INT > 29) {
-//            requestExternalStorage(this);
+        requestExternalStorage(this);
 //            // SD 卡根目录
-//            String sdPath = Environment.getExternalStorageDirectory().getPath();
+        String sdPath = Environment.getExternalStorageDirectory().getPath();
 //            // 姿态数据工具类
-//            PoseDataUtils.writeJSON2Loacl(poseEntityList, sdPath + "/AiTrainer/poseData.json");
+        PoseDataUtils.writeJSON2Loacl(poseEntityList, sdPath + "/AiTrainer/poseData.json");
 //            isPermissionRequested = true;
 //        }
 
@@ -206,46 +240,114 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
         Log.e("entity", poseEntityArrayList.toString());
         poseEntityList = poseEntityArrayList;
 
+        for (PoseEntity poseEntity : poseEntityList) {
+            poseEntity.setPoseType(1);
+            poseEntity.setPoseProcessValue(15);
+        }
+
         nowPoseName = poseEntityList.get(nowPoseIndex).getPoseName();
 
-
-        Handler mHandler = new Handler();
-        Runnable r = new Runnable() {
-            @Override
-            public void run() {
-//                if (count > 5) {
-////                    Log.e("Tips", "太差劲了");
-//                    Toast.makeText(CameraXLivePreviewActivity.this, "非常棒", Toast.LENGTH_SHORT).show();
-//                    count = 0;
-//                }
-                Log.e("count", (int) count + "");
-                //do something
-                //每隔1s循环执行run方法
-                mHandler.postDelayed(this, 800);
-            }
-        };
-
-
-        mHandler.postDelayed(r, 100);//延时100毫秒
+//        String sdPath1 = Environment.getExternalStorageDirectory().getPath();
+//            // 姿态数据工具类
+//        PoseDataUtils.writeJSON2Loacl(poseEntityList, sdPath1 + "/AiTrainer/poseData123.json");
+//        Handler mHandler = new Handler();
+//        Runnable r = new Runnable() {
+//            @Override
+//            public void run() {
+////                if (count > 5) {
+//////                    Log.e("Tips", "太差劲了");
+////                    Toast.makeText(CameraXLivePreviewActivity.this, "非常棒", Toast.LENGTH_SHORT).show();
+////                    count = 0;
+////                }
+//                Log.e("count", (int) count + "");
+//                //do something
+//                //每隔1s循环执行run方法
+//                mHandler.postDelayed(this, 800);
+//            }
+//        };
+//
+//
+//        mHandler.postDelayed(r, 100);//延时100毫秒
+        // 定时清空警告点、倒数秒数刷新
         Handler mHandler2 = new Handler();
         Runnable r2 = new Runnable() {
             @Override
             public void run() {
                 tempWarnPart.clear();
                 warnPart.clear();
-
+                updatePoseInfo();
+                if (countdownSeconds >= 0) {
+                    countdownSecondsTextView.setVisibility(View.VISIBLE);
+                    countdownSeconds--;
+                }
+                if (countdownSeconds == -1) {
+                    countdownSecondsTextView.setVisibility(View.INVISIBLE);
+                }
+                // 现在动作进行的秒数增加
+                if (countdownSeconds == -1) {
+                    nowPoseProcessSeconds++;
+                }
                 //do something
                 //每隔1s循环执行run方法
-                mHandler2.postDelayed(this, 500);
+                totalTrainingTime++;
+                mHandler2.postDelayed(this, 1000);
             }
         };
-
         mHandler2.post(r2);
+        // 初始化控件
+        LinearLayout nextPoseButton = findViewById(R.id.nextButton);
+        LinearLayout prePoseButton = findViewById(R.id.preButton);
+        Button prePoseImageButton = findViewById(R.id.prePoseImage);
+        Button nextPoseImageButton = findViewById(R.id.nextPoseImage);
+
+        /* 实时监测是否有警告点，如果有就截图 */
+        Handler mHandler3 = new Handler();
+        Runnable r3 = new Runnable() {
+            @Override
+            public void run() {
+                Log.e("TEST", delayScreenCapture + "");
+                if (!warnPart.isEmpty() && delayScreenCapture == 0) {
+                    Bitmap bitmap = previewView.getBitmap();
+                    Log.e("TEST", "获取bitmap成功");
+                    if (bitmap != null) {
+                        ImageView imageView = findViewById(R.id.testImage);
+                        imageView.setImageBitmap(bitmap);
+                        new Thread("截图图片并保存") {
+                            @Override
+                            public void run() {
+                                Random random = new Random();
+                                String filePath = Environment.getExternalStorageDirectory().getPath() + "/AiTrainer";
+                                saveBitmap(filePath, random.nextInt() + "", bitmap);
+                                delayScreenCapture = 10;
+                            }
+                        }.start();
+                    }
+                }
+                if (delayScreenCapture > 0) {
+                    delayScreenCapture--;
+                }
+                // 当前动作类型
+                int nowPoseType = poseEntityList.get(nowPoseIndex).getPoseType();
+                // 当前动作过程量上限
+                int nowPoseProcessValue = poseEntityList.get(nowPoseIndex).getPoseProcessValue();
+                if (nowPoseType == 1 && count == nowPoseProcessValue + 1) {
+                    nowPoseProcessSeconds = 0;
+                    nextPoseButton.callOnClick();
+                }
+                if (nowPoseType == 0 && nowPoseProcessSeconds == nowPoseProcessValue + 1 && nowPoseProcessSeconds != 0) {
+                    nextPoseButton.callOnClick();
+                    nowPoseProcessSeconds = 0;
+                }
+                mHandler3.postDelayed(this, 100);
+            }
+        };
         previewView = findViewById(R.id.preview_view);
         if (previewView == null) {
             Log.d(TAG, "previewView is null");
         }
-        graphicOverlay = findViewById(R.id.graphic_overlay);
+        // 截图
+        mHandler3.post(r3);
+
         if (graphicOverlay == null) {
             Log.d(TAG, "graphicOverlay is null");
         }
@@ -253,20 +355,7 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
         Spinner spinner = findViewById(R.id.spinner);
         List<String> options = new ArrayList<>();
         options.add(POSE_DETECTION);
-//        options.add(OBJECT_DETECTION);
-//        options.add(OBJECT_DETECTION_CUSTOM);
-//        options.add(CUSTOM_AUTOML_OBJECT_DETECTION);
-//        options.add(FACE_DETECTION);
-//        options.add(BARCODE_SCANNING);
-//        options.add(IMAGE_LABELING);
-//        options.add(IMAGE_LABELING_CUSTOM);
-//        options.add(CUSTOM_AUTOML_LABELING);
-//        options.add(SELFIE_SEGMENTATION);
-//        options.add(TEXT_RECOGNITION_LATIN);
-//        options.add(TEXT_RECOGNITION_CHINESE);
-//        options.add(TEXT_RECOGNITION_DEVANAGARI);
-//        options.add(TEXT_RECOGNITION_JAPANESE);
-//        options.add(TEXT_RECOGNITION_KOREAN);
+
 
         // Creating adapter for spinner
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this, R.layout.spinner_style, options);
@@ -301,36 +390,45 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
                     startActivity(intent);
                 });
 
-        // 初始化控件
-        LinearLayout nextPoseButton = findViewById(R.id.nextButton);
-        LinearLayout prePoseButton = findViewById(R.id.preButton);
-        Button prePoseImageButton = findViewById(R.id.prePoseImage);
-        Button nextPoseImageButton = findViewById(R.id.nextPoseImage);
-
-
 
         nextPoseImageButton.setOnClickListener(view -> {
             if (nowPoseIndex + 1 < poseEntityList.size()) {
                 nowPoseIndex++;
+                count = 0;
+                countdownSeconds = 3;
+                nowPoseProcessSeconds = 0;
                 updatePoseInfo();
+
             }
         });
         prePoseImageButton.setOnClickListener(view -> {
             if (nowPoseIndex - 1 >= 0) {
                 nowPoseIndex--;
+                count = 0;
+                countdownSeconds = 3;
+                nowPoseProcessSeconds = 0;
                 updatePoseInfo();
+
             }
         });
         nextPoseButton.setOnClickListener(view -> {
             if (nowPoseIndex + 1 < poseEntityList.size()) {
                 nowPoseIndex++;
+                count = 0;
+                countdownSeconds = 3;
+                nowPoseProcessSeconds = 0;
                 updatePoseInfo();
+
             }
         });
         prePoseButton.setOnClickListener(view -> {
             if (nowPoseIndex - 1 >= 0) {
                 nowPoseIndex--;
+                count = 0;
+                countdownSeconds = 3;
+                nowPoseProcessSeconds = 0;
                 updatePoseInfo();
+
             }
         });
         if (!allPermissionsGranted()) {
@@ -339,11 +437,20 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
     }
 
     public void updatePoseInfo() {
+        // 更新姿势名称
         setNowPoseName(poseEntityList.get(nowPoseIndex).getPoseName());
+        poseIndexText.setText(MessageFormat.format("{0}/{1}", nowPoseIndex + 1, poseEntityList.size()));
         poseName.setText(nowPoseName);
-        poseIndexText.setText(nowPoseIndex + 1 + "/" + poseEntityList.size());
-        poseName.setText(nowPoseName);
-        count = 0;
+        Log.e("TEST", poseEntityList.get(nowPoseIndex).getPoseType() + "");
+        if (poseEntityList.get(nowPoseIndex).getPoseType() == 1) {
+            // 更新当前动作进度 个数
+            poseProcessInfo.setText((int) count + "");
+        } else if (poseEntityList.get(nowPoseIndex).getPoseType() == 0) {
+            // 更新当前动作进度 秒数
+            poseProcessInfo.setText((int) nowPoseProcessSeconds + "\"");
+        }
+        // 更新倒数秒数
+        countdownSecondsTextView.setText(countdownSeconds + "");
     }
 
     @Override
@@ -490,6 +597,28 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
         }
     }
 
+    public void saveBitmap(String filePath, String fileName, Bitmap bitmap) {
+        File file = new File(filePath);
+        //判断指定文件夹的路径是否存在
+        if (!file.exists()) {
+            Log.d("Save Bitmap", "TargetPath isn't exist");
+        } else {
+            //如果指定文件夹创建成功，那么我们则需要进行图片存储操作
+            File saveFile = new File(filePath + "/" + fileName + ".jpg");
+            try {
+                FileOutputStream saveImgOut = new FileOutputStream(saveFile);
+                // compress - 压缩的意思
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 50, saveImgOut);
+                //存储完成后需要清除相关的进程
+                saveImgOut.flush();
+                saveImgOut.close();
+                Log.e("TEST", "图片保存成功");
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        }
+    }
+
     private void bindAllCameraUseCases() {
         if (cameraProvider != null) {
             // As required by CameraX API, unbinds all use cases before trying to re-bind any of them.
@@ -533,8 +662,6 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
 
         try {
             switch (selectedModel) {
-
-
                 case POSE_DETECTION:
                     PoseDetectorOptionsBase poseDetectorOptions =
                             PreferenceUtils.getPoseDetectorOptionsForLivePreview(this);

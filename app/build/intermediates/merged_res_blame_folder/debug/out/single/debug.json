@@ -84,6 +84,10 @@
         "source": "D:\\Project\\Android\\AiTrainer\\app\\src\\main\\res\\drawable-mdpi\\ic_switch_camera_white_48dp.xml"
     },
     {
+        "merged": "D:\\Project\\Android\\AiTrainer\\app\\build\\intermediates\\res\\merged\\debug\\layout_my_process_bar.xml.flat",
+        "source": "D:\\Project\\Android\\AiTrainer\\app\\src\\main\\res\\layout\\my_process_bar.xml"
+    },
+    {
         "merged": "D:\\Project\\Android\\AiTrainer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_change_camera.png.flat",
         "source": "D:\\Project\\Android\\AiTrainer\\app\\src\\main\\res\\mipmap-xhdpi\\change_camera.png"
     },
@@ -118,6 +122,10 @@
     {
         "merged": "D:\\Project\\Android\\AiTrainer\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_settings_white_24dp.png.flat",
         "source": "D:\\Project\\Android\\AiTrainer\\app\\src\\main\\res\\drawable-xxxhdpi\\ic_settings_white_24dp.png"
+    },
+    {
+        "merged": "D:\\Project\\Android\\AiTrainer\\app\\build\\intermediates\\res\\merged\\debug\\layout_pose_result.xml.flat",
+        "source": "D:\\Project\\Android\\AiTrainer\\app\\src\\main\\res\\layout\\pose_result.xml"
     },
     {
         "merged": "D:\\Project\\Android\\AiTrainer\\app\\build\\intermediates\\res\\merged\\debug\\xml_preference_live_preview_quickstart.xml.flat",
