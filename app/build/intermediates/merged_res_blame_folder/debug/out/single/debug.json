@@ -72,6 +72,10 @@
         "source": "D:\\Project\\Android\\AiTrainer\\app\\src\\main\\res\\drawable-hdpi\\ic_switch_camera_white_48dp_inset.png"
     },
     {
+        "merged": "D:\\Project\\Android\\AiTrainer\\app\\build\\intermediates\\res\\merged\\debug\\layout_pose_info.xml.flat",
+        "source": "D:\\Project\\Android\\AiTrainer\\app\\src\\main\\res\\layout\\pose_info.xml"
+    },
+    {
         "merged": "D:\\Project\\Android\\AiTrainer\\app\\build\\intermediates\\res\\merged\\debug\\layout_settings_style.xml.flat",
         "source": "D:\\Project\\Android\\AiTrainer\\app\\src\\main\\res\\layout\\settings_style.xml"
     },

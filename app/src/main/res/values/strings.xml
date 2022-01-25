@@ -95,5 +95,8 @@
     <string name="pref_title_segmentation_raw_size_mask" translatable="false">开启原始尺寸mask</string>
     <string name="pref_key_segmentation_raw_size_mask" translatable="false">srsm</string>
     <string name="lookExplanation">查看\n讲解</string>
+    <string name="one">1</string>
+    <string name="poseProcess">1/14</string>
+    <string name="poseName">卷腹</string>
 
 </resources>

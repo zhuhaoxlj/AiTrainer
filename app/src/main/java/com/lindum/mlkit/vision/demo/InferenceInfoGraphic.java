@@ -96,9 +96,9 @@ public class InferenceInfoGraphic extends GraphicOverlay.Graphic {
         } else {
             canvas.drawText("单帧处理时长  " + frameLatency + " ms", x, y + TEXT_SIZE, textPaint);
         }
-//    canvas.drawText("检测器处理时长: " + detectorLatency + " ms", x, y + TEXT_SIZE * 2, textPaint);
-        poseName = CameraXLivePreviewActivity.nowPoseName;
-        canvas.drawText(poseName, x, y + TEXT_SIZE * 2, textPaint);
-        Log.e("poseName",CameraXLivePreviewActivity.nowPoseIndex+"");
+    canvas.drawText("检测器处理时长: " + detectorLatency + " ms", x, y + TEXT_SIZE * 2, textPaint);
+//        poseName = CameraXLivePreviewActivity.nowPoseName;
+//        canvas.drawText(poseName, x, y + TEXT_SIZE * 2, textPaint);
+//        Log.e("poseName",CameraXLivePreviewActivity.nowPoseIndex+"");
     }
 }

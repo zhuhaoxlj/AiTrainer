@@ -171,16 +171,16 @@ public class PoseClassifierProcessor {
 //                result.add(angleText3);
 //                result.add(angleText4);
 //                result.add(angleText5);
-//                result.add(angleText6);
+                result.add(CameraXLivePreviewActivity.getCount()+"个");
 //            }
             // 二维和三维同时显示
             {
-                String angleText1 = "左膝3D" + poseAngleDetector.getLeftKnee3DAngle() + "°" + "2D" + poseAngleDetector.getLeftKneeAngle() + "°";
-                String angleText2 = "右膝3D" + poseAngleDetector.getRightKnee3DAngle() + "°" + "2D" + poseAngleDetector.getRightKneeAngle() + "°";
-                String angleText3 = "左胳3D" + poseAngleDetector.getLeftArm3DAngle() + "°" + "2D" + poseAngleDetector.getLeftArmAngle() + "°";
-                String angleText4 = "右胳3D" + poseAngleDetector.getRightArm3DAngle() + "°" + "2D" + poseAngleDetector.getRightArmAngle() + "°";
-                String angleText5 = "左躯3D" + poseAngleDetector.getLeftTrunk3DAngle() + "°" + "2D" + poseAngleDetector.getLeftTrunkAngle() + "°";
-                String angleText6 = "右躯3D" + poseAngleDetector.getRightTrunk3DAngle() + "°" + "2D" + poseAngleDetector.getRightTrunkAngle() + "°";
+//                String angleText1 = "左膝3D" + poseAngleDetector.getLeftKnee3DAngle() + "°" + "2D" + poseAngleDetector.getLeftKneeAngle() + "°";
+//                String angleText2 = "右膝3D" + poseAngleDetector.getRightKnee3DAngle() + "°" + "2D" + poseAngleDetector.getRightKneeAngle() + "°";
+//                String angleText3 = "左胳3D" + poseAngleDetector.getLeftArm3DAngle() + "°" + "2D" + poseAngleDetector.getLeftArmAngle() + "°";
+//                String angleText4 = "右胳3D" + poseAngleDetector.getRightArm3DAngle() + "°" + "2D" + poseAngleDetector.getRightArmAngle() + "°";
+//                String angleText5 = "左躯3D" + poseAngleDetector.getLeftTrunk3DAngle() + "°" + "2D" + poseAngleDetector.getLeftTrunkAngle() + "°";
+//                String angleText6 = "右躯3D" + poseAngleDetector.getRightTrunk3DAngle() + "°" + "2D" + poseAngleDetector.getRightTrunkAngle() + "°";
 //                int angle = poseAngleDetector.getLeftKneeAngle();
 //                int angle2 = poseAngleDetector.getRightKneeAngle();
 //                if (angle > 170 || angle2 > 170) {
@@ -214,7 +214,7 @@ public class PoseClassifierProcessor {
                     if (part.getPoseType() == 1)
                         dynamicPart.add(part);
                 }
-                Log.e("测试",fixedPartList.size()+"");
+                Log.e("测试", fixedPartList.size() + "");
                 if (mode == 2) {
                     boolean dynamicPartJudge1 = true;
                     boolean dynamicPartJudge2 = true;
@@ -269,36 +269,11 @@ public class PoseClassifierProcessor {
                         }
                     }
                 }
-                result.add(angleText1);
-                result.add(angleText2);
-                result.add(angleText3);
-                result.add(angleText4);
-                result.add(angleText5);
-                result.add(angleText6);
-                result.add("有效动作个数：" + CameraXLivePreviewActivity.getCount());
-                result.add("");
-                result.add("");
-                result.add("");
+
             }
 
 
         }
-
-        // Add maxConfidence class of current frame to result if pose is found.
-        assert pose != null;
-        if (!pose.getAllPoseLandmarks().
-
-                isEmpty()) {
-            String maxConfidenceClass = classification.getMaxConfidenceClass();
-            String maxConfidenceClassResult = String.format(
-                    Locale.US,
-                    "%s : %.2f confidence",
-                    maxConfidenceClass,
-                    classification.getClassConfidence(maxConfidenceClass)
-                            / poseClassifier.confidenceRange());
-//            result.add(maxConfidenceClassResult);
-        }
-
         return result;
     }
 }

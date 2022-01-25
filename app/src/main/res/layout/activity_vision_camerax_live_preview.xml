@@ -123,6 +123,14 @@
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
 
-
-
+    <!--    左下角信息   -->
+    <include
+        android:id="@+id/poseInfo"
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="10dp"
+        layout="@layout/pose_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/cardView"
+        app:layout_constraintStart_toStartOf="@+id/preview_view" />
 </androidx.constraintlayout.widget.ConstraintLayout>

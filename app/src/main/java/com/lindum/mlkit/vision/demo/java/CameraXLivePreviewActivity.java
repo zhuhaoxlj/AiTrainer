@@ -4,10 +4,12 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProvider.AndroidViewModelFactory;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Build.VERSION;
@@ -34,6 +36,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
@@ -97,7 +100,6 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
     private static boolean pose1;
     private PreviewView previewView;
     private GraphicOverlay graphicOverlay;
-    boolean isPermissionRequested = false;
     @Nullable
     private ProcessCameraProvider cameraProvider;
     @Nullable
@@ -115,6 +117,12 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
     public static List<PoseEntity> poseEntityList;
     public static String nowPoseName = "AiTrainer";
     public static int nowPoseIndex = 0;
+
+    // 左下角信息
+    // 动作名称
+    private TextView poseName;
+    // 第几个动作
+    private TextView poseIndexText;
 
     public static boolean isPose1() {
         return pose1;
@@ -136,6 +144,7 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
         CameraXLivePreviewActivity.nowPoseName = nowPoseName;
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -149,11 +158,6 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
                     .show();
             return;
         }
-        // 初始化变量
-        warnPart = new ArrayList<>();
-        tempWarnPart = new ArrayList<>();
-        poseEntityList = new ArrayList<>();
-        pose1 = false;
 
         if (savedInstanceState != null) {
             selectedModel = savedInstanceState.getString(STATE_SELECTED_MODEL, OBJECT_DETECTION);
@@ -162,6 +166,14 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
         // 设置布局
         setContentView(R.layout.activity_vision_camerax_live_preview);
 
+
+        // 初始化变量
+        warnPart = new ArrayList<>();
+        tempWarnPart = new ArrayList<>();
+        poseEntityList = new ArrayList<>();
+        pose1 = false;
+        poseName = findViewById(R.id.poseName);
+        poseIndexText = findViewById(R.id.nowPoseIndexText);
         //适配安卓11及以下版本的存储权限请求
 //        if (Build.VERSION.SDK_INT > 29) {
 //            requestExternalStorage(this);
@@ -294,37 +306,44 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
         LinearLayout prePoseButton = findViewById(R.id.preButton);
         Button prePoseImageButton = findViewById(R.id.prePoseImage);
         Button nextPoseImageButton = findViewById(R.id.nextPoseImage);
+
+
+
         nextPoseImageButton.setOnClickListener(view -> {
             if (nowPoseIndex + 1 < poseEntityList.size()) {
                 nowPoseIndex++;
-                setNowPoseName(poseEntityList.get(nowPoseIndex).getPoseName());
-                count = 0;
+                updatePoseInfo();
             }
         });
         prePoseImageButton.setOnClickListener(view -> {
             if (nowPoseIndex - 1 >= 0) {
                 nowPoseIndex--;
-                setNowPoseName(poseEntityList.get(nowPoseIndex).getPoseName());
-                count = 0;
+                updatePoseInfo();
             }
         });
         nextPoseButton.setOnClickListener(view -> {
             if (nowPoseIndex + 1 < poseEntityList.size()) {
                 nowPoseIndex++;
-                setNowPoseName(poseEntityList.get(nowPoseIndex).getPoseName());
-                count = 0;
+                updatePoseInfo();
             }
         });
         prePoseButton.setOnClickListener(view -> {
             if (nowPoseIndex - 1 >= 0) {
                 nowPoseIndex--;
-                setNowPoseName(poseEntityList.get(nowPoseIndex).getPoseName());
-                count = 0;
+                updatePoseInfo();
             }
         });
         if (!allPermissionsGranted()) {
             getRuntimePermissions();
         }
+    }
+
+    public void updatePoseInfo() {
+        setNowPoseName(poseEntityList.get(nowPoseIndex).getPoseName());
+        poseName.setText(nowPoseName);
+        poseIndexText.setText(nowPoseIndex + 1 + "/" + poseEntityList.size());
+        poseName.setText(nowPoseName);
+        count = 0;
     }
 
     @Override
@@ -584,38 +603,6 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
         cameraProvider.bindToLifecycle(/* lifecycleOwner= */ this, cameraSelector, analysisUseCase);
     }
 
-    /**
-     * Android6.0之后需要动态申请权限
-     */
-    private void requestPermission() {
-
-        if (Build.VERSION.SDK_INT >= 23 && !isPermissionRequested) {
-            isPermissionRequested = true;
-            ArrayList<String> permissionsList = new ArrayList<>();
-            String[] permissions = {
-                    Manifest.permission.ACCESS_NETWORK_STATE,
-                    Manifest.permission.ACCESS_WIFI_STATE,
-                    Manifest.permission.INTERNET,
-                    Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                    Manifest.permission.READ_EXTERNAL_STORAGE,
-                    Manifest.permission.ACCESS_COARSE_LOCATION,
-                    Manifest.permission.ACCESS_FINE_LOCATION,
-                    Manifest.permission.ACCESS_WIFI_STATE,
-            };
-
-            for (String perm : permissions) {
-                if (PackageManager.PERMISSION_GRANTED != checkSelfPermission(perm)) {
-                    permissionsList.add(perm);
-                    // 进入到这里代表没有权限.
-                }
-            }
-
-            if (!permissionsList.isEmpty()) {
-                String[] strings = new String[permissionsList.size()];
-                requestPermissions(permissionsList.toArray(strings), 0);
-            }
-        }
-    }
 
     private String[] getRequiredPermissions() {
         try {
