@@ -11,7 +11,9 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Matrix;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Build.VERSION;
@@ -62,6 +64,7 @@ import com.google.android.gms.common.annotation.KeepName;
 import com.google.mlkit.common.MlKitException;
 import com.lindum.mlkit.vision.demo.CameraXViewModel;
 import com.lindum.mlkit.vision.demo.GraphicOverlay;
+import com.lindum.mlkit.vision.demo.QuickShot;
 import com.lindum.mlkit.vision.demo.R;
 import com.lindum.mlkit.vision.demo.VisionImageProcessor;
 import com.lindum.mlkit.vision.demo.java.posedetector.PoseDataUtils;
@@ -90,7 +93,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
-import io.github.muddz.quickshot.QuickShot;
 
 /**
  * Live preview demo app for ML Kit APIs using CameraX.
@@ -309,23 +311,21 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
             public void run() {
                 Log.e("TEST", delayScreenCapture + "");
                 if (!warnPart.isEmpty() && delayScreenCapture == 0) {
-                    Bitmap bitmap = previewView.getBitmap();
+                    Bitmap bitmap2 = com.lindum.mlkit.vision.demo.QuickShot.of(graphicOverlay).getBitmap();
                     Log.e("TEST", "获取bitmap成功");
-                    if (bitmap != null) {
+                    if (bitmap2 != null) {
                         ImageView imageView = findViewById(R.id.testImage);
-                        imageView.setImageBitmap(bitmap);
+                        Bitmap bitmap1 = previewView.getBitmap();
+                        Log.e("TEST1","b1长"+bitmap1.getHeight());
+                        Log.e("TEST1","b2长"+bitmap2.getHeight());
+                        imageView.setImageBitmap(combineBitmap(bitmap1,bitmap2));
                         new Thread("截图图片并保存") {
                             @Override
                             public void run() {
-                                QuickShot.of(graphicOverlay).setResultListener(CameraXLivePreviewActivity.this)
-                                        .enableLogging()
-                                        .setFilename("QuickShot")
-                                        .setPath("MyApp")
-                                        .toPNG()
-                                        .save();
+
                                 Random random = new Random();
                                 String filePath = Environment.getExternalStorageDirectory().getPath() + "/AiTrainer";
-                                saveBitmap(filePath, random.nextInt() + "", bitmap);
+                                saveBitmap(filePath, random.nextInt() + "", bitmap1);
                                 delayScreenCapture = 10;
                             }
                         }.start();
@@ -625,6 +625,53 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
                 ex.printStackTrace();
             }
         }
+    }
+
+    /**
+     * 合并两张bitmap为一张
+     *
+     * @param background
+     * @param foreground
+     * @return Bitmap
+     */
+    public static Bitmap combineBitmap(Bitmap background, Bitmap foreground) {
+        if (background == null) {
+            return null;
+        }
+        int bgWidth = background.getWidth();
+        int bgHeight = background.getHeight();
+        int fgWidth = foreground.getWidth();
+        int fgHeight = foreground.getHeight();
+        Bitmap newmap = Bitmap.createBitmap(bgWidth, bgHeight, Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(newmap);
+        canvas.drawBitmap(background, 0, 0, null);
+        canvas.drawBitmap(foreground, 0, 0, null);
+        canvas.save();
+        canvas.restore();
+        return newmap;
+    }
+
+    /**
+     * 缩放bitmap
+     *
+     * @param bm
+     * @param newWidth
+     * @param newHeight
+     * @return
+     */
+    public static Bitmap zoomImg(Bitmap bm, int newWidth, int newHeight) {
+        // 获得图片的宽高
+        int width = bm.getWidth();
+        int height = bm.getHeight();
+        // 计算缩放比例
+        float scaleWidth = ((float) newWidth) / width;
+        float scaleHeight = ((float) newHeight) / height;
+        // 取得想要缩放的matrix参数
+        Matrix matrix = new Matrix();
+        matrix.postScale(scaleWidth, scaleHeight);
+        // 得到新的图片
+        Bitmap newbm = Bitmap.createBitmap(bm, 0, 0, width, height, matrix, true);
+        return newbm;
     }
 
     private void bindAllCameraUseCases() {

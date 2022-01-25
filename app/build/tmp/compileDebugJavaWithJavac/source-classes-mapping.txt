@@ -23,6 +23,10 @@ com/lindum/mlkit/vision/demo/java/posedetector/classification/RepetitionCounter.
  com.lindum.mlkit.vision.demo.java.posedetector.classification.RepetitionCounter
 com/lindum/mlkit/vision/demo/TemperatureMonitor.java
  com.lindum.mlkit.vision.demo.TemperatureMonitor
+com/lindum/mlkit/vision/demo/PixelCopyHelper.java
+ com.lindum.mlkit.vision.demo.PixelCopyHelper
+ com.lindum.mlkit.vision.demo.PixelCopyHelper$1
+ com.lindum.mlkit.vision.demo.PixelCopyHelper$PixelCopyListener
 com/lindum/mlkit/vision/demo/SpeechUtils.java
  com.lindum.mlkit.vision.demo.SpeechUtils
 com/lindum/mlkit/vision/demo/java/posedetector/PoseEntity.java
@@ -37,16 +41,22 @@ com/lindum/mlkit/vision/demo/java/VisionProcessorBase.java
 com/lindum/mlkit/vision/demo/preference/SettingsActivity.java
  com.lindum.mlkit.vision.demo.preference.SettingsActivity
  com.lindum.mlkit.vision.demo.preference.SettingsActivity$LaunchSource
-com/lindum/mlkit/vision/demo/java/posedetector/classification/EMASmoothing.java
- com.lindum.mlkit.vision.demo.java.posedetector.classification.EMASmoothing
+com/lindum/mlkit/vision/demo/QuickShotUtils.java
+ com.lindum.mlkit.vision.demo.QuickShotUtils
 com/lindum/mlkit/vision/demo/java/posedetector/classification/PoseEmbedding.java
  com.lindum.mlkit.vision.demo.java.posedetector.classification.PoseEmbedding
-com/lindum/mlkit/vision/demo/java/posedetector/classification/ClassificationResult.java
- com.lindum.mlkit.vision.demo.java.posedetector.classification.ClassificationResult
+com/lindum/mlkit/vision/demo/java/posedetector/classification/EMASmoothing.java
+ com.lindum.mlkit.vision.demo.java.posedetector.classification.EMASmoothing
 com/lindum/mlkit/vision/demo/FrameMetadata.java
  com.lindum.mlkit.vision.demo.FrameMetadata
  com.lindum.mlkit.vision.demo.FrameMetadata$1
  com.lindum.mlkit.vision.demo.FrameMetadata$Builder
+com/lindum/mlkit/vision/demo/QuickShot.java
+ com.lindum.mlkit.vision.demo.QuickShot
+ com.lindum.mlkit.vision.demo.QuickShot$1
+ com.lindum.mlkit.vision.demo.QuickShot$BitmapSaver
+ com.lindum.mlkit.vision.demo.QuickShot$BitmapSaver$1
+ com.lindum.mlkit.vision.demo.QuickShot$QuickShotListener
 com/lindum/mlkit/vision/demo/java/MyApplication.java
  com.lindum.mlkit.vision.demo.java.MyApplication
 com/lindum/mlkit/vision/demo/java/ShotUtils.java
@@ -83,6 +93,8 @@ com/lindum/mlkit/vision/demo/CameraXViewModel.java
  com.lindum.mlkit.vision.demo.CameraXViewModel
 com/lindum/mlkit/vision/demo/java/posedetector/PoseAngleDetector.java
  com.lindum.mlkit.vision.demo.java.posedetector.PoseAngleDetector
+com/lindum/mlkit/vision/demo/java/posedetector/classification/ClassificationResult.java
+ com.lindum.mlkit.vision.demo.java.posedetector.classification.ClassificationResult
 com/lindum/mlkit/vision/demo/java/CameraXLivePreviewActivity.java
  com.lindum.mlkit.vision.demo.java.CameraXLivePreviewActivity
  com.lindum.mlkit.vision.demo.java.CameraXLivePreviewActivity$1
