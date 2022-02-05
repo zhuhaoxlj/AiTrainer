@@ -37,8 +37,8 @@ import java.util.List;
  * @date 2022/1/27 8:25
  */
 public class TrainingResult extends AppCompatActivity {
-    static List<Bitmap> resultImage = new ArrayList<>();
-    static List<String> resultTips = new ArrayList<>();
+    public static List<Bitmap> resultImage = new ArrayList<>();
+    public static List<String> resultTips = new ArrayList<>();
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -54,6 +54,13 @@ public class TrainingResult extends AppCompatActivity {
 
 
         LinearLayout resultContainer = findViewById(R.id.resultContainer);
+        for (Bitmap tip : resultImage) {
+            int index = resultImage.indexOf(tip);
+            View resultView = layoutInflater.inflate(R.layout.pose_analysis_card, null);
+            ImageView imageView = resultView.findViewById(R.id.poseResultImage);
+            imageView.setImageBitmap(resultImage.get(index));
+            resultContainer.addView(resultView);
+        }
 //        // 监听图片处理线程的状态,如果处理图片线程结束，加载布局
 //        Handler mHandler = new Handler();
 //        Runnable r = new Runnable() {
@@ -61,13 +68,7 @@ public class TrainingResult extends AppCompatActivity {
 //            public void run() {
 //                Log.e("Train", processImage.isAlive() + "---");
 //                if (!processImage.isAlive()) {
-//                    for (String tip : resultTips) {
-//                        int index = resultTips.indexOf(tip);
-//                        View resultView = layoutInflater.inflate(R.layout.pose_analysis_card, null);
-//                        ImageView imageView = resultView.findViewById(R.id.poseResultImage);
-//                        imageView.setImageBitmap(resultImage.get(index));
-//                        resultContainer.addView(resultView);
-//                    }
+//
 //                }
 //                if(processImage.isAlive()){
 //                    mHandler.postDelayed(this, 50);

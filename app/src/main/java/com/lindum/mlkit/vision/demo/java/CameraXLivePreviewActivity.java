@@ -299,6 +299,8 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
             public void onClick(View view) {
 
                 Intent intent = new Intent(CameraXLivePreviewActivity.this, TrainingResult.class);
+                intent.putExtra("totalTrainingTime", totalTrainingTime);
+                intent.putExtra("groupsOfPose", countGroupsOfPose);
                 startActivity(intent);
             }
         });
@@ -331,7 +333,6 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
             }
         };
         mHandler2.post(r2);
-
 
 
         // 初始化控件
@@ -386,12 +387,12 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
                     countGroupsOfPose++;
                     if (nowPoseIndex == poseEntityList.size() - 1 && !isEnd) {
                         isEnd = true;
+                        Log.e("total",totalTrainingTime+"");
                         // 跳转到结果界面
                         Intent intent = new Intent(CameraXLivePreviewActivity.this, TrainingResult.class);
                         intent.putExtra("totalTrainingTime", totalTrainingTime);
                         intent.putExtra("groupsOfPose", countGroupsOfPose);
                         startActivity(intent);
-                        finish();
                     } else {
 
                         // 动作持续数值清空
