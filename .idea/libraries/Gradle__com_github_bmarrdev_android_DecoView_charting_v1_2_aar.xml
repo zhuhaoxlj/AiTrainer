@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Gradle: com.github.bmarrdev:android-DecoView-charting:v1.2@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/b5430ed957ec7f184e2e4e64ba638437/jetified-android-DecoView-charting-v1.2/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/b5430ed957ec7f184e2e4e64ba638437/jetified-android-DecoView-charting-v1.2/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/b5430ed957ec7f184e2e4e64ba638437/jetified-android-DecoView-charting-v1.2/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.bmarrdev/android-DecoView-charting/v1.2/e5e98fe74eadd4f869b7ad33dad4db0597b09dd8/android-DecoView-charting-v1.2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

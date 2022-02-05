@@ -198,6 +198,9 @@ public class PoseAngleDetector {
         PoseLandmark midPoint = detectPose.getPoseLandmark(md);
         PoseLandmark lastPoint = detectPose.getPoseLandmark(lt);
 
+        assert lastPoint != null;
+        assert midPoint != null;
+        assert firstPoint != null;
         int result =
                 (int) Math.toDegrees(
                         Math.atan2(lastPoint.getPosition().y - midPoint.getPosition().y,

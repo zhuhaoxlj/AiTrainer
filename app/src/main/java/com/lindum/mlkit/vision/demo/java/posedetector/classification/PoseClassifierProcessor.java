@@ -44,13 +44,13 @@ import java.util.Locale;
 public class PoseClassifierProcessor {
     private static final String TAG = "PoseClassifierProcessor";
     //  private static final String POSE_SAMPLES_FILE = "pose/fitness_pose_samples.csv";
-    private static final String POSE_SAMPLES_FILE = "pose/squat_csvs_out_basic.csv";
+    private static final String POSE_SAMPLES_FILE = "pose/fitness_pose_samples.csv";
 
     // Specify classes for which we want rep counting.
     // These are the labels in the given {@code POSE_SAMPLES_FILE}. You can set your own class labels
     // for your pose samples.
     private static final String PUSHUPS_CLASS = "pushups_down";
-    private static final String SQUATS_CLASS = "down";
+    private static final String SQUATS_CLASS = "squats_down";
     private static final String[] POSE_CLASSES = {
             PUSHUPS_CLASS, SQUATS_CLASS
     };
@@ -139,7 +139,7 @@ public class PoseClassifierProcessor {
             }
 //            result.add(lastRepResult);
         }
-
+        // 人体关键的监测
         if (pose != null) {
 
             PoseAngleDetector poseAngleDetector = new PoseAngleDetector(pose);
@@ -175,12 +175,18 @@ public class PoseClassifierProcessor {
 //            }
             // 二维和三维同时显示
             {
-//                String angleText1 = "左膝3D" + poseAngleDetector.getLeftKnee3DAngle() + "°" + "2D" + poseAngleDetector.getLeftKneeAngle() + "°";
-//                String angleText2 = "右膝3D" + poseAngleDetector.getRightKnee3DAngle() + "°" + "2D" + poseAngleDetector.getRightKneeAngle() + "°";
-//                String angleText3 = "左胳3D" + poseAngleDetector.getLeftArm3DAngle() + "°" + "2D" + poseAngleDetector.getLeftArmAngle() + "°";
-//                String angleText4 = "右胳3D" + poseAngleDetector.getRightArm3DAngle() + "°" + "2D" + poseAngleDetector.getRightArmAngle() + "°";
-//                String angleText5 = "左躯3D" + poseAngleDetector.getLeftTrunk3DAngle() + "°" + "2D" + poseAngleDetector.getLeftTrunkAngle() + "°";
-//                String angleText6 = "右躯3D" + poseAngleDetector.getRightTrunk3DAngle() + "°" + "2D" + poseAngleDetector.getRightTrunkAngle() + "°";
+                String angleText1 = "左膝3D" + poseAngleDetector.getLeftKnee3DAngle() + "°" + "2D" + poseAngleDetector.getLeftKneeAngle() + "°";
+                String angleText2 = "右膝3D" + poseAngleDetector.getRightKnee3DAngle() + "°" + "2D" + poseAngleDetector.getRightKneeAngle() + "°";
+                String angleText3 = "左胳3D" + poseAngleDetector.getLeftArm3DAngle() + "°" + "2D" + poseAngleDetector.getLeftArmAngle() + "°";
+                String angleText4 = "右胳3D" + poseAngleDetector.getRightArm3DAngle() + "°" + "2D" + poseAngleDetector.getRightArmAngle() + "°";
+                String angleText5 = "左躯3D" + poseAngleDetector.getLeftTrunk3DAngle() + "°" + "2D" + poseAngleDetector.getLeftTrunkAngle() + "°";
+                String angleText6 = "右躯3D" + poseAngleDetector.getRightTrunk3DAngle() + "°" + "2D" + poseAngleDetector.getRightTrunkAngle() + "°";
+                result.add(angleText1);
+                result.add(angleText2);
+                result.add(angleText3);
+                result.add(angleText4);
+                result.add(angleText5);
+                result.add(angleText6);
 //                int angle = poseAngleDetector.getLeftKneeAngle();
 //                int angle2 = poseAngleDetector.getRightKneeAngle();
 //                if (angle > 170 || angle2 > 170) {
@@ -193,19 +199,16 @@ public class PoseClassifierProcessor {
                   !!!!!!!! 这个类可以理解每次截取一张图片进行判断 ！！！！！！！
                   !!!!!!!! 这个类可以理解每次截取一张图片进行判断 ！！！！！！！
                  */
-                Log.e("TEST", CameraXLivePreviewActivity.countdownSeconds + "S");
+//                Log.e("TEST", CameraXLivePreviewActivity.countdownSeconds + "S");
                 // 倒计时结束，开始训练
                 if (CameraXLivePreviewActivity.countdownSeconds == -1) {
-                    Log.e("TEST","检测开始...");
+                    Log.e("TEST", "检测开始...");
                     // 动作模式： 普通模式 1 严格模式 2
                     // 普通模式 待定 todo
                     // 如果严格模式，则要求每个部位都要精准才算一个有效动作
                     int mode = 2;
                     // 获取监测的动作实体
                     PoseEntity poseEntity = CameraXLivePreviewActivity.getPoseEntityList().get(CameraXLivePreviewActivity.nowPoseIndex);
-
-
-
                     // 获取监测部位列表
                     List<PosePart> monitoringList = poseEntity.getMonitoringPosePartList();
                     // 固定部位列表
@@ -219,7 +222,7 @@ public class PoseClassifierProcessor {
                         if (part.getPoseType() == 1)
                             dynamicPart.add(part);
                     }
-                    Log.e("测试", fixedPartList.size() + "");
+//                    Log.e("测试", fixedPartList.size() + "");
                     if (mode == 2) {
                         boolean dynamicPartJudge1 = true;
                         boolean dynamicPartJudge2 = true;
@@ -239,8 +242,8 @@ public class PoseClassifierProcessor {
                             }
                             if (!(nowFrameAngle > part.getFixedRange()[0] && nowFrameAngle < part.getFixedRange()[1])) {
                                 // 固定部位不满足标准的时候报红，那么动态部位什么情况下报红呢？ todo 我觉得是超过这个动态的总范围就报红
-                                CameraXLivePreviewActivity.addWarnPart(partIndex);
-                                Log.e("TEST", "当前角度" + nowFrameAngle + "部位:" + partIndex);
+                                CameraXLivePreviewActivity.addWarnPart(partIndex, nowFrameAngle);
+                                Log.e("TESTANGLE", "当前角度" + nowFrameAngle + "部位:" + partIndex);
                                 fixedPartJudge = false;
                             }
                         }
@@ -277,6 +280,22 @@ public class PoseClassifierProcessor {
                     }
                 }
             }
+        }
+
+        // Add maxConfidence class of current frame to result if pose is found.
+        assert pose != null;
+        if (!pose.getAllPoseLandmarks().isEmpty()) {
+            String maxConfidenceClass = classification.getMaxConfidenceClass();
+            String maxConfidenceClassResult = String.format(
+                    Locale.US,
+                    "%s : %.2f confidence",
+                    maxConfidenceClass,
+                    classification.getClassConfidence(maxConfidenceClass)
+                            / poseClassifier.confidenceRange());
+            result.add(maxConfidenceClassResult);
+            result.add("\n");
+            result.add("\n");
+            result.add("\n");
         }
         return result;
     }

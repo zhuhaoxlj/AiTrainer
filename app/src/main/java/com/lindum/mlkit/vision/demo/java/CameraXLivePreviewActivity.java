@@ -3,7 +3,6 @@ package com.lindum.mlkit.vision.demo.java;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProvider.AndroidViewModelFactory;
 
-import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
@@ -14,8 +13,8 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Matrix;
+import android.graphics.PointF;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.Build.VERSION_CODES;
 import android.os.Bundle;
@@ -26,7 +25,6 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Environment;
-import android.os.FileUtils;
 import android.os.Handler;
 import android.os.StrictMode;
 import android.provider.Settings;
@@ -39,7 +37,6 @@ import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CompoundButton;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
@@ -61,15 +58,26 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.TypeReference;
 import com.google.android.gms.common.annotation.KeepName;
+import com.google.android.gms.tasks.Task;
 import com.google.mlkit.common.MlKitException;
+import com.google.mlkit.vision.common.InputImage;
+import com.google.mlkit.vision.pose.Pose;
+import com.google.mlkit.vision.pose.PoseDetection;
+import com.google.mlkit.vision.pose.PoseDetector;
+import com.google.mlkit.vision.pose.PoseLandmark;
+import com.google.mlkit.vision.pose.accurate.AccuratePoseDetectorOptions;
 import com.lindum.mlkit.vision.demo.CameraXViewModel;
 import com.lindum.mlkit.vision.demo.GraphicOverlay;
 import com.lindum.mlkit.vision.demo.QuickShot;
 import com.lindum.mlkit.vision.demo.R;
 import com.lindum.mlkit.vision.demo.VisionImageProcessor;
+import com.lindum.mlkit.vision.demo.java.posedetector.DrawLandmarkTools;
+import com.lindum.mlkit.vision.demo.java.posedetector.PoseAngleDetector;
 import com.lindum.mlkit.vision.demo.java.posedetector.PoseDataUtils;
 import com.lindum.mlkit.vision.demo.java.posedetector.PoseDetectorProcessor;
 import com.lindum.mlkit.vision.demo.java.posedetector.PoseEntity;
+import com.lindum.mlkit.vision.demo.java.posedetector.PosePart;
+import com.lindum.mlkit.vision.demo.java.posedetector.ProcessImage;
 import com.lindum.mlkit.vision.demo.preference.PreferenceUtils;
 import com.lindum.mlkit.vision.demo.preference.SettingsActivity;
 
@@ -80,13 +88,11 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -117,7 +123,7 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
     private static final String STATE_SELECTED_MODEL = "selected_model";
     private static float count = 0;
     private static List<int[]> warnPart;
-    private static List<Integer> tempWarnPart;
+    private static List<Integer> warnAngle;
     private static boolean pose1;
     private PreviewView previewView;
     private GraphicOverlay graphicOverlay;
@@ -139,8 +145,12 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
     public static String nowPoseName = "AiTrainer";
     public static int nowPoseIndex = 0;
     public static int countdownSeconds = 10;
+    // 训练是否结束
+    public static boolean isEnd = false;
     // 给截图延时 调整检测截图灵敏度
     private int delayScreenCapture = 0;
+
+
     /**
      * 左下角信息
      * 动作名称
@@ -158,6 +168,14 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
     private int nowPoseProcessSeconds = 0;
     // 训练总时间
     private int totalTrainingTime = 0;
+    // 几组动作
+    private int countGroupsOfPose = 0;
+
+
+    Bitmap resultBitmap;
+    // 图片处理警告点
+    List<int[]> imageProcessWarnPart;
+    String tempTips = "";
 
     public static boolean isPose1() {
         return pose1;
@@ -204,8 +222,8 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         // 初始化变量
         warnPart = new ArrayList<>();
-        tempWarnPart = new ArrayList<>();
         poseEntityList = new ArrayList<>();
+        warnAngle = new ArrayList<>();
         pose1 = false;
         poseName = findViewById(R.id.poseName);
         poseIndexText = findViewById(R.id.nowPoseIndexText);
@@ -214,7 +232,7 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
         countdownSecondsTextView = findViewById(R.id.countdownSecondsText);
         //适配安卓11及以下版本的存储权限请求
 //        if (Build.VERSION.SDK_INT > 29) {
-        requestExternalStorage(this);
+//        requestExternalStorage(this);
 //            // SD 卡根目录
         String sdPath = Environment.getExternalStorageDirectory().getPath();
 //            // 姿态数据工具类
@@ -237,16 +255,17 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
         Element element = document.body();
         String jsonText = element.ownText();
 
-        ArrayList<PoseEntity> poseEntityArrayList = new ArrayList<>();
+        ArrayList<PoseEntity> poseEntityArrayList;
         JSONArray jsonArray = (JSONArray) JSON.parse(jsonText);
         poseEntityArrayList = JSON.parseObject(jsonArray.toJSONString(), new TypeReference<ArrayList<PoseEntity>>() {
         });
         Log.e("entity", poseEntityArrayList.toString());
         poseEntityList = poseEntityArrayList;
-
+        // 设置动作持续变量类型
         for (PoseEntity poseEntity : poseEntityList) {
-            poseEntity.setPoseType(1);
-            poseEntity.setPoseProcessValue(15);
+            // 计数类型
+            poseEntity.setPoseType(0);
+            poseEntity.setPoseProcessValue(100);
         }
 
         nowPoseName = poseEntityList.get(nowPoseIndex).getPoseName();
@@ -272,13 +291,25 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
 //
 //
 //        mHandler.postDelayed(r, 100);//延时100毫秒
-        // 定时清空警告点、倒数秒数刷新
+
+
+        Button button = findViewById(R.id.analysisResult);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(CameraXLivePreviewActivity.this, TrainingResult.class);
+                startActivity(intent);
+            }
+        });
+
+        // 定时清空警告点、倒数秒数刷新、计算总运动时长
         Handler mHandler2 = new Handler();
         Runnable r2 = new Runnable() {
             @Override
             public void run() {
-                tempWarnPart.clear();
                 warnPart.clear();
+                warnAngle.clear();
                 updatePoseInfo();
                 if (countdownSeconds >= 0) {
                     countdownSecondsTextView.setVisibility(View.VISIBLE);
@@ -291,45 +322,58 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
                 if (countdownSeconds == -1) {
                     nowPoseProcessSeconds++;
                 }
+                if (!isEnd) {
+                    totalTrainingTime++;
+                }
                 //do something
                 //每隔1s循环执行run方法
-                totalTrainingTime++;
                 mHandler2.postDelayed(this, 1000);
             }
         };
         mHandler2.post(r2);
+
+        ProcessImage processImage = new ProcessImage();
+        processImage.processImage();
+
         // 初始化控件
         LinearLayout nextPoseButton = findViewById(R.id.nextButton);
         LinearLayout prePoseButton = findViewById(R.id.preButton);
         Button prePoseImageButton = findViewById(R.id.prePoseImage);
         Button nextPoseImageButton = findViewById(R.id.nextPoseImage);
+        LinearLayout explainButton = findViewById(R.id.explain);
+        explainButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
 
         /* 实时监测是否有警告点，如果有就截图 */
         Handler mHandler3 = new Handler();
         Runnable r3 = new Runnable() {
             @Override
             public void run() {
-                Log.e("TEST", delayScreenCapture + "");
+//                Log.e("TEST", delayScreenCapture + "");
                 if (!warnPart.isEmpty() && delayScreenCapture == 0) {
+                    Random random = new Random();
+                    String fileName = nowPoseIndex + "-" + Math.abs(random.nextInt());
                     Bitmap bitmap2 = com.lindum.mlkit.vision.demo.QuickShot.of(graphicOverlay).getBitmap();
                     Log.e("TEST", "获取bitmap成功");
                     if (bitmap2 != null) {
                         ImageView imageView = findViewById(R.id.testImage);
                         Bitmap bitmap1 = previewView.getBitmap();
-                        Log.e("TEST1","b1长"+bitmap1.getHeight());
-                        Log.e("TEST1","b2长"+bitmap2.getHeight());
-                        imageView.setImageBitmap(combineBitmap(bitmap1,bitmap2));
+                        assert bitmap1 != null;
+//                        imageView.setImageBitmap(combineBitmap(bitmap1, bitmap2));
                         new Thread("截图图片并保存") {
                             @Override
                             public void run() {
-
-                                Random random = new Random();
                                 String filePath = Environment.getExternalStorageDirectory().getPath() + "/AiTrainer";
-                                saveBitmap(filePath, random.nextInt() + "", bitmap1);
+                                saveBitmap(filePath, fileName, bitmap1);
                                 delayScreenCapture = 10;
                             }
                         }.start();
                     }
+                    cleanWarnPart();
                 }
                 if (delayScreenCapture > 0) {
                     delayScreenCapture--;
@@ -339,16 +383,46 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
                 // 当前动作过程量上限
                 int nowPoseProcessValue = poseEntityList.get(nowPoseIndex).getPoseProcessValue();
                 if (nowPoseType == 1 && count == nowPoseProcessValue + 1) {
-                    nowPoseProcessSeconds = 0;
-                    nextPoseButton.callOnClick();
+                    // 动作组数加一
+                    countGroupsOfPose++;
+                    if (nowPoseIndex == poseEntityList.size() - 1 && !isEnd) {
+                        isEnd = true;
+                        // 跳转到结果界面
+                        Intent intent = new Intent(CameraXLivePreviewActivity.this, TrainingResult.class);
+                        intent.putExtra("totalTrainingTime", totalTrainingTime);
+                        intent.putExtra("groupsOfPose", countGroupsOfPose);
+                        startActivity(intent);
+                        finish();
+                    } else {
+
+                        // 动作持续数值清空
+                        nowPoseProcessSeconds = 0;
+                        nextPoseButton.callOnClick();
+                    }
                 }
                 if (nowPoseType == 0 && nowPoseProcessSeconds == nowPoseProcessValue + 1 && nowPoseProcessSeconds != 0) {
-                    nextPoseButton.callOnClick();
-                    nowPoseProcessSeconds = 0;
+                    // 动作组数加一
+                    countGroupsOfPose++;
+                    // 最后一个动作
+                    if (nowPoseIndex == poseEntityList.size() - 1 && !isEnd) {
+                        isEnd = true;
+                        // 跳转到结果界面
+                        Intent intent = new Intent(CameraXLivePreviewActivity.this, TrainingResult.class);
+                        intent.putExtra("totalTrainingTime", totalTrainingTime);
+                        intent.putExtra("groupsOfPose", countGroupsOfPose);
+                        startActivity(intent);
+                        finish();
+                    } else {
+                        // 动作持续数值清空
+                        nowPoseProcessSeconds = 0;
+                        nextPoseButton.callOnClick();
+                    }
                 }
                 mHandler3.postDelayed(this, 100);
             }
         };
+
+
         previewView = findViewById(R.id.preview_view);
         if (previewView == null) {
             Log.d(TAG, "previewView is null");
@@ -381,16 +455,18 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
                 .getProcessCameraProvider()
                 .observe(
                         this,
-                        provider -> {
+                        provider ->
+
+                        {
                             cameraProvider = provider;
                             if (allPermissionsGranted()) {
                                 bindAllCameraUseCases();
                             }
                         });
-
         ImageView settingsButton = findViewById(R.id.settings_button);
         settingsButton.setOnClickListener(
-                v -> {
+                v ->
+                {
                     Intent intent = new Intent(getApplicationContext(), SettingsActivity.class);
                     intent.putExtra(
                             SettingsActivity.EXTRA_LAUNCH_SOURCE,
@@ -398,8 +474,9 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
                     startActivity(intent);
                 });
 
+        nextPoseImageButton.setOnClickListener(view ->
 
-        nextPoseImageButton.setOnClickListener(view -> {
+        {
             if (nowPoseIndex + 1 < poseEntityList.size()) {
                 nowPoseIndex++;
                 count = 0;
@@ -409,7 +486,9 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
 
             }
         });
-        prePoseImageButton.setOnClickListener(view -> {
+        prePoseImageButton.setOnClickListener(view ->
+
+        {
             if (nowPoseIndex - 1 >= 0) {
                 nowPoseIndex--;
                 count = 0;
@@ -419,7 +498,9 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
 
             }
         });
-        nextPoseButton.setOnClickListener(view -> {
+        nextPoseButton.setOnClickListener(view ->
+
+        {
             if (nowPoseIndex + 1 < poseEntityList.size()) {
                 nowPoseIndex++;
                 count = 0;
@@ -429,7 +510,9 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
 
             }
         });
-        prePoseButton.setOnClickListener(view -> {
+        prePoseButton.setOnClickListener(view ->
+
+        {
             if (nowPoseIndex - 1 >= 0) {
                 nowPoseIndex--;
                 count = 0;
@@ -442,6 +525,11 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
         if (!allPermissionsGranted()) {
             getRuntimePermissions();
         }
+    }
+
+    public static void cleanWarnPart() {
+        warnAngle.clear();
+        warnPart.clear();
     }
 
     public void updatePoseInfo() {
@@ -468,7 +556,8 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
     }
 
     @Override
-    public synchronized void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+    public synchronized void onItemSelected(AdapterView<?> parent, View view, int pos,
+                                            long id) {
         // An item was selected. You can retrieve the selected item using
         // parent.getItemAtPosition(pos)
         selectedModel = parent.getItemAtPosition(pos).toString();
@@ -476,52 +565,35 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
         bindAnalysisUseCase();
     }
 
-    public static void addWarnPart(int partIndex) {
-        StringBuilder awd = new StringBuilder();
-        for (int[] tmp :
-                warnPart) {
-            awd.append(Arrays.toString(tmp)).append(",");
-        }
-//        Log.e("sys", String.valueOf(awd));
-        Log.e("sys", "添加" + partIndex);
-        Log.e("sys", tempWarnPart.toString());
-        if (tempWarnPart.contains(partIndex)) {
-            Log.e("sys", "添加过了");
-        } else {
-//            switch (partIndex){
-//                case 1:
-//                case 2:
-//                    break;
-//                case 3:
-//
-//                    break;
-//
-//            }
-            if (partIndex == 12) {
-                warnPart.add(new int[]{25, 27, 31});
-            } else if (partIndex == 11) {
-                warnPart.add(new int[]{26, 28, 32});
-            } else if (partIndex == 10) {
-                warnPart.add(new int[]{23, 25, 27});
-            } else if (partIndex == 9) {
-                warnPart.add(new int[]{24, 26, 28});
-            } else if (partIndex == 8) {
-                warnPart.add(new int[]{11, 23, 25});
-            } else if (partIndex == 7) {
-                warnPart.add(new int[]{12, 24, 26});
-            } else if (partIndex == 6) {
-                warnPart.add(new int[]{13, 15, 19});
-            } else if (partIndex == 5) {
-                warnPart.add(new int[]{11, 13, 15});
-            } else if (partIndex == 4) {
-                warnPart.add(new int[]{13, 11, 23});
-            } else if (partIndex == 3) {
-                warnPart.add(new int[]{14, 12, 24});
-            } else if (partIndex == 2) {
-                warnPart.add(new int[]{12, 14, 16});
-            } else if (partIndex == 1) {
-                warnPart.add(new int[]{20, 16, 14});
-            }
+
+    public static void addWarnPart(int partIndex, int angle) {
+        // 添加报错的角度
+        warnAngle.add(angle);
+        // 添加报错的部位
+        if (partIndex == 12) {
+            warnPart.add(new int[]{25, 27, 31});
+        } else if (partIndex == 11) {
+            warnPart.add(new int[]{26, 28, 32});
+        } else if (partIndex == 10) {
+            warnPart.add(new int[]{23, 25, 27});
+        } else if (partIndex == 9) {
+            warnPart.add(new int[]{24, 26, 28});
+        } else if (partIndex == 8) {
+            warnPart.add(new int[]{11, 23, 25});
+        } else if (partIndex == 7) {
+            warnPart.add(new int[]{12, 24, 26});
+        } else if (partIndex == 6) {
+            warnPart.add(new int[]{13, 15, 19});
+        } else if (partIndex == 5) {
+            warnPart.add(new int[]{11, 13, 15});
+        } else if (partIndex == 4) {
+            warnPart.add(new int[]{13, 11, 23});
+        } else if (partIndex == 3) {
+            warnPart.add(new int[]{14, 12, 24});
+        } else if (partIndex == 2) {
+            warnPart.add(new int[]{12, 14, 16});
+        } else if (partIndex == 1) {
+            warnPart.add(new int[]{20, 16, 14});
         }
 //        Log.e("sys","添加了"+partIndex);
 
@@ -604,6 +676,7 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
             imageProcessor.stop();
         }
     }
+
 
     public void saveBitmap(String filePath, String fileName, Bitmap bitmap) {
         File file = new File(filePath);

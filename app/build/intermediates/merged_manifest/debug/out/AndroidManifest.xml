@@ -58,6 +58,10 @@
             android:value="barcode,face,ocr,ica" />
 
         <activity
+            android:name="com.lindum.mlkit.vision.demo.java.TrainingResult"
+            android:exported="false"
+            android:theme="@style/AppTheme" />
+        <activity
             android:name="com.lindum.mlkit.vision.demo.java.CameraXLivePreviewActivity"
             android:exported="true"
             android:theme="@style/AppTheme" >
@@ -70,6 +74,19 @@
         <activity
             android:name="com.lindum.mlkit.vision.demo.preference.SettingsActivity"
             android:exported="false" />
+
+        <provider
+            android:name="com.xuexiang.xui.XUIInitProvider"
+            android:authorities="com.lindum.mlkit.vision.demo.xui-init-provider"
+            android:exported="false"
+            android:multiprocess="true" />
+
+        <activity
+            android:name="com.xuexiang.xui.widget.imageview.preview.ui.PreviewActivity"
+            android:theme="@style/XUITheme.Translucent" />
+        <activity
+            android:name="com.xuexiang.xui.widget.imageview.preview.ui.VideoPlayerActivity"
+            android:theme="@style/XUITheme.Translucent" />
 
         <service
             android:name="com.google.mlkit.common.internal.MlKitComponentDiscoveryService"

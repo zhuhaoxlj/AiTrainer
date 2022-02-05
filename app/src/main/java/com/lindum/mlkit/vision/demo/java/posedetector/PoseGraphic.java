@@ -23,6 +23,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.os.Build;
+import android.util.Log;
 
 import androidx.annotation.RequiresApi;
 
@@ -34,6 +35,7 @@ import com.lindum.mlkit.vision.demo.java.CameraXLivePreviewActivity;
 import com.google.mlkit.vision.pose.Pose;
 import com.google.mlkit.vision.pose.PoseLandmark;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 
@@ -205,9 +207,10 @@ public class PoseGraphic extends Graphic {
         // 将不标准的部位标出
         List<int[]> drawList = CameraXLivePreviewActivity.getWarnPart();
         if (drawList.size() != 0) {
+            String w = "";
             for (int i = 0; i < drawList.size(); i++) {
                 int[] tempArray = drawList.get(i);
-//            Log.e("syss", Arrays.toString(tempArray) +"");
+                w += Arrays.toString(tempArray);
                 for (int j = 0; j < tempArray.length - 1; j++) {
                     PoseLandmark poseLandmark1 = pose.getPoseLandmark(tempArray[j]);
                     PoseLandmark poseLandmark2 = pose.getPoseLandmark(tempArray[j + 1]);

@@ -11,19 +11,42 @@
         android:layout_height="match_parent"
         android:layout_weight="1">
 
+        <TextView
+            android:id="@+id/processBar1Text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/processBar1"
+            android:layout_centerHorizontal="true"
+            android:gravity="center_horizontal"
+            android:text="1'30''"
+            android:textSize="11sp" />
+
         <LinearLayout
             android:id="@+id/processBar1"
             android:layout_width="40dp"
             android:layout_height="300dp"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            android:orientation="horizontal" />
+            android:orientation="horizontal">
+
+
+        </LinearLayout>
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/processBar2Text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/processBar2"
+            android:layout_centerHorizontal="true"
+            android:gravity="center_horizontal"
+            android:text="1'30''"
+            android:textSize="11sp" />
 
         <LinearLayout
             android:id="@+id/processBar2"
@@ -39,6 +62,16 @@
         android:layout_height="match_parent"
         android:layout_weight="1">
 
+        <TextView
+            android:id="@+id/processBar3Text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/processBar3"
+            android:layout_centerHorizontal="true"
+            android:gravity="center_horizontal"
+            android:text="1'30''"
+            android:textSize="11sp" />
+
         <LinearLayout
             android:id="@+id/processBar3"
             android:layout_width="40dp"
@@ -52,6 +85,16 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/processBar4Text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/processBar4"
+            android:layout_centerHorizontal="true"
+            android:gravity="center_horizontal"
+            android:text="1'30''"
+            android:textSize="11sp" />
 
         <LinearLayout
             android:id="@+id/processBar4"

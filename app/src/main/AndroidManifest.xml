@@ -13,6 +13,7 @@
           androidx.camera.view, androidx.camera.lifecycle" />
 
     <uses-feature android:name="android.hardware.camera" />
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <!-- 写外置存储 -->
@@ -26,13 +27,13 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
-<!--    android:name="com.lindum.mlkit.vision.demo.java.CameraXLivePreviewActivity"-->
+    <!--    android:name="com.lindum.mlkit.vision.demo.java.CameraXLivePreviewActivity"-->
     <application
-        android:usesCleartextTraffic="true"
         android:name="androidx.multidex.MultiDexApplication"
         android:icon="@drawable/train"
         android:label="AiTrainer"
         android:theme="@style/Theme.AppCompat"
+        android:usesCleartextTraffic="true"
         tools:targetApi="m">
 
         <meta-data
@@ -46,6 +47,10 @@
             android:value="barcode,face,ocr,ica" />
 
         <activity
+            android:theme="@style/AppTheme"
+            android:name=".java.TrainingResult"
+            android:exported="false" />
+        <activity
             android:name=".java.CameraXLivePreviewActivity"
             android:exported="true"
             android:theme="@style/AppTheme">
@@ -54,7 +59,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name="com.lindum.mlkit.vision.demo.preference.SettingsActivity"
             android:exported="false" />
