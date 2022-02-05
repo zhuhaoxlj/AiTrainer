@@ -51,18 +51,18 @@
 30-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:29:22-62
 31
 32    <queries>
-32-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:67:5-71:15
+32-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:68:5-72:15
 33        <intent>
-33-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:68:9-70:18
+33-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:69:9-71:18
 34            <action android:name="android.media.action.IMAGE_CAPTURE" />
-34-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:69:13-73
-34-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:69:21-70
+34-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:70:13-73
+34-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:70:21-70
 35        </intent>
 36    </queries>
 37
 38    <!-- android:name="com.lindum.mlkit.vision.demo.java.CameraXLivePreviewActivity" -->
 39    <application
-39-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:31:5-66:19
+39-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:31:5-67:19
 40        android:name="androidx.multidex.MultiDexApplication"
 40-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:32:9-61
 41        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
@@ -72,62 +72,63 @@
 43-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:33:9-39
 44        android:label="AiTrainer"
 44-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:34:9-34
-45        android:testOnly="true"
+45        android:requestLegacyExternalStorage="true"
+45-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:35:9-52
 46        android:theme="@style/Theme.AppCompat"
-46-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:35:9-47
+46-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:36:9-47
 47        android:usesCleartextTraffic="true" >
-47-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:36:9-44
+47-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:37:9-44
 48        <meta-data
-48-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:39:9-41:69
+48-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:40:9-42:69
 49            android:name="com.google.android.gms.version"
-49-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:40:13-58
+49-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:41:13-58
 50            android:value="@integer/google_play_services_version" />
-50-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:41:13-66
+50-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:42:13-66
 51
 52        <!--
 53          Optional: Add it to automatically download ML model to device after
 54          your app is installed.
 55        -->
 56        <meta-data
-56-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:45:9-47:52
+56-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:46:9-48:52
 57            android:name="com.google.mlkit.vision.DEPENDENCIES"
-57-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:46:13-64
+57-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:47:13-64
 58            android:value="barcode,face,ocr,ica" />
-58-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:47:13-49
+58-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:48:13-49
 59
 60        <activity
-60-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:49:9-52:40
+60-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:50:9-53:40
 61            android:name="com.lindum.mlkit.vision.demo.java.TrainingResult"
-61-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:51:13-48
+61-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:52:13-48
 62            android:exported="false"
-62-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:52:13-37
+62-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:53:13-37
 63            android:theme="@style/AppTheme" />
-63-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:50:13-44
+63-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:51:13-44
 64        <activity
-64-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:53:9-61:20
+64-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:54:9-62:20
 65            android:name="com.lindum.mlkit.vision.demo.java.CameraXLivePreviewActivity"
-65-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:54:13-60
+65-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:55:13-60
 66            android:exported="true"
-66-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:55:13-36
+66-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:56:13-36
 67            android:theme="@style/AppTheme" >
-67-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:56:13-44
+67-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:57:13-44
 68            <intent-filter>
-68-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:57:13-60:29
+68-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:58:13-61:29
 69                <action android:name="android.intent.action.MAIN" />
-69-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:58:17-69
-69-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:58:25-66
+69-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:59:17-69
+69-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:59:25-66
 70
 71                <category android:name="android.intent.category.LAUNCHER" />
-71-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:59:17-77
-71-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:59:27-74
+71-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:60:17-77
+71-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:60:27-74
 72            </intent-filter>
 73        </activity>
 74        <activity
-74-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:62:9-64:40
+74-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:63:9-65:40
 75            android:name="com.lindum.mlkit.vision.demo.preference.SettingsActivity"
-75-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:63:13-84
+75-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:64:13-84
 76            android:exported="false" />
-76-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:64:13-37
+76-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:65:13-37
 77
 78        <provider
 78-->[com.github.xuexiangjys:XUI:1.1.8] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\cb3a340231d4295dbef6891df83e60a3\jetified-XUI-1.1.8\AndroidManifest.xml:10:9-14:43

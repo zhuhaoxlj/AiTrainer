@@ -173,4 +173,18 @@ public class DrawLandmarkTools {
         }
         return bitmap;
     }
+
+//    public Bitmap cutImage(List<PoseLandmark> landmarkList) {
+//        float maxX = 0;
+//        float maxY = 0;
+//        float minX = 0;
+//        float minY = 0;
+//        for (PoseLandmark poseLandmark : landmarkList) {
+//            maxX = Math.max(maxX, poseLandmark.getPosition().x);
+//            maxY = Math.max(maxY, poseLandmark.getPosition().y);
+//            minX = Math.min(minX, poseLandmark.getPosition().x);
+//            minY = Math.min(minY, poseLandmark.getPosition().y);
+//        }
+////        Log.e()
+//    }
 }

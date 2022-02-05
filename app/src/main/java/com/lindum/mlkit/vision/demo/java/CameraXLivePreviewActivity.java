@@ -332,8 +332,7 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
         };
         mHandler2.post(r2);
 
-        ProcessImage processImage = new ProcessImage();
-        processImage.processImage();
+
 
         // 初始化控件
         LinearLayout nextPoseButton = findViewById(R.id.nextButton);
@@ -422,7 +421,8 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
             }
         };
 
-
+        ProcessImage processImage = new ProcessImage(findViewById(R.id.testImage));
+        processImage.processImage();
         previewView = findViewById(R.id.preview_view);
         if (previewView == null) {
             Log.d(TAG, "previewView is null");

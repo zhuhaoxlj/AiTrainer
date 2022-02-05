@@ -50,8 +50,7 @@ public class TrainingResult extends AppCompatActivity {
 
 
         LayoutInflater layoutInflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        // 处理图片的线程开启
-        ProcessImage processImage = new ProcessImage();
+
 
 
         LinearLayout resultContainer = findViewById(R.id.resultContainer);
