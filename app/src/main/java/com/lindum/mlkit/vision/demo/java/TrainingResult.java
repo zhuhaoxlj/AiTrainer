@@ -54,8 +54,9 @@ public class TrainingResult extends AppCompatActivity {
 
 
         LinearLayout resultContainer = findViewById(R.id.resultContainer);
-        for (Bitmap tip : resultImage) {
-            int index = resultImage.indexOf(tip);
+        for (String tip : resultTips) {
+            int index = resultTips.indexOf(tip);
+            Log.e("tips",tip);
             View resultView = layoutInflater.inflate(R.layout.pose_analysis_card, null);
             ImageView imageView = resultView.findViewById(R.id.poseResultImage);
             imageView.setImageBitmap(resultImage.get(index));
@@ -111,7 +112,6 @@ public class TrainingResult extends AppCompatActivity {
         ShadowDrawable.setShadowDrawable(processBar2, Color.parseColor("#ffb6d7"), 20, Color.parseColor("#ffb6d7"), 20, 10, 10);
         ShadowDrawable.setShadowDrawable(processBar3, Color.parseColor("#45ceb2"), 20, Color.parseColor("#45ceb2"), 20, 10, 10);
         ShadowDrawable.setShadowDrawable(processBar4, Color.parseColor("#fc5045"), 20, Color.parseColor("#fc5045"), 20, 10, 10);
-
     }
 
     public static void addResultData(Bitmap bitmap, String tip) {

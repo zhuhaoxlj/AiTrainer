@@ -15,6 +15,7 @@ import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.PointF;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.Build.VERSION_CODES;
 import android.os.Bundle;
@@ -231,9 +232,10 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
         poseProcessInfo = findViewById(R.id.poseProcessInfo);
         countdownSecondsTextView = findViewById(R.id.countdownSecondsText);
         //适配安卓11及以下版本的存储权限请求
-//        if (Build.VERSION.SDK_INT > 29) {
-//        requestExternalStorage(this);
-//            // SD 卡根目录
+        if (Build.VERSION.SDK_INT > 29) {
+            requestExternalStorage(this);
+        }
+        // SD 卡根目录
         String sdPath = Environment.getExternalStorageDirectory().getPath();
 //            // 姿态数据工具类
         PoseDataUtils.writeJSON2Loacl(poseEntityList, sdPath + "/AiTrainer/poseData.json");
@@ -297,10 +299,10 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 Intent intent = new Intent(CameraXLivePreviewActivity.this, TrainingResult.class);
                 intent.putExtra("totalTrainingTime", totalTrainingTime);
                 intent.putExtra("groupsOfPose", countGroupsOfPose);
+                isEnd = true;
                 startActivity(intent);
             }
         });
@@ -387,12 +389,13 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
                     countGroupsOfPose++;
                     if (nowPoseIndex == poseEntityList.size() - 1 && !isEnd) {
                         isEnd = true;
-                        Log.e("total",totalTrainingTime+"");
+                        Log.e("total", totalTrainingTime + "");
                         // 跳转到结果界面
                         Intent intent = new Intent(CameraXLivePreviewActivity.this, TrainingResult.class);
                         intent.putExtra("totalTrainingTime", totalTrainingTime);
                         intent.putExtra("groupsOfPose", countGroupsOfPose);
                         startActivity(intent);
+                        finish();
                     } else {
 
                         // 动作持续数值清空

@@ -43,7 +43,6 @@
         android:icon="@drawable/train"
         android:label="AiTrainer"
         android:requestLegacyExternalStorage="true"
-        android:testOnly="true"
         android:theme="@style/Theme.AppCompat"
         android:usesCleartextTraffic="true" >
         <meta-data

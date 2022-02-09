@@ -56,8 +56,8 @@ com/lindum/mlkit/vision/demo/java/posedetector/classification/EMASmoothing.java
  com.lindum.mlkit.vision.demo.java.posedetector.classification.EMASmoothing
 com/lindum/mlkit/vision/demo/java/posedetector/classification/PoseEmbedding.java
  com.lindum.mlkit.vision.demo.java.posedetector.classification.PoseEmbedding
-com/lindum/mlkit/vision/demo/java/TrainingResult.java
- com.lindum.mlkit.vision.demo.java.TrainingResult
+com/lindum/mlkit/vision/demo/java/posedetector/PoseAngleDetector.java
+ com.lindum.mlkit.vision.demo.java.posedetector.PoseAngleDetector
 com/lindum/mlkit/vision/demo/FrameMetadata.java
  com.lindum.mlkit.vision.demo.FrameMetadata
  com.lindum.mlkit.vision.demo.FrameMetadata$1
@@ -108,8 +108,8 @@ com/lindum/mlkit/vision/demo/CameraXViewModel.java
  com.lindum.mlkit.vision.demo.CameraXViewModel
 com/lindum/mlkit/vision/demo/java/posedetector/DrawLandmarkTools.java
  com.lindum.mlkit.vision.demo.java.posedetector.DrawLandmarkTools
-com/lindum/mlkit/vision/demo/java/posedetector/PoseAngleDetector.java
- com.lindum.mlkit.vision.demo.java.posedetector.PoseAngleDetector
+com/lindum/mlkit/vision/demo/java/TrainingResult.java
+ com.lindum.mlkit.vision.demo.java.TrainingResult
 com/lindum/mlkit/vision/demo/java/CameraXLivePreviewActivity.java
  com.lindum.mlkit.vision.demo.java.CameraXLivePreviewActivity
  com.lindum.mlkit.vision.demo.java.CameraXLivePreviewActivity$1
