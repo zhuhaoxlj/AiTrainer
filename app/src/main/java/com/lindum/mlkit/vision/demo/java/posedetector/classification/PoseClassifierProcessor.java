@@ -1,19 +1,3 @@
-/*
- * Copyright 2020 Google LLC. All rights reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package com.lindum.mlkit.vision.demo.java.posedetector.classification;
 
 import android.content.Context;
@@ -41,6 +25,7 @@ import java.util.Locale;
 /**
  * Accepts a stream of {@link Pose} for classification and Rep counting.
  */
+
 public class PoseClassifierProcessor {
     private static final String TAG = "PoseClassifierProcessor";
     //  private static final String POSE_SAMPLES_FILE = "pose/fitness_pose_samples.csv";
@@ -242,7 +227,7 @@ public class PoseClassifierProcessor {
                             }
                             if (!(nowFrameAngle > part.getFixedRange()[0] && nowFrameAngle < part.getFixedRange()[1])) {
                                 // 固定部位不满足标准的时候报红，那么动态部位什么情况下报红呢？ todo 我觉得是超过这个动态的总范围就报红
-                                CameraXLivePreviewActivity.addWarnPart(partIndex, nowFrameAngle);
+                                CameraXLivePreviewActivity.addWarnPart(partIndex);
                                 Log.e("TESTANGLE", "当前角度" + nowFrameAngle + "部位:" + partIndex);
                                 fixedPartJudge = false;
                             }

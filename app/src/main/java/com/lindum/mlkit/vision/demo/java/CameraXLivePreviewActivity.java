@@ -109,7 +109,6 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
     private static final String STATE_SELECTED_MODEL = "selected_model";
     private static float count = 0;
     private static List<int[]> warnPart;
-    private static List<Integer> warnAngle;
     private static boolean pose1;
     private PreviewView previewView;
     private GraphicOverlay graphicOverlay;
@@ -136,16 +135,12 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
     public static boolean isEnd = false;
     // 给截图延时 调整检测截图灵敏度
     private int delayScreenCapture = 10;
-
-
     /**
      * 左下角信息
-     * 动作名称
      */
+    // 动作名称
     private TextView poseName;
-    /**
-     * 第几个动作
-     */
+    // 第几个动作
     private TextView poseIndexText;
     // 当前动作进度
     private TextView poseProcessInfo;
@@ -157,9 +152,11 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
     private int totalTrainingTime = 0;
     // 几组动作
     private int countGroupsOfPose = 0;
+    // 下一个动作按钮
+    LinearLayout nextPoseButton;
+    // 上一个动作按钮
+    LinearLayout prePoseButton;
 
-
-    Bitmap resultBitmap;
     // 图片处理警告点
     List<int[]> imageProcessWarnPart;
     String tempTips = "";
@@ -210,7 +207,6 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
         // 初始化变量
         warnPart = new ArrayList<>();
         poseEntityList = new ArrayList<>();
-        warnAngle = new ArrayList<>();
         pose1 = false;
         poseName = findViewById(R.id.poseName);
         poseIndexText = findViewById(R.id.nowPoseIndexText);
@@ -218,9 +214,9 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
         poseProcessInfo = findViewById(R.id.poseProcessInfo);
         countdownSecondsTextView = findViewById(R.id.countdownSecondsText);
         //适配安卓11及以下版本的存储权限请求
-//        if (Build.VERSION.SDK_INT > 29) {
-//            requestExternalStorage(this);
-//        }
+        if (Build.VERSION.SDK_INT > 29) {
+            requestExternalStorage(this);
+        }
         // SD 卡根目录
         String sdPath = Environment.getExternalStorageDirectory().getPath();
 //            // 姿态数据工具类
@@ -228,7 +224,8 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
 //            isPermissionRequested = true;
 //        }
 
-
+        // 定时更新变量定时器
+        updateVariable();
         // 使主线程可以进行简单的网络请求
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
@@ -293,39 +290,12 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
             }
         });
 
-        // 定时清空警告点、倒数秒数刷新、计算总运动时长
-        Handler mHandler2 = new Handler();
-        Runnable r2 = new Runnable() {
-            @Override
-            public void run() {
-                warnPart.clear();
-                warnAngle.clear();
-                updatePoseInfo();
-                if (countdownSeconds >= 0) {
-                    countdownSecondsTextView.setVisibility(View.VISIBLE);
-                    countdownSeconds--;
-                }
-                if (countdownSeconds == -1) {
-                    countdownSecondsTextView.setVisibility(View.INVISIBLE);
-                }
-                // 现在动作进行的秒数增加
-                if (countdownSeconds == -1) {
-                    nowPoseProcessSeconds++;
-                }
-                if (!isEnd) {
-                    totalTrainingTime++;
-                }
-                //do something
-                //每隔1s循环执行run方法
-                mHandler2.postDelayed(this, 1000);
-            }
-        };
-        mHandler2.post(r2);
-
+        // 启动截图定时器
+        getScreenCut();
 
         // 初始化控件
-        LinearLayout nextPoseButton = findViewById(R.id.nextButton);
-        LinearLayout prePoseButton = findViewById(R.id.preButton);
+        nextPoseButton = findViewById(R.id.nextButton);
+        prePoseButton = findViewById(R.id.preButton);
         Button prePoseImageButton = findViewById(R.id.prePoseImage);
         Button nextPoseImageButton = findViewById(R.id.nextPoseImage);
         LinearLayout explainButton = findViewById(R.id.explain);
@@ -336,80 +306,6 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
             }
         });
 
-        /* 实时监测是否有警告点，如果有就截图 */
-        Handler mHandler3 = new Handler();
-        Runnable r3 = new Runnable() {
-            @Override
-            public void run() {
-//                Log.e("TEST", delayScreenCapture + "");
-                if (!warnPart.isEmpty() && delayScreenCapture == 0) {
-                    Random random = new Random();
-                    String fileName = nowPoseIndex + "-" + Math.abs(random.nextInt());
-                    Bitmap bitmap2 = com.lindum.mlkit.vision.demo.QuickShot.of(graphicOverlay).getBitmap();
-                    Log.e("TEST", "获取bitmap成功");
-                    if (bitmap2 != null) {
-                        ImageView imageView = findViewById(R.id.testImage);
-                        Bitmap bitmap1 = previewView.getBitmap();
-                        assert bitmap1 != null;
-//                        imageView.setImageBitmap(combineBitmap(bitmap1, bitmap2));
-                        new Thread("截图图片并保存") {
-                            @Override
-                            public void run() {
-                                String filePath = Environment.getExternalStorageDirectory().getPath() + "/AiTrainer";
-                                saveBitmap(filePath, fileName, bitmap1);
-                                delayScreenCapture = 10;
-                            }
-                        }.start();
-                    }
-                    cleanWarnPart();
-                }
-                if (delayScreenCapture > 0) {
-                    delayScreenCapture--;
-                }
-                // 当前动作类型
-                int nowPoseType = poseEntityList.get(nowPoseIndex).getPoseType();
-                // 当前动作过程量上限
-                int nowPoseProcessValue = poseEntityList.get(nowPoseIndex).getPoseProcessValue();
-                if (nowPoseType == 1 && count == nowPoseProcessValue + 1) {
-                    // 动作组数加一
-                    countGroupsOfPose++;
-                    if (nowPoseIndex == poseEntityList.size() - 1 && !isEnd) {
-                        isEnd = true;
-                        Log.e("total", totalTrainingTime + "");
-                        // 跳转到结果界面
-                        Intent intent = new Intent(CameraXLivePreviewActivity.this, TrainingResult.class);
-                        intent.putExtra("totalTrainingTime", totalTrainingTime);
-                        intent.putExtra("groupsOfPose", countGroupsOfPose);
-                        startActivity(intent);
-                        finish();
-                    } else {
-
-                        // 动作持续数值清空
-                        nowPoseProcessSeconds = 0;
-                        nextPoseButton.callOnClick();
-                    }
-                }
-                if (nowPoseType == 0 && nowPoseProcessSeconds == nowPoseProcessValue + 1 && nowPoseProcessSeconds != 0) {
-                    // 动作组数加一
-                    countGroupsOfPose++;
-                    // 最后一个动作
-                    if (nowPoseIndex == poseEntityList.size() - 1 && !isEnd) {
-                        isEnd = true;
-                        // 跳转到结果界面
-                        Intent intent = new Intent(CameraXLivePreviewActivity.this, TrainingResult.class);
-                        intent.putExtra("totalTrainingTime", totalTrainingTime);
-                        intent.putExtra("groupsOfPose", countGroupsOfPose);
-                        startActivity(intent);
-                        finish();
-                    } else {
-                        // 动作持续数值清空
-                        nowPoseProcessSeconds = 0;
-                        nextPoseButton.callOnClick();
-                    }
-                }
-                mHandler3.postDelayed(this, 100);
-            }
-        };
 
         ProcessImage processImage = new ProcessImage(findViewById(R.id.testImage));
         processImage.processImage();
@@ -418,17 +314,13 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
             Log.d(TAG, "previewView is null");
         }
         // 截图
-        mHandler3.post(r3);
 
         if (graphicOverlay == null) {
             Log.d(TAG, "graphicOverlay is null");
         }
-
         Spinner spinner = findViewById(R.id.spinner);
         List<String> options = new ArrayList<>();
         options.add(POSE_DETECTION);
-
-
         // Creating adapter for spinner
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this, R.layout.spinner_style, options);
         // Drop down layout style - list view with radio button
@@ -465,7 +357,6 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
                 });
 
         nextPoseImageButton.setOnClickListener(view ->
-
         {
             if (nowPoseIndex + 1 < poseEntityList.size()) {
                 nowPoseIndex++;
@@ -477,7 +368,6 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
             }
         });
         prePoseImageButton.setOnClickListener(view ->
-
         {
             if (nowPoseIndex - 1 >= 0) {
                 nowPoseIndex--;
@@ -489,7 +379,6 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
             }
         });
         nextPoseButton.setOnClickListener(view ->
-
         {
             if (nowPoseIndex + 1 < poseEntityList.size()) {
                 nowPoseIndex++;
@@ -501,7 +390,6 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
             }
         });
         prePoseButton.setOnClickListener(view ->
-
         {
             if (nowPoseIndex - 1 >= 0) {
                 nowPoseIndex--;
@@ -518,8 +406,39 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
     }
 
     public static void cleanWarnPart() {
-        warnAngle.clear();
         warnPart.clear();
+    }
+
+    /**
+     * 定时清空警告点、倒数秒数刷新、计算总运动时长
+     */
+    public void updateVariable() {
+        Handler mHandler2 = new Handler();
+        Runnable r2 = new Runnable() {
+            @Override
+            public void run() {
+                warnPart.clear();
+                updatePoseInfo();
+                if (countdownSeconds >= 0) {
+                    countdownSecondsTextView.setVisibility(View.VISIBLE);
+                    countdownSeconds--;
+                }
+                if (countdownSeconds == -1) {
+                    countdownSecondsTextView.setVisibility(View.INVISIBLE);
+                }
+                // 现在动作进行的秒数增加
+                if (countdownSeconds == -1) {
+                    nowPoseProcessSeconds++;
+                }
+                if (!isEnd) {
+                    totalTrainingTime++;
+                }
+                //do something
+                //每隔1s循环执行run方法
+                mHandler2.postDelayed(this, 1000);
+            }
+        };
+        mHandler2.post(r2);
     }
 
     public void updatePoseInfo() {
@@ -533,7 +452,7 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
             poseProcessInfo.setText((int) count + "");
         } else if (poseEntityList.get(nowPoseIndex).getPoseType() == 0) {
             // 更新当前动作进度 秒数
-            poseProcessInfo.setText((int) nowPoseProcessSeconds + "\"");
+            poseProcessInfo.setText(nowPoseProcessSeconds + "\"");
         }
         // 更新倒数秒数
         countdownSecondsTextView.setText(countdownSeconds + "");
@@ -548,18 +467,17 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
     @Override
     public synchronized void onItemSelected(AdapterView<?> parent, View view, int pos,
                                             long id) {
-        // An item was selected. You can retrieve the selected item using
-        // parent.getItemAtPosition(pos)
         selectedModel = parent.getItemAtPosition(pos).toString();
         Log.d(TAG, "Selected model: " + selectedModel);
         bindAnalysisUseCase();
     }
 
-
-    public static void addWarnPart(int partIndex, int angle) {
-        // 添加报错的角度
-        warnAngle.add(angle);
-        // 添加报错的部位
+    /**
+     * 添加报错部位
+     *
+     * @param partIndex 报错部位的索引
+     */
+    public static void addWarnPart(int partIndex) {
         if (partIndex == 12) {
             warnPart.add(new int[]{25, 27, 31});
         } else if (partIndex == 11) {
@@ -585,10 +503,13 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
         } else if (partIndex == 1) {
             warnPart.add(new int[]{20, 16, 14});
         }
-//        Log.e("sys","添加了"+partIndex);
-
     }
 
+    /**
+     * 请求访问外置内存
+     *
+     * @param context 上下文场景
+     */
     public void requestExternalStorage(Context context) {
         Intent intent = null;
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.R) {
@@ -667,7 +588,13 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
         }
     }
 
-
+    /**
+     * 保存 Bitmap 到本地
+     *
+     * @param filePath 文件路径
+     * @param fileName 文件名称
+     * @param bitmap   bitmap 图像文件
+     */
     public void saveBitmap(String filePath, String fileName, Bitmap bitmap) {
         File file = new File(filePath);
         //判断指定文件夹的路径是否存在
@@ -693,9 +620,9 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
     /**
      * 合并两张bitmap为一张
      *
-     * @param background
-     * @param foreground
-     * @return Bitmap
+     * @param background 底层的图片
+     * @param foreground 上层的图片
+     * @return Bitmap 合成后的图片
      */
     public static Bitmap combineBitmap(Bitmap background, Bitmap foreground) {
         if (background == null) {
@@ -848,6 +775,82 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
         cameraProvider.bindToLifecycle(/* lifecycleOwner= */ this, cameraSelector, analysisUseCase);
     }
 
+    public void getScreenCut() {
+        /* 实时监测是否有警告点，如果有就截图 */
+        Handler mHandler3 = new Handler();
+        Runnable r3 = new Runnable() {
+            @Override
+            public void run() {
+//                Log.e("TEST", delayScreenCapture + "");
+                if (!warnPart.isEmpty() && delayScreenCapture == 0) {
+                    Random random = new Random();
+                    String fileName = nowPoseIndex + "-" + Math.abs(random.nextInt());
+                    Bitmap bitmap2 = com.lindum.mlkit.vision.demo.QuickShot.of(graphicOverlay).getBitmap();
+                    Log.e("TEST", "获取bitmap成功");
+                    if (bitmap2 != null) {
+//                        ImageView imageView = findViewById(R.id.testImage);
+                        Bitmap bitmap1 = previewView.getBitmap();
+                        assert bitmap1 != null;
+//                        imageView.setImageBitmap(combineBitmap(bitmap1, bitmap2));
+                        new Thread("截图图片并保存") {
+                            @Override
+                            public void run() {
+                                String filePath = Environment.getExternalStorageDirectory().getPath() + "/AiTrainer";
+                                saveBitmap(filePath, fileName, bitmap1);
+                                delayScreenCapture = 10;
+                            }
+                        }.start();
+                    }
+                    cleanWarnPart();
+                }
+                if (delayScreenCapture > 0) {
+                    delayScreenCapture--;
+                }
+                // 当前动作类型
+                int nowPoseType = poseEntityList.get(nowPoseIndex).getPoseType();
+                // 当前动作过程量上限
+                int nowPoseProcessValue = poseEntityList.get(nowPoseIndex).getPoseProcessValue();
+                if (nowPoseType == 1 && count == nowPoseProcessValue + 1) {
+                    // 动作组数加一
+                    countGroupsOfPose++;
+                    if (nowPoseIndex == poseEntityList.size() - 1 && !isEnd) {
+                        isEnd = true;
+                        Log.e("total", totalTrainingTime + "");
+                        // 跳转到结果界面
+                        Intent intent = new Intent(CameraXLivePreviewActivity.this, TrainingResult.class);
+                        intent.putExtra("totalTrainingTime", totalTrainingTime);
+                        intent.putExtra("groupsOfPose", countGroupsOfPose);
+                        startActivity(intent);
+                        finish();
+                    } else {
+                        // 动作持续数值清空
+                        nowPoseProcessSeconds = 0;
+                        nextPoseButton.callOnClick();
+                    }
+                }
+                if (nowPoseType == 0 && nowPoseProcessSeconds == nowPoseProcessValue + 1 && nowPoseProcessSeconds != 0) {
+                    // 动作组数加一
+                    countGroupsOfPose++;
+                    // 最后一个动作
+                    if (nowPoseIndex == poseEntityList.size() - 1 && !isEnd) {
+                        isEnd = true;
+                        // 跳转到结果界面
+                        Intent intent = new Intent(CameraXLivePreviewActivity.this, TrainingResult.class);
+                        intent.putExtra("totalTrainingTime", totalTrainingTime);
+                        intent.putExtra("groupsOfPose", countGroupsOfPose);
+                        startActivity(intent);
+                        finish();
+                    } else {
+                        // 动作持续数值清空
+                        nowPoseProcessSeconds = 0;
+                        nextPoseButton.callOnClick();
+                    }
+                }
+                mHandler3.postDelayed(this, 100);
+            }
+        };
+        mHandler3.post(r3);
+    }
 
     private String[] getRequiredPermissions() {
         try {

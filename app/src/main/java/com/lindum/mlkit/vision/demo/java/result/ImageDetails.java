@@ -14,7 +14,6 @@ import com.xuexiang.xui.XUI;
  * @date 2022/2/12 22:52
  */
 public class ImageDetails extends AppCompatActivity {
-    private ImageView imageView;
     public static Bitmap bitmap;
 
     @Override
@@ -26,7 +25,7 @@ public class ImageDetails extends AppCompatActivity {
     }
 
     public void init() {
-        imageView = findViewById(R.id.detailsImage);
+        ImageView imageView = findViewById(R.id.detailsImage);
         imageView.setImageBitmap(bitmap);
     }
 }

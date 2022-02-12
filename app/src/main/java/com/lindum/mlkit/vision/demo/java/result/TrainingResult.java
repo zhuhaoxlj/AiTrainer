@@ -60,7 +60,10 @@ public class TrainingResult extends AppCompatActivity {
         List<ResultEntity> resultEntityList = new ArrayList<>();
         for (String tips : resultTips) {
             int index = resultTips.indexOf(tips);
-            ResultEntity temp = new ResultEntity(resultName.get(index), resultTips.get(index), resultImage.get(index), resultImage.get(index));
+            if (tips.length() < 3) {
+                break;
+            }
+            ResultEntity temp = new ResultEntity(resultName.get(index), tips.substring(1, tips.length()), resultImage.get(index), resultImage.get(index));
             resultEntityList.add(temp);
         }
         // 初始化控件
@@ -79,36 +82,7 @@ public class TrainingResult extends AppCompatActivity {
                 startActivity(intent1);
             }
         });
-
-        // 自定义列表添加数据
-//        LayoutInflater layoutInflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-//        LinearLayout resultContainer = findViewById(R.id.resultContainer);
-//        for (String tip : resultTips) {
-//            int index = resultTips.indexOf(tip);
-//            Log.e("tips", tip);
-//            View resultView = layoutInflater.inflate(R.layout.pose_analysis_card, null);
-//            ImageView imageView = resultView.findViewById(R.id.poseResultImage);
-//            imageView.setImageBitmap(resultImage.get(index));
-//            resultContainer.addView(resultView);
-//        }
-//        // 监听图片处理线程的状态,如果处理图片线程结束，加载布局
-//        Handler mHandler = new Handler();
-//        Runnable r = new Runnable() {
-//            @Override
-//            public void run() {
-//                Log.e("Train", processImage.isAlive() + "---");
-//                if (!processImage.isAlive()) {
-//
-//                }
-//                if(processImage.isAlive()){
-//                    mHandler.postDelayed(this, 50);
-//                }
-//            }
-//        };
-//        mHandler.post(r);
-
-
-        // 进度条
+        // 自定义进度条 android 10以上才有效果
         LinearLayout processBar1 = findViewById(R.id.processBar1);
         LinearLayout processBar2 = findViewById(R.id.processBar2);
         LinearLayout processBar3 = findViewById(R.id.processBar3);

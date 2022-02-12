@@ -4651,6 +4651,7 @@ string path_password_strike_through
 string permission_camera_rationale
 string poseName
 string poseProcess
+string posename
 string pref_category_automl
 string pref_category_face_detection
 string pref_category_info
@@ -4716,6 +4717,7 @@ string stfLocationOffMessage
 string stfOfflineMessage
 string stfRetryButtonText
 string stf_retry
+string tips
 string toggle_turn_off
 string toggle_turn_on
 string xui_bottom_behavior

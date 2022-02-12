@@ -1,5 +1,6 @@
 package com.lindum.mlkit.vision.demo.java.result;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.media.Image;
@@ -36,7 +37,7 @@ public class ResultAdapter extends ArrayAdapter<ResultEntity> {
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         ResultEntity resultEntity = getItem(position);
-        View view = LayoutInflater.from(getContext()).inflate(resourceId, parent, false);
+        @SuppressLint("ViewHolder") View view = LayoutInflater.from(getContext()).inflate(resourceId, parent, false);
         ImageView rightPoseImage = view.findViewById(R.id.rightPoseImage);
         ImageView wrongPoseImage = view.findViewById(R.id.wrongPoseImage);
         view.setPadding(5, 5, 5, 5);
