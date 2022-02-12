@@ -135,7 +135,7 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
     // 训练是否结束
     public static boolean isEnd = false;
     // 给截图延时 调整检测截图灵敏度
-    private int delayScreenCapture = 100;
+    private int delayScreenCapture = 10;
 
 
     /**
@@ -218,9 +218,9 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
         poseProcessInfo = findViewById(R.id.poseProcessInfo);
         countdownSecondsTextView = findViewById(R.id.countdownSecondsText);
         //适配安卓11及以下版本的存储权限请求
-        if (Build.VERSION.SDK_INT > 29) {
-            requestExternalStorage(this);
-        }
+//        if (Build.VERSION.SDK_INT > 29) {
+//            requestExternalStorage(this);
+//        }
         // SD 卡根目录
         String sdPath = Environment.getExternalStorageDirectory().getPath();
 //            // 姿态数据工具类

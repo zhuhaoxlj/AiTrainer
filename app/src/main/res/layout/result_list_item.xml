@@ -2,12 +2,16 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:app1="http://schemas.android.com/apk/res-auto"
     android:background="@color/white"
     android:orientation="horizontal">
 
     <TextView
+        android:textSize="20sp"
+        android:gravity="center"
         android:id="@+id/poseResultName"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="PoseName"
         android:textColor="#000000" />
@@ -15,7 +19,7 @@
     <LinearLayout
         android:id="@+id/imageGroup"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="400dp"
         android:layout_below="@+id/poseResultName"
         android:orientation="horizontal">
 
@@ -24,10 +28,17 @@
             android:layout_height="match_parent"
             android:layout_weight="1">
 
-            <ImageView
-                android:id="@+id/wrongPoseImage"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+            <androidx.cardview.widget.CardView
+                android:layout_marginLeft="5dp"
+                app:cardCornerRadius="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:scaleType="fitXY"
+                    android:id="@+id/wrongPoseImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </androidx.cardview.widget.CardView>
         </LinearLayout>
 
         <LinearLayout
@@ -35,10 +46,17 @@
             android:layout_height="match_parent"
             android:layout_weight="1">
 
-            <ImageView
-                android:id="@+id/rightPoseImage"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+            <androidx.cardview.widget.CardView
+                android:layout_marginLeft="5dp"
+                app1:cardCornerRadius="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:scaleType="fitXY"
+                    android:id="@+id/rightPoseImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </androidx.cardview.widget.CardView>
         </LinearLayout>
     </LinearLayout>
 
@@ -48,7 +66,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/imageGroup"
         android:text="肩膀角度大一点"
-        android:textColor="#000000"></TextView>
+        android:textColor="#000000"/>
 
 
 </RelativeLayout>

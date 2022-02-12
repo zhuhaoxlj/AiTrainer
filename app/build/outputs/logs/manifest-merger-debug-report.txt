@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:2:1-74:12
-INJECTED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:2:1-74:12
-INJECTED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:2:1-74:12
-INJECTED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:2:1-74:12
+ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:2:1-75:12
+INJECTED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:2:1-75:12
+INJECTED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:2:1-75:12
+INJECTED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:2:1-75:12
 MERGED from [androidx.multidex:multidex:2.0.1] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\ce8dd2100ffd5b4eae657f5daec65fe0\multidex-2.0.1\AndroidManifest.xml:17:1-22:12
 MERGED from [com.github.bmarrdev:android-DecoView-charting:v1.2] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\b5430ed957ec7f184e2e4e64ba638437\jetified-android-DecoView-charting-v1.2\AndroidManifest.xml:2:1-14:12
 MERGED from [com.github.xuexiangjys:XUI:1.1.8] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\cb3a340231d4295dbef6891df83e60a3\jetified-XUI-1.1.8\AndroidManifest.xml:2:1-24:12
@@ -69,22 +69,22 @@ MERGED from [com.google.android.odml:image:1.0.0-beta1] C:\Users\Administrator\.
 MERGED from [io.github.inflationx:calligraphy3:3.1.1] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\1bdb91a34a106fb240077b81c88e0e0f\jetified-calligraphy3-3.1.1\AndroidManifest.xml:2:1-13:12
 MERGED from [io.github.inflationx:viewpump:2.0.3] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\6250716e4291d5ca020e8ae0a47ea699\jetified-viewpump-2.0.3\AndroidManifest.xml:2:1-11:12
 MERGED from [androidx.annotation:annotation-experimental:1.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\c1bc2009ed393c1281f28af6bb79c366\jetified-annotation-experimental-1.0.0\AndroidManifest.xml:17:1-24:12
-INJECTED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:2:1-74:12
-INJECTED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:2:1-74:12
-INJECTED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:2:1-74:12
+INJECTED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:2:1-75:12
+INJECTED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:2:1-75:12
+INJECTED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:2:1-75:12
 	package
 		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:4:5-43
 		INJECTED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml
 		INJECTED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml
-		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:2:1-74:12
+		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:2:1-75:12
 		INJECTED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml
 	xmlns:tools
 		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:3:5-51
 	android:versionCode
 		INJECTED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml
-		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:2:1-74:12
+		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:2:1-75:12
 		INJECTED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:2:11-69
@@ -277,7 +277,7 @@ ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:29:5-65
 	android:name
 		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:29:22-62
 application
-ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:31:5-67:19
+ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:31:5-68:19
 MERGED from [com.github.bmarrdev:android-DecoView-charting:v1.2] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\b5430ed957ec7f184e2e4e64ba638437\jetified-android-DecoView-charting-v1.2\AndroidManifest.xml:11:5-12:19
 MERGED from [com.github.bmarrdev:android-DecoView-charting:v1.2] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\b5430ed957ec7f184e2e4e64ba638437\jetified-android-DecoView-charting-v1.2\AndroidManifest.xml:11:5-12:19
 MERGED from [com.github.xuexiangjys:XUI:1.1.8] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\cb3a340231d4295dbef6891df83e60a3\jetified-XUI-1.1.8\AndroidManifest.xml:9:5-22:19
@@ -350,46 +350,50 @@ ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:46:9-48
 		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:48:13-49
 	android:name
 		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:47:13-64
+activity#com.lindum.mlkit.vision.demo.java.result.ImageDetails
+ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:50:9-62
+	android:name
+		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:50:19-59
 activity#com.lindum.mlkit.vision.demo.java.result.TrainingResult
-ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:50:9-53:40
+ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:51:9-54:47
 	android:exported
 		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:53:13-37
 	android:theme
-		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:51:13-44
+		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:54:13-44
 	android:name
 		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:52:13-55
 activity#com.lindum.mlkit.vision.demo.java.CameraXLivePreviewActivity
-ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:54:9-62:20
+ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:55:9-63:20
 	android:exported
-		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:56:13-36
+		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:57:13-36
 	android:theme
-		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:57:13-44
+		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:58:13-44
 	android:name
-		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:55:13-60
+		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:56:13-60
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:58:13-61:29
+ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:59:13-62:29
 action#android.intent.action.MAIN
-ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:59:17-69
+ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:60:17-69
 	android:name
-		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:59:25-66
+		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:60:25-66
 category#android.intent.category.LAUNCHER
-ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:60:17-77
+ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:61:17-77
 	android:name
-		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:60:27-74
+		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:61:27-74
 activity#com.lindum.mlkit.vision.demo.preference.SettingsActivity
-ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:63:9-65:40
+ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:64:9-66:40
 	android:exported
-		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:65:13-37
+		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:66:13-37
 	android:name
-		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:64:13-84
+		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:65:13-84
 queries
-ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:68:5-72:15
+ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:69:5-73:15
 intent#action:name:android.media.action.IMAGE_CAPTURE
-ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:69:9-71:18
+ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:70:9-72:18
 action#android.media.action.IMAGE_CAPTURE
-ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:70:13-73
+ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:71:13-73
 	android:name
-		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:70:21-70
+		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:71:21-70
 provider#com.xuexiang.xui.XUIInitProvider
 ADDED from [com.github.xuexiangjys:XUI:1.1.8] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\cb3a340231d4295dbef6891df83e60a3\jetified-XUI-1.1.8\AndroidManifest.xml:10:9-14:43
 	android:authorities

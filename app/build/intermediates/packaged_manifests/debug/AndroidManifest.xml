@@ -59,6 +59,7 @@
             android:name="com.google.mlkit.vision.DEPENDENCIES"
             android:value="barcode,face,ocr,ica" />
 
+        <activity android:name="com.lindum.mlkit.vision.demo.java.result.ImageDetails" />
         <activity
             android:name="com.lindum.mlkit.vision.demo.java.result.TrainingResult"
             android:exported="false"

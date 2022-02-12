@@ -5,6 +5,9 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.media.Image;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
@@ -14,6 +17,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -63,6 +67,19 @@ public class TrainingResult extends AppCompatActivity {
         listView = findViewById(R.id.resultList);
         ResultAdapter resultAdapter = new ResultAdapter(this, R.layout.result_list_item, resultEntityList);
         listView.setAdapter(resultAdapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                ImageView imageView = view.findViewById(R.id.wrongPoseImage);
+                imageView.setDrawingCacheEnabled(true);
+                Bitmap bitmap = Bitmap.createBitmap(imageView.getDrawingCache());
+                Intent intent1 = new Intent(TrainingResult.this, ImageDetails.class);
+                ImageDetails.bitmap = bitmap;
+                imageView.setDrawingCacheEnabled(false);
+                startActivity(intent1);
+            }
+        });
+
         // 自定义列表添加数据
 //        LayoutInflater layoutInflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 //        LinearLayout resultContainer = findViewById(R.id.resultContainer);

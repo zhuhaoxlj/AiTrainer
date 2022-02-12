@@ -3758,6 +3758,7 @@ id design_menu_item_action_area
 id design_menu_item_action_area_stub
 id design_menu_item_text
 id design_navigation_view
+id detailsImage
 id dialog_button
 id dialog_view
 id dimensions
@@ -4338,6 +4339,7 @@ layout design_text_input_end_icon
 layout design_text_input_start_icon
 layout gcv_layout_image
 layout gcv_layout_title
+layout image_details
 layout login
 layout look_explanation
 layout marqueen_layout_complex_view

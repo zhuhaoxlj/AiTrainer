@@ -47,10 +47,11 @@
             android:name="com.google.mlkit.vision.DEPENDENCIES"
             android:value="barcode,face,ocr,ica" />
 
+        <activity android:name=".java.result.ImageDetails" />
         <activity
-            android:theme="@style/AppTheme"
             android:name=".java.result.TrainingResult"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".java.CameraXLivePreviewActivity"
             android:exported="true"

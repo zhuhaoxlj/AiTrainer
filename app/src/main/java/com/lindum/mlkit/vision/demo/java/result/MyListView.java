@@ -19,6 +19,8 @@ public class MyListView extends ListView {
     public MyListView(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
+
+    //方式一:把listview的高度设置为最大值.这样listview全部加载了
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         int expandSpec = MeasureSpec.makeMeasureSpec(Integer.MAX_VALUE >> 2,
                 MeasureSpec.AT_MOST);

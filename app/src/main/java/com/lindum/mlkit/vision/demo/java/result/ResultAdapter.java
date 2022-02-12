@@ -1,7 +1,9 @@
 package com.lindum.mlkit.vision.demo.java.result;
 
 import android.content.Context;
+import android.content.Intent;
 import android.media.Image;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +16,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.lindum.mlkit.vision.demo.R;
+import com.lindum.mlkit.vision.demo.java.CameraXLivePreviewActivity;
 
 import java.util.List;
 
@@ -36,6 +39,7 @@ public class ResultAdapter extends ArrayAdapter<ResultEntity> {
         View view = LayoutInflater.from(getContext()).inflate(resourceId, parent, false);
         ImageView rightPoseImage = view.findViewById(R.id.rightPoseImage);
         ImageView wrongPoseImage = view.findViewById(R.id.wrongPoseImage);
+        view.setPadding(5, 5, 5, 5);
         TextView poseName = view.findViewById(R.id.poseResultName);
         TextView poseTips = view.findViewById(R.id.poseResultTips);
         rightPoseImage.setImageBitmap(resultEntity.getRightPoseImage());
