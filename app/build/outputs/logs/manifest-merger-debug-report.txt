@@ -350,14 +350,14 @@ ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:46:9-48
 		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:48:13-49
 	android:name
 		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:47:13-64
-activity#com.lindum.mlkit.vision.demo.java.TrainingResult
+activity#com.lindum.mlkit.vision.demo.java.result.TrainingResult
 ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:50:9-53:40
 	android:exported
 		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:53:13-37
 	android:theme
 		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:51:13-44
 	android:name
-		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:52:13-48
+		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:52:13-55
 activity#com.lindum.mlkit.vision.demo.java.CameraXLivePreviewActivity
 ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:54:9-62:20
 	android:exported

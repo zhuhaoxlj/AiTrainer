@@ -9,11 +9,8 @@ import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Matrix;
-import android.graphics.PointF;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Build.VERSION;
@@ -59,26 +56,17 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.TypeReference;
 import com.google.android.gms.common.annotation.KeepName;
-import com.google.android.gms.tasks.Task;
 import com.google.mlkit.common.MlKitException;
-import com.google.mlkit.vision.common.InputImage;
-import com.google.mlkit.vision.pose.Pose;
-import com.google.mlkit.vision.pose.PoseDetection;
-import com.google.mlkit.vision.pose.PoseDetector;
-import com.google.mlkit.vision.pose.PoseLandmark;
-import com.google.mlkit.vision.pose.accurate.AccuratePoseDetectorOptions;
 import com.lindum.mlkit.vision.demo.CameraXViewModel;
 import com.lindum.mlkit.vision.demo.GraphicOverlay;
 import com.lindum.mlkit.vision.demo.QuickShot;
 import com.lindum.mlkit.vision.demo.R;
 import com.lindum.mlkit.vision.demo.VisionImageProcessor;
-import com.lindum.mlkit.vision.demo.java.posedetector.DrawLandmarkTools;
-import com.lindum.mlkit.vision.demo.java.posedetector.PoseAngleDetector;
 import com.lindum.mlkit.vision.demo.java.posedetector.PoseDataUtils;
 import com.lindum.mlkit.vision.demo.java.posedetector.PoseDetectorProcessor;
 import com.lindum.mlkit.vision.demo.java.posedetector.PoseEntity;
-import com.lindum.mlkit.vision.demo.java.posedetector.PosePart;
 import com.lindum.mlkit.vision.demo.java.posedetector.ProcessImage;
+import com.lindum.mlkit.vision.demo.java.result.TrainingResult;
 import com.lindum.mlkit.vision.demo.preference.PreferenceUtils;
 import com.lindum.mlkit.vision.demo.preference.SettingsActivity;
 
@@ -90,13 +78,10 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.MessageFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -145,11 +130,12 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
     public static List<PoseEntity> poseEntityList;
     public static String nowPoseName = "AiTrainer";
     public static int nowPoseIndex = 0;
-    public static int countdownSeconds = 10;
+    // 首页倒计时
+    public static int countdownSeconds = 3;
     // 训练是否结束
     public static boolean isEnd = false;
     // 给截图延时 调整检测截图灵敏度
-    private int delayScreenCapture = 0;
+    private int delayScreenCapture = 100;
 
 
     /**
@@ -294,7 +280,7 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
 //
 //        mHandler.postDelayed(r, 100);//延时100毫秒
 
-
+        // 跳转至结果界面
         Button button = findViewById(R.id.analysisResult);
         button.setOnClickListener(new View.OnClickListener() {
             @Override

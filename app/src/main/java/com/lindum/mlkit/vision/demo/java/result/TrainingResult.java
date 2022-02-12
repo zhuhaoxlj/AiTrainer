@@ -1,4 +1,4 @@
-package com.lindum.mlkit.vision.demo.java;
+package com.lindum.mlkit.vision.demo.java.result;
 
 import android.content.Context;
 import android.content.Intent;
@@ -16,7 +16,9 @@ import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.RelativeLayout;
+import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
 import androidx.annotation.RequiresApi;
@@ -31,14 +33,17 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author Administrator
  * @date 2022/1/27 8:25
  */
 public class TrainingResult extends AppCompatActivity {
+    public static List<String> resultName = new ArrayList<>();
     public static List<Bitmap> resultImage = new ArrayList<>();
     public static List<String> resultTips = new ArrayList<>();
+    private ListView listView;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -48,20 +53,27 @@ public class TrainingResult extends AppCompatActivity {
 
         Intent intent = getIntent();
 
-
-        LayoutInflater layoutInflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-
-
-
-        LinearLayout resultContainer = findViewById(R.id.resultContainer);
-        for (String tip : resultTips) {
-            int index = resultTips.indexOf(tip);
-            Log.e("tips",tip);
-            View resultView = layoutInflater.inflate(R.layout.pose_analysis_card, null);
-            ImageView imageView = resultView.findViewById(R.id.poseResultImage);
-            imageView.setImageBitmap(resultImage.get(index));
-            resultContainer.addView(resultView);
+        List<ResultEntity> resultEntityList = new ArrayList<>();
+        for (String tips : resultTips) {
+            int index = resultTips.indexOf(tips);
+            ResultEntity temp = new ResultEntity(resultName.get(index), resultTips.get(index), resultImage.get(index), resultImage.get(index));
+            resultEntityList.add(temp);
         }
+        // 初始化控件
+        listView = findViewById(R.id.resultList);
+        ResultAdapter resultAdapter = new ResultAdapter(this, R.layout.result_list_item, resultEntityList);
+        listView.setAdapter(resultAdapter);
+        // 自定义列表添加数据
+//        LayoutInflater layoutInflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+//        LinearLayout resultContainer = findViewById(R.id.resultContainer);
+//        for (String tip : resultTips) {
+//            int index = resultTips.indexOf(tip);
+//            Log.e("tips", tip);
+//            View resultView = layoutInflater.inflate(R.layout.pose_analysis_card, null);
+//            ImageView imageView = resultView.findViewById(R.id.poseResultImage);
+//            imageView.setImageBitmap(resultImage.get(index));
+//            resultContainer.addView(resultView);
+//        }
 //        // 监听图片处理线程的状态,如果处理图片线程结束，加载布局
 //        Handler mHandler = new Handler();
 //        Runnable r = new Runnable() {

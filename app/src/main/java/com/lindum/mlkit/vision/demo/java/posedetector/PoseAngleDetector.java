@@ -241,5 +241,4 @@ public class PoseAngleDetector {
         angle = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue(); // 取两位小数
         return (int) angle;
     }
-
 }

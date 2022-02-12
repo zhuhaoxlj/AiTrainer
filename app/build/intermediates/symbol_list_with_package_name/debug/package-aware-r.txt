@@ -3863,6 +3863,7 @@ id ifRoom
 id ignore
 id ignoreRequest
 id image
+id imageGroup
 id imageView
 id info
 id invisible
@@ -4021,6 +4022,8 @@ id poseInfo
 id poseName
 id poseProcessInfo
 id poseResultImage
+id poseResultName
+id poseResultTips
 id position
 id postLayout
 id preButton
@@ -4044,9 +4047,11 @@ id rectangles
 id recyclerView
 id relativeLayout
 id resultContainer
+id resultList
 id resultTitleBar
 id reverseSawtooth
 id right
+id rightPoseImage
 id rightToLeft
 id right_center
 id right_icon
@@ -4240,6 +4245,7 @@ id withText
 id withinBounds
 id wrap
 id wrap_content
+id wrongPoseImage
 id xui_tab_segment_item_id
 id xui_view_can_not_cache_tag
 id year
@@ -4400,6 +4406,7 @@ layout pre_button
 layout preview_activity_image_photo
 layout preview_activity_video_player
 layout preview_fragment_image_photo
+layout result_list_item
 layout row_item
 layout select_dialog_item_material
 layout select_dialog_multichoice_material

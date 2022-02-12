@@ -4,6 +4,7 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Point;
 import android.graphics.PointF;
 import android.graphics.Rect;
 import android.graphics.RectF;
@@ -174,17 +175,49 @@ public class DrawLandmarkTools {
         return bitmap;
     }
 
-//    public Bitmap cutImage(List<PoseLandmark> landmarkList) {
-//        float maxX = 0;
-//        float maxY = 0;
-//        float minX = 0;
-//        float minY = 0;
-//        for (PoseLandmark poseLandmark : landmarkList) {
-//            maxX = Math.max(maxX, poseLandmark.getPosition().x);
-//            maxY = Math.max(maxY, poseLandmark.getPosition().y);
-//            minX = Math.min(minX, poseLandmark.getPosition().x);
-//            minY = Math.min(minY, poseLandmark.getPosition().y);
-//        }
-////        Log.e()
-//    }
+    public Bitmap cutImage(List<PoseLandmark> landmarkList, Bitmap bitmap) {
+        int imageWidth = bitmap.getWidth();
+        int imageHeight = bitmap.getHeight();
+        float maxY = 0F;
+        float maxX = 0F;
+        float minX = 99999F;
+        float minY = 99999F;
+        for (PoseLandmark poseLandmark : landmarkList) {
+            maxX = Math.max(maxX, poseLandmark.getPosition().x);
+            maxY = Math.max(maxY, poseLandmark.getPosition().y);
+            minX = Math.min(minX, poseLandmark.getPosition().x);
+            minY = Math.min(minY, poseLandmark.getPosition().y);
+        }
+        minX = minX - 80 < 0 ? 0 : minX - 80;
+        minY = minY - 80 < 0 ? 0 : minY - 80;
+        maxX = maxX + 80 > imageHeight ? imageHeight : maxX + 80;
+        maxY = maxY + 80 > imageWidth ? imageWidth : maxY + 80;
+        Log.e("Cut Max", maxX + "," + maxY);
+        Log.e("Cut right", landmarkList.get(31).getPosition().x + "," + landmarkList.get(31).getPosition().y);
+        Point point = new Point();
+        point.x = (int) minX;
+        point.y = (int) minY;
+        Log.e("Cut Image", imageWidth + "," + imageHeight);
+        Log.e("Cut min", maxY + "-" + minY);
+        int height = (int) (maxY - minY);
+        int width = (int) (maxX - minX);
+        Log.e("Cut width", width + "");
+        Log.e("Cut height", height + "");
+        if (width < 0 || height < 0) {
+            return null;
+        }
+        return cropBitmap(bitmap, point, width + 80 > imageWidth ? width : width + 80, height + 80 > imageHeight ? height : height + 80);
+    }
+
+    /**
+     * 裁剪
+     *
+     * @param bitmap 原图
+     * @return 裁剪后的图像
+     */
+    private Bitmap cropBitmap(Bitmap bitmap, Point point, int width, int height) {
+        width = width + point.x > bitmap.getWidth() ? bitmap.getWidth() - point.x : width;
+        height = height + point.y > bitmap.getHeight() ? bitmap.getHeight() - point.y : height;
+        return Bitmap.createBitmap(bitmap, point.x, point.y, width, height, null, false);
+    }
 }

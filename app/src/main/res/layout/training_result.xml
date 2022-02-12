@@ -16,10 +16,10 @@
         android:layout_height="match_parent">
 
         <LinearLayout
-            android:background="@color/white"
             android:id="@+id/resultContainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/white"
             android:orientation="vertical">
 
             <LinearLayout
@@ -31,6 +31,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="300dp" />
             </LinearLayout>
+
+            <com.lindum.mlkit.vision.demo.java.result.MyListView
+                android:id="@+id/resultList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
         </LinearLayout>
+
+
     </ScrollView>
 </LinearLayout>
