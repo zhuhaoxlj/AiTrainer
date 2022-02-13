@@ -14,7 +14,7 @@
         app:layout_constraintEnd_toStartOf="@+id/control"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <com.lindum.mlkit.vision.demo.GraphicOverlay
+    <com.lindum.mlkit.vision.dev.GraphicOverlay
         android:id="@+id/graphic_overlay"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

@@ -16,7 +16,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
     <!--    mlkit 绘制图层  -->
-    <com.lindum.mlkit.vision.demo.GraphicOverlay
+    <com.lindum.mlkit.vision.dev.GraphicOverlay
         android:id="@+id/graphic_overlay"
         android:layout_width="0dp"
         android:layout_height="0dp"

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.lindum.mlkit.vision.demo"
+    package="com.lindum.mlkit.vision.dev"
     android:installLocation="auto">
     <!-- CameraX libraries require minSdkVersion 21, while this quickstart app
     supports low to 16. Needs to use overrideLibrary to make the merger tool
@@ -27,7 +27,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
-    <!--    android:name="com.lindum.mlkit.vision.demo.java.CameraXLivePreviewActivity"-->
+    <!--    android:name="com.lindum.mlkit.vision.demo.CameraXLivePreviewActivity"-->
     <application
         android:name="androidx.multidex.MultiDexApplication"
         android:icon="@drawable/train"
@@ -47,13 +47,13 @@
             android:name="com.google.mlkit.vision.DEPENDENCIES"
             android:value="barcode,face,ocr,ica" />
 
-        <activity android:name=".java.result.ImageDetails" />
+        <activity android:name="com.lindum.mlkit.vision.dev.result.ImageDetails" />
         <activity
-            android:name=".java.result.TrainingResult"
+            android:name="com.lindum.mlkit.vision.dev.result.TrainingResult"
             android:exported="false"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".java.CameraXLivePreviewActivity"
+            android:name="com.lindum.mlkit.vision.dev.CameraXLivePreviewActivity"
             android:exported="true"
             android:theme="@style/AppTheme">
             <intent-filter>
@@ -62,7 +62,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.lindum.mlkit.vision.demo.preference.SettingsActivity"
+            android:name="com.lindum.mlkit.vision.dev.preference.SettingsActivity"
             android:exported="false" />
 
     </application>

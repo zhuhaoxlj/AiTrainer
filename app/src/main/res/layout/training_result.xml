@@ -32,7 +32,7 @@
                     android:layout_height="300dp" />
             </LinearLayout>
 
-            <com.lindum.mlkit.vision.demo.java.result.MyListView
+            <com.lindum.mlkit.vision.dev.result.MyListView
                 android:id="@+id/resultList"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />

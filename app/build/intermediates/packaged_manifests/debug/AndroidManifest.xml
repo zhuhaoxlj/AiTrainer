@@ -36,7 +36,7 @@
         </intent>
     </queries>
 
-    <!-- android:name="com.lindum.mlkit.vision.demo.java.CameraXLivePreviewActivity" -->
+    <!-- android:name="com.lindum.mlkit.vision.demo.CameraXLivePreviewActivity" -->
     <application
         android:name="androidx.multidex.MultiDexApplication"
         android:appComponentFactory="androidx.core.app.CoreComponentFactory"
@@ -59,13 +59,13 @@
             android:name="com.google.mlkit.vision.DEPENDENCIES"
             android:value="barcode,face,ocr,ica" />
 
-        <activity android:name="com.lindum.mlkit.vision.demo.java.result.ImageDetails" />
+        <activity android:name="com.lindum.mlkit.vision.dev.result.ImageDetails" />
         <activity
-            android:name="com.lindum.mlkit.vision.demo.java.result.TrainingResult"
+            android:name="com.lindum.mlkit.vision.dev.result.TrainingResult"
             android:exported="false"
             android:theme="@style/AppTheme" />
         <activity
-            android:name="com.lindum.mlkit.vision.demo.java.CameraXLivePreviewActivity"
+            android:name="com.lindum.mlkit.vision.dev.CameraXLivePreviewActivity"
             android:exported="true"
             android:theme="@style/AppTheme" >
             <intent-filter>
@@ -75,7 +75,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.lindum.mlkit.vision.demo.preference.SettingsActivity"
+            android:name="com.lindum.mlkit.vision.dev.preference.SettingsActivity"
             android:exported="false" />
 
         <provider
