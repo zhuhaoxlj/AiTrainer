@@ -16,6 +16,14 @@
         <entry key="..\:/Project/Android/AiTrainer/app/src/main/res/layout/image_details.xml" value="0.3536458333333333" />
         <entry key="..\:/Project/Android/AiTrainer/app/src/main/res/layout/login.xml" value="0.3536458333333333" />
         <entry key="..\:/Project/Android/AiTrainer/app/src/main/res/layout/look_explanation.xml" value="0.3536458333333333" />
+        <entry key="..\:/Project/Android/AiTrainer/app/src/main/res/layout/main/layout/circle_button.xml" value="0.22335526315789472" />
+        <entry key="..\:/Project/Android/AiTrainer/app/src/main/res/layout/main/layout/fragment_jptabbar.xml" value="0.22335526315789472" />
+        <entry key="..\:/Project/Android/AiTrainer/app/src/main/res/layout/main/layout/home_page.xml" value="0.22335526315789472" />
+        <entry key="..\:/Project/Android/AiTrainer/app/src/main/res/layout/main/layout/page1.xml" value="0.22335526315789472" />
+        <entry key="..\:/Project/Android/AiTrainer/app/src/main/res/layout/main/layout/page2.xml" value="0.22335526315789472" />
+        <entry key="..\:/Project/Android/AiTrainer/app/src/main/res/layout/main/layout/page3.xml" value="0.18" />
+        <entry key="..\:/Project/Android/AiTrainer/app/src/main/res/layout/main/layout/page4.xml" value="0.22335526315789472" />
+        <entry key="..\:/Project/Android/AiTrainer/app/src/main/res/layout/main/layout/start_page.xml" value="0.22" />
         <entry key="..\:/Project/Android/AiTrainer/app/src/main/res/layout/my_process_bar.xml" value="0.25" />
         <entry key="..\:/Project/Android/AiTrainer/app/src/main/res/layout/next_button.xml" value="0.196875" />
         <entry key="..\:/Project/Android/AiTrainer/app/src/main/res/layout/pose_analysis_card.xml" value="0.3536458333333333" />
@@ -28,8 +36,10 @@
         <entry key="..\:/Project/Android/AiTrainer/app/src/main/res/layout/row_item.xml" value="0.3536458333333333" />
         <entry key="..\:/Project/Android/AiTrainer/app/src/main/res/layout/settings_style.xml" value="0.196875" />
         <entry key="..\:/Project/Android/AiTrainer/app/src/main/res/layout/spinner_style.xml" value="0.3536458333333333" />
+        <entry key="..\:/Project/Android/AiTrainer/app/src/main/res/layout/start_page.xml" value="0.3536458333333333" />
         <entry key="..\:/Project/Android/AiTrainer/app/src/main/res/layout/toggle_style.xml" value="0.3536458333333333" />
         <entry key="..\:/Project/Android/AiTrainer/app/src/main/res/layout/training_result.xml" value="0.3536458333333333" />
+        <entry key="..\:/Project/Android/AiTrainer/app/src/main/res/layout/xml/start.xml" value="0.18697916666666667" />
         <entry key="..\:/Project/Android/AiTrainer/app/src/main/res/menu/camera_button_menu.xml" value="0.3536458333333333" />
         <entry key="..\:/Project/Android/AiTrainer/app/src/main/res/xml/preference_live_preview_quickstart.xml" value="0.34293193717277487" />
         <entry key="..\:/Project/Android/AiTrainer/app/src/main/res/xml/preference_still_image.xml" value="0.3536458333333333" />

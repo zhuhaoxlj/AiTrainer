@@ -1,8 +1,17 @@
 apply plugin: 'com.android.application'
 
+
 android {
     compileSdkVersion 30
-
+    sourceSets {
+        main {
+            res.srcDirs = [
+                    'src/main/res/layout/main',
+                    'src/main/res/layout',
+                    'src/main/res'
+            ]
+        }
+    }
     defaultConfig {
         applicationId 'com.lindum.mlkit.vision.demo'
         minSdkVersion 19
@@ -51,6 +60,10 @@ repositories {
 }
 
 dependencies {
+    // Logger
+    implementation 'com.orhanobut:logger:2.2.0'
+    // Tabbar
+    implementation 'com.jpeng:JPTabBar:1.4.0'
     //DecoView
     implementation 'com.github.bmarrdev:android-DecoView-charting:v1.2'
     // XUI

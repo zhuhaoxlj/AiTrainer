@@ -66,6 +66,7 @@ import com.lindum.mlkit.vision.dev.preference.PreferenceUtils;
 import com.lindum.mlkit.vision.dev.preference.SettingsActivity;
 
 import com.google.mlkit.vision.pose.PoseDetectorOptionsBase;
+import com.xuexiang.xui.XUI;
 
 
 import org.jsoup.Jsoup;
@@ -190,7 +191,7 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
                     .show();
             return;
         }
-
+        XUI.initTheme(this);
         if (savedInstanceState != null) {
             selectedModel = savedInstanceState.getString(STATE_SELECTED_MODEL, OBJECT_DETECTION);
         }

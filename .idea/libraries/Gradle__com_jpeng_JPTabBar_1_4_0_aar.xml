@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="Gradle: com.jpeng:JPTabBar:1.4.0@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/2ed3d62a4ae2136cb77a4b56249f0539/jetified-JPTabBar-1.4.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/2ed3d62a4ae2136cb77a4b56249f0539/jetified-JPTabBar-1.4.0/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/2ed3d62a4ae2136cb77a4b56249f0539/jetified-JPTabBar-1.4.0/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.jpeng/JPTabBar/1.4.0/4a7970a052717db9503111ca7e245dd574f7045c/JPTabBar-1.4.0-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.jpeng/JPTabBar/1.4.0/696d615d246b7222d59ddfda49588024a3254160/JPTabBar-1.4.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

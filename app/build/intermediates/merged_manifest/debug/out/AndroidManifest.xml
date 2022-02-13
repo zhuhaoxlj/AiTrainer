@@ -63,8 +63,9 @@
             android:name="com.lindum.mlkit.vision.dev.result.TrainingResult"
             android:exported="false"
             android:theme="@style/AppTheme" />
+        <activity android:name="com.lindum.mlkit.vision.dev.CameraXLivePreviewActivity" />
         <activity
-            android:name="com.lindum.mlkit.vision.dev.CameraXLivePreviewActivity"
+            android:name="com.lindum.mlkit.vision.dev.view.HomePage"
             android:exported="true"
             android:theme="@style/AppTheme" >
             <intent-filter>

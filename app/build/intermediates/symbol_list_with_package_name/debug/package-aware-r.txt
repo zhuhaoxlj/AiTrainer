@@ -107,6 +107,11 @@ array pref_entries_values_pose_detector_performance_mode
 array pref_entry_values_face_detector_performance_mode
 array pref_entry_values_pose_detector_performance_mode
 attr AutoFitTextViewStyle
+attr BadgeColor
+attr BadgeHorizonalMargin
+attr BadgePadding
+attr BadgeTextSize
+attr BadgeVerticalMargin
 attr BannerLayoutStyle
 attr CircleProgressViewStyle
 attr ClearEditTextStyle
@@ -130,7 +135,22 @@ attr SmoothCheckBoxStyle
 attr StatefulLayoutStyle
 attr StatusViewStyle
 attr SwitchIconViewStyle
+attr TabAnimate
+attr TabGradientEnable
+attr TabIconFilter
+attr TabIconSize
+attr TabMargin
+attr TabMiddleBottomDis
+attr TabMiddleHMargin
+attr TabMiddleView
+attr TabNormalColor
+attr TabPageAnimateEnable
+attr TabPressAnimateEnable
 attr TabSegmentStyle
+attr TabSelectBg
+attr TabSelectColor
+attr TabTextSize
+attr TabTypeface
 attr TitleBarStyle
 attr ValidatorEditTextStyle
 attr VerifyCodeEditTextStyle
@@ -3559,7 +3579,9 @@ id DRAWABLE_RESOURCE
 id DecelerateInterpolator
 id FUNCTION
 id Fill
+id Flip
 id ITALIC
+id Jump
 id LEFT
 id LEFT_BOTTOM
 id LEFT_RIGHT
@@ -3569,17 +3591,21 @@ id LinearInterpolator
 id META
 id NORMAL
 id NO_DEBUG
+id None
 id OvershootInterpolator
 id RIGHT
 id RIGHT_BOTTOM
 id RIGHT_LEFT
 id RIGHT_TOP
 id Right
+id Rotate
 id SHIFT
 id SHOW_ALL
 id SHOW_PATH
 id SHOW_PROGRESS
 id SYM
+id Scale
+id Scale2
 id TL_BR
 id TOP_BOTTOM
 id TOP_END
@@ -4106,6 +4132,7 @@ id shortcut
 id showCustom
 id showHome
 id showTitle
+id sib_the_most_comlex_usage
 id simpleRipple
 id sin
 id single
@@ -4135,6 +4162,7 @@ id stProgress
 id standard
 id start
 id startHorizontal
+id startPageImage
 id startToEnd
 id startVertical
 id staticLayout
@@ -4151,6 +4179,7 @@ id sweep
 id switchBtn
 id switcher
 id tabMode
+id tabbar
 id tag_accessibility_actions
 id tag_accessibility_clickable_spans
 id tag_accessibility_heading
@@ -4321,6 +4350,7 @@ layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_settings
 layout activity_vision_camerax_live_preview
+layout circle_button
 layout custom_dialog
 layout design_bottom_navigation_item
 layout design_bottom_sheet_dialog
@@ -4339,6 +4369,7 @@ layout design_text_input_end_icon
 layout design_text_input_start_icon
 layout gcv_layout_image
 layout gcv_layout_title
+layout home_page
 layout image_details
 layout login
 layout look_explanation
@@ -4400,6 +4431,10 @@ layout notification_template_custom_big
 layout notification_template_icon_group
 layout notification_template_part_chronometer
 layout notification_template_part_time
+layout page1
+layout page2
+layout page3
+layout page4
 layout pose_analysis_card
 layout pose_bank
 layout pose_info
@@ -4415,6 +4450,7 @@ layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material
 layout settings_style
 layout spinner_style
+layout start_page
 layout support_simple_spinner_dropdown_item
 layout test_action_chip
 layout test_chip_zero_corner_radius
@@ -4499,9 +4535,15 @@ layout xui_layout_verify_code
 layout xui_layout_xtoast
 menu camera_button_menu
 mipmap change_camera
+mipmap home
+mipmap home_gray
 mipmap ic_launcher
 mipmap left_arrow
+mipmap library
+mipmap library_gray
 mipmap next
+mipmap personal
+mipmap personal_gray
 mipmap pose_result_image
 mipmap pre
 mipmap q1
@@ -4510,6 +4552,10 @@ mipmap q3
 mipmap q4
 mipmap q5
 mipmap right_arrow
+mipmap social
+mipmap social_gray
+mipmap start_page_image
+mipmap training
 plurals mtrl_badge_content_description
 string abc_action_bar_home_description
 string abc_action_bar_up_description
@@ -5679,6 +5725,7 @@ styleable HorizontalProgressView hpv_animate_type hpv_corner_radius hpv_end_colo
 styleable IconImageView iiv_icon_res iiv_icon_scale iiv_is_show
 styleable ImageFilterView altSrc brightness contrast crossfade overlay round roundPercent saturation warmth
 styleable Insets paddingBottomSystemWindowInsets paddingLeftSystemWindowInsets paddingRightSystemWindowInsets paddingTopSystemWindowInsets
+styleable JPTabBar BadgeColor BadgeHorizonalMargin BadgePadding BadgeTextSize BadgeVerticalMargin TabAnimate TabGradientEnable TabIconFilter TabIconSize TabMargin TabMiddleBottomDis TabMiddleHMargin TabMiddleView TabNormalColor TabPageAnimateEnable TabPressAnimateEnable TabSelectBg TabSelectColor TabTextSize TabTypeface
 styleable KeyAttribute android_alpha android_transformPivotX android_transformPivotY android_translationX android_translationY android_scaleX android_scaleY android_rotation android_rotationX android_rotationY android_translationZ android_elevation curveFit framePosition motionProgress motionTarget transitionEasing transitionPathRotate
 styleable KeyCycle android_alpha android_translationX android_translationY android_scaleX android_scaleY android_rotation android_rotationX android_rotationY android_translationZ android_elevation curveFit framePosition motionProgress motionTarget transitionEasing transitionPathRotate waveOffset wavePeriod waveShape waveVariesBy
 styleable KeyFrame
