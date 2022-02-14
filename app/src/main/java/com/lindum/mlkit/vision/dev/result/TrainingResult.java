@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -23,6 +24,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.lindum.mlkit.vision.dev.R;
 import com.sxu.shadowdrawable.ShadowDrawable;
+import com.xuexiang.xui.widget.progress.CircleProgressView;
+import com.xuexiang.xui.widget.progress.HorizontalProgressView;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -30,24 +33,51 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 /**
  * @author Administrator
  * @date 2022/1/27 8:25
  */
-public class TrainingResult extends AppCompatActivity {
+public class TrainingResult extends AppCompatActivity implements HorizontalProgressView.HorizontalProgressUpdateListener, CircleProgressView.CircleProgressUpdateListener {
     public static List<String> resultName = new ArrayList<>();
     public static List<Bitmap> resultImage = new ArrayList<>();
     public static List<String> resultTips = new ArrayList<>();
     private ListView listView;
+    @BindView(R.id.progressView_circle_main)
+    CircleProgressView progressViewCircleMain;
+    @BindView(R.id.progress_text_main)
+    TextView progressTextMain;
+    // 运动时长
+    @BindView(R.id.hpv_time)
+    HorizontalProgressView hpvTime;
+    @BindView(R.id.progress_text_time)
+    TextView progressTextTime;
+    // 卡路里
+    @BindView(R.id.hpv_cal)
+    HorizontalProgressView hpvCal;
+    @BindView(R.id.progress_text_cal)
+    TextView progressTextCal;
+    // 动作组数
+    @BindView(R.id.hpv_group)
+    HorizontalProgressView hpvGroup;
+    @BindView(R.id.progress_text_group)
+    TextView progressTextGroup;
+
+    // 错误组数
+    @BindView(R.id.hpv_wrong)
+    HorizontalProgressView hpvWrong;
+    @BindView(R.id.progress_text_wrong)
+    TextView progressTextWrong;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.training_result);
-
+        ButterKnife.bind(this);
         Intent intent = getIntent();
-
         List<ResultEntity> resultEntityList = new ArrayList<>();
         for (String tips : resultTips) {
             int index = resultTips.indexOf(tips);
@@ -73,39 +103,25 @@ public class TrainingResult extends AppCompatActivity {
                 startActivity(intent1);
             }
         });
-        // 自定义进度条 android 10以上才有效果
-        LinearLayout processBar1 = findViewById(R.id.processBar1);
-        LinearLayout processBar2 = findViewById(R.id.processBar2);
-        LinearLayout processBar3 = findViewById(R.id.processBar3);
-        LinearLayout processBar4 = findViewById(R.id.processBar4);
 
-        /* 这里要用到父容器的管理器 */
-        RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) processBar1.getLayoutParams();
-        layoutParams.height = 825 / 2;
-        Log.e("TEST", processBar2.getMeasuredHeight() + "");
-        ViewTreeObserver viewTreeObserver = processBar2.getViewTreeObserver();
-        viewTreeObserver.addOnPreDrawListener(() -> {
-            int height = processBar2.getMeasuredHeight();
-            int width = processBar2.getMeasuredWidth();
-            Log.e("TEST", "L:" + height);
-            return true;
-        });
-        TextView textView1 = findViewById(R.id.processBar1Text);
-        TextView textView3 = findViewById(R.id.processBar3Text);
+        //  初始化控件
+        hpvTime.setProgressViewUpdateListener(this);
+        hpvGroup.setProgressViewUpdateListener(this);
+        hpvCal.setProgressViewUpdateListener(this);
+        hpvWrong.setProgressViewUpdateListener(this);
+        progressViewCircleMain.setGraduatedEnabled(true);
+        progressViewCircleMain.setProgressViewUpdateListener(this);
+
         // 获取运动总时长
         int data = intent.getIntExtra("totalTrainingTime", 0);
         // 获取动作组数
         int groupsOfPose = intent.getIntExtra("groupsOfPose", 0);
         String minute = data / 60 + "'";
         String time = (data / 60 == 0 ? "" : minute) + data % 60 + "\"";
-        textView1.setText(time);
-        textView3.setText(groupsOfPose + "组");
-        ViewGroup.LayoutParams layoutParams1 = processBar3.getLayoutParams();
-        layoutParams1.height = 825 / 3;
-        ShadowDrawable.setShadowDrawable(processBar1, Color.parseColor("#48b7ff"), 20, Color.parseColor("#48b7ff"), 20, 10, 10);
-        ShadowDrawable.setShadowDrawable(processBar2, Color.parseColor("#ffb6d7"), 20, Color.parseColor("#ffb6d7"), 20, 10, 10);
-        ShadowDrawable.setShadowDrawable(processBar3, Color.parseColor("#45ceb2"), 20, Color.parseColor("#45ceb2"), 20, 10, 10);
-        ShadowDrawable.setShadowDrawable(processBar4, Color.parseColor("#fc5045"), 20, Color.parseColor("#fc5045"), 20, 10, 10);
+
+        progressViewCircleMain.setGraduatedEnabled(true);
+        progressViewCircleMain.setProgressViewUpdateListener(this);
+        startProcessBar();
     }
 
     public static void addResultData(Bitmap bitmap, String tip) {
@@ -130,5 +146,69 @@ public class TrainingResult extends AppCompatActivity {
             }
         }
         return getBitmap();
+    }
+
+    @Override
+    public void onCircleProgressStart(View view) {
+
+    }
+
+    public void startProcessBar() {
+        hpvTime.startProgressAnimation();
+        hpvGroup.startProgressAnimation();
+        hpvCal.startProgressAnimation();
+        hpvWrong.startProgressAnimation();
+        progressViewCircleMain.startProgressAnimation();
+    }
+
+    /**
+     * 环形进度条数值更新
+     *
+     * @param view
+     * @param progress
+     */
+    @Override
+    public void onCircleProgressUpdate(View view, float progress) {
+        int progressInt = (int) progress;
+        if (view.getId() == R.id.progressView_circle_main) {
+            progressTextMain.setText(progressInt + "");
+        }
+    }
+
+    @Override
+    public void onCircleProgressFinished(View view) {
+
+    }
+
+    @Override
+    public void onHorizontalProgressStart(View view) {
+
+    }
+
+    @Override
+    public void onHorizontalProgressUpdate(View view, float progress) {
+        int progressInt = (int) progress;
+        // 单位符号
+        switch (view.getId()) {
+            case R.id.hpv_time:
+                progressTextTime.setText(progressInt + "'");
+                break;
+            case R.id.hpv_wrong:
+                progressTextWrong.setText(progressInt + " 个");
+                break;
+            case R.id.hpv_cal:
+                progressTextCal.setText(progressInt + " kcal");
+                break;
+            case R.id.hpv_group:
+                progressTextGroup.setText(progressInt + " 组");
+                break;
+            default:
+                break;
+        }
+    }
+
+    @Override
+    public void onHorizontalProgressFinished(View view) {
+
     }
 }

@@ -6,7 +6,9 @@ android {
     sourceSets {
         main {
             res.srcDirs = [
+                    'src/main/res/layout/personal',
                     'src/main/res/layout/main',
+                    'src/main/res/layout/train',
                     'src/main/res/layout',
                     'src/main/res'
             ]
@@ -60,6 +62,10 @@ repositories {
 }
 
 dependencies {
+    // 注解绑定控件
+    implementation 'com.jakewharton:butterknife:10.2.3'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.3'
+
     // Logger
     implementation 'com.orhanobut:logger:2.2.0'
     // Tabbar

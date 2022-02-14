@@ -3612,6 +3612,7 @@ id TOP_END
 id TOP_START
 id TR_BL
 id Top
+id about_list
 id accelerate
 id accessibility_action_clickable_span
 id accessibility_custom_action_0
@@ -3689,6 +3690,7 @@ id autoComplete
 id autoCompleteToEnd
 id autoCompleteToStart
 id back
+id banner
 id barrier
 id baseline
 id beginOnFirstDraw
@@ -3697,6 +3699,7 @@ id bezierBannerView
 id blocking
 id both
 id bottom
+id bottomProcessBar
 id bottom_dialog_list_item_img
 id bottom_dialog_list_item_mark
 id bottom_dialog_list_item_mark_view_stub
@@ -3882,6 +3885,10 @@ id homeAsUp
 id honorRequest
 id horizontal
 id hour
+id hpv_cal
+id hpv_group
+id hpv_time
+id hpv_wrong
 id hundred
 id icon
 id icon_group
@@ -4064,8 +4071,14 @@ id processBar3
 id processBar3Text
 id processBar4
 id processBar4Text
+id progressView_circle_main
 id progress_circular
 id progress_horizontal
+id progress_text_cal
+id progress_text_group
+id progress_text_main
+id progress_text_time
+id progress_text_wrong
 id radial
 id radio
 id ratio
@@ -4132,7 +4145,6 @@ id shortcut
 id showCustom
 id showHome
 id showTitle
-id sib_the_most_comlex_usage
 id simpleRipple
 id sin
 id single
@@ -4242,6 +4254,7 @@ id triangle
 id tv
 id tvTitle
 id tv_child_name
+id tv_copyright
 id tv_editor_text
 id tv_group_name
 id tv_index
@@ -4252,6 +4265,7 @@ id tv_tag_item
 id tv_tinted_spinner
 id tv_tip_message
 id tv_title
+id tv_version
 id twenty
 id unchecked
 id uniform
@@ -4348,6 +4362,7 @@ layout abc_search_dropdown_item_icons_2line
 layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
+layout about
 layout activity_settings
 layout activity_vision_camerax_live_preview
 layout circle_button
@@ -4438,6 +4453,7 @@ layout page4
 layout pose_analysis_card
 layout pose_bank
 layout pose_info
+layout pose_library
 layout pose_result
 layout pre_button
 layout preview_activity_image_photo
@@ -4555,6 +4571,7 @@ mipmap right_arrow
 mipmap social
 mipmap social_gray
 mipmap start_page_image
+mipmap tips
 mipmap training
 plurals mtrl_badge_content_description
 string abc_action_bar_home_description
