@@ -9,6 +9,8 @@ com/lindum/mlkit/vision/dev/view/PoseLibraryActivity.java
  com.lindum.mlkit.vision.dev.view.PoseLibraryActivity$1
 com/lindum/mlkit/vision/dev/posedetector/DrawLandmarkTools.java
  com.lindum.mlkit.vision.dev.posedetector.DrawLandmarkTools
+com/lindum/mlkit/vision/dev/view/SelectSportsPreference.java
+ com.lindum.mlkit.vision.dev.view.SelectSportsPreference
 com/lindum/mlkit/vision/dev/view/Item.java
  com.lindum.mlkit.vision.dev.view.Item
 com/lindum/mlkit/vision/dev/TemperatureMonitor.java
@@ -48,6 +50,8 @@ com/lindum/mlkit/vision/dev/posedetector/PosePart.java
  com.lindum.mlkit.vision.dev.posedetector.PosePart
 com/lindum/mlkit/vision/dev/ScopedExecutor.java
  com.lindum.mlkit.vision.dev.ScopedExecutor
+com/lindum/mlkit/vision/dev/view/FoodEntity.java
+ com.lindum.mlkit.vision.dev.view.FoodEntity
 com/lindum/mlkit/vision/dev/preference/PreferenceUtils.java
  com.lindum.mlkit.vision.dev.preference.PreferenceUtils
 com/lindum/mlkit/vision/dev/view/StartPageActivity.java
@@ -66,6 +70,8 @@ com/lindum/mlkit/vision/dev/PixelCopyHelper.java
  com.lindum.mlkit.vision.dev.PixelCopyHelper$PixelCopyListener
 com/lindum/mlkit/vision/dev/posedetector/classification/PoseClassifierProcessor.java
  com.lindum.mlkit.vision.dev.posedetector.classification.PoseClassifierProcessor
+com/lindum/mlkit/vision/dev/view/FoodListAdapter.java
+ com.lindum.mlkit.vision.dev.view.FoodListAdapter
 com/lindum/mlkit/vision/dev/view/AboutActivity.java
  com.lindum.mlkit.vision.dev.view.AboutActivity
 com/lindum/mlkit/vision/dev/view/LoginActivity.java
@@ -87,6 +93,10 @@ com/lindum/mlkit/vision/dev/QuickShot.java
 com/lindum/mlkit/vision/dev/VisionProcessorBase.java
  com.lindum.mlkit.vision.dev.VisionProcessorBase
  com.lindum.mlkit.vision.dev.VisionProcessorBase$1
+com/lindum/mlkit/vision/dev/view/ChangeProfileActivity.java
+ com.lindum.mlkit.vision.dev.view.ChangeProfileActivity
+ com.lindum.mlkit.vision.dev.view.ChangeProfileActivity$1
+ com.lindum.mlkit.vision.dev.view.ChangeProfileActivity$2
 com/lindum/mlkit/vision/dev/result/ResultEntity.java
  com.lindum.mlkit.vision.dev.result.ResultEntity
 com/lindum/mlkit/vision/dev/result/TrainingResult.java
@@ -96,26 +106,25 @@ com/lindum/mlkit/vision/dev/SpeechUtils.java
  com.lindum.mlkit.vision.dev.SpeechUtils
 com/lindum/mlkit/vision/dev/CameraImageGraphic.java
  com.lindum.mlkit.vision.dev.CameraImageGraphic
+com/lindum/mlkit/vision/dev/view/ChangeNickName.java
+ com.lindum.mlkit.vision.dev.view.ChangeNickName
+ com.lindum.mlkit.vision.dev.view.ChangeNickName$1
 com/lindum/mlkit/vision/dev/CameraSourcePreview.java
  com.lindum.mlkit.vision.dev.CameraSourcePreview
  com.lindum.mlkit.vision.dev.CameraSourcePreview$1
  com.lindum.mlkit.vision.dev.CameraSourcePreview$SurfaceCallback
 com/lindum/mlkit/vision/dev/posedetector/classification/RepetitionCounter.java
  com.lindum.mlkit.vision.dev.posedetector.classification.RepetitionCounter
-com/lindum/mlkit/vision/dev/result/ResultAdapter.java
- com.lindum.mlkit.vision.dev.result.ResultAdapter
 com/lindum/mlkit/vision/dev/posedetector/PoseAngleDetector.java
  com.lindum.mlkit.vision.dev.posedetector.PoseAngleDetector
 com/lindum/mlkit/vision/dev/CameraXViewModel.java
  com.lindum.mlkit.vision.dev.CameraXViewModel
-com/lindum/mlkit/vision/dev/CameraXLivePreviewActivity.java
- com.lindum.mlkit.vision.dev.CameraXLivePreviewActivity
- com.lindum.mlkit.vision.dev.CameraXLivePreviewActivity$1
- com.lindum.mlkit.vision.dev.CameraXLivePreviewActivity$2
- com.lindum.mlkit.vision.dev.CameraXLivePreviewActivity$3
- com.lindum.mlkit.vision.dev.CameraXLivePreviewActivity$4
- com.lindum.mlkit.vision.dev.CameraXLivePreviewActivity$5
- com.lindum.mlkit.vision.dev.CameraXLivePreviewActivity$5$1
+com/lindum/mlkit/vision/dev/view/FlowTagAdapter.java
+ com.lindum.mlkit.vision.dev.view.FlowTagAdapter
+com/lindum/mlkit/vision/dev/view/UserInfoInitActivity.java
+ com.lindum.mlkit.vision.dev.view.UserInfoInitActivity
+ com.lindum.mlkit.vision.dev.view.UserInfoInitActivity$1
+ com.lindum.mlkit.vision.dev.view.UserInfoInitActivity$2
 com/lindum/mlkit/vision/dev/view/HomeAdapter.java
  com.lindum.mlkit.vision.dev.view.HomeAdapter
  com.lindum.mlkit.vision.dev.view.HomeAdapter$ItemListener
@@ -137,11 +146,15 @@ com/lindum/mlkit/vision/dev/BitmapUtils.java
  com.lindum.mlkit.vision.dev.BitmapUtils
 com/lindum/mlkit/vision/dev/VisionImageProcessor.java
  com.lindum.mlkit.vision.dev.VisionImageProcessor
+com/lindum/mlkit/vision/dev/result/ResultListAdapter.java
+ com.lindum.mlkit.vision.dev.result.ResultListAdapter
 com/lindum/mlkit/vision/dev/result/ImageDetails.java
  com.lindum.mlkit.vision.dev.result.ImageDetails
-com/lindum/mlkit/vision/dev/view/UserInfoInitActivity.java
- com.lindum.mlkit.vision.dev.view.UserInfoInitActivity
- com.lindum.mlkit.vision.dev.view.UserInfoInitActivity$1
- com.lindum.mlkit.vision.dev.view.UserInfoInitActivity$2
- com.lindum.mlkit.vision.dev.view.UserInfoInitActivity$3
- com.lindum.mlkit.vision.dev.view.UserInfoInitActivity$4
+com/lindum/mlkit/vision/dev/CameraXLivePreviewActivity.java
+ com.lindum.mlkit.vision.dev.CameraXLivePreviewActivity
+ com.lindum.mlkit.vision.dev.CameraXLivePreviewActivity$1
+ com.lindum.mlkit.vision.dev.CameraXLivePreviewActivity$2
+ com.lindum.mlkit.vision.dev.CameraXLivePreviewActivity$3
+ com.lindum.mlkit.vision.dev.CameraXLivePreviewActivity$4
+ com.lindum.mlkit.vision.dev.CameraXLivePreviewActivity$5
+ com.lindum.mlkit.vision.dev.CameraXLivePreviewActivity$5$1

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="81dp">
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="1dp"
+        android:background="#b9befc">
+
+        <ImageView
+            android:id="@+id/foodImage"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="33dp"
+            android:contentDescription="@null"
+            android:src="@drawable/taro" />
+
+        <TextView
+            android:id="@+id/foodName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="13dp"
+            android:layout_toRightOf="@+id/foodImage"
+            android:text="芋头"
+            android:textColor="@color/xui_config_color_black"
+            android:textSize="20sp" />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="65dp"
+            android:layout_height="16dp"
+            android:layout_marginStart="131dp"
+            android:layout_marginTop="49dp"
+            android:elevation="0dp"
+            card_view:cardBackgroundColor="#e0ebfc"
+            card_view:cardCornerRadius="8dp">
+
+            <TextView
+                android:id="@+id/fibre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="高纤维：1g"
+                android:textColor="@color/black"
+                android:textSize="9sp" />
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="65dp"
+            android:layout_height="16dp"
+            android:layout_marginStart="209dp"
+            android:layout_marginTop="49dp"
+            android:elevation="0dp"
+            card_view:cardBackgroundColor="#e0ebfc"
+            card_view:cardCornerRadius="8dp">
+
+            <TextView
+                android:id="@+id/cal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="低GI：48"
+                android:textColor="@color/black"
+                android:textSize="9sp" />
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/subTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="5dp"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="10sp" />
+    </RelativeLayout>
+</LinearLayout>

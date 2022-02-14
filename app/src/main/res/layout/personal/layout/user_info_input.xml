@@ -55,6 +55,7 @@
             </RelativeLayout>
 
             <RelativeLayout
+                android:id="@+id/changeNickNameButton"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_marginTop="1dp"
@@ -70,6 +71,7 @@
                     android:textSize="18sp" />
 
                 <TextView
+                    android:id="@+id/nickNameText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
@@ -125,6 +127,7 @@
             </RelativeLayout>
 
             <RelativeLayout
+                android:id="@+id/changeProfileButton"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_marginTop="1dp"
@@ -203,6 +206,7 @@
                 android:textColor="#000000" />
 
             <RelativeLayout
+                android:id="@+id/selectSportsPreferenceButton"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:background="@color/white">

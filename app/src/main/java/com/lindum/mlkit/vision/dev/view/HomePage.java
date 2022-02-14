@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -34,6 +35,7 @@ import com.lindum.mlkit.vision.dev.posedetector.PoseEntity;
 import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.Logger;
 import com.xuexiang.xui.XUI;
+import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xui.widget.banner.widget.banner.BannerItem;
 import com.xuexiang.xui.widget.banner.widget.banner.SimpleImageBanner;
 import com.xuexiang.xui.widget.dialog.materialdialog.MaterialDialog;
@@ -50,25 +52,21 @@ import java.util.List;
  * @author MarkGosling
  * @date 2022/2/13 23:24
  */
-public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListener{
+public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListener {
     HomeAdapter adapter;
     private ViewPager viewPager;
     private View view1, view2, view3, view4;
     private List<View> mViews;  //存放视图的数组
     private PagerAdapter mPagerAdapter;//适配器
     public static String[] urls = new String[]{//640*360 360/640=0.5625
-            "http://photocdn.sohu.com/tvmobilemvms/20150907/144160323071011277.jpg",//伪装者:胡歌演绎"痞子特工"
-            "http://photocdn.sohu.com/tvmobilemvms/20150907/144158380433341332.jpg",//无心法师:生死离别!月牙遭虐杀
-            "http://photocdn.sohu.com/tvmobilemvms/20150907/144160286644953923.jpg",//花千骨:尊上沦为花千骨
-            "http://photocdn.sohu.com/tvmobilemvms/20150902/144115156939164801.jpg",//综艺饭:胖轩偷看夏天洗澡掀波澜
-            "http://photocdn.sohu.com/tvmobilemvms/20150907/144159406950245847.jpg",//碟中谍4:阿汤哥高塔命悬一线,超越不可能
+            "http://lindum.top/AiTrainer/cover/cover1.png",//伪装者:胡歌演绎"痞子特工"
+            "http://lindum.top/AiTrainer/cover/cover2.png",//无心法师:生死离别!月牙遭虐杀
+            "http://lindum.top/AiTrainer/cover/cover3.png",//花千骨:尊上沦为花千骨
     };
     public static String[] titles = new String[]{
             "伪装者:胡歌演绎'痞子特工'",
             "无心法师:生死离别!月牙遭虐杀",
             "花千骨:尊上沦为花千骨",
-            "综艺饭:胖轩偷看夏天洗澡掀波澜",
-            "碟中谍4:阿汤哥高塔命悬一线,超越不可能",
     };
     @Titles
     private static final String[] mTitles = {"主页", "社区", "动作库", "个人"};
@@ -90,7 +88,23 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
         view1 = inflater.inflate(R.layout.page1, null);//实例化view
         view2 = inflater.inflate(R.layout.page2, null);
         view3 = inflater.inflate(R.layout.pose_library, null);
-        view4 = inflater.inflate(R.layout.page4, null);
+        view4 = inflater.inflate(R.layout.personal_page, null);
+
+        ListView listView = view1.findViewById(R.id.foodList);
+        List<FoodEntity> foodEntityList = new ArrayList<>();
+        @SuppressLint("UseCompatLoadingForDrawables") FoodEntity foodEntity1 = new FoodEntity("芋头", "高纤维：0.8g", "低GI：51", getResources().getDrawable(R.drawable.taro));
+        @SuppressLint("UseCompatLoadingForDrawables") FoodEntity foodEntity2 = new FoodEntity("山药", "高纤维：0.8g", "低GI：51", getResources().getDrawable(R.drawable.yam));
+        @SuppressLint("UseCompatLoadingForDrawables") FoodEntity foodEntity3 = new FoodEntity("杨桃", "高纤维：0.8g", "低GI：51", getResources().getDrawable(R.drawable.carambola));
+        @SuppressLint("UseCompatLoadingForDrawables") FoodEntity foodEntity4 = new FoodEntity("甜瓜", "高纤维：0.8g", "低GI：51", getResources().getDrawable(R.drawable.muskmelon));
+        foodEntityList.add(foodEntity1);
+        foodEntityList.add(foodEntity2);
+        foodEntityList.add(foodEntity3);
+        foodEntityList.add(foodEntity4);
+        // 食物列表
+        FoodListAdapter resultListAdapter = new FoodListAdapter(this, R.layout.food_item, foodEntityList);
+        listView.setAdapter(resultListAdapter);
+        listView.setOnItemClickListener((adapterView, view, i, l) -> Logger.e("第" + i + "个"));
+
 
         SimpleImageBanner simpleImageBanner = view1.findViewById(R.id.banner);
         simpleImageBanner.setSource(getBannerList()).setOnItemClickListener((view, item, position1) -> Logger.d("headBanner position--->" + position1)).startScroll();
@@ -101,7 +115,7 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
         mViews.add(view3);
         mViews.add(view4);
 
-
+        init();
         // 设置动作库
         ArrayList<Item> arrayList = new ArrayList<>();
         XUI.initTheme(this);
@@ -195,6 +209,13 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
                     })
                     .show();
         });
+    }
+
+    public void init() {
+        TitleBar personalPageTitleBar = view4.findViewById(R.id.personalPageTitleBar);
+        personalPageTitleBar.setLeftVisible(false);
+        TitleBar poseLibraryTitleBar = view3.findViewById(R.id.poseLibraryTitleBar);
+        poseLibraryTitleBar.setLeftVisible(false);
     }
 
     public static List<BannerItem> getBannerList() {

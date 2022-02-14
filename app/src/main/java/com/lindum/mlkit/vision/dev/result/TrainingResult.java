@@ -3,27 +3,19 @@ package com.lindum.mlkit.vision.dev.result;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
-import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.lindum.mlkit.vision.dev.R;
-import com.sxu.shadowdrawable.ShadowDrawable;
 import com.xuexiang.xui.widget.progress.CircleProgressView;
 import com.xuexiang.xui.widget.progress.HorizontalProgressView;
 
@@ -89,8 +81,8 @@ public class TrainingResult extends AppCompatActivity implements HorizontalProgr
         }
         // 初始化控件
         listView = findViewById(R.id.resultList);
-        ResultAdapter resultAdapter = new ResultAdapter(this, R.layout.result_list_item, resultEntityList);
-        listView.setAdapter(resultAdapter);
+        ResultListAdapter resultListAdapter = new ResultListAdapter(this, R.layout.result_list_item, resultEntityList);
+        listView.setAdapter(resultListAdapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {

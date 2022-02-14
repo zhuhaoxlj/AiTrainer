@@ -1,11 +1,16 @@
 package com.lindum.mlkit.vision.dev.view;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -15,7 +20,6 @@ import com.github.gzuliyujiang.wheelpicker.SexPicker;
 import com.github.gzuliyujiang.wheelpicker.annotation.AddressMode;
 import com.github.gzuliyujiang.wheelpicker.contract.OnAddressPickedListener;
 import com.github.gzuliyujiang.wheelpicker.contract.OnDatePickedListener;
-import com.github.gzuliyujiang.wheelpicker.contract.OnLinkageSelectedListener;
 import com.github.gzuliyujiang.wheelpicker.contract.OnOptionPickedListener;
 import com.github.gzuliyujiang.wheelpicker.contract.OnTimePickedListener;
 import com.github.gzuliyujiang.wheelpicker.entity.CityEntity;
@@ -25,23 +29,46 @@ import com.lindum.mlkit.vision.dev.R;
 import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.Logger;
 import com.xuexiang.xui.widget.picker.RulerView;
-import com.xuexiang.xui.widget.picker.widget.TimePickerView;
 
 /**
  * @author MarkGosling
  * @date 2022/2/14 10:55
  */
 public class UserInfoInitActivity extends AppCompatActivity implements OnDatePickedListener, OnTimePickedListener, OnAddressPickedListener, OnOptionPickedListener {
-    private TimePickerView mDatePicker;
+    ActivityResultLauncher<Intent> intentActivityResultLauncher;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.user_info_input);
         Logger.addLogAdapter(new AndroidLogAdapter());
-
+        registerGetIntentData();
         init();
+    }
 
+    /**
+     * 主函数注册请求数据的监听事件
+     */
+    public void registerGetIntentData() {
+        intentActivityResultLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
+            // 修改昵称
+            if (result.getData() != null && result.getResultCode() == 1) {
+                String nickName = getStringFromIntentResult(result, "nickName");
+                TextView nickNameText = findViewById(R.id.nickNameText);
+                nickNameText.setText(nickName);
+                String profile = getStringFromIntentResult(result, "profile");
+                Logger.d(profile);
+            } else {
+                Toast.makeText(getApplicationContext(), "空", Toast.LENGTH_LONG).show();
+            }
+            // 修改简介
+            if (result.getData() != null && result.getResultCode() == 2) {
+                String profile = getStringFromIntentResult(result, "profile");
+                Logger.d(profile);
+            } else {
+                Toast.makeText(getApplicationContext(), "空", Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     public void init() {
@@ -88,11 +115,24 @@ public class UserInfoInitActivity extends AppCompatActivity implements OnDatePic
         });
         // 地区选择器
         RelativeLayout selectAddressButton = findViewById(R.id.selectAddressButton);
-        selectAddressButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onProvinceCityCounty(view);
-            }
+        selectAddressButton.setOnClickListener(this::onProvinceCityCounty);
+        // 修改昵称
+        RelativeLayout changeNickNameButton = findViewById(R.id.changeNickNameButton);
+        changeNickNameButton.setOnClickListener(view -> {
+            Intent intent = new Intent(UserInfoInitActivity.this, ChangeNickName.class);
+            intentActivityResultLauncher.launch(intent);
+        });
+        // 修改简介
+        RelativeLayout changeProfileButton = findViewById(R.id.changeProfileButton);
+        changeProfileButton.setOnClickListener(view -> {
+            Intent intent = new Intent(UserInfoInitActivity.this, ChangeProfileActivity.class);
+            intentActivityResultLauncher.launch(intent);
+        });
+        // 运动偏好
+        RelativeLayout selectSportsPreferenceButton = findViewById(R.id.selectSportsPreferenceButton);
+        selectSportsPreferenceButton.setOnClickListener(view -> {
+            Intent intent = new Intent(UserInfoInitActivity.this, ChangeProfileActivity.class);
+            intentActivityResultLauncher.launch(intent);
         });
     }
 
@@ -101,15 +141,10 @@ public class UserInfoInitActivity extends AppCompatActivity implements OnDatePic
         picker.setAddressMode(AddressMode.PROVINCE_CITY_COUNTY);
         picker.setDefaultValue("江苏省", "淮安市", "淮阴区");
         picker.setOnAddressPickedListener(this);
-        picker.getWheelLayout().setOnLinkageSelectedListener(new OnLinkageSelectedListener() {
-            @Override
-            public void onLinkageSelected(Object first, Object second, Object third) {
-                picker.getTitleView().setText(String.format("%s%s%s",
-                        picker.getFirstWheelView().formatItem(first),
-                        picker.getSecondWheelView().formatItem(second),
-                        picker.getThirdWheelView().formatItem(third)));
-            }
-        });
+        picker.getWheelLayout().setOnLinkageSelectedListener((first, second, third) -> picker.getTitleView().setText(String.format("%s%s%s",
+                picker.getFirstWheelView().formatItem(first),
+                picker.getSecondWheelView().formatItem(second),
+                picker.getThirdWheelView().formatItem(third))));
         picker.show();
     }
 
@@ -121,6 +156,11 @@ public class UserInfoInitActivity extends AppCompatActivity implements OnDatePic
         picker.setOnOptionPickedListener(this);
         picker.getWheelLayout().setOnOptionSelectedListener((position, item) -> picker.getTitleView().setText(picker.getWheelView().formatItem(position)));
         picker.show();
+    }
+
+    public String getStringFromIntentResult(ActivityResult result, String key) {
+        assert result.getData() != null;
+        return result.getData().getCharSequenceExtra(key) == null ? "" : result.getData().getCharSequenceExtra(key).toString();
     }
 
     @SuppressLint("SetTextI18n")

@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.xuexiang.xui.widget.actionbar.TitleBar
+        android:id="@+id/sportsPreferenceTitleBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:tb_actionPadding="20dp"
+        app:tb_sideTextPadding="20dp"
+        app:tb_subTitleText="为你推荐更适合的内容"
+        app:tb_titleText="运动偏好" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <TextView
+            android:id="@+id/sportsGoal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="10dp"
+            android:text="运动目标"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <com.xuexiang.xui.widget.flowlayout.FlowTagLayout
+            android:id="@+id/flowlayout_multi_select"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/sportsGoal"
+            android:layout_margin="10dp" />
+
+        <com.xuexiang.xui.widget.button.roundbutton.RoundButton
+            style="@style/RoundButton.SelectSportsPreference"
+            android:layout_width="260dp"
+            android:layout_height="45dp"
+            android:layout_below="@+id/selectSportsLevel"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="50dp"
+            android:height="85dp"
+            android:text="保存"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:rb_backgroundColor="@color/XUIBlue"
+            app:rb_isRadiusAdjustBounds="true" />
+
+        <TextView
+            android:id="@+id/sportsLevel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/flowlayout_multi_select"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="10dp"
+            android:text="运动水平"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <RelativeLayout
+            android:id="@+id/selectSportsLevel"
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:layout_below="@+id/sportsLevel">
+
+            <LinearLayout
+                android:id="@+id/sportsLevel1Button"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:layout_marginStart="60dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <com.xuexiang.xui.widget.button.SmoothCheckBox
+                    android:id="@+id/sportsLevel1"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_margin="5dp"
+                    app:scb_color_checked="@color/app_color_theme_4" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="入门"
+                    android:textColor="#807F7F" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/sportsLevel2Button"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:layout_centerInParent="true"
+                android:gravity="center">
+
+                <com.xuexiang.xui.widget.button.SmoothCheckBox
+                    android:id="@+id/sportsLevel2"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_margin="5dp"
+                    app:scb_color_checked="@color/app_color_theme_6" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="进阶"
+                    android:textColor="#807F7F" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/sportsLevel3Button"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="60dp"
+                android:gravity="center">
+
+                <com.xuexiang.xui.widget.button.SmoothCheckBox
+                    android:id="@+id/sportsLevel3"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_margin="5dp"
+                    app:scb_color_checked="@color/app_color_theme_1" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="高阶"
+                    android:textColor="#807F7F" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:text="在常见运动中很吃力或很久未运动"
+                android:textColor="#BDBDBD" />
+        </RelativeLayout>
+    </RelativeLayout>
+</LinearLayout>

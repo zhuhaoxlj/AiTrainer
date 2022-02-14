@@ -108,6 +108,7 @@ array pref_entries_face_detector_performance_mode
 array pref_entries_values_pose_detector_performance_mode
 array pref_entry_values_face_detector_performance_mode
 array pref_entry_values_pose_detector_performance_mode
+array tags_values
 attr AutoFitTextViewStyle
 attr BadgeColor
 attr BadgeHorizonalMargin
@@ -2213,6 +2214,7 @@ attr yearTodayStyle
 bool abc_action_bar_embed_tabs
 bool abc_config_actionMenuItemAllCaps
 bool mtrl_btn_textappearance_all_caps
+color XUIBlue
 color abc_background_cache_hint_selector_material_dark
 color abc_background_cache_hint_selector_material_light
 color abc_btn_colored_borderless_text_material
@@ -2242,10 +2244,20 @@ color accent_material_dark
 color accent_material_light
 color androidx_core_ripple_material_light
 color androidx_core_secondary_text_default_material_light
+color app_color_theme_1
+color app_color_theme_2
+color app_color_theme_3
+color app_color_theme_4
+color app_color_theme_5
+color app_color_theme_6
+color app_color_theme_7
+color app_color_theme_8
+color app_color_theme_9
 color background_floating_material_dark
 color background_floating_material_light
 color background_material_dark
 color background_material_light
+color black
 color blue
 color blue_grey_400
 color bright_foreground_disabled_material_dark
@@ -2472,6 +2484,7 @@ color secondary_text_default_material_dark
 color secondary_text_default_material_light
 color secondary_text_disabled_material_dark
 color secondary_text_disabled_material_light
+color selector_tag_color
 color stv_color_common_pressed
 color stv_color_common_text
 color swb_md_back_color
@@ -3392,10 +3405,13 @@ drawable abc_textfield_search_activated_mtrl_alpha
 drawable abc_textfield_search_default_mtrl_alpha
 drawable abc_textfield_search_material
 drawable abc_vector_test
+drawable alarm
 drawable avd_hide_password
 drawable avd_show_password
 drawable battle
 drawable beer
+drawable bg_personal_card
+drawable bg_rect_round_tag_btn
 drawable btn_checkbox_checked_mtrl
 drawable btn_checkbox_checked_to_unchecked_mtrl_animation
 drawable btn_checkbox_unchecked_mtrl
@@ -3404,6 +3420,8 @@ drawable btn_radio_off_mtrl
 drawable btn_radio_off_to_on_mtrl_animation
 drawable btn_radio_on_mtrl
 drawable btn_radio_on_to_off_mtrl_animation
+drawable calendar
+drawable carambola
 drawable common_full_open_on_phone
 drawable common_google_signin_btn_icon_dark
 drawable common_google_signin_btn_icon_dark_focused
@@ -3480,6 +3498,7 @@ drawable mtrl_navigation_bar_item_background
 drawable mtrl_popupmenu_background
 drawable mtrl_popupmenu_background_dark
 drawable mtrl_tabs_default_indicator
+drawable muskmelon
 drawable navigation_empty_icon
 drawable notification_action_background
 drawable notification_bg
@@ -3495,12 +3514,16 @@ drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
 drawable pe_ic_remove
 drawable pe_rounded_border_tv
+drawable pecan
+drawable personal_image
 drawable pet_icon_visibility_24dp
 drawable pet_icon_visibility_off_24dp
+drawable pose_training
 drawable rb_bg_disabled
 drawable rb_bg_normal
 drawable rb_bg_pressed
 drawable rb_bg_selector
+drawable search
 drawable srb_ic_empty
 drawable srb_ic_filled
 drawable stf_ic_empty
@@ -3509,6 +3532,7 @@ drawable stf_ic_location_off
 drawable stf_ic_offline
 drawable stv_btn_selector_white
 drawable swb_md_thumb
+drawable taro
 drawable tcv_left_option
 drawable tcv_left_option_selected
 drawable tcv_middle_option
@@ -3521,6 +3545,9 @@ drawable three_d
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
 drawable train
+drawable train_image1
+drawable train_image2
+drawable train_image3
 drawable vcet_shape_bg_focus
 drawable vcet_shape_bg_normal
 drawable vcet_shape_divider
@@ -3603,6 +3630,7 @@ drawable xui_shape_transparent
 drawable xui_sign_count_view_bg
 drawable xui_tips_point
 drawable xutil_bg_black_circular_10
+drawable yam
 id ALT
 id AccelerateDecelerateInterpolator
 id AccelerateInterpolator
@@ -3775,6 +3803,8 @@ id cRightImageViewId
 id cRightTextId
 id cRightTopTextId
 id cache_measures
+id cal
+id calendarButton
 id calligraphy_tag_id
 id cancel_button
 id cardView
@@ -3783,6 +3813,8 @@ id center_horizontal
 id center_vertical
 id chain
 id chains
+id changeNickNameButton
+id changeProfileButton
 id checkbox
 id checked
 id chevron
@@ -3878,6 +3910,7 @@ id expanded_menu
 id explain
 id facing_switch
 id fade
+id fibre
 id fifty
 id fill
 id fillCenter
@@ -3895,6 +3928,10 @@ id fixed
 id fl_border
 id flip
 id floating
+id flowlayout_multi_select
+id foodImage
+id foodList
+id foodName
 id forever
 id forty
 id fragment_container_view_tag
@@ -4072,6 +4109,10 @@ id navigation_header_container
 id never
 id nextButton
 id nextPoseImage
+id nickNameEditText
+id nickNameHint
+id nickNameText
+id nickNameTitleBar
 id noScroll
 id no_network_view
 id no_network_view_tv
@@ -4105,9 +4146,11 @@ id pathRelative
 id peekHeight
 id percent
 id performance
+id personalPageTitleBar
 id photoView
 id pin
 id poseInfo
+id poseLibraryTitleBar
 id poseName
 id poseProcessInfo
 id poseResultImage
@@ -4126,6 +4169,9 @@ id processBar3
 id processBar3Text
 id processBar4
 id processBar4Text
+id profileEditText
+id profileTextLimit
+id profileTitleBar
 id progressView_circle_main
 id progress_circular
 id progress_horizontal
@@ -4192,6 +4238,8 @@ id second
 id selectAddressButton
 id selectBirthDayButton
 id selectSexButton
+id selectSportsLevel
+id selectSportsPreferenceButton
 id select_dialog_listview
 id select_images_from_local
 id selected
@@ -4219,6 +4267,15 @@ id spinner
 id spinner_item
 id spline
 id split_action_bar
+id sportsGoal
+id sportsLevel
+id sportsLevel1
+id sportsLevel1Button
+id sportsLevel2
+id sportsLevel2Button
+id sportsLevel3
+id sportsLevel3Button
+id sportsPreferenceTitleBar
 id spread
 id spread_inside
 id square
@@ -4321,6 +4378,7 @@ id tv_info
 id tv_jump
 id tv_message
 id tv_start
+id tv_tag
 id tv_tag_item
 id tv_tinted_spinner
 id tv_tip_message
@@ -4455,6 +4513,9 @@ layout abc_tooltip
 layout about
 layout activity_settings
 layout activity_vision_camerax_live_preview
+layout adapter_item_tag
+layout change_nickname
+layout change_profile
 layout circle_button
 layout custom_dialog
 layout design_bottom_navigation_item
@@ -4479,6 +4540,7 @@ layout dialog_header_style_1
 layout dialog_header_style_2
 layout dialog_header_style_3
 layout dialog_header_style_default
+layout food_item
 layout gcv_layout_image
 layout gcv_layout_title
 layout home_page
@@ -4545,7 +4607,7 @@ layout notification_template_part_chronometer
 layout notification_template_part_time
 layout page1
 layout page2
-layout page4
+layout personal_page
 layout pose_analysis_card
 layout pose_info
 layout pose_library
@@ -4559,6 +4621,7 @@ layout row_item
 layout select_dialog_item_material
 layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material
+layout select_sports_preference
 layout settings_style
 layout spinner_style
 layout start_page
@@ -4580,6 +4643,7 @@ layout text_view_with_theme_line_height
 layout text_view_without_line_height
 layout toggle_style
 layout training_result
+layout training_result_item
 layout user_info_input
 layout wheel_picker_date
 layout wheel_picker_datime
@@ -4712,6 +4776,7 @@ string app_name
 string appbar_scrolling_view_behavior
 string bottom_sheet_behavior
 string bottomsheet_action_expand_halfway
+string changeNickNameTips
 string character_counter_content_description
 string character_counter_overflowed_content_description
 string character_counter_pattern
@@ -4748,6 +4813,8 @@ string fab_transformation_scrim_behavior
 string fab_transformation_sheet_behavior
 string hide_bottom_view_on_scroll_behavior
 string icon_content_description
+string inputNickNameHint
+string inputProfileTips
 string item_view_role_description
 string java_entry_title
 string kotlin_entry_title
@@ -4809,6 +4876,7 @@ string mtrl_picker_toggle_to_calendar_input_mode
 string mtrl_picker_toggle_to_day_selection
 string mtrl_picker_toggle_to_text_input_mode
 string mtrl_picker_toggle_to_year_selection
+string nickNameHint
 string no_camera_permission
 string ok
 string one
@@ -4875,6 +4943,8 @@ string pref_title_pose_detector_show_in_frame_likelihood
 string pref_title_pose_detector_visualize_z
 string pref_title_rear_camera_preview_size
 string pref_title_segmentation_raw_size_mask
+string profileHint
+string profileTextLimit
 string search_menu_title
 string select_image
 string start_over
@@ -5253,6 +5323,7 @@ style RoundButton_Auto
 style RoundButton_Blue
 style RoundButton_Gray
 style RoundButton_Green
+style RoundButton_SelectSportsPreference
 style RtlOverlay_DialogWindowTitle_AppCompat
 style RtlOverlay_Widget_AppCompat_ActionBar_TitleItem
 style RtlOverlay_Widget_AppCompat_DialogTitle_Icon
