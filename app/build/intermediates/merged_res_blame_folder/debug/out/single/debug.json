@@ -8,12 +8,12 @@
         "source": "D:\\Project\\Android\\AiTrainer\\app\\src\\main\\res\\drawable-xxhdpi\\ic_settings_white_24dp.png"
     },
     {
-        "merged": "D:\\Project\\Android\\AiTrainer\\app\\build\\intermediates\\res\\merged\\debug\\layout_next_button.xml.flat",
-        "source": "D:\\Project\\Android\\AiTrainer\\app\\src\\main\\res\\layout\\next_button.xml"
-    },
-    {
         "merged": "D:\\Project\\Android\\AiTrainer\\app\\build\\intermediates\\res\\merged\\debug\\layout_spinner_style.xml.flat",
         "source": "D:\\Project\\Android\\AiTrainer\\app\\src\\main\\res\\layout\\spinner_style.xml"
+    },
+    {
+        "merged": "D:\\Project\\Android\\AiTrainer\\app\\build\\intermediates\\res\\merged\\debug\\layout_next_button.xml.flat",
+        "source": "D:\\Project\\Android\\AiTrainer\\app\\src\\main\\res\\layout\\next_button.xml"
     },
     {
         "merged": "D:\\Project\\Android\\AiTrainer\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_settings_white_24dp.png.flat",
@@ -76,6 +76,10 @@
         "source": "D:\\Project\\Android\\AiTrainer\\app\\src\\main\\res\\mipmap-xhdpi\\pre.png"
     },
     {
+        "merged": "D:\\Project\\Android\\AiTrainer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_take_photo.png.flat",
+        "source": "D:\\Project\\Android\\AiTrainer\\app\\src\\main\\res\\mipmap-mdpi\\take_photo.png"
+    },
+    {
         "merged": "D:\\Project\\Android\\AiTrainer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_next.png.flat",
         "source": "D:\\Project\\Android\\AiTrainer\\app\\src\\main\\res\\mipmap-xhdpi\\next.png"
     },
@@ -118,6 +122,10 @@
     {
         "merged": "D:\\Project\\Android\\AiTrainer\\app\\build\\intermediates\\res\\merged\\debug\\layout_pre_button.xml.flat",
         "source": "D:\\Project\\Android\\AiTrainer\\app\\src\\main\\res\\layout\\pre_button.xml"
+    },
+    {
+        "merged": "D:\\Project\\Android\\AiTrainer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_more_options.png.flat",
+        "source": "D:\\Project\\Android\\AiTrainer\\app\\src\\main\\res\\mipmap-mdpi\\more_options.png"
     },
     {
         "merged": "D:\\Project\\Android\\AiTrainer\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_beer.png.flat",
@@ -184,10 +192,6 @@
         "source": "D:\\Project\\Android\\AiTrainer\\app\\src\\main\\res\\drawable-hdpi\\battle.png"
     },
     {
-        "merged": "D:\\Project\\Android\\AiTrainer\\app\\build\\intermediates\\res\\merged\\debug\\layout_page3.xml.flat",
-        "source": "D:\\Project\\Android\\AiTrainer\\app\\src\\main\\res\\layout\\main\\layout\\page3.xml"
-    },
-    {
         "merged": "D:\\Project\\Android\\AiTrainer\\app\\build\\intermediates\\res\\merged\\debug\\drawable_logo_mlkit.xml.flat",
         "source": "D:\\Project\\Android\\AiTrainer\\app\\src\\main\\res\\drawable\\logo_mlkit.xml"
     },
@@ -224,12 +228,12 @@
         "source": "D:\\Project\\Android\\AiTrainer\\app\\src\\main\\res\\layout\\pose_analysis_card.xml"
     },
     {
-        "merged": "D:\\Project\\Android\\AiTrainer\\app\\build\\intermediates\\res\\merged\\debug\\layout_result_list_item.xml.flat",
-        "source": "D:\\Project\\Android\\AiTrainer\\app\\src\\main\\res\\layout\\result_list_item.xml"
-    },
-    {
         "merged": "D:\\Project\\Android\\AiTrainer\\app\\build\\intermediates\\res\\merged\\debug\\layout_page4.xml.flat",
         "source": "D:\\Project\\Android\\AiTrainer\\app\\src\\main\\res\\layout\\main\\layout\\page4.xml"
+    },
+    {
+        "merged": "D:\\Project\\Android\\AiTrainer\\app\\build\\intermediates\\res\\merged\\debug\\layout_result_list_item.xml.flat",
+        "source": "D:\\Project\\Android\\AiTrainer\\app\\src\\main\\res\\layout\\result_list_item.xml"
     },
     {
         "merged": "D:\\Project\\Android\\AiTrainer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_change_camera.png.flat",
@@ -250,10 +254,6 @@
     {
         "merged": "D:\\Project\\Android\\AiTrainer\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_switch_camera_white_48dp.xml.flat",
         "source": "D:\\Project\\Android\\AiTrainer\\app\\src\\main\\res\\drawable-hdpi\\ic_switch_camera_white_48dp.xml"
-    },
-    {
-        "merged": "D:\\Project\\Android\\AiTrainer\\app\\build\\intermediates\\res\\merged\\debug\\layout_pose_bank.xml.flat",
-        "source": "D:\\Project\\Android\\AiTrainer\\app\\src\\main\\res\\layout\\pose_bank.xml"
     },
     {
         "merged": "D:\\Project\\Android\\AiTrainer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_q1.jpg.flat",
@@ -277,7 +277,7 @@
     },
     {
         "merged": "D:\\Project\\Android\\AiTrainer\\app\\build\\intermediates\\res\\merged\\debug\\layout_pose_library.xml.flat",
-        "source": "D:\\Project\\Android\\AiTrainer\\app\\src\\main\\res\\layout\\pose_library.xml"
+        "source": "D:\\Project\\Android\\AiTrainer\\app\\src\\main\\res\\layout\\main\\layout\\pose_library.xml"
     },
     {
         "merged": "D:\\Project\\Android\\AiTrainer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_training.png.flat",
@@ -302,6 +302,10 @@
     {
         "merged": "D:\\Project\\Android\\AiTrainer\\app\\build\\intermediates\\res\\merged\\debug\\layout_circle_button.xml.flat",
         "source": "D:\\Project\\Android\\AiTrainer\\app\\src\\main\\res\\layout\\main\\layout\\circle_button.xml"
+    },
+    {
+        "merged": "D:\\Project\\Android\\AiTrainer\\app\\build\\intermediates\\res\\merged\\debug\\layout_user_info_input.xml.flat",
+        "source": "D:\\Project\\Android\\AiTrainer\\app\\src\\main\\res\\layout\\personal\\layout\\user_info_input.xml"
     },
     {
         "merged": "D:\\Project\\Android\\AiTrainer\\app\\build\\intermediates\\res\\merged\\debug\\layout_look_explanation.xml.flat",

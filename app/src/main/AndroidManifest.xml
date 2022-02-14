@@ -54,7 +54,7 @@
             android:theme="@style/AppTheme" />
         <activity android:name=".CameraXLivePreviewActivity"/>
         <activity
-            android:name="com.lindum.mlkit.vision.dev.view.HomePage"
+            android:name="com.lindum.mlkit.vision.dev.view.UserInfoInitActivity"
             android:exported="true"
             android:theme="@style/AppTheme">
             <intent-filter>

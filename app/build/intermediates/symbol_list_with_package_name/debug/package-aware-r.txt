@@ -37,6 +37,8 @@ anim design_bottom_sheet_slide_in
 anim design_bottom_sheet_slide_out
 anim design_snackbar_in
 anim design_snackbar_out
+anim dialog_sheet_enter
+anim dialog_sheet_exit
 anim fragment_fast_out_extra_slow_in
 anim gcv_fade_in
 anim gcv_fade_out
@@ -154,6 +156,7 @@ attr TabTypeface
 attr TitleBarStyle
 attr ValidatorEditTextStyle
 attr VerifyCodeEditTextStyle
+attr WheelStyle
 attr XRangeSliderStyle
 attr XSeekBarStyle
 attr XUICommonListItemViewStyle
@@ -1924,6 +1927,45 @@ attr waveVariesBy
 attr wcelv_max_height
 attr wclv_max_height
 attr wcsv_max_height
+attr wheel_atmosphericEnabled
+attr wheel_curtainColor
+attr wheel_curtainCorner
+attr wheel_curtainEnabled
+attr wheel_curtainRadius
+attr wheel_curvedEnabled
+attr wheel_curvedIndicatorSpace
+attr wheel_curvedMaxAngle
+attr wheel_cyclicEnabled
+attr wheel_dateMode
+attr wheel_dayLabel
+attr wheel_firstLabel
+attr wheel_firstVisible
+attr wheel_hourLabel
+attr wheel_indicatorColor
+attr wheel_indicatorEnabled
+attr wheel_indicatorSize
+attr wheel_isDecimal
+attr wheel_itemSpace
+attr wheel_itemTextAlign
+attr wheel_itemTextBoldSelected
+attr wheel_itemTextColor
+attr wheel_itemTextColorSelected
+attr wheel_itemTextSize
+attr wheel_itemTextSizeSelected
+attr wheel_label
+attr wheel_maxNumber
+attr wheel_maxWidthText
+attr wheel_minNumber
+attr wheel_minuteLabel
+attr wheel_monthLabel
+attr wheel_sameWidthEnabled
+attr wheel_secondLabel
+attr wheel_stepNumber
+attr wheel_thirdLabel
+attr wheel_thirdVisible
+attr wheel_timeMode
+attr wheel_visibleItemCount
+attr wheel_yearLabel
 attr windowActionBar
 attr windowActionBarOverlay
 attr windowActionModeOverlay
@@ -3560,6 +3602,7 @@ drawable xui_popup_bg
 drawable xui_shape_transparent
 drawable xui_sign_count_view_bg
 drawable xui_tips_point
+drawable xutil_bg_black_circular_10
 id ALT
 id AccelerateDecelerateInterpolator
 id AccelerateInterpolator
@@ -3670,6 +3713,7 @@ id action_voice_btn
 id actions
 id activity_chooser_view_content
 id add
+id addressText
 id adjust_height
 id adjust_width
 id alertTitle
@@ -3696,6 +3740,7 @@ id baseline
 id beginOnFirstDraw
 id beginning
 id bezierBannerView
+id birthdayText
 id blocking
 id both
 id bottom
@@ -3789,6 +3834,9 @@ id design_menu_item_text
 id design_navigation_view
 id detailsImage
 id dialog_button
+id dialog_modal_cancel
+id dialog_modal_ok
+id dialog_modal_title
 id dialog_view
 id dimensions
 id direct
@@ -3878,6 +3926,8 @@ id grouping
 id groups
 id guideline
 id header_title
+id heightRuler
+id heigthText
 id hideable
 id highlight
 id home
@@ -3885,6 +3935,10 @@ id homeAsUp
 id honorRequest
 id horizontal
 id hour
+id hour_12_has_second
+id hour_12_no_second
+id hour_24_has_second
+id hour_24_no_second
 id hpv_cal
 id hpv_group
 id hpv_time
@@ -3977,6 +4031,7 @@ id mixed
 id mlet_input
 id mlet_number
 id month
+id month_day
 id month_grid
 id month_navigation_bar
 id month_navigation_fragment_toggle
@@ -4134,12 +4189,16 @@ id search_src_text
 id search_top_bar
 id search_voice_btn
 id second
+id selectAddressButton
+id selectBirthDayButton
+id selectSexButton
 id select_dialog_listview
 id select_images_from_local
 id selected
 id selection_type
 id settings_button
 id settings_container
+id sexText
 id sgb
 id shortcut
 id showCustom
@@ -4258,6 +4317,7 @@ id tv_copyright
 id tv_editor_text
 id tv_group_name
 id tv_index
+id tv_info
 id tv_jump
 id tv_message
 id tv_start
@@ -4284,6 +4344,34 @@ id viewpump_layout_res
 id viewpump_tag_id
 id visible
 id visible_removing_fragment_view_tag
+id weightRuler
+id weightText
+id wheel_picker_date_day_label
+id wheel_picker_date_day_wheel
+id wheel_picker_date_month_label
+id wheel_picker_date_month_wheel
+id wheel_picker_date_wheel
+id wheel_picker_date_year_label
+id wheel_picker_date_year_wheel
+id wheel_picker_linkage_first_label
+id wheel_picker_linkage_first_wheel
+id wheel_picker_linkage_loading
+id wheel_picker_linkage_second_label
+id wheel_picker_linkage_second_wheel
+id wheel_picker_linkage_third_label
+id wheel_picker_linkage_third_wheel
+id wheel_picker_number_label
+id wheel_picker_number_wheel
+id wheel_picker_option_label
+id wheel_picker_option_wheel
+id wheel_picker_time_hour_label
+id wheel_picker_time_hour_wheel
+id wheel_picker_time_meridiem_wheel
+id wheel_picker_time_minute_label
+id wheel_picker_time_minute_wheel
+id wheel_picker_time_second_label
+id wheel_picker_time_second_wheel
+id wheel_picker_time_wheel
 id wide
 id withText
 id withinBounds
@@ -4293,6 +4381,8 @@ id wrongPoseImage
 id xui_tab_segment_item_id
 id xui_view_can_not_cache_tag
 id year
+id year_month
+id year_month_day
 id zero_corner_chip
 integer abc_config_activityDefaultDur
 integer abc_config_activityShortDur
@@ -4382,6 +4472,13 @@ layout design_navigation_menu
 layout design_navigation_menu_item
 layout design_text_input_end_icon
 layout design_text_input_start_icon
+layout dialog_footer_style_1
+layout dialog_footer_style_2
+layout dialog_footer_style_3
+layout dialog_header_style_1
+layout dialog_header_style_2
+layout dialog_header_style_3
+layout dialog_header_style_default
 layout gcv_layout_image
 layout gcv_layout_title
 layout home_page
@@ -4448,10 +4545,8 @@ layout notification_template_part_chronometer
 layout notification_template_part_time
 layout page1
 layout page2
-layout page3
 layout page4
 layout pose_analysis_card
-layout pose_bank
 layout pose_info
 layout pose_library
 layout pose_result
@@ -4485,6 +4580,13 @@ layout text_view_with_theme_line_height
 layout text_view_without_line_height
 layout toggle_style
 layout training_result
+layout user_info_input
+layout wheel_picker_date
+layout wheel_picker_datime
+layout wheel_picker_linkage
+layout wheel_picker_number
+layout wheel_picker_option
+layout wheel_picker_time
 layout xmd_layout_dialog_basic
 layout xmd_layout_dialog_basic_check
 layout xmd_layout_dialog_custom
@@ -4549,14 +4651,17 @@ layout xui_layout_spinner_selected_item
 layout xui_layout_stateful_template
 layout xui_layout_verify_code
 layout xui_layout_xtoast
+layout xutil_layout_toast
 menu camera_button_menu
 mipmap change_camera
+mipmap dialog_close_icon
 mipmap home
 mipmap home_gray
 mipmap ic_launcher
 mipmap left_arrow
 mipmap library
 mipmap library_gray
+mipmap more_options
 mipmap next
 mipmap personal
 mipmap personal_gray
@@ -4571,6 +4676,7 @@ mipmap right_arrow
 mipmap social
 mipmap social_gray
 mipmap start_page_image
+mipmap take_photo
 mipmap tips
 mipmap training
 plurals mtrl_badge_content_description
@@ -4814,6 +4920,10 @@ string xui_tip_retry
 string xui_tip_shrink
 string xui_title_behavior
 string xui_try_immediately
+string xutil_tip_close_wifi_success
+string xutil_tip_close_wifiap_success
+string xutil_tip_open_wifiap_failed
+string xutil_tip_open_wifiap_success
 style ActionBarBase
 style ActionBarTitleTextBase
 style AlertDialog_AppCompat
@@ -5077,6 +5187,11 @@ style DefaultGuideCaseTitleStyle
 style Dialog_Loading_Big_Tablet
 style Dialog_Loading_Phone
 style Dialog_Loading_Small_Tablet
+style DialogFadeAnimation
+style DialogSheetAnimation
+style DialogTheme_Base
+style DialogTheme_Fade
+style DialogTheme_Sheet
 style DropDownListViewBase
 style DropDownMenu
 style EasyIndicator
@@ -5428,6 +5543,7 @@ style ThemeOverlay_MaterialComponents_Toolbar_Surface
 style ThemeOverlayColorAccentRed
 style TitleBar
 style VerifyCodeEditText
+style WheelDefault
 style Widget_AppCompat_ActionBar
 style Widget_AppCompat_ActionBar_Solid
 style Widget_AppCompat_ActionBar_TabBar
@@ -5662,6 +5778,7 @@ style XUITheme_Tablet_Small
 style XUITheme_Translucent
 style XUITipNew
 style XUITipPoint
+style XUtil_Activity_Translucent
 style picker_view_scale_anim
 style picker_view_slide_anim
 styleable ActionBar background backgroundSplit backgroundStacked contentInsetEnd contentInsetEndWithActions contentInsetLeft contentInsetRight contentInsetStart contentInsetStartWithNavigation customNavigationLayout displayOptions divider elevation height hideOnContentScroll homeAsUpIndicator homeLayout icon indeterminateProgressStyle itemPadding logo navigationMode popupTheme progressBarPadding progressBarStyle subtitle subtitleTextStyle title titleTextStyle
@@ -5688,6 +5805,7 @@ styleable BannerLayout bl_autoPlaying bl_centerScale bl_indicatorGravity bl_indi
 styleable BaseBanner bb_barColor bb_barPaddingBottom bb_barPaddingLeft bb_barPaddingRight bb_barPaddingTop bb_delay bb_indicatorGravity bb_isAutoScrollEnable bb_isBarShowWhenLast bb_isIndicatorShow bb_isLoopEnable bb_isTitleShow bb_period bb_scale bb_textColor bb_textSize
 styleable BaseIndicatorBanner bb_indicatorCornerRadius bb_indicatorGap bb_indicatorHeight bb_indicatorSelectColor bb_indicatorSelectRes bb_indicatorStyle bb_indicatorUnselectColor bb_indicatorUnselectRes bb_indicatorWidth
 styleable BaseProgressIndicator android_indeterminate hideAnimationBehavior indicatorColor minHideDelay showAnimationBehavior showDelay trackColor trackCornerRadius trackThickness
+styleable BaseWheelLayout wheel_atmosphericEnabled wheel_curtainColor wheel_curtainCorner wheel_curtainEnabled wheel_curtainRadius wheel_curvedEnabled wheel_curvedIndicatorSpace wheel_curvedMaxAngle wheel_cyclicEnabled wheel_indicatorColor wheel_indicatorEnabled wheel_indicatorSize wheel_itemSpace wheel_itemTextAlign wheel_itemTextBoldSelected wheel_itemTextColor wheel_itemTextColorSelected wheel_itemTextSize wheel_itemTextSizeSelected wheel_maxWidthText wheel_sameWidthEnabled wheel_visibleItemCount
 styleable BezierBannerView bbv_selectedColor bbv_selectedRadius bbv_spacing bbv_unSelectedColor bbv_unSelectedRadius
 styleable BottomAppBar backgroundTint elevation fabAlignmentMode fabAnimationMode fabCradleMargin fabCradleRoundedCornerRadius fabCradleVerticalOffset hideOnScroll paddingBottomSystemWindowInsets paddingLeftSystemWindowInsets paddingRightSystemWindowInsets
 styleable BottomNavigationView itemHorizontalTranslationEnabled
@@ -5718,6 +5836,8 @@ styleable CoordinatorLayout_Layout android_layout_gravity layout_anchor layout_a
 styleable CountDownButton cdbt_countDown cdbt_countDownFormat cdbt_countDownInterval cdbt_enableCountDown
 styleable CropImageView civ_aspectRatioX civ_aspectRatioY civ_fixAspectRatio civ_guidelines civ_imageResource
 styleable CustomAttribute attributeName customBoolean customColorDrawableValue customColorValue customDimension customFloatValue customIntegerValue customPixelDimension customStringValue
+styleable DateWheelLayout wheel_dateMode wheel_dayLabel wheel_monthLabel wheel_yearLabel
+styleable DatimeWheelLayout wheel_dateMode wheel_dayLabel wheel_hourLabel wheel_minuteLabel wheel_monthLabel wheel_secondLabel wheel_timeMode wheel_yearLabel
 styleable DecoView dv_arc_gravity_horizontal dv_arc_gravity_vertical dv_lineWidth dv_rotateAngle dv_totalAngle
 styleable DrawerArrowToggle arrowHeadLength arrowShaftLength barLength color drawableSize gapBetweenBars spinBars thickness
 styleable DropDownMenu ddm_contentLayoutId ddm_dividerColor ddm_dividerMargin ddm_dividerWidth ddm_maskColor ddm_menuBackgroundColor ddm_menuHeightPercent ddm_menuSelectedIcon ddm_menuTextPaddingHorizontal ddm_menuTextPaddingVertical ddm_menuTextSelectedColor ddm_menuTextSize ddm_menuTextUnselectedColor ddm_menuUnselectedIcon ddm_underlineColor ddm_underlineHeight
@@ -5756,6 +5876,7 @@ styleable Layout android_orientation android_layout_width android_layout_height 
 styleable LinearLayoutCompat android_gravity android_orientation android_baselineAligned android_baselineAlignedChildIndex android_weightSum divider dividerPadding measureWithLargestChild showDividers
 styleable LinearLayoutCompat_Layout android_layout_gravity android_layout_width android_layout_height android_layout_weight
 styleable LinearProgressIndicator indeterminateAnimationType indicatorDirectionLinear
+styleable LinkageWheelLayout wheel_firstLabel wheel_firstVisible wheel_secondLabel wheel_thirdLabel wheel_thirdVisible
 styleable ListPopupWindow android_dropDownHorizontalOffset android_dropDownVerticalOffset
 styleable LoadingImageView circleCrop imageAspectRatio imageAspectRatioAdjust
 styleable LoadingView lv_arc_degree lv_arc_single lv_auto lv_color lv_has_icon lv_icon lv_icon_scale lv_speed lv_width
@@ -5799,8 +5920,10 @@ styleable NavigationBarView backgroundTint elevation itemBackground itemIconSize
 styleable NavigationRailView headerLayout menuGravity
 styleable NavigationView android_background android_fitsSystemWindows android_maxWidth elevation headerLayout itemBackground itemHorizontalPadding itemIconPadding itemIconSize itemIconTint itemMaxLines itemShapeAppearance itemShapeAppearanceOverlay itemShapeFillColor itemShapeInsetBottom itemShapeInsetEnd itemShapeInsetStart itemShapeInsetTop itemTextAppearance itemTextColor menu shapeAppearance shapeAppearanceOverlay
 styleable NineGridImageView ngiv_imgGap ngiv_maxSize ngiv_showStyle ngiv_singleImgSize
+styleable NumberWheelLayout wheel_isDecimal wheel_maxNumber wheel_minNumber wheel_stepNumber
 styleable OnClick clickAction targetId
 styleable OnSwipe dragDirection dragScale dragThreshold limitBoundsTo maxAcceleration maxVelocity moveWhenScrollAtTop nestedScrollFlags onTouchUp touchAnchorId touchAnchorSide touchRegionId
+styleable OptionWheelLayout wheel_label
 styleable PasswordEditText pet_enableIconAlpha pet_hoverShowsPw pet_iconHide pet_iconShow pet_isAsteriskStyle pet_nonMonospaceFont
 styleable PhotoEditorView photo_src
 styleable PopupWindow android_popupBackground android_popupAnimationStyle overlapAnchor
@@ -5853,6 +5976,7 @@ styleable TextAppearance android_textSize android_typeface android_textStyle and
 styleable TextInputEditText textInputLayoutFocusedRectEnabled
 styleable TextInputLayout android_enabled android_textColorHint android_maxWidth android_minWidth android_hint boxBackgroundColor boxBackgroundMode boxCollapsedPaddingTop boxCornerRadiusBottomEnd boxCornerRadiusBottomStart boxCornerRadiusTopEnd boxCornerRadiusTopStart boxStrokeColor boxStrokeErrorColor boxStrokeWidth boxStrokeWidthFocused counterEnabled counterMaxLength counterOverflowTextAppearance counterOverflowTextColor counterTextAppearance counterTextColor endIconCheckable endIconContentDescription endIconDrawable endIconMode endIconTint endIconTintMode errorContentDescription errorEnabled errorIconDrawable errorIconTint errorIconTintMode errorTextAppearance errorTextColor expandedHintEnabled helperText helperTextEnabled helperTextTextAppearance helperTextTextColor hintAnimationEnabled hintEnabled hintTextAppearance hintTextColor passwordToggleContentDescription passwordToggleDrawable passwordToggleEnabled passwordToggleTint passwordToggleTintMode placeholderText placeholderTextAppearance placeholderTextColor prefixText prefixTextAppearance prefixTextColor shapeAppearance shapeAppearanceOverlay startIconCheckable startIconContentDescription startIconDrawable startIconTint startIconTintMode suffixText suffixTextAppearance suffixTextColor
 styleable ThemeEnforcement android_textAppearance enforceMaterialTheme enforceTextAppearance
+styleable TimeWheelLayout wheel_hourLabel wheel_minuteLabel wheel_secondLabel wheel_timeMode
 styleable TitleBar tb_actionPadding tb_actionTextColor tb_actionTextSize tb_barHeight tb_centerGravity tb_dividerColor tb_dividerHeight tb_immersive tb_leftImageResource tb_leftText tb_sideTextColor tb_sideTextPadding tb_sideTextSize tb_subTitleText tb_subTitleTextColor tb_subTitleTextSize tb_titleText tb_titleTextColor tb_titleTextSize tb_useThemeColor
 styleable Toolbar android_gravity android_minHeight buttonGravity collapseContentDescription collapseIcon contentInsetEnd contentInsetEndWithActions contentInsetLeft contentInsetRight contentInsetStart contentInsetStartWithNavigation logo logoDescription maxButtonHeight menu navigationContentDescription navigationIcon popupTheme subtitle subtitleTextAppearance subtitleTextColor title titleMargin titleMarginBottom titleMarginEnd titleMarginStart titleMarginTop titleMargins titleTextAppearance titleTextColor
 styleable Tooltip android_textAppearance android_padding android_layout_margin android_minWidth android_minHeight android_text backgroundTint
@@ -5866,7 +5990,7 @@ styleable View android_theme android_focusable paddingEnd paddingStart theme
 styleable ViewBackgroundHelper android_background backgroundTint backgroundTintMode
 styleable ViewPager2 android_orientation
 styleable ViewStubCompat android_id android_layout android_inflatedId
-styleable WheelView wv_dividerColor wv_gravity wv_lineSpacingMultiplier wv_textColorCenter wv_textColorOut wv_textSize
+styleable WheelView wheel_atmosphericEnabled wheel_curtainColor wheel_curtainCorner wheel_curtainEnabled wheel_curtainRadius wheel_curvedEnabled wheel_curvedIndicatorSpace wheel_curvedMaxAngle wheel_cyclicEnabled wheel_indicatorColor wheel_indicatorEnabled wheel_indicatorSize wheel_itemSpace wheel_itemTextAlign wheel_itemTextBoldSelected wheel_itemTextColor wheel_itemTextColorSelected wheel_itemTextSize wheel_itemTextSizeSelected wheel_maxWidthText wheel_sameWidthEnabled wheel_visibleItemCount wv_dividerColor wv_gravity wv_lineSpacingMultiplier wv_textColorCenter wv_textColorOut wv_textSize
 styleable XRangeSlider xrs_bubbleResource xrs_insideRangeLineColor xrs_insideRangeLineStrokeWidth xrs_isFitColor xrs_isLineRound xrs_isShowBubble xrs_isShowRuler xrs_max xrs_min xrs_numberMarginBottom xrs_numberTextColor xrs_numberTextSize xrs_outsideRangeLineColor xrs_outsideRangeLineStrokeWidth xrs_rulerColor xrs_rulerDividerHeight xrs_rulerInterval xrs_rulerMarginTop xrs_rulerTextColor xrs_rulerTextMarginTop xrs_rulerTextSize xrs_sliderIcon xrs_sliderIconFocus xrs_verticalPadding
 styleable XSeekBar xsb_bubbleResource xsb_insideRangeLineColor xsb_insideRangeLineStrokeWidth xsb_isFitColor xsb_isLineRound xsb_isShowBubble xsb_isShowNumber xsb_isShowRuler xsb_max xsb_min xsb_numberMarginBottom xsb_numberTextColor xsb_numberTextSize xsb_outsideRangeLineColor xsb_outsideRangeLineStrokeWidth xsb_rulerColor xsb_rulerDividerHeight xsb_rulerInterval xsb_rulerMarginTop xsb_rulerTextColor xsb_rulerTextMarginTop xsb_rulerTextSize xsb_sliderIcon xsb_sliderIconFocus xsb_verticalPadding
 styleable XUICommonListItemView xui_accessory_type xui_commonList_detailColor xui_commonList_titleColor xui_orientation
@@ -5882,3 +6006,4 @@ xml standalone_badge_gravity_bottom_end
 xml standalone_badge_gravity_bottom_start
 xml standalone_badge_gravity_top_start
 xml standalone_badge_offset
+xml xutil_provider_paths

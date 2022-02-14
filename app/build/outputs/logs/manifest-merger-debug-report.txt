@@ -5,7 +5,10 @@ INJECTED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:2:1-
 INJECTED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:2:1-76:12
 INJECTED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:2:1-76:12
 MERGED from [androidx.multidex:multidex:2.0.1] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\ce8dd2100ffd5b4eae657f5daec65fe0\multidex-2.0.1\AndroidManifest.xml:17:1-22:12
+MERGED from [com.github.gzu-liyujiang.AndroidPicker:AddressPicker:4.1.7] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\c2bce357d8f6d392fd5333ca805c57f0\jetified-AddressPicker-4.1.7\AndroidManifest.xml:14:1-24:12
 MERGED from [com.jakewharton:butterknife:10.2.3] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\fc4f298f12bf68f0a10eb53f331df166\jetified-butterknife-10.1.0\AndroidManifest.xml:2:1-7:12
+MERGED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\8f7a3fb5b22fd814ba8707c967cb3ed6\jetified-xutil-core-2.0.0\AndroidManifest.xml:2:1-38:12
+MERGED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:17:1-82:12
 MERGED from [com.orhanobut:logger:2.2.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\7dff222f8a87d15808add46f55047a48\jetified-logger-2.2.0\AndroidManifest.xml:2:1-8:12
 MERGED from [com.jpeng:JPTabBar:1.4.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\2ed3d62a4ae2136cb77a4b56249f0539\jetified-JPTabBar-1.4.0\AndroidManifest.xml:2:1-12:12
 MERGED from [com.github.bmarrdev:android-DecoView-charting:v1.2] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\b5430ed957ec7f184e2e4e64ba638437\jetified-android-DecoView-charting-v1.2\AndroidManifest.xml:2:1-14:12
@@ -41,6 +44,9 @@ MERGED from [androidx.activity:activity:1.2.4] C:\Users\Administrator\.gradle\ca
 MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.3.1] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f8e5adeb36e5f32b2d8aa02a49d2db6e\jetified-lifecycle-viewmodel-savedstate-2.3.1\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.3.1] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\4bcab31ffa1f267c0ebcfc4e01545746\lifecycle-viewmodel-2.3.1\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\bc97950d719cef5aad9004493b26296c\cardview-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [com.github.gzu-liyujiang.AndroidPicker:WheelPicker:4.1.7] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\c0d8d79eef24ccf8cb077a9f05ddc674\jetified-WheelPicker-4.1.7\AndroidManifest.xml:14:1-21:12
+MERGED from [com.github.gzu-liyujiang.AndroidPicker:Common:4.1.7] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\fae1e5bc5865b54e2a572239a46a0df3\jetified-Common-4.1.7\AndroidManifest.xml:14:1-21:12
+MERGED from [com.github.gzu-liyujiang.AndroidPicker:WheelView:4.1.7] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\819db67c8b7cb895d6d120fd211f7cda\jetified-WheelView-4.1.7\AndroidManifest.xml:14:1-21:12
 MERGED from [com.jakewharton:butterknife-runtime:10.2.3] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\42a320916d06d2f0bd46120ff6567013\jetified-butterknife-runtime-10.2.3\AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.appcompat:appcompat-resources:1.3.1] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\81d3e7d74c7eb788064e8be17e7348c0\jetified-appcompat-resources-1.3.1\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\624952430dbe4d933057f56d5d026c09\drawerlayout-1.0.0\AndroidManifest.xml:17:1-22:12
@@ -100,8 +106,14 @@ INJECTED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:11:5
 INJECTED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:11:5-13:63
 MERGED from [androidx.multidex:multidex:2.0.1] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\ce8dd2100ffd5b4eae657f5daec65fe0\multidex-2.0.1\AndroidManifest.xml:20:5-43
 MERGED from [androidx.multidex:multidex:2.0.1] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\ce8dd2100ffd5b4eae657f5daec65fe0\multidex-2.0.1\AndroidManifest.xml:20:5-43
+MERGED from [com.github.gzu-liyujiang.AndroidPicker:AddressPicker:4.1.7] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\c2bce357d8f6d392fd5333ca805c57f0\jetified-AddressPicker-4.1.7\AndroidManifest.xml:17:5-19:41
+MERGED from [com.github.gzu-liyujiang.AndroidPicker:AddressPicker:4.1.7] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\c2bce357d8f6d392fd5333ca805c57f0\jetified-AddressPicker-4.1.7\AndroidManifest.xml:17:5-19:41
 MERGED from [com.jakewharton:butterknife:10.2.3] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\fc4f298f12bf68f0a10eb53f331df166\jetified-butterknife-10.1.0\AndroidManifest.xml:5:5-44
 MERGED from [com.jakewharton:butterknife:10.2.3] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\fc4f298f12bf68f0a10eb53f331df166\jetified-butterknife-10.1.0\AndroidManifest.xml:5:5-44
+MERGED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\8f7a3fb5b22fd814ba8707c967cb3ed6\jetified-xutil-core-2.0.0\AndroidManifest.xml:5:5-7:41
+MERGED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\8f7a3fb5b22fd814ba8707c967cb3ed6\jetified-xutil-core-2.0.0\AndroidManifest.xml:5:5-7:41
+MERGED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:21:5-23:41
+MERGED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:21:5-23:41
 MERGED from [com.orhanobut:logger:2.2.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\7dff222f8a87d15808add46f55047a48\jetified-logger-2.2.0\AndroidManifest.xml:6:5-43
 MERGED from [com.orhanobut:logger:2.2.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\7dff222f8a87d15808add46f55047a48\jetified-logger-2.2.0\AndroidManifest.xml:6:5-43
 MERGED from [com.jpeng:JPTabBar:1.4.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\2ed3d62a4ae2136cb77a4b56249f0539\jetified-JPTabBar-1.4.0\AndroidManifest.xml:8:5-10:41
@@ -172,6 +184,12 @@ MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.3.1] C:\Users\Administrato
 MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.3.1] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\4bcab31ffa1f267c0ebcfc4e01545746\lifecycle-viewmodel-2.3.1\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\bc97950d719cef5aad9004493b26296c\cardview-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\bc97950d719cef5aad9004493b26296c\cardview-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [com.github.gzu-liyujiang.AndroidPicker:WheelPicker:4.1.7] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\c0d8d79eef24ccf8cb077a9f05ddc674\jetified-WheelPicker-4.1.7\AndroidManifest.xml:17:5-19:41
+MERGED from [com.github.gzu-liyujiang.AndroidPicker:WheelPicker:4.1.7] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\c0d8d79eef24ccf8cb077a9f05ddc674\jetified-WheelPicker-4.1.7\AndroidManifest.xml:17:5-19:41
+MERGED from [com.github.gzu-liyujiang.AndroidPicker:Common:4.1.7] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\fae1e5bc5865b54e2a572239a46a0df3\jetified-Common-4.1.7\AndroidManifest.xml:17:5-19:41
+MERGED from [com.github.gzu-liyujiang.AndroidPicker:Common:4.1.7] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\fae1e5bc5865b54e2a572239a46a0df3\jetified-Common-4.1.7\AndroidManifest.xml:17:5-19:41
+MERGED from [com.github.gzu-liyujiang.AndroidPicker:WheelView:4.1.7] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\819db67c8b7cb895d6d120fd211f7cda\jetified-WheelView-4.1.7\AndroidManifest.xml:17:5-19:41
+MERGED from [com.github.gzu-liyujiang.AndroidPicker:WheelView:4.1.7] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\819db67c8b7cb895d6d120fd211f7cda\jetified-WheelView-4.1.7\AndroidManifest.xml:17:5-19:41
 MERGED from [com.jakewharton:butterknife-runtime:10.2.3] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\42a320916d06d2f0bd46120ff6567013\jetified-butterknife-runtime-10.2.3\AndroidManifest.xml:5:5-44
 MERGED from [com.jakewharton:butterknife-runtime:10.2.3] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\42a320916d06d2f0bd46120ff6567013\jetified-butterknife-runtime-10.2.3\AndroidManifest.xml:5:5-44
 MERGED from [androidx.appcompat:appcompat-resources:1.3.1] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\81d3e7d74c7eb788064e8be17e7348c0\jetified-appcompat-resources-1.3.1\AndroidManifest.xml:20:5-22:41
@@ -250,10 +268,14 @@ INJECTED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:11:5
 		INJECTED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml
 uses-feature#android.hardware.camera
 ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:15:5-60
+MERGED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:64:5-60
+MERGED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:64:5-60
 	android:name
 		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:15:19-57
 uses-permission#android.permission.INTERNET
 ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:17:5-67
+MERGED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\8f7a3fb5b22fd814ba8707c967cb3ed6\jetified-xutil-core-2.0.0\AndroidManifest.xml:15:5-67
+MERGED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\8f7a3fb5b22fd814ba8707c967cb3ed6\jetified-xutil-core-2.0.0\AndroidManifest.xml:15:5-67
 MERGED from [com.google.mlkit:pose-detection-common:18.0.0-beta1] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\04b970f8fd742b3be056c2a28a00fd9a\jetified-pose-detection-common-18.0.0-beta1\AndroidManifest.xml:8:5-67
 MERGED from [com.google.mlkit:pose-detection-common:18.0.0-beta1] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\04b970f8fd742b3be056c2a28a00fd9a\jetified-pose-detection-common-18.0.0-beta1\AndroidManifest.xml:8:5-67
 MERGED from [com.google.android.datatransport:transport-backend-cct:2.3.3] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\b0b07d668fb05669fea93be346cdaca2\jetified-transport-backend-cct-2.3.3\AndroidManifest.xml:26:5-67
@@ -262,6 +284,10 @@ MERGED from [com.google.android.datatransport:transport-backend-cct:2.3.3] C:\Us
 		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:17:22-64
 uses-permission#android.permission.ACCESS_NETWORK_STATE
 ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:18:5-79
+MERGED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\8f7a3fb5b22fd814ba8707c967cb3ed6\jetified-xutil-core-2.0.0\AndroidManifest.xml:18:5-79
+MERGED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\8f7a3fb5b22fd814ba8707c967cb3ed6\jetified-xutil-core-2.0.0\AndroidManifest.xml:18:5-79
+MERGED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:25:5-79
+MERGED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:25:5-79
 MERGED from [com.google.mlkit:pose-detection-common:18.0.0-beta1] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\04b970f8fd742b3be056c2a28a00fd9a\jetified-pose-detection-common-18.0.0-beta1\AndroidManifest.xml:7:5-79
 MERGED from [com.google.mlkit:pose-detection-common:18.0.0-beta1] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\04b970f8fd742b3be056c2a28a00fd9a\jetified-pose-detection-common-18.0.0-beta1\AndroidManifest.xml:7:5-79
 MERGED from [com.google.android.datatransport:transport-backend-cct:2.3.3] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\b0b07d668fb05669fea93be346cdaca2\jetified-transport-backend-cct-2.3.3\AndroidManifest.xml:25:5-79
@@ -272,10 +298,14 @@ MERGED from [com.google.android.datatransport:transport-runtime:2.2.6] C:\Users\
 		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:18:22-76
 uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
 ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:20:5-81
+MERGED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\8f7a3fb5b22fd814ba8707c967cb3ed6\jetified-xutil-core-2.0.0\AndroidManifest.xml:13:5-81
+MERGED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\8f7a3fb5b22fd814ba8707c967cb3ed6\jetified-xutil-core-2.0.0\AndroidManifest.xml:13:5-81
 	android:name
 		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:20:22-78
 uses-permission#android.permission.READ_EXTERNAL_STORAGE
 ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:22:5-80
+MERGED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\8f7a3fb5b22fd814ba8707c967cb3ed6\jetified-xutil-core-2.0.0\AndroidManifest.xml:12:5-80
+MERGED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\8f7a3fb5b22fd814ba8707c967cb3ed6\jetified-xutil-core-2.0.0\AndroidManifest.xml:12:5-80
 	android:name
 		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:22:22-77
 uses-permission#android.permission.MANAGE_EXTERNAL_STORAGE
@@ -286,10 +316,16 @@ ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:24:5-26
 		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:25:9-66
 uses-permission#android.permission.CAMERA
 ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:29:5-65
+MERGED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:61:5-65
+MERGED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:61:5-65
 	android:name
 		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:29:22-62
 application
 ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:31:5-69:19
+MERGED from [com.github.gzu-liyujiang.AndroidPicker:AddressPicker:4.1.7] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\c2bce357d8f6d392fd5333ca805c57f0\jetified-AddressPicker-4.1.7\AndroidManifest.xml:21:5-22:19
+MERGED from [com.github.gzu-liyujiang.AndroidPicker:AddressPicker:4.1.7] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\c2bce357d8f6d392fd5333ca805c57f0\jetified-AddressPicker-4.1.7\AndroidManifest.xml:21:5-22:19
+MERGED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\8f7a3fb5b22fd814ba8707c967cb3ed6\jetified-xutil-core-2.0.0\AndroidManifest.xml:20:5-36:19
+MERGED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\8f7a3fb5b22fd814ba8707c967cb3ed6\jetified-xutil-core-2.0.0\AndroidManifest.xml:20:5-36:19
 MERGED from [com.github.bmarrdev:android-DecoView-charting:v1.2] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\b5430ed957ec7f184e2e4e64ba638437\jetified-android-DecoView-charting-v1.2\AndroidManifest.xml:11:5-12:19
 MERGED from [com.github.bmarrdev:android-DecoView-charting:v1.2] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\b5430ed957ec7f184e2e4e64ba638437\jetified-android-DecoView-charting-v1.2\AndroidManifest.xml:11:5-12:19
 MERGED from [com.github.xuexiangjys:XUI:1.1.8] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\cb3a340231d4295dbef6891df83e60a3\jetified-XUI-1.1.8\AndroidManifest.xml:9:5-22:19
@@ -378,14 +414,14 @@ activity#com.lindum.mlkit.vision.dev.CameraXLivePreviewActivity
 ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:55:9-63
 	android:name
 		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:55:19-61
-activity#com.lindum.mlkit.vision.dev.view.HomePage
+activity#com.lindum.mlkit.vision.dev.view.UserInfoInitActivity
 ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:56:9-64:20
 	android:exported
 		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:58:13-36
 	android:theme
 		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:59:13-44
 	android:name
-		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:57:13-69
+		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:57:13-81
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
 ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:60:13-63:29
 action#android.intent.action.MAIN
@@ -410,6 +446,154 @@ action#android.media.action.IMAGE_CAPTURE
 ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:72:13-73
 	android:name
 		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:72:21-70
+uses-permission#android.permission.KILL_BACKGROUND_PROCESSES
+ADDED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\8f7a3fb5b22fd814ba8707c967cb3ed6\jetified-xutil-core-2.0.0\AndroidManifest.xml:10:5-84
+MERGED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:69:5-84
+MERGED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:69:5-84
+	android:name
+		ADDED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\8f7a3fb5b22fd814ba8707c967cb3ed6\jetified-xutil-core-2.0.0\AndroidManifest.xml:10:22-81
+uses-permission#android.permission.ACCESS_WIFI_STATE
+ADDED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\8f7a3fb5b22fd814ba8707c967cb3ed6\jetified-xutil-core-2.0.0\AndroidManifest.xml:16:5-76
+MERGED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:26:5-76
+MERGED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:26:5-76
+	android:name
+		ADDED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\8f7a3fb5b22fd814ba8707c967cb3ed6\jetified-xutil-core-2.0.0\AndroidManifest.xml:16:22-73
+uses-permission#android.permission.CHANGE_WIFI_STATE
+ADDED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\8f7a3fb5b22fd814ba8707c967cb3ed6\jetified-xutil-core-2.0.0\AndroidManifest.xml:17:5-76
+MERGED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:27:5-76
+MERGED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:27:5-76
+	android:name
+		ADDED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\8f7a3fb5b22fd814ba8707c967cb3ed6\jetified-xutil-core-2.0.0\AndroidManifest.xml:17:22-73
+activity#com.xuexiang.xutil.system.PermissionUtils$PermissionActivity
+ADDED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\8f7a3fb5b22fd814ba8707c967cb3ed6\jetified-xutil-core-2.0.0\AndroidManifest.xml:21:9-25:75
+	android:windowSoftInputMode
+		ADDED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\8f7a3fb5b22fd814ba8707c967cb3ed6\jetified-xutil-core-2.0.0\AndroidManifest.xml:25:13-72
+	android:configChanges
+		ADDED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\8f7a3fb5b22fd814ba8707c967cb3ed6\jetified-xutil-core-2.0.0\AndroidManifest.xml:23:13-74
+	android:theme
+		ADDED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\8f7a3fb5b22fd814ba8707c967cb3ed6\jetified-xutil-core-2.0.0\AndroidManifest.xml:24:13-62
+	android:name
+		ADDED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\8f7a3fb5b22fd814ba8707c967cb3ed6\jetified-xutil-core-2.0.0\AndroidManifest.xml:22:13-88
+provider#androidx.core.content.FileProvider4Utils
+ADDED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\8f7a3fb5b22fd814ba8707c967cb3ed6\jetified-xutil-core-2.0.0\AndroidManifest.xml:27:9-35:20
+	android:grantUriPermissions
+		ADDED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\8f7a3fb5b22fd814ba8707c967cb3ed6\jetified-xutil-core-2.0.0\AndroidManifest.xml:31:13-47
+	android:authorities
+		ADDED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\8f7a3fb5b22fd814ba8707c967cb3ed6\jetified-xutil-core-2.0.0\AndroidManifest.xml:29:13-66
+	android:exported
+		ADDED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\8f7a3fb5b22fd814ba8707c967cb3ed6\jetified-xutil-core-2.0.0\AndroidManifest.xml:30:13-37
+	android:name
+		ADDED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\8f7a3fb5b22fd814ba8707c967cb3ed6\jetified-xutil-core-2.0.0\AndroidManifest.xml:28:13-68
+meta-data#android.support.FILE_PROVIDER_PATHS
+ADDED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\8f7a3fb5b22fd814ba8707c967cb3ed6\jetified-xutil-core-2.0.0\AndroidManifest.xml:32:13-34:64
+	android:resource
+		ADDED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\8f7a3fb5b22fd814ba8707c967cb3ed6\jetified-xutil-core-2.0.0\AndroidManifest.xml:34:17-61
+	android:name
+		ADDED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\8f7a3fb5b22fd814ba8707c967cb3ed6\jetified-xutil-core-2.0.0\AndroidManifest.xml:33:17-67
+uses-permission#android.permission.BLUETOOTH_ADMIN
+ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:29:5-74
+	android:name
+		ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:29:22-71
+uses-permission#android.permission.BLUETOOTH
+ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:30:5-68
+	android:name
+		ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:30:22-65
+uses-permission#android.permission.ACCESS_COARSE_LOCATION
+ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:32:5-81
+	android:name
+		ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:32:22-78
+uses-permission#android.permission.ACCESS_FINE_LOCATION
+ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:33:5-79
+	android:name
+		ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:33:22-76
+uses-permission#android.permission.WAKE_LOCK
+ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:36:5-68
+	android:name
+		ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:36:22-65
+uses-permission#android.permission.FOREGROUND_SERVICE
+ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:38:5-77
+	android:name
+		ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:38:22-74
+uses-permission#android.permission.SYSTEM_ALERT_WINDOW
+ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:40:5-78
+	android:name
+		ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:40:22-75
+uses-permission#android.permission.INSTALL_PACKAGES
+ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:42:5-44:47
+	tools:ignore
+		ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:44:9-44
+	android:name
+		ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:43:9-59
+uses-permission#android.permission.REQUEST_INSTALL_PACKAGES
+ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:45:5-83
+	android:name
+		ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:45:22-80
+uses-permission#android.permission.VIBRATE
+ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:47:5-66
+	android:name
+		ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:47:22-63
+uses-permission#android.permission.READ_PHONE_STATE
+ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:49:5-75
+	android:name
+		ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:49:22-72
+uses-permission#android.permission.CALL_PHONE
+ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:50:5-69
+	android:name
+		ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:50:22-66
+uses-permission#android.permission.SEND_SMS
+ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:51:5-67
+	android:name
+		ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:51:22-64
+uses-permission#android.permission.READ_SMS
+ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:52:5-67
+	android:name
+		ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:52:22-64
+uses-permission#android.permission.READ_CONTACTS
+ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:53:5-72
+	android:name
+		ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:53:22-69
+uses-permission#android.permission.READ_CALENDAR
+ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:54:5-72
+	android:name
+		ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:54:22-69
+uses-permission#android.permission.RECORD_AUDIO
+ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:55:5-71
+	android:name
+		ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:55:22-68
+uses-permission#android.permission.MODIFY_PHONE_STATE
+ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:57:5-59:47
+	tools:ignore
+		ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:59:9-44
+	android:name
+		ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:58:9-61
+uses-permission#android.permission.FLASHLIGHT
+ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:62:5-69
+	android:name
+		ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:62:22-66
+uses-feature#android.hardware.camera.autofocus
+ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:65:5-70
+	android:name
+		ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:65:19-67
+uses-feature#android.hardware.camera.flash
+ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:66:5-66
+	android:name
+		ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:66:19-63
+uses-permission#android.permission.EXPAND_STATUS_BAR
+ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:71:5-76
+	android:name
+		ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:71:22-73
+uses-permission#android.permission.MOUNT_UNMOUNT_FILESYSTEMS
+ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:74:5-76:47
+	tools:ignore
+		ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:76:9-44
+	android:name
+		ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:75:9-68
+uses-permission#android.permission.WRITE_SETTINGS
+ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:78:5-80:47
+	tools:ignore
+		ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:80:9-44
+	android:name
+		ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:79:9-57
 provider#com.xuexiang.xui.XUIInitProvider
 ADDED from [com.github.xuexiangjys:XUI:1.1.8] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\cb3a340231d4295dbef6891df83e60a3\jetified-XUI-1.1.8\AndroidManifest.xml:10:9-14:43
 	android:authorities

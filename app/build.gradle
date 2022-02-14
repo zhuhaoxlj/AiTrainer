@@ -19,7 +19,6 @@ android {
         minSdkVersion 19
         multiDexEnabled true
         targetSdkVersion 30
-
         versionCode 11
         versionName "1.11"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -62,9 +61,14 @@ repositories {
 }
 
 dependencies {
+    // 地区选择器
+    implementation 'com.github.gzu-liyujiang.AndroidPicker:AddressPicker:4.1.7'
     // 注解绑定控件
     implementation 'com.jakewharton:butterknife:10.2.3'
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.3'
+    //工具类
+    implementation 'com.github.xuexiangjys.XUtil:xutil-core:2.0.0'
+    implementation 'com.github.xuexiangjys.XUtil:xutil-sub:2.0.0'
 
     // Logger
     implementation 'com.orhanobut:logger:2.2.0'

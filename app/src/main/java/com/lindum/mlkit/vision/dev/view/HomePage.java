@@ -4,17 +4,25 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.StrictMode;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.TypeReference;
 import com.jpeng.jptabbar.JPTabBar;
 import com.jpeng.jptabbar.OnTabSelectListener;
 import com.jpeng.jptabbar.anno.NorIcons;
@@ -22,12 +30,19 @@ import com.jpeng.jptabbar.anno.SeleIcons;
 import com.jpeng.jptabbar.anno.Titles;
 import com.lindum.mlkit.vision.dev.CameraXLivePreviewActivity;
 import com.lindum.mlkit.vision.dev.R;
+import com.lindum.mlkit.vision.dev.posedetector.PoseEntity;
 import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.Logger;
+import com.xuexiang.xui.XUI;
 import com.xuexiang.xui.widget.banner.widget.banner.BannerItem;
 import com.xuexiang.xui.widget.banner.widget.banner.SimpleImageBanner;
 import com.xuexiang.xui.widget.dialog.materialdialog.MaterialDialog;
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,7 +50,8 @@ import java.util.List;
  * @author MarkGosling
  * @date 2022/2/13 23:24
  */
-public class HomePage extends AppCompatActivity {
+public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListener{
+    HomeAdapter adapter;
     private ViewPager viewPager;
     private View view1, view2, view3, view4;
     private List<View> mViews;  //存放视图的数组
@@ -85,6 +101,41 @@ public class HomePage extends AppCompatActivity {
         mViews.add(view3);
         mViews.add(view4);
 
+
+        // 设置动作库
+        ArrayList<Item> arrayList = new ArrayList<>();
+        XUI.initTheme(this);
+        // 使主线程可以进行简单的网络请求
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+        Document document = null;
+        try {
+            document = Jsoup.connect("http://lindum.top/poseData.html").get();
+            Log.e("html", document.toString());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        assert document != null;
+        Element element = document.body();
+        String jsonText = element.ownText();
+
+        RecyclerView recyclerView = view3.findViewById(R.id.recyclerView);
+        ArrayList<PoseEntity> poseEntityArrayList;
+        JSONArray jsonArray = (JSONArray) JSON.parse(jsonText);
+        poseEntityArrayList = JSON.parseObject(jsonArray.toJSONString(), new TypeReference<ArrayList<PoseEntity>>() {
+        });
+        Log.e("entity", poseEntityArrayList.toString());
+        ArrayList<PoseEntity> poseEntityList = poseEntityArrayList;
+
+        for (PoseEntity poseEntity : poseEntityList) {
+            arrayList.add(new Item(poseEntity.getPoseName(), "副标题", R.mipmap.q1));
+        }
+        adapter = new HomeAdapter(this, arrayList, this);
+        recyclerView.setAdapter(adapter);
+        GridLayoutManager manager = new GridLayoutManager(this, 2, GridLayoutManager.VERTICAL, false);
+        recyclerView.setLayoutManager(manager);
+
+
         //实例化一个PagerAdapter的适配器
         mPagerAdapter = new PagerAdapter() {
             @Override   //返回要滑动的VIew的个数
@@ -121,6 +172,7 @@ public class HomePage extends AppCompatActivity {
                 Logger.d("选中了" + mTitles[index]);
                 if (index == 3) {
                     jpTabBar.hideBadge(3);
+
                 }
             }
 
@@ -155,4 +207,10 @@ public class HomePage extends AppCompatActivity {
         }
         return list;
     }
+
+    @Override
+    public void onItemClick(Item item) {
+        Toast.makeText(getApplicationContext(), item.title + " is clicked", Toast.LENGTH_SHORT).show();
+    }
+
 }

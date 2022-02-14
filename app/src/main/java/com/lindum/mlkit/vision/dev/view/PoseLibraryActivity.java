@@ -71,7 +71,6 @@ public class PoseLibraryActivity extends AppCompatActivity implements HomeAdapte
         recyclerView.setLayoutManager(manager);
 //        TitleBar titleBar = findViewById(R.id.titleBar);
 //        titleBar.setLeftClickListener(view -> Toast.makeText(PoseBankActivity.this, "点击了返回", Toast.LENGTH_SHORT).show());
-
     }
 
     @Override

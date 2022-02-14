@@ -1,0 +1,18 @@
+<component name="libraryTable">
+  <library name="Gradle: com.github.xuexiangjys.XUtil:xutil-core:2.0.0@aar">
+    <ANNOTATIONS>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/8f7a3fb5b22fd814ba8707c967cb3ed6/jetified-xutil-core-2.0.0/annotations.zip!/" />
+    </ANNOTATIONS>
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/8f7a3fb5b22fd814ba8707c967cb3ed6/jetified-xutil-core-2.0.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/8f7a3fb5b22fd814ba8707c967cb3ed6/jetified-xutil-core-2.0.0/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/8f7a3fb5b22fd814ba8707c967cb3ed6/jetified-xutil-core-2.0.0/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.xuexiangjys.XUtil/xutil-core/2.0.0/ba81d1b7b717364d4059a1355526b7d3a551135e/xutil-core-2.0.0-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.xuexiangjys.XUtil/xutil-core/2.0.0/92ba56047d4445ae7bf967bf863ee61b88756dff/xutil-core-2.0.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
