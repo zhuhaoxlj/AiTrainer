@@ -1,6 +1,11 @@
 package com.lindum.mlkit.vision.dev.view;
 
 
+import android.os.Bundle;
+import android.os.StrictMode;
+import android.util.Log;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -11,11 +16,6 @@ import com.alibaba.fastjson.TypeReference;
 import com.lindum.mlkit.vision.dev.R;
 import com.lindum.mlkit.vision.dev.posedetector.PoseEntity;
 import com.xuexiang.xui.XUI;
-
-import android.os.Bundle;
-import android.os.StrictMode;
-import android.util.Log;
-import android.widget.Toast;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -76,6 +76,7 @@ public class PoseLibraryActivity extends AppCompatActivity implements HomeAdapte
     @Override
     public void onItemClick(Item item) {
         Toast.makeText(getApplicationContext(), item.title + " is clicked", Toast.LENGTH_SHORT).show();
+
     }
 
 }

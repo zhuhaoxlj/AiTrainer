@@ -61,6 +61,8 @@ repositories {
 }
 
 dependencies {
+    // mysql 5.1.49 yyds
+    implementation 'mysql:mysql-connector-java:5.1.49'
     // 地区选择器
     implementation 'com.github.gzu-liyujiang.AndroidPicker:AddressPicker:4.1.7'
     // 注解绑定控件

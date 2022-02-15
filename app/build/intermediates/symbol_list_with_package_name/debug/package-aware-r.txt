@@ -3483,6 +3483,7 @@ drawable md_selector
 drawable md_selector_dark
 drawable md_transparent
 drawable mlet_selector_bg
+drawable more
 drawable ms_background_selector
 drawable ms_drop_down_bg
 drawable ms_drop_down_bg_radius
@@ -3683,6 +3684,7 @@ id TOP_END
 id TOP_START
 id TR_BL
 id Top
+id UserInfoTitleBar
 id about_list
 id accelerate
 id accessibility_action_clickable_span
@@ -4146,9 +4148,12 @@ id pathRelative
 id peekHeight
 id percent
 id performance
+id personalPageNickNameText
 id personalPageTitleBar
 id photoView
 id pin
+id poseDetailImage
+id poseDetailName
 id poseInfo
 id poseLibraryTitleBar
 id poseName
@@ -4161,15 +4166,8 @@ id postLayout
 id preButton
 id prePoseImage
 id preview_view
-id processBar1
-id processBar1Text
-id processBar2
-id processBar2Text
-id processBar3
-id processBar3Text
-id processBar4
-id processBar4Text
 id profileEditText
+id profileInfoButton
 id profileTextLimit
 id profileTitleBar
 id progressView_circle_main
@@ -4347,7 +4345,6 @@ id textinput_suffix_text
 id time
 id time_picker
 id title
-id titleBar
 id titleDividerNoCustom
 id title_template
 id titlebar
@@ -4597,7 +4594,6 @@ layout mtrl_picker_header_title_text
 layout mtrl_picker_header_toggle
 layout mtrl_picker_text_input_date
 layout mtrl_picker_text_input_date_range
-layout my_process_bar
 layout next_button
 layout notification_action
 layout notification_action_tombstone
@@ -4608,10 +4604,9 @@ layout notification_template_part_time
 layout page1
 layout page2
 layout personal_page
-layout pose_analysis_card
+layout pose_details
 layout pose_info
 layout pose_library
-layout pose_result
 layout pre_button
 layout preview_activity_image_photo
 layout preview_activity_video_player
@@ -4729,6 +4724,7 @@ mipmap more_options
 mipmap next
 mipmap personal
 mipmap personal_gray
+mipmap pose_detail_image
 mipmap pose_result_image
 mipmap pre
 mipmap q1

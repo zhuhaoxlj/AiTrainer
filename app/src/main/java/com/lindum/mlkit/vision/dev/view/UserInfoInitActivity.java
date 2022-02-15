@@ -2,6 +2,7 @@ package com.lindum.mlkit.vision.dev.view;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.RelativeLayout;
@@ -28,18 +29,33 @@ import com.github.gzuliyujiang.wheelpicker.entity.ProvinceEntity;
 import com.lindum.mlkit.vision.dev.R;
 import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.Logger;
+import com.xuexiang.xui.XUI;
+import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xui.widget.picker.RulerView;
+
+import java.time.LocalDate;
 
 /**
  * @author MarkGosling
  * @date 2022/2/14 10:55
  */
 public class UserInfoInitActivity extends AppCompatActivity implements OnDatePickedListener, OnTimePickedListener, OnAddressPickedListener, OnOptionPickedListener {
+    final int changeNickNameIntentCode = 1, changeProfileIntentCode = 2;
     ActivityResultLauncher<Intent> intentActivityResultLauncher;
+    TextView nickNameText;
+    String profile;
+    String sportsPreference;
+    String sex;
+    LocalDate birthday;
+    float height;
+    float weigth;
+    String region;
+    Bitmap profileImage;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        XUI.initTheme(this);
         setContentView(R.layout.user_info_input);
         Logger.addLogAdapter(new AndroidLogAdapter());
         registerGetIntentData();
@@ -52,9 +68,8 @@ public class UserInfoInitActivity extends AppCompatActivity implements OnDatePic
     public void registerGetIntentData() {
         intentActivityResultLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
             // 修改昵称
-            if (result.getData() != null && result.getResultCode() == 1) {
+            if (result.getData() != null && result.getResultCode() == changeNickNameIntentCode) {
                 String nickName = getStringFromIntentResult(result, "nickName");
-                TextView nickNameText = findViewById(R.id.nickNameText);
                 nickNameText.setText(nickName);
                 String profile = getStringFromIntentResult(result, "profile");
                 Logger.d(profile);
@@ -62,8 +77,8 @@ public class UserInfoInitActivity extends AppCompatActivity implements OnDatePic
                 Toast.makeText(getApplicationContext(), "空", Toast.LENGTH_LONG).show();
             }
             // 修改简介
-            if (result.getData() != null && result.getResultCode() == 2) {
-                String profile = getStringFromIntentResult(result, "profile");
+            if (result.getData() != null && result.getResultCode() == changeProfileIntentCode) {
+                profile = getStringFromIntentResult(result, "profile");
                 Logger.d(profile);
             } else {
                 Toast.makeText(getApplicationContext(), "空", Toast.LENGTH_LONG).show();
@@ -71,7 +86,23 @@ public class UserInfoInitActivity extends AppCompatActivity implements OnDatePic
         });
     }
 
+    /**
+     * 初始化函数
+     */
     public void init() {
+        nickNameText = findViewById(R.id.nickNameText);
+
+        // TitleBar
+        TitleBar titleBar = findViewById(R.id.UserInfoTitleBar);
+        titleBar.setLeftClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent();
+                intent.putExtra("nickName", nickNameText.getText() + "");
+                setResult(1, intent);
+                finish();
+            }
+        });
         RelativeLayout selectBirthDay = findViewById(R.id.selectBirthDayButton);
         selectBirthDay.setOnClickListener(view -> {
             BirthdayPicker picker = new BirthdayPicker(UserInfoInitActivity.this);
@@ -84,13 +115,13 @@ public class UserInfoInitActivity extends AppCompatActivity implements OnDatePic
         selectSex.setOnClickListener(this::onSex);
 
         // 身高选择器
-        RulerView heigthRuler = findViewById(R.id.heightRuler);
-        heigthRuler.setOnChooseResultListener(new RulerView.OnChooseResultListener() {
+        RulerView heightRuler = findViewById(R.id.heightRuler);
+        heightRuler.setOnChooseResultListener(new RulerView.OnChooseResultListener() {
             @SuppressLint("SetTextI18n")
             @Override
             public void onEndResult(String result) {
                 TextView heightText = findViewById(R.id.heigthText);
-                heightText.setText(heigthRuler.getCurrentValue() + "cm");
+                heightText.setText(heightRuler.getCurrentValue() + "cm");
             }
 
             @Override
@@ -158,6 +189,13 @@ public class UserInfoInitActivity extends AppCompatActivity implements OnDatePic
         picker.show();
     }
 
+    /**
+     * 从 ActivityResult 通过 key 读取字符串
+     *
+     * @param result ActivityResult
+     * @param key    获取字符串的 key
+     * @return key 对应的字符串
+     */
     public String getStringFromIntentResult(ActivityResult result, String key) {
         assert result.getData() != null;
         return result.getData().getCharSequenceExtra(key) == null ? "" : result.getData().getCharSequenceExtra(key).toString();
@@ -174,6 +212,14 @@ public class UserInfoInitActivity extends AppCompatActivity implements OnDatePic
     @Override
     public void onTimePicked(int hour, int minute, int second) {
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent();
+        intent.putExtra("nickName", nickNameText.getText() + "");
+        setResult(1, intent);
+        super.onBackPressed();
     }
 
     @Override

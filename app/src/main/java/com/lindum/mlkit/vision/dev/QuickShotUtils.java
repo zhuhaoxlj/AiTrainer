@@ -13,8 +13,10 @@ import java.io.File;
 class QuickShotUtils {
 
     static String getMimeType(String src) {
+        // jpg 格式图片
+        String jpgFormat = "jpg";
         src = src.substring(1);
-        if (src.equals("jpg")) {
+        if (jpgFormat.equals(src)) {
             src = "jpeg";
         }
         return "image" + File.separator + src;

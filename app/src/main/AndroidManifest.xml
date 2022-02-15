@@ -47,9 +47,11 @@
             android:name="com.google.mlkit.vision.DEPENDENCIES"
             android:value="barcode,face,ocr,ica" />
 
+        <activity android:name=".view.PoseDetailsActivity" />
         <activity android:name="com.lindum.mlkit.vision.dev.result.ImageDetails" />
         <activity android:name=".view.ChangeProfileActivity" />
         <activity android:name=".view.ChangeNickName" />
+        <activity android:name=".view.UserInfoInitActivity" />
         <activity
             android:name="com.lindum.mlkit.vision.dev.result.TrainingResult"
             android:exported="false"

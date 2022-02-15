@@ -16,9 +16,6 @@
         android:layout_width="match_parent"
         android:layout_height="165dp"
         android:layout_margin="20dp"
-        android:elevation="0dp"
-        android:outlineAmbientShadowColor="@color/white"
-        android:outlineSpotShadowColor="@color/white"
         app:cardCornerRadius="12dp">
 
         <RelativeLayout
@@ -34,13 +31,22 @@
                 android:src="@drawable/personal_image" />
 
             <TextView
+                android:id="@+id/personalPageNickNameText"
                 android:layout_width="wrap_content"
-                android:textColor="@color/white"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="115dp"
                 android:layout_marginTop="33dp"
                 android:text="Karry"
+                android:textColor="@color/white"
                 android:textSize="24sp" />
+
+            <ImageView
+                android:id="@+id/profileInfoButton"
+                android:layout_width="80dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="268dp"
+                android:layout_marginTop="38dp"
+                android:src="@drawable/more" />
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
 

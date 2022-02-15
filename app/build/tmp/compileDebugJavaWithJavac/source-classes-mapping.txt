@@ -13,6 +13,8 @@ com/lindum/mlkit/vision/dev/view/SelectSportsPreference.java
  com.lindum.mlkit.vision.dev.view.SelectSportsPreference
 com/lindum/mlkit/vision/dev/view/Item.java
  com.lindum.mlkit.vision.dev.view.Item
+com/lindum/mlkit/vision/dev/entity/UserEntity.java
+ com.lindum.mlkit.vision.dev.entity.UserEntity
 com/lindum/mlkit/vision/dev/TemperatureMonitor.java
  com.lindum.mlkit.vision.dev.TemperatureMonitor
 com/lindum/mlkit/vision/dev/preference/SettingsActivity.java
@@ -56,6 +58,8 @@ com/lindum/mlkit/vision/dev/preference/PreferenceUtils.java
  com.lindum.mlkit.vision.dev.preference.PreferenceUtils
 com/lindum/mlkit/vision/dev/view/StartPageActivity.java
  com.lindum.mlkit.vision.dev.view.StartPageActivity
+com/lindum/mlkit/vision/dev/sql/ControlTable.java
+ com.lindum.mlkit.vision.dev.sql.ControlTable
 com/lindum/mlkit/vision/dev/posedetector/PoseLibrary.java
  com.lindum.mlkit.vision.dev.posedetector.PoseLibrary
 com/lindum/mlkit/vision/dev/BuildConfig.java
@@ -70,6 +74,8 @@ com/lindum/mlkit/vision/dev/PixelCopyHelper.java
  com.lindum.mlkit.vision.dev.PixelCopyHelper$PixelCopyListener
 com/lindum/mlkit/vision/dev/posedetector/classification/PoseClassifierProcessor.java
  com.lindum.mlkit.vision.dev.posedetector.classification.PoseClassifierProcessor
+com/lindum/mlkit/vision/dev/view/PoseDetailsActivity.java
+ com.lindum.mlkit.vision.dev.view.PoseDetailsActivity
 com/lindum/mlkit/vision/dev/view/FoodListAdapter.java
  com.lindum.mlkit.vision.dev.view.FoodListAdapter
 com/lindum/mlkit/vision/dev/view/AboutActivity.java
@@ -125,6 +131,7 @@ com/lindum/mlkit/vision/dev/view/UserInfoInitActivity.java
  com.lindum.mlkit.vision.dev.view.UserInfoInitActivity
  com.lindum.mlkit.vision.dev.view.UserInfoInitActivity$1
  com.lindum.mlkit.vision.dev.view.UserInfoInitActivity$2
+ com.lindum.mlkit.vision.dev.view.UserInfoInitActivity$3
 com/lindum/mlkit/vision/dev/view/HomeAdapter.java
  com.lindum.mlkit.vision.dev.view.HomeAdapter
  com.lindum.mlkit.vision.dev.view.HomeAdapter$ItemListener

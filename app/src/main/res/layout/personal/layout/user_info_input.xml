@@ -7,7 +7,7 @@
     android:orientation="vertical">
 
     <com.xuexiang.xui.widget.actionbar.TitleBar
-        android:id="@+id/titleBar"
+        android:id="@+id/UserInfoTitleBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:tb_actionPadding="20dp"

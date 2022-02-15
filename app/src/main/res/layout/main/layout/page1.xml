@@ -24,14 +24,36 @@
                 <androidx.cardview.widget.CardView
                     android:layout_width="233dp"
                     android:layout_height="38dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="20dp"
+                    android:elevation="0dp"
+                    android:outlineAmbientShadowColor="@color/white"
+                    android:outlineSpotShadowColor="@color/white"
+                    android:translationZ="0dp"
+                    app:cardBackgroundColor="#EDEDED"
+                    app:cardCornerRadius="19dp"
+                    app:cardMaxElevation="0dp">
 
-                    app:cardBackgroundColor="#e5e3e3"
-                    app:cardCornerRadius="19dp">
-
-                    <EditText
+                    <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@color/xui_transparent" />
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="13dp"
+                            android:src="@drawable/search" />
+
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="50dp"
+                            android:background="@color/xui_transparent"
+                            android:hint="帕梅拉"
+                            android:textColor="#919191"
+                            android:textColorHint="#919191" />
+                    </RelativeLayout>
                 </androidx.cardview.widget.CardView>
 
                 <ImageView
@@ -88,6 +110,69 @@
                     app:bb_textSize="13.5sp"
                     tools:ignore="MissingConstraints" />
             </androidx.cardview.widget.CardView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginStart="15dp"
+                    android:src="@drawable/pose_training" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="姿态训练"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:src="@drawable/train_image1" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:src="@drawable/train_image2" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:src="@drawable/train_image3" />
+                </LinearLayout>
+            </LinearLayout>
             <!--  精选低卡  -->
             <LinearLayout
                 android:layout_width="match_parent"
@@ -110,6 +195,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
                         android:text="精选低卡"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
@@ -125,6 +211,10 @@
                         android:layout_height="match_parent"
                         android:background="#b9befc">
 
+                        <ListView
+                            android:id="@+id/foodList"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
             </LinearLayout>
