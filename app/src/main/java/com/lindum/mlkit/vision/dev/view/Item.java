@@ -6,24 +6,34 @@ package com.lindum.mlkit.vision.dev.view;
  * @date 2022/1/27 5:25
  */
 public class Item {
-
+    public int index;
     public String title;
     public String subTitle;
     public int bgDrawable;
     public int drawable;
     public String color;
 
-    public Item(String text, String subTitle, int drawable, String color) {
+    public Item(int index, String text, String subTitle, int drawable, String color) {
+        this.index = index;
         this.title = text;
         this.subTitle = subTitle;
         this.drawable = drawable;
         this.color = color;
     }
 
-    public Item(String text, String subTitle, int bgDrawable) {
+    public Item(int index, String text, String subTitle, int bgDrawable) {
+        this.index = index;
         this.title = text;
         this.subTitle = subTitle;
         this.bgDrawable = bgDrawable;
+    }
+
+    public int getIndex() {
+        return index;
+    }
+
+    public void setIndex(int index) {
+        this.index = index;
     }
 
     public String getText() {

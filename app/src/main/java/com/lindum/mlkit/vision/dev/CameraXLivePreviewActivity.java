@@ -1,8 +1,5 @@
 package com.lindum.mlkit.vision.dev;
 
-import androidx.lifecycle.ViewModelProvider;
-import androidx.lifecycle.ViewModelProvider.AndroidViewModelFactory;
-
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
@@ -16,16 +13,11 @@ import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.Build.VERSION_CODES;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Environment;
 import android.os.Handler;
 import android.os.StrictMode;
 import android.provider.Settings;
+import android.speech.tts.TextToSpeech;
 import android.util.Log;
 import android.util.Size;
 import android.view.View;
@@ -42,6 +34,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.camera.core.CameraInfoUnavailableException;
 import androidx.camera.core.CameraSelector;
 import androidx.camera.core.ImageAnalysis;
@@ -51,23 +47,24 @@ import androidx.camera.view.PreviewView;
 import androidx.core.app.ActivityCompat;
 import androidx.core.app.ActivityCompat.OnRequestPermissionsResultCallback;
 import androidx.core.content.ContextCompat;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelProvider.AndroidViewModelFactory;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.TypeReference;
 import com.google.android.gms.common.annotation.KeepName;
 import com.google.mlkit.common.MlKitException;
+import com.google.mlkit.vision.pose.PoseDetectorOptionsBase;
 import com.lindum.mlkit.vision.dev.posedetector.PoseDataUtils;
 import com.lindum.mlkit.vision.dev.posedetector.PoseDetectorProcessor;
 import com.lindum.mlkit.vision.dev.posedetector.PoseEntity;
 import com.lindum.mlkit.vision.dev.posedetector.ProcessImage;
-import com.lindum.mlkit.vision.dev.result.TrainingResult;
 import com.lindum.mlkit.vision.dev.preference.PreferenceUtils;
 import com.lindum.mlkit.vision.dev.preference.SettingsActivity;
-
-import com.google.mlkit.vision.pose.PoseDetectorOptionsBase;
+import com.lindum.mlkit.vision.dev.result.TrainingResult;
+import com.orhanobut.logger.Logger;
 import com.xuexiang.xui.XUI;
-
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -96,6 +93,7 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
         implements OnRequestPermissionsResultCallback,
         OnItemSelectedListener,
         CompoundButton.OnCheckedChangeListener, QuickShot.QuickShotListener {
+    private TextToSpeech textToSpeech;
     private static final String TAG = "CameraXLivePreview";
     private static final int PERMISSION_REQUESTS = 1;
 
@@ -192,6 +190,7 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
             return;
         }
         XUI.initTheme(this);
+        init();
         if (savedInstanceState != null) {
             selectedModel = savedInstanceState.getString(STATE_SELECTED_MODEL, OBJECT_DETECTION);
         }
@@ -246,7 +245,7 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
         for (PoseEntity poseEntity : poseEntityList) {
             // 计数类型
             poseEntity.setPoseType(0);
-            poseEntity.setPoseProcessValue(100);
+            poseEntity.setPoseProcessValue(5);
         }
 
         nowPoseName = poseEntityList.get(nowPoseIndex).getPoseName();
@@ -382,8 +381,9 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
                 countdownSeconds = 3;
                 nowPoseProcessSeconds = 0;
                 updatePoseInfo();
-
+                textToSpeech.speak("下一个动作" + poseEntityList.get(nowPoseIndex).getPoseName(), TextToSpeech.QUEUE_FLUSH, null);
             }
+
         });
         prePoseButton.setOnClickListener(view ->
         {
@@ -399,6 +399,18 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
         if (!allPermissionsGranted()) {
             getRuntimePermissions();
         }
+    }
+
+    public void init() {
+        // 测试 TTS
+        textToSpeech = new TextToSpeech(this, i -> {
+            Logger.e("初始化中...");
+            if (i == TextToSpeech.SUCCESS) {
+                Logger.e("语音初始化成功");
+            } else {
+                Logger.e("语音初始化失败");
+            }
+        });
     }
 
     public static void cleanWarnPart() {

@@ -46,7 +46,7 @@
         <meta-data
             android:name="com.google.mlkit.vision.DEPENDENCIES"
             android:value="barcode,face,ocr,ica" />
-
+        <activity android:name=".datacenter.ProgressActivity"/>
         <activity android:name=".view.PoseDetailsActivity" />
         <activity android:name="com.lindum.mlkit.vision.dev.result.ImageDetails" />
         <activity android:name=".view.ChangeProfileActivity" />
@@ -58,7 +58,7 @@
             android:theme="@style/AppTheme" />
         <activity android:name=".CameraXLivePreviewActivity" />
         <activity
-            android:name="com.lindum.mlkit.vision.dev.view.HomePage"
+            android:name="com.lindum.mlkit.vision.dev.datacenter.Calendar"
             android:exported="true"
             android:theme="@style/AppTheme">
             <intent-filter>
@@ -74,6 +74,9 @@
     <queries>
         <intent>
             <action android:name="android.media.action.IMAGE_CAPTURE" />
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.TTS_SERVICE" />
         </intent>
     </queries>
 

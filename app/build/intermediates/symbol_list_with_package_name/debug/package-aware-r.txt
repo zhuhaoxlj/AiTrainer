@@ -103,12 +103,25 @@ animator mtrl_fab_hide_motion_spec
 animator mtrl_fab_show_motion_spec
 animator mtrl_fab_transformation_sheet_collapse_spec
 animator mtrl_fab_transformation_sheet_expand_spec
+array branch_integer_array
+array branch_string_array
+array lunar_first_of_month
+array lunar_str
+array month_string_array
 array photo_editor_emoji
 array pref_entries_face_detector_performance_mode
 array pref_entries_values_pose_detector_performance_mode
 array pref_entry_values_face_detector_performance_mode
 array pref_entry_values_pose_detector_performance_mode
+array solar_festival
+array solar_term
+array special_festivals
 array tags_values
+array tradition_festival
+array trunk_integer_array
+array trunk_string_array
+array week_string_array
+array year_view_week_string_array
 attr AutoFitTextViewStyle
 attr BadgeColor
 attr BadgeHorizonalMargin
@@ -415,6 +428,13 @@ attr cTopDividerLineMarginLR
 attr cTopDividerLineMarginLeft
 attr cTopDividerLineMarginRight
 attr cUseRipple
+attr calendar_content_view_id
+attr calendar_height
+attr calendar_match_parent
+attr calendar_padding
+attr calendar_padding_left
+attr calendar_padding_right
+attr calendar_show_mode
 attr captureMode
 attr cardBackgroundColor
 attr cardCornerRadius
@@ -580,6 +600,10 @@ attr cpv_track_color
 attr cpv_track_width
 attr crossfade
 attr currentState
+attr current_day_lunar_text_color
+attr current_day_text_color
+attr current_month_lunar_text_color
+attr current_month_text_color
 attr curveFit
 attr customBoolean
 attr customColorDrawableValue
@@ -594,6 +618,7 @@ attr dayInvalidStyle
 attr daySelectedStyle
 attr dayStyle
 attr dayTodayStyle
+attr day_text_size
 attr ddm_contentLayoutId
 attr ddm_dividerColor
 attr ddm_dividerMargin
@@ -613,6 +638,7 @@ attr ddm_underlineHeight
 attr defaultDuration
 attr defaultQueryHint
 attr defaultState
+attr default_status
 attr deltaPolarAngle
 attr deltaPolarRadius
 attr deriveConstraintsFrom
@@ -762,6 +788,7 @@ attr ftl_selecteds
 attr ftl_single_cancelable
 attr gapBetweenBars
 attr gestureInsetBottomIgnored
+attr gesture_mode
 attr goIcon
 attr haloColor
 attr haloRadius
@@ -977,6 +1004,7 @@ attr listPreferredItemPaddingRight
 attr listPreferredItemPaddingStart
 attr logo
 attr logoDescription
+attr lunar_text_size
 attr lv_arc_degree
 attr lv_arc_single
 attr lv_auto
@@ -1025,6 +1053,11 @@ attr maxImageSize
 attr maxLines
 attr maxVelocity
 attr maxWidth
+attr max_multi_select_size
+attr max_select_range
+attr max_year
+attr max_year_day
+attr max_year_month
 attr md_background_color
 attr md_btn_negative_selector
 attr md_btn_neutral_selector
@@ -1120,6 +1153,10 @@ attr minHideDelay
 attr minSeparation
 attr minTouchTargetSize
 attr minWidth
+attr min_select_range
+attr min_year
+attr min_year_day
+attr min_year_month
 attr mini_loading_view_size
 attr mlet_contentBackground
 attr mlet_contentPadding
@@ -1141,6 +1178,10 @@ attr mock_labelBackgroundColor
 attr mock_labelColor
 attr mock_showDiagonals
 attr mock_showLabel
+attr month_view
+attr month_view_auto_select_day
+attr month_view_scrollable
+attr month_view_show_mode
 attr motionDebug
 attr motionDurationLong1
 attr motionDurationLong2
@@ -1230,6 +1271,8 @@ attr onNegativeCross
 attr onPositiveCross
 attr onShow
 attr onTouchUp
+attr other_month_lunar_text_color
+attr other_month_text_color
 attr overlapAnchor
 attr overlay
 attr paddingBottomNoButtons
@@ -1557,6 +1600,11 @@ attr scb_color_unchecked
 attr scb_color_unchecked_stroke
 attr scb_duration
 attr scb_stroke_width
+attr scheme_lunar_text_color
+attr scheme_month_text_color
+attr scheme_text
+attr scheme_text_color
+attr scheme_theme_color
 attr scopeUris
 attr scrimAnimationDuration
 attr scrimBackground
@@ -1586,8 +1634,12 @@ attr search_view_text_color_hint
 attr search_view_text_padding
 attr search_view_text_size
 attr seekBarStyle
+attr select_mode
 attr selectableItemBackground
 attr selectableItemBackgroundBorderless
+attr selected_lunar_text_color
+attr selected_text_color
+attr selected_theme_color
 attr selectionRequired
 attr selectorSize
 attr shapeAppearance
@@ -1928,6 +1980,16 @@ attr waveVariesBy
 attr wcelv_max_height
 attr wclv_max_height
 attr wcsv_max_height
+attr week_background
+attr week_bar_height
+attr week_bar_view
+attr week_line_background
+attr week_line_margin
+attr week_start_with
+attr week_text_color
+attr week_text_size
+attr week_view
+attr week_view_scrollable
 attr wheel_atmosphericEnabled
 attr wheel_curtainColor
 attr wheel_curtainCorner
@@ -2211,6 +2273,27 @@ attr xui_useThemeGeneralShadowElevation
 attr yearSelectedStyle
 attr yearStyle
 attr yearTodayStyle
+attr year_view
+attr year_view_background
+attr year_view_current_day_text_color
+attr year_view_day_text_color
+attr year_view_day_text_size
+attr year_view_month_height
+attr year_view_month_padding_bottom
+attr year_view_month_padding_left
+attr year_view_month_padding_right
+attr year_view_month_padding_top
+attr year_view_month_text_color
+attr year_view_month_text_size
+attr year_view_padding
+attr year_view_padding_left
+attr year_view_padding_right
+attr year_view_scheme_color
+attr year_view_scrollable
+attr year_view_select_text_color
+attr year_view_week_height
+attr year_view_week_text_color
+attr year_view_week_text_size
 bool abc_action_bar_embed_tabs
 bool abc_config_actionMenuItemAllCaps
 bool mtrl_btn_textappearance_all_caps
@@ -3412,6 +3495,7 @@ drawable battle
 drawable beer
 drawable bg_personal_card
 drawable bg_rect_round_tag_btn
+drawable bg_ripple
 drawable btn_checkbox_checked_mtrl
 drawable btn_checkbox_checked_to_unchecked_mtrl_animation
 drawable btn_checkbox_unchecked_mtrl
@@ -3441,6 +3525,8 @@ drawable common_google_signin_btn_text_light
 drawable common_google_signin_btn_text_light_focused
 drawable common_google_signin_btn_text_light_normal
 drawable common_google_signin_btn_text_light_normal_background
+drawable cv_bg_material
+drawable data_center
 drawable ddm_ic_arrow_down
 drawable ddm_ic_arrow_up
 drawable design_fab_background
@@ -3525,6 +3611,7 @@ drawable rb_bg_normal
 drawable rb_bg_pressed
 drawable rb_bg_selector
 drawable search
+drawable setting
 drawable srb_ic_empty
 drawable srb_ic_filled
 drawable stf_ic_empty
@@ -3632,6 +3719,7 @@ drawable xui_sign_count_view_bg
 drawable xui_tips_point
 drawable xutil_bg_black_circular_10
 drawable yam
+drawable zjj
 id ALT
 id AccelerateDecelerateInterpolator
 id AccelerateInterpolator
@@ -3773,6 +3861,7 @@ id bezierBannerView
 id birthdayText
 id blocking
 id both
+id both_month_week_view
 id bottom
 id bottomProcessBar
 id bottom_dialog_list_item_img
@@ -3807,6 +3896,8 @@ id cRightTopTextId
 id cache_measures
 id cal
 id calendarButton
+id calendarLayout
+id calendarView
 id calligraphy_tag_id
 id cancel_button
 id cardView
@@ -3853,12 +3944,14 @@ id custom
 id customPanel
 id cut
 id dark
+id dataCenterTitle
 id date_picker_actions
 id day
 id decelerate
 id decelerateAndComplete
 id decor_content_parent
 id default_activity_button
+id default_mode
 id deltaRelative
 id dependency_ordering
 id design_bottom_sheet
@@ -3877,6 +3970,7 @@ id direct
 id disableHome
 id disablePostScroll
 id disableScroll
+id disabled
 id disjoint
 id display
 id doubleRipple
@@ -3905,6 +3999,7 @@ id error_view
 id error_view_tv
 id et_input
 id exitUntilCollapsed
+id expand
 id expand_activities_button
 id expand_collapse
 id expandable_text
@@ -3922,12 +4017,14 @@ id fill_horizontal
 id fill_parent
 id fill_vertical
 id filled
+id first_day_of_month
 id fitCenter
 id fitEnd
 id fitStart
 id fitToContents
 id fixed
 id fl_border
+id fl_current
 id flip
 id floating
 id flowlayout_multi_select
@@ -3937,6 +4034,7 @@ id foodName
 id forever
 id forty
 id fragment_container_view_tag
+id frameContent
 id front
 id gcv_img
 id gcv_title
@@ -3983,6 +4081,7 @@ id hpv_group
 id hpv_time
 id hpv_wrong
 id hundred
+id ib_calendar
 id icon
 id icon_group
 id icon_only
@@ -4007,6 +4106,8 @@ id iv_indicator
 id jumpToEnd
 id jumpToStart
 id labeled
+id last_select_day
+id last_select_day_ignore_current
 id layout
 id left
 id leftToRight
@@ -4021,6 +4122,7 @@ id list_item
 id listview
 id ll_container
 id ll_content
+id ll_week
 id loading
 id loading_view
 id loading_view_tv
@@ -4069,6 +4171,10 @@ id mini_loading_view
 id mixed
 id mlet_input
 id mlet_number
+id mode_all
+id mode_fix
+id mode_only_current
+id mon
 id month
 id month_day
 id month_grid
@@ -4102,6 +4208,7 @@ id mtrl_picker_text_input_range_start
 id mtrl_picker_title_text
 id mtrl_view_tag_bottom_padding
 id multi
+id multi_mode
 id multiply
 id navigation_bar_item_icon_view
 id navigation_bar_item_labels_group
@@ -4127,6 +4234,8 @@ id nowPoseIndexText
 id off
 id on
 id onTouch
+id only_month_view
+id only_week_view
 id options1
 id options2
 id options3
@@ -4152,8 +4261,14 @@ id personalPageNickNameText
 id personalPageTitleBar
 id photoView
 id pin
+id poseDetailBreath
+id poseDetailCommonMistakes
+id poseDetailFeeling
+id poseDetailFeelingImage
 id poseDetailImage
 id poseDetailName
+id poseDetailSteps
+id poseDetails
 id poseInfo
 id poseLibraryTitleBar
 id poseName
@@ -4180,6 +4295,7 @@ id progress_text_time
 id progress_text_wrong
 id radial
 id radio
+id range_mode
 id ratio
 id rectangle
 id rectangles
@@ -4197,6 +4313,7 @@ id right_icon
 id right_side
 id ring
 id rl_root
+id rl_tool
 id rootView
 id round
 id rounded
@@ -4209,6 +4326,7 @@ id sRightCheckBoxId
 id sRightImgId
 id sRightSwitchId
 id sRightViewId
+id sat
 id save_non_transition_alpha
 id save_overlay_view
 id sawtooth
@@ -4235,6 +4353,7 @@ id search_voice_btn
 id second
 id selectAddressButton
 id selectBirthDayButton
+id selectLayout
 id selectSexButton
 id selectSportsLevel
 id selectSportsPreferenceButton
@@ -4250,9 +4369,11 @@ id shortcut
 id showCustom
 id showHome
 id showTitle
+id shrink
 id simpleRipple
 id sin
 id single
+id single_mode
 id skipCollapsed
 id slide
 id snackbar_action
@@ -4274,6 +4395,7 @@ id sportsLevel2Button
 id sportsLevel3
 id sportsLevel3Button
 id sportsPreferenceTitleBar
+id sportsTime
 id spread
 id spread_inside
 id square
@@ -4301,6 +4423,7 @@ id submit_area
 id suggestion_icon
 id suggestion_list
 id suggestion_text
+id sun
 id sweep
 id switchBtn
 id switcher
@@ -4368,12 +4491,15 @@ id tv
 id tvTitle
 id tv_child_name
 id tv_copyright
+id tv_current_day
 id tv_editor_text
 id tv_group_name
 id tv_index
 id tv_info
 id tv_jump
+id tv_lunar
 id tv_message
+id tv_month_day
 id tv_start
 id tv_tag
 id tv_tag_item
@@ -4381,6 +4507,7 @@ id tv_tinted_spinner
 id tv_tip_message
 id tv_title
 id tv_version
+id tv_year
 id twenty
 id unchecked
 id uniform
@@ -4399,6 +4526,8 @@ id viewpump_layout_res
 id viewpump_tag_id
 id visible
 id visible_removing_fragment_view_tag
+id vp_month
+id vp_week
 id weightRuler
 id weightText
 id wheel_picker_date_day_label
@@ -4515,6 +4644,9 @@ layout change_nickname
 layout change_profile
 layout circle_button
 layout custom_dialog
+layout cv_layout_calendar_view
+layout cv_week_bar
+layout data_center
 layout design_bottom_navigation_item
 layout design_bottom_sheet_dialog
 layout design_layout_snackbar
@@ -4711,11 +4843,13 @@ layout xui_layout_stateful_template
 layout xui_layout_verify_code
 layout xui_layout_xtoast
 layout xutil_layout_toast
+layout zjj
 menu camera_button_menu
 mipmap change_camera
 mipmap dialog_close_icon
 mipmap home
 mipmap home_gray
+mipmap ic_calendar
 mipmap ic_launcher
 mipmap left_arrow
 mipmap library
@@ -4797,6 +4931,7 @@ string common_open_on_phone
 string common_signin_button_text
 string common_signin_button_text_long
 string custom_object_detection
+string cv_app_name
 string default_app_font_path
 string desc_camera_source_activity
 string desc_camerax_live_preview_activity
@@ -4807,6 +4942,7 @@ string error_icon_content_description
 string exposed_dropdown_menu_content_description
 string fab_transformation_scrim_behavior
 string fab_transformation_sheet_behavior
+string fri
 string hide_bottom_view_on_scroll_behavior
 string icon_content_description
 string inputNickNameHint
@@ -4837,6 +4973,7 @@ string material_timepicker_pm
 string material_timepicker_select_time
 string material_timepicker_text_input_mode_description
 string menu_item_settings
+string mon
 string mtrl_badge_numberless_content_description
 string mtrl_chip_close_icon_content_description
 string mtrl_exceed_max_badge_number_content_description
@@ -4941,6 +5078,7 @@ string pref_title_rear_camera_preview_size
 string pref_title_segmentation_raw_size_mask
 string profileHint
 string profileTextLimit
+string sat
 string search_menu_title
 string select_image
 string start_over
@@ -4952,9 +5090,13 @@ string stfLocationOffMessage
 string stfOfflineMessage
 string stfRetryButtonText
 string stf_retry
+string sun
+string thu
 string tips
 string toggle_turn_off
 string toggle_turn_on
+string tue
+string wed
 string xui_bottom_behavior
 string xui_count_down_finish
 string xui_float_behavior
@@ -5879,6 +6021,8 @@ styleable BottomNavigationView itemHorizontalTranslationEnabled
 styleable BottomSheetBehavior_Layout android_maxWidth android_elevation backgroundTint behavior_draggable behavior_expandedOffset behavior_fitToContents behavior_halfExpandedRatio behavior_hideable behavior_peekHeight behavior_saveFlags behavior_skipCollapsed gestureInsetBottomIgnored paddingBottomSystemWindowInsets paddingLeftSystemWindowInsets paddingRightSystemWindowInsets paddingTopSystemWindowInsets shapeAppearance shapeAppearanceOverlay
 styleable ButtonBarLayout allowStacking
 styleable ButtonView textDrawable textLeftBottomRadius textLeftTopRadius textNormalTextColor textRadius textRightBottomRadius textRightTopRadius textSelectedSolidColor textSelectedTextColor textSolidColor textStrokeColor textStrokeWidth
+styleable CalendarLayout calendar_content_view_id calendar_show_mode default_status gesture_mode
+styleable CalendarView calendar_height calendar_match_parent calendar_padding calendar_padding_left calendar_padding_right current_day_lunar_text_color current_day_text_color current_month_lunar_text_color current_month_text_color day_text_size lunar_text_size max_multi_select_size max_select_range max_year max_year_day max_year_month min_select_range min_year min_year_day min_year_month month_view month_view_auto_select_day month_view_scrollable month_view_show_mode other_month_lunar_text_color other_month_text_color scheme_lunar_text_color scheme_month_text_color scheme_text scheme_text_color scheme_theme_color select_mode selected_lunar_text_color selected_text_color selected_theme_color week_background week_bar_height week_bar_view week_line_background week_line_margin week_start_with week_text_color week_text_size week_view week_view_scrollable year_view year_view_background year_view_current_day_text_color year_view_day_text_color year_view_day_text_size year_view_month_height year_view_month_padding_bottom year_view_month_padding_left year_view_month_padding_right year_view_month_padding_top year_view_month_text_color year_view_month_text_size year_view_padding year_view_padding_left year_view_padding_right year_view_scheme_color year_view_scrollable year_view_select_text_color year_view_week_height year_view_week_text_color year_view_week_text_size
 styleable CameraView captureMode flash lensFacing pinchToZoomEnabled scaleType
 styleable CardView android_minWidth android_minHeight cardBackgroundColor cardCornerRadius cardElevation cardMaxElevation cardPreventCornerOverlap cardUseCompatPadding contentPadding contentPaddingBottom contentPaddingLeft contentPaddingRight contentPaddingTop
 styleable Chip android_textAppearance android_textSize android_textColor android_ellipsize android_maxWidth android_text android_checkable checkedIcon checkedIconEnabled checkedIconTint checkedIconVisible chipBackgroundColor chipCornerRadius chipEndPadding chipIcon chipIconEnabled chipIconSize chipIconTint chipIconVisible chipMinHeight chipMinTouchTargetSize chipStartPadding chipStrokeColor chipStrokeWidth chipSurfaceColor closeIcon closeIconEnabled closeIconEndPadding closeIconSize closeIconStartPadding closeIconTint closeIconVisible ensureMinTouchTargetSize hideMotionSpec iconEndPadding iconStartPadding rippleColor shapeAppearance shapeAppearanceOverlay showMotionSpec textEndPadding textStartPadding

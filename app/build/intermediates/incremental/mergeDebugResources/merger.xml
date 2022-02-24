@@ -10564,7 +10564,845 @@
         <item name="android:activityCloseEnterAnimation">@null</item>
         <item name="android:activityCloseExitAnimation">@null</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
-    </style></file></source></dataSet><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="main$Generated" generated="true" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="D:\Project\Android\AiTrainer\app\src\main\res\layout\personal"/><source path="D:\Project\Android\AiTrainer\app\src\main\res\layout\main"/><source path="D:\Project\Android\AiTrainer\app\src\main\res\layout\train"/><source path="D:\Project\Android\AiTrainer\app\src\main\res\layout"/><source path="D:\Project\Android\AiTrainer\app\src\main\res"/><source path="D:\Project\Android\AiTrainer\app\build\generated\res\rs\debug"/><source path="D:\Project\Android\AiTrainer\app\build\generated\res\resValues\debug"/></dataSet><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="main" generated-set="main$Generated" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="D:\Project\Android\AiTrainer\app\src\main\res\layout\personal"><file name="bg_personal_card" path="D:\Project\Android\AiTrainer\app\src\main\res\layout\personal\drawable\bg_personal_card.xml" qualifiers="" type="drawable"/><file name="about" path="D:\Project\Android\AiTrainer\app\src\main\res\layout\personal\layout\about.xml" qualifiers="" type="layout"/><file name="adapter_item_tag" path="D:\Project\Android\AiTrainer\app\src\main\res\layout\personal\layout\adapter_item_tag.xml" qualifiers="" type="layout"/><file name="change_nickname" path="D:\Project\Android\AiTrainer\app\src\main\res\layout\personal\layout\change_nickname.xml" qualifiers="" type="layout"/><file name="change_profile" path="D:\Project\Android\AiTrainer\app\src\main\res\layout\personal\layout\change_profile.xml" qualifiers="" type="layout"/><file name="select_sports_preference" path="D:\Project\Android\AiTrainer\app\src\main\res\layout\personal\layout\select_sports_preference.xml" qualifiers="" type="layout"/><file name="user_info_input" path="D:\Project\Android\AiTrainer\app\src\main\res\layout\personal\layout\user_info_input.xml" qualifiers="" type="layout"/><file path="D:\Project\Android\AiTrainer\app\src\main\res\layout\personal\values\strings.xml" qualifiers=""><string name="nickNameHint">昵称</string><string name="inputNickNameHint">请输入您的昵称</string><string name="changeNickNameTips">昵称每半年只能修改一次，请谨慎修改</string><string name="inputProfileTips">请输入您的个人简介</string><string name="profileHint">简介</string><string name="profileTextLimit">0/160</string></file></source><source path="D:\Project\Android\AiTrainer\app\src\main\res\layout\main"><file name="circle_button" path="D:\Project\Android\AiTrainer\app\src\main\res\layout\main\layout\circle_button.xml" qualifiers="" type="layout"/><file name="food_item" path="D:\Project\Android\AiTrainer\app\src\main\res\layout\main\layout\food_item.xml" qualifiers="" type="layout"/><file name="home_page" path="D:\Project\Android\AiTrainer\app\src\main\res\layout\main\layout\home_page.xml" qualifiers="" type="layout"/><file name="page1" path="D:\Project\Android\AiTrainer\app\src\main\res\layout\main\layout\page1.xml" qualifiers="" type="layout"/><file name="page2" path="D:\Project\Android\AiTrainer\app\src\main\res\layout\main\layout\page2.xml" qualifiers="" type="layout"/><file name="personal_page" path="D:\Project\Android\AiTrainer\app\src\main\res\layout\main\layout\personal_page.xml" qualifiers="" type="layout"/><file name="pose_details" path="D:\Project\Android\AiTrainer\app\src\main\res\layout\main\layout\pose_details.xml" qualifiers="" type="layout"/><file name="pose_library" path="D:\Project\Android\AiTrainer\app\src\main\res\layout\main\layout\pose_library.xml" qualifiers="" type="layout"/><file name="start_page" path="D:\Project\Android\AiTrainer\app\src\main\res\layout\main\layout\start_page.xml" qualifiers="" type="layout"/></source><source path="D:\Project\Android\AiTrainer\app\src\main\res\layout\train"><file name="training_result" path="D:\Project\Android\AiTrainer\app\src\main\res\layout\train\layout\training_result.xml" qualifiers="" type="layout"/><file name="training_result_item" path="D:\Project\Android\AiTrainer\app\src\main\res\layout\train\layout\training_result_item.xml" qualifiers="" type="layout"/></source><source path="D:\Project\Android\AiTrainer\app\src\main\res\layout"/><source path="D:\Project\Android\AiTrainer\app\src\main\res"><file name="selector_tag_color" path="D:\Project\Android\AiTrainer\app\src\main\res\color\selector_tag_color.xml" qualifiers="" type="color"/><file name="list_item_background" path="D:\Project\Android\AiTrainer\app\src\main\res\drawable\list_item_background.xml" qualifiers="" type="drawable"/><file name="logo_mlkit" path="D:\Project\Android\AiTrainer\app\src\main\res\drawable\logo_mlkit.xml" qualifiers="" type="drawable"/><file name="battle" path="D:\Project\Android\AiTrainer\app\src\main\res\drawable-hdpi\battle.png" qualifiers="hdpi-v4" type="drawable"/><file name="beer" path="D:\Project\Android\AiTrainer\app\src\main\res\drawable-hdpi\beer.png" qualifiers="hdpi-v4" type="drawable"/><file name="ferrari" path="D:\Project\Android\AiTrainer\app\src\main\res\drawable-hdpi\ferrari.png" qualifiers="hdpi-v4" type="drawable"/><file name="ic_settings_white_24dp" path="D:\Project\Android\AiTrainer\app\src\main\res\drawable-hdpi\ic_settings_white_24dp.png" qualifiers="hdpi-v4" type="drawable"/><file name="ic_switch_camera_white_48dp" path="D:\Project\Android\AiTrainer\app\src\main\res\drawable-hdpi\ic_switch_camera_white_48dp.xml" qualifiers="hdpi-v4" type="drawable"/><file name="ic_switch_camera_white_48dp_inset" path="D:\Project\Android\AiTrainer\app\src\main\res\drawable-hdpi\ic_switch_camera_white_48dp_inset.png" qualifiers="hdpi-v4" type="drawable"/><file name="jetpack_joyride" path="D:\Project\Android\AiTrainer\app\src\main\res\drawable-hdpi\jetpack_joyride.png" qualifiers="hdpi-v4" type="drawable"/><file name="terraria" path="D:\Project\Android\AiTrainer\app\src\main\res\drawable-hdpi\terraria.png" qualifiers="hdpi-v4" type="drawable"/><file name="three_d" path="D:\Project\Android\AiTrainer\app\src\main\res\drawable-hdpi\three_d.png" qualifiers="hdpi-v4" type="drawable"/><file name="train" path="D:\Project\Android\AiTrainer\app\src\main\res\drawable-hdpi\train.png" qualifiers="hdpi-v4" type="drawable"/><file name="ic_settings_white_24dp" path="D:\Project\Android\AiTrainer\app\src\main\res\drawable-mdpi\ic_settings_white_24dp.png" qualifiers="mdpi-v4" type="drawable"/><file name="ic_switch_camera_white_48dp" path="D:\Project\Android\AiTrainer\app\src\main\res\drawable-mdpi\ic_switch_camera_white_48dp.xml" qualifiers="mdpi-v4" type="drawable"/><file name="ic_switch_camera_white_48dp_inset" path="D:\Project\Android\AiTrainer\app\src\main\res\drawable-mdpi\ic_switch_camera_white_48dp_inset.png" qualifiers="mdpi-v4" type="drawable"/><file name="bg_rect_round_tag_btn" path="D:\Project\Android\AiTrainer\app\src\main\res\drawable-xhdpi\bg_rect_round_tag_btn.xml" qualifiers="xhdpi-v4" type="drawable"/><file name="ic_settings_white_24dp" path="D:\Project\Android\AiTrainer\app\src\main\res\drawable-xhdpi\ic_settings_white_24dp.png" qualifiers="xhdpi-v4" type="drawable"/><file name="ic_switch_camera_white_48dp" path="D:\Project\Android\AiTrainer\app\src\main\res\drawable-xhdpi\ic_switch_camera_white_48dp.xml" qualifiers="xhdpi-v4" type="drawable"/><file name="ic_switch_camera_white_48dp_inset" path="D:\Project\Android\AiTrainer\app\src\main\res\drawable-xhdpi\ic_switch_camera_white_48dp_inset.png" qualifiers="xhdpi-v4" type="drawable"/><file name="alarm" path="D:\Project\Android\AiTrainer\app\src\main\res\drawable-xxhdpi\alarm.png" qualifiers="xxhdpi-v4" type="drawable"/><file name="calendar" path="D:\Project\Android\AiTrainer\app\src\main\res\drawable-xxhdpi\calendar.png" qualifiers="xxhdpi-v4" type="drawable"/><file name="carambola" path="D:\Project\Android\AiTrainer\app\src\main\res\drawable-xxhdpi\carambola.png" qualifiers="xxhdpi-v4" type="drawable"/><file name="ic_settings_white_24dp" path="D:\Project\Android\AiTrainer\app\src\main\res\drawable-xxhdpi\ic_settings_white_24dp.png" qualifiers="xxhdpi-v4" type="drawable"/><file name="ic_switch_camera_white_48dp" path="D:\Project\Android\AiTrainer\app\src\main\res\drawable-xxhdpi\ic_switch_camera_white_48dp.xml" qualifiers="xxhdpi-v4" type="drawable"/><file name="ic_switch_camera_white_48dp_inset" path="D:\Project\Android\AiTrainer\app\src\main\res\drawable-xxhdpi\ic_switch_camera_white_48dp_inset.png" qualifiers="xxhdpi-v4" type="drawable"/><file name="more" path="D:\Project\Android\AiTrainer\app\src\main\res\drawable-xxhdpi\more.png" qualifiers="xxhdpi-v4" type="drawable"/><file name="muskmelon" path="D:\Project\Android\AiTrainer\app\src\main\res\drawable-xxhdpi\muskmelon.png" qualifiers="xxhdpi-v4" type="drawable"/><file name="pecan" path="D:\Project\Android\AiTrainer\app\src\main\res\drawable-xxhdpi\pecan.png" qualifiers="xxhdpi-v4" type="drawable"/><file name="personal_image" path="D:\Project\Android\AiTrainer\app\src\main\res\drawable-xxhdpi\personal_image.png" qualifiers="xxhdpi-v4" type="drawable"/><file name="pose_training" path="D:\Project\Android\AiTrainer\app\src\main\res\drawable-xxhdpi\pose_training.png" qualifiers="xxhdpi-v4" type="drawable"/><file name="search" path="D:\Project\Android\AiTrainer\app\src\main\res\drawable-xxhdpi\search.png" qualifiers="xxhdpi-v4" type="drawable"/><file name="taro" path="D:\Project\Android\AiTrainer\app\src\main\res\drawable-xxhdpi\taro.png" qualifiers="xxhdpi-v4" type="drawable"/><file name="train_image1" path="D:\Project\Android\AiTrainer\app\src\main\res\drawable-xxhdpi\train_image1.png" qualifiers="xxhdpi-v4" type="drawable"/><file name="train_image2" path="D:\Project\Android\AiTrainer\app\src\main\res\drawable-xxhdpi\train_image2.png" qualifiers="xxhdpi-v4" type="drawable"/><file name="train_image3" path="D:\Project\Android\AiTrainer\app\src\main\res\drawable-xxhdpi\train_image3.png" qualifiers="xxhdpi-v4" type="drawable"/><file name="yam" path="D:\Project\Android\AiTrainer\app\src\main\res\drawable-xxhdpi\yam.png" qualifiers="xxhdpi-v4" type="drawable"/><file name="ic_settings_white_24dp" path="D:\Project\Android\AiTrainer\app\src\main\res\drawable-xxxhdpi\ic_settings_white_24dp.png" qualifiers="xxxhdpi-v4" type="drawable"/><file name="ic_switch_camera_white_48dp" path="D:\Project\Android\AiTrainer\app\src\main\res\drawable-xxxhdpi\ic_switch_camera_white_48dp.xml" qualifiers="xxxhdpi-v4" type="drawable"/><file name="ic_switch_camera_white_48dp_inset" path="D:\Project\Android\AiTrainer\app\src\main\res\drawable-xxxhdpi\ic_switch_camera_white_48dp_inset.png" qualifiers="xxxhdpi-v4" type="drawable"/><file name="activity_settings" path="D:\Project\Android\AiTrainer\app\src\main\res\layout\activity_settings.xml" qualifiers="" type="layout"/><file name="activity_vision_camerax_live_preview" path="D:\Project\Android\AiTrainer\app\src\main\res\layout\activity_vision_camerax_live_preview.xml" qualifiers="" type="layout"/><file name="image_details" path="D:\Project\Android\AiTrainer\app\src\main\res\layout\image_details.xml" qualifiers="" type="layout"/><file name="login" path="D:\Project\Android\AiTrainer\app\src\main\res\layout\login.xml" qualifiers="" type="layout"/><file name="look_explanation" path="D:\Project\Android\AiTrainer\app\src\main\res\layout\look_explanation.xml" qualifiers="" type="layout"/><file name="next_button" path="D:\Project\Android\AiTrainer\app\src\main\res\layout\next_button.xml" qualifiers="" type="layout"/><file name="pose_info" path="D:\Project\Android\AiTrainer\app\src\main\res\layout\pose_info.xml" qualifiers="" type="layout"/><file name="pre_button" path="D:\Project\Android\AiTrainer\app\src\main\res\layout\pre_button.xml" qualifiers="" type="layout"/><file name="result_list_item" path="D:\Project\Android\AiTrainer\app\src\main\res\layout\result_list_item.xml" qualifiers="" type="layout"/><file name="row_item" path="D:\Project\Android\AiTrainer\app\src\main\res\layout\row_item.xml" qualifiers="" type="layout"/><file name="settings_style" path="D:\Project\Android\AiTrainer\app\src\main\res\layout\settings_style.xml" qualifiers="" type="layout"/><file name="spinner_style" path="D:\Project\Android\AiTrainer\app\src\main\res\layout\spinner_style.xml" qualifiers="" type="layout"/><file name="toggle_style" path="D:\Project\Android\AiTrainer\app\src\main\res\layout\toggle_style.xml" qualifiers="" type="layout"/><file name="activity_vision_camerax_live_preview" path="D:\Project\Android\AiTrainer\app\src\main\res\layout-land\activity_vision_camerax_live_preview.xml" qualifiers="land" type="layout"/><file name="camera_button_menu" path="D:\Project\Android\AiTrainer\app\src\main\res\menu\camera_button_menu.xml" qualifiers="" type="menu"/><file name="ic_launcher" path="D:\Project\Android\AiTrainer\app\src\main\res\mipmap-hdpi\ic_launcher.png" qualifiers="hdpi-v4" type="mipmap"/><file name="home" path="D:\Project\Android\AiTrainer\app\src\main\res\mipmap-mdpi\home.png" qualifiers="mdpi-v4" type="mipmap"/><file name="home_gray" path="D:\Project\Android\AiTrainer\app\src\main\res\mipmap-mdpi\home_gray.png" qualifiers="mdpi-v4" type="mipmap"/><file name="ic_launcher" path="D:\Project\Android\AiTrainer\app\src\main\res\mipmap-mdpi\ic_launcher.png" qualifiers="mdpi-v4" type="mipmap"/><file name="library" path="D:\Project\Android\AiTrainer\app\src\main\res\mipmap-mdpi\library.png" qualifiers="mdpi-v4" type="mipmap"/><file name="library_gray" path="D:\Project\Android\AiTrainer\app\src\main\res\mipmap-mdpi\library_gray.png" qualifiers="mdpi-v4" type="mipmap"/><file name="more_options" path="D:\Project\Android\AiTrainer\app\src\main\res\mipmap-mdpi\more_options.png" qualifiers="mdpi-v4" type="mipmap"/><file name="personal" path="D:\Project\Android\AiTrainer\app\src\main\res\mipmap-mdpi\personal.png" qualifiers="mdpi-v4" type="mipmap"/><file name="personal_gray" path="D:\Project\Android\AiTrainer\app\src\main\res\mipmap-mdpi\personal_gray.png" qualifiers="mdpi-v4" type="mipmap"/><file name="social" path="D:\Project\Android\AiTrainer\app\src\main\res\mipmap-mdpi\social.png" qualifiers="mdpi-v4" type="mipmap"/><file name="social_gray" path="D:\Project\Android\AiTrainer\app\src\main\res\mipmap-mdpi\social_gray.png" qualifiers="mdpi-v4" type="mipmap"/><file name="start_page_image" path="D:\Project\Android\AiTrainer\app\src\main\res\mipmap-mdpi\start_page_image.png" qualifiers="mdpi-v4" type="mipmap"/><file name="take_photo" path="D:\Project\Android\AiTrainer\app\src\main\res\mipmap-mdpi\take_photo.png" qualifiers="mdpi-v4" type="mipmap"/><file name="tips" path="D:\Project\Android\AiTrainer\app\src\main\res\mipmap-mdpi\tips.png" qualifiers="mdpi-v4" type="mipmap"/><file name="training" path="D:\Project\Android\AiTrainer\app\src\main\res\mipmap-mdpi\training.png" qualifiers="mdpi-v4" type="mipmap"/><file name="change_camera" path="D:\Project\Android\AiTrainer\app\src\main\res\mipmap-xhdpi\change_camera.png" qualifiers="xhdpi-v4" type="mipmap"/><file name="ic_launcher" path="D:\Project\Android\AiTrainer\app\src\main\res\mipmap-xhdpi\ic_launcher.png" qualifiers="xhdpi-v4" type="mipmap"/><file name="left_arrow" path="D:\Project\Android\AiTrainer\app\src\main\res\mipmap-xhdpi\left_arrow.png" qualifiers="xhdpi-v4" type="mipmap"/><file name="next" path="D:\Project\Android\AiTrainer\app\src\main\res\mipmap-xhdpi\next.png" qualifiers="xhdpi-v4" type="mipmap"/><file name="pose_result_image" path="D:\Project\Android\AiTrainer\app\src\main\res\mipmap-xhdpi\pose_result_image.png" qualifiers="xhdpi-v4" type="mipmap"/><file name="pre" path="D:\Project\Android\AiTrainer\app\src\main\res\mipmap-xhdpi\pre.png" qualifiers="xhdpi-v4" type="mipmap"/><file name="right_arrow" path="D:\Project\Android\AiTrainer\app\src\main\res\mipmap-xhdpi\right_arrow.png" qualifiers="xhdpi-v4" type="mipmap"/><file name="ic_launcher" path="D:\Project\Android\AiTrainer\app\src\main\res\mipmap-xxhdpi\ic_launcher.png" qualifiers="xxhdpi-v4" type="mipmap"/><file name="pose_detail_image" path="D:\Project\Android\AiTrainer\app\src\main\res\mipmap-xxhdpi\pose_detail_image.jpg" qualifiers="xxhdpi-v4" type="mipmap"/><file name="q1" path="D:\Project\Android\AiTrainer\app\src\main\res\mipmap-xxhdpi\q1.jpg" qualifiers="xxhdpi-v4" type="mipmap"/><file name="q2" path="D:\Project\Android\AiTrainer\app\src\main\res\mipmap-xxhdpi\q2.jpg" qualifiers="xxhdpi-v4" type="mipmap"/><file name="q3" path="D:\Project\Android\AiTrainer\app\src\main\res\mipmap-xxhdpi\q3.jpg" qualifiers="xxhdpi-v4" type="mipmap"/><file name="q4" path="D:\Project\Android\AiTrainer\app\src\main\res\mipmap-xxhdpi\q4.jpg" qualifiers="xxhdpi-v4" type="mipmap"/><file name="q5" path="D:\Project\Android\AiTrainer\app\src\main\res\mipmap-xxhdpi\q5.jpg" qualifiers="xxhdpi-v4" type="mipmap"/><file path="D:\Project\Android\AiTrainer\app\src\main\res\values\arrays.xml" qualifiers=""><string-array name="pref_entries_face_detector_performance_mode">
+    </style></file></source></dataSet><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="com.haibin:calendarview:3.7.1$Generated" generated="true" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\ef55714dbd263c4018385af2c5cdcb49\jetified-calendarview-3.7.1\res"/></dataSet><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="com.haibin:calendarview:3.7.1" from-dependency="true" generated-set="com.haibin:calendarview:3.7.1$Generated" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\ef55714dbd263c4018385af2c5cdcb49\jetified-calendarview-3.7.1\res"><file path="C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\ef55714dbd263c4018385af2c5cdcb49\jetified-calendarview-3.7.1\res\values\values.xml" qualifiers=""><integer-array name="branch_integer_array">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+    </integer-array><string-array name="branch_string_array">
+        <item>酉</item>
+        <item>戌</item>
+        <item>亥</item>
+        <item>子</item>
+        <item>丑</item>
+        <item>寅</item>
+        <item>卯</item>
+        <item>辰</item>
+        <item>巳</item>
+        <item>午</item>
+        <item>未</item>
+        <item>申</item>
+
+    </string-array><string-array name="lunar_first_of_month">
+        <item>春节</item>
+        <item>二月</item>
+        <item>三月</item>
+        <item>四月</item>
+        <item>五月</item>
+        <item>六月</item>
+        <item>七月</item>
+        <item>八月</item>
+        <item>九月</item>
+        <item>十月</item>
+        <item>冬月</item>
+        <item>腊月</item>
+    </string-array><string-array name="lunar_str">
+        <item>初一</item>
+        <item>初二</item>
+        <item>初三</item>
+        <item>初四</item>
+        <item>初五</item>
+        <item>初六</item>
+        <item>初七</item>
+        <item>初八</item>
+        <item>初九</item>
+        <item>初十</item>
+        <item>十一</item>
+        <item>十二</item>
+        <item>十三</item>
+        <item>十四</item>
+        <item>十五</item>
+        <item>十六</item>
+        <item>十七</item>
+        <item>十八</item>
+        <item>十九</item>
+        <item>二十</item>
+        <item>廿一</item>
+        <item>廿二</item>
+        <item>廿三</item>
+        <item>廿四</item>
+        <item>廿五</item>
+        <item>廿六</item>
+        <item>廿七</item>
+        <item>廿八</item>
+        <item>廿九</item>
+        <item>三十</item>
+    </string-array><string-array name="month_string_array">
+        <item>JAN</item>
+        <item>FEB</item>
+        <item>MAR</item>
+        <item>APR</item>
+        <item>MAY</item>
+        <item>JUN</item>
+        <item>JUL</item>
+        <item>AUG</item>
+        <item>SEP</item>
+        <item>OCT</item>
+        <item>NOV</item>
+        <item>DEC</item>
+    </string-array><string-array name="solar_festival" ns2:ignore="InconsistentArrays">
+        <item>0101元旦</item>
+        <item>0214情人节</item>
+        <item>0308妇女节</item>
+        <item>0312植树节</item>
+        <item>0315消权日</item>
+        <item>0401愚人节</item>
+        <item>0422地球日</item>
+        <item>0501劳动节</item>
+        <item>0504青年节</item>
+        <item>0601儿童节</item>
+        <item>0701建党节</item>
+        <item>0801建军节</item>
+        <item>0910教师节</item>
+        <item>1001国庆节</item>
+        <item>1031万圣节</item>
+        <item>1111光棍节</item>
+        <item>1224平安夜</item>
+        <item>1225圣诞节</item>
+    </string-array><string-array name="solar_term">
+        <item>春分</item>
+        <item>清明</item>
+        <item>谷雨</item>
+        <item>立夏</item>
+        <item>小满</item>
+        <item>芒种</item>
+        <item>夏至</item>
+        <item>小暑</item>
+        <item>大暑</item>
+        <item>立秋</item>
+        <item>处暑</item>
+        <item>白露</item>
+        <item>秋分</item>
+        <item>寒露</item>
+        <item>霜降</item>
+        <item>立冬</item>
+        <item>小雪</item>
+        <item>大雪</item>
+        <item>冬至</item>
+        <item>小寒</item>
+        <item>大寒</item>
+        <item>立春</item>
+        <item>雨水</item>
+        <item>惊蛰</item>
+    </string-array><string-array name="special_festivals">
+        <item>母亲节</item>
+        <item>父亲节</item>
+        <item>感恩节</item>
+    </string-array><string-array name="tradition_festival">
+        <item>除夕</item>
+        <item>0101春节</item>
+        <item>0115元宵</item>
+        <item>0505端午</item>
+        <item>0707七夕</item>
+        <item>0815中秋</item>
+        <item>0909重阳</item>
+    </string-array><integer-array name="trunk_integer_array">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+
+    </integer-array><string-array name="trunk_string_array">
+        <item>辛</item>
+        <item>壬</item>
+        <item>癸</item>
+        <item>甲</item>
+        <item>乙</item>
+        <item>丙</item>
+        <item>丁</item>
+        <item>戊</item>
+        <item>己</item>
+        <item>庚</item>
+    </string-array><string-array name="week_string_array">
+        <item>Sun</item>
+        <item>Mon</item>
+        <item>Tue</item>
+        <item>Wed</item>
+        <item>Thu</item>
+        <item>Fri</item>
+        <item>Sat</item>
+    </string-array><string-array name="year_view_week_string_array">
+        <item>S</item>
+        <item>M</item>
+        <item>T</item>
+        <item>W</item>
+        <item>T</item>
+        <item>F</item>
+        <item>S</item>
+    </string-array><string name="cv_app_name">CalendarView</string><string name="fri">Fri</string><string name="mon">Mon</string><string name="sat">Sat</string><string name="sun">Sun</string><string name="thu">Thu</string><string name="tue">Tue</string><string name="wed">Wed</string><declare-styleable name="CalendarLayout">
+        <attr name="default_status">
+            <enum name="expand" value="0"/>
+            <enum name="shrink" value="1"/>
+        </attr>
+
+
+        
+        <attr name="gesture_mode">
+            <enum name="default_mode" value="0"/>
+            
+            <enum name="disabled" value="2"/>
+        </attr>
+
+        <attr name="calendar_show_mode">
+            <enum name="both_month_week_view" value="0"/>
+            <enum name="only_week_view" value="1"/>
+            <enum name="only_month_view" value="2"/>
+        </attr>
+        <attr format="integer" name="calendar_content_view_id"/>
+    </declare-styleable><declare-styleable name="CalendarView">
+
+        <attr format="dimension" name="calendar_padding"/>
+        <attr format="dimension" name="calendar_padding_left"/>
+        <attr format="dimension" name="calendar_padding_right"/>
+
+
+        <attr format="color" name="week_background"/>
+        <attr format="color" name="week_line_background"/>
+        <attr format="color" name="week_text_color"/>
+        <attr format="dimension" name="week_text_size"/>
+        <attr format="dimension" name="week_line_margin"/>
+
+        <attr format="string" name="month_view"/>
+        <attr format="string" name="week_view"/> 
+        <attr format="string" name="year_view"/> 
+        <attr format="dimension" name="week_bar_height"/> 
+        <attr format="string" name="week_bar_view"/> 
+
+        <attr format="string" name="scheme_text"/>
+        <attr format="dimension" name="day_text_size"/>
+        <attr format="dimension" name="lunar_text_size"/>
+        <attr format="dimension" name="calendar_height"/>
+        <attr format="boolean" name="calendar_match_parent"/> 
+        <attr format="color" name="scheme_text_color"/>
+        <attr format="color" name="scheme_month_text_color"/>
+        <attr format="color" name="scheme_lunar_text_color"/>
+        <attr format="color" name="scheme_theme_color"/>
+
+        <attr format="color" name="selected_theme_color"/>
+        <attr format="color" name="selected_text_color"/>
+        <attr format="color" name="selected_lunar_text_color"/>
+
+        <attr format="color" name="current_day_text_color"/>
+        <attr format="color" name="current_day_lunar_text_color"/>
+        <attr format="color" name="current_month_text_color"/>
+        <attr format="color" name="other_month_text_color"/>
+        <attr format="color" name="current_month_lunar_text_color"/>
+        <attr format="color" name="other_month_lunar_text_color"/>
+
+
+        
+        <attr format="dimension" name="year_view_month_text_size"/>
+        <attr format="dimension" name="year_view_day_text_size"/>
+        <attr format="color" name="year_view_month_text_color"/>
+        <attr format="color" name="year_view_current_day_text_color"/>
+        <attr format="color" name="year_view_day_text_color"/>
+        <attr format="color" name="year_view_select_text_color"/>
+        <attr format="color" name="year_view_scheme_color"/>
+        <attr format="color" name="year_view_background"/>
+        <attr format="dimension" name="year_view_month_height"/>
+        <attr format="dimension" name="year_view_week_height"/>
+        <attr format="dimension" name="year_view_week_text_size"/>
+        <attr format="color" name="year_view_week_text_color"/>
+
+        <attr format="dimension" name="year_view_padding"/>
+        <attr format="dimension" name="year_view_padding_left"/>
+        <attr format="dimension" name="year_view_padding_right"/>
+
+        <attr format="dimension" name="year_view_month_padding_top"/>
+        <attr format="dimension" name="year_view_month_padding_left"/>
+        <attr format="dimension" name="year_view_month_padding_right"/>
+        <attr format="dimension" name="year_view_month_padding_bottom"/>
+
+        
+        <attr format="integer" name="min_year"/>
+        <attr format="integer" name="max_year"/>
+        <attr format="integer" name="min_year_month"/>
+        <attr format="integer" name="max_year_month"/>
+        <attr format="integer" name="min_year_day"/>
+        <attr format="integer" name="max_year_day"/>
+
+
+        
+        <attr format="boolean" name="month_view_scrollable"/>
+        
+        <attr format="boolean" name="week_view_scrollable"/>
+        
+        <attr format="boolean" name="year_view_scrollable"/>
+
+        
+        <attr name="month_view_show_mode">
+            <enum name="mode_all" value="0"/>
+            <enum name="mode_only_current" value="1"/>
+            <enum name="mode_fix" value="2"/>
+        </attr>
+
+        
+        <attr name="week_start_with">
+            <enum name="sun" value="1"/>
+            <enum name="mon" value="2"/>
+            <enum name="sat" value="7"/>
+        </attr>
+
+        
+        <attr name="select_mode">
+            <enum name="default_mode" value="0"/>
+            <enum name="single_mode" value="1"/>
+            <enum name="range_mode" value="2"/>
+            <enum name="multi_mode" value="3"/>
+        </attr>
+
+        
+        <attr format="integer" name="max_multi_select_size"/>
+
+        
+        <attr format="integer" name="min_select_range"/>
+        <attr format="integer" name="max_select_range"/>
+
+        
+        <attr name="month_view_auto_select_day">
+            <enum name="first_day_of_month" value="0"/>
+            <enum name="last_select_day" value="1"/>
+            <enum name="last_select_day_ignore_current" value="2"/>
+        </attr>
+    </declare-styleable></file><file path="C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\ef55714dbd263c4018385af2c5cdcb49\jetified-calendarview-3.7.1\res\values-zh\values-zh.xml" qualifiers="zh"><integer-array name="branch_integer_array">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+    </integer-array><string-array name="branch_string_array">
+        <item>酉</item>
+        <item>戌</item>
+        <item>亥</item>
+        <item>子</item>
+        <item>丑</item>
+        <item>寅</item>
+        <item>卯</item>
+        <item>辰</item>
+        <item>巳</item>
+        <item>午</item>
+        <item>未</item>
+        <item>申</item>
+
+    </string-array><string-array name="lunar_first_of_month">
+        <item>春节</item>
+        <item>二月</item>
+        <item>三月</item>
+        <item>四月</item>
+        <item>五月</item>
+        <item>六月</item>
+        <item>七月</item>
+        <item>八月</item>
+        <item>九月</item>
+        <item>十月</item>
+        <item>冬月</item>
+        <item>腊月</item>
+    </string-array><string-array name="lunar_str">
+        <item>初一</item>
+        <item>初二</item>
+        <item>初三</item>
+        <item>初四</item>
+        <item>初五</item>
+        <item>初六</item>
+        <item>初七</item>
+        <item>初八</item>
+        <item>初九</item>
+        <item>初十</item>
+        <item>十一</item>
+        <item>十二</item>
+        <item>十三</item>
+        <item>十四</item>
+        <item>十五</item>
+        <item>十六</item>
+        <item>十七</item>
+        <item>十八</item>
+        <item>十九</item>
+        <item>二十</item>
+        <item>廿一</item>
+        <item>廿二</item>
+        <item>廿三</item>
+        <item>廿四</item>
+        <item>廿五</item>
+        <item>廿六</item>
+        <item>廿七</item>
+        <item>廿八</item>
+        <item>廿九</item>
+        <item>三十</item>
+    </string-array><string-array name="month_string_array">
+        <item>1月</item>
+        <item>2月</item>
+        <item>3月</item>
+        <item>4月</item>
+        <item>5月</item>
+        <item>6月</item>
+        <item>7月</item>
+        <item>8月</item>
+        <item>9月</item>
+        <item>10月</item>
+        <item>11月</item>
+        <item>12月</item>
+    </string-array><string-array name="solar_festival" ns2:ignore="InconsistentArrays">
+        <item>0101元旦</item>
+        <item>0214情人节</item>
+        <item>0308妇女节</item>
+        <item>0312植树节</item>
+        <item>0315消权日</item>
+        <item>0401愚人节</item>
+        <item>0422地球日</item>
+        <item>0501劳动节</item>
+        <item>0504青年节</item>
+        <item>0601儿童节</item>
+        <item>0701建党节</item>
+        <item>0801建军节</item>
+        <item>0910教师节</item>
+        <item>1001国庆节</item>
+        <item>1031万圣节</item>
+        <item>1111光棍节</item>
+        <item>1224平安夜</item>
+        <item>1225圣诞节</item>
+    </string-array><string-array name="solar_term">
+        <item>春分</item>
+        <item>清明</item>
+        <item>谷雨</item>
+        <item>立夏</item>
+        <item>小满</item>
+        <item>芒种</item>
+        <item>夏至</item>
+        <item>小暑</item>
+        <item>大暑</item>
+        <item>立秋</item>
+        <item>处暑</item>
+        <item>白露</item>
+        <item>秋分</item>
+        <item>寒露</item>
+        <item>霜降</item>
+        <item>立冬</item>
+        <item>小雪</item>
+        <item>大雪</item>
+        <item>冬至</item>
+        <item>小寒</item>
+        <item>大寒</item>
+        <item>立春</item>
+        <item>雨水</item>
+        <item>惊蛰</item>
+    </string-array><string-array name="special_festivals">
+        <item>母亲节</item>
+        <item>父亲节</item>
+        <item>感恩节</item>
+    </string-array><string-array name="tradition_festival">
+        <item>除夕</item>
+        <item>0101春节</item>
+        <item>0115元宵</item>
+        <item>0505端午</item>
+        <item>0707七夕</item>
+        <item>0815中秋</item>
+        <item>0909重阳</item>
+    </string-array><integer-array name="trunk_integer_array">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+
+    </integer-array><string-array name="trunk_string_array">
+        <item>辛</item>
+        <item>壬</item>
+        <item>癸</item>
+        <item>甲</item>
+        <item>乙</item>
+        <item>丙</item>
+        <item>丁</item>
+        <item>戊</item>
+        <item>己</item>
+        <item>庚</item>
+    </string-array><string-array name="week_string_array">
+        <item>日</item>
+        <item>一</item>
+        <item>二</item>
+        <item>三</item>
+        <item>四</item>
+        <item>五</item>
+        <item>六</item>
+    </string-array><string-array name="year_view_week_string_array">
+        <item>日</item>
+        <item>一</item>
+        <item>二</item>
+        <item>三</item>
+        <item>四</item>
+        <item>五</item>
+        <item>六</item>
+    </string-array><string name="cv_app_name">CalendarView</string><string name="fri">五</string><string name="mon">一</string><string name="sat">六</string><string name="sun">日</string><string name="thu">四</string><string name="tue">二</string><string name="wed">三</string></file><file path="C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\ef55714dbd263c4018385af2c5cdcb49\jetified-calendarview-3.7.1\res\values-zh-rHK\values-zh-rHK.xml" qualifiers="zh-rHK"><integer-array name="branch_integer_array">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+    </integer-array><string-array name="branch_string_array">
+        <item>酉</item>
+        <item>戌</item>
+        <item>亥</item>
+        <item>子</item>
+        <item>丑</item>
+        <item>寅</item>
+        <item>卯</item>
+        <item>辰</item>
+        <item>巳</item>
+        <item>午</item>
+        <item>未</item>
+        <item>申</item>
+
+    </string-array><string-array name="lunar_first_of_month">
+        <item>春節</item>
+        <item>二月</item>
+        <item>三月</item>
+        <item>四月</item>
+        <item>五月</item>
+        <item>六月</item>
+        <item>七月</item>
+        <item>八月</item>
+        <item>九月</item>
+        <item>十月</item>
+        <item>冬月</item>
+        <item>臘月</item>
+    </string-array><string-array name="lunar_str">
+        <item>初一</item>
+        <item>初二</item>
+        <item>初三</item>
+        <item>初四</item>
+        <item>初五</item>
+        <item>初六</item>
+        <item>初七</item>
+        <item>初八</item>
+        <item>初九</item>
+        <item>初十</item>
+        <item>十一</item>
+        <item>十二</item>
+        <item>十三</item>
+        <item>十四</item>
+        <item>十五</item>
+        <item>十六</item>
+        <item>十七</item>
+        <item>十八</item>
+        <item>十九</item>
+        <item>二十</item>
+        <item>廿一</item>
+        <item>廿二</item>
+        <item>廿三</item>
+        <item>廿四</item>
+        <item>廿五</item>
+        <item>廿六</item>
+        <item>廿七</item>
+        <item>廿八</item>
+        <item>廿九</item>
+        <item>三十</item>
+    </string-array><string-array name="month_string_array">
+        <item>1月</item>
+        <item>2月</item>
+        <item>3月</item>
+        <item>4月</item>
+        <item>5月</item>
+        <item>6月</item>
+        <item>7月</item>
+        <item>8月</item>
+        <item>9月</item>
+        <item>10月</item>
+        <item>11月</item>
+        <item>12月</item>
+    </string-array><string-array name="solar_festival" ns2:ignore="InconsistentArrays">
+        <item>0101元旦</item>
+        <item>0214情人節</item>
+        <item>0308婦女節</item>
+        <item>0312植樹節</item>
+        <item>0315消權日</item>
+        <item>0401愚人節</item>
+        <item>0404兒童節</item>
+        <item>0422地球日</item>
+        <item>0501勞動節</item>
+        <item>0504青年節</item>
+        <item>0701香港回歸</item>
+        <item>0801建军节</item>
+        <item>0910教師節</item>
+        <item>1001國慶日</item>
+        <item>1031萬聖節</item>
+        <item>1111光棍節</item>
+        <item>1224平安夜</item>
+        <item>1225聖誕節</item>
+    </string-array><string-array name="solar_term">
+        <item>春分</item>
+        <item>清明</item>
+        <item>穀雨</item>
+        <item>立夏</item>
+        <item>小滿</item>
+        <item>芒種</item>
+        <item>夏至</item>
+        <item>小暑</item>
+        <item>大暑</item>
+        <item>立秋</item>
+        <item>處暑</item>
+        <item>白露</item>
+        <item>秋分</item>
+        <item>寒露</item>
+        <item>霜降</item>
+        <item>立冬</item>
+        <item>小雪</item>
+        <item>大雪</item>
+        <item>冬至</item>
+        <item>小寒</item>
+        <item>大寒</item>
+        <item>立春</item>
+        <item>雨水</item>
+        <item>驚蟄</item>
+    </string-array><string-array name="special_festivals">
+        <item>母親節</item>
+        <item>父親節</item>
+        <item>感恩節</item>
+    </string-array><string-array name="tradition_festival">
+        <item>除夕</item>
+        <item>0101春節</item>
+        <item>0115元宵</item>
+        <item>0505端午</item>
+        <item>0707七夕</item>
+        <item>0815中秋</item>
+        <item>0909重陽</item>
+    </string-array><integer-array name="trunk_integer_array">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+
+    </integer-array><string-array name="trunk_string_array">
+        <item>辛</item>
+        <item>壬</item>
+        <item>癸</item>
+        <item>甲</item>
+        <item>乙</item>
+        <item>丙</item>
+        <item>丁</item>
+        <item>戊</item>
+        <item>己</item>
+        <item>庚</item>
+    </string-array><string-array name="week_string_array">
+        <item>日</item>
+        <item>一</item>
+        <item>二</item>
+        <item>三</item>
+        <item>四</item>
+        <item>五</item>
+        <item>六</item>
+    </string-array><string name="cv_app_name">CalendarView</string><string name="fri">五</string><string name="mon">一</string><string name="sat">六</string><string name="sun">日</string><string name="thu">四</string><string name="tue">二</string><string name="wed">三</string></file><file path="C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\ef55714dbd263c4018385af2c5cdcb49\jetified-calendarview-3.7.1\res\values-zh-rTW\values-zh-rTW.xml" qualifiers="zh-rTW"><integer-array name="branch_integer_array">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+    </integer-array><string-array name="branch_string_array">
+        <item>酉</item>
+        <item>戌</item>
+        <item>亥</item>
+        <item>子</item>
+        <item>丑</item>
+        <item>寅</item>
+        <item>卯</item>
+        <item>辰</item>
+        <item>巳</item>
+        <item>午</item>
+        <item>未</item>
+        <item>申</item>
+    </string-array><string-array name="lunar_first_of_month">
+        <item>春節</item>
+        <item>二月</item>
+        <item>三月</item>
+        <item>四月</item>
+        <item>五月</item>
+        <item>六月</item>
+        <item>七月</item>
+        <item>八月</item>
+        <item>九月</item>
+        <item>十月</item>
+        <item>冬月</item>
+        <item>臘月</item>
+    </string-array><string-array name="lunar_str">
+        <item>初一</item>
+        <item>初二</item>
+        <item>初三</item>
+        <item>初四</item>
+        <item>初五</item>
+        <item>初六</item>
+        <item>初七</item>
+        <item>初八</item>
+        <item>初九</item>
+        <item>初十</item>
+        <item>十一</item>
+        <item>十二</item>
+        <item>十三</item>
+        <item>十四</item>
+        <item>十五</item>
+        <item>十六</item>
+        <item>十七</item>
+        <item>十八</item>
+        <item>十九</item>
+        <item>二十</item>
+        <item>廿一</item>
+        <item>廿二</item>
+        <item>廿三</item>
+        <item>廿四</item>
+        <item>廿五</item>
+        <item>廿六</item>
+        <item>廿七</item>
+        <item>廿八</item>
+        <item>廿九</item>
+        <item>三十</item>
+    </string-array><string-array name="month_string_array">
+        <item>1月</item>
+        <item>2月</item>
+        <item>3月</item>
+        <item>4月</item>
+        <item>5月</item>
+        <item>6月</item>
+        <item>7月</item>
+        <item>8月</item>
+        <item>9月</item>
+        <item>10月</item>
+        <item>11月</item>
+        <item>12月</item>
+    </string-array><string-array name="solar_festival" ns2:ignore="InconsistentArrays">
+        <item>0101元旦</item>
+        <item>0214情人節</item>
+        <item>0308婦女節</item>
+        <item>0312植樹節</item>
+        <item>0315消權日</item>
+        <item>0401愚人節</item>
+        <item>0404兒童節</item>
+        <item>0422地球日</item>
+        <item>0501勞動節</item>
+        <item>0903軍人節</item>
+        <item>0928教師節</item>
+        <item>0501勞動節</item>
+        <item>0504青年節</item>
+        <item>0601兒童節</item>
+        <item>0701建黨節</item>
+        <item>0801建軍節</item>
+        <item>0928教師節</item>
+        <item>1001國慶節</item>
+        <item>1031萬聖節</item>
+        <item>1111光棍節</item>
+        <item>1224平安夜</item>
+        <item>1225聖誕節</item>
+    </string-array><string-array name="solar_term">
+        <item>春分</item>
+        <item>清明</item>
+        <item>穀雨</item>
+        <item>立夏</item>
+        <item>小滿</item>
+        <item>芒種</item>
+        <item>夏至</item>
+        <item>小暑</item>
+        <item>大暑</item>
+        <item>立秋</item>
+        <item>處暑</item>
+        <item>白露</item>
+        <item>秋分</item>
+        <item>寒露</item>
+        <item>霜降</item>
+        <item>立冬</item>
+        <item>小雪</item>
+        <item>大雪</item>
+        <item>冬至</item>
+        <item>小寒</item>
+        <item>大寒</item>
+        <item>立春</item>
+        <item>雨水</item>
+        <item>驚蟄</item>
+    </string-array><string-array name="special_festivals">
+        <item>母親節</item>
+        <item>父親節</item>
+        <item>感恩節</item>
+    </string-array><string-array name="tradition_festival">
+        <item>除夕</item>
+        <item>0101春節</item>
+        <item>0115元宵</item>
+        <item>0505端午</item>
+        <item>0707七夕</item>
+        <item>0815中秋</item>
+        <item>0909重陽</item>
+    </string-array><integer-array name="trunk_integer_array">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+
+    </integer-array><string-array name="trunk_string_array">
+        <item>辛</item>
+        <item>壬</item>
+        <item>癸</item>
+        <item>甲</item>
+        <item>乙</item>
+        <item>丙</item>
+        <item>丁</item>
+        <item>戊</item>
+        <item>己</item>
+        <item>庚</item>
+    </string-array><string-array name="week_string_array">
+        <item>日</item>
+        <item>一</item>
+        <item>二</item>
+        <item>三</item>
+        <item>四</item>
+        <item>五</item>
+        <item>六</item>
+    </string-array><string name="cv_app_name">CalendarView</string><string name="fri">五</string><string name="mon">一</string><string name="sat">六</string><string name="sun">日</string><string name="thu">四</string><string name="tue">二</string><string name="wed">三</string></file></source></dataSet><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="main$Generated" generated="true" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="D:\Project\Android\AiTrainer\app\src\main\res\layout\datacenter"/><source path="D:\Project\Android\AiTrainer\app\src\main\res\layout\personal"/><source path="D:\Project\Android\AiTrainer\app\src\main\res\layout\main"/><source path="D:\Project\Android\AiTrainer\app\src\main\res\layout\train"/><source path="D:\Project\Android\AiTrainer\app\src\main\res\layout"/><source path="D:\Project\Android\AiTrainer\app\src\main\res"/><source path="D:\Project\Android\AiTrainer\app\build\generated\res\rs\debug"/><source path="D:\Project\Android\AiTrainer\app\build\generated\res\resValues\debug"/></dataSet><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="main" generated-set="main$Generated" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="D:\Project\Android\AiTrainer\app\src\main\res\layout\datacenter"><file name="data_center" path="D:\Project\Android\AiTrainer\app\src\main\res\layout\datacenter\layout\data_center.xml" qualifiers="" type="layout"/></source><source path="D:\Project\Android\AiTrainer\app\src\main\res\layout\personal"><file name="bg_personal_card" path="D:\Project\Android\AiTrainer\app\src\main\res\layout\personal\drawable\bg_personal_card.xml" qualifiers="" type="drawable"/><file name="about" path="D:\Project\Android\AiTrainer\app\src\main\res\layout\personal\layout\about.xml" qualifiers="" type="layout"/><file name="adapter_item_tag" path="D:\Project\Android\AiTrainer\app\src\main\res\layout\personal\layout\adapter_item_tag.xml" qualifiers="" type="layout"/><file name="change_nickname" path="D:\Project\Android\AiTrainer\app\src\main\res\layout\personal\layout\change_nickname.xml" qualifiers="" type="layout"/><file name="change_profile" path="D:\Project\Android\AiTrainer\app\src\main\res\layout\personal\layout\change_profile.xml" qualifiers="" type="layout"/><file name="select_sports_preference" path="D:\Project\Android\AiTrainer\app\src\main\res\layout\personal\layout\select_sports_preference.xml" qualifiers="" type="layout"/><file name="user_info_input" path="D:\Project\Android\AiTrainer\app\src\main\res\layout\personal\layout\user_info_input.xml" qualifiers="" type="layout"/><file path="D:\Project\Android\AiTrainer\app\src\main\res\layout\personal\values\strings.xml" qualifiers=""><string name="nickNameHint">昵称</string><string name="inputNickNameHint">请输入您的昵称</string><string name="changeNickNameTips">昵称每半年只能修改一次，请谨慎修改</string><string name="inputProfileTips">请输入您的个人简介</string><string name="profileHint">简介</string><string name="profileTextLimit">0/160</string></file></source><source path="D:\Project\Android\AiTrainer\app\src\main\res\layout\main"><file name="circle_button" path="D:\Project\Android\AiTrainer\app\src\main\res\layout\main\layout\circle_button.xml" qualifiers="" type="layout"/><file name="food_item" path="D:\Project\Android\AiTrainer\app\src\main\res\layout\main\layout\food_item.xml" qualifiers="" type="layout"/><file name="home_page" path="D:\Project\Android\AiTrainer\app\src\main\res\layout\main\layout\home_page.xml" qualifiers="" type="layout"/><file name="page1" path="D:\Project\Android\AiTrainer\app\src\main\res\layout\main\layout\page1.xml" qualifiers="" type="layout"/><file name="page2" path="D:\Project\Android\AiTrainer\app\src\main\res\layout\main\layout\page2.xml" qualifiers="" type="layout"/><file name="personal_page" path="D:\Project\Android\AiTrainer\app\src\main\res\layout\main\layout\personal_page.xml" qualifiers="" type="layout"/><file name="pose_details" path="D:\Project\Android\AiTrainer\app\src\main\res\layout\main\layout\pose_details.xml" qualifiers="" type="layout"/><file name="pose_library" path="D:\Project\Android\AiTrainer\app\src\main\res\layout\main\layout\pose_library.xml" qualifiers="" type="layout"/><file name="start_page" path="D:\Project\Android\AiTrainer\app\src\main\res\layout\main\layout\start_page.xml" qualifiers="" type="layout"/></source><source path="D:\Project\Android\AiTrainer\app\src\main\res\layout\train"><file name="training_result" path="D:\Project\Android\AiTrainer\app\src\main\res\layout\train\layout\training_result.xml" qualifiers="" type="layout"/><file name="training_result_item" path="D:\Project\Android\AiTrainer\app\src\main\res\layout\train\layout\training_result_item.xml" qualifiers="" type="layout"/></source><source path="D:\Project\Android\AiTrainer\app\src\main\res\layout"/><source path="D:\Project\Android\AiTrainer\app\src\main\res"><file name="selector_tag_color" path="D:\Project\Android\AiTrainer\app\src\main\res\color\selector_tag_color.xml" qualifiers="" type="color"/><file name="data_center" path="D:\Project\Android\AiTrainer\app\src\main\res\drawable\data_center.png" qualifiers="" type="drawable"/><file name="list_item_background" path="D:\Project\Android\AiTrainer\app\src\main\res\drawable\list_item_background.xml" qualifiers="" type="drawable"/><file name="logo_mlkit" path="D:\Project\Android\AiTrainer\app\src\main\res\drawable\logo_mlkit.xml" qualifiers="" type="drawable"/><file name="setting" path="D:\Project\Android\AiTrainer\app\src\main\res\drawable\setting.png" qualifiers="" type="drawable"/><file name="zjj" path="D:\Project\Android\AiTrainer\app\src\main\res\drawable\zjj.png" qualifiers="" type="drawable"/><file name="battle" path="D:\Project\Android\AiTrainer\app\src\main\res\drawable-hdpi\battle.png" qualifiers="hdpi-v4" type="drawable"/><file name="beer" path="D:\Project\Android\AiTrainer\app\src\main\res\drawable-hdpi\beer.png" qualifiers="hdpi-v4" type="drawable"/><file name="ferrari" path="D:\Project\Android\AiTrainer\app\src\main\res\drawable-hdpi\ferrari.png" qualifiers="hdpi-v4" type="drawable"/><file name="ic_settings_white_24dp" path="D:\Project\Android\AiTrainer\app\src\main\res\drawable-hdpi\ic_settings_white_24dp.png" qualifiers="hdpi-v4" type="drawable"/><file name="ic_switch_camera_white_48dp" path="D:\Project\Android\AiTrainer\app\src\main\res\drawable-hdpi\ic_switch_camera_white_48dp.xml" qualifiers="hdpi-v4" type="drawable"/><file name="ic_switch_camera_white_48dp_inset" path="D:\Project\Android\AiTrainer\app\src\main\res\drawable-hdpi\ic_switch_camera_white_48dp_inset.png" qualifiers="hdpi-v4" type="drawable"/><file name="jetpack_joyride" path="D:\Project\Android\AiTrainer\app\src\main\res\drawable-hdpi\jetpack_joyride.png" qualifiers="hdpi-v4" type="drawable"/><file name="terraria" path="D:\Project\Android\AiTrainer\app\src\main\res\drawable-hdpi\terraria.png" qualifiers="hdpi-v4" type="drawable"/><file name="three_d" path="D:\Project\Android\AiTrainer\app\src\main\res\drawable-hdpi\three_d.png" qualifiers="hdpi-v4" type="drawable"/><file name="train" path="D:\Project\Android\AiTrainer\app\src\main\res\drawable-hdpi\train.png" qualifiers="hdpi-v4" type="drawable"/><file name="ic_settings_white_24dp" path="D:\Project\Android\AiTrainer\app\src\main\res\drawable-mdpi\ic_settings_white_24dp.png" qualifiers="mdpi-v4" type="drawable"/><file name="ic_switch_camera_white_48dp" path="D:\Project\Android\AiTrainer\app\src\main\res\drawable-mdpi\ic_switch_camera_white_48dp.xml" qualifiers="mdpi-v4" type="drawable"/><file name="ic_switch_camera_white_48dp_inset" path="D:\Project\Android\AiTrainer\app\src\main\res\drawable-mdpi\ic_switch_camera_white_48dp_inset.png" qualifiers="mdpi-v4" type="drawable"/><file name="bg_rect_round_tag_btn" path="D:\Project\Android\AiTrainer\app\src\main\res\drawable-xhdpi\bg_rect_round_tag_btn.xml" qualifiers="xhdpi-v4" type="drawable"/><file name="ic_settings_white_24dp" path="D:\Project\Android\AiTrainer\app\src\main\res\drawable-xhdpi\ic_settings_white_24dp.png" qualifiers="xhdpi-v4" type="drawable"/><file name="ic_switch_camera_white_48dp" path="D:\Project\Android\AiTrainer\app\src\main\res\drawable-xhdpi\ic_switch_camera_white_48dp.xml" qualifiers="xhdpi-v4" type="drawable"/><file name="ic_switch_camera_white_48dp_inset" path="D:\Project\Android\AiTrainer\app\src\main\res\drawable-xhdpi\ic_switch_camera_white_48dp_inset.png" qualifiers="xhdpi-v4" type="drawable"/><file name="alarm" path="D:\Project\Android\AiTrainer\app\src\main\res\drawable-xxhdpi\alarm.png" qualifiers="xxhdpi-v4" type="drawable"/><file name="calendar" path="D:\Project\Android\AiTrainer\app\src\main\res\drawable-xxhdpi\calendar.png" qualifiers="xxhdpi-v4" type="drawable"/><file name="carambola" path="D:\Project\Android\AiTrainer\app\src\main\res\drawable-xxhdpi\carambola.png" qualifiers="xxhdpi-v4" type="drawable"/><file name="ic_settings_white_24dp" path="D:\Project\Android\AiTrainer\app\src\main\res\drawable-xxhdpi\ic_settings_white_24dp.png" qualifiers="xxhdpi-v4" type="drawable"/><file name="ic_switch_camera_white_48dp" path="D:\Project\Android\AiTrainer\app\src\main\res\drawable-xxhdpi\ic_switch_camera_white_48dp.xml" qualifiers="xxhdpi-v4" type="drawable"/><file name="ic_switch_camera_white_48dp_inset" path="D:\Project\Android\AiTrainer\app\src\main\res\drawable-xxhdpi\ic_switch_camera_white_48dp_inset.png" qualifiers="xxhdpi-v4" type="drawable"/><file name="more" path="D:\Project\Android\AiTrainer\app\src\main\res\drawable-xxhdpi\more.png" qualifiers="xxhdpi-v4" type="drawable"/><file name="muskmelon" path="D:\Project\Android\AiTrainer\app\src\main\res\drawable-xxhdpi\muskmelon.png" qualifiers="xxhdpi-v4" type="drawable"/><file name="pecan" path="D:\Project\Android\AiTrainer\app\src\main\res\drawable-xxhdpi\pecan.png" qualifiers="xxhdpi-v4" type="drawable"/><file name="personal_image" path="D:\Project\Android\AiTrainer\app\src\main\res\drawable-xxhdpi\personal_image.png" qualifiers="xxhdpi-v4" type="drawable"/><file name="pose_training" path="D:\Project\Android\AiTrainer\app\src\main\res\drawable-xxhdpi\pose_training.png" qualifiers="xxhdpi-v4" type="drawable"/><file name="search" path="D:\Project\Android\AiTrainer\app\src\main\res\drawable-xxhdpi\search.png" qualifiers="xxhdpi-v4" type="drawable"/><file name="taro" path="D:\Project\Android\AiTrainer\app\src\main\res\drawable-xxhdpi\taro.png" qualifiers="xxhdpi-v4" type="drawable"/><file name="train_image1" path="D:\Project\Android\AiTrainer\app\src\main\res\drawable-xxhdpi\train_image1.png" qualifiers="xxhdpi-v4" type="drawable"/><file name="train_image2" path="D:\Project\Android\AiTrainer\app\src\main\res\drawable-xxhdpi\train_image2.png" qualifiers="xxhdpi-v4" type="drawable"/><file name="train_image3" path="D:\Project\Android\AiTrainer\app\src\main\res\drawable-xxhdpi\train_image3.png" qualifiers="xxhdpi-v4" type="drawable"/><file name="yam" path="D:\Project\Android\AiTrainer\app\src\main\res\drawable-xxhdpi\yam.png" qualifiers="xxhdpi-v4" type="drawable"/><file name="ic_settings_white_24dp" path="D:\Project\Android\AiTrainer\app\src\main\res\drawable-xxxhdpi\ic_settings_white_24dp.png" qualifiers="xxxhdpi-v4" type="drawable"/><file name="ic_switch_camera_white_48dp" path="D:\Project\Android\AiTrainer\app\src\main\res\drawable-xxxhdpi\ic_switch_camera_white_48dp.xml" qualifiers="xxxhdpi-v4" type="drawable"/><file name="ic_switch_camera_white_48dp_inset" path="D:\Project\Android\AiTrainer\app\src\main\res\drawable-xxxhdpi\ic_switch_camera_white_48dp_inset.png" qualifiers="xxxhdpi-v4" type="drawable"/><file name="activity_settings" path="D:\Project\Android\AiTrainer\app\src\main\res\layout\activity_settings.xml" qualifiers="" type="layout"/><file name="activity_vision_camerax_live_preview" path="D:\Project\Android\AiTrainer\app\src\main\res\layout\activity_vision_camerax_live_preview.xml" qualifiers="" type="layout"/><file name="image_details" path="D:\Project\Android\AiTrainer\app\src\main\res\layout\image_details.xml" qualifiers="" type="layout"/><file name="login" path="D:\Project\Android\AiTrainer\app\src\main\res\layout\login.xml" qualifiers="" type="layout"/><file name="look_explanation" path="D:\Project\Android\AiTrainer\app\src\main\res\layout\look_explanation.xml" qualifiers="" type="layout"/><file name="next_button" path="D:\Project\Android\AiTrainer\app\src\main\res\layout\next_button.xml" qualifiers="" type="layout"/><file name="pose_info" path="D:\Project\Android\AiTrainer\app\src\main\res\layout\pose_info.xml" qualifiers="" type="layout"/><file name="pre_button" path="D:\Project\Android\AiTrainer\app\src\main\res\layout\pre_button.xml" qualifiers="" type="layout"/><file name="result_list_item" path="D:\Project\Android\AiTrainer\app\src\main\res\layout\result_list_item.xml" qualifiers="" type="layout"/><file name="row_item" path="D:\Project\Android\AiTrainer\app\src\main\res\layout\row_item.xml" qualifiers="" type="layout"/><file name="settings_style" path="D:\Project\Android\AiTrainer\app\src\main\res\layout\settings_style.xml" qualifiers="" type="layout"/><file name="spinner_style" path="D:\Project\Android\AiTrainer\app\src\main\res\layout\spinner_style.xml" qualifiers="" type="layout"/><file name="toggle_style" path="D:\Project\Android\AiTrainer\app\src\main\res\layout\toggle_style.xml" qualifiers="" type="layout"/><file name="zjj" path="D:\Project\Android\AiTrainer\app\src\main\res\layout\zjj.xml" qualifiers="" type="layout"/><file name="activity_vision_camerax_live_preview" path="D:\Project\Android\AiTrainer\app\src\main\res\layout-land\activity_vision_camerax_live_preview.xml" qualifiers="land" type="layout"/><file name="camera_button_menu" path="D:\Project\Android\AiTrainer\app\src\main\res\menu\camera_button_menu.xml" qualifiers="" type="menu"/><file name="ic_launcher" path="D:\Project\Android\AiTrainer\app\src\main\res\mipmap-hdpi\ic_launcher.png" qualifiers="hdpi-v4" type="mipmap"/><file name="home" path="D:\Project\Android\AiTrainer\app\src\main\res\mipmap-mdpi\home.png" qualifiers="mdpi-v4" type="mipmap"/><file name="home_gray" path="D:\Project\Android\AiTrainer\app\src\main\res\mipmap-mdpi\home_gray.png" qualifiers="mdpi-v4" type="mipmap"/><file name="ic_launcher" path="D:\Project\Android\AiTrainer\app\src\main\res\mipmap-mdpi\ic_launcher.png" qualifiers="mdpi-v4" type="mipmap"/><file name="library" path="D:\Project\Android\AiTrainer\app\src\main\res\mipmap-mdpi\library.png" qualifiers="mdpi-v4" type="mipmap"/><file name="library_gray" path="D:\Project\Android\AiTrainer\app\src\main\res\mipmap-mdpi\library_gray.png" qualifiers="mdpi-v4" type="mipmap"/><file name="more_options" path="D:\Project\Android\AiTrainer\app\src\main\res\mipmap-mdpi\more_options.png" qualifiers="mdpi-v4" type="mipmap"/><file name="personal" path="D:\Project\Android\AiTrainer\app\src\main\res\mipmap-mdpi\personal.png" qualifiers="mdpi-v4" type="mipmap"/><file name="personal_gray" path="D:\Project\Android\AiTrainer\app\src\main\res\mipmap-mdpi\personal_gray.png" qualifiers="mdpi-v4" type="mipmap"/><file name="social" path="D:\Project\Android\AiTrainer\app\src\main\res\mipmap-mdpi\social.png" qualifiers="mdpi-v4" type="mipmap"/><file name="social_gray" path="D:\Project\Android\AiTrainer\app\src\main\res\mipmap-mdpi\social_gray.png" qualifiers="mdpi-v4" type="mipmap"/><file name="start_page_image" path="D:\Project\Android\AiTrainer\app\src\main\res\mipmap-mdpi\start_page_image.png" qualifiers="mdpi-v4" type="mipmap"/><file name="take_photo" path="D:\Project\Android\AiTrainer\app\src\main\res\mipmap-mdpi\take_photo.png" qualifiers="mdpi-v4" type="mipmap"/><file name="tips" path="D:\Project\Android\AiTrainer\app\src\main\res\mipmap-mdpi\tips.png" qualifiers="mdpi-v4" type="mipmap"/><file name="training" path="D:\Project\Android\AiTrainer\app\src\main\res\mipmap-mdpi\training.png" qualifiers="mdpi-v4" type="mipmap"/><file name="change_camera" path="D:\Project\Android\AiTrainer\app\src\main\res\mipmap-xhdpi\change_camera.png" qualifiers="xhdpi-v4" type="mipmap"/><file name="ic_launcher" path="D:\Project\Android\AiTrainer\app\src\main\res\mipmap-xhdpi\ic_launcher.png" qualifiers="xhdpi-v4" type="mipmap"/><file name="left_arrow" path="D:\Project\Android\AiTrainer\app\src\main\res\mipmap-xhdpi\left_arrow.png" qualifiers="xhdpi-v4" type="mipmap"/><file name="next" path="D:\Project\Android\AiTrainer\app\src\main\res\mipmap-xhdpi\next.png" qualifiers="xhdpi-v4" type="mipmap"/><file name="pose_result_image" path="D:\Project\Android\AiTrainer\app\src\main\res\mipmap-xhdpi\pose_result_image.png" qualifiers="xhdpi-v4" type="mipmap"/><file name="pre" path="D:\Project\Android\AiTrainer\app\src\main\res\mipmap-xhdpi\pre.png" qualifiers="xhdpi-v4" type="mipmap"/><file name="right_arrow" path="D:\Project\Android\AiTrainer\app\src\main\res\mipmap-xhdpi\right_arrow.png" qualifiers="xhdpi-v4" type="mipmap"/><file name="ic_launcher" path="D:\Project\Android\AiTrainer\app\src\main\res\mipmap-xxhdpi\ic_launcher.png" qualifiers="xxhdpi-v4" type="mipmap"/><file name="pose_detail_image" path="D:\Project\Android\AiTrainer\app\src\main\res\mipmap-xxhdpi\pose_detail_image.jpg" qualifiers="xxhdpi-v4" type="mipmap"/><file name="q1" path="D:\Project\Android\AiTrainer\app\src\main\res\mipmap-xxhdpi\q1.jpg" qualifiers="xxhdpi-v4" type="mipmap"/><file name="q2" path="D:\Project\Android\AiTrainer\app\src\main\res\mipmap-xxhdpi\q2.jpg" qualifiers="xxhdpi-v4" type="mipmap"/><file name="q3" path="D:\Project\Android\AiTrainer\app\src\main\res\mipmap-xxhdpi\q3.jpg" qualifiers="xxhdpi-v4" type="mipmap"/><file name="q4" path="D:\Project\Android\AiTrainer\app\src\main\res\mipmap-xxhdpi\q4.jpg" qualifiers="xxhdpi-v4" type="mipmap"/><file name="q5" path="D:\Project\Android\AiTrainer\app\src\main\res\mipmap-xxhdpi\q5.jpg" qualifiers="xxhdpi-v4" type="mipmap"/><file path="D:\Project\Android\AiTrainer\app\src\main\res\values\arrays.xml" qualifiers=""><string-array name="pref_entries_face_detector_performance_mode">
         <item>@string/pref_entries_face_detector_performance_mode_fast</item>
         <item>@string/pref_entries_face_detector_performance_mode_accurate</item>
     </string-array><string-array name="pref_entry_values_face_detector_performance_mode">
@@ -10591,7 +11429,7 @@
         <item name="android:paddingStart">?attr/xui_config_content_spacing_horizontal</item>
         <item name="android:paddingEnd">?attr/xui_config_content_spacing_horizontal</item>
         <item name="android:singleLine">true</item>
-    </style></file><file name="preference_live_preview_quickstart" path="D:\Project\Android\AiTrainer\app\src\main\res\xml\preference_live_preview_quickstart.xml" qualifiers="" type="xml"/></source><source path="D:\Project\Android\AiTrainer\app\build\generated\res\rs\debug"/><source path="D:\Project\Android\AiTrainer\app\build\generated\res\resValues\debug"/></dataSet><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="debug$Generated" generated="true" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="D:\Project\Android\AiTrainer\app\src\debug\res"/></dataSet><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="debug" generated-set="debug$Generated" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="D:\Project\Android\AiTrainer\app\src\debug\res"/></dataSet><mergedItems><configuration qualifiers=""><declare-styleable name="CookieBar">
+    </style></file><file name="preference_live_preview_quickstart" path="D:\Project\Android\AiTrainer\app\src\main\res\xml\preference_live_preview_quickstart.xml" qualifiers="" type="xml"/><file name="ic_calendar" path="D:\Project\Android\AiTrainer\app\src\main\res\mipmap-mdpi\ic_calendar.png" qualifiers="mdpi-v4" type="mipmap"/><file name="bg_ripple" path="D:\Project\Android\AiTrainer\app\src\main\res\drawable\bg_ripple.xml" qualifiers="" type="drawable"/></source><source path="D:\Project\Android\AiTrainer\app\build\generated\res\rs\debug"/><source path="D:\Project\Android\AiTrainer\app\build\generated\res\resValues\debug"/></dataSet><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="debug$Generated" generated="true" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="D:\Project\Android\AiTrainer\app\src\debug\res"/></dataSet><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="debug" generated-set="debug$Generated" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="D:\Project\Android\AiTrainer\app\src\debug\res"/></dataSet><mergedItems><configuration qualifiers=""><declare-styleable name="CookieBar">
         
         <attr format="color" name="cookieTitleColor"/>
         <attr format="color" name="cookieMessageColor"/>
@@ -10704,6 +11542,26 @@
         <attr format="dimension" name="rb_radiusTopRight"/>
         <attr format="dimension" name="rb_radiusBottomLeft"/>
         <attr format="dimension" name="rb_radiusBottomRight"/>
+    </declare-styleable><declare-styleable name="CalendarLayout">
+        <attr name="default_status">
+            <enum name="expand" value="0"/>
+            <enum name="shrink" value="1"/>
+        </attr>
+
+
+        
+        <attr name="gesture_mode">
+            <enum name="default_mode" value="0"/>
+            
+            <enum name="disabled" value="2"/>
+        </attr>
+
+        <attr name="calendar_show_mode">
+            <enum name="both_month_week_view" value="0"/>
+            <enum name="only_week_view" value="1"/>
+            <enum name="only_month_view" value="2"/>
+        </attr>
+        <attr format="integer" name="calendar_content_view_id"/>
     </declare-styleable><declare-styleable name="EasyIndicator">
         
         <attr format="dimension" name="indicator_width"/>
@@ -15039,6 +15897,121 @@
         <attr format="dimension" name="hpv_text_padding_bottom"/>
         
         <attr format="boolean" name="hpv_text_movedEnable"/>
+    </declare-styleable><declare-styleable name="CalendarView">
+
+        <attr format="dimension" name="calendar_padding"/>
+        <attr format="dimension" name="calendar_padding_left"/>
+        <attr format="dimension" name="calendar_padding_right"/>
+
+
+        <attr format="color" name="week_background"/>
+        <attr format="color" name="week_line_background"/>
+        <attr format="color" name="week_text_color"/>
+        <attr format="dimension" name="week_text_size"/>
+        <attr format="dimension" name="week_line_margin"/>
+
+        <attr format="string" name="month_view"/>
+        <attr format="string" name="week_view"/> 
+        <attr format="string" name="year_view"/> 
+        <attr format="dimension" name="week_bar_height"/> 
+        <attr format="string" name="week_bar_view"/> 
+
+        <attr format="string" name="scheme_text"/>
+        <attr format="dimension" name="day_text_size"/>
+        <attr format="dimension" name="lunar_text_size"/>
+        <attr format="dimension" name="calendar_height"/>
+        <attr format="boolean" name="calendar_match_parent"/> 
+        <attr format="color" name="scheme_text_color"/>
+        <attr format="color" name="scheme_month_text_color"/>
+        <attr format="color" name="scheme_lunar_text_color"/>
+        <attr format="color" name="scheme_theme_color"/>
+
+        <attr format="color" name="selected_theme_color"/>
+        <attr format="color" name="selected_text_color"/>
+        <attr format="color" name="selected_lunar_text_color"/>
+
+        <attr format="color" name="current_day_text_color"/>
+        <attr format="color" name="current_day_lunar_text_color"/>
+        <attr format="color" name="current_month_text_color"/>
+        <attr format="color" name="other_month_text_color"/>
+        <attr format="color" name="current_month_lunar_text_color"/>
+        <attr format="color" name="other_month_lunar_text_color"/>
+
+
+        
+        <attr format="dimension" name="year_view_month_text_size"/>
+        <attr format="dimension" name="year_view_day_text_size"/>
+        <attr format="color" name="year_view_month_text_color"/>
+        <attr format="color" name="year_view_current_day_text_color"/>
+        <attr format="color" name="year_view_day_text_color"/>
+        <attr format="color" name="year_view_select_text_color"/>
+        <attr format="color" name="year_view_scheme_color"/>
+        <attr format="color" name="year_view_background"/>
+        <attr format="dimension" name="year_view_month_height"/>
+        <attr format="dimension" name="year_view_week_height"/>
+        <attr format="dimension" name="year_view_week_text_size"/>
+        <attr format="color" name="year_view_week_text_color"/>
+
+        <attr format="dimension" name="year_view_padding"/>
+        <attr format="dimension" name="year_view_padding_left"/>
+        <attr format="dimension" name="year_view_padding_right"/>
+
+        <attr format="dimension" name="year_view_month_padding_top"/>
+        <attr format="dimension" name="year_view_month_padding_left"/>
+        <attr format="dimension" name="year_view_month_padding_right"/>
+        <attr format="dimension" name="year_view_month_padding_bottom"/>
+
+        
+        <attr format="integer" name="min_year"/>
+        <attr format="integer" name="max_year"/>
+        <attr format="integer" name="min_year_month"/>
+        <attr format="integer" name="max_year_month"/>
+        <attr format="integer" name="min_year_day"/>
+        <attr format="integer" name="max_year_day"/>
+
+
+        
+        <attr format="boolean" name="month_view_scrollable"/>
+        
+        <attr format="boolean" name="week_view_scrollable"/>
+        
+        <attr format="boolean" name="year_view_scrollable"/>
+
+        
+        <attr name="month_view_show_mode">
+            <enum name="mode_all" value="0"/>
+            <enum name="mode_only_current" value="1"/>
+            <enum name="mode_fix" value="2"/>
+        </attr>
+
+        
+        <attr name="week_start_with">
+            <enum name="sun" value="1"/>
+            <enum name="mon" value="2"/>
+            <enum name="sat" value="7"/>
+        </attr>
+
+        
+        <attr name="select_mode">
+            <enum name="default_mode" value="0"/>
+            <enum name="single_mode" value="1"/>
+            <enum name="range_mode" value="2"/>
+            <enum name="multi_mode" value="3"/>
+        </attr>
+
+        
+        <attr format="integer" name="max_multi_select_size"/>
+
+        
+        <attr format="integer" name="min_select_range"/>
+        <attr format="integer" name="max_select_range"/>
+
+        
+        <attr name="month_view_auto_select_day">
+            <enum name="first_day_of_month" value="0"/>
+            <enum name="last_select_day" value="1"/>
+            <enum name="last_select_day_ignore_current" value="2"/>
+        </attr>
     </declare-styleable><declare-styleable name="ExpandableTextView">
         
         <attr format="integer" name="etv_maxCollapsedLines"/>

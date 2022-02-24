@@ -6,6 +6,7 @@ android {
     sourceSets {
         main {
             res.srcDirs = [
+                    'src/main/res/layout/datacenter',
                     'src/main/res/layout/personal',
                     'src/main/res/layout/main',
                     'src/main/res/layout/train',
@@ -61,6 +62,8 @@ repositories {
 }
 
 dependencies {
+    // calendar
+    implementation 'com.haibin:calendarview:3.7.1'
     // mysql 5.1.49 yyds
     implementation 'mysql:mysql-connector-java:5.1.49'
     // 地区选择器

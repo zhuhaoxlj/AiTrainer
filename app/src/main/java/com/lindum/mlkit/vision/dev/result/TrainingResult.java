@@ -15,7 +15,9 @@ import android.widget.TextView;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.lindum.mlkit.vision.dev.CameraXLivePreviewActivity;
 import com.lindum.mlkit.vision.dev.R;
+import com.orhanobut.logger.Logger;
 import com.xuexiang.xui.widget.progress.CircleProgressView;
 import com.xuexiang.xui.widget.progress.HorizontalProgressView;
 
@@ -36,6 +38,8 @@ public class TrainingResult extends AppCompatActivity implements HorizontalProgr
     public static List<String> resultName = new ArrayList<>();
     public static List<Bitmap> resultImage = new ArrayList<>();
     public static List<String> resultTips = new ArrayList<>();
+    // 动作组数进度条占比
+    int groupsOfPose;
     private ListView listView;
     @BindView(R.id.progressView_circle_main)
     CircleProgressView progressViewCircleMain;
@@ -107,7 +111,7 @@ public class TrainingResult extends AppCompatActivity implements HorizontalProgr
         // 获取运动总时长
         int data = intent.getIntExtra("totalTrainingTime", 0);
         // 获取动作组数
-        int groupsOfPose = intent.getIntExtra("groupsOfPose", 0);
+        groupsOfPose = intent.getIntExtra("groupsOfPose", 0);
         String minute = data / 60 + "'";
         String time = (data / 60 == 0 ? "" : minute) + data % 60 + "\"";
 
@@ -147,6 +151,8 @@ public class TrainingResult extends AppCompatActivity implements HorizontalProgr
 
     public void startProcessBar() {
         hpvTime.startProgressAnimation();
+        float groupsOfPoseProportion = 100 * ((float) groupsOfPose / (float) CameraXLivePreviewActivity.poseEntityList.size());
+        hpvGroup.setEndProgress(groupsOfPoseProportion);
         hpvGroup.startProgressAnimation();
         hpvCal.startProgressAnimation();
         hpvWrong.startProgressAnimation();
@@ -192,7 +198,7 @@ public class TrainingResult extends AppCompatActivity implements HorizontalProgr
                 progressTextCal.setText(progressInt + " kcal");
                 break;
             case R.id.hpv_group:
-                progressTextGroup.setText(progressInt + " 组");
+                progressTextGroup.setText(groupsOfPose + " 组");
                 break;
             default:
                 break;

@@ -4,7 +4,6 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.StrictMode;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -61,7 +60,7 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
      */
     private List<View> mViews;
     /**
-     * 640*360 360/640=0.5625
+     * 轮播图图片
      * 图片 1：
      * 图片 2：
      * 图片 3：
@@ -75,7 +74,7 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
      * 轮播图标题
      */
     public static String[] titles = new String[]{
-            "伪装者:胡歌演绎'痞子特工'",
+            "生命在于运动'",
             "无心法师:生死离别!月牙遭虐杀",
             "花千骨:尊上沦为花千骨",
     };
@@ -93,12 +92,10 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
         super.onCreate(savedInstanceState);
         XUI.initTheme(this);
         setContentView(R.layout.home_page);
+        // 注册 Intent 请求数据
         registerGetIntentData();
         // Logger 初始化
         Logger.addLogAdapter(new AndroidLogAdapter());
-        // 使主线程可以进行简单的网络请求
-        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-        StrictMode.setThreadPolicy(policy);
         init();
         // 从数据库获取动作实体类数据
         getPoseEntityFromDataBase();
@@ -109,13 +106,14 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
         ArrayList<Item> arrayList = new ArrayList<>();
         ControlTable controlTable = new ControlTable();
         RecyclerView recyclerView = view3.findViewById(R.id.recyclerView);
+        // todo 线程池
         Thread getData = new Thread() {
             @Override
             public void run() {
                 poseEntityArrayList = controlTable.readTable();
                 for (PoseEntity poseEntity : poseEntityArrayList) {
-                    Logger.e(poseEntity.toString());
-                    arrayList.add(new Item(poseEntity.getPoseName(), "副标题", R.mipmap.q1));
+                    Logger.e(poseEntity.getPoseFeeling()[0]);
+                    arrayList.add(new Item(poseEntityArrayList.indexOf(poseEntity), poseEntity.getPoseName(), "副标题", R.mipmap.q1));
                 }
                 super.run();
             }
@@ -129,8 +127,6 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public void init() {
-
-        // 底部栏切换页面初始化
         viewPager = findViewById(R.id.viewPager);
         //获取布局对象管理
         LayoutInflater inflater = getLayoutInflater();
@@ -177,10 +173,6 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
         };
         //设置适配器
         viewPager.setAdapter(mPagerAdapter);
-        // 轮播图
-        SimpleImageBanner simpleImageBanner = view1.findViewById(R.id.banner);
-        simpleImageBanner.setSource(getBannerList()).setOnItemClickListener((view, item, position1) -> Logger.d("headBanner position--->" + position1)).startScroll();
-
         // 去除个人页标题栏左侧图标
         TitleBar personalPageTitleBar = view4.findViewById(R.id.personalPageTitleBar);
         personalPageTitleBar.setLeftVisible(false);
@@ -193,12 +185,24 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
             Intent intent = new Intent(HomePage.this, UserInfoInitActivity.class);
             intentActivityResultLauncher.launch(intent);
         });
+        // 初始化轮播图
+        initBanner();
         // 初始化食物列表
         initFoodList();
         // 初始化底部 Tabbar
         initTabbar();
     }
 
+    public void initBanner() {
+        // 轮播图
+        SimpleImageBanner simpleImageBanner = view1.findViewById(R.id.banner);
+        simpleImageBanner.setSource(getBannerList()).setOnItemClickListener((view, item, position1) -> Logger.e("headBanner position--->" + position1)).startScroll();
+
+    }
+
+    /**
+     * 初始化底部 Tabbar，要在布局初始化之后调用
+     */
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public void initTabbar() {
         final int personalPageIndex = 3;
@@ -237,7 +241,7 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
     }
 
     /**
-     * 初始化食物列表
+     * 初始化食物列表，要在布局初始化之后调用
      */
     public void initFoodList() {
         // 食物列表
@@ -285,6 +289,11 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
         return result.getData().getCharSequenceExtra(key) == null ? "" : result.getData().getCharSequenceExtra(key).toString();
     }
 
+    /**
+     * 获取 BannerItemList
+     *
+     * @return 返回 List<BannerItem>
+     */
     public static List<BannerItem> getBannerList() {
         List<BannerItem> list = new ArrayList<>();
         for (int i = 0; i < urls.length; i++) {
@@ -296,11 +305,21 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
         return list;
     }
 
+    /**
+     * 动作库 Item 的点击监听事件
+     *
+     * @param item 动作库 item
+     */
     @Override
     public void onItemClick(Item item) {
-        Toast.makeText(getApplicationContext(), item.title + " is clicked", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), item.title + "第" + item.index + "个" + " is clicked", Toast.LENGTH_SHORT).show();
         // 不要忘记在 AndroidManifest 中声明 Activity
         Intent intent = new Intent(HomePage.this, PoseDetailsActivity.class);
+        intent.putExtra("feeling", poseEntityArrayList.get(item.index).getPoseFeeling());
+        intent.putExtra("steps", poseEntityArrayList.get(item.index).getStepsOfPose());
+        intent.putExtra("commonMistakes", poseEntityArrayList.get(item.index).getCommonMistakes());
+        intent.putExtra("details", poseEntityArrayList.get(item.index).getDetailTips());
+        intent.putExtra("breath", poseEntityArrayList.get(item.index).getBreathTips());
         startActivity(intent);
     }
 

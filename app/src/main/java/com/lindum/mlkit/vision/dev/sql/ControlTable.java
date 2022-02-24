@@ -1,12 +1,20 @@
 package com.lindum.mlkit.vision.dev.sql;
 
 
+/*
+  @author YipJing
+ * @date 2022/2/15 13:46
+ */
+/*
+  @author YipJing
+ * @date 2022/2/15 13:46
+ */
+
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.lindum.mlkit.vision.dev.posedetector.PoseEntity;
 import com.lindum.mlkit.vision.dev.posedetector.PosePart;
-import com.orhanobut.logger.Logger;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -24,16 +32,12 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * @author YipJing
- * @date 2022/2/15 13:46
- */
 public class ControlTable {
 
     /**
      * 建表函数
      *
-     * @param createTable
+     * @param createTable 创建tableSQL语句
      */
     public void createTable(String createTable) {
         Statement statement = null;
@@ -43,9 +47,9 @@ public class ControlTable {
             // 创建表
             statement = connection.createStatement();
             if (statement.executeUpdate(createTable) == 0) {
-                Logger.e("成功创建表");
+                System.out.println("成功创建表");
             } else {
-                Logger.e("创建失败");
+                System.out.println("创建失败");
             }
             // 关闭连接
             statement.close();
@@ -85,7 +89,7 @@ public class ControlTable {
     /**
      * 写入json文件 函数
      *
-     * @param jsonPath
+     * @param jsonPath JSON文件路径
      */
     public void writeInJson(String jsonPath) {
         PreparedStatement preparedStatement = null;
@@ -160,7 +164,7 @@ public class ControlTable {
     /**
      * 写入实体类 函数
      *
-     * @param poseEntity
+     * @param poseEntity 写入的poseEntity实体类
      */
     public void writeInClass(PoseEntity poseEntity) {
         PreparedStatement preparedStatement = null;
@@ -194,7 +198,7 @@ public class ControlTable {
             //11
             String poseFeelingImage = (String) jsonObject.get("poseFeelingImage");
             //12
-            String commonMistakes = (String) jsonObject.get("commonMistakes");
+            JSONArray commonMistakes = (JSONArray) jsonObject.get("commonMistakes");
             //13
             JSONArray detailImageURL = (JSONArray) jsonObject.get("detailImageURL");
             //14
@@ -204,19 +208,60 @@ public class ControlTable {
             preparedStatement = connection.prepareStatement(sql);
 
             preparedStatement.setString(1, poseName);
+
             preparedStatement.setInt(2, poseType);
+
             preparedStatement.setInt(3, poseProcessValue);
-            preparedStatement.setString(4, monitorPosePartList.toString());
+
+            if (monitorPosePartList != null) {
+                preparedStatement.setString(4, monitorPosePartList.toString());
+            } else {
+                preparedStatement.setString(4, null);
+            }
+
             preparedStatement.setInt(5, bestMonitorAngle);
-            preparedStatement.setString(6, trainPartList.toString().replace("[", "").replace("]", "").replace("\"", ""));
+
+            if (trainPartList != null) {
+                preparedStatement.setString(6, trainPartList.toString().replace("[", "").replace("]", "").replace("\"", ""));
+            } else {
+                preparedStatement.setString(6, null);
+            }
+
             preparedStatement.setString(7, videoURL);
-            preparedStatement.setString(8, stepsOfPose.toString().replace("[", "").replace("]", "").replace("\"", ""));
+
+            if (stepsOfPose != null) {
+                preparedStatement.setString(8, stepsOfPose.toString().replace("[", "").replace("]", "").replace("\"", ""));
+            } else {
+                preparedStatement.setString(8, null);
+            }
+
             preparedStatement.setString(9, breathTips);
-            preparedStatement.setString(10, poseFeeling.toString().replace("[", "").replace("]", "").replace("\"", ""));
+
+            if (poseFeeling != null) {
+                preparedStatement.setString(10, poseFeeling.toString().replace("[", "").replace("]", "").replace("\"", ""));
+            } else {
+                preparedStatement.setString(10, null);
+            }
+
             preparedStatement.setString(11, poseFeelingImage);
-            preparedStatement.setString(12, commonMistakes);
-            preparedStatement.setString(13, detailImageURL.toString().replace("[", "").replace("]", "").replace("\"", ""));
-            preparedStatement.setString(14, detailTips.toString().replace("[", "").replace("]", "").replace("\"", ""));
+
+            if (commonMistakes != null) {
+                preparedStatement.setString(12, commonMistakes.toString().replace("[", "").replace("]", "").replace("\"", ""));
+            } else {
+                preparedStatement.setString(12, null);
+            }
+
+            if (detailImageURL != null) {
+                preparedStatement.setString(13, detailImageURL.toString().replace("[", "").replace("]", "").replace("\"", ""));
+            } else {
+                preparedStatement.setString(13, null);
+            }
+
+            if (detailTips != null) {
+                preparedStatement.setString(14, detailTips.toString().replace("[", "").replace("]", "").replace("\"", ""));
+            } else {
+                preparedStatement.setString(14, null);
+            }
 
             preparedStatement.executeUpdate();
             System.out.println("写入成功");
@@ -236,7 +281,6 @@ public class ControlTable {
      */
     public List<PoseEntity> readTable() {
         List<PoseEntity> poseEntityList = new ArrayList<>();
-        Logger.e("123132");
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
         try {
@@ -261,65 +305,67 @@ public class ControlTable {
                 String monitorPosePartString = resultSet.getString("monitorPosePartList");
 
                 JSONArray posePartJSONArray = JSONArray.parseArray(monitorPosePartString);
-                for (int i = 0; i < posePartJSONArray.size(); i++) {
-                    JSONObject key = (JSONObject) posePartJSONArray.get(i);
-                    PosePart posePart = new PosePart();
+                if (posePartJSONArray != null) {
+                    for (int i = 0; i < posePartJSONArray.size(); i++) {
+                        JSONObject key = (JSONObject) posePartJSONArray.get(i);
+                        PosePart posePart = new PosePart();
 
-                    int poseIndex = (Integer) key.get("poseIndex");
-                    posePart.setPoseIndex(poseIndex);
+                        int poseIndex = (Integer) key.get("poseIndex");
+                        posePart.setPoseIndex(poseIndex);
 
 
-                    JSONArray threePointIndexJA = (JSONArray) key.get("threePointIndex");
-                    if (threePointIndexJA != null) {
-                        String threePointIndexStr = threePointIndexJA.toString().replace("[", "").replace("]", "");
+                        JSONArray threePointIndexJA = (JSONArray) key.get("threePointIndex");
+                        if (threePointIndexJA != null) {
+                            String threePointIndexStr = threePointIndexJA.toString().replace("[", "").replace("]", "");
 
-                        String[] threePointIndexStrArray = threePointIndexStr.split(",");
-                        int[] threePointIndex = new int[threePointIndexStrArray.length];
-                        for (int j = 0; j < threePointIndexStrArray.length; j++) {
-                            threePointIndex[j] = Integer.parseInt(threePointIndexStrArray[j]);
+                            String[] threePointIndexStrArray = threePointIndexStr.split(",");
+                            int[] threePointIndex = new int[threePointIndexStrArray.length];
+                            for (int j = 0; j < threePointIndexStrArray.length; j++) {
+                                threePointIndex[j] = Integer.parseInt(threePointIndexStrArray[j]);
+                            }
+                            posePart.setThreePointIndex(threePointIndex);
                         }
-                        posePart.setThreePointIndex(threePointIndex);
-                    }
 
-                    int poseType = (Integer) key.get("poseType");
-                    posePart.setPoseType(poseType);
+                        int poseType = (Integer) key.get("poseType");
+                        posePart.setPoseType(poseType);
 
-                    int poseAngleType = (Integer) key.get("poseAngleType");
-                    posePart.setPoseAngleType(poseAngleType);
+                        int poseAngleType = (Integer) key.get("poseAngleType");
+                        posePart.setPoseAngleType(poseAngleType);
 
-                    JSONArray fixedRangeJA = (JSONArray) key.get("fixedRange");
-                    if (fixedRangeJA != null) {
-                        String fixedRangeStr = fixedRangeJA.toString().replace("[", "").replace("]", "");
-                        String[] fixedRangeStrArray = fixedRangeStr.split(",");
-                        int[] fixedRange = new int[fixedRangeStrArray.length];
-                        for (int j = 0; j < fixedRangeStrArray.length; j++) {
-                            fixedRange[j] = Integer.parseInt(fixedRangeStrArray[j]);
+                        JSONArray fixedRangeJA = (JSONArray) key.get("fixedRange");
+                        if (fixedRangeJA != null) {
+                            String fixedRangeStr = fixedRangeJA.toString().replace("[", "").replace("]", "");
+                            String[] fixedRangeStrArray = fixedRangeStr.split(",");
+                            int[] fixedRange = new int[fixedRangeStrArray.length];
+                            for (int j = 0; j < fixedRangeStrArray.length; j++) {
+                                fixedRange[j] = Integer.parseInt(fixedRangeStrArray[j]);
+                            }
+                            posePart.setFixedRange(fixedRange);
                         }
-                        posePart.setFixedRange(fixedRange);
-                    }
 
-                    JSONArray firstStandardRangeJA = (JSONArray) key.get("firstStandardRange");
-                    if (firstStandardRangeJA != null) {
-                        String firstStandardRangeStr = firstStandardRangeJA.toString().replace("[", "").replace("]", "");
-                        String[] firstStandardRangeStrArray = firstStandardRangeStr.split(",");
-                        int[] firstStandardRange = new int[firstStandardRangeStrArray.length];
-                        for (int j = 0; j < firstStandardRangeStrArray.length; j++) {
-                            firstStandardRange[j] = Integer.parseInt(firstStandardRangeStrArray[j]);
+                        JSONArray firstStandardRangeJA = (JSONArray) key.get("firstStandardRange");
+                        if (firstStandardRangeJA != null) {
+                            String firstStandardRangeStr = firstStandardRangeJA.toString().replace("[", "").replace("]", "");
+                            String[] firstStandardRangeStrArray = firstStandardRangeStr.split(",");
+                            int[] firstStandardRange = new int[firstStandardRangeStrArray.length];
+                            for (int j = 0; j < firstStandardRangeStrArray.length; j++) {
+                                firstStandardRange[j] = Integer.parseInt(firstStandardRangeStrArray[j]);
+                            }
+                            posePart.setFirstStandardRange(firstStandardRange);
                         }
-                        posePart.setFirstStandardRange(firstStandardRange);
-                    }
 
-                    JSONArray secondStandardRangeJA = (JSONArray) key.get("secondStandardRange");
-                    if (secondStandardRangeJA != null) {
-                        String secondStandardRangeStr = secondStandardRangeJA.toString().replace("[", "").replace("]", "");
-                        String[] secondStandardRangeStrArray = secondStandardRangeStr.split(",");
-                        int[] secondStandardRange = new int[secondStandardRangeStrArray.length];
-                        for (int j = 0; j < secondStandardRangeStrArray.length; j++) {
-                            secondStandardRange[j] = Integer.parseInt(secondStandardRangeStrArray[j]);
+                        JSONArray secondStandardRangeJA = (JSONArray) key.get("secondStandardRange");
+                        if (secondStandardRangeJA != null) {
+                            String secondStandardRangeStr = secondStandardRangeJA.toString().replace("[", "").replace("]", "");
+                            String[] secondStandardRangeStrArray = secondStandardRangeStr.split(",");
+                            int[] secondStandardRange = new int[secondStandardRangeStrArray.length];
+                            for (int j = 0; j < secondStandardRangeStrArray.length; j++) {
+                                secondStandardRange[j] = Integer.parseInt(secondStandardRangeStrArray[j]);
+                            }
+                            posePart.setSecondStandardRange(secondStandardRange);
                         }
-                        posePart.setSecondStandardRange(secondStandardRange);
+                        monitorPosePartList.add(posePart);
                     }
-                    monitorPosePartList.add(posePart);
                 }
                 poseEntity.setMonitorPosePartList(monitorPosePartList);
 
@@ -327,9 +373,11 @@ public class ControlTable {
                 poseEntity.setBestMonitorAngle(bestMonitorAngle);
 
                 List<String> trainPartList = new ArrayList<>();
-                String[] trainPartListString = resultSet.getString("trainPartList").replace("[", "").replace("]", "").split(",");
-                for (int i = 0; i < trainPartListString.length; i++) {
-                    trainPartList.add(trainPartListString[i]);
+                if (resultSet.getString("trainPartList") != null) {
+                    String[] trainPartListString = resultSet.getString("trainPartList").replace("[", "").replace("]", "").split(",");
+                    for (int i = 0; i < trainPartListString.length; i++) {
+                        trainPartList.add(trainPartListString[i]);
+                    }
                 }
                 poseEntity.setTrainPartList(trainPartList);
 
@@ -337,59 +385,75 @@ public class ControlTable {
                 poseEntity.setVideoUrl(videoURL);
 
                 String stepsOfPoseStr = resultSet.getString("stepsOfPose");
-                String[] stepsOfPose = stepsOfPoseStr.replace("[", "").replace("]", "").split(",");
-                poseEntity.setStepsOfPose(stepsOfPose);
+                if (resultSet.getString("stepsOfPose") != null) {
+                    String[] stepsOfPose = stepsOfPoseStr.replace("[", "").replace("]", "").split(",");
+                    poseEntity.setStepsOfPose(stepsOfPose);
+                }
+
 
                 String breathTips = resultSet.getString("breathTips");
                 poseEntity.setBreathTips(breathTips);
 
                 String poseFeelingStr = resultSet.getString("poseFeeling");
-                String[] poseFeeling = poseFeelingStr.replace("[", "").replace("]", "").split(",");
-                poseEntity.setPoseFeeling(poseFeeling);
+                if (resultSet.getString("poseFeeling") != null) {
+                    String[] poseFeeling = poseFeelingStr.replace("[", "").replace("]", "").split(",");
+                    poseEntity.setPoseFeeling(poseFeeling);
+                }
 
                 String poseFeelingImage = resultSet.getString("poseFeelingImage");
                 poseEntity.setPoseFeelingImage(poseFeelingImage);
 
-                String commonMistakes = resultSet.getString("commonMistakes");
-//                poseEntity.setCommonMistakes(commonMistakes);
+                String commonMistakesStr = resultSet.getString("commonMistakes");
+                if (resultSet.getString("commonMistakes") != null) {
+                    String[] commonMistakes = commonMistakesStr.replace("[", "").replace("]", "").split(",");
+                    poseEntity.setCommonMistakes(commonMistakes);
+                }
 
                 String detailTipsStr = resultSet.getString("detailTips");
-                String[] detailTips = detailTipsStr.replace("[", "").replace("]", "").split(",");
-                poseEntity.setDetailTips(detailTips);
+                if (resultSet.getString("detailTips") != null) {
+                    String[] detailTips = detailTipsStr.replace("[", "").replace("]", "").split(",");
+                    poseEntity.setDetailTips(detailTips);
+                }
 
                 String detailImageUrl = resultSet.getString("detailImageURL");
-                String[] detailImageURL = detailImageUrl.replace("[", "").replace("]", "").split(",");
-                poseEntity.setDetailImageUrl(detailImageURL);
+                if (resultSet.getString("detailImageURL") != null) {
+                    String[] detailImageURL = detailImageUrl.replace("[", "").replace("]", "").split(",");
+                    poseEntity.setDetailImageUrl(detailImageURL);
+                }
+
 
                 poseEntityList.add(poseEntity);
             }
             // 关闭连接
             preparedStatement.close();
             connection.close();
-            Logger.e("Success");
+            System.out.println("success");
             return poseEntityList;
         } catch (SQLException e) {
-            Logger.e(e.getMessage() + "");
+            System.out.println(e.getMessage());
             return null;
         }
     }
 
-
+    /**
+     * @param poseName 要删除的列的poseName
+     * @return 返回删除结果 1为删除成功
+     */
     public int delete(String poseName) {
         PreparedStatement preparedStatement = null;
+
         String sql = null;
         try {
             // 建立连接
             Connection connection = DriverManager.getConnection("jdbc:mysql://47.102.122.203:3306/aitrainer", "aitrainer", "jay666..");
-            Logger.e(connection.toString());
-            sql = "delete from poseEntity where poseName = ?";
-            sql = sql.replace("?", "\"" + poseName + "\"");
+            sql = "delete from poseEntity where poseName = " + "\"" + poseName + "\"";
+//            sql = sql.replace("?", "\"" + poseName + "\"");
             preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.executeUpdate(sql);
+            int result = preparedStatement.executeUpdate(sql);
             // 关闭连接
             preparedStatement.close();
             connection.close();
-            return 1;
+            return result;
         } catch (SQLException e) {
             System.out.println(e.getMessage());
             return 0;

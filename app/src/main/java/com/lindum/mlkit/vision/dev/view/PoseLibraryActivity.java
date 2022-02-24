@@ -63,7 +63,7 @@ public class PoseLibraryActivity extends AppCompatActivity implements HomeAdapte
         ArrayList<PoseEntity> poseEntityList = poseEntityArrayList;
 
         for (PoseEntity poseEntity : poseEntityList) {
-            arrayList.add(new Item(poseEntity.getPoseName(), "副标题", R.mipmap.q1));
+            arrayList.add(new Item(poseEntityList.indexOf(poseEntity), poseEntity.getPoseName(), "副标题", R.mipmap.q1));
         }
         adapter = new HomeAdapter(this, arrayList, this);
         recyclerView.setAdapter(adapter);

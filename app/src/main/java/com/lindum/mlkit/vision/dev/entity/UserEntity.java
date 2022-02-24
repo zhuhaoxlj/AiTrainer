@@ -1,9 +1,5 @@
 package com.lindum.mlkit.vision.dev.entity;
 
-import android.graphics.Bitmap;
-
-import androidx.annotation.NonNull;
-
 import java.time.LocalDate;
 
 /**
@@ -12,7 +8,7 @@ import java.time.LocalDate;
  */
 public class UserEntity {
     String nickName;
-    Bitmap profileImage;
+    String profileImageUrl;
     String region;
     String profile;
     String sex;
@@ -29,12 +25,12 @@ public class UserEntity {
         this.nickName = nickName;
     }
 
-    public Bitmap getProfileImage() {
-        return profileImage;
+    public String getProfileImageUrl() {
+        return profileImageUrl;
     }
 
-    public void setProfileImage(Bitmap profileImage) {
-        this.profileImage = profileImage;
+    public void setProfileImageUrl(String profileImageUrl) {
+        this.profileImageUrl = profileImageUrl;
     }
 
     public String getRegion() {
@@ -93,12 +89,11 @@ public class UserEntity {
         this.weight = weight;
     }
 
-    @NonNull
     @Override
     public String toString() {
         return "UserEntity{" +
                 "nickName='" + nickName + '\'' +
-                ", profileImage=" + profileImage +
+                ", profileImageUrl='" + profileImageUrl + '\'' +
                 ", region='" + region + '\'' +
                 ", profile='" + profile + '\'' +
                 ", sex='" + sex + '\'' +
@@ -109,9 +104,10 @@ public class UserEntity {
                 '}';
     }
 
-    public UserEntity(String nickName, Bitmap profileImage, String region, String profile, String sex, String sportsPreference, LocalDate birthDay, float height, float weight) {
+
+    public UserEntity(String nickName, String profileImageUrl, String region, String profile, String sex, String sportsPreference, LocalDate birthDay, float height, float weight) {
         this.nickName = nickName;
-        this.profileImage = profileImage;
+        this.profileImageUrl = profileImageUrl;
         this.region = region;
         this.profile = profile;
         this.sex = sex;
