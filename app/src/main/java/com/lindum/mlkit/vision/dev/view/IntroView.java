@@ -1,6 +1,5 @@
 package com.lindum.mlkit.vision.dev.view;
 
-import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.WindowManager;
@@ -17,6 +16,10 @@ import com.ramotion.paperonboarding.PaperOnboardingEngine;
 import com.ramotion.paperonboarding.PaperOnboardingPage;
 import com.xuexiang.xui.XUI;
 
+import java.io.BufferedWriter;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 
 public class IntroView extends AppCompatActivity {
@@ -34,7 +37,7 @@ public class IntroView extends AppCompatActivity {
         PaperOnboardingEngine engine = new PaperOnboardingEngine(findViewById(R.id.onboardingRootView), getDataForOnboarding(), getApplicationContext());
 
         engine.setOnChangeListener((oldElementIndex, newElementIndex) -> {
-            new Thread(){
+            new Thread() {
                 @Override
                 public void run() {
                     super.run();
@@ -49,9 +52,8 @@ public class IntroView extends AppCompatActivity {
         });
 
         engine.setOnRightOutListener(() -> {
-            // 不要忘记在 AndroidManifest 中声明 Activity
-            Intent intent = new Intent(IntroView.this, HomePage.class);
-            startActivity(intent);
+            finish();
+            usedSoftware();
         });
         changeTextColor(Color.parseColor("#ffffff"));
     }
@@ -67,16 +69,44 @@ public class IntroView extends AppCompatActivity {
 
     private ArrayList<PaperOnboardingPage> getDataForOnboarding() {
         PaperOnboardingPage scr1 = new PaperOnboardingPage("AiTrainer", "你的私人Ai健身教练",
-                Color.parseColor("#628eb9"), R.drawable.hotels, R.drawable.key);
+                Color.parseColor("#628eb9"), R.drawable.ic_icon3, R.drawable.key);
         PaperOnboardingPage scr2 = new PaperOnboardingPage("AiTrainer", "为你纠正错误的姿势",
-                Color.parseColor("#61aab8"), R.drawable.banks, R.drawable.wallet);
+                Color.parseColor("#61aab8"), R.drawable.ic_icon2, R.drawable.wallet);
         PaperOnboardingPage scr3 = new PaperOnboardingPage("AiTrainer", "帮你遇见更好的自己~",
-                Color.parseColor("#9e92c1"), R.drawable.stores, R.drawable.shopping_cart);
+                Color.parseColor("#9e92c1"), R.drawable.ic_icon1, R.drawable.shopping_cart);
 
         ArrayList<PaperOnboardingPage> elements = new ArrayList<>();
         elements.add(scr1);
         elements.add(scr2);
         elements.add(scr3);
         return elements;
+    }
+
+    public void usedSoftware() {
+        BufferedWriter bw = null;
+        FileOutputStream fos = null;
+        try {
+            String string = "第一次使用软件";
+            fos = openFileOutput("firstUse.sys", MODE_PRIVATE);
+            bw = new BufferedWriter(new OutputStreamWriter(fos));
+            bw.write(string);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (bw != null) {
+                try {
+                    bw.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (fos != null) {
+                try {
+                    fos.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
     }
 }

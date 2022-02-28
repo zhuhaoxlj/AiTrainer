@@ -3540,6 +3540,9 @@ drawable googleg_disabled_color_18
 drawable googleg_standard_color_18
 drawable hotels
 drawable ic_clock_black_24dp
+drawable ic_icon1
+drawable ic_icon2
+drawable ic_icon3
 drawable ic_keyboard_black_24dp
 drawable ic_mtrl_checked_circle
 drawable ic_mtrl_chip_checked_black
@@ -3548,6 +3551,7 @@ drawable ic_mtrl_chip_close_circle
 drawable ic_settings_white_24dp
 drawable ic_switch_camera_white_48dp
 drawable ic_switch_camera_white_48dp_inset
+drawable intro_icon1
 drawable jetpack_joyride
 drawable key
 drawable list_item_background

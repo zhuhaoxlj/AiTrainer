@@ -48,11 +48,7 @@ import com.xuexiang.xui.widget.banner.widget.banner.BannerItem;
 import com.xuexiang.xui.widget.banner.widget.banner.SimpleImageBanner;
 import com.xuexiang.xui.widget.dialog.materialdialog.MaterialDialog;
 
-import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -68,6 +64,7 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
     static List<PoseEntity> poseEntityArrayList;
     private ViewPager viewPager;
     private View view1, view2, view3, view4;
+    private boolean isFirstUseApp = true;
     /**
      * 存放视图的数组
      */
@@ -119,11 +116,17 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
      */
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public void init() {
+        isFirstUseApp = isFirstUseApp();
+        if (isFirstUseApp) {
+            Intent intent = new Intent(HomePage.this, IntroView.class);
+            startActivity(intent);
+        }
         // 是否第一次使用软件
-        if (isFirstUseApp(false)) {
+        if (isFirstUseApp()) {
             //适配安卓11及以下版本的存储权限请求
             if (Build.VERSION.SDK_INT > 29) {
                 new MaterialDialog.Builder(this)
+                        .cancelable(false)
                         .iconRes(R.mipmap.tips)
                         .title("提示")
                         .content("检测到您第一次使用本软件，请授予权限保证软件正常运行，软件运行过程中不会获取您的隐私，请放心使用!")
@@ -136,7 +139,7 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
             }
         }
         // 再次获取未授权权限
-        if (!isFirstUseApp(true) && !allPermissionsGranted()) {
+        if (!isFirstUseApp && !allPermissionsGranted()) {
             getRuntimePermissions();
         }
         viewPager = findViewById(R.id.viewPager);
@@ -276,42 +279,15 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
                 .show());
     }
 
-    public boolean isFirstUseApp(boolean activate) {
-        boolean isFirstUseApp;
+    public boolean isFirstUseApp() {
+        boolean isFileExist;
         String dataPath = this.getApplicationContext().getFilesDir()
                 .getAbsolutePath() + "/firstUse.sys";
         File file = new File(dataPath);
-        isFirstUseApp = file.exists();
-        if (isFirstUseApp) {
+        isFileExist = file.exists();
+        if (isFileExist) {
             return false;
         } else {
-            if (activate) {
-                BufferedWriter bw = null;
-                FileOutputStream fos = null;
-                try {
-                    String string = "第一次使用软件";
-                    fos = openFileOutput("firstUse.sys", MODE_PRIVATE);
-                    bw = new BufferedWriter(new OutputStreamWriter(fos));
-                    bw.write(string);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                } finally {
-                    if (bw != null) {
-                        try {
-                            bw.close();
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                    if (fos != null) {
-                        try {
-                            fos.close();
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                }
-            }
             return true;
         }
     }

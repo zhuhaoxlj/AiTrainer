@@ -97,14 +97,14 @@
         <activity android:name="com.lindum.mlkit.vision.dev.view.ChangeProfileActivity" />
         <activity android:name="com.lindum.mlkit.vision.dev.view.ChangeNickName" />
         <activity android:name="com.lindum.mlkit.vision.dev.view.UserInfoInitActivity" />
+        <activity android:name="com.lindum.mlkit.vision.dev.view.IntroView" />
         <activity android:name="com.lindum.mlkit.vision.dev.CameraXLivePreviewActivity" />
         <activity
             android:name="com.lindum.mlkit.vision.dev.result.TrainingResult"
             android:exported="false"
             android:theme="@style/AppTheme" />
-        <activity android:name="com.lindum.mlkit.vision.dev.view.HomePage" />
         <activity
-            android:name="com.lindum.mlkit.vision.dev.view.IntroView"
+            android:name="com.lindum.mlkit.vision.dev.view.HomePage"
             android:exported="true"
             android:theme="@style/AppTheme" >
             <intent-filter>

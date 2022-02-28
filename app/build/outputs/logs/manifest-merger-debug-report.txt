@@ -437,30 +437,30 @@ activity#com.lindum.mlkit.vision.dev.view.UserInfoInitActivity
 ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:56:9-63
 	android:name
 		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:56:19-60
-activity#com.lindum.mlkit.vision.dev.CameraXLivePreviewActivity
-ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:57:9-63
-	android:name
-		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:57:19-61
-activity#com.lindum.mlkit.vision.dev.result.TrainingResult
-ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:58:9-61:47
-	android:exported
-		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:60:13-37
-	android:theme
-		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:61:13-44
-	android:name
-		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:59:13-77
-activity#com.lindum.mlkit.vision.dev.view.HomePage
-ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:62:9-50
-	android:name
-		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:62:19-48
 activity#com.lindum.mlkit.vision.dev.view.IntroView
+ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:57:9-52
+	android:name
+		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:57:19-49
+activity#com.lindum.mlkit.vision.dev.CameraXLivePreviewActivity
+ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:58:9-64
+	android:name
+		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:58:19-61
+activity#com.lindum.mlkit.vision.dev.result.TrainingResult
+ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:59:9-62:47
+	android:exported
+		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:61:13-37
+	android:theme
+		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:62:13-44
+	android:name
+		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:60:13-77
+activity#com.lindum.mlkit.vision.dev.view.HomePage
 ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:63:9-71:20
 	android:exported
 		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:65:13-36
 	android:theme
 		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:66:13-44
 	android:name
-		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:64:13-70
+		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:64:13-69
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
 ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:67:13-70:29
 action#android.intent.action.MAIN
