@@ -8,6 +8,7 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.Settings;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -117,12 +118,10 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public void init() {
         isFirstUseApp = isFirstUseApp();
+        // 是否第一次使用软件
         if (isFirstUseApp) {
             Intent intent = new Intent(HomePage.this, IntroView.class);
             startActivity(intent);
-        }
-        // 是否第一次使用软件
-        if (isFirstUseApp()) {
             //适配安卓11及以下版本的存储权限请求
             if (Build.VERSION.SDK_INT > 29) {
                 new MaterialDialog.Builder(this)
@@ -133,14 +132,15 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
                         .positiveText("确定")
                         .onPositive((dialog, which) -> {
                             getRuntimePermissions();
-                            requestExternalStorage(this);
                         })
                         .show();
             }
         }
         // 再次获取未授权权限
         if (!isFirstUseApp && !allPermissionsGranted()) {
-            getRuntimePermissions();
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                getRuntimePermissions();
+            }
         }
         viewPager = findViewById(R.id.viewPager);
         //获取布局对象管理
@@ -410,6 +410,7 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
         return true;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.R)
     private void getRuntimePermissions() {
         List<String> allNeededPermissions = new ArrayList<>();
         for (String permission : getRequiredPermissions()) {
@@ -417,10 +418,15 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
                 allNeededPermissions.add(permission);
             }
         }
-
         if (!allNeededPermissions.isEmpty()) {
             ActivityCompat.requestPermissions(
                     this, allNeededPermissions.toArray(new String[0]), PERMISSION_REQUESTS);
+        }
+        // 判断是否获取外置存储写入权限
+        if (Environment.isExternalStorageManager()) {
+            Logger.e("已获取外置存储写入权限");
+        } else {
+            requestExternalStorage(this);
         }
     }
 
