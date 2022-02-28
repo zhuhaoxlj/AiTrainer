@@ -35,6 +35,7 @@
         android:requestLegacyExternalStorage="true"
         android:theme="@style/Theme.AppCompat"
         android:usesCleartextTraffic="true"
+        tools:replace="android:label"
         tools:targetApi="m">
 
         <meta-data
@@ -46,19 +47,21 @@
         <meta-data
             android:name="com.google.mlkit.vision.DEPENDENCIES"
             android:value="barcode,face,ocr,ica" />
-        <activity android:name=".datacenter.ProgressActivity"/>
+
+        <activity android:name=".datacenter.ProgressActivity" />
         <activity android:name=".view.PoseDetailsActivity" />
         <activity android:name="com.lindum.mlkit.vision.dev.result.ImageDetails" />
         <activity android:name=".view.ChangeProfileActivity" />
         <activity android:name=".view.ChangeNickName" />
         <activity android:name=".view.UserInfoInitActivity" />
+        <activity android:name=".CameraXLivePreviewActivity"/>
         <activity
             android:name="com.lindum.mlkit.vision.dev.result.TrainingResult"
             android:exported="false"
             android:theme="@style/AppTheme" />
-        <activity android:name=".CameraXLivePreviewActivity" />
+        <activity android:name=".view.HomePage"/>
         <activity
-            android:name="com.lindum.mlkit.vision.dev.datacenter.Calendar"
+            android:name="com.lindum.mlkit.vision.dev.view.IntroView"
             android:exported="true"
             android:theme="@style/AppTheme">
             <intent-filter>

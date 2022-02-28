@@ -43,14 +43,15 @@
                             android:layout_height="30dp"
                             android:layout_centerVertical="true"
                             android:layout_marginStart="13dp"
-                            android:src="@drawable/search" />
+                            android:src="@drawable/search"
+                            tools:ignore="ContentDescription" />
 
                         <EditText
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_marginStart="50dp"
-                            android:background="@color/xui_transparent"
                             android:hint="帕梅拉"
+                            android:background="#00000000"
                             android:textColor="#919191"
                             android:textColorHint="#919191" />
                     </RelativeLayout>

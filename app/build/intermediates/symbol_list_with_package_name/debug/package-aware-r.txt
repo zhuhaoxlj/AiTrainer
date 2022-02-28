@@ -3491,6 +3491,7 @@ drawable abc_vector_test
 drawable alarm
 drawable avd_hide_password
 drawable avd_show_password
+drawable banks
 drawable battle
 drawable beer
 drawable bg_personal_card
@@ -3537,6 +3538,7 @@ drawable design_snackbar_background
 drawable ferrari
 drawable googleg_disabled_color_18
 drawable googleg_standard_color_18
+drawable hotels
 drawable ic_clock_black_24dp
 drawable ic_keyboard_black_24dp
 drawable ic_mtrl_checked_circle
@@ -3547,6 +3549,7 @@ drawable ic_settings_white_24dp
 drawable ic_switch_camera_white_48dp
 drawable ic_switch_camera_white_48dp_inset
 drawable jetpack_joyride
+drawable key
 drawable list_item_background
 drawable logo_mlkit
 drawable material_cursor_drawable
@@ -3599,6 +3602,8 @@ drawable notification_template_icon_bg
 drawable notification_template_icon_low_bg
 drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
+drawable onboarding_pager_circle_icon
+drawable onboarding_pager_round_icon
 drawable pe_ic_remove
 drawable pe_rounded_border_tv
 drawable pecan
@@ -3612,12 +3617,14 @@ drawable rb_bg_pressed
 drawable rb_bg_selector
 drawable search
 drawable setting
+drawable shopping_cart
 drawable srb_ic_empty
 drawable srb_ic_filled
 drawable stf_ic_empty
 drawable stf_ic_error
 drawable stf_ic_location_off
 drawable stf_ic_offline
+drawable stores
 drawable stv_btn_selector_white
 drawable swb_md_thumb
 drawable taro
@@ -3639,6 +3646,7 @@ drawable train_image3
 drawable vcet_shape_bg_focus
 drawable vcet_shape_bg_normal
 drawable vcet_shape_divider
+drawable wallet
 drawable xtoast_frame
 drawable xtoast_ic_check_white_24dp
 drawable xtoast_ic_clear_white_24dp
@@ -4234,6 +4242,11 @@ id nowPoseIndexText
 id off
 id on
 id onTouch
+id onboardingBackgroundContainer
+id onboardingContentIconContainer
+id onboardingContentTextContainer
+id onboardingPagerIconsContainer
+id onboardingRootView
 id only_month_view
 id only_week_view
 id options1
@@ -4733,6 +4746,9 @@ layout notification_template_custom_big
 layout notification_template_icon_group
 layout notification_template_part_chronometer
 layout notification_template_part_time
+layout onboarding_main_layout
+layout onboarding_pager_layout
+layout onboarding_text_content_layout
 layout page1
 layout page2
 layout personal_page

@@ -42,8 +42,8 @@ com/lindum/mlkit/vision/dev/posedetector/PoseDetectorProcessor.java
 com/lindum/mlkit/vision/dev/GraphicOverlay.java
  com.lindum.mlkit.vision.dev.GraphicOverlay
  com.lindum.mlkit.vision.dev.GraphicOverlay$Graphic
-com/lindum/mlkit/vision/dev/datacenter/ProgressActivity.java
- com.lindum.mlkit.vision.dev.datacenter.ProgressActivity
+com/lindum/mlkit/vision/dev/datacenter/ProgressMonthView.java
+ com.lindum.mlkit.vision.dev.datacenter.ProgressMonthView
 com/lindum/mlkit/vision/dev/preference/CameraXLivePreviewPreferenceFragment.java
  com.lindum.mlkit.vision.dev.preference.CameraXLivePreviewPreferenceFragment
 com/lindum/mlkit/vision/dev/InferenceInfoGraphic.java
@@ -56,6 +56,15 @@ com/lindum/mlkit/vision/dev/view/FoodEntity.java
  com.lindum.mlkit.vision.dev.view.FoodEntity
 com/lindum/mlkit/vision/dev/preference/PreferenceUtils.java
  com.lindum.mlkit.vision.dev.preference.PreferenceUtils
+com/lindum/mlkit/vision/dev/view/PaperOnboardingEngine.java
+ com.lindum.mlkit.vision.dev.view.PaperOnboardingEngine
+ com.lindum.mlkit.vision.dev.view.PaperOnboardingEngine$1
+ com.lindum.mlkit.vision.dev.view.PaperOnboardingEngine$2
+ com.lindum.mlkit.vision.dev.view.PaperOnboardingEngine$3
+ com.lindum.mlkit.vision.dev.view.PaperOnboardingEngine$4
+ com.lindum.mlkit.vision.dev.view.PaperOnboardingEngine$5
+ com.lindum.mlkit.vision.dev.view.PaperOnboardingEngine$6
+ com.lindum.mlkit.vision.dev.view.PaperOnboardingEngine$7
 com/lindum/mlkit/vision/dev/view/StartPageActivity.java
  com.lindum.mlkit.vision.dev.view.StartPageActivity
 com/lindum/mlkit/vision/dev/sql/ControlTable.java
@@ -134,6 +143,9 @@ com/lindum/mlkit/vision/dev/CameraXViewModel.java
  com.lindum.mlkit.vision.dev.CameraXViewModel
 com/lindum/mlkit/vision/dev/view/FlowTagAdapter.java
  com.lindum.mlkit.vision.dev.view.FlowTagAdapter
+com/lindum/mlkit/vision/dev/view/IntroView.java
+ com.lindum.mlkit.vision.dev.view.IntroView
+ com.lindum.mlkit.vision.dev.view.IntroView$1
 com/lindum/mlkit/vision/dev/view/UserInfoInitActivity.java
  com.lindum.mlkit.vision.dev.view.UserInfoInitActivity
  com.lindum.mlkit.vision.dev.view.UserInfoInitActivity$1
@@ -178,5 +190,5 @@ com/lindum/mlkit/vision/dev/datacenter/Calendar.java
  com.lindum.mlkit.vision.dev.datacenter.Calendar
 com/lindum/mlkit/vision/dev/datacenter/BaseActivity.java
  com.lindum.mlkit.vision.dev.datacenter.BaseActivity
-com/lindum/mlkit/vision/dev/datacenter/ProgressMonthView.java
- com.lindum.mlkit.vision.dev.datacenter.ProgressMonthView
+com/lindum/mlkit/vision/dev/datacenter/ProgressActivity.java
+ com.lindum.mlkit.vision.dev.datacenter.ProgressActivity

@@ -4,7 +4,7 @@
     "type": "APK",
     "kind": "Directory"
   },
-  "applicationId": "com.lindum.mlkit.vision.demo",
+  "applicationId": "com.lindum.mlkit.vision.dev",
   "variantName": "processDebugResources",
   "elements": [
     {

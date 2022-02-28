@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.lindum.mlkit.vision.demo"
+    package="com.lindum.mlkit.vision.dev"
     android:installLocation="auto"
     android:versionCode="11"
     android:versionName="1.11" >
@@ -69,11 +69,13 @@
     <uses-permission android:name="android.permission.WRITE_SETTINGS" /> <!-- android:name="com.lindum.mlkit.vision.demo.CameraXLivePreviewActivity" -->
     <application
         android:name="androidx.multidex.MultiDexApplication"
+        android:allowBackup="true"
         android:appComponentFactory="androidx.core.app.CoreComponentFactory"
         android:debuggable="true"
         android:icon="@drawable/train"
         android:label="AiTrainer"
         android:requestLegacyExternalStorage="true"
+        android:supportsRtl="true"
         android:testOnly="true"
         android:theme="@style/Theme.AppCompat"
         android:usesCleartextTraffic="true" >
@@ -95,13 +97,14 @@
         <activity android:name="com.lindum.mlkit.vision.dev.view.ChangeProfileActivity" />
         <activity android:name="com.lindum.mlkit.vision.dev.view.ChangeNickName" />
         <activity android:name="com.lindum.mlkit.vision.dev.view.UserInfoInitActivity" />
+        <activity android:name="com.lindum.mlkit.vision.dev.CameraXLivePreviewActivity" />
         <activity
             android:name="com.lindum.mlkit.vision.dev.result.TrainingResult"
             android:exported="false"
             android:theme="@style/AppTheme" />
-        <activity android:name="com.lindum.mlkit.vision.dev.CameraXLivePreviewActivity" />
+        <activity android:name="com.lindum.mlkit.vision.dev.view.HomePage" />
         <activity
-            android:name="com.lindum.mlkit.vision.dev.datacenter.Calendar"
+            android:name="com.lindum.mlkit.vision.dev.view.IntroView"
             android:exported="true"
             android:theme="@style/AppTheme" >
             <intent-filter>
@@ -121,7 +124,7 @@
 
         <provider
             android:name="androidx.core.content.FileProvider4Utils"
-            android:authorities="com.lindum.mlkit.vision.demo.xutil.provider"
+            android:authorities="com.lindum.mlkit.vision.dev.xutil.provider"
             android:exported="false"
             android:grantUriPermissions="true" >
             <meta-data
@@ -130,7 +133,7 @@
         </provider>
         <provider
             android:name="com.xuexiang.xui.XUIInitProvider"
-            android:authorities="com.lindum.mlkit.vision.demo.xui-init-provider"
+            android:authorities="com.lindum.mlkit.vision.dev.xui-init-provider"
             android:exported="false"
             android:multiprocess="true" />
 
@@ -158,7 +161,7 @@
 
         <provider
             android:name="com.google.mlkit.common.internal.MlKitInitProvider"
-            android:authorities="com.lindum.mlkit.vision.demo.mlkitinitprovider"
+            android:authorities="com.lindum.mlkit.vision.dev.mlkitinitprovider"
             android:exported="false"
             android:initOrder="99" />
 

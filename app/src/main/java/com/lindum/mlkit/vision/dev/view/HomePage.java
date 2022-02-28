@@ -1,9 +1,14 @@
 package com.lindum.mlkit.vision.dev.view;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +24,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.PagerAdapter;
@@ -41,6 +48,11 @@ import com.xuexiang.xui.widget.banner.widget.banner.BannerItem;
 import com.xuexiang.xui.widget.banner.widget.banner.SimpleImageBanner;
 import com.xuexiang.xui.widget.dialog.materialdialog.MaterialDialog;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -52,6 +64,7 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
     private HomeAdapter adapter;
     final int userInfoIntentCode = 1;
     ActivityResultLauncher<Intent> intentActivityResultLauncher;
+    private static final int PERMISSION_REQUESTS = 1;
     static List<PoseEntity> poseEntityArrayList;
     private ViewPager viewPager;
     private View view1, view2, view3, view4;
@@ -101,32 +114,31 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
         getPoseEntityFromDataBase();
     }
 
-    public void getPoseEntityFromDataBase() {
-        // 设置动作库
-        ArrayList<Item> arrayList = new ArrayList<>();
-        ControlTable controlTable = new ControlTable();
-        RecyclerView recyclerView = view3.findViewById(R.id.recyclerView);
-        // todo 线程池
-        Thread getData = new Thread() {
-            @Override
-            public void run() {
-                poseEntityArrayList = controlTable.readTable();
-                for (PoseEntity poseEntity : poseEntityArrayList) {
-                    Logger.e(poseEntity.getPoseFeeling()[0]);
-                    arrayList.add(new Item(poseEntityArrayList.indexOf(poseEntity), poseEntity.getPoseName(), "副标题", R.mipmap.q1));
-                }
-                super.run();
-            }
-        };
-        getData.start();
-        adapter = new HomeAdapter(this, arrayList, this);
-        recyclerView.setAdapter(adapter);
-        GridLayoutManager manager = new GridLayoutManager(this, 2, GridLayoutManager.VERTICAL, false);
-        recyclerView.setLayoutManager(manager);
-    }
-
+    /**
+     * 初始化软件
+     */
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public void init() {
+        // 是否第一次使用软件
+        if (isFirstUseApp(false)) {
+            //适配安卓11及以下版本的存储权限请求
+            if (Build.VERSION.SDK_INT > 29) {
+                new MaterialDialog.Builder(this)
+                        .iconRes(R.mipmap.tips)
+                        .title("提示")
+                        .content("检测到您第一次使用本软件，请授予权限保证软件正常运行，软件运行过程中不会获取您的隐私，请放心使用!")
+                        .positiveText("确定")
+                        .onPositive((dialog, which) -> {
+                            getRuntimePermissions();
+                            requestExternalStorage(this);
+                        })
+                        .show();
+            }
+        }
+        // 再次获取未授权权限
+        if (!isFirstUseApp(true) && !allPermissionsGranted()) {
+            getRuntimePermissions();
+        }
         viewPager = findViewById(R.id.viewPager);
         //获取布局对象管理
         LayoutInflater inflater = getLayoutInflater();
@@ -193,6 +205,30 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
         initTabbar();
     }
 
+    public void getPoseEntityFromDataBase() {
+        // 设置动作库
+        ArrayList<Item> arrayList = new ArrayList<>();
+        ControlTable controlTable = new ControlTable();
+        RecyclerView recyclerView = view3.findViewById(R.id.recyclerView);
+        // todo 线程池
+        Thread getData = new Thread() {
+            @Override
+            public void run() {
+                poseEntityArrayList = controlTable.readTable();
+                for (PoseEntity poseEntity : poseEntityArrayList) {
+                    Logger.e(poseEntity.getPoseFeeling()[0]);
+                    arrayList.add(new Item(poseEntityArrayList.indexOf(poseEntity), poseEntity.getPoseName(), "副标题", R.mipmap.q1));
+                }
+                super.run();
+            }
+        };
+        getData.start();
+        adapter = new HomeAdapter(this, arrayList, this);
+        recyclerView.setAdapter(adapter);
+        GridLayoutManager manager = new GridLayoutManager(this, 2, GridLayoutManager.VERTICAL, false);
+        recyclerView.setLayoutManager(manager);
+    }
+
     public void initBanner() {
         // 轮播图
         SimpleImageBanner simpleImageBanner = view1.findViewById(R.id.banner);
@@ -238,6 +274,46 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
                     startActivity(intent);
                 })
                 .show());
+    }
+
+    public boolean isFirstUseApp(boolean activate) {
+        boolean isFirstUseApp;
+        String dataPath = this.getApplicationContext().getFilesDir()
+                .getAbsolutePath() + "/firstUse.sys";
+        File file = new File(dataPath);
+        isFirstUseApp = file.exists();
+        if (isFirstUseApp) {
+            return false;
+        } else {
+            if (activate) {
+                BufferedWriter bw = null;
+                FileOutputStream fos = null;
+                try {
+                    String string = "第一次使用软件";
+                    fos = openFileOutput("firstUse.sys", MODE_PRIVATE);
+                    bw = new BufferedWriter(new OutputStreamWriter(fos));
+                    bw.write(string);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } finally {
+                    if (bw != null) {
+                        try {
+                            bw.close();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                    if (fos != null) {
+                        try {
+                            fos.close();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+            }
+            return true;
+        }
     }
 
     /**
@@ -323,4 +399,67 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
         startActivity(intent);
     }
 
+    private String[] getRequiredPermissions() {
+        try {
+            PackageInfo info =
+                    this.getPackageManager()
+                            .getPackageInfo(this.getPackageName(), PackageManager.GET_PERMISSIONS);
+            String[] ps = info.requestedPermissions;
+            if (ps != null && ps.length > 0) {
+                return ps;
+            } else {
+                return new String[0];
+            }
+        } catch (Exception e) {
+            return new String[0];
+        }
+    }
+
+    private static boolean isPermissionGranted(Context context, String permission) {
+        if (ContextCompat.checkSelfPermission(context, permission)
+                == PackageManager.PERMISSION_GRANTED) {
+            Logger.i("Permission granted: " + permission);
+            return true;
+        }
+        Logger.i("Permission NOT granted: " + permission);
+        return false;
+    }
+
+    private boolean allPermissionsGranted() {
+        for (String permission : getRequiredPermissions()) {
+            if (!isPermissionGranted(this, permission)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private void getRuntimePermissions() {
+        List<String> allNeededPermissions = new ArrayList<>();
+        for (String permission : getRequiredPermissions()) {
+            if (!isPermissionGranted(this, permission)) {
+                allNeededPermissions.add(permission);
+            }
+        }
+
+        if (!allNeededPermissions.isEmpty()) {
+            ActivityCompat.requestPermissions(
+                    this, allNeededPermissions.toArray(new String[0]), PERMISSION_REQUESTS);
+        }
+    }
+
+    /**
+     * 请求访问外置内存
+     *
+     * @param context 上下文场景
+     */
+    public void requestExternalStorage(Context context) {
+        Intent intent = null;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.R) {
+            intent = new Intent(Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION);
+        }
+        assert intent != null;
+        intent.setData(Uri.parse("package:" + context.getPackageName()));
+        context.startActivity(intent);
+    }
 }

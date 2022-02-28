@@ -88,13 +88,13 @@
     </content>
     <orderEntry type="jdk" jdkName="Android API 30 Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="Gradle: mysql:mysql-connector-java:5.1.49" level="project" />
     <orderEntry type="library" name="Gradle: com.google.firebase:firebase-encoders:16.1.0" level="project" />
     <orderEntry type="library" name="Gradle: androidx.lifecycle:lifecycle-common:2.3.1" level="project" />
     <orderEntry type="library" name="Gradle: androidx.collection:collection:1.1.0" level="project" />
     <orderEntry type="library" name="Gradle: com.jakewharton:butterknife-annotations:10.2.3" level="project" />
     <orderEntry type="library" name="Gradle: androidx.arch.core:core-common:2.1.0" level="project" />
     <orderEntry type="library" name="Gradle: androidx.annotation:annotation:1.2.0" level="project" />
+    <orderEntry type="library" name="Gradle: mysql:mysql-connector-java:5.1.49" level="project" />
     <orderEntry type="library" name="Gradle: com.google.code.gson:gson:2.8.6" level="project" />
     <orderEntry type="library" name="Gradle: com.nineoldandroids:library:2.4.0" level="project" />
     <orderEntry type="library" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib:1.3.21" level="project" />
@@ -116,8 +116,7 @@
     <orderEntry type="library" name="Gradle: com.google.errorprone:error_prone_annotations:2.3.4" level="project" />
     <orderEntry type="library" name="Gradle: com.google.j2objc:j2objc-annotations:1.3" level="project" />
     <orderEntry type="library" name="Gradle: androidx.multidex:multidex:2.0.1@aar" level="project" />
-    <orderEntry type="library" name="Gradle: com.haibin:calendarview:3.7.1@aar" level="project" />
-    <orderEntry type="library" name="Gradle: com.github.gzu-liyujiang.AndroidPicker:AddressPicker:4.1.7@aar" level="project" />
+    <orderEntry type="library" name="Gradle: com.ramotion.paperonboarding:paper-onboarding:1.1.3@aar" level="project" />
     <orderEntry type="library" name="Gradle: com.github.bmarrdev:android-DecoView-charting:v1.2@aar" level="project" />
     <orderEntry type="library" name="Gradle: com.google.android.material:material:1.4.0@aar" level="project" />
     <orderEntry type="library" name="Gradle: androidx.constraintlayout:constraintlayout:2.0.4@aar" level="project" />
@@ -178,13 +177,15 @@
     <orderEntry type="library" name="Gradle: androidx.documentfile:documentfile:1.0.0@aar" level="project" />
     <orderEntry type="library" name="Gradle: androidx.localbroadcastmanager:localbroadcastmanager:1.0.0@aar" level="project" />
     <orderEntry type="library" name="Gradle: androidx.print:print:1.0.0@aar" level="project" />
+    <orderEntry type="library" name="Gradle: androidx.annotation:annotation-experimental:1.0.0@aar" level="project" />
+    <orderEntry type="library" name="Gradle: com.haibin:calendarview:3.7.1@aar" level="project" />
+    <orderEntry type="library" name="Gradle: com.github.gzu-liyujiang.AndroidPicker:AddressPicker:4.1.7@aar" level="project" />
     <orderEntry type="library" name="Gradle: com.github.gzu-liyujiang.AndroidPicker:WheelPicker:4.1.7@aar" level="project" />
     <orderEntry type="library" name="Gradle: com.github.gzu-liyujiang.AndroidPicker:Common:4.1.7@aar" level="project" />
     <orderEntry type="library" name="Gradle: com.github.gzu-liyujiang.AndroidPicker:WheelView:4.1.7@aar" level="project" />
     <orderEntry type="library" name="Gradle: com.github.xuexiangjys.XUtil:xutil-core:2.0.0@aar" level="project" />
     <orderEntry type="library" name="Gradle: com.github.xuexiangjys.XUtil:xutil-sub:2.0.0@aar" level="project" />
     <orderEntry type="library" name="Gradle: com.jpeng:JPTabBar:1.4.0@aar" level="project" />
-    <orderEntry type="library" name="Gradle: androidx.annotation:annotation-experimental:1.0.0@aar" level="project" />
     <orderEntry type="library" name="Gradle: com.github.xuexiangjys:XUI:1.1.8@aar" level="project" />
     <orderEntry type="library" name="Gradle: io.github.inflationx:calligraphy3:3.1.1@aar" level="project" />
     <orderEntry type="library" name="Gradle: io.github.inflationx:viewpump:2.0.3@aar" level="project" />

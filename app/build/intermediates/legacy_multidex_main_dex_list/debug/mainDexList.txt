@@ -469,6 +469,7 @@ com/google/mlkit/vision/pose/PoseLandmark$LandmarkType.class
 com/jpeng/jptabbar/anno/NorIcons.class
 com/jpeng/jptabbar/anno/SeleIcons.class
 com/jpeng/jptabbar/anno/Titles.class
+com/lindum/mlkit/vision/dev/utils/StatusBarUtils$StatusBarType.class
 com/xuexiang/constant/MemoryConstants$Unit.class
 com/xuexiang/constant/PermissionConstants$Permission.class
 com/xuexiang/constant/TimeConstants$Unit.class

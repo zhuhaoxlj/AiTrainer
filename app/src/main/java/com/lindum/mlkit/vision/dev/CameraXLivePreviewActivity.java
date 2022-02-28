@@ -9,7 +9,6 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.Build.VERSION_CODES;
 import android.os.Bundle;
@@ -208,10 +207,7 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
         graphicOverlay = findViewById(R.id.graphic_overlay);
         poseProcessInfo = findViewById(R.id.poseProcessInfo);
         countdownSecondsTextView = findViewById(R.id.countdownSecondsText);
-        //适配安卓11及以下版本的存储权限请求
-        if (Build.VERSION.SDK_INT > 29) {
-            requestExternalStorage(this);
-        }
+
         // SD 卡根目录
         String sdPath = Environment.getExternalStorageDirectory().getPath();
 //            // 姿态数据工具类

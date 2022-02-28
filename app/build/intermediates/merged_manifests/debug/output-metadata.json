@@ -4,7 +4,7 @@
     "type": "MERGED_MANIFESTS",
     "kind": "Directory"
   },
-  "applicationId": "com.lindum.mlkit.vision.demo",
+  "applicationId": "com.lindum.mlkit.vision.dev",
   "variantName": "debug",
   "elements": [
     {
