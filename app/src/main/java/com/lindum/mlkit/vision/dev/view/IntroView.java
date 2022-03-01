@@ -32,22 +32,20 @@ public class IntroView extends AppCompatActivity {
         // todo 适配水滴屏幕 当隐藏状态栏的时候上面是黑边
         super.onCreate(savedInstanceState);
         setContentView(R.layout.onboarding_main_layout);
-        PaperOnboardingEngine engine = new PaperOnboardingEngine(findViewById(R.id.onboardingRootView), getDataForOnboarding(), getApplicationContext());
+        PaperOnboardingEngine engine = new PaperOnboardingEngine(findViewById(R.id.onboardingRootView), getDataForOnboard(), getApplicationContext());
 
-        engine.setOnChangeListener((oldElementIndex, newElementIndex) -> {
-            new Thread() {
-                @Override
-                public void run() {
-                    super.run();
-                    try {
-                        Thread.sleep(300);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                    changeTextColor(Color.parseColor("#ffffff"));
+        engine.setOnChangeListener((oldElementIndex, newElementIndex) -> new Thread() {
+            @Override
+            public void run() {
+                super.run();
+                try {
+                    Thread.sleep(300);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
                 }
-            }.start();
-        });
+                changeTextColor(Color.parseColor("#ffffff"));
+            }
+        }.start());
 
         engine.setOnRightOutListener(() -> {
             finish();
@@ -65,7 +63,7 @@ public class IntroView extends AppCompatActivity {
         }
     }
 
-    private ArrayList<PaperOnboardingPage> getDataForOnboarding() {
+    private ArrayList<PaperOnboardingPage> getDataForOnboard() {
         PaperOnboardingPage scr1 = new PaperOnboardingPage("AiTrainer", "你的私人Ai健身教练",
                 Color.parseColor("#628eb9"), R.drawable.ic_icon3, R.drawable.key);
         PaperOnboardingPage scr2 = new PaperOnboardingPage("AiTrainer", "为你纠正错误的姿势",

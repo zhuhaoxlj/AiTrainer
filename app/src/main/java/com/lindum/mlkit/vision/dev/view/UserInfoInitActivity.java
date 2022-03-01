@@ -79,15 +79,12 @@ public class UserInfoInitActivity extends AppCompatActivity implements OnDatePic
             if (result.getData() != null && result.getResultCode() == changeNickNameIntentCode) {
                 String nickName = getStringFromIntentResult(result, "nickName");
                 nickNameText.setText(nickName);
-//                String profile = getStringFromIntentResult(result, "profile");
-//                Logger.d(profile);
             } else {
                 Logger.e("nickName空");
             }
             // 修改简介
             if (result.getData() != null && result.getResultCode() == changeProfileIntentCode) {
                 profile = getStringFromIntentResult(result, "profile");
-//                Logger.d(profile);
             } else {
                 Logger.e("profile空");
             }
@@ -219,19 +216,6 @@ public class UserInfoInitActivity extends AppCompatActivity implements OnDatePic
         return result.getData().getCharSequenceExtra(key) == null ? "" : result.getData().getCharSequenceExtra(key).toString();
     }
 
-    /**
-     * 从 ActivityResult 通过 key 读取字符串
-     *
-     * @param result ActivityResult
-     * @param key    获取字符串的 key
-     * @return key 对应的字符串
-     */
-    public ArrayList<String> getStringArrayFromIntentResult(ActivityResult result, String key) {
-        assert result.getData() != null;
-//        return result.getData().getCharSequenceExtra(key) == null ? "" : result.getData().getCharSequenceExtra(key).toString();
-        return result.getData().getStringArrayListExtra(key);
-    }
-
     @RequiresApi(api = Build.VERSION_CODES.O)
     @SuppressLint("SetTextI18n")
     @Override
@@ -248,7 +232,7 @@ public class UserInfoInitActivity extends AppCompatActivity implements OnDatePic
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void onBackPressed() {
-        String IMEI = "";
+        String IMEI;
         if (android.os.Build.VERSION.SDK_INT >= 29) {
             IMEI = DeviceIdUtils.getDeviceId(this);
         } else {
@@ -265,9 +249,9 @@ public class UserInfoInitActivity extends AppCompatActivity implements OnDatePic
         userEntity.setUserUniqueId(IMEI);
         userEntity.setProfile(profile);
         userEntity.setRegion(addressText.getText() + "");
-        String[] covertedArray = new String[sportsPreference.size()];
-        covertedArray = sportsPreference.toArray(covertedArray);
-        userEntity.setSportsPreference(covertedArray);
+        String[] convertedArray = new String[sportsPreference.size()];
+        convertedArray = sportsPreference.toArray(convertedArray);
+        userEntity.setSportsPreference(convertedArray);
         userEntity.setProfileImageUrl(profileImageUrl);
         Logger.e(userEntity.toString());
         UpdateUserInfo updateUserInfo = new UpdateUserInfo();
@@ -276,12 +260,10 @@ public class UserInfoInitActivity extends AppCompatActivity implements OnDatePic
             @Override
             public void run() {
                 super.run();
-                if (updateUserInfo.search(finalIMEI) == null) {
-                    updateUserInfo.writeInClass(userEntity);
-                } else {
+                if (updateUserInfo.search(finalIMEI) != null) {
                     updateUserInfo.delete(finalIMEI);
-                    updateUserInfo.writeInClass(userEntity);
                 }
+                updateUserInfo.writeInClass(userEntity);
             }
         };
         writeUserInfoToDataBase.start();

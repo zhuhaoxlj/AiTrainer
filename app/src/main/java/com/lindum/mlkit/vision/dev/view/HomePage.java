@@ -10,7 +10,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.Settings;
-import android.telephony.TelephonyManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,6 +37,7 @@ import com.jpeng.jptabbar.OnTabSelectListener;
 import com.jpeng.jptabbar.anno.NorIcons;
 import com.jpeng.jptabbar.anno.SeleIcons;
 import com.jpeng.jptabbar.anno.Titles;
+import com.lindum.mlkit.vision.dev.CameraXLivePreviewActivity;
 import com.lindum.mlkit.vision.dev.R;
 import com.lindum.mlkit.vision.dev.posedetector.PoseEntity;
 import com.lindum.mlkit.vision.dev.sql.ControlTable;
@@ -116,7 +116,6 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
     /**
      * 初始化软件
      */
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public void init() {
         isFirstUseApp = isFirstUseApp();
         // 是否第一次使用软件
@@ -124,29 +123,22 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
             Intent intent = new Intent(HomePage.this, IntroView.class);
             startActivity(intent);
             //适配安卓11及以下版本的存储权限请求
-            if (Build.VERSION.SDK_INT > 29) {
-                new MaterialDialog.Builder(this)
-                        .cancelable(false)
-                        .iconRes(R.mipmap.tips)
-                        .title("提示")
-                        .content("检测到您第一次使用本软件，请授予权限保证软件正常运行，软件运行过程中不会获取您的隐私，请放心使用!")
-                        .positiveText("确定")
-                        .onPositive((dialog, which) -> {
+            new MaterialDialog.Builder(this)
+                    .cancelable(false)
+                    .iconRes(R.mipmap.tips)
+                    .title("提示")
+                    .content("检测到您第一次使用本软件，请授予权限保证软件正常运行，软件运行过程中不会获取您的隐私，请放心使用!")
+                    .positiveText("确定")
+                    .onPositive((dialog, which) -> {
                             getRuntimePermissions();
-                        })
-                        .show();
-            }
+                    })
+                    .show();
         }
         // 再次获取未授权权限
         if (!isFirstUseApp && !allPermissionsGranted()) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
                 getRuntimePermissions();
             }
-        }
-        if(allPermissionsGranted()){
-            TelephonyManager tm = (TelephonyManager)getSystemService(TELEPHONY_SERVICE);
-            @SuppressLint("HardwareIds") String IMEI = tm.getDeviceId();
-            Logger.e(IMEI);
         }
         viewPager = findViewById(R.id.viewPager);
         //获取布局对象管理
@@ -245,7 +237,6 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
     /**
      * 初始化底部 Tabbar，要在布局初始化之后调用
      */
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public void initTabbar() {
         final int personalPageIndex = 3;
         JPTabBar jpTabBar = findViewById(R.id.tabbar);
@@ -284,6 +275,21 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
                 return false;
             }
         });
+        View middleView = jpTabBar.getMiddleView();
+        middleView.setOnClickListener(e -> new MaterialDialog.Builder(this)
+                .iconRes(R.mipmap.tips)
+                .title("提示")
+                .content("1.请选择空旷的场地，或者纯色背景可以提高Ai健身教练的识别精准度。\n2.识别过程中，尽量保持身体在手机屏幕中，尽量选择遮挡人体部位最少的角度进行拍摄，再次感谢您的使用！")
+                .positiveText("确定")
+                .onPositive((dialog, which) -> {
+                    // 不要忘记在 AndroidManifest 中声明 Activity
+                    Intent intent = null;
+                    if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+                        intent = new Intent(HomePage.this, CameraXLivePreviewActivity.class);
+                    }
+                    startActivity(intent);
+                })
+                .show());
     }
 
     /**
@@ -409,7 +415,6 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
     }
 
 
-
     private static boolean isPermissionGranted(Context context, String permission) {
         if (ContextCompat.checkSelfPermission(context, permission)
                 == PackageManager.PERMISSION_GRANTED) {
@@ -429,7 +434,6 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
         return true;
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.R)
     private void getRuntimePermissions() {
         List<String> allNeededPermissions = new ArrayList<>();
         for (String permission : getRequiredPermissions()) {
@@ -442,10 +446,14 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
                     this, allNeededPermissions.toArray(new String[0]), PERMISSION_REQUESTS);
         }
         // 判断是否获取外置存储写入权限
-        if (Environment.isExternalStorageManager()) {
-            Logger.e("已获取外置存储写入权限");
-        } else {
-            requestExternalStorage(this);
+        if (Build.VERSION.SDK_INT >= 29) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                if (Environment.isExternalStorageManager()) {
+                    Logger.e("已获取外置存储写入权限");
+                } else {
+                    requestExternalStorage(this);
+                }
+            }
         }
     }
 
