@@ -12,10 +12,10 @@
 
     <com.jpeng.jptabbar.JPTabBar
         android:id="@+id/tabbar"
-        app:TabSelectColor="#9fc6ff"
-        app:TabMiddleView="@layout/circle_button"
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:layout_alignParentBottom="true"
-        android:background="#fff" />
+        android:background="#fff"
+        app:TabMiddleView="@layout/circle_button"
+        app:TabSelectColor="#9fc6ff" />
 </RelativeLayout>

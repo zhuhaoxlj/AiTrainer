@@ -35,7 +35,7 @@
             android:layout_height="60dp"
             android:layout_marginStart="15dp"
             android:layout_toEndOf="@+id/nickNameHint"
-            android:background="@color/xui_transparent"
+            android:background="#00000000"
             android:hint="@string/inputNickNameHint"
             android:textSize="20sp"
             tools:ignore="TextFields" />

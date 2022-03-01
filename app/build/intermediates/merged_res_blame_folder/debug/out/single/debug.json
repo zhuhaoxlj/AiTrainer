@@ -12,12 +12,12 @@
         "source": "D:\\Project\\Android\\AiTrainer\\app\\src\\main\\res\\mipmap-mdpi\\ic_calendar.png"
     },
     {
-        "merged": "D:\\Project\\Android\\AiTrainer\\app\\build\\intermediates\\res\\merged\\debug\\layout_next_button.xml.flat",
-        "source": "D:\\Project\\Android\\AiTrainer\\app\\src\\main\\res\\layout\\next_button.xml"
-    },
-    {
         "merged": "D:\\Project\\Android\\AiTrainer\\app\\build\\intermediates\\res\\merged\\debug\\layout_spinner_style.xml.flat",
         "source": "D:\\Project\\Android\\AiTrainer\\app\\src\\main\\res\\layout\\spinner_style.xml"
+    },
+    {
+        "merged": "D:\\Project\\Android\\AiTrainer\\app\\build\\intermediates\\res\\merged\\debug\\layout_next_button.xml.flat",
+        "source": "D:\\Project\\Android\\AiTrainer\\app\\src\\main\\res\\layout\\next_button.xml"
     },
     {
         "merged": "D:\\Project\\Android\\AiTrainer\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_settings_white_24dp.png.flat",
@@ -60,12 +60,12 @@
         "source": "D:\\Project\\Android\\AiTrainer\\app\\src\\main\\res\\layout\\personal\\layout\\change_profile.xml"
     },
     {
-        "merged": "D:\\Project\\Android\\AiTrainer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_tips.png.flat",
-        "source": "D:\\Project\\Android\\AiTrainer\\app\\src\\main\\res\\mipmap-mdpi\\tips.png"
-    },
-    {
         "merged": "D:\\Project\\Android\\AiTrainer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_personal.png.flat",
         "source": "D:\\Project\\Android\\AiTrainer\\app\\src\\main\\res\\mipmap-mdpi\\personal.png"
+    },
+    {
+        "merged": "D:\\Project\\Android\\AiTrainer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_tips.png.flat",
+        "source": "D:\\Project\\Android\\AiTrainer\\app\\src\\main\\res\\mipmap-mdpi\\tips.png"
     },
     {
         "merged": "D:\\Project\\Android\\AiTrainer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_take_photo.png.flat",
@@ -120,16 +120,16 @@
         "source": "D:\\Project\\Android\\AiTrainer\\app\\src\\main\\res\\drawable-xxhdpi\\search.png"
     },
     {
-        "merged": "D:\\Project\\Android\\AiTrainer\\app\\build\\intermediates\\res\\merged\\debug\\layout_login.xml.flat",
-        "source": "D:\\Project\\Android\\AiTrainer\\app\\src\\main\\res\\layout\\login.xml"
+        "merged": "D:\\Project\\Android\\AiTrainer\\app\\build\\intermediates\\res\\merged\\debug\\layout_select_sports_preference.xml.flat",
+        "source": "D:\\Project\\Android\\AiTrainer\\app\\src\\main\\res\\layout\\personal\\layout\\select_sports_preference.xml"
     },
     {
         "merged": "D:\\Project\\Android\\AiTrainer\\app\\build\\intermediates\\res\\merged\\debug\\drawable_list_item_background.xml.flat",
         "source": "D:\\Project\\Android\\AiTrainer\\app\\src\\main\\res\\drawable\\list_item_background.xml"
     },
     {
-        "merged": "D:\\Project\\Android\\AiTrainer\\app\\build\\intermediates\\res\\merged\\debug\\layout_select_sports_preference.xml.flat",
-        "source": "D:\\Project\\Android\\AiTrainer\\app\\src\\main\\res\\layout\\personal\\layout\\select_sports_preference.xml"
+        "merged": "D:\\Project\\Android\\AiTrainer\\app\\build\\intermediates\\res\\merged\\debug\\layout_login.xml.flat",
+        "source": "D:\\Project\\Android\\AiTrainer\\app\\src\\main\\res\\layout\\login.xml"
     },
     {
         "merged": "D:\\Project\\Android\\AiTrainer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_q4.jpg.flat",
@@ -204,12 +204,12 @@
         "source": "D:\\Project\\Android\\AiTrainer\\app\\src\\main\\res\\layout\\main\\layout\\pose_library.xml"
     },
     {
-        "merged": "D:\\Project\\Android\\AiTrainer\\app\\build\\intermediates\\res\\merged\\debug\\layout_about.xml.flat",
-        "source": "D:\\Project\\Android\\AiTrainer\\app\\src\\main\\res\\layout\\personal\\layout\\about.xml"
-    },
-    {
         "merged": "D:\\Project\\Android\\AiTrainer\\app\\build\\intermediates\\res\\merged\\debug\\drawable_intro_icon1.png.flat",
         "source": "D:\\Project\\Android\\AiTrainer\\app\\src\\main\\res\\drawable\\intro_icon1.png"
+    },
+    {
+        "merged": "D:\\Project\\Android\\AiTrainer\\app\\build\\intermediates\\res\\merged\\debug\\layout_about.xml.flat",
+        "source": "D:\\Project\\Android\\AiTrainer\\app\\src\\main\\res\\layout\\personal\\layout\\about.xml"
     },
     {
         "merged": "D:\\Project\\Android\\AiTrainer\\app\\build\\intermediates\\res\\merged\\debug\\layout_circle_button.xml.flat",

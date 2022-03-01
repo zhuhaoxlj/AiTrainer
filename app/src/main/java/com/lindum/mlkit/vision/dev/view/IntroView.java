@@ -32,8 +32,6 @@ public class IntroView extends AppCompatActivity {
         // todo 适配水滴屏幕 当隐藏状态栏的时候上面是黑边
         super.onCreate(savedInstanceState);
         setContentView(R.layout.onboarding_main_layout);
-
-
         PaperOnboardingEngine engine = new PaperOnboardingEngine(findViewById(R.id.onboardingRootView), getDataForOnboarding(), getApplicationContext());
 
         engine.setOnChangeListener((oldElementIndex, newElementIndex) -> {

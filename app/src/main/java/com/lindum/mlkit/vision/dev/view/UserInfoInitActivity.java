@@ -1,18 +1,20 @@
 package com.lindum.mlkit.vision.dev.view;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
+import android.os.Build;
 import android.os.Bundle;
+import android.telephony.TelephonyManager;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.github.gzuliyujiang.wheelpicker.AddressPicker;
@@ -27,6 +29,9 @@ import com.github.gzuliyujiang.wheelpicker.entity.CityEntity;
 import com.github.gzuliyujiang.wheelpicker.entity.CountyEntity;
 import com.github.gzuliyujiang.wheelpicker.entity.ProvinceEntity;
 import com.lindum.mlkit.vision.dev.R;
+import com.lindum.mlkit.vision.dev.entity.UserEntity;
+import com.lindum.mlkit.vision.dev.sql.UpdateUserInfo;
+import com.lindum.mlkit.vision.dev.utils.DeviceIdUtils;
 import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.Logger;
 import com.xuexiang.xui.XUI;
@@ -34,23 +39,26 @@ import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xui.widget.picker.RulerView;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * @author MarkGosling
  * @date 2022/2/14 10:55
  */
 public class UserInfoInitActivity extends AppCompatActivity implements OnDatePickedListener, OnTimePickedListener, OnAddressPickedListener, OnOptionPickedListener {
-    final int changeNickNameIntentCode = 1, changeProfileIntentCode = 2;
+    private UserEntity userEntity;
+    private TextView sexText;
+    private TextView birthdayText;
+    private TextView heightText;
+    private TextView weightText;
+    private TextView addressText;
+    final int changeNickNameIntentCode = 1, changeProfileIntentCode = 2, selectSportsPreference = 3;
     ActivityResultLauncher<Intent> intentActivityResultLauncher;
     TextView nickNameText;
-    String profile;
-    String sportsPreference;
-    String sex;
-    LocalDate birthday;
-    float height;
-    float weigth;
-    String region;
-    Bitmap profileImage;
+    String profile = "";
+    ArrayList<String> sportsPreference;
+    String profileImageUrl = "";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -71,17 +79,25 @@ public class UserInfoInitActivity extends AppCompatActivity implements OnDatePic
             if (result.getData() != null && result.getResultCode() == changeNickNameIntentCode) {
                 String nickName = getStringFromIntentResult(result, "nickName");
                 nickNameText.setText(nickName);
-                String profile = getStringFromIntentResult(result, "profile");
-                Logger.d(profile);
+//                String profile = getStringFromIntentResult(result, "profile");
+//                Logger.d(profile);
             } else {
-                Toast.makeText(getApplicationContext(), "空", Toast.LENGTH_LONG).show();
+                Logger.e("nickName空");
             }
             // 修改简介
             if (result.getData() != null && result.getResultCode() == changeProfileIntentCode) {
                 profile = getStringFromIntentResult(result, "profile");
-                Logger.d(profile);
+//                Logger.d(profile);
             } else {
-                Toast.makeText(getApplicationContext(), "空", Toast.LENGTH_LONG).show();
+                Logger.e("profile空");
+            }
+            // 获取运动偏好
+            if (result.getData() != null && result.getResultCode() == selectSportsPreference) {
+                String temp = getStringFromIntentResult(result, "sportsPreference");
+                sportsPreference = new ArrayList<>(Arrays.asList(temp.replace("[", "").replace("]", "").split(", ")));
+                Logger.e(sportsPreference.toString());
+            } else {
+                Logger.e("sportsPreference空");
             }
         });
     }
@@ -91,17 +107,21 @@ public class UserInfoInitActivity extends AppCompatActivity implements OnDatePic
      */
     public void init() {
         nickNameText = findViewById(R.id.nickNameText);
+        birthdayText = findViewById(R.id.birthdayText);
+        heightText = findViewById(R.id.heigthText);
+        weightText = findViewById(R.id.weightText);
+        sexText = findViewById(R.id.sexText);
+        addressText = findViewById(R.id.addressText);
 
+        userEntity = new UserEntity();
+        sportsPreference = new ArrayList<>();
         // TitleBar
         TitleBar titleBar = findViewById(R.id.UserInfoTitleBar);
-        titleBar.setLeftClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent();
-                intent.putExtra("nickName", nickNameText.getText() + "");
-                setResult(1, intent);
-                finish();
-            }
+        titleBar.setLeftClickListener(view -> {
+            Intent intent = new Intent();
+            intent.putExtra("nickName", nickNameText.getText() + "");
+            setResult(1, intent);
+            finish();
         });
         RelativeLayout selectBirthDay = findViewById(R.id.selectBirthDayButton);
         selectBirthDay.setOnClickListener(view -> {
@@ -120,7 +140,6 @@ public class UserInfoInitActivity extends AppCompatActivity implements OnDatePic
             @SuppressLint("SetTextI18n")
             @Override
             public void onEndResult(String result) {
-                TextView heightText = findViewById(R.id.heigthText);
                 heightText.setText(heightRuler.getCurrentValue() + "cm");
             }
 
@@ -135,7 +154,6 @@ public class UserInfoInitActivity extends AppCompatActivity implements OnDatePic
             @SuppressLint("SetTextI18n")
             @Override
             public void onEndResult(String result) {
-                TextView weightText = findViewById(R.id.weightText);
                 weightText.setText(weightRuler.getCurrentValue() + "kg");
             }
 
@@ -162,7 +180,7 @@ public class UserInfoInitActivity extends AppCompatActivity implements OnDatePic
         // 运动偏好
         RelativeLayout selectSportsPreferenceButton = findViewById(R.id.selectSportsPreferenceButton);
         selectSportsPreferenceButton.setOnClickListener(view -> {
-            Intent intent = new Intent(UserInfoInitActivity.this, ChangeProfileActivity.class);
+            Intent intent = new Intent(UserInfoInitActivity.this, SelectSportsPreference.class);
             intentActivityResultLauncher.launch(intent);
         });
     }
@@ -201,11 +219,24 @@ public class UserInfoInitActivity extends AppCompatActivity implements OnDatePic
         return result.getData().getCharSequenceExtra(key) == null ? "" : result.getData().getCharSequenceExtra(key).toString();
     }
 
+    /**
+     * 从 ActivityResult 通过 key 读取字符串
+     *
+     * @param result ActivityResult
+     * @param key    获取字符串的 key
+     * @return key 对应的字符串
+     */
+    public ArrayList<String> getStringArrayFromIntentResult(ActivityResult result, String key) {
+        assert result.getData() != null;
+//        return result.getData().getCharSequenceExtra(key) == null ? "" : result.getData().getCharSequenceExtra(key).toString();
+        return result.getData().getStringArrayListExtra(key);
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @SuppressLint("SetTextI18n")
     @Override
     public void onDatePicked(int year, int month, int day) {
         Logger.d("您的生日:" + year + "-" + month + "-" + day);
-        TextView birthdayText = findViewById(R.id.birthdayText);
         birthdayText.setText(year + "-" + month + "-" + day);
     }
 
@@ -214,25 +245,70 @@ public class UserInfoInitActivity extends AppCompatActivity implements OnDatePic
 
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void onBackPressed() {
+        String IMEI = "";
+        if (android.os.Build.VERSION.SDK_INT >= 29) {
+            IMEI = DeviceIdUtils.getDeviceId(this);
+        } else {
+            IMEI = getIMEIString();
+        }
         Intent intent = new Intent();
         intent.putExtra("nickName", nickNameText.getText() + "");
         setResult(1, intent);
+        userEntity.setNickName(nickNameText.getText() + "");
+        userEntity.setBirthDay(LocalDate.parse(birthdayText.getText()));
+        userEntity.setHeight(Float.parseFloat((heightText.getText() + "").replace("cm", "")));
+        userEntity.setWeight(Float.parseFloat((weightText.getText() + "").replace("kg", "")));
+        userEntity.setSex(sexText.getText() + "");
+        userEntity.setUserUniqueId(IMEI);
+        userEntity.setProfile(profile);
+        userEntity.setRegion(addressText.getText() + "");
+        String[] covertedArray = new String[sportsPreference.size()];
+        covertedArray = sportsPreference.toArray(covertedArray);
+        userEntity.setSportsPreference(covertedArray);
+        userEntity.setProfileImageUrl(profileImageUrl);
+        Logger.e(userEntity.toString());
+        UpdateUserInfo updateUserInfo = new UpdateUserInfo();
+        String finalIMEI = IMEI;
+        Thread writeUserInfoToDataBase = new Thread() {
+            @Override
+            public void run() {
+                super.run();
+                if (updateUserInfo.search(finalIMEI) == null) {
+                    updateUserInfo.writeInClass(userEntity);
+                } else {
+                    updateUserInfo.delete(finalIMEI);
+                    updateUserInfo.writeInClass(userEntity);
+                }
+            }
+        };
+        writeUserInfoToDataBase.start();
+        // rem onBackPressed()含有finish() 一定要放在最后
         super.onBackPressed();
     }
 
     @Override
     public void onOptionPicked(int position, Object item) {
-        TextView sexText = findViewById(R.id.sexText);
         String[] sexType = {"男", "女"};
         sexText.setText(sexType[position]);
+    }
+
+    /**
+     * 获取手机IMEI
+     */
+    private String getIMEIString() {
+        TelephonyManager tm = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            return tm.getImei();
+        }
+        return "";
     }
 
     @SuppressLint("SetTextI18n")
     @Override
     public void onAddressPicked(ProvinceEntity province, CityEntity city, CountyEntity county) {
-        TextView addressText = findViewById(R.id.addressText);
         addressText.setText(province.getName() + "，" + city.getName() + "，" + county.getName());
     }
 }

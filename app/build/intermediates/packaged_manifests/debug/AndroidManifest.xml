@@ -17,10 +17,12 @@
         android:targetSdkVersion="30" />
 
     <uses-feature android:name="android.hardware.camera" />
-
+    <!-- 获取手机的 IMEI（设备标识码） -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <!-- 写外置存储 -->
+    <uses-permission android:name="android.permission.READ_PRIVILEGED_PHONE_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <!-- 读取外置存储 -->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -52,8 +54,7 @@
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" /> <!-- APK安装 -->
     <uses-permission android:name="android.permission.INSTALL_PACKAGES" />
     <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" /> <!-- 震动 -->
-    <uses-permission android:name="android.permission.VIBRATE" /> <!-- 手机权限 -->
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.SEND_SMS" />
     <uses-permission android:name="android.permission.READ_SMS" />
@@ -100,6 +101,7 @@
         <activity android:name="com.lindum.mlkit.vision.dev.view.UserInfoInitActivity" />
         <activity android:name="com.lindum.mlkit.vision.dev.view.IntroView" />
         <activity android:name="com.lindum.mlkit.vision.dev.CameraXLivePreviewActivity" />
+        <activity android:name="com.lindum.mlkit.vision.dev.view.SelectSportsPreference" />
         <activity
             android:name="com.lindum.mlkit.vision.dev.result.TrainingResult"
             android:exported="false"

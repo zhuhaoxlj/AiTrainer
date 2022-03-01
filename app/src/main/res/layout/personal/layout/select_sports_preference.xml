@@ -38,6 +38,7 @@
             android:layout_margin="10dp" />
 
         <com.xuexiang.xui.widget.button.roundbutton.RoundButton
+            android:id="@+id/saveSportsPreference"
             style="@style/RoundButton.SelectSportsPreference"
             android:layout_width="260dp"
             android:layout_height="45dp"

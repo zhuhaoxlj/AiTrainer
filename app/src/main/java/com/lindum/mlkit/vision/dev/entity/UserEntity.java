@@ -1,21 +1,33 @@
 package com.lindum.mlkit.vision.dev.entity;
 
+import androidx.annotation.NonNull;
+
 import java.time.LocalDate;
+import java.util.Arrays;
 
 /**
  * @author MarkGosling
  * @date 2022/2/15 12:10
  */
 public class UserEntity {
+    String userUniqueId;
     String nickName;
     String profileImageUrl;
     String region;
     String profile;
     String sex;
-    String sportsPreference;
+    String[] sportsPreference;
     LocalDate birthDay;
     float height;
     float weight;
+
+    public String getUserUniqueId() {
+        return userUniqueId;
+    }
+
+    public void setUserUniqueId(String userUniqueId) {
+        this.userUniqueId = userUniqueId;
+    }
 
     public String getNickName() {
         return nickName;
@@ -57,11 +69,11 @@ public class UserEntity {
         this.sex = sex;
     }
 
-    public String getSportsPreference() {
+    public String[] getSportsPreference() {
         return sportsPreference;
     }
 
-    public void setSportsPreference(String sportsPreference) {
+    public void setSportsPreference(String[] sportsPreference) {
         this.sportsPreference = sportsPreference;
     }
 
@@ -89,32 +101,21 @@ public class UserEntity {
         this.weight = weight;
     }
 
+    @NonNull
     @Override
     public String toString() {
         return "UserEntity{" +
-                "nickName='" + nickName + '\'' +
+                "userUniqueId='" + userUniqueId + '\'' +
+                ", nickName='" + nickName + '\'' +
                 ", profileImageUrl='" + profileImageUrl + '\'' +
                 ", region='" + region + '\'' +
                 ", profile='" + profile + '\'' +
                 ", sex='" + sex + '\'' +
-                ", sportsPreference='" + sportsPreference + '\'' +
+                ", sportsPreference=" + Arrays.toString(sportsPreference) +
                 ", birthDay=" + birthDay +
                 ", height=" + height +
                 ", weight=" + weight +
                 '}';
-    }
-
-
-    public UserEntity(String nickName, String profileImageUrl, String region, String profile, String sex, String sportsPreference, LocalDate birthDay, float height, float weight) {
-        this.nickName = nickName;
-        this.profileImageUrl = profileImageUrl;
-        this.region = region;
-        this.profile = profile;
-        this.sex = sex;
-        this.sportsPreference = sportsPreference;
-        this.birthDay = birthDay;
-        this.height = height;
-        this.weight = weight;
     }
 
     public UserEntity() {

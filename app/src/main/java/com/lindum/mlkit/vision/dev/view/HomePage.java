@@ -10,6 +10,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.Settings;
+import android.telephony.TelephonyManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,10 +38,10 @@ import com.jpeng.jptabbar.OnTabSelectListener;
 import com.jpeng.jptabbar.anno.NorIcons;
 import com.jpeng.jptabbar.anno.SeleIcons;
 import com.jpeng.jptabbar.anno.Titles;
-import com.lindum.mlkit.vision.dev.CameraXLivePreviewActivity;
 import com.lindum.mlkit.vision.dev.R;
 import com.lindum.mlkit.vision.dev.posedetector.PoseEntity;
 import com.lindum.mlkit.vision.dev.sql.ControlTable;
+import com.lindum.mlkit.vision.dev.utils.FileUtils;
 import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.Logger;
 import com.xuexiang.xui.XUI;
@@ -142,6 +143,11 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
                 getRuntimePermissions();
             }
         }
+        if(allPermissionsGranted()){
+            TelephonyManager tm = (TelephonyManager)getSystemService(TELEPHONY_SERVICE);
+            @SuppressLint("HardwareIds") String IMEI = tm.getDeviceId();
+            Logger.e(IMEI);
+        }
         viewPager = findViewById(R.id.viewPager);
         //获取布局对象管理
         LayoutInflater inflater = getLayoutInflater();
@@ -161,7 +167,6 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
         //来判断pager的一个view是否和instantiateItem方法返回的object有关联
         //从当前container中删除指定位置（position）的View;
         //第一：将当前视图添加到container中，第二：返回当前View
-
         // 适配器
         PagerAdapter mPagerAdapter = new PagerAdapter() {
             @Override   //返回要滑动的VIew的个数
@@ -219,7 +224,6 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
             public void run() {
                 poseEntityArrayList = controlTable.readTable();
                 for (PoseEntity poseEntity : poseEntityArrayList) {
-                    Logger.e(poseEntity.getPoseFeeling()[0]);
                     arrayList.add(new Item(poseEntityArrayList.indexOf(poseEntity), poseEntity.getPoseName(), "副标题", R.mipmap.q1));
                 }
                 super.run();
@@ -236,7 +240,6 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
         // 轮播图
         SimpleImageBanner simpleImageBanner = view1.findViewById(R.id.banner);
         simpleImageBanner.setSource(getBannerList()).setOnItemClickListener((view, item, position1) -> Logger.e("headBanner position--->" + position1)).startScroll();
-
     }
 
     /**
@@ -248,15 +251,31 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
         JPTabBar jpTabBar = findViewById(R.id.tabbar);
         jpTabBar.setContainer(viewPager);
         // 设置未读消息红点
-        jpTabBar.showBadge(3, "12", false);
+        jpTabBar.showBadge(3, "1", false);
         // tabbar 添加监听
         jpTabBar.setTabListener(new OnTabSelectListener() {
             @Override
             public void onTabSelect(int index) {
                 Logger.d("选中了" + TABBAR_TITLES[index]);
+                // 选择个人界面
                 if (index == personalPageIndex) {
                     // 隐藏小红点
                     jpTabBar.hideBadge(3);
+                    // 提示输入用户信息
+                    if (!FileUtils.isFileExist(HomePage.this.getApplicationContext().getFilesDir().getAbsolutePath(), "userInfo.sys")) {
+                        new MaterialDialog.Builder(HomePage.this)
+                                .iconRes(R.mipmap.tips)
+                                .title("提示")
+                                .content("为了推荐更适合的课程并为您量身制定训练计划，请完善个人信息。\n\n本软件的数据仅供健身计划分析使用。")
+                                .positiveText("确定")
+                                .onPositive((dialog, which) -> {
+                                    Intent intent = new Intent(HomePage.this, UserInfoInitActivity.class);
+                                    intentActivityResultLauncher.launch(intent);
+                                })
+                                .show();
+                    } else {
+                        Logger.e("用户已经填写过数据");
+                    }
                 }
             }
 
@@ -265,31 +284,29 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
                 return false;
             }
         });
-        View middleView = jpTabBar.getMiddleView();
-        middleView.setOnClickListener(e -> new MaterialDialog.Builder(this)
-                .iconRes(R.mipmap.tips)
-                .title("提示")
-                .content("1.请选择空旷的场地，或者纯色背景可以提高Ai健身教练的识别精准度。\n2.识别过程中，尽量保持身体在手机屏幕中，尽量选择遮挡人体部位最少的角度进行拍摄，再次感谢您的使用！")
-                .positiveText("确定")
-                .onPositive((dialog, which) -> {
-                    // 不要忘记在 AndroidManifest 中声明 Activity
-                    Intent intent = new Intent(HomePage.this, CameraXLivePreviewActivity.class);
-                    startActivity(intent);
-                })
-                .show());
     }
 
+    /**
+     * 是否第一次使用软件
+     *
+     * @return 返回是否第一次使用
+     */
     public boolean isFirstUseApp() {
         boolean isFileExist;
         String dataPath = this.getApplicationContext().getFilesDir()
                 .getAbsolutePath() + "/firstUse.sys";
         File file = new File(dataPath);
         isFileExist = file.exists();
-        if (isFileExist) {
-            return false;
-        } else {
-            return true;
-        }
+        return !isFileExist;
+    }
+
+    public boolean isUserInfoInit(String userInfo) {
+        boolean isFileExist;
+        String dataPath = this.getApplicationContext().getFilesDir()
+                .getAbsolutePath() + "/userInfo.sys";
+        File file = new File(dataPath);
+        isFileExist = file.exists();
+        return !isFileExist;
     }
 
     /**
@@ -390,6 +407,8 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
             return new String[0];
         }
     }
+
+
 
     private static boolean isPermissionGranted(Context context, String permission) {
         if (ContextCompat.checkSelfPermission(context, permission)

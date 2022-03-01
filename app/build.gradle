@@ -44,6 +44,14 @@ android {
             proguardFiles 'proguard-rules.pro'
         }
     }
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/License.ASF20.txt'
+        exclude 'META-INF/NOTICE.txt'
+    }
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -68,6 +76,8 @@ dependencies {
     implementation 'com.haibin:calendarview:3.7.1'
     // mysql 5.1.49 yyds
     implementation 'mysql:mysql-connector-java:5.1.49'
+    // JdbcTemplate
+    implementation 'net.hasor:hasor-db:4.3.0'
     // 地区选择器
     implementation 'com.github.gzu-liyujiang.AndroidPicker:AddressPicker:4.1.7'
     // 注解绑定控件

@@ -4344,6 +4344,7 @@ id sRightImgId
 id sRightSwitchId
 id sRightViewId
 id sat
+id saveSportsPreference
 id save_non_transition_alpha
 id save_overlay_view
 id sawtooth

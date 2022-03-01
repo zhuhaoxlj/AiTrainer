@@ -5,10 +5,6 @@ package com.lindum.mlkit.vision.dev.sql;
   @author YipJing
  * @date 2022/2/15 13:46
  */
-/*
-  @author YipJing
- * @date 2022/2/15 13:46
- */
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;

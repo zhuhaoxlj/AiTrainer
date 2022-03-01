@@ -15,6 +15,8 @@ com/lindum/mlkit/vision/dev/view/Item.java
  com.lindum.mlkit.vision.dev.view.Item
 com/lindum/mlkit/vision/dev/entity/UserEntity.java
  com.lindum.mlkit.vision.dev.entity.UserEntity
+com/lindum/mlkit/vision/dev/utils/FileUtils.java
+ com.lindum.mlkit.vision.dev.utils.FileUtils
 com/lindum/mlkit/vision/dev/TemperatureMonitor.java
  com.lindum.mlkit.vision.dev.TemperatureMonitor
 com/lindum/mlkit/vision/dev/preference/SettingsActivity.java
@@ -22,11 +24,8 @@ com/lindum/mlkit/vision/dev/preference/SettingsActivity.java
  com.lindum.mlkit.vision.dev.preference.SettingsActivity$LaunchSource
 com/lindum/mlkit/vision/dev/QuickShotUtils.java
  com.lindum.mlkit.vision.dev.QuickShotUtils
-com/lindum/mlkit/vision/dev/view/HomePage.java
- com.lindum.mlkit.vision.dev.view.HomePage
- com.lindum.mlkit.vision.dev.view.HomePage$1
- com.lindum.mlkit.vision.dev.view.HomePage$2
- com.lindum.mlkit.vision.dev.view.HomePage$3
+com/lindum/mlkit/vision/dev/datacenter/ProgressActivity.java
+ com.lindum.mlkit.vision.dev.datacenter.ProgressActivity
 com/lindum/mlkit/vision/dev/posedetector/classification/PoseEmbedding.java
  com.lindum.mlkit.vision.dev.posedetector.classification.PoseEmbedding
 com/lindum/mlkit/vision/dev/preference/LivePreviewPreferenceFragment.java
@@ -126,6 +125,10 @@ com/lindum/mlkit/vision/dev/utils/StatusBarUtils.java
  com.lindum.mlkit.vision.dev.utils.StatusBarUtils$3
  com.lindum.mlkit.vision.dev.utils.StatusBarUtils$IWindowShower
  com.lindum.mlkit.vision.dev.utils.StatusBarUtils$StatusBarType
+com/lindum/mlkit/vision/dev/sql/UpdateUserInfo.java
+ com.lindum.mlkit.vision.dev.sql.UpdateUserInfo
+com/lindum/mlkit/vision/dev/utils/DeviceIdUtils.java
+ com.lindum.mlkit.vision.dev.utils.DeviceIdUtils
 com/lindum/mlkit/vision/dev/CameraImageGraphic.java
  com.lindum.mlkit.vision.dev.CameraImageGraphic
 com/lindum/mlkit/vision/dev/view/ChangeNickName.java
@@ -190,5 +193,8 @@ com/lindum/mlkit/vision/dev/datacenter/Calendar.java
  com.lindum.mlkit.vision.dev.datacenter.Calendar
 com/lindum/mlkit/vision/dev/datacenter/BaseActivity.java
  com.lindum.mlkit.vision.dev.datacenter.BaseActivity
-com/lindum/mlkit/vision/dev/datacenter/ProgressActivity.java
- com.lindum.mlkit.vision.dev.datacenter.ProgressActivity
+com/lindum/mlkit/vision/dev/view/HomePage.java
+ com.lindum.mlkit.vision.dev.view.HomePage
+ com.lindum.mlkit.vision.dev.view.HomePage$1
+ com.lindum.mlkit.vision.dev.view.HomePage$2
+ com.lindum.mlkit.vision.dev.view.HomePage$3
