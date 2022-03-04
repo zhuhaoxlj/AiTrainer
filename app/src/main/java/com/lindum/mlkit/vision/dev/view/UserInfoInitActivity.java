@@ -1,11 +1,9 @@
 package com.lindum.mlkit.vision.dev.view;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.telephony.TelephonyManager;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -17,6 +15,7 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.alibaba.fastjson.JSON;
 import com.github.gzuliyujiang.wheelpicker.AddressPicker;
 import com.github.gzuliyujiang.wheelpicker.BirthdayPicker;
 import com.github.gzuliyujiang.wheelpicker.SexPicker;
@@ -32,6 +31,8 @@ import com.lindum.mlkit.vision.dev.R;
 import com.lindum.mlkit.vision.dev.entity.UserEntity;
 import com.lindum.mlkit.vision.dev.sql.UpdateUserInfo;
 import com.lindum.mlkit.vision.dev.utils.DeviceIdUtils;
+import com.lindum.mlkit.vision.dev.utils.FileUtils;
+import com.lindum.mlkit.vision.dev.utils.GetPermissionUtils;
 import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.Logger;
 import com.xuexiang.xui.XUI;
@@ -102,6 +103,7 @@ public class UserInfoInitActivity extends AppCompatActivity implements OnDatePic
     /**
      * 初始化函数
      */
+    @SuppressLint("SetTextI18n")
     public void init() {
         nickNameText = findViewById(R.id.nickNameText);
         birthdayText = findViewById(R.id.birthdayText);
@@ -109,7 +111,16 @@ public class UserInfoInitActivity extends AppCompatActivity implements OnDatePic
         weightText = findViewById(R.id.weightText);
         sexText = findViewById(R.id.sexText);
         addressText = findViewById(R.id.addressText);
-
+        profile = HomePage.userEntity.getProfile();
+        nickNameText.setText(HomePage.userEntity.getNickName());
+        LocalDate birthday = HomePage.userEntity.getBirthDay();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            birthdayText.setText(birthday.toString());
+        }
+        heightText.setText(HomePage.userEntity.getHeight() + "");
+        weightText.setText(HomePage.userEntity.getWeight() + "");
+        sexText.setText(HomePage.userEntity.getSex());
+        addressText.setText(HomePage.userEntity.getRegion());
         userEntity = new UserEntity();
         sportsPreference = new ArrayList<>();
         // TitleBar
@@ -118,7 +129,12 @@ public class UserInfoInitActivity extends AppCompatActivity implements OnDatePic
             Intent intent = new Intent();
             intent.putExtra("nickName", nickNameText.getText() + "");
             setResult(1, intent);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                writeUserInfoToDatabase();
+            }
             finish();
+            // 覆盖 finish() 动画
+            overridePendingTransition(R.anim.anim_in, R.anim.anim_out);
         });
         RelativeLayout selectBirthDay = findViewById(R.id.selectBirthDayButton);
         selectBirthDay.setOnClickListener(view -> {
@@ -182,6 +198,11 @@ public class UserInfoInitActivity extends AppCompatActivity implements OnDatePic
         });
     }
 
+    /**
+     * 初始化地区选择器控件
+     *
+     * @param view 地区选择器控件
+     */
     public void onProvinceCityCounty(View view) {
         AddressPicker picker = new AddressPicker(this);
         picker.setAddressMode(AddressMode.PROVINCE_CITY_COUNTY);
@@ -194,6 +215,11 @@ public class UserInfoInitActivity extends AppCompatActivity implements OnDatePic
         picker.show();
     }
 
+    /**
+     * 初始化性别选择器控件
+     *
+     * @param view 性别选择器控件
+     */
     public void onSex(View view) {
         SexPicker picker = new SexPicker(this);
         picker.setBodyWidth(140);
@@ -216,12 +242,23 @@ public class UserInfoInitActivity extends AppCompatActivity implements OnDatePic
         return result.getData().getCharSequenceExtra(key) == null ? "" : result.getData().getCharSequenceExtra(key).toString();
     }
 
+    /**
+     * 日期选择器监听
+     *
+     * @param year  选择的年份
+     * @param month 选择的月份
+     * @param day   选择的日期
+     */
     @RequiresApi(api = Build.VERSION_CODES.O)
     @SuppressLint("SetTextI18n")
     @Override
     public void onDatePicked(int year, int month, int day) {
         Logger.d("您的生日:" + year + "-" + month + "-" + day);
-        birthdayText.setText(year + "-" + month + "-" + day);
+        String stringMonth = "";
+        if (month < 10) {
+            stringMonth = "0" + month;
+        }
+        birthdayText.setText(year + "-" + stringMonth + "-" + day);
     }
 
     @Override
@@ -229,14 +266,43 @@ public class UserInfoInitActivity extends AppCompatActivity implements OnDatePic
 
     }
 
+    /**
+     * 返回键监听
+     */
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void onBackPressed() {
+        writeUserInfoToDatabase();
+        // rem onBackPressed()含有finish() 一定要放在最后
+        super.onBackPressed();
+        overridePendingTransition(R.anim.anim_in, R.anim.anim_out);
+    }
+
+    /**
+     * 性别选择器监听
+     *
+     * @param position 选择的位置
+     * @param item     选择的 item
+     */
+    @Override
+    public void onOptionPicked(int position, Object item) {
+        String[] sexType = {"男", "女"};
+        sexText.setText(sexType[position]);
+    }
+
+    /**
+     * 将用户的信息写入数据库
+     */
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public void writeUserInfoToDatabase() {
+        if (!GetPermissionUtils.allPermissionsGranted(this)) {
+            GetPermissionUtils.getRuntimePermissions(this);
+        }
         String IMEI;
         if (android.os.Build.VERSION.SDK_INT >= 29) {
             IMEI = DeviceIdUtils.getDeviceId(this);
         } else {
-            IMEI = getIMEIString();
+            IMEI = DeviceIdUtils.getIMEIString(this);
         }
         Intent intent = new Intent();
         intent.putExtra("nickName", nickNameText.getText() + "");
@@ -256,7 +322,9 @@ public class UserInfoInitActivity extends AppCompatActivity implements OnDatePic
         Logger.e(userEntity.toString());
         UpdateUserInfo updateUserInfo = new UpdateUserInfo();
         String finalIMEI = IMEI;
+        HomePage.userEntity = userEntity;
         Thread writeUserInfoToDataBase = new Thread() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void run() {
                 super.run();
@@ -267,27 +335,17 @@ public class UserInfoInitActivity extends AppCompatActivity implements OnDatePic
             }
         };
         writeUserInfoToDataBase.start();
-        // rem onBackPressed()含有finish() 一定要放在最后
-        super.onBackPressed();
-    }
-
-    @Override
-    public void onOptionPicked(int position, Object item) {
-        String[] sexType = {"男", "女"};
-        sexText.setText(sexType[position]);
+        FileUtils.writeStringToFile(JSON.toJSONString(userEntity), UserInfoInitActivity.this.getApplicationContext().getFilesDir()
+                .getAbsolutePath(), "userInfo.sys", FileUtils.overwriteText);
     }
 
     /**
-     * 获取手机IMEI
+     * 地址选择器选择监听事件，将选择的地区赋值给 TextView
+     *
+     * @param province 省份
+     * @param city     城市
+     * @param county   地区
      */
-    private String getIMEIString() {
-        TelephonyManager tm = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            return tm.getImei();
-        }
-        return "";
-    }
-
     @SuppressLint("SetTextI18n")
     @Override
     public void onAddressPicked(ProvinceEntity province, CityEntity city, CountyEntity county) {

@@ -1,15 +1,12 @@
 package com.lindum.mlkit.vision.dev.view;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.net.Uri;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Environment;
-import android.provider.Settings;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,13 +22,13 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
 import com.jpeng.jptabbar.JPTabBar;
 import com.jpeng.jptabbar.OnTabSelectListener;
 import com.jpeng.jptabbar.anno.NorIcons;
@@ -39,9 +36,14 @@ import com.jpeng.jptabbar.anno.SeleIcons;
 import com.jpeng.jptabbar.anno.Titles;
 import com.lindum.mlkit.vision.dev.CameraXLivePreviewActivity;
 import com.lindum.mlkit.vision.dev.R;
-import com.lindum.mlkit.vision.dev.posedetector.PoseEntity;
+import com.lindum.mlkit.vision.dev.datacenter.ProgressActivity;
+import com.lindum.mlkit.vision.dev.entity.PoseEntity;
+import com.lindum.mlkit.vision.dev.entity.UserEntity;
 import com.lindum.mlkit.vision.dev.sql.ControlTable;
+import com.lindum.mlkit.vision.dev.sql.UpdateUserInfo;
+import com.lindum.mlkit.vision.dev.utils.DeviceIdUtils;
 import com.lindum.mlkit.vision.dev.utils.FileUtils;
+import com.lindum.mlkit.vision.dev.utils.GetPermissionUtils;
 import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.Logger;
 import com.xuexiang.xui.XUI;
@@ -51,6 +53,11 @@ import com.xuexiang.xui.widget.banner.widget.banner.SimpleImageBanner;
 import com.xuexiang.xui.widget.dialog.materialdialog.MaterialDialog;
 
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -59,10 +66,13 @@ import java.util.List;
  * @date 2022/2/13 23:24
  */
 public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListener {
+    public static UserEntity userEntity = new UserEntity();
+    public static ArrayList<Bitmap> poseLibrarySwiperImageArrayList = new ArrayList<>();
+    public static ArrayList<Bitmap> poseDetailFeelingImageArrayList = new ArrayList<>();
     private HomeAdapter adapter;
+    private Handler addImageHandle;
     final int userInfoIntentCode = 1;
     ActivityResultLauncher<Intent> intentActivityResultLauncher;
-    private static final int PERMISSION_REQUESTS = 1;
     static List<PoseEntity> poseEntityArrayList;
     private ViewPager viewPager;
     private View view1, view2, view3, view4;
@@ -108,9 +118,11 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
         registerGetIntentData();
         // Logger 初始化
         Logger.addLogAdapter(new AndroidLogAdapter());
+        // 初始化
         init();
         // 从数据库获取动作实体类数据
         getPoseEntityFromDataBase();
+
     }
 
     /**
@@ -130,14 +142,14 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
                     .content("检测到您第一次使用本软件，请授予权限保证软件正常运行，软件运行过程中不会获取您的隐私，请放心使用!")
                     .positiveText("确定")
                     .onPositive((dialog, which) -> {
-                            getRuntimePermissions();
+                        GetPermissionUtils.getRuntimePermissions(this);
                     })
                     .show();
         }
         // 再次获取未授权权限
-        if (!isFirstUseApp && !allPermissionsGranted()) {
+        if (!isFirstUseApp && !GetPermissionUtils.allPermissionsGranted(this)) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-                getRuntimePermissions();
+                GetPermissionUtils.getRuntimePermissions(this);
             }
         }
         viewPager = findViewById(R.id.viewPager);
@@ -203,24 +215,99 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
         initFoodList();
         // 初始化底部 Tabbar
         initTabbar();
+        // 从数据库获取用户数据
+        getUserInfoFromDateBase();
+        // 日历按钮
+        ImageView imageView = view1.findViewById(R.id.calendarButton);
+        imageView.setOnClickListener(view -> {
+            Intent intent = new Intent(HomePage.this, ProgressActivity.class);
+            startActivity(intent);
+        });
+
     }
 
+    /**
+     * 获取动作库图片
+     */
+    public void initSwiperImage() {
+        for (PoseEntity poseEntity : poseEntityArrayList) {
+            poseLibrarySwiperImageArrayList.add(returnBitMap(poseEntity.getPoseSwiperImageUrl()[0]));
+            poseDetailFeelingImageArrayList.add(returnBitMap(poseEntity.getPoseFeelingImage()));
+        }
+    }
+
+    public Bitmap returnBitMap(final String url) {
+        Bitmap bitmap = null;
+        if (url.equals("")) {
+            return null;
+        }
+        URL imageurl = null;
+        try {
+            imageurl = new URL(url);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+        try {
+            assert imageurl != null;
+            HttpURLConnection conn = (HttpURLConnection) imageurl.openConnection();
+            conn.setDoInput(true);
+            conn.connect();
+            InputStream is = conn.getInputStream();
+            bitmap = BitmapFactory.decodeStream(is);
+            is.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return bitmap;
+    }
+
+    /**
+     * 从数据库获取用户信息
+     */
+    public void getUserInfoFromDateBase() {
+        String IMEI;
+        if (android.os.Build.VERSION.SDK_INT >= 29) {
+            IMEI = DeviceIdUtils.getDeviceId(this);
+        } else {
+            IMEI = DeviceIdUtils.getIMEIString(this);
+        }
+        UpdateUserInfo updateUserInfo = new UpdateUserInfo();
+        new Thread() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
+            @Override
+            public void run() {
+                super.run();
+                userEntity = updateUserInfo.search(IMEI);
+            }
+        }.start();
+    }
+
+    /**
+     * 从数据库获取动作库数据
+     */
     public void getPoseEntityFromDataBase() {
         // 设置动作库
-        ArrayList<Item> arrayList = new ArrayList<>();
+        ArrayList<PoseLibraryItem> arrayList = new ArrayList<>();
         ControlTable controlTable = new ControlTable();
         RecyclerView recyclerView = view3.findViewById(R.id.recyclerView);
         // todo 线程池
         Thread getData = new Thread() {
             @Override
             public void run() {
-                poseEntityArrayList = controlTable.readTable();
-                for (PoseEntity poseEntity : poseEntityArrayList) {
-                    arrayList.add(new Item(poseEntityArrayList.indexOf(poseEntity), poseEntity.getPoseName(), "副标题", R.mipmap.q1));
-                }
                 super.run();
+                poseEntityArrayList = controlTable.readTable();
+                // 获取动作库图片监听
+                initSwiperImage();
+                for (PoseEntity poseEntity : poseEntityArrayList) {
+                    // 动作库 Items 加载
+                    int index = poseEntityArrayList.indexOf(poseEntity);
+                    arrayList.add(new PoseLibraryItem(index, poseEntity.getPoseName(), "", poseLibrarySwiperImageArrayList.get(index), "#000000"));
+                }
+
+
             }
         };
+
         getData.start();
         adapter = new HomeAdapter(this, arrayList, this);
         recyclerView.setAdapter(adapter);
@@ -233,6 +320,7 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
         SimpleImageBanner simpleImageBanner = view1.findViewById(R.id.banner);
         simpleImageBanner.setSource(getBannerList()).setOnItemClickListener((view, item, position1) -> Logger.e("headBanner position--->" + position1)).startScroll();
     }
+
 
     /**
      * 初始化底部 Tabbar，要在布局初始化之后调用
@@ -250,6 +338,8 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
                 Logger.d("选中了" + TABBAR_TITLES[index]);
                 // 选择个人界面
                 if (index == personalPageIndex) {
+                    TextView nickName = findViewById(R.id.personalPageNickNameText);
+                    nickName.setText(userEntity.getNickName());
                     // 隐藏小红点
                     jpTabBar.hideBadge(3);
                     // 提示输入用户信息
@@ -352,6 +442,13 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
         });
     }
 
+    public UserEntity convertJSON2UserEntity(String jsonContent) {
+        UserEntity codeSnippetsArrayList;
+        JSONArray jsonArray = (JSONArray) JSON.parse(jsonContent);
+        codeSnippetsArrayList = (UserEntity) jsonArray.toJavaList(UserEntity.class);
+        return codeSnippetsArrayList;
+    }
+
     /**
      * 从 ActivityResult 通过 key 读取字符串
      *
@@ -386,89 +483,18 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
      * @param item 动作库 item
      */
     @Override
-    public void onItemClick(Item item) {
+    public void onItemClick(PoseLibraryItem item) {
         Toast.makeText(getApplicationContext(), item.title + "第" + item.index + "个" + " is clicked", Toast.LENGTH_SHORT).show();
-        // 不要忘记在 AndroidManifest 中声明 Activity
         Intent intent = new Intent(HomePage.this, PoseDetailsActivity.class);
         intent.putExtra("feeling", poseEntityArrayList.get(item.index).getPoseFeeling());
         intent.putExtra("steps", poseEntityArrayList.get(item.index).getStepsOfPose());
         intent.putExtra("commonMistakes", poseEntityArrayList.get(item.index).getCommonMistakes());
         intent.putExtra("details", poseEntityArrayList.get(item.index).getDetailTips());
         intent.putExtra("breath", poseEntityArrayList.get(item.index).getBreathTips());
+        intent.putExtra("poseIndex", item.index);
+        Logger.e(HomePage.poseEntityArrayList.get(item.index).getPoseSwiperImageUrl()[0]);
         startActivity(intent);
     }
 
-    private String[] getRequiredPermissions() {
-        try {
-            PackageInfo info =
-                    this.getPackageManager()
-                            .getPackageInfo(this.getPackageName(), PackageManager.GET_PERMISSIONS);
-            String[] ps = info.requestedPermissions;
-            if (ps != null && ps.length > 0) {
-                return ps;
-            } else {
-                return new String[0];
-            }
-        } catch (Exception e) {
-            return new String[0];
-        }
-    }
 
-
-    private static boolean isPermissionGranted(Context context, String permission) {
-        if (ContextCompat.checkSelfPermission(context, permission)
-                == PackageManager.PERMISSION_GRANTED) {
-            Logger.i("Permission granted: " + permission);
-            return true;
-        }
-        Logger.i("Permission NOT granted: " + permission);
-        return false;
-    }
-
-    private boolean allPermissionsGranted() {
-        for (String permission : getRequiredPermissions()) {
-            if (!isPermissionGranted(this, permission)) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    private void getRuntimePermissions() {
-        List<String> allNeededPermissions = new ArrayList<>();
-        for (String permission : getRequiredPermissions()) {
-            if (!isPermissionGranted(this, permission)) {
-                allNeededPermissions.add(permission);
-            }
-        }
-        if (!allNeededPermissions.isEmpty()) {
-            ActivityCompat.requestPermissions(
-                    this, allNeededPermissions.toArray(new String[0]), PERMISSION_REQUESTS);
-        }
-        // 判断是否获取外置存储写入权限
-        if (Build.VERSION.SDK_INT >= 29) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-                if (Environment.isExternalStorageManager()) {
-                    Logger.e("已获取外置存储写入权限");
-                } else {
-                    requestExternalStorage(this);
-                }
-            }
-        }
-    }
-
-    /**
-     * 请求访问外置内存
-     *
-     * @param context 上下文场景
-     */
-    public void requestExternalStorage(Context context) {
-        Intent intent = null;
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.R) {
-            intent = new Intent(Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION);
-        }
-        assert intent != null;
-        intent.setData(Uri.parse("package:" + context.getPackageName()));
-        context.startActivity(intent);
-    }
 }

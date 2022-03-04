@@ -3,6 +3,7 @@ package com.lindum.mlkit.vision.dev.posedetector;
 import android.util.Log;
 
 import com.alibaba.fastjson.JSON;
+import com.lindum.mlkit.vision.dev.entity.PoseEntity;
 
 import java.io.File;
 import java.io.FileOutputStream;

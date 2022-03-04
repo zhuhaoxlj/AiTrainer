@@ -25,7 +25,7 @@ public class DeviceIdUtils {
 
     @SuppressLint("HardwareIds")
     private static String getTelId(Context context) {
-        final TelephonyManager manager = (TelephonyManager)context.getSystemService(Context.TELEPHONY_SERVICE);
+        final TelephonyManager manager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
         return manager.getDeviceId();
     }
 
@@ -83,5 +83,18 @@ public class DeviceIdUtils {
 
         //使用硬件信息拼凑出来的15位号码
         return new UUID(m_szDevIDShort.hashCode(), serial.hashCode()).toString();
+    }
+
+    /**
+     * 获取手机IMEI
+     *
+     * @return 返回手机 IMEI 字符串
+     */
+    public static String getIMEIString(Context context) {
+        TelephonyManager tm = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            return tm.getImei();
+        }
+        return "";
     }
 }

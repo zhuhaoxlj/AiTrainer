@@ -309,11 +309,11 @@ MERGED from [com.google.android.datatransport:transport-runtime:2.2.6] C:\Users\
 	android:name
 		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:19:22-76
 uses-permission#android.permission.READ_PRIVILEGED_PHONE_STATE
-ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:21:5-23:47
+ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:20:5-22:47
 	tools:ignore
-		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:23:9-44
+		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:22:9-44
 	android:name
-		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:22:9-70
+		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:21:9-70
 uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
 ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:25:5-81
 MERGED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\8f7a3fb5b22fd814ba8707c967cb3ed6\jetified-xutil-core-2.0.0\AndroidManifest.xml:13:5-81

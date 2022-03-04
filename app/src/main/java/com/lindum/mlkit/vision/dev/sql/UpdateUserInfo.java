@@ -26,9 +26,7 @@ import java.sql.Statement;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * @author YipJing
@@ -52,6 +50,29 @@ public class UpdateUserInfo {
                 System.out.println("成功创建表");
             } else {
                 System.out.println("创建失败");
+            }
+            // 关闭连接
+            statement.close();
+            connection.close();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    /**
+     * @param addField 增加字段sql语句
+     */
+    public void addField(String addField) {
+        Statement statement;
+        try {
+            // 建立连接
+            Connection connection = DriverManager.getConnection("jdbc:mysql://47.102.122.203:3306/aitrainer", "aitrainer", "jay666..");
+            // 创建表
+            statement = connection.createStatement();
+            if (statement.executeUpdate(addField) == 0) {
+                System.out.println("成功增加字段");
+            } else {
+                System.out.println("增加失败");
             }
             // 关闭连接
             statement.close();
@@ -150,6 +171,7 @@ public class UpdateUserInfo {
             }
             System.out.println("写入成功");
             // 关闭连接
+            assert preparedStatement != null;
             preparedStatement.close();
             connection.close();
         } catch (SQLException e) {
@@ -195,10 +217,10 @@ public class UpdateUserInfo {
                 }
                 //8
                 Object heightObject = jsonObject.get("height");
-                Float height = Float.parseFloat(heightObject.toString());
+                float height = Float.parseFloat(heightObject.toString());
                 //9
                 Object weightObject = jsonObject.get("weight");
-                Float weight = Float.parseFloat(weightObject.toString());
+                float weight = Float.parseFloat(weightObject.toString());
                 //10
                 String nickName = (String) jsonObject.get("nickName");
 
@@ -283,16 +305,18 @@ public class UpdateUserInfo {
                 userEntity.setSex(sex);
 
                 String sportsPreferenceStr = resultSet.getString("sportsPreference");
-                if (resultSet.getString("poseFeeling") != null) {
+
+                if (resultSet.getString("sportsPreference") != null) {
                     String[] sportsPreference = sportsPreferenceStr.replace("[", "").replace("]", "").split(",");
                     userEntity.setSportsPreference(sportsPreference);
                 }
 
-
-                String birthDayStr = resultSet.getString("birthDay");
-                DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-                LocalDate birthDay = LocalDate.parse(birthDayStr, dateTimeFormatter);
-                userEntity.setBirthDay(birthDay);
+                if (resultSet.getString("birthDay") != null) {
+                    String birthDayStr = resultSet.getString("birthDay");
+                    DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+                    LocalDate birthDay = LocalDate.parse(birthDayStr, dateTimeFormatter);
+                    userEntity.setBirthDay(birthDay);
+                }
 
                 float height = resultSet.getFloat("height");
                 userEntity.setHeight(height);
@@ -344,33 +368,66 @@ public class UpdateUserInfo {
 
     /**
      * @param userUniqueId 要查找的数据的 userUniqueId
-     * @return 以 List<Map<String, Object>>形式返回查找到的数据 返回值为 NULL 则为未查找到
+     * @return 返回找到的列所对应的实体对象
      */
-    public List<Map<String, Object>> search(String userUniqueId) {
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public UserEntity search(String userUniqueId) {
         try {
             // 建立连接
             Connection connection = DriverManager.getConnection("jdbc:mysql://47.102.122.203:3306/aitrainer", "aitrainer", "jay666..");
             String sql = "select * from userEntity where userUniqueId = ?";
-            List<Map<String, Object>> result = new ArrayList<>();
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setObject(1, userUniqueId);
             ResultSet resultSet = preparedStatement.executeQuery();
             ResultSetMetaData resultSetMetaData = resultSet.getMetaData();
             int columnCount = resultSetMetaData.getColumnCount();
+            UserEntity userEntity = null;
             while (resultSet.next()) {
-                Map<String, Object> rowdata = new HashMap<>();
                 for (int i = 1; i <= columnCount; i++) {
-                    rowdata.put(resultSetMetaData.getColumnName(i), resultSet.getObject(i));
+                    userEntity = new UserEntity();
+                    String nickName = resultSet.getString("nickName");
+                    userEntity.setNickName(nickName);
+
+                    String profileImageUrl = resultSet.getString("profileImageUrl");
+                    userEntity.setProfileImageUrl(profileImageUrl);
+
+                    String region = resultSet.getString("region");
+                    userEntity.setRegion(region);
+
+                    String profile = resultSet.getString("profile");
+                    userEntity.setProfile(profile);
+
+                    String sex = resultSet.getString("sex");
+                    userEntity.setSex(sex);
+
+                    String sportsPreferenceStr = resultSet.getString("sportsPreference");
+
+                    if (resultSet.getString("sportsPreference") != null) {
+                        String[] sportsPreference = sportsPreferenceStr.replace("[", "").replace("]", "").split(",");
+                        userEntity.setSportsPreference(sportsPreference);
+                    }
+
+                    if (resultSet.getString("birthDay") != null) {
+                        String birthDayStr = resultSet.getString("birthDay");
+                        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+                        LocalDate birthDay = LocalDate.parse(birthDayStr, dateTimeFormatter);
+                        userEntity.setBirthDay(birthDay);
+                    }
+
+                    float height = resultSet.getFloat("height");
+                    userEntity.setHeight(height);
+
+                    float weight = resultSet.getFloat("weight");
+                    userEntity.setWeight(weight);
+
+                    userEntity.setUserUniqueId(userUniqueId);
                 }
-                result.add(rowdata);
+
             }
+
             // 关闭连接
             connection.close();
-            if (result.size() == 0) {
-                return null;
-            } else {
-                return result;
-            }
+            return userEntity;
         } catch (SQLException e) {
             System.out.println(e.getMessage());
             return null;
@@ -378,14 +435,16 @@ public class UpdateUserInfo {
 
     }
 
+
     /**
      * @param userUniqueId 要修改的列的 userUniqueId
      * @param variableName 要修改的属性
      * @param object       修改后的属性的值
      */
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public void upDate(String userUniqueId, String variableName, Object object) {
         try {
-            // 建立连接
+            // 建立连接zhon
             Connection connection = DriverManager.getConnection("jdbc:mysql://47.102.122.203:3306/aitrainer", "aitrainer", "jay666..");
             if (search(userUniqueId) == null) {
                 System.out.println("该动作不存在");

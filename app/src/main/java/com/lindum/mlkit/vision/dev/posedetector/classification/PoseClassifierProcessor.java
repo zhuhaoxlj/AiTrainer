@@ -11,7 +11,7 @@ import androidx.annotation.WorkerThread;
 import com.google.common.base.Preconditions;
 import com.lindum.mlkit.vision.dev.CameraXLivePreviewActivity;
 import com.lindum.mlkit.vision.dev.posedetector.PoseAngleDetector;
-import com.lindum.mlkit.vision.dev.posedetector.PoseEntity;
+import com.lindum.mlkit.vision.dev.entity.PoseEntity;
 import com.lindum.mlkit.vision.dev.posedetector.PosePart;
 import com.google.mlkit.vision.pose.Pose;
 
@@ -277,6 +277,7 @@ public class PoseClassifierProcessor {
                     maxConfidenceClass,
                     classification.getClassConfidence(maxConfidenceClass)
                             / poseClassifier.confidenceRange());
+//            Logger.e(classification.getClassConfidence(maxConfidenceClass) + "");
             result.add(maxConfidenceClassResult);
             result.add("\n");
             result.add("\n");

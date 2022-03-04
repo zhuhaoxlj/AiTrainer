@@ -11,6 +11,8 @@ anim abc_slide_out_bottom
 anim abc_slide_out_top
 anim abc_tooltip_enter
 anim abc_tooltip_exit
+anim anim_in
+anim anim_out
 anim btn_checkbox_to_checked_box_inner_merged_animation
 anim btn_checkbox_to_checked_box_outer_merged_animation
 anim btn_checkbox_to_checked_icon_null_animation
@@ -4872,6 +4874,7 @@ mipmap home
 mipmap home_gray
 mipmap ic_calendar
 mipmap ic_launcher
+mipmap img
 mipmap left_arrow
 mipmap library
 mipmap library_gray
@@ -4879,7 +4882,7 @@ mipmap more_options
 mipmap next
 mipmap personal
 mipmap personal_gray
-mipmap pose_detail_image
+mipmap pose_detail_swiper
 mipmap pose_result_image
 mipmap pre
 mipmap q1

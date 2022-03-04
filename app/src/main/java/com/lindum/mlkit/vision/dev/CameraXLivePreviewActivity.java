@@ -57,7 +57,7 @@ import com.google.mlkit.common.MlKitException;
 import com.google.mlkit.vision.pose.PoseDetectorOptionsBase;
 import com.lindum.mlkit.vision.dev.posedetector.PoseDataUtils;
 import com.lindum.mlkit.vision.dev.posedetector.PoseDetectorProcessor;
-import com.lindum.mlkit.vision.dev.posedetector.PoseEntity;
+import com.lindum.mlkit.vision.dev.entity.PoseEntity;
 import com.lindum.mlkit.vision.dev.posedetector.ProcessImage;
 import com.lindum.mlkit.vision.dev.preference.PreferenceUtils;
 import com.lindum.mlkit.vision.dev.preference.SettingsActivity;
@@ -123,7 +123,7 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
     public static String nowPoseName = "AiTrainer";
     public static int nowPoseIndex = 0;
     // 首页倒计时
-    public static int countdownSeconds = 3;
+    public static int countdownSeconds = 5;
     // 训练是否结束
     public static boolean isEnd = false;
     // 给截图延时 调整检测截图灵敏度
@@ -239,7 +239,7 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
         poseEntityList = poseEntityArrayList;
         // 设置动作持续变量类型
         for (PoseEntity poseEntity : poseEntityList) {
-            // 计数类型
+            // 倒计时类型 0 计数类型 1
             poseEntity.setPoseType(0);
             poseEntity.setPoseProcessValue(5);
         }
@@ -270,15 +270,12 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
 
         // 跳转至结果界面
         Button button = findViewById(R.id.analysisResult);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(CameraXLivePreviewActivity.this, TrainingResult.class);
-                intent.putExtra("totalTrainingTime", totalTrainingTime);
-                intent.putExtra("groupsOfPose", countGroupsOfPose);
-                isEnd = true;
-                startActivity(intent);
-            }
+        button.setOnClickListener(view -> {
+            Intent intent = new Intent(CameraXLivePreviewActivity.this, TrainingResult.class);
+            intent.putExtra("totalTrainingTime", totalTrainingTime);
+            intent.putExtra("groupsOfPose", countGroupsOfPose);
+            isEnd = true;
+            startActivity(intent);
         });
 
         // 启动截图定时器
@@ -290,11 +287,8 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
         Button prePoseImageButton = findViewById(R.id.prePoseImage);
         Button nextPoseImageButton = findViewById(R.id.nextPoseImage);
         LinearLayout explainButton = findViewById(R.id.explain);
-        explainButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        explainButton.setOnClickListener(view -> {
 
-            }
         });
 
 

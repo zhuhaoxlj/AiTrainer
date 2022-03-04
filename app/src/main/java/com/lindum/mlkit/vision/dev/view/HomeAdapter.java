@@ -2,6 +2,7 @@ package com.lindum.mlkit.vision.dev.view;
 
 
 import android.content.Context;
+import android.graphics.drawable.BitmapDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,11 +24,11 @@ import java.util.ArrayList;
 
 public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
 
-    private ArrayList<Item> mValues;
+    private ArrayList<PoseLibraryItem> mValues;
     private Context mContext;
     protected ItemListener mListener;
 
-    public HomeAdapter(Context context, ArrayList<Item> values, ItemListener itemListener) {
+    public HomeAdapter(Context context, ArrayList<PoseLibraryItem> values, ItemListener itemListener) {
         mValues = values;
         mContext = context;
         mListener = itemListener;
@@ -40,23 +41,23 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
         private TextView subTitle;
         private ImageView imageView;
         private RelativeLayout relativeLayout;
-        private Item item;
+        private PoseLibraryItem item;
 
         public ViewHolder(View v) {
             super(v);
             v.setOnClickListener(this);
-            title = (TextView) v.findViewById(R.id.title);
-            subTitle = (TextView)v.findViewById(R.id.subTitle);
-            imageView = (ImageView) v.findViewById(R.id.imageView);
-            relativeLayout = (RelativeLayout) v.findViewById(R.id.relativeLayout);
+            title = v.findViewById(R.id.title);
+            subTitle = v.findViewById(R.id.subTitle);
+            imageView = v.findViewById(R.id.imageView);
+            relativeLayout = v.findViewById(R.id.relativeLayout);
         }
 
-        public void setData(Item item) {
+        public void setData(PoseLibraryItem item) {
             this.item = item;
             title.setText(item.title);
             subTitle.setText(item.subTitle);
-            imageView.setImageResource(item.drawable);
-            relativeLayout.setBackgroundResource(item.bgDrawable);
+//            imageView.setImageDrawable(item.getBgDrawable());
+            relativeLayout.setBackground(new BitmapDrawable(item.getBitmap()));
         }
 
         @Override
@@ -85,6 +86,6 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
     }
 
     public interface ItemListener {
-        void onItemClick(Item item);
+        void onItemClick(PoseLibraryItem item);
     }
 }
