@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:2:1-92:12
-INJECTED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:2:1-92:12
-INJECTED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:2:1-92:12
-INJECTED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:2:1-92:12
+ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:2:1-101:12
+INJECTED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:2:1-101:12
+INJECTED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:2:1-101:12
+INJECTED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:2:1-101:12
 MERGED from [androidx.multidex:multidex:2.0.1] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\ce8dd2100ffd5b4eae657f5daec65fe0\multidex-2.0.1\AndroidManifest.xml:17:1-22:12
 MERGED from [com.ramotion.paperonboarding:paper-onboarding:1.1.3] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\11d1eb687d904552a97e83b049b42647\jetified-paper-onboarding-1.1.3\AndroidManifest.xml:2:1-17:12
 MERGED from [com.haibin:calendarview:3.7.1] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\ef55714dbd263c4018385af2c5cdcb49\jetified-calendarview-3.7.1\AndroidManifest.xml:2:1-11:12
@@ -81,22 +81,22 @@ MERGED from [com.google.android.odml:image:1.0.0-beta1] C:\Users\Administrator\.
 MERGED from [io.github.inflationx:calligraphy3:3.1.1] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\1bdb91a34a106fb240077b81c88e0e0f\jetified-calligraphy3-3.1.1\AndroidManifest.xml:2:1-13:12
 MERGED from [io.github.inflationx:viewpump:2.0.3] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\6250716e4291d5ca020e8ae0a47ea699\jetified-viewpump-2.0.3\AndroidManifest.xml:2:1-11:12
 MERGED from [androidx.annotation:annotation-experimental:1.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\c1bc2009ed393c1281f28af6bb79c366\jetified-annotation-experimental-1.0.0\AndroidManifest.xml:17:1-24:12
-INJECTED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:2:1-92:12
-INJECTED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:2:1-92:12
-INJECTED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:2:1-92:12
+INJECTED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:2:1-101:12
+INJECTED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:2:1-101:12
+INJECTED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:2:1-101:12
 	package
 		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:4:5-42
 		INJECTED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml
 		INJECTED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml
-		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:2:1-92:12
+		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:2:1-101:12
 		INJECTED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml
 	xmlns:tools
 		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:3:5-51
 	android:versionCode
 		INJECTED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml
-		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:2:1-92:12
+		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:2:1-101:12
 		INJECTED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:2:11-69
@@ -278,14 +278,48 @@ MERGED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrato
 MERGED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:64:5-60
 	android:name
 		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:15:19-57
+uses-permission#android.permission.VIBRATE
+ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:17:5-66
+MERGED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:47:5-66
+MERGED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:47:5-66
+	android:name
+		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:17:22-63
+uses-permission#android.permission.WRITE_SETTINGS
+ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:18:5-19:47
+MERGED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:78:5-80:47
+MERGED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:78:5-80:47
+	tools:ignore
+		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:19:9-44
+	android:name
+		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:18:22-70
+uses-feature#android.hardware.sensor.accelerometer
+ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:20:5-74
+	android:name
+		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:20:19-71
+uses-permission#android.permission.RECEIVE_BOOT_COMPLETED
+ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:21:5-81
+	android:name
+		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:21:22-78
+uses-permission#android.permission.MOUNT_UNMOUNT_FILESYSTEMS
+ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:22:5-23:47
+MERGED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:74:5-76:47
+MERGED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:74:5-76:47
+	tools:ignore
+		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:23:9-44
+	android:name
+		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:22:22-81
+uses-permission#android.permission.ACTIVITY_RECOGNITION
+ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:24:5-79
+	android:name
+		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:24:22-76
 uses-permission#android.permission.READ_PHONE_STATE
-ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:17:5-75
+ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:26:5-75
 MERGED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:49:5-75
 MERGED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:49:5-75
 	android:name
-		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:17:22-72
+		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:26:22-72
 uses-permission#android.permission.INTERNET
-ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:18:5-67
+ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:27:5-67
 MERGED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\8f7a3fb5b22fd814ba8707c967cb3ed6\jetified-xutil-core-2.0.0\AndroidManifest.xml:15:5-67
 MERGED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\8f7a3fb5b22fd814ba8707c967cb3ed6\jetified-xutil-core-2.0.0\AndroidManifest.xml:15:5-67
 MERGED from [com.google.mlkit:pose-detection-common:18.0.0-beta1] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\04b970f8fd742b3be056c2a28a00fd9a\jetified-pose-detection-common-18.0.0-beta1\AndroidManifest.xml:8:5-67
@@ -293,9 +327,9 @@ MERGED from [com.google.mlkit:pose-detection-common:18.0.0-beta1] C:\Users\Admin
 MERGED from [com.google.android.datatransport:transport-backend-cct:2.3.3] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\b0b07d668fb05669fea93be346cdaca2\jetified-transport-backend-cct-2.3.3\AndroidManifest.xml:26:5-67
 MERGED from [com.google.android.datatransport:transport-backend-cct:2.3.3] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\b0b07d668fb05669fea93be346cdaca2\jetified-transport-backend-cct-2.3.3\AndroidManifest.xml:26:5-67
 	android:name
-		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:18:22-64
+		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:27:22-64
 uses-permission#android.permission.ACCESS_NETWORK_STATE
-ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:19:5-79
+ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:28:5-79
 MERGED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\8f7a3fb5b22fd814ba8707c967cb3ed6\jetified-xutil-core-2.0.0\AndroidManifest.xml:18:5-79
 MERGED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\8f7a3fb5b22fd814ba8707c967cb3ed6\jetified-xutil-core-2.0.0\AndroidManifest.xml:18:5-79
 MERGED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:25:5-79
@@ -307,39 +341,39 @@ MERGED from [com.google.android.datatransport:transport-backend-cct:2.3.3] C:\Us
 MERGED from [com.google.android.datatransport:transport-runtime:2.2.6] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\0b67044ceabbcacea62e90fd6e1fc6a0\jetified-transport-runtime-2.2.6\AndroidManifest.xml:22:5-79
 MERGED from [com.google.android.datatransport:transport-runtime:2.2.6] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\0b67044ceabbcacea62e90fd6e1fc6a0\jetified-transport-runtime-2.2.6\AndroidManifest.xml:22:5-79
 	android:name
-		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:19:22-76
+		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:28:22-76
 uses-permission#android.permission.READ_PRIVILEGED_PHONE_STATE
-ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:20:5-22:47
+ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:29:5-31:47
 	tools:ignore
-		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:22:9-44
+		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:31:9-44
 	android:name
-		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:21:9-70
+		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:30:9-70
 uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
-ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:25:5-81
+ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:34:5-81
 MERGED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\8f7a3fb5b22fd814ba8707c967cb3ed6\jetified-xutil-core-2.0.0\AndroidManifest.xml:13:5-81
 MERGED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\8f7a3fb5b22fd814ba8707c967cb3ed6\jetified-xutil-core-2.0.0\AndroidManifest.xml:13:5-81
 	android:name
-		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:25:22-78
+		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:34:22-78
 uses-permission#android.permission.READ_EXTERNAL_STORAGE
-ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:27:5-80
+ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:36:5-80
 MERGED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\8f7a3fb5b22fd814ba8707c967cb3ed6\jetified-xutil-core-2.0.0\AndroidManifest.xml:12:5-80
 MERGED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\8f7a3fb5b22fd814ba8707c967cb3ed6\jetified-xutil-core-2.0.0\AndroidManifest.xml:12:5-80
 	android:name
-		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:27:22-77
+		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:36:22-77
 uses-permission#android.permission.MANAGE_EXTERNAL_STORAGE
-ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:29:5-31:40
+ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:38:5-40:40
 	tools:ignore
-		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:31:9-37
+		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:40:9-37
 	android:name
-		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:30:9-66
+		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:39:9-66
 uses-permission#android.permission.CAMERA
-ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:34:5-65
+ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:43:5-65
 MERGED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:61:5-65
 MERGED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:61:5-65
 	android:name
-		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:34:22-62
+		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:43:22-62
 application
-ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:36:5-82:19
+ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:45:5-91:19
 MERGED from [com.ramotion.paperonboarding:paper-onboarding:1.1.3] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\11d1eb687d904552a97e83b049b42647\jetified-paper-onboarding-1.1.3\AndroidManifest.xml:11:5-15:19
 MERGED from [com.ramotion.paperonboarding:paper-onboarding:1.1.3] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\11d1eb687d904552a97e83b049b42647\jetified-paper-onboarding-1.1.3\AndroidManifest.xml:11:5-15:19
 MERGED from [com.github.gzu-liyujiang.AndroidPicker:AddressPicker:4.1.7] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\c2bce357d8f6d392fd5333ca805c57f0\jetified-AddressPicker-4.1.7\AndroidManifest.xml:21:5-22:19
@@ -389,124 +423,124 @@ MERGED from [io.github.inflationx:calligraphy3:3.1.1] C:\Users\Administrator\.gr
 MERGED from [io.github.inflationx:viewpump:2.0.3] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\6250716e4291d5ca020e8ae0a47ea699\jetified-viewpump-2.0.3\AndroidManifest.xml:9:5-20
 MERGED from [io.github.inflationx:viewpump:2.0.3] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\6250716e4291d5ca020e8ae0a47ea699\jetified-viewpump-2.0.3\AndroidManifest.xml:9:5-20
 	android:requestLegacyExternalStorage
-		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:40:9-52
+		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:49:9-52
 	android:appComponentFactory
 		ADDED from [androidx.core:core:1.5.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\4e08b81c2a1c1aefac273845b51aa17c\core-1.5.0\AndroidManifest.xml:24:18-86
 	android:supportsRtl
 		ADDED from [com.ramotion.paperonboarding:paper-onboarding:1.1.3] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\11d1eb687d904552a97e83b049b42647\jetified-paper-onboarding-1.1.3\AndroidManifest.xml:14:9-35
 	android:label
-		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:39:9-34
+		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:48:9-34
 		REJECTED from [com.ramotion.paperonboarding:paper-onboarding:1.1.3] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\11d1eb687d904552a97e83b049b42647\jetified-paper-onboarding-1.1.3\AndroidManifest.xml:13:9-41
 	android:allowBackup
 		ADDED from [com.ramotion.paperonboarding:paper-onboarding:1.1.3] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\11d1eb687d904552a97e83b049b42647\jetified-paper-onboarding-1.1.3\AndroidManifest.xml:12:9-35
 	tools:targetApi
-		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:44:9-28
+		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:53:9-28
 	android:icon
-		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:38:9-39
+		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:47:9-39
 	android:theme
-		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:41:9-47
+		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:50:9-47
 	tools:replace
-		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:43:9-38
+		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:52:9-38
 	android:usesCleartextTraffic
-		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:42:9-44
+		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:51:9-44
 	android:name
-		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:37:9-61
+		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:46:9-61
 meta-data#com.google.android.gms.version
-ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:46:9-48:69
+ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:55:9-57:69
 MERGED from [com.google.android.gms:play-services-basement:18.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\4127a4261a01000d5e1f23ce5b884202\jetified-play-services-basement-18.0.0\AndroidManifest.xml:21:9-23:69
 MERGED from [com.google.android.gms:play-services-basement:18.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\4127a4261a01000d5e1f23ce5b884202\jetified-play-services-basement-18.0.0\AndroidManifest.xml:21:9-23:69
 	android:value
-		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:48:13-66
+		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:57:13-66
 	android:name
-		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:47:13-58
+		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:56:13-58
 meta-data#com.google.mlkit.vision.DEPENDENCIES
-ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:52:9-54:52
+ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:61:9-63:52
 	android:value
-		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:54:13-49
+		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:63:13-49
 	android:name
-		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:53:13-64
+		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:62:13-64
 activity#com.lindum.mlkit.vision.dev.datacenter.ProgressActivity
-ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:56:9-65
+ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:65:9-65
 	android:name
-		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:56:19-62
+		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:65:19-62
 activity#com.lindum.mlkit.vision.dev.view.PoseDetailsActivity
-ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:57:9-62
+ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:66:9-62
 	android:name
-		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:57:19-59
+		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:66:19-59
 activity#com.lindum.mlkit.vision.dev.result.ImageDetails
-ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:58:9-84
+ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:67:9-84
 	android:name
-		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:58:19-81
+		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:67:19-81
 activity#com.lindum.mlkit.vision.dev.view.ChangeProfileActivity
-ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:59:9-64
+ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:68:9-64
 	android:name
-		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:59:19-61
+		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:68:19-61
 activity#com.lindum.mlkit.vision.dev.view.ChangeNickName
-ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:60:9-57
+ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:69:9-57
 	android:name
-		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:60:19-54
+		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:69:19-54
 activity#com.lindum.mlkit.vision.dev.view.UserInfoInitActivity
-ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:61:9-63
+ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:70:9-63
 	android:name
-		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:61:19-60
+		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:70:19-60
 activity#com.lindum.mlkit.vision.dev.view.IntroView
-ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:62:9-52
+ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:71:9-52
 	android:name
-		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:62:19-49
+		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:71:19-49
 activity#com.lindum.mlkit.vision.dev.CameraXLivePreviewActivity
-ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:63:9-64
+ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:72:9-64
 	android:name
-		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:63:19-61
+		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:72:19-61
 activity#com.lindum.mlkit.vision.dev.view.SelectSportsPreference
-ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:64:9-65
+ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:73:9-65
 	android:name
-		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:64:19-62
+		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:73:19-62
 activity#com.lindum.mlkit.vision.dev.result.TrainingResult
-ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:65:9-68:47
+ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:74:9-77:47
 	android:exported
-		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:67:13-37
+		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:76:13-37
 	android:theme
-		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:68:13-44
+		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:77:13-44
 	android:name
-		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:66:13-77
+		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:75:13-77
 activity#com.lindum.mlkit.vision.dev.view.HomePage
-ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:69:9-77:20
+ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:78:9-86:20
 	android:exported
-		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:71:13-36
+		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:80:13-36
 	android:theme
-		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:72:13-44
+		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:81:13-44
 	android:name
-		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:70:13-69
+		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:79:13-69
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:73:13-76:29
+ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:82:13-85:29
 action#android.intent.action.MAIN
-ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:74:17-69
+ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:83:17-69
 	android:name
-		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:74:25-66
+		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:83:25-66
 category#android.intent.category.LAUNCHER
-ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:75:17-77
+ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:84:17-77
 	android:name
-		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:75:27-74
+		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:84:27-74
 activity#com.lindum.mlkit.vision.dev.preference.SettingsActivity
-ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:78:9-80:40
+ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:87:9-89:40
 	android:exported
-		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:80:13-37
+		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:89:13-37
 	android:name
-		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:79:13-83
+		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:88:13-83
 queries
-ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:83:5-90:15
+ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:92:5-99:15
 intent#action:name:android.media.action.IMAGE_CAPTURE
-ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:84:9-86:18
+ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:93:9-95:18
 action#android.media.action.IMAGE_CAPTURE
-ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:85:13-73
+ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:94:13-73
 	android:name
-		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:85:21-70
+		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:94:21-70
 intent#action:name:android.intent.action.TTS_SERVICE
-ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:87:9-89:18
+ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:96:9-98:18
 action#android.intent.action.TTS_SERVICE
-ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:88:13-72
+ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:97:13-72
 	android:name
-		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:88:21-69
+		ADDED from D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:97:21-69
 uses-permission#android.permission.KILL_BACKGROUND_PROCESSES
 ADDED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\8f7a3fb5b22fd814ba8707c967cb3ed6\jetified-xutil-core-2.0.0\AndroidManifest.xml:10:5-84
 MERGED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:69:5-84
@@ -589,10 +623,6 @@ uses-permission#android.permission.REQUEST_INSTALL_PACKAGES
 ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:45:5-83
 	android:name
 		ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:45:22-80
-uses-permission#android.permission.VIBRATE
-ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:47:5-66
-	android:name
-		ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:47:22-63
 uses-permission#android.permission.CALL_PHONE
 ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:50:5-69
 	android:name
@@ -639,18 +669,6 @@ uses-permission#android.permission.EXPAND_STATUS_BAR
 ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:71:5-76
 	android:name
 		ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:71:22-73
-uses-permission#android.permission.MOUNT_UNMOUNT_FILESYSTEMS
-ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:74:5-76:47
-	tools:ignore
-		ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:76:9-44
-	android:name
-		ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:75:9-68
-uses-permission#android.permission.WRITE_SETTINGS
-ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:78:5-80:47
-	tools:ignore
-		ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:80:9-44
-	android:name
-		ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:79:9-57
 provider#com.xuexiang.xui.XUIInitProvider
 ADDED from [com.github.xuexiangjys:XUI:1.1.8] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\cb3a340231d4295dbef6891df83e60a3\jetified-XUI-1.1.8\AndroidManifest.xml:10:9-14:43
 	android:authorities

@@ -57,7 +57,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
             title.setText(item.title);
             subTitle.setText(item.subTitle);
 //            imageView.setImageDrawable(item.getBgDrawable());
-            relativeLayout.setBackground(new BitmapDrawable(item.getBitmap()));
+            relativeLayout.setBackground(new BitmapDrawable(mContext.getResources(), item.getBitmap()));
         }
 
         @Override

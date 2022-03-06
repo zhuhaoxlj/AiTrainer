@@ -21,367 +21,379 @@
 18    <uses-feature android:name="android.hardware.camera" />
 18-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:15:5-60
 18-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:15:19-57
-19    <!-- 获取手机的 IMEI（设备标识码） -->
-20    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-20-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:17:5-75
-20-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:17:22-72
-21    <uses-permission android:name="android.permission.INTERNET" />
-21-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:18:5-67
-21-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:18:22-64
-22    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-22-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:19:5-79
-22-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:19:22-76
-23    <uses-permission android:name="android.permission.READ_PRIVILEGED_PHONE_STATE" />
-23-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:20:5-22:47
-23-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:21:9-70
+19    <!-- 步数获取 -->
+20    <uses-permission android:name="android.permission.VIBRATE" />
+20-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:17:5-66
+20-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:17:22-63
+21    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+21-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:18:5-19:47
+21-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:18:22-70
+22
+23    <uses-feature android:name="android.hardware.sensor.accelerometer" />
+23-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:20:5-74
+23-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:20:19-71
 24
-25    <!-- 写外置存储 -->
-26    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-26-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:25:5-81
-26-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:25:22-78
-27    <!-- 读取外置存储 -->
-28    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-28-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:27:5-80
-28-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:27:22-77
-29    <!-- 这个权限用于跳转外部存储授权界面 -->
-30    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
-30-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:29:5-31:40
-30-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:30:9-66
-31    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-31-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:25:5-81
-31-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:25:22-78
-32    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-32-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:27:5-80
-32-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:27:22-77
-33    <uses-permission android:name="android.permission.CAMERA" />
-33-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:34:5-65
-33-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:34:22-62
-34
-35    <queries>
-35-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:83:5-90:15
-36        <intent>
-36-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:84:9-86:18
-37            <action android:name="android.media.action.IMAGE_CAPTURE" />
-37-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:85:13-73
-37-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:85:21-70
-38        </intent>
-39        <intent>
-39-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:87:9-89:18
-40            <action android:name="android.intent.action.TTS_SERVICE" />
-40-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:88:13-72
-40-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:88:21-69
-41        </intent>
-42    </queries>
+25    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+25-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:21:5-81
+25-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:21:22-78
+26    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+26-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:22:5-23:47
+26-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:22:22-81
+27    <uses-permission android:name="android.permission.ACTIVITY_RECOGNITION" />
+27-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:24:5-79
+27-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:24:22-76
+28    <!-- 获取手机的 IMEI（设备标识码） -->
+29    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+29-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:26:5-75
+29-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:26:22-72
+30    <uses-permission android:name="android.permission.INTERNET" />
+30-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:27:5-67
+30-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:27:22-64
+31    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+31-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:28:5-79
+31-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:28:22-76
+32    <uses-permission android:name="android.permission.READ_PRIVILEGED_PHONE_STATE" />
+32-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:29:5-31:47
+32-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:30:9-70
+33
+34    <!-- 写外置存储 -->
+35    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+35-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:34:5-81
+35-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:34:22-78
+36    <!-- 读取外置存储 -->
+37    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+37-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:36:5-80
+37-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:36:22-77
+38    <!-- 这个权限用于跳转外部存储授权界面 -->
+39    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
+39-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:38:5-40:40
+39-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:39:9-66
+40    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+40-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:34:5-81
+40-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:34:22-78
+41    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+41-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:36:5-80
+41-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:36:22-77
+42    <uses-permission android:name="android.permission.CAMERA" />
+42-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:43:5-65
+42-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:43:22-62
 43
-44    <!-- 进程杀死 -->
-45    <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES" />
-45-->[com.github.xuexiangjys.XUtil:xutil-core:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\8f7a3fb5b22fd814ba8707c967cb3ed6\jetified-xutil-core-2.0.0\AndroidManifest.xml:10:5-84
-45-->[com.github.xuexiangjys.XUtil:xutil-core:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\8f7a3fb5b22fd814ba8707c967cb3ed6\jetified-xutil-core-2.0.0\AndroidManifest.xml:10:22-81
-46    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-46-->[com.github.xuexiangjys.XUtil:xutil-core:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\8f7a3fb5b22fd814ba8707c967cb3ed6\jetified-xutil-core-2.0.0\AndroidManifest.xml:16:5-76
-46-->[com.github.xuexiangjys.XUtil:xutil-core:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\8f7a3fb5b22fd814ba8707c967cb3ed6\jetified-xutil-core-2.0.0\AndroidManifest.xml:16:22-73
-47    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" /> <!-- 蓝牙权限 -->
-47-->[com.github.xuexiangjys.XUtil:xutil-core:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\8f7a3fb5b22fd814ba8707c967cb3ed6\jetified-xutil-core-2.0.0\AndroidManifest.xml:17:5-76
-47-->[com.github.xuexiangjys.XUtil:xutil-core:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\8f7a3fb5b22fd814ba8707c967cb3ed6\jetified-xutil-core-2.0.0\AndroidManifest.xml:17:22-73
-48    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
-48-->[com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:29:5-74
-48-->[com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:29:22-71
-49    <uses-permission android:name="android.permission.BLUETOOTH" /> <!-- 定位权限 -->
-49-->[com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:30:5-68
-49-->[com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:30:22-65
-50    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-50-->[com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:32:5-81
-50-->[com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:32:22-78
-51    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /> <!-- 锁屏权限 -->
-51-->[com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:33:5-79
-51-->[com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:33:22-76
-52    <uses-permission android:name="android.permission.WAKE_LOCK" /> <!-- 前台服务，兼容9.0 -->
-52-->[com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:36:5-68
-52-->[com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:36:22-65
-53    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" /> <!-- 悬浮窗 -->
-53-->[com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:38:5-77
-53-->[com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:38:22-74
-54    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" /> <!-- APK安装 -->
-54-->[com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:40:5-78
-54-->[com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:40:22-75
-55    <uses-permission android:name="android.permission.INSTALL_PACKAGES" />
-55-->[com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:42:5-44:47
-55-->[com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:43:9-59
-56    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" /> <!-- 震动 -->
-56-->[com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:45:5-83
-56-->[com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:45:22-80
-57    <uses-permission android:name="android.permission.VIBRATE" />
-57-->[com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:47:5-66
-57-->[com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:47:22-63
-58    <uses-permission android:name="android.permission.CALL_PHONE" />
-58-->[com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:50:5-69
-58-->[com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:50:22-66
-59    <uses-permission android:name="android.permission.SEND_SMS" />
-59-->[com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:51:5-67
-59-->[com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:51:22-64
-60    <uses-permission android:name="android.permission.READ_SMS" />
-60-->[com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:52:5-67
-60-->[com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:52:22-64
-61    <uses-permission android:name="android.permission.READ_CONTACTS" />
-61-->[com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:53:5-72
-61-->[com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:53:22-69
-62    <uses-permission android:name="android.permission.READ_CALENDAR" />
-62-->[com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:54:5-72
-62-->[com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:54:22-69
-63    <uses-permission android:name="android.permission.RECORD_AUDIO" /> <!-- 修改手机状态 -->
-63-->[com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:55:5-71
-63-->[com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:55:22-68
-64    <uses-permission android:name="android.permission.MODIFY_PHONE_STATE" />
-64-->[com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:57:5-59:47
-64-->[com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:58:9-61
-65    <uses-permission android:name="android.permission.FLASHLIGHT" />
-65-->[com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:62:5-69
-65-->[com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:62:22-66
-66
-67    <uses-feature android:name="android.hardware.camera.autofocus" />
-67-->[com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:65:5-70
-67-->[com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:65:19-67
-68    <uses-feature android:name="android.hardware.camera.flash" /> <!-- 状态栏权限 -->
-68-->[com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:66:5-66
-68-->[com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:66:19-63
-69    <uses-permission android:name="android.permission.EXPAND_STATUS_BAR" /> <!-- 在SDCard中创建与删除文件权限 -->
-69-->[com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:71:5-76
-69-->[com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:71:22-73
-70    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" /> <!-- 修改系统设置 -->
-70-->[com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:74:5-76:47
-70-->[com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:75:9-68
-71    <uses-permission android:name="android.permission.WRITE_SETTINGS" /> <!-- android:name="com.lindum.mlkit.vision.demo.CameraXLivePreviewActivity" -->
-71-->[com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:78:5-80:47
-71-->[com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:79:9-57
-72    <application
-72-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:36:5-82:19
-73        android:name="androidx.multidex.MultiDexApplication"
-73-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:37:9-61
-74        android:allowBackup="true"
-74-->[com.ramotion.paperonboarding:paper-onboarding:1.1.3] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\11d1eb687d904552a97e83b049b42647\jetified-paper-onboarding-1.1.3\AndroidManifest.xml:12:9-35
-75        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-75-->[androidx.core:core:1.5.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\4e08b81c2a1c1aefac273845b51aa17c\core-1.5.0\AndroidManifest.xml:24:18-86
-76        android:debuggable="true"
-77        android:icon="@drawable/train"
-77-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:38:9-39
-78        android:label="AiTrainer"
-78-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:39:9-34
-79        android:requestLegacyExternalStorage="true"
-79-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:40:9-52
-80        android:supportsRtl="true"
-80-->[com.ramotion.paperonboarding:paper-onboarding:1.1.3] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\11d1eb687d904552a97e83b049b42647\jetified-paper-onboarding-1.1.3\AndroidManifest.xml:14:9-35
-81        android:testOnly="true"
-82        android:theme="@style/Theme.AppCompat"
-82-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:41:9-47
-83        android:usesCleartextTraffic="true" >
-83-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:42:9-44
-84        <meta-data
-84-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:46:9-48:69
-85            android:name="com.google.android.gms.version"
-85-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:47:13-58
-86            android:value="@integer/google_play_services_version" />
-86-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:48:13-66
-87
-88        <!--
-89          Optional: Add it to automatically download ML model to device after
-90          your app is installed.
-91        -->
-92        <meta-data
-92-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:52:9-54:52
-93            android:name="com.google.mlkit.vision.DEPENDENCIES"
-93-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:53:13-64
-94            android:value="barcode,face,ocr,ica" />
-94-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:54:13-49
-95
-96        <activity android:name="com.lindum.mlkit.vision.dev.datacenter.ProgressActivity" />
-96-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:56:9-65
-96-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:56:19-62
-97        <activity android:name="com.lindum.mlkit.vision.dev.view.PoseDetailsActivity" />
-97-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:57:9-62
-97-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:57:19-59
-98        <activity android:name="com.lindum.mlkit.vision.dev.result.ImageDetails" />
-98-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:58:9-84
-98-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:58:19-81
-99        <activity android:name="com.lindum.mlkit.vision.dev.view.ChangeProfileActivity" />
-99-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:59:9-64
-99-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:59:19-61
-100        <activity android:name="com.lindum.mlkit.vision.dev.view.ChangeNickName" />
-100-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:60:9-57
-100-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:60:19-54
-101        <activity android:name="com.lindum.mlkit.vision.dev.view.UserInfoInitActivity" />
-101-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:61:9-63
-101-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:61:19-60
-102        <activity android:name="com.lindum.mlkit.vision.dev.view.IntroView" />
-102-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:62:9-52
-102-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:62:19-49
-103        <activity android:name="com.lindum.mlkit.vision.dev.CameraXLivePreviewActivity" />
-103-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:63:9-64
-103-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:63:19-61
-104        <activity android:name="com.lindum.mlkit.vision.dev.view.SelectSportsPreference" />
-104-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:64:9-65
-104-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:64:19-62
-105        <activity
-105-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:65:9-68:47
-106            android:name="com.lindum.mlkit.vision.dev.result.TrainingResult"
-106-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:66:13-77
-107            android:exported="false"
-107-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:67:13-37
-108            android:theme="@style/AppTheme" />
-108-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:68:13-44
-109        <activity
-109-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:69:9-77:20
-110            android:name="com.lindum.mlkit.vision.dev.view.HomePage"
-110-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:70:13-69
-111            android:exported="true"
-111-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:71:13-36
-112            android:theme="@style/AppTheme" >
-112-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:72:13-44
-113            <intent-filter>
-113-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:73:13-76:29
-114                <action android:name="android.intent.action.MAIN" />
-114-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:74:17-69
-114-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:74:25-66
-115
-116                <category android:name="android.intent.category.LAUNCHER" />
-116-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:75:17-77
-116-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:75:27-74
-117            </intent-filter>
-118        </activity>
-119        <activity
-119-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:78:9-80:40
-120            android:name="com.lindum.mlkit.vision.dev.preference.SettingsActivity"
-120-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:79:13-83
-121            android:exported="false" />
-121-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:80:13-37
-122        <activity
-122-->[com.github.xuexiangjys.XUtil:xutil-core:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\8f7a3fb5b22fd814ba8707c967cb3ed6\jetified-xutil-core-2.0.0\AndroidManifest.xml:21:9-25:75
-123            android:name="com.xuexiang.xutil.system.PermissionUtils$PermissionActivity"
-123-->[com.github.xuexiangjys.XUtil:xutil-core:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\8f7a3fb5b22fd814ba8707c967cb3ed6\jetified-xutil-core-2.0.0\AndroidManifest.xml:22:13-88
-124            android:configChanges="orientation|keyboardHidden|screenSize"
-124-->[com.github.xuexiangjys.XUtil:xutil-core:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\8f7a3fb5b22fd814ba8707c967cb3ed6\jetified-xutil-core-2.0.0\AndroidManifest.xml:23:13-74
-125            android:theme="@style/XUtil_Activity_Translucent"
-125-->[com.github.xuexiangjys.XUtil:xutil-core:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\8f7a3fb5b22fd814ba8707c967cb3ed6\jetified-xutil-core-2.0.0\AndroidManifest.xml:24:13-62
-126            android:windowSoftInputMode="stateHidden|stateAlwaysHidden" />
-126-->[com.github.xuexiangjys.XUtil:xutil-core:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\8f7a3fb5b22fd814ba8707c967cb3ed6\jetified-xutil-core-2.0.0\AndroidManifest.xml:25:13-72
-127
-128        <provider
-128-->[com.github.xuexiangjys.XUtil:xutil-core:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\8f7a3fb5b22fd814ba8707c967cb3ed6\jetified-xutil-core-2.0.0\AndroidManifest.xml:27:9-35:20
-129            android:name="androidx.core.content.FileProvider4Utils"
-129-->[com.github.xuexiangjys.XUtil:xutil-core:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\8f7a3fb5b22fd814ba8707c967cb3ed6\jetified-xutil-core-2.0.0\AndroidManifest.xml:28:13-68
-130            android:authorities="com.lindum.mlkit.vision.dev.xutil.provider"
-130-->[com.github.xuexiangjys.XUtil:xutil-core:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\8f7a3fb5b22fd814ba8707c967cb3ed6\jetified-xutil-core-2.0.0\AndroidManifest.xml:29:13-66
-131            android:exported="false"
-131-->[com.github.xuexiangjys.XUtil:xutil-core:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\8f7a3fb5b22fd814ba8707c967cb3ed6\jetified-xutil-core-2.0.0\AndroidManifest.xml:30:13-37
-132            android:grantUriPermissions="true" >
-132-->[com.github.xuexiangjys.XUtil:xutil-core:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\8f7a3fb5b22fd814ba8707c967cb3ed6\jetified-xutil-core-2.0.0\AndroidManifest.xml:31:13-47
-133            <meta-data
-133-->[com.github.xuexiangjys.XUtil:xutil-core:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\8f7a3fb5b22fd814ba8707c967cb3ed6\jetified-xutil-core-2.0.0\AndroidManifest.xml:32:13-34:64
-134                android:name="android.support.FILE_PROVIDER_PATHS"
-134-->[com.github.xuexiangjys.XUtil:xutil-core:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\8f7a3fb5b22fd814ba8707c967cb3ed6\jetified-xutil-core-2.0.0\AndroidManifest.xml:33:17-67
-135                android:resource="@xml/xutil_provider_paths" />
-135-->[com.github.xuexiangjys.XUtil:xutil-core:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\8f7a3fb5b22fd814ba8707c967cb3ed6\jetified-xutil-core-2.0.0\AndroidManifest.xml:34:17-61
-136        </provider>
-137        <provider
-137-->[com.github.xuexiangjys:XUI:1.1.8] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\cb3a340231d4295dbef6891df83e60a3\jetified-XUI-1.1.8\AndroidManifest.xml:10:9-14:43
-138            android:name="com.xuexiang.xui.XUIInitProvider"
-138-->[com.github.xuexiangjys:XUI:1.1.8] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\cb3a340231d4295dbef6891df83e60a3\jetified-XUI-1.1.8\AndroidManifest.xml:11:13-60
-139            android:authorities="com.lindum.mlkit.vision.dev.xui-init-provider"
-139-->[com.github.xuexiangjys:XUI:1.1.8] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\cb3a340231d4295dbef6891df83e60a3\jetified-XUI-1.1.8\AndroidManifest.xml:12:13-69
-140            android:exported="false"
-140-->[com.github.xuexiangjys:XUI:1.1.8] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\cb3a340231d4295dbef6891df83e60a3\jetified-XUI-1.1.8\AndroidManifest.xml:13:13-37
-141            android:multiprocess="true" />
-141-->[com.github.xuexiangjys:XUI:1.1.8] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\cb3a340231d4295dbef6891df83e60a3\jetified-XUI-1.1.8\AndroidManifest.xml:14:13-40
-142
-143        <activity
-143-->[com.github.xuexiangjys:XUI:1.1.8] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\cb3a340231d4295dbef6891df83e60a3\jetified-XUI-1.1.8\AndroidManifest.xml:16:9-18:59
-144            android:name="com.xuexiang.xui.widget.imageview.preview.ui.PreviewActivity"
-144-->[com.github.xuexiangjys:XUI:1.1.8] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\cb3a340231d4295dbef6891df83e60a3\jetified-XUI-1.1.8\AndroidManifest.xml:17:13-88
-145            android:theme="@style/XUITheme.Translucent" />
-145-->[com.github.xuexiangjys:XUI:1.1.8] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\cb3a340231d4295dbef6891df83e60a3\jetified-XUI-1.1.8\AndroidManifest.xml:18:13-56
-146        <activity
-146-->[com.github.xuexiangjys:XUI:1.1.8] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\cb3a340231d4295dbef6891df83e60a3\jetified-XUI-1.1.8\AndroidManifest.xml:19:9-21:59
-147            android:name="com.xuexiang.xui.widget.imageview.preview.ui.VideoPlayerActivity"
-147-->[com.github.xuexiangjys:XUI:1.1.8] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\cb3a340231d4295dbef6891df83e60a3\jetified-XUI-1.1.8\AndroidManifest.xml:20:13-92
-148            android:theme="@style/XUITheme.Translucent" />
-148-->[com.github.xuexiangjys:XUI:1.1.8] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\cb3a340231d4295dbef6891df83e60a3\jetified-XUI-1.1.8\AndroidManifest.xml:21:13-56
-149
-150        <service
-150-->[com.google.mlkit:pose-detection-common:18.0.0-beta1] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\04b970f8fd742b3be056c2a28a00fd9a\jetified-pose-detection-common-18.0.0-beta1\AndroidManifest.xml:11:9-17:19
-151            android:name="com.google.mlkit.common.internal.MlKitComponentDiscoveryService"
-151-->[com.google.mlkit:pose-detection-common:18.0.0-beta1] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\04b970f8fd742b3be056c2a28a00fd9a\jetified-pose-detection-common-18.0.0-beta1\AndroidManifest.xml:12:13-91
-152            android:directBootAware="true"
-152-->[com.google.mlkit:common:18.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\cd457c1b74bdcd8eb1f8ed1cd0edb60e\jetified-common-18.0.0\AndroidManifest.xml:17:13-43
-153            android:exported="false" >
-153-->[com.google.mlkit:pose-detection-common:18.0.0-beta1] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\04b970f8fd742b3be056c2a28a00fd9a\jetified-pose-detection-common-18.0.0-beta1\AndroidManifest.xml:13:13-37
-154            <meta-data
-154-->[com.google.mlkit:pose-detection-common:18.0.0-beta1] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\04b970f8fd742b3be056c2a28a00fd9a\jetified-pose-detection-common-18.0.0-beta1\AndroidManifest.xml:14:13-16:85
-155                android:name="com.google.firebase.components:com.google.mlkit.vision.pose.internal.PoseRegistrar"
-155-->[com.google.mlkit:pose-detection-common:18.0.0-beta1] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\04b970f8fd742b3be056c2a28a00fd9a\jetified-pose-detection-common-18.0.0-beta1\AndroidManifest.xml:15:17-114
-156                android:value="com.google.firebase.components.ComponentRegistrar" />
-156-->[com.google.mlkit:pose-detection-common:18.0.0-beta1] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\04b970f8fd742b3be056c2a28a00fd9a\jetified-pose-detection-common-18.0.0-beta1\AndroidManifest.xml:16:17-82
-157            <meta-data
-157-->[com.google.mlkit:vision-common:17.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\19f0f43aabd601ca53374840b69d6a5e\jetified-vision-common-17.0.0\AndroidManifest.xml:12:13-14:85
-158                android:name="com.google.firebase.components:com.google.mlkit.vision.common.internal.VisionCommonRegistrar"
-158-->[com.google.mlkit:vision-common:17.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\19f0f43aabd601ca53374840b69d6a5e\jetified-vision-common-17.0.0\AndroidManifest.xml:13:17-124
-159                android:value="com.google.firebase.components.ComponentRegistrar" />
-159-->[com.google.mlkit:vision-common:17.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\19f0f43aabd601ca53374840b69d6a5e\jetified-vision-common-17.0.0\AndroidManifest.xml:14:17-82
+44    <queries>
+44-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:92:5-99:15
+45        <intent>
+45-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:93:9-95:18
+46            <action android:name="android.media.action.IMAGE_CAPTURE" />
+46-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:94:13-73
+46-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:94:21-70
+47        </intent>
+48        <intent>
+48-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:96:9-98:18
+49            <action android:name="android.intent.action.TTS_SERVICE" />
+49-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:97:13-72
+49-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:97:21-69
+50        </intent>
+51    </queries>
+52
+53    <!-- 进程杀死 -->
+54    <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES" />
+54-->[com.github.xuexiangjys.XUtil:xutil-core:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\8f7a3fb5b22fd814ba8707c967cb3ed6\jetified-xutil-core-2.0.0\AndroidManifest.xml:10:5-84
+54-->[com.github.xuexiangjys.XUtil:xutil-core:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\8f7a3fb5b22fd814ba8707c967cb3ed6\jetified-xutil-core-2.0.0\AndroidManifest.xml:10:22-81
+55    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+55-->[com.github.xuexiangjys.XUtil:xutil-core:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\8f7a3fb5b22fd814ba8707c967cb3ed6\jetified-xutil-core-2.0.0\AndroidManifest.xml:16:5-76
+55-->[com.github.xuexiangjys.XUtil:xutil-core:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\8f7a3fb5b22fd814ba8707c967cb3ed6\jetified-xutil-core-2.0.0\AndroidManifest.xml:16:22-73
+56    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" /> <!-- 蓝牙权限 -->
+56-->[com.github.xuexiangjys.XUtil:xutil-core:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\8f7a3fb5b22fd814ba8707c967cb3ed6\jetified-xutil-core-2.0.0\AndroidManifest.xml:17:5-76
+56-->[com.github.xuexiangjys.XUtil:xutil-core:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\8f7a3fb5b22fd814ba8707c967cb3ed6\jetified-xutil-core-2.0.0\AndroidManifest.xml:17:22-73
+57    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+57-->[com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:29:5-74
+57-->[com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:29:22-71
+58    <uses-permission android:name="android.permission.BLUETOOTH" /> <!-- 定位权限 -->
+58-->[com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:30:5-68
+58-->[com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:30:22-65
+59    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+59-->[com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:32:5-81
+59-->[com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:32:22-78
+60    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /> <!-- 锁屏权限 -->
+60-->[com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:33:5-79
+60-->[com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:33:22-76
+61    <uses-permission android:name="android.permission.WAKE_LOCK" /> <!-- 前台服务，兼容9.0 -->
+61-->[com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:36:5-68
+61-->[com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:36:22-65
+62    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" /> <!-- 悬浮窗 -->
+62-->[com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:38:5-77
+62-->[com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:38:22-74
+63    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" /> <!-- APK安装 -->
+63-->[com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:40:5-78
+63-->[com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:40:22-75
+64    <uses-permission android:name="android.permission.INSTALL_PACKAGES" />
+64-->[com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:42:5-44:47
+64-->[com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:43:9-59
+65    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+65-->[com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:45:5-83
+65-->[com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:45:22-80
+66    <uses-permission android:name="android.permission.CALL_PHONE" />
+66-->[com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:50:5-69
+66-->[com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:50:22-66
+67    <uses-permission android:name="android.permission.SEND_SMS" />
+67-->[com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:51:5-67
+67-->[com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:51:22-64
+68    <uses-permission android:name="android.permission.READ_SMS" />
+68-->[com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:52:5-67
+68-->[com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:52:22-64
+69    <uses-permission android:name="android.permission.READ_CONTACTS" />
+69-->[com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:53:5-72
+69-->[com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:53:22-69
+70    <uses-permission android:name="android.permission.READ_CALENDAR" />
+70-->[com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:54:5-72
+70-->[com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:54:22-69
+71    <uses-permission android:name="android.permission.RECORD_AUDIO" /> <!-- 修改手机状态 -->
+71-->[com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:55:5-71
+71-->[com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:55:22-68
+72    <uses-permission android:name="android.permission.MODIFY_PHONE_STATE" />
+72-->[com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:57:5-59:47
+72-->[com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:58:9-61
+73    <uses-permission android:name="android.permission.FLASHLIGHT" />
+73-->[com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:62:5-69
+73-->[com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:62:22-66
+74
+75    <uses-feature android:name="android.hardware.camera.autofocus" />
+75-->[com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:65:5-70
+75-->[com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:65:19-67
+76    <uses-feature android:name="android.hardware.camera.flash" /> <!-- 状态栏权限 -->
+76-->[com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:66:5-66
+76-->[com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:66:19-63
+77    <uses-permission android:name="android.permission.EXPAND_STATUS_BAR" /> <!-- android:name="com.lindum.mlkit.vision.demo.CameraXLivePreviewActivity" -->
+77-->[com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:71:5-76
+77-->[com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f7f51381b29a2e8065e8059783dd5dad\jetified-xutil-sub-2.0.0\AndroidManifest.xml:71:22-73
+78    <application
+78-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:45:5-91:19
+79        android:name="androidx.multidex.MultiDexApplication"
+79-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:46:9-61
+80        android:allowBackup="true"
+80-->[com.ramotion.paperonboarding:paper-onboarding:1.1.3] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\11d1eb687d904552a97e83b049b42647\jetified-paper-onboarding-1.1.3\AndroidManifest.xml:12:9-35
+81        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+81-->[androidx.core:core:1.5.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\4e08b81c2a1c1aefac273845b51aa17c\core-1.5.0\AndroidManifest.xml:24:18-86
+82        android:debuggable="true"
+83        android:icon="@drawable/train"
+83-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:47:9-39
+84        android:label="AiTrainer"
+84-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:48:9-34
+85        android:requestLegacyExternalStorage="true"
+85-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:49:9-52
+86        android:supportsRtl="true"
+86-->[com.ramotion.paperonboarding:paper-onboarding:1.1.3] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\11d1eb687d904552a97e83b049b42647\jetified-paper-onboarding-1.1.3\AndroidManifest.xml:14:9-35
+87        android:testOnly="true"
+88        android:theme="@style/Theme.AppCompat"
+88-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:50:9-47
+89        android:usesCleartextTraffic="true" >
+89-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:51:9-44
+90        <meta-data
+90-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:55:9-57:69
+91            android:name="com.google.android.gms.version"
+91-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:56:13-58
+92            android:value="@integer/google_play_services_version" />
+92-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:57:13-66
+93
+94        <!--
+95          Optional: Add it to automatically download ML model to device after
+96          your app is installed.
+97        -->
+98        <meta-data
+98-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:61:9-63:52
+99            android:name="com.google.mlkit.vision.DEPENDENCIES"
+99-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:62:13-64
+100            android:value="barcode,face,ocr,ica" />
+100-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:63:13-49
+101
+102        <activity android:name="com.lindum.mlkit.vision.dev.datacenter.ProgressActivity" />
+102-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:65:9-65
+102-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:65:19-62
+103        <activity android:name="com.lindum.mlkit.vision.dev.view.PoseDetailsActivity" />
+103-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:66:9-62
+103-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:66:19-59
+104        <activity android:name="com.lindum.mlkit.vision.dev.result.ImageDetails" />
+104-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:67:9-84
+104-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:67:19-81
+105        <activity android:name="com.lindum.mlkit.vision.dev.view.ChangeProfileActivity" />
+105-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:68:9-64
+105-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:68:19-61
+106        <activity android:name="com.lindum.mlkit.vision.dev.view.ChangeNickName" />
+106-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:69:9-57
+106-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:69:19-54
+107        <activity android:name="com.lindum.mlkit.vision.dev.view.UserInfoInitActivity" />
+107-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:70:9-63
+107-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:70:19-60
+108        <activity android:name="com.lindum.mlkit.vision.dev.view.IntroView" />
+108-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:71:9-52
+108-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:71:19-49
+109        <activity android:name="com.lindum.mlkit.vision.dev.CameraXLivePreviewActivity" />
+109-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:72:9-64
+109-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:72:19-61
+110        <activity android:name="com.lindum.mlkit.vision.dev.view.SelectSportsPreference" />
+110-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:73:9-65
+110-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:73:19-62
+111        <activity
+111-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:74:9-77:47
+112            android:name="com.lindum.mlkit.vision.dev.result.TrainingResult"
+112-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:75:13-77
+113            android:exported="false"
+113-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:76:13-37
+114            android:theme="@style/AppTheme" />
+114-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:77:13-44
+115        <activity
+115-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:78:9-86:20
+116            android:name="com.lindum.mlkit.vision.dev.view.HomePage"
+116-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:79:13-69
+117            android:exported="true"
+117-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:80:13-36
+118            android:theme="@style/AppTheme" >
+118-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:81:13-44
+119            <intent-filter>
+119-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:82:13-85:29
+120                <action android:name="android.intent.action.MAIN" />
+120-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:83:17-69
+120-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:83:25-66
+121
+122                <category android:name="android.intent.category.LAUNCHER" />
+122-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:84:17-77
+122-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:84:27-74
+123            </intent-filter>
+124        </activity>
+125        <activity
+125-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:87:9-89:40
+126            android:name="com.lindum.mlkit.vision.dev.preference.SettingsActivity"
+126-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:88:13-83
+127            android:exported="false" />
+127-->D:\Project\Android\AiTrainer\app\src\main\AndroidManifest.xml:89:13-37
+128        <activity
+128-->[com.github.xuexiangjys.XUtil:xutil-core:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\8f7a3fb5b22fd814ba8707c967cb3ed6\jetified-xutil-core-2.0.0\AndroidManifest.xml:21:9-25:75
+129            android:name="com.xuexiang.xutil.system.PermissionUtils$PermissionActivity"
+129-->[com.github.xuexiangjys.XUtil:xutil-core:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\8f7a3fb5b22fd814ba8707c967cb3ed6\jetified-xutil-core-2.0.0\AndroidManifest.xml:22:13-88
+130            android:configChanges="orientation|keyboardHidden|screenSize"
+130-->[com.github.xuexiangjys.XUtil:xutil-core:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\8f7a3fb5b22fd814ba8707c967cb3ed6\jetified-xutil-core-2.0.0\AndroidManifest.xml:23:13-74
+131            android:theme="@style/XUtil_Activity_Translucent"
+131-->[com.github.xuexiangjys.XUtil:xutil-core:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\8f7a3fb5b22fd814ba8707c967cb3ed6\jetified-xutil-core-2.0.0\AndroidManifest.xml:24:13-62
+132            android:windowSoftInputMode="stateHidden|stateAlwaysHidden" />
+132-->[com.github.xuexiangjys.XUtil:xutil-core:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\8f7a3fb5b22fd814ba8707c967cb3ed6\jetified-xutil-core-2.0.0\AndroidManifest.xml:25:13-72
+133
+134        <provider
+134-->[com.github.xuexiangjys.XUtil:xutil-core:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\8f7a3fb5b22fd814ba8707c967cb3ed6\jetified-xutil-core-2.0.0\AndroidManifest.xml:27:9-35:20
+135            android:name="androidx.core.content.FileProvider4Utils"
+135-->[com.github.xuexiangjys.XUtil:xutil-core:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\8f7a3fb5b22fd814ba8707c967cb3ed6\jetified-xutil-core-2.0.0\AndroidManifest.xml:28:13-68
+136            android:authorities="com.lindum.mlkit.vision.dev.xutil.provider"
+136-->[com.github.xuexiangjys.XUtil:xutil-core:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\8f7a3fb5b22fd814ba8707c967cb3ed6\jetified-xutil-core-2.0.0\AndroidManifest.xml:29:13-66
+137            android:exported="false"
+137-->[com.github.xuexiangjys.XUtil:xutil-core:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\8f7a3fb5b22fd814ba8707c967cb3ed6\jetified-xutil-core-2.0.0\AndroidManifest.xml:30:13-37
+138            android:grantUriPermissions="true" >
+138-->[com.github.xuexiangjys.XUtil:xutil-core:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\8f7a3fb5b22fd814ba8707c967cb3ed6\jetified-xutil-core-2.0.0\AndroidManifest.xml:31:13-47
+139            <meta-data
+139-->[com.github.xuexiangjys.XUtil:xutil-core:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\8f7a3fb5b22fd814ba8707c967cb3ed6\jetified-xutil-core-2.0.0\AndroidManifest.xml:32:13-34:64
+140                android:name="android.support.FILE_PROVIDER_PATHS"
+140-->[com.github.xuexiangjys.XUtil:xutil-core:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\8f7a3fb5b22fd814ba8707c967cb3ed6\jetified-xutil-core-2.0.0\AndroidManifest.xml:33:17-67
+141                android:resource="@xml/xutil_provider_paths" />
+141-->[com.github.xuexiangjys.XUtil:xutil-core:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\8f7a3fb5b22fd814ba8707c967cb3ed6\jetified-xutil-core-2.0.0\AndroidManifest.xml:34:17-61
+142        </provider>
+143        <provider
+143-->[com.github.xuexiangjys:XUI:1.1.8] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\cb3a340231d4295dbef6891df83e60a3\jetified-XUI-1.1.8\AndroidManifest.xml:10:9-14:43
+144            android:name="com.xuexiang.xui.XUIInitProvider"
+144-->[com.github.xuexiangjys:XUI:1.1.8] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\cb3a340231d4295dbef6891df83e60a3\jetified-XUI-1.1.8\AndroidManifest.xml:11:13-60
+145            android:authorities="com.lindum.mlkit.vision.dev.xui-init-provider"
+145-->[com.github.xuexiangjys:XUI:1.1.8] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\cb3a340231d4295dbef6891df83e60a3\jetified-XUI-1.1.8\AndroidManifest.xml:12:13-69
+146            android:exported="false"
+146-->[com.github.xuexiangjys:XUI:1.1.8] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\cb3a340231d4295dbef6891df83e60a3\jetified-XUI-1.1.8\AndroidManifest.xml:13:13-37
+147            android:multiprocess="true" />
+147-->[com.github.xuexiangjys:XUI:1.1.8] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\cb3a340231d4295dbef6891df83e60a3\jetified-XUI-1.1.8\AndroidManifest.xml:14:13-40
+148
+149        <activity
+149-->[com.github.xuexiangjys:XUI:1.1.8] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\cb3a340231d4295dbef6891df83e60a3\jetified-XUI-1.1.8\AndroidManifest.xml:16:9-18:59
+150            android:name="com.xuexiang.xui.widget.imageview.preview.ui.PreviewActivity"
+150-->[com.github.xuexiangjys:XUI:1.1.8] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\cb3a340231d4295dbef6891df83e60a3\jetified-XUI-1.1.8\AndroidManifest.xml:17:13-88
+151            android:theme="@style/XUITheme.Translucent" />
+151-->[com.github.xuexiangjys:XUI:1.1.8] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\cb3a340231d4295dbef6891df83e60a3\jetified-XUI-1.1.8\AndroidManifest.xml:18:13-56
+152        <activity
+152-->[com.github.xuexiangjys:XUI:1.1.8] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\cb3a340231d4295dbef6891df83e60a3\jetified-XUI-1.1.8\AndroidManifest.xml:19:9-21:59
+153            android:name="com.xuexiang.xui.widget.imageview.preview.ui.VideoPlayerActivity"
+153-->[com.github.xuexiangjys:XUI:1.1.8] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\cb3a340231d4295dbef6891df83e60a3\jetified-XUI-1.1.8\AndroidManifest.xml:20:13-92
+154            android:theme="@style/XUITheme.Translucent" />
+154-->[com.github.xuexiangjys:XUI:1.1.8] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\cb3a340231d4295dbef6891df83e60a3\jetified-XUI-1.1.8\AndroidManifest.xml:21:13-56
+155
+156        <service
+156-->[com.google.mlkit:pose-detection-common:18.0.0-beta1] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\04b970f8fd742b3be056c2a28a00fd9a\jetified-pose-detection-common-18.0.0-beta1\AndroidManifest.xml:11:9-17:19
+157            android:name="com.google.mlkit.common.internal.MlKitComponentDiscoveryService"
+157-->[com.google.mlkit:pose-detection-common:18.0.0-beta1] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\04b970f8fd742b3be056c2a28a00fd9a\jetified-pose-detection-common-18.0.0-beta1\AndroidManifest.xml:12:13-91
+158            android:directBootAware="true"
+158-->[com.google.mlkit:common:18.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\cd457c1b74bdcd8eb1f8ed1cd0edb60e\jetified-common-18.0.0\AndroidManifest.xml:17:13-43
+159            android:exported="false" >
+159-->[com.google.mlkit:pose-detection-common:18.0.0-beta1] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\04b970f8fd742b3be056c2a28a00fd9a\jetified-pose-detection-common-18.0.0-beta1\AndroidManifest.xml:13:13-37
 160            <meta-data
-160-->[com.google.mlkit:common:18.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\cd457c1b74bdcd8eb1f8ed1cd0edb60e\jetified-common-18.0.0\AndroidManifest.xml:20:13-22:85
-161                android:name="com.google.firebase.components:com.google.mlkit.common.internal.CommonComponentRegistrar"
-161-->[com.google.mlkit:common:18.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\cd457c1b74bdcd8eb1f8ed1cd0edb60e\jetified-common-18.0.0\AndroidManifest.xml:21:17-120
+160-->[com.google.mlkit:pose-detection-common:18.0.0-beta1] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\04b970f8fd742b3be056c2a28a00fd9a\jetified-pose-detection-common-18.0.0-beta1\AndroidManifest.xml:14:13-16:85
+161                android:name="com.google.firebase.components:com.google.mlkit.vision.pose.internal.PoseRegistrar"
+161-->[com.google.mlkit:pose-detection-common:18.0.0-beta1] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\04b970f8fd742b3be056c2a28a00fd9a\jetified-pose-detection-common-18.0.0-beta1\AndroidManifest.xml:15:17-114
 162                android:value="com.google.firebase.components.ComponentRegistrar" />
-162-->[com.google.mlkit:common:18.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\cd457c1b74bdcd8eb1f8ed1cd0edb60e\jetified-common-18.0.0\AndroidManifest.xml:22:17-82
-163        </service>
-164
-165        <provider
-165-->[com.google.mlkit:common:18.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\cd457c1b74bdcd8eb1f8ed1cd0edb60e\jetified-common-18.0.0\AndroidManifest.xml:9:9-13:38
-166            android:name="com.google.mlkit.common.internal.MlKitInitProvider"
-166-->[com.google.mlkit:common:18.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\cd457c1b74bdcd8eb1f8ed1cd0edb60e\jetified-common-18.0.0\AndroidManifest.xml:10:13-78
-167            android:authorities="com.lindum.mlkit.vision.dev.mlkitinitprovider"
-167-->[com.google.mlkit:common:18.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\cd457c1b74bdcd8eb1f8ed1cd0edb60e\jetified-common-18.0.0\AndroidManifest.xml:11:13-69
-168            android:exported="false"
-168-->[com.google.mlkit:common:18.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\cd457c1b74bdcd8eb1f8ed1cd0edb60e\jetified-common-18.0.0\AndroidManifest.xml:12:13-37
-169            android:initOrder="99" />
-169-->[com.google.mlkit:common:18.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\cd457c1b74bdcd8eb1f8ed1cd0edb60e\jetified-common-18.0.0\AndroidManifest.xml:13:13-35
+162-->[com.google.mlkit:pose-detection-common:18.0.0-beta1] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\04b970f8fd742b3be056c2a28a00fd9a\jetified-pose-detection-common-18.0.0-beta1\AndroidManifest.xml:16:17-82
+163            <meta-data
+163-->[com.google.mlkit:vision-common:17.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\19f0f43aabd601ca53374840b69d6a5e\jetified-vision-common-17.0.0\AndroidManifest.xml:12:13-14:85
+164                android:name="com.google.firebase.components:com.google.mlkit.vision.common.internal.VisionCommonRegistrar"
+164-->[com.google.mlkit:vision-common:17.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\19f0f43aabd601ca53374840b69d6a5e\jetified-vision-common-17.0.0\AndroidManifest.xml:13:17-124
+165                android:value="com.google.firebase.components.ComponentRegistrar" />
+165-->[com.google.mlkit:vision-common:17.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\19f0f43aabd601ca53374840b69d6a5e\jetified-vision-common-17.0.0\AndroidManifest.xml:14:17-82
+166            <meta-data
+166-->[com.google.mlkit:common:18.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\cd457c1b74bdcd8eb1f8ed1cd0edb60e\jetified-common-18.0.0\AndroidManifest.xml:20:13-22:85
+167                android:name="com.google.firebase.components:com.google.mlkit.common.internal.CommonComponentRegistrar"
+167-->[com.google.mlkit:common:18.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\cd457c1b74bdcd8eb1f8ed1cd0edb60e\jetified-common-18.0.0\AndroidManifest.xml:21:17-120
+168                android:value="com.google.firebase.components.ComponentRegistrar" />
+168-->[com.google.mlkit:common:18.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\cd457c1b74bdcd8eb1f8ed1cd0edb60e\jetified-common-18.0.0\AndroidManifest.xml:22:17-82
+169        </service>
 170
-171        <activity
-171-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\bf0e5aa3395afeac256a40fe94a44c93\jetified-play-services-base-18.0.1\AndroidManifest.xml:20:9-22:45
-172            android:name="com.google.android.gms.common.api.GoogleApiActivity"
-172-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\bf0e5aa3395afeac256a40fe94a44c93\jetified-play-services-base-18.0.1\AndroidManifest.xml:20:19-85
-173            android:exported="false"
-173-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\bf0e5aa3395afeac256a40fe94a44c93\jetified-play-services-base-18.0.1\AndroidManifest.xml:22:19-43
-174            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-174-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\bf0e5aa3395afeac256a40fe94a44c93\jetified-play-services-base-18.0.1\AndroidManifest.xml:21:19-78
-175
-176        <service
-176-->[com.google.android.datatransport:transport-backend-cct:2.3.3] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\b0b07d668fb05669fea93be346cdaca2\jetified-transport-backend-cct-2.3.3\AndroidManifest.xml:29:9-35:19
-177            android:name="com.google.android.datatransport.runtime.backends.TransportBackendDiscovery"
-177-->[com.google.android.datatransport:transport-backend-cct:2.3.3] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\b0b07d668fb05669fea93be346cdaca2\jetified-transport-backend-cct-2.3.3\AndroidManifest.xml:30:13-103
-178            android:exported="false" >
-178-->[com.google.android.datatransport:transport-backend-cct:2.3.3] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\b0b07d668fb05669fea93be346cdaca2\jetified-transport-backend-cct-2.3.3\AndroidManifest.xml:31:13-37
-179            <meta-data
-179-->[com.google.android.datatransport:transport-backend-cct:2.3.3] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\b0b07d668fb05669fea93be346cdaca2\jetified-transport-backend-cct-2.3.3\AndroidManifest.xml:32:13-34:39
-180                android:name="backend:com.google.android.datatransport.cct.CctBackendFactory"
-180-->[com.google.android.datatransport:transport-backend-cct:2.3.3] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\b0b07d668fb05669fea93be346cdaca2\jetified-transport-backend-cct-2.3.3\AndroidManifest.xml:33:17-94
-181                android:value="cct" />
-181-->[com.google.android.datatransport:transport-backend-cct:2.3.3] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\b0b07d668fb05669fea93be346cdaca2\jetified-transport-backend-cct-2.3.3\AndroidManifest.xml:34:17-36
-182        </service>
-183        <service
-183-->[com.google.android.datatransport:transport-runtime:2.2.6] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\0b67044ceabbcacea62e90fd6e1fc6a0\jetified-transport-runtime-2.2.6\AndroidManifest.xml:26:9-30:19
-184            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService"
-184-->[com.google.android.datatransport:transport-runtime:2.2.6] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\0b67044ceabbcacea62e90fd6e1fc6a0\jetified-transport-runtime-2.2.6\AndroidManifest.xml:27:13-117
-185            android:exported="false"
-185-->[com.google.android.datatransport:transport-runtime:2.2.6] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\0b67044ceabbcacea62e90fd6e1fc6a0\jetified-transport-runtime-2.2.6\AndroidManifest.xml:28:13-37
-186            android:permission="android.permission.BIND_JOB_SERVICE" >
-186-->[com.google.android.datatransport:transport-runtime:2.2.6] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\0b67044ceabbcacea62e90fd6e1fc6a0\jetified-transport-runtime-2.2.6\AndroidManifest.xml:29:13-69
-187        </service>
-188
-189        <receiver
-189-->[com.google.android.datatransport:transport-runtime:2.2.6] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\0b67044ceabbcacea62e90fd6e1fc6a0\jetified-transport-runtime-2.2.6\AndroidManifest.xml:32:9-34:40
-190            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver"
-190-->[com.google.android.datatransport:transport-runtime:2.2.6] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\0b67044ceabbcacea62e90fd6e1fc6a0\jetified-transport-runtime-2.2.6\AndroidManifest.xml:33:13-132
-191            android:exported="false" />
-191-->[com.google.android.datatransport:transport-runtime:2.2.6] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\0b67044ceabbcacea62e90fd6e1fc6a0\jetified-transport-runtime-2.2.6\AndroidManifest.xml:34:13-37
-192    </application>
-193
-194</manifest>
+171        <provider
+171-->[com.google.mlkit:common:18.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\cd457c1b74bdcd8eb1f8ed1cd0edb60e\jetified-common-18.0.0\AndroidManifest.xml:9:9-13:38
+172            android:name="com.google.mlkit.common.internal.MlKitInitProvider"
+172-->[com.google.mlkit:common:18.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\cd457c1b74bdcd8eb1f8ed1cd0edb60e\jetified-common-18.0.0\AndroidManifest.xml:10:13-78
+173            android:authorities="com.lindum.mlkit.vision.dev.mlkitinitprovider"
+173-->[com.google.mlkit:common:18.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\cd457c1b74bdcd8eb1f8ed1cd0edb60e\jetified-common-18.0.0\AndroidManifest.xml:11:13-69
+174            android:exported="false"
+174-->[com.google.mlkit:common:18.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\cd457c1b74bdcd8eb1f8ed1cd0edb60e\jetified-common-18.0.0\AndroidManifest.xml:12:13-37
+175            android:initOrder="99" />
+175-->[com.google.mlkit:common:18.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\cd457c1b74bdcd8eb1f8ed1cd0edb60e\jetified-common-18.0.0\AndroidManifest.xml:13:13-35
+176
+177        <activity
+177-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\bf0e5aa3395afeac256a40fe94a44c93\jetified-play-services-base-18.0.1\AndroidManifest.xml:20:9-22:45
+178            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+178-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\bf0e5aa3395afeac256a40fe94a44c93\jetified-play-services-base-18.0.1\AndroidManifest.xml:20:19-85
+179            android:exported="false"
+179-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\bf0e5aa3395afeac256a40fe94a44c93\jetified-play-services-base-18.0.1\AndroidManifest.xml:22:19-43
+180            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+180-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\bf0e5aa3395afeac256a40fe94a44c93\jetified-play-services-base-18.0.1\AndroidManifest.xml:21:19-78
+181
+182        <service
+182-->[com.google.android.datatransport:transport-backend-cct:2.3.3] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\b0b07d668fb05669fea93be346cdaca2\jetified-transport-backend-cct-2.3.3\AndroidManifest.xml:29:9-35:19
+183            android:name="com.google.android.datatransport.runtime.backends.TransportBackendDiscovery"
+183-->[com.google.android.datatransport:transport-backend-cct:2.3.3] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\b0b07d668fb05669fea93be346cdaca2\jetified-transport-backend-cct-2.3.3\AndroidManifest.xml:30:13-103
+184            android:exported="false" >
+184-->[com.google.android.datatransport:transport-backend-cct:2.3.3] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\b0b07d668fb05669fea93be346cdaca2\jetified-transport-backend-cct-2.3.3\AndroidManifest.xml:31:13-37
+185            <meta-data
+185-->[com.google.android.datatransport:transport-backend-cct:2.3.3] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\b0b07d668fb05669fea93be346cdaca2\jetified-transport-backend-cct-2.3.3\AndroidManifest.xml:32:13-34:39
+186                android:name="backend:com.google.android.datatransport.cct.CctBackendFactory"
+186-->[com.google.android.datatransport:transport-backend-cct:2.3.3] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\b0b07d668fb05669fea93be346cdaca2\jetified-transport-backend-cct-2.3.3\AndroidManifest.xml:33:17-94
+187                android:value="cct" />
+187-->[com.google.android.datatransport:transport-backend-cct:2.3.3] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\b0b07d668fb05669fea93be346cdaca2\jetified-transport-backend-cct-2.3.3\AndroidManifest.xml:34:17-36
+188        </service>
+189        <service
+189-->[com.google.android.datatransport:transport-runtime:2.2.6] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\0b67044ceabbcacea62e90fd6e1fc6a0\jetified-transport-runtime-2.2.6\AndroidManifest.xml:26:9-30:19
+190            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService"
+190-->[com.google.android.datatransport:transport-runtime:2.2.6] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\0b67044ceabbcacea62e90fd6e1fc6a0\jetified-transport-runtime-2.2.6\AndroidManifest.xml:27:13-117
+191            android:exported="false"
+191-->[com.google.android.datatransport:transport-runtime:2.2.6] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\0b67044ceabbcacea62e90fd6e1fc6a0\jetified-transport-runtime-2.2.6\AndroidManifest.xml:28:13-37
+192            android:permission="android.permission.BIND_JOB_SERVICE" >
+192-->[com.google.android.datatransport:transport-runtime:2.2.6] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\0b67044ceabbcacea62e90fd6e1fc6a0\jetified-transport-runtime-2.2.6\AndroidManifest.xml:29:13-69
+193        </service>
+194
+195        <receiver
+195-->[com.google.android.datatransport:transport-runtime:2.2.6] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\0b67044ceabbcacea62e90fd6e1fc6a0\jetified-transport-runtime-2.2.6\AndroidManifest.xml:32:9-34:40
+196            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver"
+196-->[com.google.android.datatransport:transport-runtime:2.2.6] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\0b67044ceabbcacea62e90fd6e1fc6a0\jetified-transport-runtime-2.2.6\AndroidManifest.xml:33:13-132
+197            android:exported="false" />
+197-->[com.google.android.datatransport:transport-runtime:2.2.6] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\0b67044ceabbcacea62e90fd6e1fc6a0\jetified-transport-runtime-2.2.6\AndroidManifest.xml:34:13-37
+198    </application>
+199
+200</manifest>

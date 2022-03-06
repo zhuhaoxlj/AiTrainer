@@ -9,11 +9,12 @@ import androidx.annotation.RequiresApi;
 import androidx.annotation.WorkerThread;
 
 import com.google.common.base.Preconditions;
-import com.lindum.mlkit.vision.dev.CameraXLivePreviewActivity;
-import com.lindum.mlkit.vision.dev.posedetector.PoseAngleDetector;
-import com.lindum.mlkit.vision.dev.entity.PoseEntity;
-import com.lindum.mlkit.vision.dev.posedetector.PosePart;
 import com.google.mlkit.vision.pose.Pose;
+import com.lindum.mlkit.vision.dev.CameraXLivePreviewActivity;
+import com.lindum.mlkit.vision.dev.entity.PoseEntity;
+import com.lindum.mlkit.vision.dev.posedetector.PoseAngleDetector;
+import com.lindum.mlkit.vision.dev.posedetector.PosePart;
+import com.orhanobut.logger.Logger;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -277,7 +278,12 @@ public class PoseClassifierProcessor {
                     maxConfidenceClass,
                     classification.getClassConfidence(maxConfidenceClass)
                             / poseClassifier.confidenceRange());
-//            Logger.e(classification.getClassConfidence(maxConfidenceClass) + "");
+            float confidence = classification.getClassConfidence(maxConfidenceClass) / poseClassifier.confidenceRange();
+            CameraXLivePreviewActivity.confidence = confidence;
+            if (confidence < 0.9) {
+                CameraXLivePreviewActivity.confidenceNotOne = false;
+            }
+            Logger.e(confidence + "");
             result.add(maxConfidenceClassResult);
             result.add("\n");
             result.add("\n");

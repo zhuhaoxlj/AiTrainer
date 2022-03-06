@@ -73,7 +73,7 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
     private Handler addImageHandle;
     final int userInfoIntentCode = 1;
     ActivityResultLauncher<Intent> intentActivityResultLauncher;
-    static List<PoseEntity> poseEntityArrayList;
+    public static List<PoseEntity> poseEntityArrayList;
     private ViewPager viewPager;
     private View view1, view2, view3, view4;
     private boolean isFirstUseApp = true;
@@ -97,8 +97,8 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
      */
     public static String[] titles = new String[]{
             "生命在于运动'",
-            "无心法师:生死离别!月牙遭虐杀",
-            "花千骨:尊上沦为花千骨",
+            "运动使人健康",
+            "运动是一切生命的源泉",
     };
     @Titles
     private static final String[] TABBAR_TITLES = {"主页", "社区", "动作库", "个人"};

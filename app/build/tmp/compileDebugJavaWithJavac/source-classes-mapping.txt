@@ -52,6 +52,9 @@ com/lindum/mlkit/vision/dev/posedetector/PosePart.java
  com.lindum.mlkit.vision.dev.posedetector.PosePart
 com/lindum/mlkit/vision/dev/ScopedExecutor.java
  com.lindum.mlkit.vision.dev.ScopedExecutor
+com/lindum/mlkit/vision/dev/datacenter/StepsCount.java
+ com.lindum.mlkit.vision.dev.datacenter.StepsCount
+ com.lindum.mlkit.vision.dev.datacenter.StepsCount$MySensorEventListener
 com/lindum/mlkit/vision/dev/utils/GetPermissionUtils.java
  com.lindum.mlkit.vision.dev.utils.GetPermissionUtils
 com/lindum/mlkit/vision/dev/view/FoodEntity.java
@@ -191,7 +194,8 @@ com/lindum/mlkit/vision/dev/CameraXLivePreviewActivity.java
  com.lindum.mlkit.vision.dev.CameraXLivePreviewActivity$1
  com.lindum.mlkit.vision.dev.CameraXLivePreviewActivity$2
  com.lindum.mlkit.vision.dev.CameraXLivePreviewActivity$3
- com.lindum.mlkit.vision.dev.CameraXLivePreviewActivity$3$1
+ com.lindum.mlkit.vision.dev.CameraXLivePreviewActivity$4
+ com.lindum.mlkit.vision.dev.CameraXLivePreviewActivity$4$1
 com/lindum/mlkit/vision/dev/datacenter/Calendar.java
  com.lindum.mlkit.vision.dev.datacenter.Calendar
 com/lindum/mlkit/vision/dev/datacenter/BaseActivity.java

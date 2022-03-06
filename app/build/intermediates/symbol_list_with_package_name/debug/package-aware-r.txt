@@ -4521,6 +4521,7 @@ id tv_lunar
 id tv_message
 id tv_month_day
 id tv_start
+id tv_step
 id tv_tag
 id tv_tag_item
 id tv_tinted_spinner
@@ -4775,6 +4776,7 @@ layout select_sports_preference
 layout settings_style
 layout spinner_style
 layout start_page
+layout steps
 layout support_simple_spinner_dropdown_item
 layout test_action_chip
 layout test_chip_zero_corner_radius

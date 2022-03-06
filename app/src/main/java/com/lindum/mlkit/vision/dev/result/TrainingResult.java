@@ -17,7 +17,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.lindum.mlkit.vision.dev.CameraXLivePreviewActivity;
 import com.lindum.mlkit.vision.dev.R;
-import com.orhanobut.logger.Logger;
 import com.xuexiang.xui.widget.progress.CircleProgressView;
 import com.xuexiang.xui.widget.progress.HorizontalProgressView;
 
@@ -25,7 +24,13 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -35,6 +40,7 @@ import butterknife.ButterKnife;
  * @date 2022/1/27 8:25
  */
 public class TrainingResult extends AppCompatActivity implements HorizontalProgressView.HorizontalProgressUpdateListener, CircleProgressView.CircleProgressUpdateListener {
+    private Map<String, Integer> poseResultMap = new HashMap<>();
     public static List<String> resultName = new ArrayList<>();
     public static List<Bitmap> resultImage = new ArrayList<>();
     public static List<String> resultTips = new ArrayList<>();
@@ -74,15 +80,41 @@ public class TrainingResult extends AppCompatActivity implements HorizontalProgr
         setContentView(R.layout.training_result);
         ButterKnife.bind(this);
         Intent intent = getIntent();
+        // 识别结果数组
         List<ResultEntity> resultEntityList = new ArrayList<>();
         for (String tips : resultTips) {
             int index = resultTips.indexOf(tips);
-            if (tips.length() < 3) {
-                break;
+            tips = index + tips;
+            if (poseResultMap.get(tips) == null) {
+                poseResultMap.put(tips, 1);
+            } else {
+                poseResultMap.replace(tips, poseResultMap.get(tips) + 1);
             }
-            ResultEntity temp = new ResultEntity(resultName.get(index), tips.substring(1, tips.length()), resultImage.get(index), resultImage.get(index));
-            resultEntityList.add(temp);
         }
+        List<Map.Entry<String, Integer>> list = new ArrayList<>(poseResultMap.entrySet());
+        list.sort(Comparator.comparing(Map.Entry::getValue));
+        Collections.reverse(list);
+        Map<String, Integer> map2 = new LinkedHashMap<>();
+        for (Map.Entry<String, Integer> entry : list) {
+            map2.put(entry.getKey(), entry.getValue());
+        }
+        map2.forEach((o1, o2) -> {
+            if (o1.length() > 3) {
+                int index = Integer.parseInt(o1.split("，")[0]);
+                ResultEntity temp = new ResultEntity(resultName.get(index), resultTips.get(index).substring(1, resultTips.get(index).length()) + "\n" + "出错" + o2 + "次", resultImage.get(index), resultImage.get(index));
+                resultEntityList.add(temp);
+            }
+        });
+
+        // 将识别结果放入列表数组中
+//        for (String tips : resultTips) {
+//            int index = resultTips.indexOf(tips);
+//            if (tips.length() < 3) {
+//                break;
+//            }
+//            ResultEntity temp = new ResultEntity(resultName.get(index), tips.substring(1, tips.length()), resultImage.get(index), resultImage.get(index));
+//            resultEntityList.add(temp);
+//        }
         // 初始化控件
         listView = findViewById(R.id.resultList);
         ResultListAdapter resultListAdapter = new ResultListAdapter(this, R.layout.result_list_item, resultEntityList);
