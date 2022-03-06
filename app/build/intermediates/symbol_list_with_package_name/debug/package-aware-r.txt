@@ -4494,6 +4494,8 @@ id titlebar
 id toast_icon
 id toast_root
 id toast_text
+id todaySteps
+id todayStepsGoal
 id toggle
 id top
 id topPanel

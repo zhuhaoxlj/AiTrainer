@@ -40,7 +40,7 @@ public class UpdateUserInfo {
      * @param createTable 创建tableSQL语句
      */
     public void createTable(String createTable) {
-        Statement statement = null;
+        Statement statement;
         try {
             // 建立连接
             Connection connection = DriverManager.getConnection("jdbc:mysql://47.102.122.203:3306/aitrainer", "aitrainer", "jay666..");
@@ -94,8 +94,8 @@ public class UpdateUserInfo {
             File jsonFile = new File(fileName);
             FileReader fileReader = new FileReader(jsonFile);
             Reader reader = new InputStreamReader(new FileInputStream(jsonFile), StandardCharsets.UTF_8);
-            int ch = 0;
-            StringBuffer sb = new StringBuffer();
+            int ch;
+            StringBuilder sb = new StringBuilder();
             while ((ch = reader.read()) != -1) {
                 sb.append((char) ch);
             }
@@ -123,7 +123,7 @@ public class UpdateUserInfo {
             String s = readJsonFile(jsonPath);
             JSONObject jsonObject = JSON.parseObject(s);
             JSONArray poseEntity = jsonObject.getJSONArray("userEntities");
-            String sql = null;
+            String sql;
             for (Object o : poseEntity) {
                 JSONObject key = (JSONObject) o;
 
@@ -186,8 +186,8 @@ public class UpdateUserInfo {
      */
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void writeInClass(UserEntity userEntity) {
-        PreparedStatement preparedStatement = null;
-        String sql = null;
+        PreparedStatement preparedStatement;
+        String sql;
         try {
             // 建立连接
             Connection connection = DriverManager.getConnection("jdbc:mysql://47.102.122.203:3306/aitrainer", "aitrainer", "jay666..");
@@ -196,7 +196,7 @@ public class UpdateUserInfo {
 
             //1
             String userUniqueId = (String) jsonObject.get("userUniqueId");
-            if (search(userUniqueId) == null) {
+            if (select(userUniqueId) == 0) {
                 //2
                 String profileImageUrl = (String) jsonObject.get("profileImageUrl");
                 //3
@@ -270,6 +270,63 @@ public class UpdateUserInfo {
     }
 
     /**
+     * 读取resultSet中的userEntity
+     *
+     * @param resultSet 导入需要读取的resultSet
+     * @return 返回读取到的userEntity
+     */
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public UserEntity getUserEntity(ResultSet resultSet) {
+        try {
+            // 建立连接
+            UserEntity userEntity = new UserEntity();
+
+            String nickName = resultSet.getString("nickName");
+            userEntity.setNickName(nickName);
+
+            String profileImageUrl = resultSet.getString("profileImageUrl");
+            userEntity.setProfileImageUrl(profileImageUrl);
+
+            String region = resultSet.getString("region");
+            userEntity.setRegion(region);
+
+            String profile = resultSet.getString("profile");
+            userEntity.setProfile(profile);
+
+            String sex = resultSet.getString("sex");
+            userEntity.setSex(sex);
+
+            String sportsPreferenceStr = resultSet.getString("sportsPreference");
+
+            if (resultSet.getString("sportsPreference") != null) {
+                String[] sportsPreference = sportsPreferenceStr.replace("[", "").replace("]", "").split(",");
+                userEntity.setSportsPreference(sportsPreference);
+            }
+
+            if (resultSet.getString("birthDay") != null) {
+                String birthDayStr = resultSet.getString("birthDay");
+                DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+                LocalDate birthDay = LocalDate.parse(birthDayStr, dateTimeFormatter);
+                userEntity.setBirthDay(birthDay);
+            }
+
+            float height = resultSet.getFloat("height");
+            userEntity.setHeight(height);
+
+            float weight = resultSet.getFloat("weight");
+            userEntity.setWeight(weight);
+
+            String userUniqueId = resultSet.getString("userUniqueId");
+            userEntity.setUserUniqueId(userUniqueId);
+            // 关闭连接
+            return userEntity;
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
+    }
+
+    /**
      * 读表函数
      *
      * @return poseEntityList
@@ -278,8 +335,8 @@ public class UpdateUserInfo {
     @RequiresApi(api = Build.VERSION_CODES.O)
     public List<UserEntity> readTable() {
         List<UserEntity> userEntityList = new ArrayList<>();
-        PreparedStatement preparedStatement = null;
-        ResultSet resultSet = null;
+        PreparedStatement preparedStatement;
+        ResultSet resultSet;
         try {
             // 建立连接
             Connection connection = DriverManager.getConnection("jdbc:mysql://47.102.122.203:3306/aitrainer", "aitrainer", "jay666..");
@@ -287,47 +344,7 @@ public class UpdateUserInfo {
             preparedStatement = connection.prepareStatement(sql);
             resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                UserEntity userEntity = new UserEntity();
-
-                String nickName = resultSet.getString("nickName");
-                userEntity.setNickName(nickName);
-
-                String profileImageUrl = resultSet.getString("profileImageUrl");
-                userEntity.setProfileImageUrl(profileImageUrl);
-
-                String region = resultSet.getString("region");
-                userEntity.setRegion(region);
-
-                String profile = resultSet.getString("profile");
-                userEntity.setProfile(profile);
-
-                String sex = resultSet.getString("sex");
-                userEntity.setSex(sex);
-
-                String sportsPreferenceStr = resultSet.getString("sportsPreference");
-
-                if (resultSet.getString("sportsPreference") != null) {
-                    String[] sportsPreference = sportsPreferenceStr.replace("[", "").replace("]", "").split(",");
-                    userEntity.setSportsPreference(sportsPreference);
-                }
-
-                if (resultSet.getString("birthDay") != null) {
-                    String birthDayStr = resultSet.getString("birthDay");
-                    DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-                    LocalDate birthDay = LocalDate.parse(birthDayStr, dateTimeFormatter);
-                    userEntity.setBirthDay(birthDay);
-                }
-
-                float height = resultSet.getFloat("height");
-                userEntity.setHeight(height);
-
-                float weight = resultSet.getFloat("weight");
-                userEntity.setWeight(weight);
-
-                String userUniqueId = resultSet.getString("userUniqueId");
-                userEntity.setUserUniqueId(userUniqueId);
-
-                userEntityList.add(userEntity);
+                userEntityList.add(getUserEntity(resultSet));
             }
             // 关闭连接
             preparedStatement.close();
@@ -347,9 +364,9 @@ public class UpdateUserInfo {
      * @return 返回删除结果 1为删除成功
      */
     public int delete(String userUniqueId) {
-        PreparedStatement preparedStatement = null;
+        PreparedStatement preparedStatement;
 
-        String sql = null;
+        String sql;
         try {
             // 建立连接
             Connection connection = DriverManager.getConnection("jdbc:mysql://47.102.122.203:3306/aitrainer", "aitrainer", "jay666..");
@@ -381,50 +398,12 @@ public class UpdateUserInfo {
             ResultSet resultSet = preparedStatement.executeQuery();
             ResultSetMetaData resultSetMetaData = resultSet.getMetaData();
             int columnCount = resultSetMetaData.getColumnCount();
-            UserEntity userEntity = null;
+            UserEntity userEntity = new UserEntity();
             while (resultSet.next()) {
                 for (int i = 1; i <= columnCount; i++) {
-                    userEntity = new UserEntity();
-                    String nickName = resultSet.getString("nickName");
-                    userEntity.setNickName(nickName);
-
-                    String profileImageUrl = resultSet.getString("profileImageUrl");
-                    userEntity.setProfileImageUrl(profileImageUrl);
-
-                    String region = resultSet.getString("region");
-                    userEntity.setRegion(region);
-
-                    String profile = resultSet.getString("profile");
-                    userEntity.setProfile(profile);
-
-                    String sex = resultSet.getString("sex");
-                    userEntity.setSex(sex);
-
-                    String sportsPreferenceStr = resultSet.getString("sportsPreference");
-
-                    if (resultSet.getString("sportsPreference") != null) {
-                        String[] sportsPreference = sportsPreferenceStr.replace("[", "").replace("]", "").split(",");
-                        userEntity.setSportsPreference(sportsPreference);
-                    }
-
-                    if (resultSet.getString("birthDay") != null) {
-                        String birthDayStr = resultSet.getString("birthDay");
-                        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-                        LocalDate birthDay = LocalDate.parse(birthDayStr, dateTimeFormatter);
-                        userEntity.setBirthDay(birthDay);
-                    }
-
-                    float height = resultSet.getFloat("height");
-                    userEntity.setHeight(height);
-
-                    float weight = resultSet.getFloat("weight");
-                    userEntity.setWeight(weight);
-
-                    userEntity.setUserUniqueId(userUniqueId);
+                    userEntity = getUserEntity(resultSet);
                 }
-
             }
-
             // 关闭连接
             connection.close();
             return userEntity;
@@ -435,18 +414,41 @@ public class UpdateUserInfo {
 
     }
 
+    /**
+     * @param userUniqueId 要查找的数据的 userUniqueId
+     * @return 返回查找到的行数
+     */
+    public int select(String userUniqueId) {
+        try {
+            // 建立连接
+            Connection connection = DriverManager.getConnection("jdbc:mysql://47.102.122.203:3306/aitrainer", "aitrainer", "jay666..");
+            String sql = "select * from userEntity where userUniqueId = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setObject(1, userUniqueId);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            int count = 0;
+            while (resultSet.next()) {
+                count++;
+            }
+            // 关闭连接
+            connection.close();
+            return count;
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return 0;
+        }
+    }
 
     /**
      * @param userUniqueId 要修改的列的 userUniqueId
      * @param variableName 要修改的属性
      * @param object       修改后的属性的值
      */
-    @RequiresApi(api = Build.VERSION_CODES.O)
     public void upDate(String userUniqueId, String variableName, Object object) {
         try {
-            // 建立连接zhon
+            // 建立连接
             Connection connection = DriverManager.getConnection("jdbc:mysql://47.102.122.203:3306/aitrainer", "aitrainer", "jay666..");
-            if (search(userUniqueId) == null) {
+            if (select(userUniqueId) == 0) {
                 System.out.println("该动作不存在");
             } else {
                 String sql = "update userEntity set " + variableName + " = ? where userUniqueId = ?";

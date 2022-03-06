@@ -31,15 +31,16 @@ public class StepsCount extends Activity {
         mStepTV = findViewById(R.id.tv_step);
         mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         mListener = new MySensorEventListener();
+        mSensorManager.registerListener(mListener, mSensorManager.getDefaultSensor(Sensor.TYPE_STEP_DETECTOR),
+                SensorManager.SENSOR_DELAY_NORMAL);
+        mSensorManager.registerListener(mListener, mSensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER),
+                SensorManager.SENSOR_DELAY_NORMAL);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        mSensorManager.registerListener(mListener, mSensorManager.getDefaultSensor(Sensor.TYPE_STEP_DETECTOR),
-                SensorManager.SENSOR_DELAY_NORMAL);
-        mSensorManager.registerListener(mListener, mSensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER),
-                SensorManager.SENSOR_DELAY_NORMAL);
+
     }
 
     @Override
@@ -51,7 +52,6 @@ public class StepsCount extends Activity {
     class MySensorEventListener implements SensorEventListener {
         @Override
         public void onSensorChanged(SensorEvent event) {
-            System.out.println("@@@:" + event.sensor.getType() + "--" + Sensor.TYPE_STEP_DETECTOR + "--" + Sensor.TYPE_STEP_COUNTER);
             if (event.sensor.getType() == Sensor.TYPE_STEP_DETECTOR) {
                 if (event.values[0] == 1.0f) {
                     mStepDetector++;

@@ -197,7 +197,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_above="@+id/sportsTime"
+                    android:layout_above="@+id/todaySteps"
                     android:layout_marginStart="30dp"
                     android:layout_marginBottom="10dp"
                     android:text="今日步数"
@@ -205,7 +205,7 @@
                     android:textSize="25sp" />
 
                 <TextView
-                    android:id="@+id/sportsTime"
+                    android:id="@+id/todaySteps"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
@@ -215,9 +215,10 @@
                     android:textSize="23sp" />
 
                 <TextView
+                    android:id="@+id/todayStepsGoal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/sportsTime"
+                    android:layout_below="@+id/todaySteps"
                     android:layout_marginStart="30dp"
                     android:layout_marginTop="10dp"
                     android:text="目标3500步"

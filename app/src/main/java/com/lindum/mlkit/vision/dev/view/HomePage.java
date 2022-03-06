@@ -1,9 +1,14 @@
 package com.lindum.mlkit.vision.dev.view;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -77,6 +82,11 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
     private ViewPager viewPager;
     private View view1, view2, view3, view4;
     private boolean isFirstUseApp = true;
+    private TextView todaySteps;
+    // 传感器管理类
+    private SensorManager sensorManager;
+    // 步数统计传感器监听
+    private MySensorEventListener mySensorEventListener;
     /**
      * 存放视图的数组
      */
@@ -223,7 +233,19 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
             Intent intent = new Intent(HomePage.this, ProgressActivity.class);
             startActivity(intent);
         });
+        // 初始化步数监听
+        initStepsCount();
+        // 初始化控件
+        todaySteps = view4.findViewById(R.id.todaySteps);
+    }
 
+    public void initStepsCount() {
+        sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+        mySensorEventListener = new MySensorEventListener();
+        sensorManager.registerListener(mySensorEventListener, sensorManager.getDefaultSensor(Sensor.TYPE_STEP_DETECTOR),
+                SensorManager.SENSOR_DELAY_NORMAL);
+        sensorManager.registerListener(mySensorEventListener, sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER),
+                SensorManager.SENSOR_DELAY_NORMAL);
     }
 
     /**
@@ -496,5 +518,31 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
         startActivity(intent);
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        sensorManager.unregisterListener(mySensorEventListener);
+    }
 
+    class MySensorEventListener implements SensorEventListener {
+        private int mStepDetector = 0;  // 自应用运行以来STEP_DETECTOR检测到的步数
+        private int mStepCounter = 0;   // 自系统开机以来STEP_COUNTER检测到的步数
+
+        @SuppressLint("SetTextI18n")
+        @Override
+        public void onSensorChanged(SensorEvent event) {
+            if (event.sensor.getType() == Sensor.TYPE_STEP_DETECTOR) {
+                if (event.values[0] == 1.0f) {
+                    mStepDetector++;
+                }
+            } else if (event.sensor.getType() == Sensor.TYPE_STEP_COUNTER) {
+                mStepCounter = (int) event.values[0];
+            }
+            todaySteps.setText(mStepCounter + " 步");
+        }
+
+        @Override
+        public void onAccuracyChanged(Sensor sensor, int accuracy) {
+        }
+    }
 }

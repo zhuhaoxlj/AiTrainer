@@ -404,31 +404,18 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
             Logger.e("初始化中...");
             if (i == TextToSpeech.SUCCESS) {
                 Logger.e("语音初始化成功");
+                if (nowPoseIndex == 0) {
+                    textToSpeech.setSpeechRate(0.1f);
+                    textToSpeech.speak("第一个动作，" + poseEntityList.get(nowPoseIndex).getPoseName(), TextToSpeech.QUEUE_ADD, null);
+
+                }
+
             } else {
                 Logger.e("语音初始化失败");
             }
         });
 
 
-        // 语音助手提示
-        Handler voiceAssistantHandler = new Handler();
-        Runnable voiceAssistantRunnable = new Runnable() {
-            @Override
-            public void run() {
-                // 已经提醒过呼吸方法
-                if(!isRemindedBreathingMethods){
-                isRemindedBreathingMethods = true;
-                    try {
-                        Thread.sleep(6000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                    textToSpeech.speak(poseEntityList.get(nowPoseIndex).getBreathTips() == null ? "注意均匀呼吸，不要憋气" : poseEntityList.get(nowPoseIndex).getBreathTips(), TextToSpeech.QUEUE_FLUSH, null);
-                    voiceAssistantHandler.postDelayed(this, 1000);
-                }
-            }
-        };
-        voiceAssistantHandler.post(voiceAssistantRunnable);
     }
 
     public static void cleanWarnPart() {
@@ -465,13 +452,28 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
             public void run() {
                 warnPart.clear();
                 updatePoseInfo();
-                if (countdownSeconds >= 0) {
-                    countdownSecondsTextView.setVisibility(View.VISIBLE);
-                    countdownSeconds--;
-                }
-                if (countdownSeconds == -1) {
-                    countdownSecondsTextView.setVisibility(View.INVISIBLE);
-                }
+//                if (countdownSeconds >= 0) {
+//                    countdownSecondsTextView.setVisibility(View.VISIBLE);
+//                    textToSpeech.speak(countdownSeconds + "", TextToSpeech.QUEUE_ADD, null);
+//                    countdownSeconds--;
+//                }
+//                if (countdownSeconds == -1) {
+//                    countdownSecondsTextView.setVisibility(View.INVISIBLE);
+//                    // 语音助手提示
+//                    Handler voiceAssistantHandle = new Handler();
+//                    Runnable voiceAssistantRunnable = new Runnable() {
+//                        @Override
+//                        public void run() {
+//                            voiceAssistantHandle.postDelayed(this, 8000);
+//                            // 已经提醒过呼吸方法
+//                            if (!isRemindedBreathingMethods) {
+//                                textToSpeech.speak(poseEntityList.get(nowPoseIndex).getBreathTips() == null ? "注意均匀呼吸，不要憋气" : poseEntityList.get(nowPoseIndex).getBreathTips(), TextToSpeech.QUEUE_ADD, null);
+//                                isRemindedBreathingMethods = true;
+//                            }
+//                        }
+//                    };
+//                    voiceAssistantHandle.post(voiceAssistantRunnable);
+//                }
                 // 现在动作进行的秒数增加
                 if (countdownSeconds == -1) {
                     nowPoseProcessSeconds++;
@@ -487,6 +489,7 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
         mHandler2.post(r2);
     }
 
+    @SuppressLint("SetTextI18n")
     public void updatePoseInfo() {
         // 更新姿势名称
         setNowPoseName(poseEntityList.get(nowPoseIndex).getPoseName());
@@ -500,8 +503,8 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
             // 更新当前动作进度 秒数
             poseProcessInfo.setText(nowPoseProcessSeconds + "\"");
         }
-        // 更新倒数秒数
-        countdownSecondsTextView.setText(countdownSeconds + "");
+//        // 更新倒数秒数
+//        countdownSecondsTextView.setText(countdownSeconds + "");
     }
 
     @Override
