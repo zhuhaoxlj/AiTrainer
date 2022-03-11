@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -12,10 +13,12 @@ import android.hardware.SensorManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -41,6 +44,7 @@ import com.jpeng.jptabbar.anno.SeleIcons;
 import com.jpeng.jptabbar.anno.Titles;
 import com.lindum.mlkit.vision.dev.CameraXLivePreviewActivity;
 import com.lindum.mlkit.vision.dev.R;
+import com.lindum.mlkit.vision.dev.datacenter.PersonalPlan;
 import com.lindum.mlkit.vision.dev.datacenter.ProgressActivity;
 import com.lindum.mlkit.vision.dev.entity.PoseEntity;
 import com.lindum.mlkit.vision.dev.entity.UserEntity;
@@ -56,6 +60,8 @@ import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xui.widget.banner.widget.banner.BannerItem;
 import com.xuexiang.xui.widget.banner.widget.banner.SimpleImageBanner;
 import com.xuexiang.xui.widget.dialog.materialdialog.MaterialDialog;
+import com.xuexiang.xui.widget.guidview.GuideCaseQueue;
+import com.xuexiang.xui.widget.guidview.GuideCaseView;
 
 import java.io.File;
 import java.io.IOException;
@@ -82,6 +88,8 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
     private ViewPager viewPager;
     private View view1, view2, view3, view4;
     private boolean isFirstUseApp = true;
+    //  JPTabBar
+    JPTabBar jpTabBar;
     private TextView todaySteps;
     // 传感器管理类
     private SensorManager sensorManager;
@@ -138,6 +146,7 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
     /**
      * 初始化软件
      */
+    @SuppressLint("ResourceType")
     public void init() {
         isFirstUseApp = isFirstUseApp();
         // 是否第一次使用软件
@@ -155,6 +164,8 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
                         GetPermissionUtils.getRuntimePermissions(this);
                     })
                     .show();
+            // 聚焦试图
+            guideView();
         }
         // 再次获取未授权权限
         if (!isFirstUseApp && !GetPermissionUtils.allPermissionsGranted(this)) {
@@ -223,8 +234,8 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
         initBanner();
         // 初始化食物列表
         initFoodList();
-        // 初始化底部 Tabbar
-        initTabbar();
+        // 初始化底部 TabBar
+        initTabBar();
         // 从数据库获取用户数据
         getUserInfoFromDateBase();
         // 日历按钮
@@ -237,6 +248,77 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
         initStepsCount();
         // 初始化控件
         todaySteps = view4.findViewById(R.id.todaySteps);
+        LinearLayout personalPlanButton = view4.findViewById(R.id.personalPlanButton);
+        personalPlanButton.setOnClickListener(view -> {
+            Intent intent = new Intent(HomePage.this, PersonalPlan.class);
+            startActivity(intent);
+        });
+    }
+
+    /**
+     * 聚焦视图
+     */
+    public void guideView() {
+        // 聚焦视图
+        // 训练中心按钮
+        LinearLayout trainButton = findViewById(R.id.trainButton);
+        GuideCaseView guideCaseView = new GuideCaseView.Builder(HomePage.this)
+                .focusCircleRadiusFactor(1.5)
+                .title("训练中心\n智能Ai教练为您矫正姿势")
+                .focusBorderColor(Color.GREEN)
+                .titleStyle(0, Gravity.CENTER)
+                .fitWindowsAuto()
+                .focusOn(trainButton)
+                .build();
+
+        // 主页
+        LinearLayout guideView1 = findViewById(R.id.guideView1);
+        GuideCaseView guideCaseView1 = new GuideCaseView.Builder(HomePage.this)
+                .focusCircleRadiusFactor(0.8)
+                .title("主页")
+                .focusBorderColor(Color.GREEN)
+                .titleStyle(0, Gravity.CENTER)
+                .fitWindowsAuto()
+                .focusOn(guideView1)
+                .build();
+        // 社区
+        LinearLayout guideView2 = findViewById(R.id.guideView2);
+        GuideCaseView guideCaseView2 = new GuideCaseView.Builder(HomePage.this)
+                .focusCircleRadiusFactor(0.8)
+                .title("社区")
+                .focusBorderColor(Color.GREEN)
+                .titleStyle(0, Gravity.CENTER)
+                .fitWindowsAuto()
+                .focusOn(guideView2)
+                .build();
+        // 动作库
+        LinearLayout guideView3 = findViewById(R.id.guideView3);
+        GuideCaseView guideCaseView3 = new GuideCaseView.Builder(HomePage.this)
+                .focusCircleRadiusFactor(0.8)
+                .title("动作库\n动作详细信息")
+                .focusBorderColor(Color.GREEN)
+                .titleStyle(0, Gravity.CENTER)
+                .fitWindowsAuto()
+                .focusOn(guideView3)
+                .build();
+        // 个人中心
+        LinearLayout guideView4 = findViewById(R.id.guideView4);
+        GuideCaseView guideCaseView4 = new GuideCaseView.Builder(HomePage.this)
+                .focusCircleRadiusFactor(0.8)
+                .title("个人中心\n查看")
+                .focusBorderColor(Color.GREEN)
+                .titleStyle(0, Gravity.CENTER)
+                .fitWindowsAuto()
+                .focusOn(guideView4)
+                .build();
+
+        GuideCaseQueue guideCaseQueue = new GuideCaseQueue();
+        guideCaseQueue.add(guideCaseView);
+        guideCaseQueue.add(guideCaseView1);
+        guideCaseQueue.add(guideCaseView2);
+        guideCaseQueue.add(guideCaseView3);
+        guideCaseQueue.add(guideCaseView4);
+        guideCaseQueue.show();
     }
 
     public void initStepsCount() {
@@ -325,6 +407,8 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
                     int index = poseEntityArrayList.indexOf(poseEntity);
                     arrayList.add(new PoseLibraryItem(index, poseEntity.getPoseName(), "", poseLibrarySwiperImageArrayList.get(index), "#000000"));
                 }
+                // 查看俯卧撑数据
+                Logger.e(poseEntityArrayList.get(3).getMonitorPosePartList().toString());
 
 
             }
@@ -345,11 +429,11 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
 
 
     /**
-     * 初始化底部 Tabbar，要在布局初始化之后调用
+     * 初始化底部 TabBar，要在布局初始化之后调用
      */
-    public void initTabbar() {
+    public void initTabBar() {
         final int personalPageIndex = 3;
-        JPTabBar jpTabBar = findViewById(R.id.tabbar);
+        jpTabBar = findViewById(R.id.tabbar);
         jpTabBar.setContainer(viewPager);
         // 设置未读消息红点
         jpTabBar.showBadge(3, "1", false);

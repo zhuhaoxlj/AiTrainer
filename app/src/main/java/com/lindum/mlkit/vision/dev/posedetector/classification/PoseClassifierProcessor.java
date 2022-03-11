@@ -30,6 +30,7 @@ import java.util.Locale;
 public class PoseClassifierProcessor {
     private static final String TAG = "PoseClassifierProcessor";
     //  private static final String POSE_SAMPLES_FILE = "pose/fitness_pose_samples.csv";
+    // // TODO: 2022/3/8 可以把这个设为静态成员变量，不同动作切换不同的文件生成不同的分类器 
     private static final String POSE_SAMPLES_FILE = "pose/fitness_pose_samples.csv";
 
     // Specify classes for which we want rep counting.
@@ -59,7 +60,7 @@ public class PoseClassifierProcessor {
         }
         loadPoseSamples(context);
     }
-
+    // // TODO: 2022/3/8  
     private void loadPoseSamples(Context context) {
         List<PoseSample> poseSamples = new ArrayList<>();
         try {
@@ -226,8 +227,9 @@ public class PoseClassifierProcessor {
                             else {
                                 nowFrameAngle = poseAngleDetector.getPoseAngleFromPartIndex(partIndex);
                             }
-                            if (!(nowFrameAngle > part.getFixedRange()[0] && nowFrameAngle < part.getFixedRange()[1])) {
+                            if (!(nowFrameAngle >= part.getFixedRange()[0] && nowFrameAngle <= part.getFixedRange()[1])) {
                                 // 固定部位不满足标准的时候报红，那么动态部位什么情况下报红呢？ todo 我觉得是超过这个动态的总范围就报红
+                                // // TODO: 2022/3/8 动态点不标红 
                                 CameraXLivePreviewActivity.addWarnPart(partIndex);
                                 Log.e("TESTANGLE", "当前角度" + nowFrameAngle + "部位:" + partIndex);
                                 fixedPartJudge = false;
@@ -246,6 +248,7 @@ public class PoseClassifierProcessor {
                             else {
                                 nowFrameAngle = poseAngleDetector.getPoseAngleFromPartIndex(partIndex);
                             }
+                            Logger.e("当前部位下标:"+partIndex+"当前角度:"+nowFrameAngle+"--第一个角度范围:"+part.getFirstStandardRange()[0]+","+"第二个角度范围:"+part.getFirstStandardRange()[1]);
                             // 判断当前的角度是否满足第一个标准
                             if (!(nowFrameAngle > part.getFirstStandardRange()[0] && nowFrameAngle < part.getFirstStandardRange()[1])) {
                                 dynamicPartJudge1 = false;

@@ -12,6 +12,7 @@
     <color name="blue">#4286f4</color>
     <color name="XUIBlue">#299de3</color>
     <color name="red">#f44242</color>
+    <color name="button">#f9b08e</color>
 
     <color name="app_color_theme_1">#EF5362</color> <!-- Grapefruit -->
     <color name="app_color_theme_2">#FE6D4B</color> <!-- Bittersweet -->

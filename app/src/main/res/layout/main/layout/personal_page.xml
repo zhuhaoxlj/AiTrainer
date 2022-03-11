@@ -239,6 +239,7 @@
         app:cardCornerRadius="12dp">
 
         <LinearLayout
+            android:id="@+id/personalPlanButton"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="#76abfb"

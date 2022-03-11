@@ -8,6 +8,9 @@ com/lindum/mlkit/vision/dev/posedetector/DrawLandmarkTools.java
  com.lindum.mlkit.vision.dev.posedetector.DrawLandmarkTools
 com/lindum/mlkit/vision/dev/view/SelectSportsPreference.java
  com.lindum.mlkit.vision.dev.view.SelectSportsPreference
+com/lindum/mlkit/vision/dev/datacenter/PersonalPlan.java
+ com.lindum.mlkit.vision.dev.datacenter.PersonalPlan
+ com.lindum.mlkit.vision.dev.datacenter.PersonalPlan$1
 com/lindum/mlkit/vision/dev/entity/UserEntity.java
  com.lindum.mlkit.vision.dev.entity.UserEntity
 com/lindum/mlkit/vision/dev/utils/FileUtils.java
@@ -30,6 +33,8 @@ com/lindum/mlkit/vision/dev/posedetector/classification/PoseEmbedding.java
  com.lindum.mlkit.vision.dev.posedetector.classification.PoseEmbedding
 com/lindum/mlkit/vision/dev/preference/LivePreviewPreferenceFragment.java
  com.lindum.mlkit.vision.dev.preference.LivePreviewPreferenceFragment
+com/lindum/mlkit/vision/dev/datacenter/circleprogress/utils/Constant.java
+ com.lindum.mlkit.vision.dev.datacenter.circleprogress.utils.Constant
 com/lindum/mlkit/vision/dev/posedetector/ProcessImage.java
  com.lindum.mlkit.vision.dev.posedetector.ProcessImage
  com.lindum.mlkit.vision.dev.posedetector.ProcessImage$1
@@ -51,6 +56,13 @@ com/lindum/mlkit/vision/dev/InferenceInfoGraphic.java
  com.lindum.mlkit.vision.dev.InferenceInfoGraphic
 com/lindum/mlkit/vision/dev/posedetector/PosePart.java
  com.lindum.mlkit.vision.dev.posedetector.PosePart
+com/lindum/mlkit/vision/dev/datacenter/circleprogress/WaveProgress.java
+ com.lindum.mlkit.vision.dev.datacenter.circleprogress.WaveProgress
+ com.lindum.mlkit.vision.dev.datacenter.circleprogress.WaveProgress$1
+ com.lindum.mlkit.vision.dev.datacenter.circleprogress.WaveProgress$2
+ com.lindum.mlkit.vision.dev.datacenter.circleprogress.WaveProgress$3
+ com.lindum.mlkit.vision.dev.datacenter.circleprogress.WaveProgress$4
+ com.lindum.mlkit.vision.dev.datacenter.circleprogress.WaveProgress$5
 com/lindum/mlkit/vision/dev/ScopedExecutor.java
  com.lindum.mlkit.vision.dev.ScopedExecutor
 com/lindum/mlkit/vision/dev/datacenter/StepsCount.java
@@ -83,6 +95,8 @@ com/lindum/mlkit/vision/dev/posedetector/classification/EMASmoothing.java
  com.lindum.mlkit.vision.dev.posedetector.classification.EMASmoothing
 com/lindum/mlkit/vision/dev/posedetector/classification/Utils.java
  com.lindum.mlkit.vision.dev.posedetector.classification.Utils
+com/lindum/mlkit/vision/dev/datacenter/circleprogress/DialProgress.java
+ com.lindum.mlkit.vision.dev.datacenter.circleprogress.DialProgress
 com/lindum/mlkit/vision/dev/PixelCopyHelper.java
  com.lindum.mlkit.vision.dev.PixelCopyHelper
  com.lindum.mlkit.vision.dev.PixelCopyHelper$1
@@ -169,6 +183,8 @@ com/lindum/mlkit/vision/dev/posedetector/classification/PoseClassifier.java
  com.lindum.mlkit.vision.dev.posedetector.classification.PoseClassifier
 com/lindum/mlkit/vision/dev/posedetector/PoseDataUtils.java
  com.lindum.mlkit.vision.dev.posedetector.PoseDataUtils
+com/lindum/mlkit/vision/dev/datacenter/circleprogress/utils/MiscUtil.java
+ com.lindum.mlkit.vision.dev.datacenter.circleprogress.utils.MiscUtil
 com/lindum/mlkit/vision/dev/ShotUtils.java
  com.lindum.mlkit.vision.dev.ShotUtils
  com.lindum.mlkit.vision.dev.ShotUtils$1
@@ -194,6 +210,7 @@ com/lindum/mlkit/vision/dev/CameraXLivePreviewActivity.java
  com.lindum.mlkit.vision.dev.CameraXLivePreviewActivity
  com.lindum.mlkit.vision.dev.CameraXLivePreviewActivity$1
  com.lindum.mlkit.vision.dev.CameraXLivePreviewActivity$2
+ com.lindum.mlkit.vision.dev.CameraXLivePreviewActivity$2$1
  com.lindum.mlkit.vision.dev.CameraXLivePreviewActivity$3
  com.lindum.mlkit.vision.dev.CameraXLivePreviewActivity$3$1
 com/lindum/mlkit/vision/dev/datacenter/Calendar.java
@@ -202,3 +219,6 @@ com/lindum/mlkit/vision/dev/datacenter/BaseActivity.java
  com.lindum.mlkit.vision.dev.datacenter.BaseActivity
 com/lindum/mlkit/vision/dev/datacenter/ProgressActivity.java
  com.lindum.mlkit.vision.dev.datacenter.ProgressActivity
+com/lindum/mlkit/vision/dev/datacenter/circleprogress/CircleProgress.java
+ com.lindum.mlkit.vision.dev.datacenter.circleprogress.CircleProgress
+ com.lindum.mlkit.vision.dev.datacenter.circleprogress.CircleProgress$1

@@ -17,6 +17,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.lindum.mlkit.vision.dev.CameraXLivePreviewActivity;
 import com.lindum.mlkit.vision.dev.R;
+import com.lindum.mlkit.vision.dev.entity.PoseEntity;
+import com.lindum.mlkit.vision.dev.view.HomePage;
 import com.xuexiang.xui.widget.progress.CircleProgressView;
 import com.xuexiang.xui.widget.progress.HorizontalProgressView;
 
@@ -24,6 +26,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -101,7 +104,13 @@ public class TrainingResult extends AppCompatActivity implements HorizontalProgr
         map2.forEach((o1, o2) -> {
             if (o1.length() > 3) {
                 int index = Integer.parseInt(o1.split("，")[0]);
-                ResultEntity temp = new ResultEntity(resultName.get(index), resultTips.get(index).substring(1, resultTips.get(index).length()) + "\n" + "出错" + o2 + "次", resultImage.get(index), resultImage.get(index));
+                String commonMistakes = "";
+                String solveMethod = "";
+                if (HomePage.poseEntityArrayList.get(getPoseIndexByName(resultName.get(index))).getCommonMistakes().length > 1) {
+                    commonMistakes = HomePage.poseEntityArrayList.get(getPoseIndexByName(resultName.get(index))).getCommonMistakes()[0];
+                    solveMethod = HomePage.poseEntityArrayList.get(getPoseIndexByName(resultName.get(index))).getCommonMistakes()[1].replace("解决：", "");
+                }
+                ResultEntity temp = new ResultEntity(resultName.get(index), "出错" + o2 + "次\n" + commonMistakes + "。" + "\nAi建议：" + "\n" + solveMethod + "。" + resultTips.get(index).substring(1, resultTips.get(index).length()) + "\n", resultImage.get(index), resultImage.get(index));
                 resultEntityList.add(temp);
             }
         });
@@ -150,6 +159,22 @@ public class TrainingResult extends AppCompatActivity implements HorizontalProgr
         progressViewCircleMain.setGraduatedEnabled(true);
         progressViewCircleMain.setProgressViewUpdateListener(this);
         startProcessBar();
+    }
+
+    /**
+     * 通过动作名称，查找该动作在动作库的下标
+     *
+     * @param poseName 动作名称
+     * @return 动作下标
+     */
+    public int getPoseIndexByName(String poseName) {
+        for (PoseEntity poseEntity : HomePage.poseEntityArrayList) {
+            int index = HomePage.poseEntityArrayList.indexOf(poseEntity);
+            if (poseEntity.getPoseName() == poseName) {
+                return index;
+            }
+        }
+        return -1;
     }
 
     public static void addResultData(Bitmap bitmap, String tip) {

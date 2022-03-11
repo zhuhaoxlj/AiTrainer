@@ -228,11 +228,18 @@ attr allowStacking
 attr alpha
 attr alphabeticModifiers
 attr altSrc
+attr animTime
 attr animate_relativeTo
 attr animationMode
+attr antiAlias
 attr appBarLayoutStyle
 attr applyMotionScene
+attr arcColor1
+attr arcColor2
+attr arcColor3
+attr arcColors
 attr arcMode
+attr arcWidth
 attr arrowHeadLength
 attr arrowShaftLength
 attr attributeName
@@ -302,6 +309,9 @@ attr behavior_overlapTop
 attr behavior_peekHeight
 attr behavior_saveFlags
 attr behavior_skipCollapsed
+attr bgArcColor
+attr bgArcWidth
+attr bgCircleColor
 attr bl_autoPlaying
 attr bl_centerScale
 attr bl_indicatorGravity
@@ -483,8 +493,10 @@ attr chipStrokeColor
 attr chipStrokeWidth
 attr chipStyle
 attr chipSurfaceColor
+attr circleColor
 attr circleCrop
 attr circleRadius
+attr circleWidth
 attr circularProgressIndicatorStyle
 attr civ_aspectRatioX
 attr civ_aspectRatioY
@@ -616,6 +628,8 @@ attr customIntegerValue
 attr customNavigationLayout
 attr customPixelDimension
 attr customStringValue
+attr darkWaveAnimTime
+attr darkWaveColor
 attr dayInvalidStyle
 attr daySelectedStyle
 attr dayStyle
@@ -644,6 +658,9 @@ attr default_status
 attr deltaPolarAngle
 attr deltaPolarRadius
 attr deriveConstraintsFrom
+attr dialColor
+attr dialIntervalDegree
+attr dialWidth
 attr dialogCornerRadius
 attr dialogPreferredPadding
 attr dialogTheme
@@ -804,8 +821,11 @@ attr hideAnimationBehavior
 attr hideMotionSpec
 attr hideOnContentScroll
 attr hideOnScroll
+attr hint
 attr hintAnimationEnabled
+attr hintColor
 attr hintEnabled
+attr hintSize
 attr hintTextAppearance
 attr hintTextColor
 attr homeAsUpIndicator
@@ -985,6 +1005,9 @@ attr layout_scrollInterpolator
 attr lensFacing
 attr liftOnScroll
 attr liftOnScrollTargetViewId
+attr lightWaveAnimTime
+attr lightWaveColor
+attr lightWaveDirect
 attr limitBoundsTo
 attr lineHeight
 attr lineSpacing
@@ -1004,6 +1027,7 @@ attr listPreferredItemPaddingEnd
 attr listPreferredItemPaddingLeft
 attr listPreferredItemPaddingRight
 attr listPreferredItemPaddingStart
+attr lockWave
 attr logo
 attr logoDescription
 attr lunar_text_size
@@ -1053,6 +1077,7 @@ attr maxCharacterCount
 attr maxHeight
 attr maxImageSize
 attr maxLines
+attr maxValue
 attr maxVelocity
 attr maxWidth
 attr max_multi_select_size
@@ -1317,6 +1342,7 @@ attr popupMenuBackground
 attr popupMenuStyle
 attr popupTheme
 attr popupWindowStyle
+attr precision
 attr prefixText
 attr prefixTextAppearance
 attr prefixTextColor
@@ -1653,6 +1679,7 @@ attr showAnimationBehavior
 attr showAsAction
 attr showDelay
 attr showDividers
+attr showLightWave
 attr showMotionSpec
 attr showPaths
 attr showText
@@ -1693,6 +1720,7 @@ attr srb_stepSize
 attr srcCompat
 attr stackFromEnd
 attr staggered
+attr startAngle
 attr startIconCheckable
 attr startIconContentDescription
 attr startIconDrawable
@@ -1761,6 +1789,7 @@ attr swb_thumbRadius
 attr swb_thumbRangeRatio
 attr swb_thumbWidth
 attr swb_tintColor
+attr sweepAngle
 attr switchMinWidth
 attr switchPadding
 attr switchStyle
@@ -1864,6 +1893,7 @@ attr textLeftBottomRadius
 attr textLeftTopRadius
 attr textLocale
 attr textNormalTextColor
+attr textOffsetPercentInRadius
 attr textRadius
 attr textRightBottomRadius
 attr textRightTopRadius
@@ -1942,9 +1972,47 @@ attr ts_normal_color
 attr ts_selected_color
 attr ts_space
 attr ts_typeface_provider
+attr tsb_clear_default_padding
+attr tsb_max
+attr tsb_min
+attr tsb_only_thumb_draggable
+attr tsb_progress
+attr tsb_progress_value_float
+attr tsb_r2l
+attr tsb_seek_smoothly
+attr tsb_show_thumb_text
+attr tsb_show_tick_marks_type
+attr tsb_show_tick_texts
+attr tsb_thumb_adjust_auto
+attr tsb_thumb_color
+attr tsb_thumb_drawable
+attr tsb_thumb_size
+attr tsb_thumb_text_color
+attr tsb_tick_marks_color
+attr tsb_tick_marks_drawable
+attr tsb_tick_marks_ends_hide
+attr tsb_tick_marks_size
+attr tsb_tick_marks_swept_hide
+attr tsb_tick_texts_array
+attr tsb_tick_texts_color
+attr tsb_tick_texts_size
+attr tsb_tick_texts_typeface
+attr tsb_ticks_count
+attr tsb_track_background_color
+attr tsb_track_background_size
+attr tsb_track_progress_color
+attr tsb_track_progress_size
+attr tsb_track_rounded_corners
+attr tsb_user_seekable
 attr ttcIndex
+attr unit
+attr unitColor
+attr unitSize
 attr useCompatPadding
 attr useMaterialThemeColors
+attr value
+attr valueColor
+attr valueSize
 attr values
 attr vcet_bg_focus
 attr vcet_bg_normal
@@ -1975,6 +2043,8 @@ attr vtl_tab_margin
 attr vtl_tab_mode
 attr warmth
 attr waveDecay
+attr waveHeight
+attr waveNum
 attr waveOffset
 attr wavePeriod
 attr waveShape
@@ -2357,6 +2427,7 @@ color btn_roundbutton_blue_border_pressed
 color btn_roundbutton_blue_text_disabled
 color btn_roundbutton_blue_text_normal
 color btn_roundbutton_blue_text_pressed
+color button
 color button_material_dark
 color button_material_light
 color cardview_dark_background
@@ -2596,6 +2667,9 @@ color toast_success_color
 color toast_warning_color
 color tooltip_background_dark
 color tooltip_background_light
+color tsb_selector_thumb_color
+color tsb_selector_tick_marks_color
+color tsb_selector_tick_texts_color
 color white
 color xui_btn_blue_normal_color
 color xui_btn_blue_select_color
@@ -3556,6 +3630,7 @@ drawable ic_switch_camera_white_48dp_inset
 drawable intro_icon1
 drawable jetpack_joyride
 drawable key
+drawable left_arrow
 drawable list_item_background
 drawable logo_mlkit
 drawable material_cursor_drawable
@@ -3756,6 +3831,7 @@ id Fill
 id Flip
 id ITALIC
 id Jump
+id L2R
 id LEFT
 id LEFT_BOTTOM
 id LEFT_RIGHT
@@ -3767,6 +3843,7 @@ id NORMAL
 id NO_DEBUG
 id None
 id OvershootInterpolator
+id R2L
 id RIGHT
 id RIGHT_BOTTOM
 id RIGHT_LEFT
@@ -3788,6 +3865,7 @@ id TR_BL
 id Top
 id UserInfoTitleBar
 id about_list
+id above
 id accelerate
 id accessibility_action_clickable_span
 id accessibility_custom_action_0
@@ -3871,6 +3949,7 @@ id barrier
 id baseline
 id beginOnFirstDraw
 id beginning
+id below
 id bezierBannerView
 id birthdayText
 id blocking
@@ -3909,6 +3988,9 @@ id cRightTextId
 id cRightTopTextId
 id cache_measures
 id cal
+id calDataButton
+id calGoalSelector
+id calGoalText
 id calendarButton
 id calendarLayout
 id calendarView
@@ -3987,6 +4069,7 @@ id disableScroll
 id disabled
 id disjoint
 id display
+id divider
 id doubleRipple
 id dragDown
 id dragEnd
@@ -4075,6 +4158,10 @@ id group_list_item_tips_new
 id group_list_section_header_textView
 id grouping
 id groups
+id guideView1
+id guideView2
+id guideView3
+id guideView4
 id guideline
 id header_title
 id heightRuler
@@ -4189,6 +4276,7 @@ id mode_all
 id mode_fix
 id mode_only_current
 id mon
+id monospace
 id month
 id month_day
 id month_grid
@@ -4276,8 +4364,10 @@ id pathRelative
 id peekHeight
 id percent
 id performance
+id personalGoalBackButton
 id personalPageNickNameText
 id personalPageTitleBar
+id personalPlanButton
 id photoView
 id pin
 id poseDetailBreath
@@ -4345,6 +4435,7 @@ id sRightCheckBoxId
 id sRightImgId
 id sRightSwitchId
 id sRightViewId
+id sans
 id sat
 id saveSportsPreference
 id save_non_transition_alpha
@@ -4381,6 +4472,7 @@ id select_dialog_listview
 id select_images_from_local
 id selected
 id selection_type
+id serif
 id settings_button
 id settings_container
 id sexText
@@ -4435,6 +4527,7 @@ id startToEnd
 id startVertical
 id staticLayout
 id staticPostLayout
+id stepsDataButton
 id stop
 id stretch
 id subTitle
@@ -4485,10 +4578,12 @@ id textinput_helper_text
 id textinput_placeholder
 id textinput_prefix_text
 id textinput_suffix_text
+id tileText
 id time
 id time_picker
 id title
 id titleDividerNoCustom
+id titleRelativeLayout
 id title_template
 id titlebar
 id toast_icon
@@ -4500,6 +4595,7 @@ id toggle
 id top
 id topPanel
 id touch_outside
+id trainButton
 id transitionToEnd
 id transitionToStart
 id transition_current_scene
@@ -4551,6 +4647,8 @@ id visible
 id visible_removing_fragment_view_tag
 id vp_month
 id vp_week
+id wave_progress_bar
+id wave_progress_bar_card
 id weightRuler
 id weightText
 id wheel_picker_date_day_label
@@ -4591,6 +4689,7 @@ id year
 id year_month
 id year_month_day
 id zero_corner_chip
+id zoomLinearLayout
 integer abc_config_activityDefaultDur
 integer abc_config_activityShortDur
 integer app_bar_elevation_anim_duration
@@ -4762,6 +4861,7 @@ layout onboarding_text_content_layout
 layout page1
 layout page2
 layout personal_page
+layout personal_plan
 layout pose_details
 layout pose_info
 layout pose_library
@@ -6055,6 +6155,7 @@ styleable CameraView captureMode flash lensFacing pinchToZoomEnabled scaleType
 styleable CardView android_minWidth android_minHeight cardBackgroundColor cardCornerRadius cardElevation cardMaxElevation cardPreventCornerOverlap cardUseCompatPadding contentPadding contentPaddingBottom contentPaddingLeft contentPaddingRight contentPaddingTop
 styleable Chip android_textAppearance android_textSize android_textColor android_ellipsize android_maxWidth android_text android_checkable checkedIcon checkedIconEnabled checkedIconTint checkedIconVisible chipBackgroundColor chipCornerRadius chipEndPadding chipIcon chipIconEnabled chipIconSize chipIconTint chipIconVisible chipMinHeight chipMinTouchTargetSize chipStartPadding chipStrokeColor chipStrokeWidth chipSurfaceColor closeIcon closeIconEnabled closeIconEndPadding closeIconSize closeIconStartPadding closeIconTint closeIconVisible ensureMinTouchTargetSize hideMotionSpec iconEndPadding iconStartPadding rippleColor shapeAppearance shapeAppearanceOverlay showMotionSpec textEndPadding textStartPadding
 styleable ChipGroup checkedChip chipSpacing chipSpacingHorizontal chipSpacingVertical selectionRequired singleLine singleSelection
+styleable CircleProgressBar animTime antiAlias arcColors arcWidth bgArcColor bgArcWidth hint hintColor hintSize maxValue precision startAngle sweepAngle textOffsetPercentInRadius unit unitColor unitSize value valueColor valueSize
 styleable CircleProgressView cpv_animate_type cpv_circle_broken cpv_end_color cpv_end_progress cpv_isFilled cpv_isGraduated cpv_isTracked cpv_progress_duration cpv_progress_textColor cpv_progress_textSize cpv_progress_textVisibility cpv_progress_width cpv_scaleZone_corner_radius cpv_scaleZone_length cpv_scaleZone_padding cpv_scaleZone_width cpv_start_color cpv_start_progress cpv_track_color cpv_track_width
 styleable CircularProgressIndicator indicatorDirectionCircular indicatorInset indicatorSize
 styleable ClearEditText cet_clearIcon cet_clearIconSize
@@ -6078,6 +6179,7 @@ styleable CustomAttribute attributeName customBoolean customColorDrawableValue c
 styleable DateWheelLayout wheel_dateMode wheel_dayLabel wheel_monthLabel wheel_yearLabel
 styleable DatimeWheelLayout wheel_dateMode wheel_dayLabel wheel_hourLabel wheel_minuteLabel wheel_monthLabel wheel_secondLabel wheel_timeMode wheel_yearLabel
 styleable DecoView dv_arc_gravity_horizontal dv_arc_gravity_vertical dv_lineWidth dv_rotateAngle dv_totalAngle
+styleable DialProgress animTime antiAlias arcColors arcWidth bgArcColor dialColor dialIntervalDegree dialWidth hint hintColor hintSize maxValue precision startAngle sweepAngle textOffsetPercentInRadius unit unitColor unitSize value valueColor valueSize
 styleable DrawerArrowToggle arrowHeadLength arrowShaftLength barLength color drawableSize gapBetweenBars spinBars thickness
 styleable DropDownMenu ddm_contentLayoutId ddm_dividerColor ddm_dividerMargin ddm_dividerWidth ddm_maskColor ddm_menuBackgroundColor ddm_menuHeightPercent ddm_menuSelectedIcon ddm_menuTextPaddingHorizontal ddm_menuTextPaddingVertical ddm_menuTextSelectedColor ddm_menuTextSize ddm_menuTextUnselectedColor ddm_menuUnselectedIcon ddm_underlineColor ddm_underlineHeight
 styleable EasyIndicator indicator_bottom_line_color indicator_bottom_line_height indicator_height indicator_line_color indicator_line_height indicator_line_res indicator_line_show indicator_line_width indicator_normal_color indicator_select_textSize indicator_selected_color indicator_textSize indicator_vertical_line_color indicator_vertical_line_h indicator_vertical_line_w indicator_width
@@ -6215,6 +6317,7 @@ styleable TextAppearance android_textSize android_typeface android_textStyle and
 styleable TextInputEditText textInputLayoutFocusedRectEnabled
 styleable TextInputLayout android_enabled android_textColorHint android_maxWidth android_minWidth android_hint boxBackgroundColor boxBackgroundMode boxCollapsedPaddingTop boxCornerRadiusBottomEnd boxCornerRadiusBottomStart boxCornerRadiusTopEnd boxCornerRadiusTopStart boxStrokeColor boxStrokeErrorColor boxStrokeWidth boxStrokeWidthFocused counterEnabled counterMaxLength counterOverflowTextAppearance counterOverflowTextColor counterTextAppearance counterTextColor endIconCheckable endIconContentDescription endIconDrawable endIconMode endIconTint endIconTintMode errorContentDescription errorEnabled errorIconDrawable errorIconTint errorIconTintMode errorTextAppearance errorTextColor expandedHintEnabled helperText helperTextEnabled helperTextTextAppearance helperTextTextColor hintAnimationEnabled hintEnabled hintTextAppearance hintTextColor passwordToggleContentDescription passwordToggleDrawable passwordToggleEnabled passwordToggleTint passwordToggleTintMode placeholderText placeholderTextAppearance placeholderTextColor prefixText prefixTextAppearance prefixTextColor shapeAppearance shapeAppearanceOverlay startIconCheckable startIconContentDescription startIconDrawable startIconTint startIconTintMode suffixText suffixTextAppearance suffixTextColor
 styleable ThemeEnforcement android_textAppearance enforceMaterialTheme enforceTextAppearance
+styleable TickSeekBar tsb_clear_default_padding tsb_max tsb_min tsb_only_thumb_draggable tsb_progress tsb_progress_value_float tsb_r2l tsb_seek_smoothly tsb_show_thumb_text tsb_show_tick_marks_type tsb_show_tick_texts tsb_thumb_adjust_auto tsb_thumb_color tsb_thumb_drawable tsb_thumb_size tsb_thumb_text_color tsb_tick_marks_color tsb_tick_marks_drawable tsb_tick_marks_ends_hide tsb_tick_marks_size tsb_tick_marks_swept_hide tsb_tick_texts_array tsb_tick_texts_color tsb_tick_texts_size tsb_tick_texts_typeface tsb_ticks_count tsb_track_background_color tsb_track_background_size tsb_track_progress_color tsb_track_progress_size tsb_track_rounded_corners tsb_user_seekable
 styleable TimeWheelLayout wheel_hourLabel wheel_minuteLabel wheel_secondLabel wheel_timeMode
 styleable TitleBar tb_actionPadding tb_actionTextColor tb_actionTextSize tb_barHeight tb_centerGravity tb_dividerColor tb_dividerHeight tb_immersive tb_leftImageResource tb_leftText tb_sideTextColor tb_sideTextPadding tb_sideTextSize tb_subTitleText tb_subTitleTextColor tb_subTitleTextSize tb_titleText tb_titleTextColor tb_titleTextSize tb_useThemeColor
 styleable Toolbar android_gravity android_minHeight buttonGravity collapseContentDescription collapseIcon contentInsetEnd contentInsetEndWithActions contentInsetLeft contentInsetRight contentInsetStart contentInsetStartWithNavigation logo logoDescription maxButtonHeight menu navigationContentDescription navigationIcon popupTheme subtitle subtitleTextAppearance subtitleTextColor title titleMargin titleMarginBottom titleMarginEnd titleMarginStart titleMarginTop titleMargins titleTextAppearance titleTextColor
@@ -6229,6 +6332,7 @@ styleable View android_theme android_focusable paddingEnd paddingStart theme
 styleable ViewBackgroundHelper android_background backgroundTint backgroundTintMode
 styleable ViewPager2 android_orientation
 styleable ViewStubCompat android_id android_layout android_inflatedId
+styleable WaveProgress antiAlias bgCircleColor circleColor circleWidth darkWaveAnimTime darkWaveColor hint hintColor hintSize lightWaveAnimTime lightWaveColor lightWaveDirect lockWave maxValue showLightWave value valueColor valueSize waveHeight waveNum
 styleable WheelView wheel_atmosphericEnabled wheel_curtainColor wheel_curtainCorner wheel_curtainEnabled wheel_curtainRadius wheel_curvedEnabled wheel_curvedIndicatorSpace wheel_curvedMaxAngle wheel_cyclicEnabled wheel_indicatorColor wheel_indicatorEnabled wheel_indicatorSize wheel_itemSpace wheel_itemTextAlign wheel_itemTextBoldSelected wheel_itemTextColor wheel_itemTextColorSelected wheel_itemTextSize wheel_itemTextSizeSelected wheel_maxWidthText wheel_sameWidthEnabled wheel_visibleItemCount wv_dividerColor wv_gravity wv_lineSpacingMultiplier wv_textColorCenter wv_textColorOut wv_textSize
 styleable XRangeSlider xrs_bubbleResource xrs_insideRangeLineColor xrs_insideRangeLineStrokeWidth xrs_isFitColor xrs_isLineRound xrs_isShowBubble xrs_isShowRuler xrs_max xrs_min xrs_numberMarginBottom xrs_numberTextColor xrs_numberTextSize xrs_outsideRangeLineColor xrs_outsideRangeLineStrokeWidth xrs_rulerColor xrs_rulerDividerHeight xrs_rulerInterval xrs_rulerMarginTop xrs_rulerTextColor xrs_rulerTextMarginTop xrs_rulerTextSize xrs_sliderIcon xrs_sliderIconFocus xrs_verticalPadding
 styleable XSeekBar xsb_bubbleResource xsb_insideRangeLineColor xsb_insideRangeLineStrokeWidth xsb_isFitColor xsb_isLineRound xsb_isShowBubble xsb_isShowNumber xsb_isShowRuler xsb_max xsb_min xsb_numberMarginBottom xsb_numberTextColor xsb_numberTextSize xsb_outsideRangeLineColor xsb_outsideRangeLineStrokeWidth xsb_rulerColor xsb_rulerDividerHeight xsb_rulerInterval xsb_rulerMarginTop xsb_rulerTextColor xsb_rulerTextMarginTop xsb_rulerTextSize xsb_sliderIcon xsb_sliderIconFocus xsb_verticalPadding

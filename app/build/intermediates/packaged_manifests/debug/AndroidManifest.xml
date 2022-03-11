@@ -109,6 +109,7 @@
         <activity android:name="com.lindum.mlkit.vision.dev.view.IntroView" />
         <activity android:name="com.lindum.mlkit.vision.dev.CameraXLivePreviewActivity" />
         <activity android:name="com.lindum.mlkit.vision.dev.view.SelectSportsPreference" />
+        <activity android:name="com.lindum.mlkit.vision.dev.datacenter.PersonalPlan" />
         <activity
             android:name="com.lindum.mlkit.vision.dev.result.TrainingResult"
             android:exported="false"

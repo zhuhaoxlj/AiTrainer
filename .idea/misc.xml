@@ -15,8 +15,9 @@
         <entry key="..\:/Project/Android/AiTrainer/app/src/main/res/layout-v28/login.xml" value="0.33" />
         <entry key="..\:/Project/Android/AiTrainer/app/src/main/res/layout/activity_settings.xml" value="0.25364583333333335" />
         <entry key="..\:/Project/Android/AiTrainer/app/src/main/res/layout/activity_still_image.xml" value="0.196875" />
-        <entry key="..\:/Project/Android/AiTrainer/app/src/main/res/layout/activity_vision_camerax_live_preview.xml" value="0.3536458333333333" />
+        <entry key="..\:/Project/Android/AiTrainer/app/src/main/res/layout/activity_vision_camerax_live_preview.xml" value="0.18" />
         <entry key="..\:/Project/Android/AiTrainer/app/src/main/res/layout/activity_vision_live_preview.xml" value="0.3536458333333333" />
+        <entry key="..\:/Project/Android/AiTrainer/app/src/main/res/layout/datacenter/drawable/pipple_button_bg.xml" value="0.2375" />
         <entry key="..\:/Project/Android/AiTrainer/app/src/main/res/layout/datacenter/layout/data_center.xml" value="0.22335526315789472" />
         <entry key="..\:/Project/Android/AiTrainer/app/src/main/res/layout/datacenter/layout/steps.xml" value="0.2858974358974359" />
         <entry key="..\:/Project/Android/AiTrainer/app/src/main/res/layout/header.xml" value="0.3536458333333333" />
@@ -29,7 +30,7 @@
         <entry key="..\:/Project/Android/AiTrainer/app/src/main/res/layout/main/layout/food_item.xml" value="0.25" />
         <entry key="..\:/Project/Android/AiTrainer/app/src/main/res/layout/main/layout/fragment_jptabbar.xml" value="0.22335526315789472" />
         <entry key="..\:/Project/Android/AiTrainer/app/src/main/res/layout/main/layout/home_page.xml" value="0.22335526315789472" />
-        <entry key="..\:/Project/Android/AiTrainer/app/src/main/res/layout/main/layout/page1.xml" value="0.1" />
+        <entry key="..\:/Project/Android/AiTrainer/app/src/main/res/layout/main/layout/page1.xml" value="0.25" />
         <entry key="..\:/Project/Android/AiTrainer/app/src/main/res/layout/main/layout/page2.xml" value="0.22335526315789472" />
         <entry key="..\:/Project/Android/AiTrainer/app/src/main/res/layout/main/layout/page3.xml" value="0.18" />
         <entry key="..\:/Project/Android/AiTrainer/app/src/main/res/layout/main/layout/page4.xml" value="0.22335526315789472" />
@@ -49,9 +50,10 @@
         <entry key="..\:/Project/Android/AiTrainer/app/src/main/res/layout/personal/layout/change_nickname.xml" value="0.22335526315789472" />
         <entry key="..\:/Project/Android/AiTrainer/app/src/main/res/layout/personal/layout/change_profile.xml" value="0.1194078947368421" />
         <entry key="..\:/Project/Android/AiTrainer/app/src/main/res/layout/personal/layout/personal_page.xml" value="0.22335526315789472" />
+        <entry key="..\:/Project/Android/AiTrainer/app/src/main/res/layout/personal/layout/personal_plan.xml" value="0.33" />
         <entry key="..\:/Project/Android/AiTrainer/app/src/main/res/layout/personal/layout/select_sports_preference.xml" value="0.22335526315789472" />
         <entry key="..\:/Project/Android/AiTrainer/app/src/main/res/layout/personal/layout/tts.xml" value="0.22335526315789472" />
-        <entry key="..\:/Project/Android/AiTrainer/app/src/main/res/layout/personal/layout/user_info_input.xml" value="0.2" />
+        <entry key="..\:/Project/Android/AiTrainer/app/src/main/res/layout/personal/layout/user_info_input.xml" value="0.33" />
         <entry key="..\:/Project/Android/AiTrainer/app/src/main/res/layout/pose_analysis_card.xml" value="0.3536458333333333" />
         <entry key="..\:/Project/Android/AiTrainer/app/src/main/res/layout/pose_bank.xml" value="0.3536458333333333" />
         <entry key="..\:/Project/Android/AiTrainer/app/src/main/res/layout/pose_info.xml" value="0.3536458333333333" />

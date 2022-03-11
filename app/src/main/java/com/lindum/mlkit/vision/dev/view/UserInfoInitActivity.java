@@ -111,16 +111,18 @@ public class UserInfoInitActivity extends AppCompatActivity implements OnDatePic
         weightText = findViewById(R.id.weightText);
         sexText = findViewById(R.id.sexText);
         addressText = findViewById(R.id.addressText);
-        profile = HomePage.userEntity.getProfile();
-        nickNameText.setText(HomePage.userEntity.getNickName());
-        LocalDate birthday = HomePage.userEntity.getBirthDay();
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            birthdayText.setText(birthday.toString());
+        if (HomePage.userEntity.getUserUniqueId() != null) {
+            profile = HomePage.userEntity.getProfile();
+            nickNameText.setText(HomePage.userEntity.getNickName());
+            LocalDate birthday = HomePage.userEntity.getBirthDay();
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                birthdayText.setText(birthday.toString());
+            }
+            heightText.setText(HomePage.userEntity.getHeight() + "");
+            weightText.setText(HomePage.userEntity.getWeight() + "");
+            sexText.setText(HomePage.userEntity.getSex());
+            addressText.setText(HomePage.userEntity.getRegion());
         }
-        heightText.setText(HomePage.userEntity.getHeight() + "");
-        weightText.setText(HomePage.userEntity.getWeight() + "");
-        sexText.setText(HomePage.userEntity.getSex());
-        addressText.setText(HomePage.userEntity.getRegion());
         userEntity = new UserEntity();
         sportsPreference = new ArrayList<>();
         // TitleBar

@@ -1,5 +1,9 @@
 package com.lindum.mlkit.vision.dev.posedetector;
 
+import androidx.annotation.NonNull;
+
+import java.util.Arrays;
+
 /**
  * @author: MarkGosling
  * @date: 2022-01-16 14:24
@@ -88,5 +92,19 @@ public class PosePart {
 
     public void setThreePointIndex(int[] threePointIndex) {
         this.threePointIndex = threePointIndex;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return "PosePart{" +
+                "poseIndex=" + poseIndex +
+                ", threePointIndex=" + Arrays.toString(threePointIndex) +
+                ", poseType=" + poseType +
+                ", poseAngleType=" + poseAngleType +
+                ", fixedRange=" + Arrays.toString(fixedRange) +
+                ", firstStandardRange=" + Arrays.toString(firstStandardRange) +
+                ", secondStandardRange=" + Arrays.toString(secondStandardRange) +
+                '}';
     }
 }

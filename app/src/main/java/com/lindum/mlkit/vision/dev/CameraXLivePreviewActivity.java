@@ -61,6 +61,7 @@ import com.lindum.mlkit.vision.dev.preference.PreferenceUtils;
 import com.lindum.mlkit.vision.dev.preference.SettingsActivity;
 import com.lindum.mlkit.vision.dev.result.TrainingResult;
 import com.lindum.mlkit.vision.dev.view.HomePage;
+import com.lindum.mlkit.vision.dev.view.PoseDetailsActivity;
 import com.orhanobut.logger.Logger;
 import com.xuexiang.xui.XUI;
 import com.xuexiang.xui.widget.dialog.materialdialog.MaterialDialog;
@@ -236,7 +237,7 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
         for (PoseEntity poseEntity : poseEntityList) {
             // 倒计时类型 0 计数类型 1
             poseEntity.setPoseType(0);
-            poseEntity.setPoseProcessValue(15);
+            poseEntity.setPoseProcessValue(60);
         }
 
         nowPoseName = poseEntityList.get(nowPoseIndex).getPoseName();
@@ -347,7 +348,6 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
                 countdownSeconds = 3;
                 nowPoseProcessSeconds = 0;
                 updatePoseInfo();
-
             }
         });
         nextPoseButton.setOnClickListener(view ->
@@ -371,7 +371,6 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
                 countdownSeconds = 3;
                 nowPoseProcessSeconds = 0;
                 updatePoseInfo();
-
             }
         });
         if (!allPermissionsGranted()) {
@@ -397,7 +396,14 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
         nextPoseImageButton = findViewById(R.id.nextPoseImage);
         LinearLayout explainButton = findViewById(R.id.explain);
         explainButton.setOnClickListener(view -> {
-
+            Intent intent = new Intent(CameraXLivePreviewActivity.this, PoseDetailsActivity.class);
+            intent.putExtra("feeling", poseEntityList.get(nowPoseIndex).getPoseFeeling());
+            intent.putExtra("steps", poseEntityList.get(nowPoseIndex).getStepsOfPose());
+            intent.putExtra("commonMistakes", poseEntityList.get(nowPoseIndex).getCommonMistakes());
+            intent.putExtra("details", poseEntityList.get(nowPoseIndex).getDetailTips());
+            intent.putExtra("breath", poseEntityList.get(nowPoseIndex).getBreathTips());
+            intent.putExtra("poseIndex", nowPoseIndex);
+            startActivity(intent);
         });
         // TTS 初始化
         textToSpeech = new TextToSpeech(this, i -> {
@@ -452,28 +458,31 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
             public void run() {
                 warnPart.clear();
                 updatePoseInfo();
-//                if (countdownSeconds >= 0) {
-//                    countdownSecondsTextView.setVisibility(View.VISIBLE);
-//                    textToSpeech.speak(countdownSeconds + "", TextToSpeech.QUEUE_ADD, null);
-//                    countdownSeconds--;
-//                }
-//                if (countdownSeconds == -1) {
-//                    countdownSecondsTextView.setVisibility(View.INVISIBLE);
-//                    // 语音助手提示
-//                    Handler voiceAssistantHandle = new Handler();
-//                    Runnable voiceAssistantRunnable = new Runnable() {
-//                        @Override
-//                        public void run() {
-//                            voiceAssistantHandle.postDelayed(this, 8000);
-//                            // 已经提醒过呼吸方法
-//                            if (!isRemindedBreathingMethods) {
-//                                textToSpeech.speak(poseEntityList.get(nowPoseIndex).getBreathTips() == null ? "注意均匀呼吸，不要憋气" : poseEntityList.get(nowPoseIndex).getBreathTips(), TextToSpeech.QUEUE_ADD, null);
-//                                isRemindedBreathingMethods = true;
-//                            }
-//                        }
-//                    };
-//                    voiceAssistantHandle.post(voiceAssistantRunnable);
-//                }
+                if (countdownSeconds >= 0) {
+                    countdownSecondsTextView.setVisibility(View.VISIBLE);
+                    textToSpeech.speak(countdownSeconds + "", TextToSpeech.QUEUE_ADD, null);
+                    countdownSeconds--;
+                }
+                if (countdownSeconds == -1) {
+                    countdownSecondsTextView.setVisibility(View.INVISIBLE);
+                    // 语音助手提示
+                    Handler voiceAssistantHandle = new Handler();
+                    Runnable voiceAssistantRunnable = new Runnable() {
+                        @Override
+                        public void run() {
+                            voiceAssistantHandle.postDelayed(this, 8000);
+                            // 已经提醒过呼吸方法
+                            if (!isRemindedBreathingMethods) {
+                                textToSpeech.speak(poseEntityList.get(nowPoseIndex).getBreathTips() == null ? "注意均匀呼吸，不要憋气" : poseEntityList.get(nowPoseIndex).getBreathTips(), TextToSpeech.QUEUE_ADD, null);
+                                isRemindedBreathingMethods = true;
+                            }
+                        }
+                    };
+                    voiceAssistantHandle.post(voiceAssistantRunnable);
+                }
+                // TODO: 2022/3/8
+                Logger.e("12312312"+poseEntityList.get(nowPoseIndex).getMonitorPosePartList().toString());
+
                 // 现在动作进行的秒数增加
                 if (countdownSeconds == -1) {
                     nowPoseProcessSeconds++;
@@ -503,8 +512,8 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
             // 更新当前动作进度 秒数
             poseProcessInfo.setText(nowPoseProcessSeconds + "\"");
         }
-//        // 更新倒数秒数
-//        countdownSecondsTextView.setText(countdownSeconds + "");
+        // 更新倒数秒数
+        countdownSecondsTextView.setText(countdownSeconds + "");
     }
 
     @Override
