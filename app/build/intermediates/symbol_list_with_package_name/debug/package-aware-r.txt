@@ -4170,6 +4170,7 @@ id hideable
 id highlight
 id home
 id homeAsUp
+id homePageStatusBar
 id honorRequest
 id horizontal
 id hour
@@ -4379,6 +4380,7 @@ id poseDetailName
 id poseDetailSteps
 id poseDetails
 id poseInfo
+id poseLibraryStatusBar
 id poseLibraryTitleBar
 id poseName
 id poseProcessInfo
@@ -4527,6 +4529,7 @@ id startToEnd
 id startVertical
 id staticLayout
 id staticPostLayout
+id statusBar
 id stepsDataButton
 id stop
 id stretch
@@ -4795,6 +4798,7 @@ layout food_item
 layout gcv_layout_image
 layout gcv_layout_title
 layout home_page
+layout homepage
 layout image_details
 layout login
 layout look_explanation
@@ -4858,7 +4862,6 @@ layout notification_template_part_time
 layout onboarding_main_layout
 layout onboarding_pager_layout
 layout onboarding_text_content_layout
-layout page1
 layout page2
 layout personal_page
 layout personal_plan

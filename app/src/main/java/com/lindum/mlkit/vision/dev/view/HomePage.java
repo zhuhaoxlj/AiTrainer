@@ -56,6 +56,7 @@ import com.lindum.mlkit.vision.dev.utils.GetPermissionUtils;
 import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.Logger;
 import com.xuexiang.xui.XUI;
+import com.xuexiang.xui.utils.StatusBarUtils;
 import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xui.widget.banner.widget.banner.BannerItem;
 import com.xuexiang.xui.widget.banner.widget.banner.SimpleImageBanner;
@@ -131,6 +132,8 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         XUI.initTheme(this);
+        // 状态栏沉浸
+        StatusBarUtils.initStatusBarStyle(this, false);
         setContentView(R.layout.home_page);
         // 注册 Intent 请求数据
         registerGetIntentData();
@@ -138,9 +141,6 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
         Logger.addLogAdapter(new AndroidLogAdapter());
         // 初始化
         init();
-        // 从数据库获取动作实体类数据
-        getPoseEntityFromDataBase();
-
     }
 
     /**
@@ -177,7 +177,7 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
         //获取布局对象管理
         LayoutInflater inflater = getLayoutInflater();
         //实例化view
-        view1 = inflater.inflate(R.layout.page1, null);
+        view1 = inflater.inflate(R.layout.homepage, null);
         view2 = inflater.inflate(R.layout.page2, null);
         view3 = inflater.inflate(R.layout.pose_library, null);
         view4 = inflater.inflate(R.layout.personal_page, null);
@@ -218,41 +218,90 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
         };
         //设置适配器
         viewPager.setAdapter(mPagerAdapter);
-        // 去除个人页标题栏左侧图标
-        TitleBar personalPageTitleBar = view4.findViewById(R.id.personalPageTitleBar);
-        personalPageTitleBar.setLeftVisible(false);
-        // 去除动作库标题栏左侧图标
-        TitleBar poseLibraryTitleBar = view3.findViewById(R.id.poseLibraryTitleBar);
-        poseLibraryTitleBar.setLeftVisible(false);
-        // 个人页面修改信息按钮
-        ImageView changeProfileInfoButton = view4.findViewById(R.id.profileInfoButton);
-        changeProfileInfoButton.setOnClickListener(view -> {
-            Intent intent = new Intent(HomePage.this, UserInfoInitActivity.class);
-            intentActivityResultLauncher.launch(intent);
-        });
-        // 初始化轮播图
-        initBanner();
-        // 初始化食物列表
-        initFoodList();
         // 初始化底部 TabBar
         initTabBar();
-        // 从数据库获取用户数据
-        getUserInfoFromDateBase();
+
+        // 初始化界面 start
+        initHomePage();
+        initPoseLibrary();
+        initPersonalPage();
+        // 初始化界面 end
+    }
+
+    /**
+     * 初始化主页
+     */
+    public void initHomePage() {
         // 日历按钮
         ImageView imageView = view1.findViewById(R.id.calendarButton);
         imageView.setOnClickListener(view -> {
             Intent intent = new Intent(HomePage.this, ProgressActivity.class);
             startActivity(intent);
         });
-        // 初始化步数监听
-        initStepsCount();
-        // 初始化控件
+        // 初始化轮播图
+        SimpleImageBanner simpleImageBanner = view1.findViewById(R.id.banner);
+        simpleImageBanner.setSource(getBannerList()).setOnItemClickListener((view, item, position1) -> Logger.e("headBanner position--->" + position1)).startScroll();
+        // 初始化食物列表
+        initFoodList();
+        // 状态栏背景条
+        LinearLayout statusBar = view1.findViewById(R.id.homePageStatusBar);
+        ViewGroup.LayoutParams params = statusBar.getLayoutParams();
+        params.height = StatusBarUtils.getStatusBarHeight(this);
+    }
+
+    /**
+     * 初始化动作库界面
+     */
+    public void initPoseLibrary() {
+        // 去除动作库标题栏左侧图标
+        TitleBar poseLibraryTitleBar = view3.findViewById(R.id.poseLibraryTitleBar);
+        poseLibraryTitleBar.setLeftVisible(false);
+        // 从数据库获取动作实体类数据
+        getPoseEntityFromDataBase();
+        // 状态栏背景条
+        LinearLayout statusBar = view3.findViewById(R.id.poseLibraryStatusBar);
+        statusBar.setBackgroundColor(Color.parseColor("#299de3"));
+        ViewGroup.LayoutParams params = statusBar.getLayoutParams();
+        params.height = StatusBarUtils.getStatusBarHeight(this);
+    }
+
+    /**
+     * 初始化个人界面
+     */
+    public void initPersonalPage() {
+        // 状态栏背景条
+        LinearLayout statusBar = view4.findViewById(R.id.statusBar);
+        // 状态栏背景颜色
+        statusBar.setBackgroundColor(Color.parseColor("#88b2ff"));
+        ViewGroup.LayoutParams params = statusBar.getLayoutParams();
+        params.height = StatusBarUtils.getStatusBarHeight(this);
+        //今日运动步数
         todaySteps = view4.findViewById(R.id.todaySteps);
+        // 设置个人计划按钮
         LinearLayout personalPlanButton = view4.findViewById(R.id.personalPlanButton);
         personalPlanButton.setOnClickListener(view -> {
             Intent intent = new Intent(HomePage.this, PersonalPlan.class);
             startActivity(intent);
         });
+        // 去除标题栏左侧返回图标
+        TitleBar personalPageTitleBar = view4.findViewById(R.id.personalPageTitleBar);
+        personalPageTitleBar.setBackgroundColor(Color.parseColor("#88b2ff"));
+        personalPageTitleBar.setLeftVisible(false);
+        // 修改个人信息按钮
+        ImageView changeProfileInfoButton = view4.findViewById(R.id.profileInfoButton);
+        changeProfileInfoButton.setOnClickListener(view -> {
+            Intent intent = new Intent(HomePage.this, UserInfoInitActivity.class);
+            intentActivityResultLauncher.launch(intent);
+        });
+        // 初始化步数监听
+        sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+        mySensorEventListener = new MySensorEventListener();
+        sensorManager.registerListener(mySensorEventListener, sensorManager.getDefaultSensor(Sensor.TYPE_STEP_DETECTOR),
+                SensorManager.SENSOR_DELAY_NORMAL);
+        sensorManager.registerListener(mySensorEventListener, sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER),
+                SensorManager.SENSOR_DELAY_NORMAL);
+        // 从数据库获取用户数据
+        getUserInfoFromDateBase();
     }
 
     /**
@@ -319,15 +368,6 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
         guideCaseQueue.add(guideCaseView3);
         guideCaseQueue.add(guideCaseView4);
         guideCaseQueue.show();
-    }
-
-    public void initStepsCount() {
-        sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
-        mySensorEventListener = new MySensorEventListener();
-        sensorManager.registerListener(mySensorEventListener, sensorManager.getDefaultSensor(Sensor.TYPE_STEP_DETECTOR),
-                SensorManager.SENSOR_DELAY_NORMAL);
-        sensorManager.registerListener(mySensorEventListener, sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER),
-                SensorManager.SENSOR_DELAY_NORMAL);
     }
 
     /**
@@ -409,24 +449,14 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
                 }
                 // 查看俯卧撑数据
                 Logger.e(poseEntityArrayList.get(3).getMonitorPosePartList().toString());
-
-
             }
         };
-
         getData.start();
         adapter = new HomeAdapter(this, arrayList, this);
         recyclerView.setAdapter(adapter);
         GridLayoutManager manager = new GridLayoutManager(this, 2, GridLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(manager);
     }
-
-    public void initBanner() {
-        // 轮播图
-        SimpleImageBanner simpleImageBanner = view1.findViewById(R.id.banner);
-        simpleImageBanner.setSource(getBannerList()).setOnItemClickListener((view, item, position1) -> Logger.e("headBanner position--->" + position1)).startScroll();
-    }
-
 
     /**
      * 初始化底部 TabBar，要在布局初始化之后调用

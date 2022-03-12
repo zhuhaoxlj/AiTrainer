@@ -8,6 +8,12 @@
     android:orientation="vertical"
     tools:showIn="@layout/pose_library">
 
+    <LinearLayout
+        android:id="@+id/poseLibraryStatusBar"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:orientation="horizontal" />
+
     <com.xuexiang.xui.widget.actionbar.TitleBar
         android:id="@+id/poseLibraryTitleBar"
         android:layout_width="match_parent"

@@ -6,6 +6,12 @@
     android:background="@color/white"
     android:orientation="vertical">
 
+    <LinearLayout
+        android:id="@+id/statusBar"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:orientation="horizontal" />
+
     <com.xuexiang.xui.widget.actionbar.TitleBar
         android:id="@+id/personalPageTitleBar"
         android:layout_width="match_parent"
@@ -89,10 +95,10 @@
             </LinearLayout>
 
             <LinearLayout
-                android:paddingTop="15dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_below="@+id/dataCenterTitle">
+                android:layout_below="@+id/dataCenterTitle"
+                android:paddingTop="15dp">
 
                 <TextView
                     android:layout_width="wrap_content"
