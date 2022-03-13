@@ -3,17 +3,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.lindum.mlkit.vision.dev"
     android:installLocation="auto">
-    <!-- CameraX libraries require minSdkVersion 21, while this quickstart app
+    <!--
+ CameraX libraries require minSdkVersion 21, while this quickstart app
     supports low to 16. Needs to use overrideLibrary to make the merger tool
     ignore this conflict and import the libraries while keeping the app's lower
     minSdkVersion value. In code, will check SDK version, before calling CameraX
-    APIs. -->
-    <uses-sdk tools:overrideLibrary="
-          androidx.camera.camera2, androidx.camera.core,
-          androidx.camera.view, androidx.camera.lifecycle" />
+    APIs.
+    -->
+    <uses-sdk tools:overrideLibrary="           androidx.camera.camera2, androidx.camera.core,           androidx.camera.view, androidx.camera.lifecycle" />
 
-    <uses-feature android:name="android.hardware.camera" />
-    <!--    步数获取    -->
+    <uses-feature android:name="android.hardware.camera" /> <!-- 步数获取 -->
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission
         android:name="android.permission.WRITE_SETTINGS"
@@ -25,27 +24,31 @@
     <uses-permission
         android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"
         tools:ignore="ProtectedPermissions" />
-    <uses-permission android:name="android.permission.ACTIVITY_RECOGNITION" />
-    <!--    获取手机的 IMEI（设备标识码）-->
+    <uses-permission android:name="android.permission.ACTIVITY_RECOGNITION" /> <!-- 获取手机的 IMEI（设备标识码） -->
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission
         android:name="android.permission.READ_PRIVILEGED_PHONE_STATE"
-        tools:ignore="ProtectedPermissions" />
-
-    <!-- 写外置存储 -->
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <!-- 读取外置存储 -->
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <!-- 这个权限用于跳转外部存储授权界面-->
+        tools:ignore="ProtectedPermissions" /> <!-- 写外置存储 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> <!-- 读取外置存储 -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> <!-- 这个权限用于跳转外部存储授权界面 -->
     <uses-permission
         android:name="android.permission.MANAGE_EXTERNAL_STORAGE"
         tools:ignore="ScopedStorage" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
-    <!--    android:name="com.lindum.mlkit.vision.demo.CameraXLivePreviewActivity"-->
+
+    <queries>
+        <intent>
+            <action android:name="android.media.action.IMAGE_CAPTURE" />
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.TTS_SERVICE" />
+        </intent>
+    </queries>
+
     <application
         android:name="androidx.multidex.MultiDexApplication"
         android:icon="@drawable/train"
@@ -55,52 +58,48 @@
         android:usesCleartextTraffic="true"
         tools:replace="android:label"
         tools:targetApi="m">
+        <activity
+            android:name=".view.ChatList"
+            android:exported="false" />
 
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
-
-        <!-- Optional: Add it to automatically download ML model to device after
-          your app is installed.-->
+        <!--
+ Optional: Add it to automatically download ML model to device after
+          your app is installed.
+        -->
         <meta-data
             android:name="com.google.mlkit.vision.DEPENDENCIES"
             android:value="barcode,face,ocr,ica" />
 
         <activity android:name=".datacenter.ProgressActivity" />
         <activity android:name=".view.PoseDetailsActivity" />
-        <activity android:name="com.lindum.mlkit.vision.dev.result.ImageDetails" />
+        <activity android:name=".result.ImageDetails" />
         <activity android:name=".view.ChangeProfileActivity" />
         <activity android:name=".view.ChangeNickName" />
         <activity android:name=".view.UserInfoInitActivity" />
         <activity android:name=".view.IntroView" />
         <activity android:name=".CameraXLivePreviewActivity" />
         <activity android:name=".view.SelectSportsPreference" />
-        <activity android:name=".datacenter.PersonalPlan"/>
+        <activity android:name=".datacenter.PersonalPlan" />
         <activity
-            android:name="com.lindum.mlkit.vision.dev.result.TrainingResult"
+            android:name=".result.TrainingResult"
             android:exported="false"
             android:theme="@style/AppTheme" />
         <activity
-            android:name="com.lindum.mlkit.vision.dev.view.HomePage"
+            android:name=".view.HomePage"
             android:exported="true"
             android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-            android:name="com.lindum.mlkit.vision.dev.preference.SettingsActivity"
+            android:name=".preference.SettingsActivity"
             android:exported="false" />
-
     </application>
-    <queries>
-        <intent>
-            <action android:name="android.media.action.IMAGE_CAPTURE" />
-        </intent>
-        <intent>
-            <action android:name="android.intent.action.TTS_SERVICE" />
-        </intent>
-    </queries>
 
 </manifest>

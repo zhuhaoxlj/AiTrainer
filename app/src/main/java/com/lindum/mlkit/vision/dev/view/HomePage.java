@@ -236,6 +236,13 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
         LinearLayout statusBar = view1.findViewById(R.id.homePageStatusBar);
         ViewGroup.LayoutParams params = statusBar.getLayoutParams();
         params.height = StatusBarUtils.getStatusBarHeight(this);
+
+        // 聊天按钮
+        ImageView imageView1 = view1.findViewById(R.id.chatListButton);
+        imageView1.setOnClickListener(view -> {
+            Intent intent = new Intent(HomePage.this,ChatList.class);
+            startActivity(intent);
+        });
     }
 
     /**

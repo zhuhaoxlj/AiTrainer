@@ -3653,6 +3653,7 @@ drawable md_selector
 drawable md_selector_dark
 drawable md_transparent
 drawable mlet_selector_bg
+drawable monkey
 drawable more
 drawable ms_background_selector
 drawable ms_drop_down_bg
@@ -4004,6 +4005,12 @@ id chain
 id chains
 id changeNickNameButton
 id changeProfileButton
+id chatListButton
+id chat_item_content
+id chat_item_name
+id chat_item_portrait
+id chat_item_time
+id chat_list
 id checkbox
 id checked
 id chevron
@@ -4762,11 +4769,13 @@ layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
 layout about
+layout activity_chat_list
 layout activity_settings
 layout activity_vision_camerax_live_preview
 layout adapter_item_tag
 layout change_nickname
 layout change_profile
+layout chat_item
 layout circle_button
 layout custom_dialog
 layout cv_layout_calendar_view

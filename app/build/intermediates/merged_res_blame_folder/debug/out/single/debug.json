@@ -40,6 +40,10 @@
         "source": "E:\\code\\AiTrainer\\app\\src\\main\\res\\layout\\personal\\layout\\personal_plan.xml"
     },
     {
+        "merged": "E:\\code\\AiTrainer\\app\\build\\intermediates\\res\\merged\\debug\\layout_chat_item.xml.flat",
+        "source": "E:\\code\\AiTrainer\\app\\src\\main\\res\\layout\\main\\layout\\chat_item.xml"
+    },
+    {
         "merged": "E:\\code\\AiTrainer\\app\\build\\intermediates\\res\\merged\\debug\\layout_training_result_item.xml.flat",
         "source": "E:\\code\\AiTrainer\\app\\src\\main\\res\\layout\\train\\layout\\training_result_item.xml"
     },
@@ -436,8 +440,16 @@
         "source": "E:\\code\\AiTrainer\\app\\src\\main\\res\\layout\\main\\layout\\homepage.xml"
     },
     {
+        "merged": "E:\\code\\AiTrainer\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_chat_list.xml.flat",
+        "source": "E:\\code\\AiTrainer\\app\\src\\main\\res\\layout\\main\\layout\\activity_chat_list.xml"
+    },
+    {
         "merged": "E:\\code\\AiTrainer\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_settings_white_24dp.png.flat",
         "source": "E:\\code\\AiTrainer\\app\\src\\main\\res\\drawable-xxxhdpi\\ic_settings_white_24dp.png"
+    },
+    {
+        "merged": "E:\\code\\AiTrainer\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_monkey.png.flat",
+        "source": "E:\\code\\AiTrainer\\app\\src\\main\\res\\drawable-ldpi\\monkey.png"
     },
     {
         "merged": "E:\\code\\AiTrainer\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_settings_white_24dp.png.flat",

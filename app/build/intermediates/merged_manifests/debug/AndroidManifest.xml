@@ -15,8 +15,7 @@
         android:minSdkVersion="19"
         android:targetSdkVersion="30" />
 
-    <uses-feature android:name="android.hardware.camera" />
-    <!-- 步数获取 -->
+    <uses-feature android:name="android.hardware.camera" /> <!-- 步数获取 -->
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
 
@@ -24,18 +23,13 @@
 
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
-    <uses-permission android:name="android.permission.ACTIVITY_RECOGNITION" />
-    <!-- 获取手机的 IMEI（设备标识码） -->
+    <uses-permission android:name="android.permission.ACTIVITY_RECOGNITION" /> <!-- 获取手机的 IMEI（设备标识码） -->
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.READ_PRIVILEGED_PHONE_STATE" />
-
-    <!-- 写外置存储 -->
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <!-- 读取外置存储 -->
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <!-- 这个权限用于跳转外部存储授权界面 -->
+    <uses-permission android:name="android.permission.READ_PRIVILEGED_PHONE_STATE" /> <!-- 写外置存储 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> <!-- 读取外置存储 -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> <!-- 这个权限用于跳转外部存储授权界面 -->
     <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -74,7 +68,8 @@
 
     <uses-feature android:name="android.hardware.camera.autofocus" />
     <uses-feature android:name="android.hardware.camera.flash" /> <!-- 状态栏权限 -->
-    <uses-permission android:name="android.permission.EXPAND_STATUS_BAR" /> <!-- android:name="com.lindum.mlkit.vision.demo.CameraXLivePreviewActivity" -->
+    <uses-permission android:name="android.permission.EXPAND_STATUS_BAR" />
+
     <application
         android:name="androidx.multidex.MultiDexApplication"
         android:allowBackup="true"
@@ -87,12 +82,15 @@
         android:testOnly="true"
         android:theme="@style/Theme.AppCompat"
         android:usesCleartextTraffic="true" >
+        <activity
+            android:name="com.lindum.mlkit.vision.dev.view.ChatList"
+            android:exported="false" />
+
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
-
         <!--
-          Optional: Add it to automatically download ML model to device after
+ Optional: Add it to automatically download ML model to device after
           your app is installed.
         -->
         <meta-data
