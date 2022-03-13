@@ -22,9 +22,13 @@ com/lindum/mlkit/vision/dev/preference/SettingsActivity.java
  com.lindum.mlkit.vision.dev.preference.SettingsActivity$LaunchSource
 com/lindum/mlkit/vision/dev/QuickShotUtils.java
  com.lindum.mlkit.vision.dev.QuickShotUtils
-com/lindum/mlkit/vision/dev/datacenter/circleprogress/CircleProgress.java
- com.lindum.mlkit.vision.dev.datacenter.circleprogress.CircleProgress
- com.lindum.mlkit.vision.dev.datacenter.circleprogress.CircleProgress$1
+com/lindum/mlkit/vision/dev/view/HomePage.java
+ com.lindum.mlkit.vision.dev.view.HomePage
+ com.lindum.mlkit.vision.dev.view.HomePage$1
+ com.lindum.mlkit.vision.dev.view.HomePage$2
+ com.lindum.mlkit.vision.dev.view.HomePage$3
+ com.lindum.mlkit.vision.dev.view.HomePage$4
+ com.lindum.mlkit.vision.dev.view.HomePage$MySensorEventListener
 com/lindum/mlkit/vision/dev/posedetector/classification/PoseEmbedding.java
  com.lindum.mlkit.vision.dev.posedetector.classification.PoseEmbedding
 com/lindum/mlkit/vision/dev/preference/LivePreviewPreferenceFragment.java
@@ -98,8 +102,8 @@ com/lindum/mlkit/vision/dev/PixelCopyHelper.java
  com.lindum.mlkit.vision.dev.PixelCopyHelper$PixelCopyListener
 com/lindum/mlkit/vision/dev/posedetector/classification/PoseClassifierProcessor.java
  com.lindum.mlkit.vision.dev.posedetector.classification.PoseClassifierProcessor
-com/lindum/mlkit/vision/dev/entity/PoseEntity.java
- com.lindum.mlkit.vision.dev.entity.PoseEntity
+com/lindum/mlkit/vision/dev/view/PoseDetailsActivity.java
+ com.lindum.mlkit.vision.dev.view.PoseDetailsActivity
 com/lindum/mlkit/vision/dev/view/FoodListAdapter.java
  com.lindum.mlkit.vision.dev.view.FoodListAdapter
 com/lindum/mlkit/vision/dev/view/AboutActivity.java
@@ -129,8 +133,9 @@ com/lindum/mlkit/vision/dev/result/ResultEntity.java
  com.lindum.mlkit.vision.dev.result.ResultEntity
 com/lindum/mlkit/vision/dev/view/PoseLibraryItem.java
  com.lindum.mlkit.vision.dev.view.PoseLibraryItem
-com/lindum/mlkit/vision/dev/datacenter/Calendar.java
- com.lindum.mlkit.vision.dev.datacenter.Calendar
+com/lindum/mlkit/vision/dev/result/TrainingResult.java
+ com.lindum.mlkit.vision.dev.result.TrainingResult
+ com.lindum.mlkit.vision.dev.result.TrainingResult$1
 com/lindum/mlkit/vision/dev/SpeechUtils.java
  com.lindum.mlkit.vision.dev.SpeechUtils
 com/lindum/mlkit/vision/dev/utils/StatusBarUtils.java
@@ -161,10 +166,14 @@ com/lindum/mlkit/vision/dev/CameraXViewModel.java
  com.lindum.mlkit.vision.dev.CameraXViewModel
 com/lindum/mlkit/vision/dev/view/FlowTagAdapter.java
  com.lindum.mlkit.vision.dev.view.FlowTagAdapter
-com/lindum/mlkit/vision/dev/datacenter/ProgressActivity.java
- com.lindum.mlkit.vision.dev.datacenter.ProgressActivity
-com/lindum/mlkit/vision/dev/datacenter/BaseActivity.java
- com.lindum.mlkit.vision.dev.datacenter.BaseActivity
+com/lindum/mlkit/vision/dev/view/IntroView.java
+ com.lindum.mlkit.vision.dev.view.IntroView
+ com.lindum.mlkit.vision.dev.view.IntroView$1
+com/lindum/mlkit/vision/dev/view/UserInfoInitActivity.java
+ com.lindum.mlkit.vision.dev.view.UserInfoInitActivity
+ com.lindum.mlkit.vision.dev.view.UserInfoInitActivity$1
+ com.lindum.mlkit.vision.dev.view.UserInfoInitActivity$2
+ com.lindum.mlkit.vision.dev.view.UserInfoInitActivity$3
 com/lindum/mlkit/vision/dev/view/HomeAdapter.java
  com.lindum.mlkit.vision.dev.view.HomeAdapter
  com.lindum.mlkit.vision.dev.view.HomeAdapter$ItemListener
@@ -194,6 +203,8 @@ com/lindum/mlkit/vision/dev/result/ResultListAdapter.java
  com.lindum.mlkit.vision.dev.result.ResultListAdapter
 com/lindum/mlkit/vision/dev/result/ImageDetails.java
  com.lindum.mlkit.vision.dev.result.ImageDetails
+com/lindum/mlkit/vision/dev/entity/PoseEntity.java
+ com.lindum.mlkit.vision.dev.entity.PoseEntity
 com/lindum/mlkit/vision/dev/CameraXLivePreviewActivity.java
  com.lindum.mlkit.vision.dev.CameraXLivePreviewActivity
  com.lindum.mlkit.vision.dev.CameraXLivePreviewActivity$1
@@ -201,23 +212,12 @@ com/lindum/mlkit/vision/dev/CameraXLivePreviewActivity.java
  com.lindum.mlkit.vision.dev.CameraXLivePreviewActivity$2$1
  com.lindum.mlkit.vision.dev.CameraXLivePreviewActivity$3
  com.lindum.mlkit.vision.dev.CameraXLivePreviewActivity$3$1
-com/lindum/mlkit/vision/dev/view/IntroView.java
- com.lindum.mlkit.vision.dev.view.IntroView
- com.lindum.mlkit.vision.dev.view.IntroView$1
-com/lindum/mlkit/vision/dev/view/UserInfoInitActivity.java
- com.lindum.mlkit.vision.dev.view.UserInfoInitActivity
- com.lindum.mlkit.vision.dev.view.UserInfoInitActivity$1
- com.lindum.mlkit.vision.dev.view.UserInfoInitActivity$2
- com.lindum.mlkit.vision.dev.view.UserInfoInitActivity$3
-com/lindum/mlkit/vision/dev/result/TrainingResult.java
- com.lindum.mlkit.vision.dev.result.TrainingResult
- com.lindum.mlkit.vision.dev.result.TrainingResult$1
-com/lindum/mlkit/vision/dev/view/HomePage.java
- com.lindum.mlkit.vision.dev.view.HomePage
- com.lindum.mlkit.vision.dev.view.HomePage$1
- com.lindum.mlkit.vision.dev.view.HomePage$2
- com.lindum.mlkit.vision.dev.view.HomePage$3
- com.lindum.mlkit.vision.dev.view.HomePage$4
- com.lindum.mlkit.vision.dev.view.HomePage$MySensorEventListener
-com/lindum/mlkit/vision/dev/view/PoseDetailsActivity.java
- com.lindum.mlkit.vision.dev.view.PoseDetailsActivity
+com/lindum/mlkit/vision/dev/datacenter/Calendar.java
+ com.lindum.mlkit.vision.dev.datacenter.Calendar
+com/lindum/mlkit/vision/dev/datacenter/BaseActivity.java
+ com.lindum.mlkit.vision.dev.datacenter.BaseActivity
+com/lindum/mlkit/vision/dev/datacenter/ProgressActivity.java
+ com.lindum.mlkit.vision.dev.datacenter.ProgressActivity
+com/lindum/mlkit/vision/dev/datacenter/circleprogress/CircleProgress.java
+ com.lindum.mlkit.vision.dev.datacenter.circleprogress.CircleProgress
+ com.lindum.mlkit.vision.dev.datacenter.circleprogress.CircleProgress$1
