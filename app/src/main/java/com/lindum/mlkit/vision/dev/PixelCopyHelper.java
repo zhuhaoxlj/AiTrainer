@@ -17,16 +17,13 @@ class PixelCopyHelper {
         handlerThread.start();
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            PixelCopy.request(surfaceView, bitmap, new PixelCopy.OnPixelCopyFinishedListener() {
-                @Override
-                public void onPixelCopyFinished(int copyResult) {
-                    if (copyResult == PixelCopy.SUCCESS) {
-                        listener.onSurfaceBitmapReady(bitmap);
-                    } else {
-                        listener.onSurfaceBitmapError("Couldn't create bitmap of the SurfaceView");
-                    }
-                    handlerThread.quitSafely();
+            PixelCopy.request(surfaceView, bitmap, copyResult -> {
+                if (copyResult == PixelCopy.SUCCESS) {
+                    listener.onSurfaceBitmapReady(bitmap);
+                } else {
+                    listener.onSurfaceBitmapError("Couldn't create bitmap of the SurfaceView");
                 }
+                handlerThread.quitSafely();
             }, new Handler(handlerThread.getLooper()));
         } else {
             listener.onSurfaceBitmapError("Saving an image of a SurfaceView is only supported for API 24 and above");

@@ -153,17 +153,6 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
         if (isFirstUseApp) {
             Intent intent = new Intent(HomePage.this, IntroView.class);
             startActivity(intent);
-            //适配安卓11及以下版本的存储权限请求
-            new MaterialDialog.Builder(this)
-                    .cancelable(false)
-                    .iconRes(R.mipmap.tips)
-                    .title("提示")
-                    .content("检测到您第一次使用本软件，请授予权限保证软件正常运行，软件运行过程中不会获取您的隐私，请放心使用!")
-                    .positiveText("确定")
-                    .onPositive((dialog, which) -> {
-                        GetPermissionUtils.getRuntimePermissions(this);
-                    })
-                    .show();
             // 聚焦试图
             guideView();
         }
@@ -220,7 +209,7 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
         viewPager.setAdapter(mPagerAdapter);
         // 初始化底部 TabBar
         initTabBar();
-
+        initSensor();
         // 初始化界面 start
         initHomePage();
         initPoseLibrary();
@@ -293,6 +282,11 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
             Intent intent = new Intent(HomePage.this, UserInfoInitActivity.class);
             intentActivityResultLauncher.launch(intent);
         });
+        // 从数据库获取用户数据
+        getUserInfoFromDateBase();
+    }
+
+    public void initSensor() {
         // 初始化步数监听
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         mySensorEventListener = new MySensorEventListener();
@@ -300,8 +294,6 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
                 SensorManager.SENSOR_DELAY_NORMAL);
         sensorManager.registerListener(mySensorEventListener, sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER),
                 SensorManager.SENSOR_DELAY_NORMAL);
-        // 从数据库获取用户数据
-        getUserInfoFromDateBase();
     }
 
     /**

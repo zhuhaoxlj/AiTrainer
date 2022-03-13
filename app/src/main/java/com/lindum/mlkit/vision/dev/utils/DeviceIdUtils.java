@@ -9,6 +9,8 @@ import android.text.TextUtils;
 
 import androidx.annotation.RequiresApi;
 
+import com.orhanobut.logger.Logger;
+
 import java.nio.charset.StandardCharsets;
 import java.util.UUID;
 
@@ -93,6 +95,7 @@ public class DeviceIdUtils {
     public static String getIMEIString(Context context) {
         TelephonyManager tm = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            Logger.e(tm.getImei());
             return tm.getImei();
         }
         return "";

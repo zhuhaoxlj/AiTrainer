@@ -10,11 +10,13 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.lindum.mlkit.vision.dev.R;
+import com.lindum.mlkit.vision.dev.utils.GetPermissionUtils;
 import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.Logger;
 import com.ramotion.paperonboarding.PaperOnboardingEngine;
 import com.ramotion.paperonboarding.PaperOnboardingPage;
 import com.xuexiang.xui.XUI;
+import com.xuexiang.xui.widget.dialog.materialdialog.MaterialDialog;
 
 import java.io.BufferedWriter;
 import java.io.FileOutputStream;
@@ -32,6 +34,17 @@ public class IntroView extends AppCompatActivity {
         // todo 适配水滴屏幕 当隐藏状态栏的时候上面是黑边
         super.onCreate(savedInstanceState);
         setContentView(R.layout.onboarding_main_layout);
+        //适配安卓11及以下版本的存储权限请求
+        new MaterialDialog.Builder(this)
+                .cancelable(false)
+                .iconRes(R.mipmap.tips)
+                .title("提示")
+                .content("检测到您第一次使用本软件，请授予权限保证软件正常运行，软件运行过程中不会获取您的隐私，请放心使用!")
+                .positiveText("确定")
+                .onPositive((dialog, which) -> {
+                    GetPermissionUtils.getRuntimePermissions(this);
+                })
+                .show();
         PaperOnboardingEngine engine = new PaperOnboardingEngine(findViewById(R.id.onboardingRootView), getDataForOnboard(), getApplicationContext());
 
         engine.setOnChangeListener((oldElementIndex, newElementIndex) -> new Thread() {
@@ -48,8 +61,8 @@ public class IntroView extends AppCompatActivity {
         }.start());
 
         engine.setOnRightOutListener(() -> {
-            finish();
             usedSoftware();
+            finish();
         });
         changeTextColor(Color.parseColor("#ffffff"));
     }
