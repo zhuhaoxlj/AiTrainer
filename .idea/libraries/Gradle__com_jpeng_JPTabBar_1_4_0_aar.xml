@@ -10,6 +10,9 @@
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/a5929c31e74261654ba729d454b7ae9e/jetified-JPTabBar-1.4.0/AndroidManifest.xml" />
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/a5929c31e74261654ba729d454b7ae9e/jetified-JPTabBar-1.4.0/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/a5929c31e74261654ba729d454b7ae9e/jetified-JPTabBar-1.4.0/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/7280ae13190f39b70317453097bbc586/jetified-JPTabBar-1.4.0/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/7280ae13190f39b70317453097bbc586/jetified-JPTabBar-1.4.0/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/7280ae13190f39b70317453097bbc586/jetified-JPTabBar-1.4.0/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.jpeng/JPTabBar/1.4.0/4a7970a052717db9503111ca7e245dd574f7045c/JPTabBar-1.4.0-javadoc.jar!/" />

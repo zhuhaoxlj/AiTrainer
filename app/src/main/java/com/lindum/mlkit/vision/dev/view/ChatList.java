@@ -3,8 +3,6 @@ package com.lindum.mlkit.vision.dev.view;
 import android.annotation.SuppressLint;
 import android.content.res.Resources;
 import android.os.Bundle;
-import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,7 +10,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.lindum.mlkit.vision.dev.R;
 import com.lindum.mlkit.vision.dev.entity.ChatEntity;
 import com.xuexiang.xui.XUI;
-import com.xuexiang.xui.utils.StatusBarUtils;
 import com.xuexiang.xui.widget.actionbar.TitleBar;
 
 import java.text.SimpleDateFormat;
@@ -57,8 +54,8 @@ public class ChatList extends AppCompatActivity {
         }
 
         // 状态栏背景条
-        LinearLayout statusBar = findViewById(R.id.homePageStatusBar);
-        ViewGroup.LayoutParams params = statusBar.getLayoutParams();
-        params.height = StatusBarUtils.getStatusBarHeight(this);
+//        LinearLayout statusBar = findViewById(R.id.homePageStatusBar);
+//        ViewGroup.LayoutParams params = statusBar.getLayoutParams();
+//        params.height = StatusBarUtils.getStatusBarHeight(this);
     }
 }

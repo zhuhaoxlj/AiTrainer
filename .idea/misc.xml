@@ -27,8 +27,6 @@
         <entry key="..\:/Project/Android/AiTrainer/app/src/main/res/layout/look_explanation.xml" value="0.3536458333333333" />
         <entry key="..\:/Project/Android/AiTrainer/app/src/main/res/layout/main/layout-v21/page1.xml" value="0.33695652173913043" />
         <entry key="..\:/Project/Android/AiTrainer/app/src/main/res/layout/main/layout-v28/page1.xml" value="0.2" />
-        <entry key="..\:/Project/Android/AiTrainer/app/src/main/res/layout/main/layout/activity_chat_list.xml" value="0.2901709401709402" />
-        <entry key="..\:/Project/Android/AiTrainer/app/src/main/res/layout/main/layout/chat_item.xml" value="0.2901709401709402" />
         <entry key="..\:/Project/Android/AiTrainer/app/src/main/res/layout/main/layout/circle_button.xml" value="0.22335526315789472" />
         <entry key="..\:/Project/Android/AiTrainer/app/src/main/res/layout/main/layout/food_item.xml" value="0.25" />
         <entry key="..\:/Project/Android/AiTrainer/app/src/main/res/layout/main/layout/fragment_jptabbar.xml" value="0.22335526315789472" />
@@ -109,6 +107,10 @@
         <entry key="app/src/main/res/layout/activity_still_image.xml" value="0.17028985507246377" />
         <entry key="app/src/main/res/layout/activity_vision_camerax_live_preview.xml" value="0.17028985507246377" />
         <entry key="app/src/main/res/layout/activity_vision_live_preview.xml" value="0.17028985507246377" />
+        <entry key="app/src/main/res/layout/datacenter/layout/steps.xml" value="0.2722222222222222" />
+        <entry key="app/src/main/res/layout/main/layout/activity_chat_list.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/main/layout/chat_item.xml" value="0.13304093567251463" />
+        <entry key="app/src/main/res/layout/personal/layout/personal_plan.xml" value="0.2722222222222222" />
         <entry key="app/src/main/res/layout/settings_style.xml" value="0.17028985507246377" />
         <entry key="app/src/main/res/layout/spinner_style.xml" value="0.17028985507246377" />
         <entry key="app/src/main/res/layout/toggle_style.xml" value="0.17028985507246377" />

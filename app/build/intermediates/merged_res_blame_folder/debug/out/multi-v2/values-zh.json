@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "D:\\Project\\Android\\AiTrainer\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-zh\\values-zh.xml",
+            "outputFile": "/Users/markgosling/Documents/Project/Android/AiTrainer/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-zh/values-zh.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Administrator\\.gradle\\caches\\transforms-2\\files-2.1\\ef55714dbd263c4018385af2c5cdcb49\\jetified-calendarview-3.7.1\\res\\values-zh\\values-zh.xml",
+                    "source": "/Users/markgosling/.gradle/caches/transforms-2/files-2.1/ef55714dbd263c4018385af2c5cdcb49/jetified-calendarview-3.7.1/res/values-zh/values-zh.xml",
                     "from": {
                         "startLines": "2,16,31,45,77,91,111,137,142,151,164,176,185,194,195,196,197,198,199,200,201",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",

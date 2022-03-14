@@ -1,9 +1,9 @@
-#Mon Mar 14 10:32:53 CST 2022
-base.2=D\:\\Project\\Android\\AiTrainer\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes2.dex
+#Tue Mar 15 00:32:51 CST 2022
+base.2=/Users/markgosling/Documents/Project/Android/AiTrainer/app/build/intermediates/dex/debug/mergeExtDexDebug/classes2.dex
 path.2=classes2.dex
-base.1=D\:\\Project\\Android\\AiTrainer\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\classes.dex
+base.1=/Users/markgosling/Documents/Project/Android/AiTrainer/app/build/intermediates/dex/debug/mergeProjectDexDebug/classes.dex
 path.1=classes.dex
-base.0=D\:\\Project\\Android\\AiTrainer\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
+base.0=/Users/markgosling/Documents/Project/Android/AiTrainer/app/build/intermediates/dex/debug/mergeExtDexDebug/classes.dex
 renamed.2=classes3.dex
 renamed.1=classes2.dex
 renamed.0=classes.dex

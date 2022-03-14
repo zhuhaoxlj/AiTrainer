@@ -11,6 +11,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.lindum.mlkit.vision.dev.R;
+import com.lindum.mlkit.vision.dev.datacenter.circleprogress.WaveProgress;
 import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.Logger;
 import com.warkiz.tickseekbar.OnSeekChangeListener;
@@ -47,6 +48,10 @@ public class PersonalPlan extends AppCompatActivity {
             public void onSeeking(SeekParams seekParams) {
                 Logger.e(seekParams.progress + "" + "000cal");
                 textView.setText("今日消耗卡路里目标(千卡 kcal):" + seekParams.progress + "000cal");
+                // 水球进度条
+                WaveProgress waveProgress = findViewById(R.id.wave_progress_bar);
+                waveProgress.setValue((int)(100.0*(3500.0/ (seekParams.progress*1000.0))));
+
             }
 
             @Override
