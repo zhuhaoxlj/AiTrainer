@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.lindum.mlkit.vision.dev.R;
+import com.lindum.mlkit.vision.dev.entity.ChatEntity;
 
 import java.util.List;
 

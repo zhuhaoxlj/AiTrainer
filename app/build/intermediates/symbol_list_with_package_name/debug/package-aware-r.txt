@@ -3672,6 +3672,7 @@ drawable mtrl_popupmenu_background_dark
 drawable mtrl_tabs_default_indicator
 drawable muskmelon
 drawable navigation_empty_icon
+drawable notice
 drawable notification_action_background
 drawable notification_bg
 drawable notification_bg_low
@@ -4337,6 +4338,7 @@ id no_network_view
 id no_network_view_tv
 id none
 id normal
+id noticeTitleBar
 id notification_background
 id notification_main_column
 id notification_main_column_container

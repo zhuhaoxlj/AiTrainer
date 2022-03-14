@@ -1,4 +1,4 @@
-package com.lindum.mlkit.vision.dev.view;
+package com.lindum.mlkit.vision.dev.entity;
 
 /**
  * @author YipJing
