@@ -12,8 +12,6 @@ com/lindum/mlkit/vision/dev/datacenter/PersonalPlan.java
  com.lindum.mlkit.vision.dev.datacenter.PersonalPlan
  com.lindum.mlkit.vision.dev.datacenter.PersonalPlan$1
  com.lindum.mlkit.vision.dev.datacenter.PersonalPlan$2
- com.lindum.mlkit.vision.dev.datacenter.PersonalPlan$2$1
- com.lindum.mlkit.vision.dev.datacenter.PersonalPlan$2$2
 com/lindum/mlkit/vision/dev/entity/UserEntity.java
  com.lindum.mlkit.vision.dev.entity.UserEntity
 com/lindum/mlkit/vision/dev/utils/FileUtils.java
@@ -155,10 +153,10 @@ com/lindum/mlkit/vision/dev/utils/StatusBarUtils.java
  com.lindum.mlkit.vision.dev.utils.StatusBarUtils$3
  com.lindum.mlkit.vision.dev.utils.StatusBarUtils$IWindowShower
  com.lindum.mlkit.vision.dev.utils.StatusBarUtils$StatusBarType
-com/lindum/mlkit/vision/dev/sql/UpdateUserInfo.java
- com.lindum.mlkit.vision.dev.sql.UpdateUserInfo
 com/lindum/mlkit/vision/dev/utils/DeviceIdUtils.java
  com.lindum.mlkit.vision.dev.utils.DeviceIdUtils
+com/lindum/mlkit/vision/dev/sql/UpdateUserInfo.java
+ com.lindum.mlkit.vision.dev.sql.UpdateUserInfo
 com/lindum/mlkit/vision/dev/CameraImageGraphic.java
  com.lindum.mlkit.vision.dev.CameraImageGraphic
 com/lindum/mlkit/vision/dev/view/ChangeNickName.java

@@ -479,6 +479,8 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
                 jpTabBar.hideBadge(3);
                 // 选择个人界面
                 if (index == personalPageIndex) {
+                    // 更新用户信息
+                    getUserInfoFromDateBase();
                     TextView nickName = findViewById(R.id.personalPageNickNameText);
                     nickName.setText(userEntity.getNickName());
                     // 提示输入用户信息

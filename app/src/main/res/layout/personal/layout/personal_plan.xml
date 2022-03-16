@@ -139,7 +139,7 @@
     </androidx.cardview.widget.CardView>
 
     <TextView
-        android:id="@+id/calGoalText"
+        android:id="@+id/trainGoalText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/wave_progress_bar_card"
@@ -152,7 +152,7 @@
         android:id="@+id/calGoalSelector"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/calGoalText"
+        android:layout_below="@+id/trainGoalText"
         android:layout_centerInParent="true"
         android:layout_marginStart="20dp"
         android:layout_marginTop="10dp"
@@ -174,6 +174,7 @@
         app:tsb_track_progress_size="3dp" />
 
     <com.xuexiang.xui.widget.button.roundbutton.RoundButton
+        android:id="@+id/goToTrainBu"
         style="@style/RoundButton.Auto"
         android:layout_width="200dp"
         android:layout_height="50dp"

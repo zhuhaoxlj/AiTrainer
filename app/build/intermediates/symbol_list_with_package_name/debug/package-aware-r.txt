@@ -3992,7 +3992,6 @@ id cache_measures
 id cal
 id calDataButton
 id calGoalSelector
-id calGoalText
 id calendarButton
 id calendarLayout
 id calendarView
@@ -4146,6 +4145,7 @@ id gcv_title
 id ghost_view
 id ghost_view_holder
 id glide_custom_view_target_tag
+id goToTrainBu
 id gone
 id graph
 id graph_wrap
@@ -4608,6 +4608,7 @@ id top
 id topPanel
 id touch_outside
 id trainButton
+id trainGoalText
 id trainPlanDataText
 id transitionToEnd
 id transitionToStart
