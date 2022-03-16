@@ -59,7 +59,7 @@
         tools:replace="android:label"
         tools:targetApi="m">
         <activity
-            android:name=".view.ChatList"
+            android:name=".view.OfficialNoticeActivity"
             android:exported="false" />
 
         <meta-data

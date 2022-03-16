@@ -110,6 +110,9 @@
         <entry key="app/src/main/res/layout/datacenter/layout/steps.xml" value="0.2722222222222222" />
         <entry key="app/src/main/res/layout/main/layout/activity_chat_list.xml" value="0.1" />
         <entry key="app/src/main/res/layout/main/layout/chat_item.xml" value="0.13304093567251463" />
+        <entry key="app/src/main/res/layout/main/layout/home_page.xml" value="0.2722222222222222" />
+        <entry key="app/src/main/res/layout/main/layout/homepage.xml" value="0.2722222222222222" />
+        <entry key="app/src/main/res/layout/main/layout/personal_page.xml" value="0.2105978260869565" />
         <entry key="app/src/main/res/layout/personal/layout/personal_plan.xml" value="0.2722222222222222" />
         <entry key="app/src/main/res/layout/settings_style.xml" value="0.17028985507246377" />
         <entry key="app/src/main/res/layout/spinner_style.xml" value="0.17028985507246377" />

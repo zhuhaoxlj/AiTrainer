@@ -481,7 +481,7 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
                     voiceAssistantHandle.post(voiceAssistantRunnable);
                 }
                 // TODO: 2022/3/8
-                Logger.e("12312312" + poseEntityList.get(nowPoseIndex).getMonitorPosePartList().toString());
+//                Logger.e("12312312" + poseEntityList.get(nowPoseIndex).getMonitorPosePartList().toString());
 
                 // 现在动作进行的秒数增加
                 if (countdownSeconds == -1) {

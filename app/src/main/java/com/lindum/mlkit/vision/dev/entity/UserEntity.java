@@ -18,6 +18,8 @@ public class UserEntity {
     String sex;
     String[] sportsPreference;
     LocalDate birthDay;
+    int calGoalValue;
+    int stepsGoalValue;
     float height;
     float weight;
 
@@ -101,6 +103,22 @@ public class UserEntity {
         this.weight = weight;
     }
 
+    public int getCalGoalValue() {
+        return calGoalValue;
+    }
+
+    public void setCalGoalValue(int calGoalValue) {
+        this.calGoalValue = calGoalValue;
+    }
+
+    public int getStepsGoalValue() {
+        return stepsGoalValue;
+    }
+
+    public void setStepsGoalValue(int stepsGoalValue) {
+        this.stepsGoalValue = stepsGoalValue;
+    }
+
     @NonNull
     @Override
     public String toString() {
@@ -113,6 +131,8 @@ public class UserEntity {
                 ", sex='" + sex + '\'' +
                 ", sportsPreference=" + Arrays.toString(sportsPreference) +
                 ", birthDay=" + birthDay +
+                ", calGoalValue=" + calGoalValue +
+                ", stepsGoalValue=" + stepsGoalValue +
                 ", height=" + height +
                 ", weight=" + weight +
                 '}';

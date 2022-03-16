@@ -35,6 +35,69 @@ import java.util.List;
 public class UpdateUserInfo {
 
     /**
+     * 读取resultSet中的userEntity
+     *
+     * @param resultSet 导入需要读取的resultSet
+     * @return 返回读取到的userEntity
+     */
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    private UserEntity getUserEntity(ResultSet resultSet) {
+        try {
+            // 建立连接
+            UserEntity userEntity = new UserEntity();
+
+            String nickName = resultSet.getString("nickName");
+            userEntity.setNickName(nickName);
+
+            String profileImageUrl = resultSet.getString("profileImageUrl");
+            userEntity.setProfileImageUrl(profileImageUrl);
+
+            String region = resultSet.getString("region");
+            userEntity.setRegion(region);
+
+            String profile = resultSet.getString("profile");
+            userEntity.setProfile(profile);
+
+            String sex = resultSet.getString("sex");
+            userEntity.setSex(sex);
+
+            String sportsPreferenceStr = resultSet.getString("sportsPreference");
+
+            if (resultSet.getString("sportsPreference") != null) {
+                String[] sportsPreference = sportsPreferenceStr.replace("[", "").replace("]", "").split(",");
+                userEntity.setSportsPreference(sportsPreference);
+            }
+
+            if(resultSet.getString("birthDay") != null) {
+                String birthDayStr = resultSet.getString("birthDay");
+                DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+                LocalDate birthDay = LocalDate.parse(birthDayStr, dateTimeFormatter);
+                userEntity.setBirthDay(birthDay);
+            }
+
+            float height = resultSet.getFloat("height");
+            userEntity.setHeight(height);
+
+            float weight = resultSet.getFloat("weight");
+            userEntity.setWeight(weight);
+
+            String userUniqueId = resultSet.getString("userUniqueId");
+            userEntity.setUserUniqueId(userUniqueId);
+
+            int calGoalValue = resultSet.getInt("calGoalValue");
+            userEntity.setCalGoalValue(calGoalValue);
+
+            int stepsGoalValue = resultSet.getInt("stepsGoalValue");
+            userEntity.setStepsGoalValue(stepsGoalValue);
+            // 关闭连接
+            return userEntity;
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
+    }
+
+    /**
      * 建表函数
      *
      * @param createTable 创建tableSQL语句
@@ -60,6 +123,7 @@ public class UpdateUserInfo {
     }
 
     /**
+     *
      * @param addField 增加字段sql语句
      */
     public void addField(String addField) {
@@ -212,7 +276,7 @@ public class UpdateUserInfo {
                 LocalDate birthDay;
                 if (birthDayObject != null) {
                     birthDay = LocalDate.parse(birthDayObject.toString());
-                } else {
+                }else {
                     birthDay = null;
                 }
                 //8
@@ -223,8 +287,12 @@ public class UpdateUserInfo {
                 float weight = Float.parseFloat(weightObject.toString());
                 //10
                 String nickName = (String) jsonObject.get("nickName");
+                //11
+                int calGoalValue = jsonObject.getIntValue("calGoalValue");
+                //12
+                int stepsGoalValue = jsonObject.getIntValue("stepsGoalValue");
 
-                sql = "INSERT  INTO userEntity VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?,?)";
+                sql = "INSERT  INTO userEntity VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?,?,?,?)";
                 preparedStatement = connection.prepareStatement(sql);
 
                 preparedStatement.setString(1, userUniqueId);
@@ -255,6 +323,10 @@ public class UpdateUserInfo {
 
                 preparedStatement.setString(10, nickName);
 
+                preparedStatement.setInt(11, calGoalValue);
+
+                preparedStatement.setInt(12, stepsGoalValue);
+
                 preparedStatement.executeUpdate();
                 preparedStatement.close();
                 System.out.println("写入成功");
@@ -266,63 +338,6 @@ public class UpdateUserInfo {
             connection.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
-        }
-    }
-
-    /**
-     * 读取resultSet中的userEntity
-     *
-     * @param resultSet 导入需要读取的resultSet
-     * @return 返回读取到的userEntity
-     */
-    @RequiresApi(api = Build.VERSION_CODES.O)
-    public UserEntity getUserEntity(ResultSet resultSet) {
-        try {
-            // 建立连接
-            UserEntity userEntity = new UserEntity();
-
-            String nickName = resultSet.getString("nickName");
-            userEntity.setNickName(nickName);
-
-            String profileImageUrl = resultSet.getString("profileImageUrl");
-            userEntity.setProfileImageUrl(profileImageUrl);
-
-            String region = resultSet.getString("region");
-            userEntity.setRegion(region);
-
-            String profile = resultSet.getString("profile");
-            userEntity.setProfile(profile);
-
-            String sex = resultSet.getString("sex");
-            userEntity.setSex(sex);
-
-            String sportsPreferenceStr = resultSet.getString("sportsPreference");
-
-            if (resultSet.getString("sportsPreference") != null) {
-                String[] sportsPreference = sportsPreferenceStr.replace("[", "").replace("]", "").split(",");
-                userEntity.setSportsPreference(sportsPreference);
-            }
-
-            if (resultSet.getString("birthDay") != null) {
-                String birthDayStr = resultSet.getString("birthDay");
-                DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-                LocalDate birthDay = LocalDate.parse(birthDayStr, dateTimeFormatter);
-                userEntity.setBirthDay(birthDay);
-            }
-
-            float height = resultSet.getFloat("height");
-            userEntity.setHeight(height);
-
-            float weight = resultSet.getFloat("weight");
-            userEntity.setWeight(weight);
-
-            String userUniqueId = resultSet.getString("userUniqueId");
-            userEntity.setUserUniqueId(userUniqueId);
-            // 关闭连接
-            return userEntity;
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-            return null;
         }
     }
 
@@ -358,8 +373,8 @@ public class UpdateUserInfo {
     }
 
     /**
-     * 删除函数
      *
+     * 删除函数
      * @param userUniqueId 要删除的列的userUniqueId
      * @return 返回删除结果 1为删除成功
      */
@@ -384,6 +399,7 @@ public class UpdateUserInfo {
     }
 
     /**
+     *
      * @param userUniqueId 要查找的数据的 userUniqueId
      * @return 返回找到的列所对应的实体对象
      */
@@ -394,7 +410,7 @@ public class UpdateUserInfo {
             Connection connection = DriverManager.getConnection("jdbc:mysql://47.102.122.203:3306/aitrainer", "aitrainer", "jay666..");
             String sql = "select * from userEntity where userUniqueId = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setObject(1, userUniqueId);
+            preparedStatement.setObject(1,userUniqueId);
             ResultSet resultSet = preparedStatement.executeQuery();
             ResultSetMetaData resultSetMetaData = resultSet.getMetaData();
             int columnCount = resultSetMetaData.getColumnCount();
@@ -415,6 +431,7 @@ public class UpdateUserInfo {
     }
 
     /**
+     *
      * @param userUniqueId 要查找的数据的 userUniqueId
      * @return 返回查找到的行数
      */
@@ -424,7 +441,7 @@ public class UpdateUserInfo {
             Connection connection = DriverManager.getConnection("jdbc:mysql://47.102.122.203:3306/aitrainer", "aitrainer", "jay666..");
             String sql = "select * from userEntity where userUniqueId = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setObject(1, userUniqueId);
+            preparedStatement.setObject(1,userUniqueId);
             ResultSet resultSet = preparedStatement.executeQuery();
             int count = 0;
             while (resultSet.next()) {
@@ -440,9 +457,10 @@ public class UpdateUserInfo {
     }
 
     /**
+     *
      * @param userUniqueId 要修改的列的 userUniqueId
      * @param variableName 要修改的属性
-     * @param object       修改后的属性的值
+     * @param object 修改后的属性的值
      */
     public void upDate(String userUniqueId, String variableName, Object object) {
         try {
@@ -453,8 +471,8 @@ public class UpdateUserInfo {
             } else {
                 String sql = "update userEntity set " + variableName + " = ? where userUniqueId = ?";
                 PreparedStatement preparedStatement = connection.prepareStatement(sql);
-                preparedStatement.setObject(1, object);
-                preparedStatement.setObject(2, userUniqueId);
+                preparedStatement.setObject(1,object);
+                preparedStatement.setObject(2,userUniqueId);
                 preparedStatement.executeUpdate();
                 System.out.println("修改成功");
             }

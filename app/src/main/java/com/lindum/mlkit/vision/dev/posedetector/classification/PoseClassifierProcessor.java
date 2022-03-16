@@ -29,13 +29,16 @@ import java.util.Locale;
 
 public class PoseClassifierProcessor {
     private static final String TAG = "PoseClassifierProcessor";
-    //  private static final String POSE_SAMPLES_FILE = "pose/fitness_pose_samples.csv";
-    // // TODO: 2022/3/8 可以把这个设为静态成员变量，不同动作切换不同的文件生成不同的分类器 
     private static final String POSE_SAMPLES_FILE = "pose/fitness_pose_samples.csv";
-
+    // // TODO: 2022/3/8 可以把这个设为静态成员变量，不同动作切换不同的文件生成不同的分类器 
+//    private static final String POSE_SAMPLES_FILE = "pose/fitness_pose_samples.csv";
+//    private static final String POSE_SAMPLES_FILE = "pose/tunqiao.csv";
+    private String maxConfidenceClass;
     // Specify classes for which we want rep counting.
     // These are the labels in the given {@code POSE_SAMPLES_FILE}. You can set your own class labels
     // for your pose samples.
+    // 置信度
+    private float confidence;
     private static final String PUSHUPS_CLASS = "pushups_down";
     private static final String SQUATS_CLASS = "squats_down";
     private static final String[] POSE_CLASSES = {
@@ -60,7 +63,8 @@ public class PoseClassifierProcessor {
         }
         loadPoseSamples(context);
     }
-    // // TODO: 2022/3/8  
+
+    // // TODO: 2022/3/8
     private void loadPoseSamples(Context context) {
         List<PoseSample> poseSamples = new ArrayList<>();
         try {
@@ -189,7 +193,6 @@ public class PoseClassifierProcessor {
 //                Log.e("TEST", CameraXLivePreviewActivity.countdownSeconds + "S");
                 // 倒计时结束，开始训练
                 if (CameraXLivePreviewActivity.countdownSeconds == -1) {
-                    Log.e("TEST", "检测开始...");
                     // 动作模式： 普通模式 1 严格模式 2
                     // 普通模式 待定 todo
                     // 如果严格模式，则要求每个部位都要精准才算一个有效动作
@@ -248,23 +251,32 @@ public class PoseClassifierProcessor {
                             else {
                                 nowFrameAngle = poseAngleDetector.getPoseAngleFromPartIndex(partIndex);
                             }
-                            Logger.e("当前部位下标:"+partIndex+"当前角度:"+nowFrameAngle+"--第一个角度范围:"+part.getFirstStandardRange()[0]+","+"第二个角度范围:"+part.getFirstStandardRange()[1]);
-                            // 判断当前的角度是否满足第一个标准
-                            if (!(nowFrameAngle > part.getFirstStandardRange()[0] && nowFrameAngle < part.getFirstStandardRange()[1])) {
-                                dynamicPartJudge1 = false;
+                            Logger.e("当前部位下标:" + partIndex + "当前角度:" + nowFrameAngle + "--第一个角度范围:" + part.getFirstStandardRange()[0] + "," + "第二个角度范围:" + part.getFirstStandardRange()[1]);
+                            if (maxConfidenceClass.contains("up") && confidence == 1.0) {
+                                // 判断当前的角度是否满足第二个标准
+                                if (!(nowFrameAngle >= part.getSecondStandardRange()[0] && nowFrameAngle <= part.getSecondStandardRange()[1])) {
+                                    dynamicPartJudge2 = false;
+                                } else {
+                                    CameraXLivePreviewActivity.addWarnPart(partIndex);
+                                }
+                                if (dynamicPartJudge2 && CameraXLivePreviewActivity.isPose1() && fixedPartJudge) {
+                                    CameraXLivePreviewActivity.addCount();
+                                    CameraXLivePreviewActivity.setPose1(false);
+                                }
                             }
-                            if (dynamicPartJudge1 && !CameraXLivePreviewActivity.isPose1() && fixedPartJudge) {
-                                CameraXLivePreviewActivity.addCount();
-                                CameraXLivePreviewActivity.setPose1(true);
+                            if (maxConfidenceClass.contains("down") && confidence == 1.0) {
+                                // 判断当前的角度是否满足第一个标准
+                                if (!(nowFrameAngle >= part.getFirstStandardRange()[0] && nowFrameAngle <= part.getFirstStandardRange()[1])) {
+                                    dynamicPartJudge1 = false;
+                                } else {
+                                    CameraXLivePreviewActivity.addWarnPart(partIndex);
+                                }
+                                if (dynamicPartJudge1 && !CameraXLivePreviewActivity.isPose1() && fixedPartJudge) {
+                                    CameraXLivePreviewActivity.addCount();
+                                    CameraXLivePreviewActivity.setPose1(true);
+                                }
                             }
-                            // 判断当前的角度是否满足第二个标准
-                            if (!(nowFrameAngle > part.getSecondStandardRange()[0] && nowFrameAngle < part.getSecondStandardRange()[1])) {
-                                dynamicPartJudge2 = false;
-                            }
-                            if (dynamicPartJudge2 && CameraXLivePreviewActivity.isPose1() && fixedPartJudge) {
-                                CameraXLivePreviewActivity.addCount();
-                                CameraXLivePreviewActivity.setPose1(false);
-                            }
+
                         }
                     }
                 }
@@ -274,19 +286,19 @@ public class PoseClassifierProcessor {
         // Add maxConfidence class of current frame to result if pose is found.
         assert pose != null;
         if (!pose.getAllPoseLandmarks().isEmpty()) {
-            String maxConfidenceClass = classification.getMaxConfidenceClass();
+            maxConfidenceClass = classification.getMaxConfidenceClass();
             String maxConfidenceClassResult = String.format(
                     Locale.US,
                     "%s : %.2f confidence",
                     maxConfidenceClass,
                     classification.getClassConfidence(maxConfidenceClass)
                             / poseClassifier.confidenceRange());
-            float confidence = classification.getClassConfidence(maxConfidenceClass) / poseClassifier.confidenceRange();
+            confidence = classification.getClassConfidence(maxConfidenceClass) / poseClassifier.confidenceRange();
+            Logger.e("置信度" + confidence);
             CameraXLivePreviewActivity.confidence = confidence;
             if (confidence < 0.9) {
                 CameraXLivePreviewActivity.confidenceNotOne = false;
             }
-            Logger.e(confidence + "");
             result.add(maxConfidenceClassResult);
             result.add("\n");
             result.add("\n");

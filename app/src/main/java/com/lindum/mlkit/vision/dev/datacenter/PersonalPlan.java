@@ -1,17 +1,23 @@
 package com.lindum.mlkit.vision.dev.datacenter;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.lindum.mlkit.vision.dev.R;
 import com.lindum.mlkit.vision.dev.datacenter.circleprogress.WaveProgress;
+import com.lindum.mlkit.vision.dev.entity.UserEntity;
+import com.lindum.mlkit.vision.dev.sql.UpdateUserInfo;
+import com.lindum.mlkit.vision.dev.utils.DeviceIdUtils;
 import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.Logger;
 import com.warkiz.tickseekbar.OnSeekChangeListener;
@@ -26,6 +32,24 @@ import com.xuexiang.xui.utils.StatusBarUtils;
  */
 
 public class PersonalPlan extends AppCompatActivity {
+    private Intent intent;
+    private int stepsGoalValue;
+    private int calGoalValue;
+    private int nowStepsValue;
+    private int nowCalValue;
+    // 水球进度条
+    private WaveProgress waveProgress;
+    // 当前数值与目标数值文字
+    private TextView trainPlanDataText;
+    // 当前界面 flag true为卡路里 false为步数
+    private boolean viewFlag = true;
+    //
+    TextView calGoalText;
+    UpdateUserInfo updateUserInfo;
+    UserEntity userEntity;
+    // 设备识别码
+    String IMEI;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,25 +57,98 @@ public class PersonalPlan extends AppCompatActivity {
         StatusBarUtils.translucent(this);
         setContentView(R.layout.personal_plan);
         Logger.addLogAdapter(new AndroidLogAdapter());
+        // 获取 intent 数据
+        intent = getIntent();
+        nowStepsValue = intent.getIntExtra("steps", 0);
+        nowCalValue = intent.getIntExtra("cal", 0);
+        // 从数据库读取用户信息
+
+        if (android.os.Build.VERSION.SDK_INT >= 29) {
+            IMEI = DeviceIdUtils.getDeviceId(this);
+        } else {
+            IMEI = DeviceIdUtils.getIMEIString(this);
+        }
+        new Thread() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
+            @Override
+            public void run() {
+                super.run();
+                updateUserInfo = new UpdateUserInfo();
+                userEntity = updateUserInfo.search(IMEI);
+                // 如果没有设置目标则目标为5000
+                if (userEntity.getCalGoalValue() == 0) {
+                    calGoalValue = 5000;
+                } else {
+                    calGoalValue = userEntity.getCalGoalValue();
+                }
+                if (userEntity.getStepsGoalValue() == 0) {
+                    stepsGoalValue = 5000;
+                } else {
+                    stepsGoalValue = userEntity.getStepsGoalValue();
+                }
+            }
+        }.start();
+
         // 初始化组件
         initComponent();
     }
 
     public void initComponent() {
+        // 初始化水球进度条
+        waveProgress = findViewById(R.id.wave_progress_bar);
+        // 初始化当前数值与目标数值文字
+        trainPlanDataText = findViewById(R.id.trainPlanDataText);
         // 目标文字显示
-        TextView textView = findViewById(R.id.calGoalText);
+        TextView calGoalText = findViewById(R.id.calGoalText);
         // 卡路里目标选择器
         TickSeekBar tickSeekBar = findViewById(R.id.calGoalSelector);
+        tickSeekBar.setProgress(calGoalValue / 1000);
         tickSeekBar.setOnSeekChangeListener(new OnSeekChangeListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
             @SuppressLint("SetTextI18n")
             @Override
             public void onSeeking(SeekParams seekParams) {
-                Logger.e(seekParams.progress + "" + "000cal");
-                textView.setText("今日消耗卡路里目标(千卡 kcal):" + seekParams.progress + "000cal");
-                // 水球进度条
-                WaveProgress waveProgress = findViewById(R.id.wave_progress_bar);
-                waveProgress.setValue((int)(100.0*(3500.0/ (seekParams.progress*1000.0))));
+                stepsGoalValue = seekParams.progress * 1000;
+                calGoalValue = seekParams.progress * 1000;
+                // 更新数据库信息
+                if (viewFlag) {
+                    new Thread() {
+                        @Override
+                        public void run() {
+                            super.run();
+                            UpdateUserInfo updateUserInfo = new UpdateUserInfo();
+                            updateUserInfo.upDate(IMEI, "calGoalValue", calGoalValue);
+                        }
+                    }.start();
+                } else {
+                    new Thread() {
+                        @Override
+                        public void run() {
+                            super.run();
+                            UpdateUserInfo updateUserInfo = new UpdateUserInfo();
+                            updateUserInfo.upDate(IMEI, "stepsGoalValue", stepsGoalValue);
+                        }
+                    }.start();
+                }
 
+
+                Logger.e(seekParams.progress + "" + "000cal");
+                if (viewFlag) {
+                    calGoalText.setText("今日消耗卡路里目标(千卡 kcal):" + seekParams.progress + "000cal");
+                    int waveProgressValue = (int) (100.0 * (3500.0 / (seekParams.progress * 1000.0)));
+                    waveProgress.setValue(waveProgressValue);
+                    if (waveProgressValue >= 100) {
+                        Logger.e("恭喜你完成目标");
+                    }
+                } else {
+                    calGoalText.setText("今日步数目标(步 step):" + seekParams.progress + "000step");
+                    int waveProgressValue = (int) (100.0 * (3500.0 / (seekParams.progress * 1000.0)));
+                    waveProgress.setValue(waveProgressValue);
+                    if (waveProgressValue >= 100) {
+                        Logger.e("恭喜你完成目标");
+                    }
+                }
+                updateTextView(viewFlag);
             }
 
             @Override
@@ -64,10 +161,10 @@ public class PersonalPlan extends AppCompatActivity {
 
             }
         });
-        // 卡路里数据按钮
+        // 卡路里按钮和步数按钮初始化
         RelativeLayout calDataButton = findViewById(R.id.calDataButton);
-        // 步数数据按钮
         RelativeLayout stepsDataButton = findViewById(R.id.stepsDataButton);
+        // 卡路里数据按钮
         calDataButton.setOnClickListener(view -> {
             stepsDataButton.setBackgroundColor(Color.parseColor("#f8f6f9"));
             calDataButton.setBackgroundColor(Color.parseColor("#ffffff"));
@@ -75,7 +172,10 @@ public class PersonalPlan extends AppCompatActivity {
             stepsText.setTextColor(Color.parseColor("#000000"));
             TextView calText = (TextView) calDataButton.getChildAt(0);
             calText.setTextColor(Color.parseColor("#88b2ff"));
+            viewFlag = true;
+            updateTextView(viewFlag);
         });
+        // 步数数据按钮
         stepsDataButton.setOnClickListener(view -> {
             calDataButton.setBackgroundColor(Color.parseColor("#f8f6f9"));
             stepsDataButton.setBackgroundColor(Color.parseColor("#ffffff"));
@@ -83,10 +183,32 @@ public class PersonalPlan extends AppCompatActivity {
             stepsText.setTextColor(Color.parseColor("#88b2ff"));
             TextView calText = (TextView) calDataButton.getChildAt(0);
             calText.setTextColor(Color.parseColor("#000000"));
+            viewFlag = false;
+            updateTextView(viewFlag);
         });
 
         // 返回按钮
         ImageView personalGoalBackButton = findViewById(R.id.personalGoalBackButton);
         personalGoalBackButton.setOnClickListener(view -> finish());
+    }
+
+    /**
+     * 更新文本内容
+     *
+     * @param type true 更新卡路里 false 更新步数
+     */
+    @SuppressLint("SetTextI18n")
+    public void updateTextView(boolean type) {
+        if (type) {
+            trainPlanDataText.setText(nowCalValue + "/" + calGoalValue + "Cal");
+            int value = (int) (100.0 * (nowCalValue / (calGoalValue)));
+            Logger.e("当前值" + value);
+//            waveProgress.setValue(value);
+        } else {
+            trainPlanDataText.setText(nowStepsValue + "/" + stepsGoalValue + "Step");
+            int value = (int) (100.0 * (nowStepsValue / (stepsGoalValue)));
+            Logger.e("当前值" + value);
+//            waveProgress.setValue(value);
+        }
     }
 }

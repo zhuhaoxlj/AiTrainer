@@ -83,7 +83,7 @@
         android:theme="@style/Theme.AppCompat"
         android:usesCleartextTraffic="true" >
         <activity
-            android:name="com.lindum.mlkit.vision.dev.view.ChatList"
+            android:name="com.lindum.mlkit.vision.dev.view.OfficialNoticeActivity"
             android:exported="false" />
 
         <meta-data

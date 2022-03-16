@@ -1,5 +1,6 @@
 package com.lindum.mlkit.vision.dev.result;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -7,7 +8,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -26,20 +26,18 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.atomic.AtomicInteger;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
- * @author Administrator
+ * @author MarkGosling
  * @date 2022/1/27 8:25
  */
 public class TrainingResult extends AppCompatActivity implements HorizontalProgressView.HorizontalProgressUpdateListener, CircleProgressView.CircleProgressUpdateListener {
@@ -50,8 +48,10 @@ public class TrainingResult extends AppCompatActivity implements HorizontalProgr
     // 动作组数进度条占比
     int groupsOfPose;
     private ListView listView;
+    @SuppressLint("NonConstantResourceId")
     @BindView(R.id.progressView_circle_main)
     CircleProgressView progressViewCircleMain;
+    @SuppressLint("NonConstantResourceId")
     @BindView(R.id.progress_text_main)
     TextView progressTextMain;
     // 运动时长
@@ -91,29 +91,37 @@ public class TrainingResult extends AppCompatActivity implements HorizontalProgr
             if (poseResultMap.get(tips) == null) {
                 poseResultMap.put(tips, 1);
             } else {
-                poseResultMap.replace(tips, poseResultMap.get(tips) + 1);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                    poseResultMap.replace(tips, poseResultMap.get(tips) + 1);
+                }
             }
         }
         List<Map.Entry<String, Integer>> list = new ArrayList<>(poseResultMap.entrySet());
-        list.sort(Comparator.comparing(Map.Entry::getValue));
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            list.sort(Comparator.comparing(Map.Entry::getValue));
+        }
         Collections.reverse(list);
         Map<String, Integer> map2 = new LinkedHashMap<>();
         for (Map.Entry<String, Integer> entry : list) {
             map2.put(entry.getKey(), entry.getValue());
         }
-        map2.forEach((o1, o2) -> {
-            if (o1.length() > 3) {
-                int index = Integer.parseInt(o1.split("，")[0]);
-                String commonMistakes = "";
-                String solveMethod = "";
-                if (HomePage.poseEntityArrayList.get(getPoseIndexByName(resultName.get(index))).getCommonMistakes().length > 1) {
-                    commonMistakes = HomePage.poseEntityArrayList.get(getPoseIndexByName(resultName.get(index))).getCommonMistakes()[0];
-                    solveMethod = HomePage.poseEntityArrayList.get(getPoseIndexByName(resultName.get(index))).getCommonMistakes()[1].replace("解决：", "");
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            map2.forEach((o1, o2) -> {
+                if (o1.length() > 3) {
+                    int index = Integer.parseInt(o1.split("，")[0]);
+                    String commonMistakes = "";
+                    String solveMethod = "";
+                    if (HomePage.poseEntityArrayList.get(getPoseIndexByName(resultName.get(index))).getCommonMistakes().length > 1) {
+                        commonMistakes = HomePage.poseEntityArrayList.get(getPoseIndexByName(resultName.get(index))).getCommonMistakes()[0];
+                        solveMethod = HomePage.poseEntityArrayList.get(getPoseIndexByName(resultName.get(index))).getCommonMistakes()[1].replace("解决：", "");
+                    }
+                    ResultEntity temp = new ResultEntity(resultName.get(index), "出错" + o2 + "次\n" + commonMistakes + "。" + "\nAi建议：" + "\n" + solveMethod + "。" + resultTips.get(index).substring(1, resultTips.get(index).length()) + "\n", resultImage.get(index), resultImage.get(index));
+                    resultEntityList.add(temp);
                 }
-                ResultEntity temp = new ResultEntity(resultName.get(index), "出错" + o2 + "次\n" + commonMistakes + "。" + "\nAi建议：" + "\n" + solveMethod + "。" + resultTips.get(index).substring(1, resultTips.get(index).length()) + "\n", resultImage.get(index), resultImage.get(index));
-                resultEntityList.add(temp);
-            }
-        });
+            });
+        }
+
+
 
         // 将识别结果放入列表数组中
 //        for (String tips : resultTips) {
@@ -128,17 +136,14 @@ public class TrainingResult extends AppCompatActivity implements HorizontalProgr
         listView = findViewById(R.id.resultList);
         ResultListAdapter resultListAdapter = new ResultListAdapter(this, R.layout.result_list_item, resultEntityList);
         listView.setAdapter(resultListAdapter);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                ImageView imageView = view.findViewById(R.id.wrongPoseImage);
-                imageView.setDrawingCacheEnabled(true);
-                Bitmap bitmap = Bitmap.createBitmap(imageView.getDrawingCache());
-                Intent intent1 = new Intent(TrainingResult.this, ImageDetails.class);
-                ImageDetails.bitmap = bitmap;
-                imageView.setDrawingCacheEnabled(false);
-                startActivity(intent1);
-            }
+        listView.setOnItemClickListener((adapterView, view, i, l) -> {
+            ImageView imageView = view.findViewById(R.id.wrongPoseImage);
+            imageView.setDrawingCacheEnabled(true);
+            Bitmap bitmap = Bitmap.createBitmap(imageView.getDrawingCache());
+            Intent intent1 = new Intent(TrainingResult.this, ImageDetails.class);
+            ImageDetails.bitmap = bitmap;
+            imageView.setDrawingCacheEnabled(false);
+            startActivity(intent1);
         });
 
         //  初始化控件
@@ -208,7 +213,10 @@ public class TrainingResult extends AppCompatActivity implements HorizontalProgr
 
     public void startProcessBar() {
         hpvTime.startProgressAnimation();
-        float groupsOfPoseProportion = 100 * ((float) groupsOfPose / (float) CameraXLivePreviewActivity.poseEntityList.size());
+        float groupsOfPoseProportion = 0;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+            groupsOfPoseProportion = 100 * ((float) groupsOfPose / (float) CameraXLivePreviewActivity.poseEntityList.size());
+        }
         hpvGroup.setEndProgress(groupsOfPoseProportion);
         hpvGroup.startProgressAnimation();
         hpvCal.startProgressAnimation();

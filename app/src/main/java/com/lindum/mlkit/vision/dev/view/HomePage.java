@@ -153,7 +153,7 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
         if (isFirstUseApp) {
             Intent intent = new Intent(HomePage.this, IntroView.class);
             startActivity(intent);
-            // 聚焦试图
+            // 聚焦视图
             guideView();
         }
         // 再次获取未授权权限
@@ -240,7 +240,7 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
         // 聊天按钮
         ImageView imageView1 = view1.findViewById(R.id.chatListButton);
         imageView1.setOnClickListener(view -> {
-            Intent intent = new Intent(HomePage.this,ChatList.class);
+            Intent intent = new Intent(HomePage.this, OfficialNoticeActivity.class);
             startActivity(intent);
         });
     }
@@ -277,6 +277,7 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
         LinearLayout personalPlanButton = view4.findViewById(R.id.personalPlanButton);
         personalPlanButton.setOnClickListener(view -> {
             Intent intent = new Intent(HomePage.this, PersonalPlan.class);
+            intent.putExtra("steps", mySensorEventListener.getSteps());
             startActivity(intent);
         });
         // 去除标题栏左侧返回图标
@@ -421,6 +422,7 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
             public void run() {
                 super.run();
                 userEntity = updateUserInfo.search(IMEI);
+                Logger.e("找到用户信息了  " + userEntity.getUserUniqueId());
             }
         }.start();
     }
@@ -464,19 +466,21 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
         final int personalPageIndex = 3;
         jpTabBar = findViewById(R.id.tabbar);
         jpTabBar.setContainer(viewPager);
-        // 设置未读消息红点
-        jpTabBar.showBadge(3, "1", false);
+        if (!FileUtils.isFileExist(HomePage.this.getApplicationContext().getFilesDir().getAbsolutePath(), "userInfo.sys")) {
+            // 设置未读消息红点
+            jpTabBar.showBadge(3, "1", false);
+        }
         // tabbar 添加监听
         jpTabBar.setTabListener(new OnTabSelectListener() {
             @Override
             public void onTabSelect(int index) {
                 Logger.d("选中了" + TABBAR_TITLES[index]);
+                // 隐藏小红点
+                jpTabBar.hideBadge(3);
                 // 选择个人界面
                 if (index == personalPageIndex) {
                     TextView nickName = findViewById(R.id.personalPageNickNameText);
                     nickName.setText(userEntity.getNickName());
-                    // 隐藏小红点
-                    jpTabBar.hideBadge(3);
                     // 提示输入用户信息
                     if (!FileUtils.isFileExist(HomePage.this.getApplicationContext().getFilesDir().getAbsolutePath(), "userInfo.sys")) {
                         new MaterialDialog.Builder(HomePage.this)
@@ -639,7 +643,7 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
 
     class MySensorEventListener implements SensorEventListener {
         private int mStepDetector = 0;  // 自应用运行以来STEP_DETECTOR检测到的步数
-        private int mStepCounter = 0;   // 自系统开机以来STEP_COUNTER检测到的步数
+        public int mStepCounter = 0;   // 自系统开机以来STEP_COUNTER检测到的步数
 
         @SuppressLint("SetTextI18n")
         @Override
@@ -656,6 +660,10 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
 
         @Override
         public void onAccuracyChanged(Sensor sensor, int accuracy) {
+        }
+
+        public int getSteps() {
+            return mStepCounter;
         }
     }
 }
