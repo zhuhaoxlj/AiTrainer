@@ -12,11 +12,11 @@
 12    APIs.
 13    -->
 14    <uses-sdk
-14-->/Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/AndroidManifest.xml:13:5-157
+14-->/Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/AndroidManifest.xml:13:5-135
 15        android:minSdkVersion="19"
-15-->/Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/AndroidManifest.xml:13:5-157
+15-->/Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/AndroidManifest.xml:13:5-135
 16        android:targetSdkVersion="30" />
-16-->/Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/AndroidManifest.xml:13:5-157
+16-->/Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/AndroidManifest.xml:13:5-135
 17
 18    <uses-feature android:name="android.hardware.camera" /> <!-- 步数获取 -->
 18-->/Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/AndroidManifest.xml:15:5-60

@@ -62,6 +62,7 @@ public class TrainingResult extends AppCompatActivity implements HorizontalProgr
     // 卡路里
     @BindView(R.id.hpv_cal)
     HorizontalProgressView hpvCal;
+    @SuppressLint("NonConstantResourceId")
     @BindView(R.id.progress_text_cal)
     TextView progressTextCal;
     // 动作组数
@@ -115,12 +116,18 @@ public class TrainingResult extends AppCompatActivity implements HorizontalProgr
                         commonMistakes = HomePage.poseEntityArrayList.get(getPoseIndexByName(resultName.get(index))).getCommonMistakes()[0];
                         solveMethod = HomePage.poseEntityArrayList.get(getPoseIndexByName(resultName.get(index))).getCommonMistakes()[1].replace("解决：", "");
                     }
-                    ResultEntity temp = new ResultEntity(resultName.get(index), "出错" + o2 + "次\n" + commonMistakes + "。" + "\nAi建议：" + "\n" + solveMethod + "。" + resultTips.get(index).substring(1, resultTips.get(index).length()) + "\n", resultImage.get(index), resultImage.get(index));
+                    Bitmap rightPoseImage = null;
+                    for (PoseEntity poseEntity : HomePage.poseEntityArrayList) {
+                        if (poseEntity.getPoseName() == resultName.get(index)) {
+                            int indexOfPoseEntityList = HomePage.poseEntityArrayList.indexOf(poseEntity);
+                            rightPoseImage = HomePage.poseLibrarySwiperImageArrayList.get(indexOfPoseEntityList);
+                        }
+                    }
+                    ResultEntity temp = new ResultEntity(resultName.get(index), "出错" + o2 + "次\n" + commonMistakes + "。" + "\nAi建议：" + "\n" + solveMethod + "。" + resultTips.get(index).substring(1) + "\n", resultImage.get(index), rightPoseImage);
                     resultEntityList.add(temp);
                 }
             });
         }
-
 
 
         // 将识别结果放入列表数组中

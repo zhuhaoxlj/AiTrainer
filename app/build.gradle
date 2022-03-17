@@ -70,6 +70,8 @@ repositories {
 }
 
 dependencies {
+    // 书写文字
+    implementation 'com.github.sarnavakonar:TextWriter:v1.0'
     // 进度条
     implementation 'com.github.warkiz.tickseekbar:tickseekbar:0.1.4'
     // intro

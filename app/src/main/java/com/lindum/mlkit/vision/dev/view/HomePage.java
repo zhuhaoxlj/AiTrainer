@@ -13,6 +13,7 @@ import android.hardware.SensorManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Message;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -78,6 +79,7 @@ import java.util.List;
  * @date 2022/2/13 23:24
  */
 public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListener {
+    private Bitmap loadingBitmap;
     public static UserEntity userEntity = new UserEntity();
     public static ArrayList<Bitmap> poseLibrarySwiperImageArrayList = new ArrayList<>();
     public static ArrayList<Bitmap> poseDetailFeelingImageArrayList = new ArrayList<>();
@@ -141,6 +143,13 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
         Logger.addLogAdapter(new AndroidLogAdapter());
         // 初始化
         init();
+
+
+        // todo 获取当前文件夹下所有文件
+        FileUtils.getFileName(this.getApplicationContext().getFilesDir()
+                .getParentFile().getAbsolutePath());
+        Logger.e("遍历的路径" + this.getApplicationContext().getFilesDir()
+                .getParentFile().getAbsolutePath());
     }
 
     /**
@@ -148,6 +157,8 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
      */
     @SuppressLint("ResourceType")
     public void init() {
+        // 加载中图片设置
+        loadingBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.loading3);
         isFirstUseApp = isFirstUseApp();
         // 是否第一次使用软件
         if (isFirstUseApp) {
@@ -212,7 +223,46 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
         initSensor();
         // 初始化界面 start
         initHomePage();
-        initPoseLibrary();
+        // 主线程更新动作库 handler
+        final Handler handler = new Handler() {
+            @Override
+            public void handleMessage(Message msg) {
+                if (msg.what == 0x1233) {
+                    // 主线程更新动作库图片
+                    initPoseLibrary();
+                }
+            }
+        };
+        new Thread() {
+            @Override
+            public void run() {
+                super.run();
+                ControlTable controlTable = new ControlTable();
+                poseEntityArrayList = controlTable.readTable();
+                // 把动作库的图片连接转换为图片
+                initSwiperImage();
+                // 每隔500ms更新一次动作库，知道封面图片获取完毕
+                boolean reflash = true;
+                while (reflash) {
+                    try {
+                        Thread.sleep(500);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    handler.sendEmptyMessage(0x1233);
+                    reflash = false;
+
+                    for (Bitmap bitmap : poseLibrarySwiperImageArrayList) {
+                        if (bitmap == loadingBitmap) {
+                            reflash = true;
+                            break;
+                        }
+                    }
+                    Logger.e("更新动作库");
+                }
+            }
+        }.start();
+
         initPersonalPage();
         // 初始化界面 end
     }
@@ -374,10 +424,31 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
      * 获取动作库图片
      */
     public void initSwiperImage() {
-        for (PoseEntity poseEntity : poseEntityArrayList) {
-            poseLibrarySwiperImageArrayList.add(returnBitMap(poseEntity.getPoseSwiperImageUrl()[0]));
-            poseDetailFeelingImageArrayList.add(returnBitMap(poseEntity.getPoseFeelingImage()));
+        for (int i = 0; i < poseEntityArrayList.size(); i++) {
+            poseLibrarySwiperImageArrayList.add(loadingBitmap);
+            poseDetailFeelingImageArrayList.add(null);
         }
+        for (PoseEntity poseEntity : poseEntityArrayList) {
+            int indexOfPoseEntityList = poseEntityArrayList.indexOf(poseEntity);
+            new Thread() {
+                @Override
+                public void run() {
+                    super.run();
+                    poseLibrarySwiperImageArrayList.set(indexOfPoseEntityList, returnBitMap(poseEntity.getPoseSwiperImageUrl()[0]));
+                }
+            }.start();
+            new Thread() {
+                @Override
+                public void run() {
+                    super.run();
+                    poseDetailFeelingImageArrayList.set(indexOfPoseEntityList, returnBitMap(poseEntity.getPoseFeelingImage()));
+                }
+            }.start();
+        }
+//        for (PoseEntity poseEntity : poseEntityArrayList) {
+//            poseLibrarySwiperImageArrayList.add(returnBitMap(poseEntity.getPoseSwiperImageUrl()[0]));
+//            poseDetailFeelingImageArrayList.add(returnBitMap(poseEntity.getPoseFeelingImage()));
+//        }
     }
 
     public Bitmap returnBitMap(final String url) {
@@ -422,7 +493,6 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
             public void run() {
                 super.run();
                 userEntity = updateUserInfo.search(IMEI);
-                Logger.e("找到用户信息了  " + userEntity.getUserUniqueId());
             }
         }.start();
     }
@@ -433,23 +503,17 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
     public void getPoseEntityFromDataBase() {
         // 设置动作库
         ArrayList<PoseLibraryItem> arrayList = new ArrayList<>();
-        ControlTable controlTable = new ControlTable();
         RecyclerView recyclerView = view3.findViewById(R.id.recyclerView);
         // todo 线程池
         Thread getData = new Thread() {
             @Override
             public void run() {
                 super.run();
-                poseEntityArrayList = controlTable.readTable();
-                // 获取动作库图片监听
-                initSwiperImage();
+                // 动作库 Items 加载
                 for (PoseEntity poseEntity : poseEntityArrayList) {
-                    // 动作库 Items 加载
                     int index = poseEntityArrayList.indexOf(poseEntity);
                     arrayList.add(new PoseLibraryItem(index, poseEntity.getPoseName(), "", poseLibrarySwiperImageArrayList.get(index), "#000000"));
                 }
-                // 查看俯卧撑数据
-                Logger.e(poseEntityArrayList.get(3).getMonitorPosePartList().toString());
             }
         };
         getData.start();

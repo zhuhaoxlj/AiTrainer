@@ -10,7 +10,7 @@
     minSdkVersion value. In code, will check SDK version, before calling CameraX
     APIs.
     -->
-    <uses-sdk tools:overrideLibrary="           androidx.camera.camera2, androidx.camera.core,           androidx.camera.view, androidx.camera.lifecycle" />
+    <uses-sdk tools:overrideLibrary="androidx.camera.camera2, androidx.camera.core,androidx.camera.view, androidx.camera.lifecycle" />
 
     <uses-feature android:name="android.hardware.camera" /> <!-- 步数获取 -->
     <uses-permission android:name="android.permission.VIBRATE" />

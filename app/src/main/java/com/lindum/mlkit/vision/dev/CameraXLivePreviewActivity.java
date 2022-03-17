@@ -817,7 +817,8 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
         Runnable r3 = new Runnable() {
             @Override
             public void run() {
-                if (!warnPart.isEmpty() && confidence == 1 && !confidenceNotOne) {
+//                if (!warnPart.isEmpty() && confidence == 1 && !confidenceNotOne) {
+                if (!warnPart.isEmpty() && confidence == 1) {
                     confidenceNotOne = true;
                     Random random = new Random();
                     String fileName = nowPoseIndex + "-" + Math.abs(random.nextInt());

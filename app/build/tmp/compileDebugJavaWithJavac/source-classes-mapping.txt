@@ -29,6 +29,10 @@ com/lindum/mlkit/vision/dev/view/HomePage.java
  com.lindum.mlkit.vision.dev.view.HomePage$2
  com.lindum.mlkit.vision.dev.view.HomePage$3
  com.lindum.mlkit.vision.dev.view.HomePage$4
+ com.lindum.mlkit.vision.dev.view.HomePage$5
+ com.lindum.mlkit.vision.dev.view.HomePage$6
+ com.lindum.mlkit.vision.dev.view.HomePage$7
+ com.lindum.mlkit.vision.dev.view.HomePage$8
  com.lindum.mlkit.vision.dev.view.HomePage$MySensorEventListener
 com/lindum/mlkit/vision/dev/posedetector/classification/PoseEmbedding.java
  com.lindum.mlkit.vision.dev.posedetector.classification.PoseEmbedding
@@ -109,6 +113,8 @@ com/lindum/mlkit/vision/dev/posedetector/classification/PoseClassifierProcessor.
  com.lindum.mlkit.vision.dev.posedetector.classification.PoseClassifierProcessor
 com/lindum/mlkit/vision/dev/view/PoseDetailsActivity.java
  com.lindum.mlkit.vision.dev.view.PoseDetailsActivity
+com/lindum/mlkit/vision/dev/view/WriteTextActivity.java
+ com.lindum.mlkit.vision.dev.view.WriteTextActivity
 com/lindum/mlkit/vision/dev/view/FoodListAdapter.java
  com.lindum.mlkit.vision.dev.view.FoodListAdapter
 com/lindum/mlkit/vision/dev/view/AboutActivity.java

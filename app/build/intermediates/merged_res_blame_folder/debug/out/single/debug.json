@@ -236,6 +236,10 @@
         "source": "/Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/res/drawable-hdpi/ferrari.png"
     },
     {
+        "merged": "/Users/markgosling/Documents/Project/Android/AiTrainer/app/build/intermediates/res/merged/debug/drawable-ldpi_loading2.png.flat",
+        "source": "/Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/res/drawable-ldpi/loading2.png"
+    },
+    {
         "merged": "/Users/markgosling/Documents/Project/Android/AiTrainer/app/build/intermediates/res/merged/debug/drawable_intro_icon1.png.flat",
         "source": "/Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/res/drawable/intro_icon1.png"
     },
@@ -256,16 +260,20 @@
         "source": "/Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/res/mipmap-xhdpi/pre.png"
     },
     {
+        "merged": "/Users/markgosling/Documents/Project/Android/AiTrainer/app/build/intermediates/res/merged/debug/drawable-ldpi_loading.png.flat",
+        "source": "/Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/res/drawable-ldpi/loading.png"
+    },
+    {
         "merged": "/Users/markgosling/Documents/Project/Android/AiTrainer/app/build/intermediates/res/merged/debug/layout_login.xml.flat",
         "source": "/Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/res/layout/login.xml"
     },
     {
-        "merged": "/Users/markgosling/Documents/Project/Android/AiTrainer/app/build/intermediates/res/merged/debug/layout_chat_item.xml.flat",
-        "source": "/Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/res/layout/main/layout/chat_item.xml"
-    },
-    {
         "merged": "/Users/markgosling/Documents/Project/Android/AiTrainer/app/build/intermediates/res/merged/debug/drawable-hdpi_jetpack_joyride.png.flat",
         "source": "/Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/res/drawable-hdpi/jetpack_joyride.png"
+    },
+    {
+        "merged": "/Users/markgosling/Documents/Project/Android/AiTrainer/app/build/intermediates/res/merged/debug/layout_chat_item.xml.flat",
+        "source": "/Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/res/layout/main/layout/chat_item.xml"
     },
     {
         "merged": "/Users/markgosling/Documents/Project/Android/AiTrainer/app/build/intermediates/res/merged/debug/mipmap-mdpi_social.png.flat",
@@ -318,6 +326,10 @@
     {
         "merged": "/Users/markgosling/Documents/Project/Android/AiTrainer/app/build/intermediates/res/merged/debug/mipmap-xhdpi_ic_launcher.png.flat",
         "source": "/Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/res/mipmap-xhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/markgosling/Documents/Project/Android/AiTrainer/app/build/intermediates/res/merged/debug/drawable-ldpi_loading3.png.flat",
+        "source": "/Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/res/drawable-ldpi/loading3.png"
     },
     {
         "merged": "/Users/markgosling/Documents/Project/Android/AiTrainer/app/build/intermediates/res/merged/debug/drawable-xxhdpi_muskmelon.png.flat",
@@ -436,6 +448,10 @@
         "source": "/Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/res/drawable-xhdpi/bg_rect_round_tag_btn.xml"
     },
     {
+        "merged": "/Users/markgosling/Documents/Project/Android/AiTrainer/app/build/intermediates/res/merged/debug/drawable-ldpi_loading1.png.flat",
+        "source": "/Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/res/drawable-ldpi/loading1.png"
+    },
+    {
         "merged": "/Users/markgosling/Documents/Project/Android/AiTrainer/app/build/intermediates/res/merged/debug/mipmap-mdpi_personal_gray.png.flat",
         "source": "/Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/res/mipmap-mdpi/personal_gray.png"
     },
@@ -502,6 +518,10 @@
     {
         "merged": "/Users/markgosling/Documents/Project/Android/AiTrainer/app/build/intermediates/res/merged/debug/drawable-xxxhdpi_ic_switch_camera_white_48dp.xml.flat",
         "source": "/Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/res/drawable-xxxhdpi/ic_switch_camera_white_48dp.xml"
+    },
+    {
+        "merged": "/Users/markgosling/Documents/Project/Android/AiTrainer/app/build/intermediates/res/merged/debug/layout_write_text.xml.flat",
+        "source": "/Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/res/layout/main/layout/write_text.xml"
     },
     {
         "merged": "/Users/markgosling/Documents/Project/Android/AiTrainer/app/build/intermediates/res/merged/debug/drawable-xxhdpi_train_image3.png.flat",

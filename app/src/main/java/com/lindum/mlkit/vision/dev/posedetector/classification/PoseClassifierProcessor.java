@@ -29,7 +29,7 @@ import java.util.Locale;
 
 public class PoseClassifierProcessor {
     private static final String TAG = "PoseClassifierProcessor";
-    private static final String POSE_SAMPLES_FILE = "pose/fitness_pose_samples.csv";
+    private static final String POSE_SAMPLES_FILE = "pose/squat_csvs_out_basic.csv";
     // // TODO: 2022/3/8 可以把这个设为静态成员变量，不同动作切换不同的文件生成不同的分类器 
 //    private static final String POSE_SAMPLES_FILE = "pose/fitness_pose_samples.csv";
 //    private static final String POSE_SAMPLES_FILE = "pose/tunqiao.csv";
@@ -252,7 +252,7 @@ public class PoseClassifierProcessor {
                                 nowFrameAngle = poseAngleDetector.getPoseAngleFromPartIndex(partIndex);
                             }
                             Logger.e("当前部位下标:" + partIndex + "当前角度:" + nowFrameAngle + "--第一个角度范围:" + part.getFirstStandardRange()[0] + "," + "第二个角度范围:" + part.getFirstStandardRange()[1]);
-                            if (maxConfidenceClass.contains("up") && confidence == 1.0) {
+                            if (maxConfidenceClass.contains("down") && confidence == 1.0) {
                                 // 判断当前的角度是否满足第二个标准
                                 if (!(nowFrameAngle >= part.getSecondStandardRange()[0] && nowFrameAngle <= part.getSecondStandardRange()[1])) {
                                     dynamicPartJudge2 = false;
@@ -264,7 +264,7 @@ public class PoseClassifierProcessor {
                                     CameraXLivePreviewActivity.setPose1(false);
                                 }
                             }
-                            if (maxConfidenceClass.contains("down") && confidence == 1.0) {
+                            if (maxConfidenceClass.contains("up") && confidence == 1.0) {
                                 // 判断当前的角度是否满足第一个标准
                                 if (!(nowFrameAngle >= part.getFirstStandardRange()[0] && nowFrameAngle <= part.getFirstStandardRange()[1])) {
                                     dynamicPartJudge1 = false;

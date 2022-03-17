@@ -91,12 +91,31 @@ public class FileUtils {
 
     /**
      * 判断文件是否存在
-     * @param filePath  文件路径
-     * @param fileName  文件名称
-     * @return          判断结果
+     *
+     * @param filePath 文件路径
+     * @param fileName 文件名称
+     * @return 判断结果
      */
     public static boolean isFileExist(String filePath, String fileName) {
         File file = new File(filePath + fileName);
         return file.exists();
+    }
+
+    public static void getFileName(String filePath) {
+        File file = new File(filePath);
+        if (file.exists()) {
+            File[] files = file.listFiles();
+            if (null != files) {
+                for (File file2 : files) {
+                    if (file2.isDirectory()) {
+                        Logger.e("文件夹:" + file2.getAbsolutePath());
+                    } else {
+                        Logger.e("文件:" + file2.getAbsolutePath());
+                    }
+                }
+            }
+        } else {
+            Logger.e("文件不存在!");
+        }
     }
 }

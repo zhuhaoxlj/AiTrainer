@@ -82,6 +82,12 @@ public class PersonalPlan extends AppCompatActivity {
         if (stepsGoalValue == 0) {
             stepsGoalValue = HomePage.userEntity.getStepsGoalValue();
         }
+        if (HomePage.userEntity.getCalGoalValue() == 0) {
+            calGoalValue = 5000;
+        }
+        if (HomePage.userEntity.getStepsGoalValue() == 0) {
+            stepsGoalValue = 5000;
+        }
         updateTextView(viewFlag);
     }
 
@@ -184,7 +190,6 @@ public class PersonalPlan extends AppCompatActivity {
                     .content("1.请选择空旷的场地，或者纯色背景可以提高Ai健身教练的识别精准度。\n2.识别过程中，尽量保持身体在手机屏幕中，尽量选择遮挡人体部位最少的角度进行拍摄，再次感谢您的使用！")
                     .positiveText("确定")
                     .onPositive((dialog, which) -> {
-                        // 不要忘记在 AndroidManifest 中声明 Activity
                         Intent intent = null;
                         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
                             intent = new Intent(PersonalPlan.this, CameraXLivePreviewActivity.class);
@@ -204,7 +209,7 @@ public class PersonalPlan extends AppCompatActivity {
     public void updateTextView(boolean type) {
         if (type) {
             trainPlanDataText.setText(nowCalValue + "/" + calGoalValue + "Cal");
-            int value = (int) (100.0 * (nowCalValue / (calGoalValue)));
+            int value = (int) (100.0 * ((float) nowCalValue / (float) calGoalValue));
             Logger.e("当前值" + value);
             waveProgress.setValue(value);
             tickSeekBar.setProgress(calGoalValue / 1000);

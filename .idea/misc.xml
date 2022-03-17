@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="../../../../../../layout/custom_preview.xml" value="0.35833333333333334" />
         <entry key="..\:/Project/Android/AiTrainer/app/src/main/res/drawable-xhdpi/bg_rect_round_tag_btn.xml" value="0.222" />
         <entry key="..\:/Project/Android/AiTrainer/app/src/main/res/drawable/ic_android_black_24dp.xml" value="0.2615" />
         <entry key="..\:/Project/Android/AiTrainer/app/src/main/res/drawable/ic_icon1.xml" value="0.321" />
@@ -113,7 +114,11 @@
         <entry key="app/src/main/res/layout/main/layout/home_page.xml" value="0.2722222222222222" />
         <entry key="app/src/main/res/layout/main/layout/homepage.xml" value="0.2722222222222222" />
         <entry key="app/src/main/res/layout/main/layout/personal_page.xml" value="0.2105978260869565" />
+        <entry key="app/src/main/res/layout/main/layout/pose_library.xml" value="0.20425724637681159" />
+        <entry key="app/src/main/res/layout/main/layout/row_item.xml" value="0.2722222222222222" />
+        <entry key="app/src/main/res/layout/main/layout/write_text.xml" value="0.2722222222222222" />
         <entry key="app/src/main/res/layout/personal/layout/personal_plan.xml" value="0.2722222222222222" />
+        <entry key="app/src/main/res/layout/pose_info.xml" value="0.2722222222222222" />
         <entry key="app/src/main/res/layout/settings_style.xml" value="0.17028985507246377" />
         <entry key="app/src/main/res/layout/spinner_style.xml" value="0.17028985507246377" />
         <entry key="app/src/main/res/layout/toggle_style.xml" value="0.17028985507246377" />

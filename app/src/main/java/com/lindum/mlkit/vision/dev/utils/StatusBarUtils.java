@@ -31,8 +31,8 @@ import java.lang.reflect.Method;
 /**
  * 状态栏工具
  *
- * @author XUE
- * @since 2019/3/22 10:50
+ * @author MarkGosling
+ * @since 2022/2/22 10:50
  */
 public class StatusBarUtils {
 

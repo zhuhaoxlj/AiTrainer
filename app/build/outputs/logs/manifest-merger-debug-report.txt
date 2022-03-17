@@ -5,6 +5,7 @@ INJECTED from /Users/markgosling/Documents/Project/Android/AiTrainer/app/src/mai
 INJECTED from /Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/AndroidManifest.xml:2:1-105:12
 INJECTED from /Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/AndroidManifest.xml:2:1-105:12
 MERGED from [androidx.multidex:multidex:2.0.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/ce8dd2100ffd5b4eae657f5daec65fe0/multidex-2.0.1/AndroidManifest.xml:17:1-22:12
+MERGED from [com.github.sarnavakonar:TextWriter:v1.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/9166cc48870ee31e3c90a07aeabbf32c/jetified-TextWriter-v1.0/AndroidManifest.xml:2:1-11:12
 MERGED from [com.github.warkiz.tickseekbar:tickseekbar:0.1.4] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/e3e9bae28d2acd758cf05253533094ee/jetified-tickseekbar-0.1.4/AndroidManifest.xml:2:1-11:12
 MERGED from [com.ramotion.paperonboarding:paper-onboarding:1.1.3] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/11d1eb687d904552a97e83b049b42647/jetified-paper-onboarding-1.1.3/AndroidManifest.xml:2:1-17:12
 MERGED from [com.haibin:calendarview:3.7.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/ef55714dbd263c4018385af2c5cdcb49/jetified-calendarview-3.7.1/AndroidManifest.xml:2:1-11:12
@@ -104,11 +105,13 @@ INJECTED from /Users/markgosling/Documents/Project/Android/AiTrainer/app/src/mai
 	android:installLocation
 		ADDED from /Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/AndroidManifest.xml:5:5-35
 uses-sdk
-ADDED from /Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/AndroidManifest.xml:13:5-157
-INJECTED from /Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/AndroidManifest.xml:13:5-157
-INJECTED from /Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/AndroidManifest.xml:13:5-157
+ADDED from /Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/AndroidManifest.xml:13:5-135
+INJECTED from /Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/AndroidManifest.xml:13:5-135
+INJECTED from /Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/AndroidManifest.xml:13:5-135
 MERGED from [androidx.multidex:multidex:2.0.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/ce8dd2100ffd5b4eae657f5daec65fe0/multidex-2.0.1/AndroidManifest.xml:20:5-43
 MERGED from [androidx.multidex:multidex:2.0.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/ce8dd2100ffd5b4eae657f5daec65fe0/multidex-2.0.1/AndroidManifest.xml:20:5-43
+MERGED from [com.github.sarnavakonar:TextWriter:v1.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/9166cc48870ee31e3c90a07aeabbf32c/jetified-TextWriter-v1.0/AndroidManifest.xml:7:5-9:41
+MERGED from [com.github.sarnavakonar:TextWriter:v1.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/9166cc48870ee31e3c90a07aeabbf32c/jetified-TextWriter-v1.0/AndroidManifest.xml:7:5-9:41
 MERGED from [com.github.warkiz.tickseekbar:tickseekbar:0.1.4] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/e3e9bae28d2acd758cf05253533094ee/jetified-tickseekbar-0.1.4/AndroidManifest.xml:7:5-9:41
 MERGED from [com.github.warkiz.tickseekbar:tickseekbar:0.1.4] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/e3e9bae28d2acd758cf05253533094ee/jetified-tickseekbar-0.1.4/AndroidManifest.xml:7:5-9:41
 MERGED from [com.ramotion.paperonboarding:paper-onboarding:1.1.3] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/11d1eb687d904552a97e83b049b42647/jetified-paper-onboarding-1.1.3/AndroidManifest.xml:7:5-9:41
@@ -263,17 +266,17 @@ MERGED from [io.github.inflationx:viewpump:2.0.3] /Users/markgosling/.gradle/cac
 MERGED from [io.github.inflationx:viewpump:2.0.3] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/6250716e4291d5ca020e8ae0a47ea699/jetified-viewpump-2.0.3/AndroidManifest.xml:5:5-7:41
 MERGED from [androidx.annotation:annotation-experimental:1.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/c1bc2009ed393c1281f28af6bb79c366/jetified-annotation-experimental-1.0.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.annotation:annotation-experimental:1.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/c1bc2009ed393c1281f28af6bb79c366/jetified-annotation-experimental-1.0.0/AndroidManifest.xml:20:5-22:41
-INJECTED from /Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/AndroidManifest.xml:13:5-157
-INJECTED from /Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/AndroidManifest.xml:13:5-157
+INJECTED from /Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/AndroidManifest.xml:13:5-135
+INJECTED from /Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/AndroidManifest.xml:13:5-135
 	tools:overrideLibrary
-		ADDED from /Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/AndroidManifest.xml:13:15-154
+		ADDED from /Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/AndroidManifest.xml:13:15-132
 	android:targetSdkVersion
 		INJECTED from /Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/AndroidManifest.xml
-		ADDED from /Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/AndroidManifest.xml:13:5-157
+		ADDED from /Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/AndroidManifest.xml:13:5-135
 		INJECTED from /Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/AndroidManifest.xml
 	android:minSdkVersion
 		INJECTED from /Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/AndroidManifest.xml
-		ADDED from /Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/AndroidManifest.xml:13:5-157
+		ADDED from /Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/AndroidManifest.xml:13:5-135
 		INJECTED from /Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/AndroidManifest.xml
 uses-feature#android.hardware.camera
 ADDED from /Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/AndroidManifest.xml:15:5-60

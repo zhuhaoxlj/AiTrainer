@@ -3632,6 +3632,10 @@ drawable jetpack_joyride
 drawable key
 drawable left_arrow
 drawable list_item_background
+drawable loading
+drawable loading1
+drawable loading2
+drawable loading3
 drawable logo_mlkit
 drawable material_cursor_drawable
 drawable material_ic_calendar_black_24dp
@@ -4581,6 +4585,7 @@ id textSpacerNoButtons
 id textSpacerNoTitle
 id textStart
 id textTop
+id textWriter
 id text_input_end_icon
 id text_input_error_icon
 id text_input_start_icon
@@ -4921,6 +4926,7 @@ layout wheel_picker_linkage
 layout wheel_picker_number
 layout wheel_picker_option
 layout wheel_picker_time
+layout write_text
 layout xmd_layout_dialog_basic
 layout xmd_layout_dialog_basic_check
 layout xmd_layout_dialog_custom
