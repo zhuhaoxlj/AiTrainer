@@ -56,7 +56,7 @@ import com.google.mlkit.vision.pose.PoseDetectorOptionsBase;
 import com.lindum.mlkit.vision.dev.entity.PoseEntity;
 import com.lindum.mlkit.vision.dev.posedetector.PoseDataUtils;
 import com.lindum.mlkit.vision.dev.posedetector.PoseDetectorProcessor;
-import com.lindum.mlkit.vision.dev.posedetector.ProcessImage;
+import com.lindum.mlkit.vision.dev.posedetector.classification.PoseClassifierProcessor;
 import com.lindum.mlkit.vision.dev.preference.PreferenceUtils;
 import com.lindum.mlkit.vision.dev.preference.SettingsActivity;
 import com.lindum.mlkit.vision.dev.result.TrainingResult;
@@ -172,7 +172,7 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
     LinearLayout prePoseButton;
     // 是否提醒过呼吸方法
     private boolean isRemindedBreathingMethods = false;
-
+    public static ImageView imageView;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -228,7 +228,7 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
         JSONArray jsonArray = (JSONArray) JSON.parse(jsonText);
         poseEntityArrayList = JSON.parseObject(jsonArray.toJSONString(), new TypeReference<ArrayList<PoseEntity>>() {
         });
-        Log.e("entity", poseEntityArrayList.toString());
+        Logger.e("entity-----"+poseEntityArrayList.size());
         // html 中的动作数据
         //        poseEntityList = poseEntityArrayList;
         // 数据库中的动作数据
@@ -278,9 +278,10 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
         // 启动截图定时器
         getScreenCut();
 
+            // 后台处理图片
+//        ProcessImage processImage = new ProcessImage(findViewById(R.id.testImage));
+//        processImage.processImage();
 
-        ProcessImage processImage = new ProcessImage(findViewById(R.id.testImage));
-        processImage.processImage();
         previewView = findViewById(R.id.preview_view);
         if (previewView == null) {
             Logger.e("previewView is null");
@@ -649,7 +650,7 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
             try {
                 FileOutputStream saveImgOut = new FileOutputStream(saveFile);
                 // compress - 压缩的意思
-                bitmap.compress(Bitmap.CompressFormat.JPEG, 50, saveImgOut);
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, saveImgOut);
                 //存储完成后需要清除相关的进程
                 saveImgOut.flush();
                 saveImgOut.close();
@@ -818,24 +819,31 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
             @Override
             public void run() {
 //                if (!warnPart.isEmpty() && confidence == 1 && !confidenceNotOne) {
-                if (!warnPart.isEmpty() && confidence == 1) {
-                    confidenceNotOne = true;
+//                if (!warnPart.isEmpty() && PoseClassifierProcessor.confidence == 1&& confidenceNotOne) {
+                if (!warnPart.isEmpty() && PoseClassifierProcessor.confidence == 1) {
+//                    confidenceNotOne = false;
                     Random random = new Random();
-                    String fileName = nowPoseIndex + "-" + Math.abs(random.nextInt());
+                    String fileName = nowPoseIndex + "-" + Math.abs(random.nextInt())+"-"+PoseClassifierProcessor.maxConfidenceClass;
                     Bitmap bitmap2 = com.lindum.mlkit.vision.dev.QuickShot.of(graphicOverlay).getBitmap();
                     Logger.e("获取相机bitmap成功");
                     if (bitmap2 != null) {
-//                        ImageView imageView = findViewById(R.id.testImage);
+                        imageView = findViewById(R.id.testImage);
                         Bitmap bitmap1 = previewView.getBitmap();
+                        // 原图和关键点图片混合
+                        imageView.setImageBitmap(combineBitmap(bitmap1, bitmap2));
+                        TrainingResult.resultImage.add(combineBitmap(bitmap1, bitmap2));
+                        TrainingResult.resultName.add(nowPoseName);
+                        TrainingResult.resultTips.add(PoseClassifierProcessor.poseTips);
+                        Logger.e("生成的建议"+PoseClassifierProcessor.poseTips);
+                        // todo 这里会闪退
                         assert bitmap1 != null;
-//                        imageView.setImageBitmap(combineBitmap(bitmap1, bitmap2));
-                        new Thread("截取图片并保存") {
-                            @Override
-                            public void run() {
-                                String filePath = Environment.getExternalStorageDirectory().getPath() + "/AiTrainer";
-                                saveBitmap(filePath, fileName, bitmap1);
-                            }
-                        }.start();
+//                        new Thread("截取图片并保存") {
+//                            @Override
+//                            public void run() {
+//                                String filePath = Environment.getExternalStorageDirectory().getPath() + "/AiTrainer";
+//                                saveBitmap(filePath, fileName, bitmap1);
+//                            }
+//                        }.start();
                     }
                     cleanWarnPart();
                 }
@@ -880,7 +888,7 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
                         nextPoseButton.callOnClick();
                     }
                 }
-                mHandler3.postDelayed(this, 100);
+                mHandler3.postDelayed(this, 1000);
             }
         };
         mHandler3.post(r3);

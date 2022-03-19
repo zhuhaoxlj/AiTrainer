@@ -17,6 +17,7 @@ import com.google.mlkit.vision.pose.PoseDetectorOptionsBase;
 import com.lindum.mlkit.vision.dev.GraphicOverlay;
 import com.lindum.mlkit.vision.dev.VisionProcessorBase;
 import com.lindum.mlkit.vision.dev.posedetector.classification.PoseClassifierProcessor;
+import com.orhanobut.logger.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -101,9 +102,10 @@ public class PoseDetectorProcessor
                             List<String> classificationResult = new ArrayList<>();
                             if (runClassification) {
                                 if (poseClassifierProcessor == null) {
-                                    // // TODO: 2022/3/8  这里生成分类器 
+                                    // // TODO: 2022/3/8  这里生成分类器
                                     poseClassifierProcessor = new PoseClassifierProcessor(context, isStreamMode);
                                 }
+                                Logger.e("666");
                                 classificationResult = poseClassifierProcessor.getPoseResult(pose);
                             }
                             return new PoseWithClassification(pose, classificationResult);

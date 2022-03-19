@@ -72,6 +72,7 @@ public class TrainingResult extends AppCompatActivity implements HorizontalProgr
     TextView progressTextGroup;
 
     // 错误组数
+    @SuppressLint("NonConstantResourceId")
     @BindView(R.id.hpv_wrong)
     HorizontalProgressView hpvWrong;
     @BindView(R.id.progress_text_wrong)
