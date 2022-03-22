@@ -173,7 +173,7 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
     // 是否提醒过呼吸方法
     private boolean isRemindedBreathingMethods = false;
     public static ImageView imageView;
-
+    @RequiresApi(api = VERSION_CODES.O)
     @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -379,6 +379,7 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
         }
     }
 
+    @RequiresApi(api = VERSION_CODES.O)
     public void init() {
         // 初始化变量
         warnPart = new ArrayList<>();
@@ -837,13 +838,13 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
                         Logger.e("生成的建议"+PoseClassifierProcessor.poseTips);
                         // todo 这里会闪退
                         assert bitmap1 != null;
-//                        new Thread("截取图片并保存") {
-//                            @Override
-//                            public void run() {
-//                                String filePath = Environment.getExternalStorageDirectory().getPath() + "/AiTrainer";
-//                                saveBitmap(filePath, fileName, bitmap1);
-//                            }
-//                        }.start();
+                        new Thread("截取图片并保存") {
+                            @Override
+                            public void run() {
+                                String filePath = Environment.getExternalStorageDirectory().getPath() + "/AiTrainer";
+                                saveBitmap(filePath, fileName, bitmap1);
+                            }
+                        }.start();
                     }
                     cleanWarnPart();
                 }
@@ -888,7 +889,7 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
                         nextPoseButton.callOnClick();
                     }
                 }
-                mHandler3.postDelayed(this, 1000);
+                mHandler3.postDelayed(this, 800);
             }
         };
         mHandler3.post(r3);

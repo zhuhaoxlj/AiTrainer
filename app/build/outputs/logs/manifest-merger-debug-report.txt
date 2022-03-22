@@ -4,85 +4,85 @@ ADDED from /Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/A
 INJECTED from /Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/AndroidManifest.xml:2:1-105:12
 INJECTED from /Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/AndroidManifest.xml:2:1-105:12
 INJECTED from /Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/AndroidManifest.xml:2:1-105:12
-MERGED from [androidx.multidex:multidex:2.0.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/ce8dd2100ffd5b4eae657f5daec65fe0/multidex-2.0.1/AndroidManifest.xml:17:1-22:12
-MERGED from [com.github.sarnavakonar:TextWriter:v1.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/9166cc48870ee31e3c90a07aeabbf32c/jetified-TextWriter-v1.0/AndroidManifest.xml:2:1-11:12
-MERGED from [com.github.warkiz.tickseekbar:tickseekbar:0.1.4] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/e3e9bae28d2acd758cf05253533094ee/jetified-tickseekbar-0.1.4/AndroidManifest.xml:2:1-11:12
-MERGED from [com.ramotion.paperonboarding:paper-onboarding:1.1.3] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/11d1eb687d904552a97e83b049b42647/jetified-paper-onboarding-1.1.3/AndroidManifest.xml:2:1-17:12
-MERGED from [com.haibin:calendarview:3.7.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/ef55714dbd263c4018385af2c5cdcb49/jetified-calendarview-3.7.1/AndroidManifest.xml:2:1-11:12
-MERGED from [com.github.gzu-liyujiang.AndroidPicker:AddressPicker:4.1.7] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/c2bce357d8f6d392fd5333ca805c57f0/jetified-AddressPicker-4.1.7/AndroidManifest.xml:14:1-24:12
-MERGED from [com.jakewharton:butterknife:10.2.3] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/fc4f298f12bf68f0a10eb53f331df166/jetified-butterknife-10.2.3/AndroidManifest.xml:2:1-7:12
-MERGED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/8f7a3fb5b22fd814ba8707c967cb3ed6/jetified-xutil-core-2.0.0/AndroidManifest.xml:2:1-38:12
-MERGED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/f7f51381b29a2e8065e8059783dd5dad/jetified-xutil-sub-2.0.0/AndroidManifest.xml:17:1-82:12
-MERGED from [com.orhanobut:logger:2.2.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/69964d8053f3b34c370c03285d7fc9dd/jetified-logger-2.2.0/AndroidManifest.xml:2:1-8:12
-MERGED from [com.jpeng:JPTabBar:1.4.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/7280ae13190f39b70317453097bbc586/jetified-JPTabBar-1.4.0/AndroidManifest.xml:2:1-12:12
-MERGED from [com.github.bmarrdev:android-DecoView-charting:v1.2] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/f0a8e60193e8261a76282d864d6ef2d2/jetified-android-DecoView-charting-v1.2/AndroidManifest.xml:2:1-14:12
-MERGED from [com.github.xuexiangjys:XUI:1.1.8] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/cb3a340231d4295dbef6891df83e60a3/jetified-XUI-1.1.8/AndroidManifest.xml:2:1-24:12
-MERGED from [com.google.android.material:material:1.4.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/5936cfff72ae8ebd7b59ec4b3061e4eb/material-1.4.0/AndroidManifest.xml:17:1-24:12
-MERGED from [com.github.Liberuman:ShadowDrawable:0.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/880b6370cc4bb61914cdf3b8aff8aa46/jetified-ShadowDrawable-0.1/AndroidManifest.xml:2:1-11:12
-MERGED from [androidx.constraintlayout:constraintlayout:2.0.4] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/74d3dfb417b8176313f67b6d530795eb/constraintlayout-2.0.4/AndroidManifest.xml:2:1-11:12
-MERGED from [com.google.mlkit:camera:16.0.0-beta1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/ebdf43113743875641aee584777c8abd/jetified-camera-16.0.0-beta1/AndroidManifest.xml:2:1-8:12
-MERGED from [androidx.camera:camera-view:1.0.0-alpha23] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/2e493ab06e14e047977c9f6e2e9afe5f/jetified-camera-view-1.0.0-alpha23/AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.appcompat:appcompat:1.3.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/334326e1ac2b1d4d35dc19234e130324/appcompat-1.3.1/AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.viewpager2:viewpager2:1.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/dd19de491629ae7f47a65c6c8b1fd550/jetified-viewpager2-1.0.0/AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.recyclerview:recyclerview:1.2.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/c9c70dad19ad74cf580309e7c140fdda/recyclerview-1.2.1/AndroidManifest.xml:17:1-24:12
-MERGED from [com.github.bumptech.glide:glide:4.12.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/2e25be288265a51dc1c64ef4c35243c0/jetified-glide-4.12.0/AndroidManifest.xml:2:1-12:12
-MERGED from [com.google.mlkit:pose-detection:18.0.0-beta1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/0334133ec35fd9e52fadd53a703a1b94/jetified-pose-detection-18.0.0-beta1/AndroidManifest.xml:2:1-9:12
-MERGED from [com.google.mlkit:pose-detection-accurate:18.0.0-beta1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/f2d0690cd25e2bee6492fcdfe980dfc7/jetified-pose-detection-accurate-18.0.0-beta1/AndroidManifest.xml:2:1-9:12
-MERGED from [androidx.camera:camera-camera2:1.0.0-rc04] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/d7036fc3c12227497a40518bb070d4a5/jetified-camera-camera2-1.0.0-rc04/AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.camera:camera-lifecycle:1.0.0-rc04] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/3778c71a84bc8339eae3a073d9226ad6/jetified-camera-lifecycle-1.0.0-rc04/AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.camera:camera-core:1.0.0-rc04] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/512a4784ba71efa332c8658c0f0d8624/jetified-camera-core-1.0.0-rc04/AndroidManifest.xml:17:1-24:12
-MERGED from [com.google.mlkit:pose-detection-common:18.0.0-beta1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/04b970f8fd742b3be056c2a28a00fd9a/jetified-pose-detection-common-18.0.0-beta1/AndroidManifest.xml:2:1-20:12
-MERGED from [com.google.mlkit:mediapipe-internal:17.0.0-beta6] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/a1af5a52db2147471aae5fc48d54f33d/jetified-mediapipe-internal-17.0.0-beta6/AndroidManifest.xml:2:1-8:12
-MERGED from [com.google.mlkit:vision-common:17.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/19f0f43aabd601ca53374840b69d6a5e/jetified-vision-common-17.0.0/AndroidManifest.xml:2:1-18:12
-MERGED from [com.google.mlkit:common:18.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/cd457c1b74bdcd8eb1f8ed1cd0edb60e/jetified-common-18.0.0/AndroidManifest.xml:2:1-26:12
-MERGED from [com.google.android.gms:play-services-base:18.0.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/bf0e5aa3395afeac256a40fe94a44c93/jetified-play-services-base-18.0.1/AndroidManifest.xml:16:1-24:12
-MERGED from [com.google.mlkit:vision-interfaces:16.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/eaa14f392af625debf8af3d3824152fe/jetified-vision-interfaces-16.0.0/AndroidManifest.xml:2:1-7:12
-MERGED from [com.google.android.gms:play-services-tasks:18.0.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/317b5c06f21cbcdfbee826521a8be903/jetified-play-services-tasks-18.0.1/AndroidManifest.xml:2:1-6:12
-MERGED from [com.google.android.gms:play-services-basement:18.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/4127a4261a01000d5e1f23ce5b884202/jetified-play-services-basement-18.0.0/AndroidManifest.xml:16:1-26:12
-MERGED from [androidx.fragment:fragment:1.3.6] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/0bc112e9dacb0e6dee8b70a2a870b166/fragment-1.3.6/AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.dynamicanimation:dynamicanimation:1.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/c6b760792a9f88ad0cc386af81581310/dynamicanimation-1.0.0/AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/26e4eb6e9bebf59aa3426759a686271d/legacy-support-core-utils-1.0.0/AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.loader:loader:1.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/af24e95ace17d9fd449005a0593d92ed/loader-1.0.0/AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.lifecycle:lifecycle-livedata:2.3.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/ad92ae74d7aaeb7ba0204c5e256b8367/lifecycle-livedata-2.3.1/AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.activity:activity:1.2.4] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/ad1384a4734ef7c60bd40618b8455e63/jetified-activity-1.2.4/AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.3.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/f8e5adeb36e5f32b2d8aa02a49d2db6e/jetified-lifecycle-viewmodel-savedstate-2.3.1/AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.3.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/4bcab31ffa1f267c0ebcfc4e01545746/lifecycle-viewmodel-2.3.1/AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.cardview:cardview:1.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/bc97950d719cef5aad9004493b26296c/cardview-1.0.0/AndroidManifest.xml:17:1-22:12
-MERGED from [com.github.gzu-liyujiang.AndroidPicker:WheelPicker:4.1.7] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/c0d8d79eef24ccf8cb077a9f05ddc674/jetified-WheelPicker-4.1.7/AndroidManifest.xml:14:1-21:12
-MERGED from [com.github.gzu-liyujiang.AndroidPicker:Common:4.1.7] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/fae1e5bc5865b54e2a572239a46a0df3/jetified-Common-4.1.7/AndroidManifest.xml:14:1-21:12
-MERGED from [com.github.gzu-liyujiang.AndroidPicker:WheelView:4.1.7] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/819db67c8b7cb895d6d120fd211f7cda/jetified-WheelView-4.1.7/AndroidManifest.xml:14:1-21:12
-MERGED from [com.jakewharton:butterknife-runtime:10.2.3] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/42a320916d06d2f0bd46120ff6567013/jetified-butterknife-runtime-10.2.3/AndroidManifest.xml:2:1-7:12
-MERGED from [androidx.appcompat:appcompat-resources:1.3.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/81d3e7d74c7eb788064e8be17e7348c0/jetified-appcompat-resources-1.3.1/AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/624952430dbe4d933057f56d5d026c09/drawerlayout-1.0.0/AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/bf138d0b71de1e0a44db1c948a8d35cd/coordinatorlayout-1.1.0/AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/4edb453d1243aba45ca6a352ba9ddb28/viewpager-1.0.0/AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.customview:customview:1.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/62436a67eb96db586efd4b0ee96d077d/customview-1.0.0/AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.transition:transition:1.2.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/579188acc4336cbc34fb9d8999a11744/transition-1.2.0/AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/db6f362f2f21e586a6b40eca3796432d/vectordrawable-animated-1.1.0/AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/129521daa934d3e6bc50b9fdf333376c/vectordrawable-1.1.0/AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.core:core:1.5.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/4e08b81c2a1c1aefac273845b51aa17c/core-1.5.0/AndroidManifest.xml:17:1-26:12
-MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/cdb6f207b4500473c7ffeec55f385efa/cursoradapter-1.0.0/AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.savedstate:savedstate:1.1.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/0d94f4e7edea9dd1fb176db092b481b1/jetified-savedstate-1.1.0/AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.lifecycle:lifecycle-runtime:2.3.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/16a24664dbb9f5695a3bf8a9db6742dd/lifecycle-runtime-2.3.1/AndroidManifest.xml:17:1-24:12
-MERGED from [com.github.bumptech.glide:gifdecoder:4.12.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/a29cd48b0d3bb9da29fbc32b68595086/jetified-gifdecoder-4.12.0/AndroidManifest.xml:2:1-11:12
-MERGED from [androidx.exifinterface:exifinterface:1.2.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/b721c66cb0391ae8f45cda853d9c3bdd/exifinterface-1.2.0/AndroidManifest.xml:17:1-24:12
-MERGED from [com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/b0b07d668fb05669fea93be346cdaca2/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:15:1-38:12
-MERGED from [com.google.android.datatransport:transport-runtime:2.2.6] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/0b67044ceabbcacea62e90fd6e1fc6a0/jetified-transport-runtime-2.2.6/AndroidManifest.xml:15:1-41:12
-MERGED from [com.google.android.datatransport:transport-api:2.2.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/dcf482f6ac775774c4f6b14cbaf39d70/jetified-transport-api-2.2.1/AndroidManifest.xml:15:1-22:12
-MERGED from [com.google.firebase:firebase-encoders-json:17.1.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/2b32d6a0cdff2db24ee7dcbcdf8d1779/jetified-firebase-encoders-json-17.1.0/AndroidManifest.xml:15:1-23:12
-MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.3.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/2b3d5037db0438599433d82a784eb6bf/lifecycle-livedata-core-2.3.1/AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.arch.core:core-runtime:2.1.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/d8762380457f4e044046181ed6cb1daf/core-runtime-2.1.0/AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/3fb09b3bc7320ddf59f34af69eba561f/versionedparcelable-1.1.1/AndroidManifest.xml:17:1-27:12
-MERGED from [androidx.tracing:tracing:1.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/805aa42dab95c87db1e36c5c905d13d8/jetified-tracing-1.0.0/AndroidManifest.xml:17:1-24:12
-MERGED from [com.google.firebase:firebase-components:16.1.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/cb1688a624cb402aeec3c1d63869a1df/jetified-firebase-components-16.1.0/AndroidManifest.xml:15:1-23:12
-MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/8ddc9952f727e6b4648fb3647c864837/interpolator-1.0.0/AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.documentfile:documentfile:1.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/8d1987beef5e01e3a0a5abc85f6361be/documentfile-1.0.0/AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/fa896f12ed7cf4536bd5d5880aa662e0/localbroadcastmanager-1.0.0/AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.print:print:1.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/1a0f803fcda82c135932fe0b00cab5d2/print-1.0.0/AndroidManifest.xml:17:1-22:12
-MERGED from [com.google.android.odml:image:1.0.0-beta1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/4f7cc3f0a1b8fce3778652a3c48c4b4d/jetified-image-1.0.0-beta1/AndroidManifest.xml:2:1-9:12
-MERGED from [io.github.inflationx:calligraphy3:3.1.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/1bdb91a34a106fb240077b81c88e0e0f/jetified-calligraphy3-3.1.1/AndroidManifest.xml:2:1-13:12
-MERGED from [io.github.inflationx:viewpump:2.0.3] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/6250716e4291d5ca020e8ae0a47ea699/jetified-viewpump-2.0.3/AndroidManifest.xml:2:1-11:12
-MERGED from [androidx.annotation:annotation-experimental:1.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/c1bc2009ed393c1281f28af6bb79c366/jetified-annotation-experimental-1.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.multidex:multidex:2.0.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/ca32c209e884a2682cadaed1a089da30/multidex-2.0.1/AndroidManifest.xml:17:1-22:12
+MERGED from [com.github.sarnavakonar:TextWriter:v1.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/313638a11e0110ceceb5f0f82802a665/jetified-TextWriter-v1.0/AndroidManifest.xml:2:1-11:12
+MERGED from [com.github.warkiz.tickseekbar:tickseekbar:0.1.4] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/d243ae7bf9b33d871ba74fcaed0ba090/jetified-tickseekbar-0.1.4/AndroidManifest.xml:2:1-11:12
+MERGED from [com.ramotion.paperonboarding:paper-onboarding:1.1.3] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/e202784f735be2289d60ffcf9c4d02a2/jetified-paper-onboarding-1.1.3/AndroidManifest.xml:2:1-17:12
+MERGED from [com.haibin:calendarview:3.7.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/26ad70af13737c0c495e1e8aaf1fab53/jetified-calendarview-3.7.1/AndroidManifest.xml:2:1-11:12
+MERGED from [com.github.gzu-liyujiang.AndroidPicker:AddressPicker:4.1.7] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/909e05972f3c954ee1faaa324efecff6/jetified-AddressPicker-4.1.7/AndroidManifest.xml:14:1-24:12
+MERGED from [com.jakewharton:butterknife:10.2.3] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/e0889219fb2d240bc97b63b53535f615/jetified-butterknife-10.2.3/AndroidManifest.xml:2:1-7:12
+MERGED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/55e68f11103a896cb66d5f00463788a8/jetified-xutil-core-2.0.0/AndroidManifest.xml:2:1-38:12
+MERGED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/456a6a1a2f0d53a9b974a1f880e26128/jetified-xutil-sub-2.0.0/AndroidManifest.xml:17:1-82:12
+MERGED from [com.orhanobut:logger:2.2.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/2a86f1104807adc73c739e0e70b778bd/jetified-logger-2.2.0/AndroidManifest.xml:2:1-8:12
+MERGED from [com.jpeng:JPTabBar:1.4.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/3b1be571bf89b01ddfabbd563518799a/jetified-JPTabBar-1.4.0/AndroidManifest.xml:2:1-12:12
+MERGED from [com.github.bmarrdev:android-DecoView-charting:v1.2] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/6ede7a58e135788fc4efb6bbb7a9ae1d/jetified-android-DecoView-charting-v1.2/AndroidManifest.xml:2:1-14:12
+MERGED from [com.github.xuexiangjys:XUI:1.1.8] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/ddb31071937cdef067fa9e0f57987ebf/jetified-XUI-1.1.8/AndroidManifest.xml:2:1-24:12
+MERGED from [com.google.android.material:material:1.4.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/0768ed0860e59e1130f29c960ede0e0d/material-1.4.0/AndroidManifest.xml:17:1-24:12
+MERGED from [com.github.Liberuman:ShadowDrawable:0.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/e9a1f76d697e3a65057f1a045a46cdfc/jetified-ShadowDrawable-0.1/AndroidManifest.xml:2:1-11:12
+MERGED from [androidx.constraintlayout:constraintlayout:2.0.4] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/60cf8b1bbb463430158388a20016515c/constraintlayout-2.0.4/AndroidManifest.xml:2:1-11:12
+MERGED from [com.google.mlkit:camera:16.0.0-beta1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/8fae643ba125a40ce293830d35ddeed6/jetified-camera-16.0.0-beta1/AndroidManifest.xml:2:1-8:12
+MERGED from [androidx.camera:camera-view:1.0.0-alpha23] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/e5168f8b048d7e6ac3f27a2e4281c925/jetified-camera-view-1.0.0-alpha23/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.appcompat:appcompat:1.3.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/14476e7a4e61a27cca1f9906d45a3dfe/appcompat-1.3.1/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.viewpager2:viewpager2:1.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/cf429a145983ce66e31327e886d91adc/jetified-viewpager2-1.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.recyclerview:recyclerview:1.2.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/1c3c5109d5b22b0d8a2f0aa53aa458c3/recyclerview-1.2.1/AndroidManifest.xml:17:1-24:12
+MERGED from [com.github.bumptech.glide:glide:4.12.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/3134a2cbf73107aaa9b50d87bd84c580/jetified-glide-4.12.0/AndroidManifest.xml:2:1-12:12
+MERGED from [com.google.mlkit:pose-detection:18.0.0-beta1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/16fd80c9464ef077cc1c7b0dda063343/jetified-pose-detection-18.0.0-beta1/AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.mlkit:pose-detection-accurate:18.0.0-beta1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/315499c7e86e8cf17e5ea82ba60ff7e1/jetified-pose-detection-accurate-18.0.0-beta1/AndroidManifest.xml:2:1-9:12
+MERGED from [androidx.camera:camera-camera2:1.0.0-rc04] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/a14387a01fcfd2c178fb6477b1c8d3a6/jetified-camera-camera2-1.0.0-rc04/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.camera:camera-lifecycle:1.0.0-rc04] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/0473d9ddbd8cd757a2df8a3d21906ecd/jetified-camera-lifecycle-1.0.0-rc04/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.camera:camera-core:1.0.0-rc04] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/cde5136b1e7c2ea2a57b05e8c755d710/jetified-camera-core-1.0.0-rc04/AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.mlkit:pose-detection-common:18.0.0-beta1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/c4440b61a8701ef90e203e3fa5e5014a/jetified-pose-detection-common-18.0.0-beta1/AndroidManifest.xml:2:1-20:12
+MERGED from [com.google.mlkit:mediapipe-internal:17.0.0-beta6] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/5ffed569c19d89b9787e74a8f709fb33/jetified-mediapipe-internal-17.0.0-beta6/AndroidManifest.xml:2:1-8:12
+MERGED from [com.google.mlkit:vision-common:17.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/c97775570c148fefb80f45853648be6c/jetified-vision-common-17.0.0/AndroidManifest.xml:2:1-18:12
+MERGED from [com.google.mlkit:common:18.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/bbb000945e8f873c8ce6e92f333d82ec/jetified-common-18.0.0/AndroidManifest.xml:2:1-26:12
+MERGED from [com.google.android.gms:play-services-base:18.0.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/dd19b457df17abb1bf2ef9058f241061/jetified-play-services-base-18.0.1/AndroidManifest.xml:16:1-24:12
+MERGED from [com.google.mlkit:vision-interfaces:16.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/1d51fd5406744328bc00cb683a999269/jetified-vision-interfaces-16.0.0/AndroidManifest.xml:2:1-7:12
+MERGED from [com.google.android.gms:play-services-tasks:18.0.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/d7eddcbd8f5c5ede222cb89b0ed6ca12/jetified-play-services-tasks-18.0.1/AndroidManifest.xml:2:1-6:12
+MERGED from [com.google.android.gms:play-services-basement:18.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/d48ca8c39d3e9427eb4e3f541aa83c35/jetified-play-services-basement-18.0.0/AndroidManifest.xml:16:1-26:12
+MERGED from [androidx.fragment:fragment:1.3.6] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/1252bd21878799abb8c831b6dd3e3178/fragment-1.3.6/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.dynamicanimation:dynamicanimation:1.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/9f6322f0b273bdd91bcbc4df0a9afb1b/dynamicanimation-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/6f723063079595b71497361e01c87c54/legacy-support-core-utils-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.loader:loader:1.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/3ba019b5d017a64877129e328ed11755/loader-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.3.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/f6639717ed083bf718d318393fcb50f4/lifecycle-livedata-2.3.1/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.activity:activity:1.2.4] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/2d2f4c60e59b4c2ae0b9547def8ae2af/jetified-activity-1.2.4/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.3.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/8bfd38b6813dae32e9bd7b0a7dfd276d/jetified-lifecycle-viewmodel-savedstate-2.3.1/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.3.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/f9edf9a4300d4062a16ca405c8fc6085/lifecycle-viewmodel-2.3.1/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.cardview:cardview:1.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/ca0f97bfab089086956e63ba0e75c4e7/cardview-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [com.github.gzu-liyujiang.AndroidPicker:WheelPicker:4.1.7] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/d3de174f4f4a494078f335aa2d6008ed/jetified-WheelPicker-4.1.7/AndroidManifest.xml:14:1-21:12
+MERGED from [com.github.gzu-liyujiang.AndroidPicker:Common:4.1.7] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/a04efd12337f6ec0291e045651d018f2/jetified-Common-4.1.7/AndroidManifest.xml:14:1-21:12
+MERGED from [com.github.gzu-liyujiang.AndroidPicker:WheelView:4.1.7] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/658462e3f338d758c5c171e0f305ee35/jetified-WheelView-4.1.7/AndroidManifest.xml:14:1-21:12
+MERGED from [com.jakewharton:butterknife-runtime:10.2.3] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/02d9a188e21cca0d1eaaa73868490eab/jetified-butterknife-runtime-10.2.3/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.appcompat:appcompat-resources:1.3.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/cb3af291e55e81956047cec58a710c3e/jetified-appcompat-resources-1.3.1/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/5008de16c8110061bf96ac71599c4156/drawerlayout-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/543010c9e4274969d5259d2b9f5cbcdd/coordinatorlayout-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/0f15562f7aff59ecb00bc714fdc6aa99/viewpager-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.customview:customview:1.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/8fc89153d9b1db7103a801d3c015a6a7/customview-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.transition:transition:1.2.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/9f767dcba978e3e6d5b53204b999f0b1/transition-1.2.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/c22b6f99bb4458bc70452cca2f2c5cd5/vectordrawable-animated-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/822f021037125d3699eb6b716f2511df/vectordrawable-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.core:core:1.5.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/add01e6b4df647dc5bb5fb5bd23c9fae/core-1.5.0/AndroidManifest.xml:17:1-26:12
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/a53dc145fa02c729a05e0728b77e018f/cursoradapter-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.savedstate:savedstate:1.1.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/36742dcf0efb3dc9f45807a0d5a2fe21/jetified-savedstate-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.3.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/65272700691354cd1bc4335e5e2f3660/lifecycle-runtime-2.3.1/AndroidManifest.xml:17:1-24:12
+MERGED from [com.github.bumptech.glide:gifdecoder:4.12.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/e2a53ad6674746b8ae534ac9a33044e0/jetified-gifdecoder-4.12.0/AndroidManifest.xml:2:1-11:12
+MERGED from [androidx.exifinterface:exifinterface:1.2.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/7fbcf4b592d14aa3a15c9237858b374c/exifinterface-1.2.0/AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/4c10a655c798cadb8dded10ce884c279/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:15:1-38:12
+MERGED from [com.google.android.datatransport:transport-runtime:2.2.6] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/62bb8a0d30908c0689a71b9237807aed/jetified-transport-runtime-2.2.6/AndroidManifest.xml:15:1-41:12
+MERGED from [com.google.android.datatransport:transport-api:2.2.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/20e04a454216427677accf94021a7124/jetified-transport-api-2.2.1/AndroidManifest.xml:15:1-22:12
+MERGED from [com.google.firebase:firebase-encoders-json:17.1.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/f9d05fded108e6ea01141d493c1c05dc/jetified-firebase-encoders-json-17.1.0/AndroidManifest.xml:15:1-23:12
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.3.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/a433998926c936b9908fac93218aa388/lifecycle-livedata-core-2.3.1/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.arch.core:core-runtime:2.1.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/bfa1f4f7de59a3854964b61dda3433cd/core-runtime-2.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/0a8058323ea717e22d6eb3a73696a2fc/versionedparcelable-1.1.1/AndroidManifest.xml:17:1-27:12
+MERGED from [androidx.tracing:tracing:1.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/dd1a5b883c82ef6021bd053ed3871548/jetified-tracing-1.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.firebase:firebase-components:16.1.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/83b47ae9846987a3aa5ec8526fb0a8a7/jetified-firebase-components-16.1.0/AndroidManifest.xml:15:1-23:12
+MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/1174cd4f202c4b9bc43e706385ef77a7/interpolator-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.documentfile:documentfile:1.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/97f7526c315a5ad9acf82cda1e047d14/documentfile-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/c19d35e1be4d43f99fdc21cfa165abff/localbroadcastmanager-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.print:print:1.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/a06fea2ba5b865c3bd7e7a9c002470b7/print-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [com.google.android.odml:image:1.0.0-beta1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/f1925c329bf134bec80d564b9517dca6/jetified-image-1.0.0-beta1/AndroidManifest.xml:2:1-9:12
+MERGED from [io.github.inflationx:calligraphy3:3.1.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/696f7a837b15cce7ad2be6e0efdff3c0/jetified-calligraphy3-3.1.1/AndroidManifest.xml:2:1-13:12
+MERGED from [io.github.inflationx:viewpump:2.0.3] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/11d80dcfcd30daa0daf743d4b5787aa5/jetified-viewpump-2.0.3/AndroidManifest.xml:2:1-11:12
+MERGED from [androidx.annotation:annotation-experimental:1.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/e76501046abd4524b1da6b30cbafe214/jetified-annotation-experimental-1.0.0/AndroidManifest.xml:17:1-24:12
 INJECTED from /Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/AndroidManifest.xml:2:1-105:12
 INJECTED from /Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/AndroidManifest.xml:2:1-105:12
 INJECTED from /Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/AndroidManifest.xml:2:1-105:12
@@ -108,164 +108,164 @@ uses-sdk
 ADDED from /Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/AndroidManifest.xml:13:5-135
 INJECTED from /Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/AndroidManifest.xml:13:5-135
 INJECTED from /Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/AndroidManifest.xml:13:5-135
-MERGED from [androidx.multidex:multidex:2.0.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/ce8dd2100ffd5b4eae657f5daec65fe0/multidex-2.0.1/AndroidManifest.xml:20:5-43
-MERGED from [androidx.multidex:multidex:2.0.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/ce8dd2100ffd5b4eae657f5daec65fe0/multidex-2.0.1/AndroidManifest.xml:20:5-43
-MERGED from [com.github.sarnavakonar:TextWriter:v1.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/9166cc48870ee31e3c90a07aeabbf32c/jetified-TextWriter-v1.0/AndroidManifest.xml:7:5-9:41
-MERGED from [com.github.sarnavakonar:TextWriter:v1.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/9166cc48870ee31e3c90a07aeabbf32c/jetified-TextWriter-v1.0/AndroidManifest.xml:7:5-9:41
-MERGED from [com.github.warkiz.tickseekbar:tickseekbar:0.1.4] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/e3e9bae28d2acd758cf05253533094ee/jetified-tickseekbar-0.1.4/AndroidManifest.xml:7:5-9:41
-MERGED from [com.github.warkiz.tickseekbar:tickseekbar:0.1.4] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/e3e9bae28d2acd758cf05253533094ee/jetified-tickseekbar-0.1.4/AndroidManifest.xml:7:5-9:41
-MERGED from [com.ramotion.paperonboarding:paper-onboarding:1.1.3] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/11d1eb687d904552a97e83b049b42647/jetified-paper-onboarding-1.1.3/AndroidManifest.xml:7:5-9:41
-MERGED from [com.ramotion.paperonboarding:paper-onboarding:1.1.3] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/11d1eb687d904552a97e83b049b42647/jetified-paper-onboarding-1.1.3/AndroidManifest.xml:7:5-9:41
-MERGED from [com.haibin:calendarview:3.7.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/ef55714dbd263c4018385af2c5cdcb49/jetified-calendarview-3.7.1/AndroidManifest.xml:7:5-9:41
-MERGED from [com.haibin:calendarview:3.7.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/ef55714dbd263c4018385af2c5cdcb49/jetified-calendarview-3.7.1/AndroidManifest.xml:7:5-9:41
-MERGED from [com.github.gzu-liyujiang.AndroidPicker:AddressPicker:4.1.7] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/c2bce357d8f6d392fd5333ca805c57f0/jetified-AddressPicker-4.1.7/AndroidManifest.xml:17:5-19:41
-MERGED from [com.github.gzu-liyujiang.AndroidPicker:AddressPicker:4.1.7] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/c2bce357d8f6d392fd5333ca805c57f0/jetified-AddressPicker-4.1.7/AndroidManifest.xml:17:5-19:41
-MERGED from [com.jakewharton:butterknife:10.2.3] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/fc4f298f12bf68f0a10eb53f331df166/jetified-butterknife-10.2.3/AndroidManifest.xml:5:5-44
-MERGED from [com.jakewharton:butterknife:10.2.3] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/fc4f298f12bf68f0a10eb53f331df166/jetified-butterknife-10.2.3/AndroidManifest.xml:5:5-44
-MERGED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/8f7a3fb5b22fd814ba8707c967cb3ed6/jetified-xutil-core-2.0.0/AndroidManifest.xml:5:5-7:41
-MERGED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/8f7a3fb5b22fd814ba8707c967cb3ed6/jetified-xutil-core-2.0.0/AndroidManifest.xml:5:5-7:41
-MERGED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/f7f51381b29a2e8065e8059783dd5dad/jetified-xutil-sub-2.0.0/AndroidManifest.xml:21:5-23:41
-MERGED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/f7f51381b29a2e8065e8059783dd5dad/jetified-xutil-sub-2.0.0/AndroidManifest.xml:21:5-23:41
-MERGED from [com.orhanobut:logger:2.2.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/69964d8053f3b34c370c03285d7fc9dd/jetified-logger-2.2.0/AndroidManifest.xml:6:5-43
-MERGED from [com.orhanobut:logger:2.2.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/69964d8053f3b34c370c03285d7fc9dd/jetified-logger-2.2.0/AndroidManifest.xml:6:5-43
-MERGED from [com.jpeng:JPTabBar:1.4.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/7280ae13190f39b70317453097bbc586/jetified-JPTabBar-1.4.0/AndroidManifest.xml:8:5-10:41
-MERGED from [com.jpeng:JPTabBar:1.4.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/7280ae13190f39b70317453097bbc586/jetified-JPTabBar-1.4.0/AndroidManifest.xml:8:5-10:41
-MERGED from [com.github.bmarrdev:android-DecoView-charting:v1.2] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/f0a8e60193e8261a76282d864d6ef2d2/jetified-android-DecoView-charting-v1.2/AndroidManifest.xml:7:5-9:41
-MERGED from [com.github.bmarrdev:android-DecoView-charting:v1.2] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/f0a8e60193e8261a76282d864d6ef2d2/jetified-android-DecoView-charting-v1.2/AndroidManifest.xml:7:5-9:41
-MERGED from [com.github.xuexiangjys:XUI:1.1.8] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/cb3a340231d4295dbef6891df83e60a3/jetified-XUI-1.1.8/AndroidManifest.xml:5:5-7:41
-MERGED from [com.github.xuexiangjys:XUI:1.1.8] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/cb3a340231d4295dbef6891df83e60a3/jetified-XUI-1.1.8/AndroidManifest.xml:5:5-7:41
-MERGED from [com.google.android.material:material:1.4.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/5936cfff72ae8ebd7b59ec4b3061e4eb/material-1.4.0/AndroidManifest.xml:20:5-44
-MERGED from [com.google.android.material:material:1.4.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/5936cfff72ae8ebd7b59ec4b3061e4eb/material-1.4.0/AndroidManifest.xml:20:5-44
-MERGED from [com.github.Liberuman:ShadowDrawable:0.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/880b6370cc4bb61914cdf3b8aff8aa46/jetified-ShadowDrawable-0.1/AndroidManifest.xml:7:5-9:41
-MERGED from [com.github.Liberuman:ShadowDrawable:0.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/880b6370cc4bb61914cdf3b8aff8aa46/jetified-ShadowDrawable-0.1/AndroidManifest.xml:7:5-9:41
-MERGED from [androidx.constraintlayout:constraintlayout:2.0.4] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/74d3dfb417b8176313f67b6d530795eb/constraintlayout-2.0.4/AndroidManifest.xml:5:5-7:41
-MERGED from [androidx.constraintlayout:constraintlayout:2.0.4] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/74d3dfb417b8176313f67b6d530795eb/constraintlayout-2.0.4/AndroidManifest.xml:5:5-7:41
-MERGED from [com.google.mlkit:camera:16.0.0-beta1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/ebdf43113743875641aee584777c8abd/jetified-camera-16.0.0-beta1/AndroidManifest.xml:6:5-44
-MERGED from [com.google.mlkit:camera:16.0.0-beta1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/ebdf43113743875641aee584777c8abd/jetified-camera-16.0.0-beta1/AndroidManifest.xml:6:5-44
-MERGED from [androidx.camera:camera-view:1.0.0-alpha23] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/2e493ab06e14e047977c9f6e2e9afe5f/jetified-camera-view-1.0.0-alpha23/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.camera:camera-view:1.0.0-alpha23] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/2e493ab06e14e047977c9f6e2e9afe5f/jetified-camera-view-1.0.0-alpha23/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.appcompat:appcompat:1.3.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/334326e1ac2b1d4d35dc19234e130324/appcompat-1.3.1/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.appcompat:appcompat:1.3.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/334326e1ac2b1d4d35dc19234e130324/appcompat-1.3.1/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.viewpager2:viewpager2:1.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/dd19de491629ae7f47a65c6c8b1fd550/jetified-viewpager2-1.0.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.viewpager2:viewpager2:1.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/dd19de491629ae7f47a65c6c8b1fd550/jetified-viewpager2-1.0.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.recyclerview:recyclerview:1.2.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/c9c70dad19ad74cf580309e7c140fdda/recyclerview-1.2.1/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.recyclerview:recyclerview:1.2.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/c9c70dad19ad74cf580309e7c140fdda/recyclerview-1.2.1/AndroidManifest.xml:20:5-22:41
-MERGED from [com.github.bumptech.glide:glide:4.12.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/2e25be288265a51dc1c64ef4c35243c0/jetified-glide-4.12.0/AndroidManifest.xml:6:5-8:41
-MERGED from [com.github.bumptech.glide:glide:4.12.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/2e25be288265a51dc1c64ef4c35243c0/jetified-glide-4.12.0/AndroidManifest.xml:6:5-8:41
-MERGED from [com.google.mlkit:pose-detection:18.0.0-beta1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/0334133ec35fd9e52fadd53a703a1b94/jetified-pose-detection-18.0.0-beta1/AndroidManifest.xml:5:5-44
-MERGED from [com.google.mlkit:pose-detection:18.0.0-beta1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/0334133ec35fd9e52fadd53a703a1b94/jetified-pose-detection-18.0.0-beta1/AndroidManifest.xml:5:5-44
-MERGED from [com.google.mlkit:pose-detection-accurate:18.0.0-beta1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/f2d0690cd25e2bee6492fcdfe980dfc7/jetified-pose-detection-accurate-18.0.0-beta1/AndroidManifest.xml:5:5-44
-MERGED from [com.google.mlkit:pose-detection-accurate:18.0.0-beta1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/f2d0690cd25e2bee6492fcdfe980dfc7/jetified-pose-detection-accurate-18.0.0-beta1/AndroidManifest.xml:5:5-44
-MERGED from [androidx.camera:camera-camera2:1.0.0-rc04] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/d7036fc3c12227497a40518bb070d4a5/jetified-camera-camera2-1.0.0-rc04/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.camera:camera-camera2:1.0.0-rc04] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/d7036fc3c12227497a40518bb070d4a5/jetified-camera-camera2-1.0.0-rc04/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.camera:camera-lifecycle:1.0.0-rc04] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/3778c71a84bc8339eae3a073d9226ad6/jetified-camera-lifecycle-1.0.0-rc04/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.camera:camera-lifecycle:1.0.0-rc04] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/3778c71a84bc8339eae3a073d9226ad6/jetified-camera-lifecycle-1.0.0-rc04/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.camera:camera-core:1.0.0-rc04] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/512a4784ba71efa332c8658c0f0d8624/jetified-camera-core-1.0.0-rc04/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.camera:camera-core:1.0.0-rc04] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/512a4784ba71efa332c8658c0f0d8624/jetified-camera-core-1.0.0-rc04/AndroidManifest.xml:20:5-22:41
-MERGED from [com.google.mlkit:pose-detection-common:18.0.0-beta1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/04b970f8fd742b3be056c2a28a00fd9a/jetified-pose-detection-common-18.0.0-beta1/AndroidManifest.xml:5:5-44
-MERGED from [com.google.mlkit:pose-detection-common:18.0.0-beta1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/04b970f8fd742b3be056c2a28a00fd9a/jetified-pose-detection-common-18.0.0-beta1/AndroidManifest.xml:5:5-44
-MERGED from [com.google.mlkit:mediapipe-internal:17.0.0-beta6] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/a1af5a52db2147471aae5fc48d54f33d/jetified-mediapipe-internal-17.0.0-beta6/AndroidManifest.xml:6:5-44
-MERGED from [com.google.mlkit:mediapipe-internal:17.0.0-beta6] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/a1af5a52db2147471aae5fc48d54f33d/jetified-mediapipe-internal-17.0.0-beta6/AndroidManifest.xml:6:5-44
-MERGED from [com.google.mlkit:vision-common:17.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/19f0f43aabd601ca53374840b69d6a5e/jetified-vision-common-17.0.0/AndroidManifest.xml:6:5-44
-MERGED from [com.google.mlkit:vision-common:17.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/19f0f43aabd601ca53374840b69d6a5e/jetified-vision-common-17.0.0/AndroidManifest.xml:6:5-44
-MERGED from [com.google.mlkit:common:18.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/cd457c1b74bdcd8eb1f8ed1cd0edb60e/jetified-common-18.0.0/AndroidManifest.xml:6:5-44
-MERGED from [com.google.mlkit:common:18.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/cd457c1b74bdcd8eb1f8ed1cd0edb60e/jetified-common-18.0.0/AndroidManifest.xml:6:5-44
-MERGED from [com.google.android.gms:play-services-base:18.0.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/bf0e5aa3395afeac256a40fe94a44c93/jetified-play-services-base-18.0.1/AndroidManifest.xml:18:5-43
-MERGED from [com.google.android.gms:play-services-base:18.0.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/bf0e5aa3395afeac256a40fe94a44c93/jetified-play-services-base-18.0.1/AndroidManifest.xml:18:5-43
-MERGED from [com.google.mlkit:vision-interfaces:16.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/eaa14f392af625debf8af3d3824152fe/jetified-vision-interfaces-16.0.0/AndroidManifest.xml:5:5-44
-MERGED from [com.google.mlkit:vision-interfaces:16.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/eaa14f392af625debf8af3d3824152fe/jetified-vision-interfaces-16.0.0/AndroidManifest.xml:5:5-44
-MERGED from [com.google.android.gms:play-services-tasks:18.0.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/317b5c06f21cbcdfbee826521a8be903/jetified-play-services-tasks-18.0.1/AndroidManifest.xml:4:5-43
-MERGED from [com.google.android.gms:play-services-tasks:18.0.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/317b5c06f21cbcdfbee826521a8be903/jetified-play-services-tasks-18.0.1/AndroidManifest.xml:4:5-43
-MERGED from [com.google.android.gms:play-services-basement:18.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/4127a4261a01000d5e1f23ce5b884202/jetified-play-services-basement-18.0.0/AndroidManifest.xml:18:5-43
-MERGED from [com.google.android.gms:play-services-basement:18.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/4127a4261a01000d5e1f23ce5b884202/jetified-play-services-basement-18.0.0/AndroidManifest.xml:18:5-43
-MERGED from [androidx.fragment:fragment:1.3.6] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/0bc112e9dacb0e6dee8b70a2a870b166/fragment-1.3.6/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.fragment:fragment:1.3.6] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/0bc112e9dacb0e6dee8b70a2a870b166/fragment-1.3.6/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.dynamicanimation:dynamicanimation:1.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/c6b760792a9f88ad0cc386af81581310/dynamicanimation-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.dynamicanimation:dynamicanimation:1.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/c6b760792a9f88ad0cc386af81581310/dynamicanimation-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/26e4eb6e9bebf59aa3426759a686271d/legacy-support-core-utils-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/26e4eb6e9bebf59aa3426759a686271d/legacy-support-core-utils-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.loader:loader:1.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/af24e95ace17d9fd449005a0593d92ed/loader-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.loader:loader:1.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/af24e95ace17d9fd449005a0593d92ed/loader-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.lifecycle:lifecycle-livedata:2.3.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/ad92ae74d7aaeb7ba0204c5e256b8367/lifecycle-livedata-2.3.1/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.lifecycle:lifecycle-livedata:2.3.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/ad92ae74d7aaeb7ba0204c5e256b8367/lifecycle-livedata-2.3.1/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.activity:activity:1.2.4] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/ad1384a4734ef7c60bd40618b8455e63/jetified-activity-1.2.4/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.activity:activity:1.2.4] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/ad1384a4734ef7c60bd40618b8455e63/jetified-activity-1.2.4/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.3.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/f8e5adeb36e5f32b2d8aa02a49d2db6e/jetified-lifecycle-viewmodel-savedstate-2.3.1/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.3.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/f8e5adeb36e5f32b2d8aa02a49d2db6e/jetified-lifecycle-viewmodel-savedstate-2.3.1/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.3.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/4bcab31ffa1f267c0ebcfc4e01545746/lifecycle-viewmodel-2.3.1/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.3.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/4bcab31ffa1f267c0ebcfc4e01545746/lifecycle-viewmodel-2.3.1/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.cardview:cardview:1.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/bc97950d719cef5aad9004493b26296c/cardview-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.cardview:cardview:1.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/bc97950d719cef5aad9004493b26296c/cardview-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [com.github.gzu-liyujiang.AndroidPicker:WheelPicker:4.1.7] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/c0d8d79eef24ccf8cb077a9f05ddc674/jetified-WheelPicker-4.1.7/AndroidManifest.xml:17:5-19:41
-MERGED from [com.github.gzu-liyujiang.AndroidPicker:WheelPicker:4.1.7] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/c0d8d79eef24ccf8cb077a9f05ddc674/jetified-WheelPicker-4.1.7/AndroidManifest.xml:17:5-19:41
-MERGED from [com.github.gzu-liyujiang.AndroidPicker:Common:4.1.7] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/fae1e5bc5865b54e2a572239a46a0df3/jetified-Common-4.1.7/AndroidManifest.xml:17:5-19:41
-MERGED from [com.github.gzu-liyujiang.AndroidPicker:Common:4.1.7] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/fae1e5bc5865b54e2a572239a46a0df3/jetified-Common-4.1.7/AndroidManifest.xml:17:5-19:41
-MERGED from [com.github.gzu-liyujiang.AndroidPicker:WheelView:4.1.7] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/819db67c8b7cb895d6d120fd211f7cda/jetified-WheelView-4.1.7/AndroidManifest.xml:17:5-19:41
-MERGED from [com.github.gzu-liyujiang.AndroidPicker:WheelView:4.1.7] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/819db67c8b7cb895d6d120fd211f7cda/jetified-WheelView-4.1.7/AndroidManifest.xml:17:5-19:41
-MERGED from [com.jakewharton:butterknife-runtime:10.2.3] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/42a320916d06d2f0bd46120ff6567013/jetified-butterknife-runtime-10.2.3/AndroidManifest.xml:5:5-44
-MERGED from [com.jakewharton:butterknife-runtime:10.2.3] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/42a320916d06d2f0bd46120ff6567013/jetified-butterknife-runtime-10.2.3/AndroidManifest.xml:5:5-44
-MERGED from [androidx.appcompat:appcompat-resources:1.3.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/81d3e7d74c7eb788064e8be17e7348c0/jetified-appcompat-resources-1.3.1/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.appcompat:appcompat-resources:1.3.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/81d3e7d74c7eb788064e8be17e7348c0/jetified-appcompat-resources-1.3.1/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/624952430dbe4d933057f56d5d026c09/drawerlayout-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/624952430dbe4d933057f56d5d026c09/drawerlayout-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/bf138d0b71de1e0a44db1c948a8d35cd/coordinatorlayout-1.1.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/bf138d0b71de1e0a44db1c948a8d35cd/coordinatorlayout-1.1.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/4edb453d1243aba45ca6a352ba9ddb28/viewpager-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/4edb453d1243aba45ca6a352ba9ddb28/viewpager-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.customview:customview:1.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/62436a67eb96db586efd4b0ee96d077d/customview-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.customview:customview:1.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/62436a67eb96db586efd4b0ee96d077d/customview-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.transition:transition:1.2.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/579188acc4336cbc34fb9d8999a11744/transition-1.2.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.transition:transition:1.2.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/579188acc4336cbc34fb9d8999a11744/transition-1.2.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/db6f362f2f21e586a6b40eca3796432d/vectordrawable-animated-1.1.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/db6f362f2f21e586a6b40eca3796432d/vectordrawable-animated-1.1.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/129521daa934d3e6bc50b9fdf333376c/vectordrawable-1.1.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/129521daa934d3e6bc50b9fdf333376c/vectordrawable-1.1.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.core:core:1.5.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/4e08b81c2a1c1aefac273845b51aa17c/core-1.5.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.core:core:1.5.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/4e08b81c2a1c1aefac273845b51aa17c/core-1.5.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/cdb6f207b4500473c7ffeec55f385efa/cursoradapter-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/cdb6f207b4500473c7ffeec55f385efa/cursoradapter-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.savedstate:savedstate:1.1.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/0d94f4e7edea9dd1fb176db092b481b1/jetified-savedstate-1.1.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.savedstate:savedstate:1.1.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/0d94f4e7edea9dd1fb176db092b481b1/jetified-savedstate-1.1.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.lifecycle:lifecycle-runtime:2.3.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/16a24664dbb9f5695a3bf8a9db6742dd/lifecycle-runtime-2.3.1/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.lifecycle:lifecycle-runtime:2.3.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/16a24664dbb9f5695a3bf8a9db6742dd/lifecycle-runtime-2.3.1/AndroidManifest.xml:20:5-22:41
-MERGED from [com.github.bumptech.glide:gifdecoder:4.12.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/a29cd48b0d3bb9da29fbc32b68595086/jetified-gifdecoder-4.12.0/AndroidManifest.xml:5:5-7:41
-MERGED from [com.github.bumptech.glide:gifdecoder:4.12.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/a29cd48b0d3bb9da29fbc32b68595086/jetified-gifdecoder-4.12.0/AndroidManifest.xml:5:5-7:41
-MERGED from [androidx.exifinterface:exifinterface:1.2.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/b721c66cb0391ae8f45cda853d9c3bdd/exifinterface-1.2.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.exifinterface:exifinterface:1.2.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/b721c66cb0391ae8f45cda853d9c3bdd/exifinterface-1.2.0/AndroidManifest.xml:20:5-22:41
-MERGED from [com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/b0b07d668fb05669fea93be346cdaca2/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:19:5-21:41
-MERGED from [com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/b0b07d668fb05669fea93be346cdaca2/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:19:5-21:41
-MERGED from [com.google.android.datatransport:transport-runtime:2.2.6] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/0b67044ceabbcacea62e90fd6e1fc6a0/jetified-transport-runtime-2.2.6/AndroidManifest.xml:18:5-20:41
-MERGED from [com.google.android.datatransport:transport-runtime:2.2.6] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/0b67044ceabbcacea62e90fd6e1fc6a0/jetified-transport-runtime-2.2.6/AndroidManifest.xml:18:5-20:41
-MERGED from [com.google.android.datatransport:transport-api:2.2.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/dcf482f6ac775774c4f6b14cbaf39d70/jetified-transport-api-2.2.1/AndroidManifest.xml:18:5-20:41
-MERGED from [com.google.android.datatransport:transport-api:2.2.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/dcf482f6ac775774c4f6b14cbaf39d70/jetified-transport-api-2.2.1/AndroidManifest.xml:18:5-20:41
-MERGED from [com.google.firebase:firebase-encoders-json:17.1.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/2b32d6a0cdff2db24ee7dcbcdf8d1779/jetified-firebase-encoders-json-17.1.0/AndroidManifest.xml:19:5-21:41
-MERGED from [com.google.firebase:firebase-encoders-json:17.1.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/2b32d6a0cdff2db24ee7dcbcdf8d1779/jetified-firebase-encoders-json-17.1.0/AndroidManifest.xml:19:5-21:41
-MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.3.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/2b3d5037db0438599433d82a784eb6bf/lifecycle-livedata-core-2.3.1/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.3.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/2b3d5037db0438599433d82a784eb6bf/lifecycle-livedata-core-2.3.1/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.arch.core:core-runtime:2.1.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/d8762380457f4e044046181ed6cb1daf/core-runtime-2.1.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.arch.core:core-runtime:2.1.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/d8762380457f4e044046181ed6cb1daf/core-runtime-2.1.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/3fb09b3bc7320ddf59f34af69eba561f/versionedparcelable-1.1.1/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/3fb09b3bc7320ddf59f34af69eba561f/versionedparcelable-1.1.1/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.tracing:tracing:1.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/805aa42dab95c87db1e36c5c905d13d8/jetified-tracing-1.0.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.tracing:tracing:1.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/805aa42dab95c87db1e36c5c905d13d8/jetified-tracing-1.0.0/AndroidManifest.xml:20:5-22:41
-MERGED from [com.google.firebase:firebase-components:16.1.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/cb1688a624cb402aeec3c1d63869a1df/jetified-firebase-components-16.1.0/AndroidManifest.xml:19:5-21:41
-MERGED from [com.google.firebase:firebase-components:16.1.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/cb1688a624cb402aeec3c1d63869a1df/jetified-firebase-components-16.1.0/AndroidManifest.xml:19:5-21:41
-MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/8ddc9952f727e6b4648fb3647c864837/interpolator-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/8ddc9952f727e6b4648fb3647c864837/interpolator-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.documentfile:documentfile:1.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/8d1987beef5e01e3a0a5abc85f6361be/documentfile-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.documentfile:documentfile:1.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/8d1987beef5e01e3a0a5abc85f6361be/documentfile-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/fa896f12ed7cf4536bd5d5880aa662e0/localbroadcastmanager-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/fa896f12ed7cf4536bd5d5880aa662e0/localbroadcastmanager-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.print:print:1.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/1a0f803fcda82c135932fe0b00cab5d2/print-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.print:print:1.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/1a0f803fcda82c135932fe0b00cab5d2/print-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [com.google.android.odml:image:1.0.0-beta1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/4f7cc3f0a1b8fce3778652a3c48c4b4d/jetified-image-1.0.0-beta1/AndroidManifest.xml:5:5-44
-MERGED from [com.google.android.odml:image:1.0.0-beta1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/4f7cc3f0a1b8fce3778652a3c48c4b4d/jetified-image-1.0.0-beta1/AndroidManifest.xml:5:5-44
-MERGED from [io.github.inflationx:calligraphy3:3.1.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/1bdb91a34a106fb240077b81c88e0e0f/jetified-calligraphy3-3.1.1/AndroidManifest.xml:7:5-9:41
-MERGED from [io.github.inflationx:calligraphy3:3.1.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/1bdb91a34a106fb240077b81c88e0e0f/jetified-calligraphy3-3.1.1/AndroidManifest.xml:7:5-9:41
-MERGED from [io.github.inflationx:viewpump:2.0.3] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/6250716e4291d5ca020e8ae0a47ea699/jetified-viewpump-2.0.3/AndroidManifest.xml:5:5-7:41
-MERGED from [io.github.inflationx:viewpump:2.0.3] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/6250716e4291d5ca020e8ae0a47ea699/jetified-viewpump-2.0.3/AndroidManifest.xml:5:5-7:41
-MERGED from [androidx.annotation:annotation-experimental:1.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/c1bc2009ed393c1281f28af6bb79c366/jetified-annotation-experimental-1.0.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.annotation:annotation-experimental:1.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/c1bc2009ed393c1281f28af6bb79c366/jetified-annotation-experimental-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.multidex:multidex:2.0.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/ca32c209e884a2682cadaed1a089da30/multidex-2.0.1/AndroidManifest.xml:20:5-43
+MERGED from [androidx.multidex:multidex:2.0.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/ca32c209e884a2682cadaed1a089da30/multidex-2.0.1/AndroidManifest.xml:20:5-43
+MERGED from [com.github.sarnavakonar:TextWriter:v1.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/313638a11e0110ceceb5f0f82802a665/jetified-TextWriter-v1.0/AndroidManifest.xml:7:5-9:41
+MERGED from [com.github.sarnavakonar:TextWriter:v1.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/313638a11e0110ceceb5f0f82802a665/jetified-TextWriter-v1.0/AndroidManifest.xml:7:5-9:41
+MERGED from [com.github.warkiz.tickseekbar:tickseekbar:0.1.4] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/d243ae7bf9b33d871ba74fcaed0ba090/jetified-tickseekbar-0.1.4/AndroidManifest.xml:7:5-9:41
+MERGED from [com.github.warkiz.tickseekbar:tickseekbar:0.1.4] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/d243ae7bf9b33d871ba74fcaed0ba090/jetified-tickseekbar-0.1.4/AndroidManifest.xml:7:5-9:41
+MERGED from [com.ramotion.paperonboarding:paper-onboarding:1.1.3] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/e202784f735be2289d60ffcf9c4d02a2/jetified-paper-onboarding-1.1.3/AndroidManifest.xml:7:5-9:41
+MERGED from [com.ramotion.paperonboarding:paper-onboarding:1.1.3] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/e202784f735be2289d60ffcf9c4d02a2/jetified-paper-onboarding-1.1.3/AndroidManifest.xml:7:5-9:41
+MERGED from [com.haibin:calendarview:3.7.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/26ad70af13737c0c495e1e8aaf1fab53/jetified-calendarview-3.7.1/AndroidManifest.xml:7:5-9:41
+MERGED from [com.haibin:calendarview:3.7.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/26ad70af13737c0c495e1e8aaf1fab53/jetified-calendarview-3.7.1/AndroidManifest.xml:7:5-9:41
+MERGED from [com.github.gzu-liyujiang.AndroidPicker:AddressPicker:4.1.7] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/909e05972f3c954ee1faaa324efecff6/jetified-AddressPicker-4.1.7/AndroidManifest.xml:17:5-19:41
+MERGED from [com.github.gzu-liyujiang.AndroidPicker:AddressPicker:4.1.7] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/909e05972f3c954ee1faaa324efecff6/jetified-AddressPicker-4.1.7/AndroidManifest.xml:17:5-19:41
+MERGED from [com.jakewharton:butterknife:10.2.3] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/e0889219fb2d240bc97b63b53535f615/jetified-butterknife-10.2.3/AndroidManifest.xml:5:5-44
+MERGED from [com.jakewharton:butterknife:10.2.3] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/e0889219fb2d240bc97b63b53535f615/jetified-butterknife-10.2.3/AndroidManifest.xml:5:5-44
+MERGED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/55e68f11103a896cb66d5f00463788a8/jetified-xutil-core-2.0.0/AndroidManifest.xml:5:5-7:41
+MERGED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/55e68f11103a896cb66d5f00463788a8/jetified-xutil-core-2.0.0/AndroidManifest.xml:5:5-7:41
+MERGED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/456a6a1a2f0d53a9b974a1f880e26128/jetified-xutil-sub-2.0.0/AndroidManifest.xml:21:5-23:41
+MERGED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/456a6a1a2f0d53a9b974a1f880e26128/jetified-xutil-sub-2.0.0/AndroidManifest.xml:21:5-23:41
+MERGED from [com.orhanobut:logger:2.2.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/2a86f1104807adc73c739e0e70b778bd/jetified-logger-2.2.0/AndroidManifest.xml:6:5-43
+MERGED from [com.orhanobut:logger:2.2.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/2a86f1104807adc73c739e0e70b778bd/jetified-logger-2.2.0/AndroidManifest.xml:6:5-43
+MERGED from [com.jpeng:JPTabBar:1.4.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/3b1be571bf89b01ddfabbd563518799a/jetified-JPTabBar-1.4.0/AndroidManifest.xml:8:5-10:41
+MERGED from [com.jpeng:JPTabBar:1.4.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/3b1be571bf89b01ddfabbd563518799a/jetified-JPTabBar-1.4.0/AndroidManifest.xml:8:5-10:41
+MERGED from [com.github.bmarrdev:android-DecoView-charting:v1.2] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/6ede7a58e135788fc4efb6bbb7a9ae1d/jetified-android-DecoView-charting-v1.2/AndroidManifest.xml:7:5-9:41
+MERGED from [com.github.bmarrdev:android-DecoView-charting:v1.2] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/6ede7a58e135788fc4efb6bbb7a9ae1d/jetified-android-DecoView-charting-v1.2/AndroidManifest.xml:7:5-9:41
+MERGED from [com.github.xuexiangjys:XUI:1.1.8] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/ddb31071937cdef067fa9e0f57987ebf/jetified-XUI-1.1.8/AndroidManifest.xml:5:5-7:41
+MERGED from [com.github.xuexiangjys:XUI:1.1.8] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/ddb31071937cdef067fa9e0f57987ebf/jetified-XUI-1.1.8/AndroidManifest.xml:5:5-7:41
+MERGED from [com.google.android.material:material:1.4.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/0768ed0860e59e1130f29c960ede0e0d/material-1.4.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.material:material:1.4.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/0768ed0860e59e1130f29c960ede0e0d/material-1.4.0/AndroidManifest.xml:20:5-44
+MERGED from [com.github.Liberuman:ShadowDrawable:0.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/e9a1f76d697e3a65057f1a045a46cdfc/jetified-ShadowDrawable-0.1/AndroidManifest.xml:7:5-9:41
+MERGED from [com.github.Liberuman:ShadowDrawable:0.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/e9a1f76d697e3a65057f1a045a46cdfc/jetified-ShadowDrawable-0.1/AndroidManifest.xml:7:5-9:41
+MERGED from [androidx.constraintlayout:constraintlayout:2.0.4] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/60cf8b1bbb463430158388a20016515c/constraintlayout-2.0.4/AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.constraintlayout:constraintlayout:2.0.4] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/60cf8b1bbb463430158388a20016515c/constraintlayout-2.0.4/AndroidManifest.xml:5:5-7:41
+MERGED from [com.google.mlkit:camera:16.0.0-beta1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/8fae643ba125a40ce293830d35ddeed6/jetified-camera-16.0.0-beta1/AndroidManifest.xml:6:5-44
+MERGED from [com.google.mlkit:camera:16.0.0-beta1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/8fae643ba125a40ce293830d35ddeed6/jetified-camera-16.0.0-beta1/AndroidManifest.xml:6:5-44
+MERGED from [androidx.camera:camera-view:1.0.0-alpha23] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/e5168f8b048d7e6ac3f27a2e4281c925/jetified-camera-view-1.0.0-alpha23/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.camera:camera-view:1.0.0-alpha23] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/e5168f8b048d7e6ac3f27a2e4281c925/jetified-camera-view-1.0.0-alpha23/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.appcompat:appcompat:1.3.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/14476e7a4e61a27cca1f9906d45a3dfe/appcompat-1.3.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.appcompat:appcompat:1.3.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/14476e7a4e61a27cca1f9906d45a3dfe/appcompat-1.3.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.viewpager2:viewpager2:1.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/cf429a145983ce66e31327e886d91adc/jetified-viewpager2-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.viewpager2:viewpager2:1.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/cf429a145983ce66e31327e886d91adc/jetified-viewpager2-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.recyclerview:recyclerview:1.2.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/1c3c5109d5b22b0d8a2f0aa53aa458c3/recyclerview-1.2.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.recyclerview:recyclerview:1.2.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/1c3c5109d5b22b0d8a2f0aa53aa458c3/recyclerview-1.2.1/AndroidManifest.xml:20:5-22:41
+MERGED from [com.github.bumptech.glide:glide:4.12.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/3134a2cbf73107aaa9b50d87bd84c580/jetified-glide-4.12.0/AndroidManifest.xml:6:5-8:41
+MERGED from [com.github.bumptech.glide:glide:4.12.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/3134a2cbf73107aaa9b50d87bd84c580/jetified-glide-4.12.0/AndroidManifest.xml:6:5-8:41
+MERGED from [com.google.mlkit:pose-detection:18.0.0-beta1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/16fd80c9464ef077cc1c7b0dda063343/jetified-pose-detection-18.0.0-beta1/AndroidManifest.xml:5:5-44
+MERGED from [com.google.mlkit:pose-detection:18.0.0-beta1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/16fd80c9464ef077cc1c7b0dda063343/jetified-pose-detection-18.0.0-beta1/AndroidManifest.xml:5:5-44
+MERGED from [com.google.mlkit:pose-detection-accurate:18.0.0-beta1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/315499c7e86e8cf17e5ea82ba60ff7e1/jetified-pose-detection-accurate-18.0.0-beta1/AndroidManifest.xml:5:5-44
+MERGED from [com.google.mlkit:pose-detection-accurate:18.0.0-beta1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/315499c7e86e8cf17e5ea82ba60ff7e1/jetified-pose-detection-accurate-18.0.0-beta1/AndroidManifest.xml:5:5-44
+MERGED from [androidx.camera:camera-camera2:1.0.0-rc04] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/a14387a01fcfd2c178fb6477b1c8d3a6/jetified-camera-camera2-1.0.0-rc04/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.camera:camera-camera2:1.0.0-rc04] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/a14387a01fcfd2c178fb6477b1c8d3a6/jetified-camera-camera2-1.0.0-rc04/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.camera:camera-lifecycle:1.0.0-rc04] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/0473d9ddbd8cd757a2df8a3d21906ecd/jetified-camera-lifecycle-1.0.0-rc04/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.camera:camera-lifecycle:1.0.0-rc04] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/0473d9ddbd8cd757a2df8a3d21906ecd/jetified-camera-lifecycle-1.0.0-rc04/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.camera:camera-core:1.0.0-rc04] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/cde5136b1e7c2ea2a57b05e8c755d710/jetified-camera-core-1.0.0-rc04/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.camera:camera-core:1.0.0-rc04] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/cde5136b1e7c2ea2a57b05e8c755d710/jetified-camera-core-1.0.0-rc04/AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.mlkit:pose-detection-common:18.0.0-beta1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/c4440b61a8701ef90e203e3fa5e5014a/jetified-pose-detection-common-18.0.0-beta1/AndroidManifest.xml:5:5-44
+MERGED from [com.google.mlkit:pose-detection-common:18.0.0-beta1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/c4440b61a8701ef90e203e3fa5e5014a/jetified-pose-detection-common-18.0.0-beta1/AndroidManifest.xml:5:5-44
+MERGED from [com.google.mlkit:mediapipe-internal:17.0.0-beta6] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/5ffed569c19d89b9787e74a8f709fb33/jetified-mediapipe-internal-17.0.0-beta6/AndroidManifest.xml:6:5-44
+MERGED from [com.google.mlkit:mediapipe-internal:17.0.0-beta6] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/5ffed569c19d89b9787e74a8f709fb33/jetified-mediapipe-internal-17.0.0-beta6/AndroidManifest.xml:6:5-44
+MERGED from [com.google.mlkit:vision-common:17.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/c97775570c148fefb80f45853648be6c/jetified-vision-common-17.0.0/AndroidManifest.xml:6:5-44
+MERGED from [com.google.mlkit:vision-common:17.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/c97775570c148fefb80f45853648be6c/jetified-vision-common-17.0.0/AndroidManifest.xml:6:5-44
+MERGED from [com.google.mlkit:common:18.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/bbb000945e8f873c8ce6e92f333d82ec/jetified-common-18.0.0/AndroidManifest.xml:6:5-44
+MERGED from [com.google.mlkit:common:18.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/bbb000945e8f873c8ce6e92f333d82ec/jetified-common-18.0.0/AndroidManifest.xml:6:5-44
+MERGED from [com.google.android.gms:play-services-base:18.0.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/dd19b457df17abb1bf2ef9058f241061/jetified-play-services-base-18.0.1/AndroidManifest.xml:18:5-43
+MERGED from [com.google.android.gms:play-services-base:18.0.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/dd19b457df17abb1bf2ef9058f241061/jetified-play-services-base-18.0.1/AndroidManifest.xml:18:5-43
+MERGED from [com.google.mlkit:vision-interfaces:16.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/1d51fd5406744328bc00cb683a999269/jetified-vision-interfaces-16.0.0/AndroidManifest.xml:5:5-44
+MERGED from [com.google.mlkit:vision-interfaces:16.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/1d51fd5406744328bc00cb683a999269/jetified-vision-interfaces-16.0.0/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-tasks:18.0.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/d7eddcbd8f5c5ede222cb89b0ed6ca12/jetified-play-services-tasks-18.0.1/AndroidManifest.xml:4:5-43
+MERGED from [com.google.android.gms:play-services-tasks:18.0.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/d7eddcbd8f5c5ede222cb89b0ed6ca12/jetified-play-services-tasks-18.0.1/AndroidManifest.xml:4:5-43
+MERGED from [com.google.android.gms:play-services-basement:18.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/d48ca8c39d3e9427eb4e3f541aa83c35/jetified-play-services-basement-18.0.0/AndroidManifest.xml:18:5-43
+MERGED from [com.google.android.gms:play-services-basement:18.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/d48ca8c39d3e9427eb4e3f541aa83c35/jetified-play-services-basement-18.0.0/AndroidManifest.xml:18:5-43
+MERGED from [androidx.fragment:fragment:1.3.6] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/1252bd21878799abb8c831b6dd3e3178/fragment-1.3.6/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.fragment:fragment:1.3.6] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/1252bd21878799abb8c831b6dd3e3178/fragment-1.3.6/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.dynamicanimation:dynamicanimation:1.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/9f6322f0b273bdd91bcbc4df0a9afb1b/dynamicanimation-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.dynamicanimation:dynamicanimation:1.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/9f6322f0b273bdd91bcbc4df0a9afb1b/dynamicanimation-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/6f723063079595b71497361e01c87c54/legacy-support-core-utils-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/6f723063079595b71497361e01c87c54/legacy-support-core-utils-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/3ba019b5d017a64877129e328ed11755/loader-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/3ba019b5d017a64877129e328ed11755/loader-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.3.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/f6639717ed083bf718d318393fcb50f4/lifecycle-livedata-2.3.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.3.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/f6639717ed083bf718d318393fcb50f4/lifecycle-livedata-2.3.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.activity:activity:1.2.4] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/2d2f4c60e59b4c2ae0b9547def8ae2af/jetified-activity-1.2.4/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.activity:activity:1.2.4] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/2d2f4c60e59b4c2ae0b9547def8ae2af/jetified-activity-1.2.4/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.3.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/8bfd38b6813dae32e9bd7b0a7dfd276d/jetified-lifecycle-viewmodel-savedstate-2.3.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.3.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/8bfd38b6813dae32e9bd7b0a7dfd276d/jetified-lifecycle-viewmodel-savedstate-2.3.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.3.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/f9edf9a4300d4062a16ca405c8fc6085/lifecycle-viewmodel-2.3.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.3.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/f9edf9a4300d4062a16ca405c8fc6085/lifecycle-viewmodel-2.3.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.cardview:cardview:1.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/ca0f97bfab089086956e63ba0e75c4e7/cardview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.cardview:cardview:1.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/ca0f97bfab089086956e63ba0e75c4e7/cardview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.github.gzu-liyujiang.AndroidPicker:WheelPicker:4.1.7] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/d3de174f4f4a494078f335aa2d6008ed/jetified-WheelPicker-4.1.7/AndroidManifest.xml:17:5-19:41
+MERGED from [com.github.gzu-liyujiang.AndroidPicker:WheelPicker:4.1.7] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/d3de174f4f4a494078f335aa2d6008ed/jetified-WheelPicker-4.1.7/AndroidManifest.xml:17:5-19:41
+MERGED from [com.github.gzu-liyujiang.AndroidPicker:Common:4.1.7] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/a04efd12337f6ec0291e045651d018f2/jetified-Common-4.1.7/AndroidManifest.xml:17:5-19:41
+MERGED from [com.github.gzu-liyujiang.AndroidPicker:Common:4.1.7] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/a04efd12337f6ec0291e045651d018f2/jetified-Common-4.1.7/AndroidManifest.xml:17:5-19:41
+MERGED from [com.github.gzu-liyujiang.AndroidPicker:WheelView:4.1.7] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/658462e3f338d758c5c171e0f305ee35/jetified-WheelView-4.1.7/AndroidManifest.xml:17:5-19:41
+MERGED from [com.github.gzu-liyujiang.AndroidPicker:WheelView:4.1.7] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/658462e3f338d758c5c171e0f305ee35/jetified-WheelView-4.1.7/AndroidManifest.xml:17:5-19:41
+MERGED from [com.jakewharton:butterknife-runtime:10.2.3] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/02d9a188e21cca0d1eaaa73868490eab/jetified-butterknife-runtime-10.2.3/AndroidManifest.xml:5:5-44
+MERGED from [com.jakewharton:butterknife-runtime:10.2.3] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/02d9a188e21cca0d1eaaa73868490eab/jetified-butterknife-runtime-10.2.3/AndroidManifest.xml:5:5-44
+MERGED from [androidx.appcompat:appcompat-resources:1.3.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/cb3af291e55e81956047cec58a710c3e/jetified-appcompat-resources-1.3.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.appcompat:appcompat-resources:1.3.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/cb3af291e55e81956047cec58a710c3e/jetified-appcompat-resources-1.3.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/5008de16c8110061bf96ac71599c4156/drawerlayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/5008de16c8110061bf96ac71599c4156/drawerlayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/543010c9e4274969d5259d2b9f5cbcdd/coordinatorlayout-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/543010c9e4274969d5259d2b9f5cbcdd/coordinatorlayout-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/0f15562f7aff59ecb00bc714fdc6aa99/viewpager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/0f15562f7aff59ecb00bc714fdc6aa99/viewpager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.customview:customview:1.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/8fc89153d9b1db7103a801d3c015a6a7/customview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.customview:customview:1.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/8fc89153d9b1db7103a801d3c015a6a7/customview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.transition:transition:1.2.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/9f767dcba978e3e6d5b53204b999f0b1/transition-1.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.transition:transition:1.2.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/9f767dcba978e3e6d5b53204b999f0b1/transition-1.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/c22b6f99bb4458bc70452cca2f2c5cd5/vectordrawable-animated-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/c22b6f99bb4458bc70452cca2f2c5cd5/vectordrawable-animated-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/822f021037125d3699eb6b716f2511df/vectordrawable-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/822f021037125d3699eb6b716f2511df/vectordrawable-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.core:core:1.5.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/add01e6b4df647dc5bb5fb5bd23c9fae/core-1.5.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.core:core:1.5.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/add01e6b4df647dc5bb5fb5bd23c9fae/core-1.5.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/a53dc145fa02c729a05e0728b77e018f/cursoradapter-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/a53dc145fa02c729a05e0728b77e018f/cursoradapter-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.savedstate:savedstate:1.1.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/36742dcf0efb3dc9f45807a0d5a2fe21/jetified-savedstate-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.savedstate:savedstate:1.1.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/36742dcf0efb3dc9f45807a0d5a2fe21/jetified-savedstate-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.3.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/65272700691354cd1bc4335e5e2f3660/lifecycle-runtime-2.3.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.3.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/65272700691354cd1bc4335e5e2f3660/lifecycle-runtime-2.3.1/AndroidManifest.xml:20:5-22:41
+MERGED from [com.github.bumptech.glide:gifdecoder:4.12.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/e2a53ad6674746b8ae534ac9a33044e0/jetified-gifdecoder-4.12.0/AndroidManifest.xml:5:5-7:41
+MERGED from [com.github.bumptech.glide:gifdecoder:4.12.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/e2a53ad6674746b8ae534ac9a33044e0/jetified-gifdecoder-4.12.0/AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.exifinterface:exifinterface:1.2.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/7fbcf4b592d14aa3a15c9237858b374c/exifinterface-1.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.exifinterface:exifinterface:1.2.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/7fbcf4b592d14aa3a15c9237858b374c/exifinterface-1.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/4c10a655c798cadb8dded10ce884c279/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:19:5-21:41
+MERGED from [com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/4c10a655c798cadb8dded10ce884c279/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:19:5-21:41
+MERGED from [com.google.android.datatransport:transport-runtime:2.2.6] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/62bb8a0d30908c0689a71b9237807aed/jetified-transport-runtime-2.2.6/AndroidManifest.xml:18:5-20:41
+MERGED from [com.google.android.datatransport:transport-runtime:2.2.6] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/62bb8a0d30908c0689a71b9237807aed/jetified-transport-runtime-2.2.6/AndroidManifest.xml:18:5-20:41
+MERGED from [com.google.android.datatransport:transport-api:2.2.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/20e04a454216427677accf94021a7124/jetified-transport-api-2.2.1/AndroidManifest.xml:18:5-20:41
+MERGED from [com.google.android.datatransport:transport-api:2.2.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/20e04a454216427677accf94021a7124/jetified-transport-api-2.2.1/AndroidManifest.xml:18:5-20:41
+MERGED from [com.google.firebase:firebase-encoders-json:17.1.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/f9d05fded108e6ea01141d493c1c05dc/jetified-firebase-encoders-json-17.1.0/AndroidManifest.xml:19:5-21:41
+MERGED from [com.google.firebase:firebase-encoders-json:17.1.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/f9d05fded108e6ea01141d493c1c05dc/jetified-firebase-encoders-json-17.1.0/AndroidManifest.xml:19:5-21:41
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.3.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/a433998926c936b9908fac93218aa388/lifecycle-livedata-core-2.3.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.3.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/a433998926c936b9908fac93218aa388/lifecycle-livedata-core-2.3.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.arch.core:core-runtime:2.1.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/bfa1f4f7de59a3854964b61dda3433cd/core-runtime-2.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.arch.core:core-runtime:2.1.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/bfa1f4f7de59a3854964b61dda3433cd/core-runtime-2.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/0a8058323ea717e22d6eb3a73696a2fc/versionedparcelable-1.1.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/0a8058323ea717e22d6eb3a73696a2fc/versionedparcelable-1.1.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.tracing:tracing:1.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/dd1a5b883c82ef6021bd053ed3871548/jetified-tracing-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.tracing:tracing:1.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/dd1a5b883c82ef6021bd053ed3871548/jetified-tracing-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.firebase:firebase-components:16.1.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/83b47ae9846987a3aa5ec8526fb0a8a7/jetified-firebase-components-16.1.0/AndroidManifest.xml:19:5-21:41
+MERGED from [com.google.firebase:firebase-components:16.1.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/83b47ae9846987a3aa5ec8526fb0a8a7/jetified-firebase-components-16.1.0/AndroidManifest.xml:19:5-21:41
+MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/1174cd4f202c4b9bc43e706385ef77a7/interpolator-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/1174cd4f202c4b9bc43e706385ef77a7/interpolator-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.documentfile:documentfile:1.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/97f7526c315a5ad9acf82cda1e047d14/documentfile-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.documentfile:documentfile:1.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/97f7526c315a5ad9acf82cda1e047d14/documentfile-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/c19d35e1be4d43f99fdc21cfa165abff/localbroadcastmanager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/c19d35e1be4d43f99fdc21cfa165abff/localbroadcastmanager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.print:print:1.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/a06fea2ba5b865c3bd7e7a9c002470b7/print-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.print:print:1.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/a06fea2ba5b865c3bd7e7a9c002470b7/print-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.odml:image:1.0.0-beta1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/f1925c329bf134bec80d564b9517dca6/jetified-image-1.0.0-beta1/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.odml:image:1.0.0-beta1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/f1925c329bf134bec80d564b9517dca6/jetified-image-1.0.0-beta1/AndroidManifest.xml:5:5-44
+MERGED from [io.github.inflationx:calligraphy3:3.1.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/696f7a837b15cce7ad2be6e0efdff3c0/jetified-calligraphy3-3.1.1/AndroidManifest.xml:7:5-9:41
+MERGED from [io.github.inflationx:calligraphy3:3.1.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/696f7a837b15cce7ad2be6e0efdff3c0/jetified-calligraphy3-3.1.1/AndroidManifest.xml:7:5-9:41
+MERGED from [io.github.inflationx:viewpump:2.0.3] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/11d80dcfcd30daa0daf743d4b5787aa5/jetified-viewpump-2.0.3/AndroidManifest.xml:5:5-7:41
+MERGED from [io.github.inflationx:viewpump:2.0.3] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/11d80dcfcd30daa0daf743d4b5787aa5/jetified-viewpump-2.0.3/AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.annotation:annotation-experimental:1.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/e76501046abd4524b1da6b30cbafe214/jetified-annotation-experimental-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.annotation:annotation-experimental:1.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/e76501046abd4524b1da6b30cbafe214/jetified-annotation-experimental-1.0.0/AndroidManifest.xml:20:5-22:41
 INJECTED from /Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/AndroidManifest.xml:13:5-135
 INJECTED from /Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/AndroidManifest.xml:13:5-135
 	tools:overrideLibrary
@@ -280,20 +280,20 @@ INJECTED from /Users/markgosling/Documents/Project/Android/AiTrainer/app/src/mai
 		INJECTED from /Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/AndroidManifest.xml
 uses-feature#android.hardware.camera
 ADDED from /Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/AndroidManifest.xml:15:5-60
-MERGED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/f7f51381b29a2e8065e8059783dd5dad/jetified-xutil-sub-2.0.0/AndroidManifest.xml:64:5-60
-MERGED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/f7f51381b29a2e8065e8059783dd5dad/jetified-xutil-sub-2.0.0/AndroidManifest.xml:64:5-60
+MERGED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/456a6a1a2f0d53a9b974a1f880e26128/jetified-xutil-sub-2.0.0/AndroidManifest.xml:64:5-60
+MERGED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/456a6a1a2f0d53a9b974a1f880e26128/jetified-xutil-sub-2.0.0/AndroidManifest.xml:64:5-60
 	android:name
 		ADDED from /Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/AndroidManifest.xml:15:19-57
 uses-permission#android.permission.VIBRATE
 ADDED from /Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/AndroidManifest.xml:16:5-66
-MERGED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/f7f51381b29a2e8065e8059783dd5dad/jetified-xutil-sub-2.0.0/AndroidManifest.xml:47:5-66
-MERGED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/f7f51381b29a2e8065e8059783dd5dad/jetified-xutil-sub-2.0.0/AndroidManifest.xml:47:5-66
+MERGED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/456a6a1a2f0d53a9b974a1f880e26128/jetified-xutil-sub-2.0.0/AndroidManifest.xml:47:5-66
+MERGED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/456a6a1a2f0d53a9b974a1f880e26128/jetified-xutil-sub-2.0.0/AndroidManifest.xml:47:5-66
 	android:name
 		ADDED from /Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/AndroidManifest.xml:16:22-63
 uses-permission#android.permission.WRITE_SETTINGS
 ADDED from /Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/AndroidManifest.xml:17:5-19:47
-MERGED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/f7f51381b29a2e8065e8059783dd5dad/jetified-xutil-sub-2.0.0/AndroidManifest.xml:78:5-80:47
-MERGED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/f7f51381b29a2e8065e8059783dd5dad/jetified-xutil-sub-2.0.0/AndroidManifest.xml:78:5-80:47
+MERGED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/456a6a1a2f0d53a9b974a1f880e26128/jetified-xutil-sub-2.0.0/AndroidManifest.xml:78:5-80:47
+MERGED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/456a6a1a2f0d53a9b974a1f880e26128/jetified-xutil-sub-2.0.0/AndroidManifest.xml:78:5-80:47
 	tools:ignore
 		ADDED from /Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/AndroidManifest.xml:19:9-44
 	android:name
@@ -308,8 +308,8 @@ ADDED from /Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/A
 		ADDED from /Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/AndroidManifest.xml:23:22-78
 uses-permission#android.permission.MOUNT_UNMOUNT_FILESYSTEMS
 ADDED from /Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/AndroidManifest.xml:24:5-26:47
-MERGED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/f7f51381b29a2e8065e8059783dd5dad/jetified-xutil-sub-2.0.0/AndroidManifest.xml:74:5-76:47
-MERGED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/f7f51381b29a2e8065e8059783dd5dad/jetified-xutil-sub-2.0.0/AndroidManifest.xml:74:5-76:47
+MERGED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/456a6a1a2f0d53a9b974a1f880e26128/jetified-xutil-sub-2.0.0/AndroidManifest.xml:74:5-76:47
+MERGED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/456a6a1a2f0d53a9b974a1f880e26128/jetified-xutil-sub-2.0.0/AndroidManifest.xml:74:5-76:47
 	tools:ignore
 		ADDED from /Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/AndroidManifest.xml:26:9-44
 	android:name
@@ -320,32 +320,32 @@ ADDED from /Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/A
 		ADDED from /Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/AndroidManifest.xml:27:22-76
 uses-permission#android.permission.READ_PHONE_STATE
 ADDED from /Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/AndroidManifest.xml:28:5-75
-MERGED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/f7f51381b29a2e8065e8059783dd5dad/jetified-xutil-sub-2.0.0/AndroidManifest.xml:49:5-75
-MERGED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/f7f51381b29a2e8065e8059783dd5dad/jetified-xutil-sub-2.0.0/AndroidManifest.xml:49:5-75
+MERGED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/456a6a1a2f0d53a9b974a1f880e26128/jetified-xutil-sub-2.0.0/AndroidManifest.xml:49:5-75
+MERGED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/456a6a1a2f0d53a9b974a1f880e26128/jetified-xutil-sub-2.0.0/AndroidManifest.xml:49:5-75
 	android:name
 		ADDED from /Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/AndroidManifest.xml:28:22-72
 uses-permission#android.permission.INTERNET
 ADDED from /Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/AndroidManifest.xml:29:5-67
-MERGED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/8f7a3fb5b22fd814ba8707c967cb3ed6/jetified-xutil-core-2.0.0/AndroidManifest.xml:15:5-67
-MERGED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/8f7a3fb5b22fd814ba8707c967cb3ed6/jetified-xutil-core-2.0.0/AndroidManifest.xml:15:5-67
-MERGED from [com.google.mlkit:pose-detection-common:18.0.0-beta1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/04b970f8fd742b3be056c2a28a00fd9a/jetified-pose-detection-common-18.0.0-beta1/AndroidManifest.xml:8:5-67
-MERGED from [com.google.mlkit:pose-detection-common:18.0.0-beta1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/04b970f8fd742b3be056c2a28a00fd9a/jetified-pose-detection-common-18.0.0-beta1/AndroidManifest.xml:8:5-67
-MERGED from [com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/b0b07d668fb05669fea93be346cdaca2/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:26:5-67
-MERGED from [com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/b0b07d668fb05669fea93be346cdaca2/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:26:5-67
+MERGED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/55e68f11103a896cb66d5f00463788a8/jetified-xutil-core-2.0.0/AndroidManifest.xml:15:5-67
+MERGED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/55e68f11103a896cb66d5f00463788a8/jetified-xutil-core-2.0.0/AndroidManifest.xml:15:5-67
+MERGED from [com.google.mlkit:pose-detection-common:18.0.0-beta1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/c4440b61a8701ef90e203e3fa5e5014a/jetified-pose-detection-common-18.0.0-beta1/AndroidManifest.xml:8:5-67
+MERGED from [com.google.mlkit:pose-detection-common:18.0.0-beta1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/c4440b61a8701ef90e203e3fa5e5014a/jetified-pose-detection-common-18.0.0-beta1/AndroidManifest.xml:8:5-67
+MERGED from [com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/4c10a655c798cadb8dded10ce884c279/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:26:5-67
+MERGED from [com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/4c10a655c798cadb8dded10ce884c279/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:26:5-67
 	android:name
 		ADDED from /Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/AndroidManifest.xml:29:22-64
 uses-permission#android.permission.ACCESS_NETWORK_STATE
 ADDED from /Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/AndroidManifest.xml:30:5-79
-MERGED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/8f7a3fb5b22fd814ba8707c967cb3ed6/jetified-xutil-core-2.0.0/AndroidManifest.xml:18:5-79
-MERGED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/8f7a3fb5b22fd814ba8707c967cb3ed6/jetified-xutil-core-2.0.0/AndroidManifest.xml:18:5-79
-MERGED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/f7f51381b29a2e8065e8059783dd5dad/jetified-xutil-sub-2.0.0/AndroidManifest.xml:25:5-79
-MERGED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/f7f51381b29a2e8065e8059783dd5dad/jetified-xutil-sub-2.0.0/AndroidManifest.xml:25:5-79
-MERGED from [com.google.mlkit:pose-detection-common:18.0.0-beta1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/04b970f8fd742b3be056c2a28a00fd9a/jetified-pose-detection-common-18.0.0-beta1/AndroidManifest.xml:7:5-79
-MERGED from [com.google.mlkit:pose-detection-common:18.0.0-beta1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/04b970f8fd742b3be056c2a28a00fd9a/jetified-pose-detection-common-18.0.0-beta1/AndroidManifest.xml:7:5-79
-MERGED from [com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/b0b07d668fb05669fea93be346cdaca2/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:25:5-79
-MERGED from [com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/b0b07d668fb05669fea93be346cdaca2/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:25:5-79
-MERGED from [com.google.android.datatransport:transport-runtime:2.2.6] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/0b67044ceabbcacea62e90fd6e1fc6a0/jetified-transport-runtime-2.2.6/AndroidManifest.xml:22:5-79
-MERGED from [com.google.android.datatransport:transport-runtime:2.2.6] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/0b67044ceabbcacea62e90fd6e1fc6a0/jetified-transport-runtime-2.2.6/AndroidManifest.xml:22:5-79
+MERGED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/55e68f11103a896cb66d5f00463788a8/jetified-xutil-core-2.0.0/AndroidManifest.xml:18:5-79
+MERGED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/55e68f11103a896cb66d5f00463788a8/jetified-xutil-core-2.0.0/AndroidManifest.xml:18:5-79
+MERGED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/456a6a1a2f0d53a9b974a1f880e26128/jetified-xutil-sub-2.0.0/AndroidManifest.xml:25:5-79
+MERGED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/456a6a1a2f0d53a9b974a1f880e26128/jetified-xutil-sub-2.0.0/AndroidManifest.xml:25:5-79
+MERGED from [com.google.mlkit:pose-detection-common:18.0.0-beta1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/c4440b61a8701ef90e203e3fa5e5014a/jetified-pose-detection-common-18.0.0-beta1/AndroidManifest.xml:7:5-79
+MERGED from [com.google.mlkit:pose-detection-common:18.0.0-beta1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/c4440b61a8701ef90e203e3fa5e5014a/jetified-pose-detection-common-18.0.0-beta1/AndroidManifest.xml:7:5-79
+MERGED from [com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/4c10a655c798cadb8dded10ce884c279/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:25:5-79
+MERGED from [com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/4c10a655c798cadb8dded10ce884c279/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:25:5-79
+MERGED from [com.google.android.datatransport:transport-runtime:2.2.6] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/62bb8a0d30908c0689a71b9237807aed/jetified-transport-runtime-2.2.6/AndroidManifest.xml:22:5-79
+MERGED from [com.google.android.datatransport:transport-runtime:2.2.6] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/62bb8a0d30908c0689a71b9237807aed/jetified-transport-runtime-2.2.6/AndroidManifest.xml:22:5-79
 	android:name
 		ADDED from /Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/AndroidManifest.xml:30:22-76
 uses-permission#android.permission.READ_PRIVILEGED_PHONE_STATE
@@ -356,14 +356,14 @@ ADDED from /Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/A
 		ADDED from /Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/AndroidManifest.xml:32:9-70
 uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
 ADDED from /Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/AndroidManifest.xml:34:5-81
-MERGED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/8f7a3fb5b22fd814ba8707c967cb3ed6/jetified-xutil-core-2.0.0/AndroidManifest.xml:13:5-81
-MERGED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/8f7a3fb5b22fd814ba8707c967cb3ed6/jetified-xutil-core-2.0.0/AndroidManifest.xml:13:5-81
+MERGED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/55e68f11103a896cb66d5f00463788a8/jetified-xutil-core-2.0.0/AndroidManifest.xml:13:5-81
+MERGED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/55e68f11103a896cb66d5f00463788a8/jetified-xutil-core-2.0.0/AndroidManifest.xml:13:5-81
 	android:name
 		ADDED from /Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/AndroidManifest.xml:34:22-78
 uses-permission#android.permission.READ_EXTERNAL_STORAGE
 ADDED from /Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/AndroidManifest.xml:35:5-80
-MERGED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/8f7a3fb5b22fd814ba8707c967cb3ed6/jetified-xutil-core-2.0.0/AndroidManifest.xml:12:5-80
-MERGED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/8f7a3fb5b22fd814ba8707c967cb3ed6/jetified-xutil-core-2.0.0/AndroidManifest.xml:12:5-80
+MERGED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/55e68f11103a896cb66d5f00463788a8/jetified-xutil-core-2.0.0/AndroidManifest.xml:12:5-80
+MERGED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/55e68f11103a896cb66d5f00463788a8/jetified-xutil-core-2.0.0/AndroidManifest.xml:12:5-80
 	android:name
 		ADDED from /Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/AndroidManifest.xml:35:22-77
 uses-permission#android.permission.MANAGE_EXTERNAL_STORAGE
@@ -374,8 +374,8 @@ ADDED from /Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/A
 		ADDED from /Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/AndroidManifest.xml:37:9-66
 uses-permission#android.permission.CAMERA
 ADDED from /Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/AndroidManifest.xml:41:5-65
-MERGED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/f7f51381b29a2e8065e8059783dd5dad/jetified-xutil-sub-2.0.0/AndroidManifest.xml:61:5-65
-MERGED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/f7f51381b29a2e8065e8059783dd5dad/jetified-xutil-sub-2.0.0/AndroidManifest.xml:61:5-65
+MERGED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/456a6a1a2f0d53a9b974a1f880e26128/jetified-xutil-sub-2.0.0/AndroidManifest.xml:61:5-65
+MERGED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/456a6a1a2f0d53a9b974a1f880e26128/jetified-xutil-sub-2.0.0/AndroidManifest.xml:61:5-65
 	android:name
 		ADDED from /Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/AndroidManifest.xml:41:22-62
 queries
@@ -394,65 +394,65 @@ ADDED from /Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/A
 		ADDED from /Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/AndroidManifest.xml:48:21-69
 application
 ADDED from /Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/AndroidManifest.xml:52:5-103:19
-MERGED from [com.ramotion.paperonboarding:paper-onboarding:1.1.3] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/11d1eb687d904552a97e83b049b42647/jetified-paper-onboarding-1.1.3/AndroidManifest.xml:11:5-15:19
-MERGED from [com.ramotion.paperonboarding:paper-onboarding:1.1.3] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/11d1eb687d904552a97e83b049b42647/jetified-paper-onboarding-1.1.3/AndroidManifest.xml:11:5-15:19
-MERGED from [com.github.gzu-liyujiang.AndroidPicker:AddressPicker:4.1.7] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/c2bce357d8f6d392fd5333ca805c57f0/jetified-AddressPicker-4.1.7/AndroidManifest.xml:21:5-22:19
-MERGED from [com.github.gzu-liyujiang.AndroidPicker:AddressPicker:4.1.7] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/c2bce357d8f6d392fd5333ca805c57f0/jetified-AddressPicker-4.1.7/AndroidManifest.xml:21:5-22:19
-MERGED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/8f7a3fb5b22fd814ba8707c967cb3ed6/jetified-xutil-core-2.0.0/AndroidManifest.xml:20:5-36:19
-MERGED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/8f7a3fb5b22fd814ba8707c967cb3ed6/jetified-xutil-core-2.0.0/AndroidManifest.xml:20:5-36:19
-MERGED from [com.github.bmarrdev:android-DecoView-charting:v1.2] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/f0a8e60193e8261a76282d864d6ef2d2/jetified-android-DecoView-charting-v1.2/AndroidManifest.xml:11:5-12:19
-MERGED from [com.github.bmarrdev:android-DecoView-charting:v1.2] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/f0a8e60193e8261a76282d864d6ef2d2/jetified-android-DecoView-charting-v1.2/AndroidManifest.xml:11:5-12:19
-MERGED from [com.github.xuexiangjys:XUI:1.1.8] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/cb3a340231d4295dbef6891df83e60a3/jetified-XUI-1.1.8/AndroidManifest.xml:9:5-22:19
-MERGED from [com.github.xuexiangjys:XUI:1.1.8] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/cb3a340231d4295dbef6891df83e60a3/jetified-XUI-1.1.8/AndroidManifest.xml:9:5-22:19
-MERGED from [com.google.android.material:material:1.4.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/5936cfff72ae8ebd7b59ec4b3061e4eb/material-1.4.0/AndroidManifest.xml:22:5-20
-MERGED from [com.google.android.material:material:1.4.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/5936cfff72ae8ebd7b59ec4b3061e4eb/material-1.4.0/AndroidManifest.xml:22:5-20
-MERGED from [androidx.constraintlayout:constraintlayout:2.0.4] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/74d3dfb417b8176313f67b6d530795eb/constraintlayout-2.0.4/AndroidManifest.xml:9:5-20
-MERGED from [androidx.constraintlayout:constraintlayout:2.0.4] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/74d3dfb417b8176313f67b6d530795eb/constraintlayout-2.0.4/AndroidManifest.xml:9:5-20
-MERGED from [com.github.bumptech.glide:glide:4.12.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/2e25be288265a51dc1c64ef4c35243c0/jetified-glide-4.12.0/AndroidManifest.xml:10:5-20
-MERGED from [com.github.bumptech.glide:glide:4.12.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/2e25be288265a51dc1c64ef4c35243c0/jetified-glide-4.12.0/AndroidManifest.xml:10:5-20
-MERGED from [com.google.mlkit:pose-detection:18.0.0-beta1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/0334133ec35fd9e52fadd53a703a1b94/jetified-pose-detection-18.0.0-beta1/AndroidManifest.xml:7:5-20
-MERGED from [com.google.mlkit:pose-detection:18.0.0-beta1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/0334133ec35fd9e52fadd53a703a1b94/jetified-pose-detection-18.0.0-beta1/AndroidManifest.xml:7:5-20
-MERGED from [com.google.mlkit:pose-detection-accurate:18.0.0-beta1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/f2d0690cd25e2bee6492fcdfe980dfc7/jetified-pose-detection-accurate-18.0.0-beta1/AndroidManifest.xml:7:5-20
-MERGED from [com.google.mlkit:pose-detection-accurate:18.0.0-beta1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/f2d0690cd25e2bee6492fcdfe980dfc7/jetified-pose-detection-accurate-18.0.0-beta1/AndroidManifest.xml:7:5-20
-MERGED from [com.google.mlkit:pose-detection-common:18.0.0-beta1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/04b970f8fd742b3be056c2a28a00fd9a/jetified-pose-detection-common-18.0.0-beta1/AndroidManifest.xml:10:5-18:19
-MERGED from [com.google.mlkit:pose-detection-common:18.0.0-beta1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/04b970f8fd742b3be056c2a28a00fd9a/jetified-pose-detection-common-18.0.0-beta1/AndroidManifest.xml:10:5-18:19
-MERGED from [com.google.mlkit:vision-common:17.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/19f0f43aabd601ca53374840b69d6a5e/jetified-vision-common-17.0.0/AndroidManifest.xml:8:5-16:19
-MERGED from [com.google.mlkit:vision-common:17.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/19f0f43aabd601ca53374840b69d6a5e/jetified-vision-common-17.0.0/AndroidManifest.xml:8:5-16:19
-MERGED from [com.google.mlkit:common:18.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/cd457c1b74bdcd8eb1f8ed1cd0edb60e/jetified-common-18.0.0/AndroidManifest.xml:8:5-24:19
-MERGED from [com.google.mlkit:common:18.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/cd457c1b74bdcd8eb1f8ed1cd0edb60e/jetified-common-18.0.0/AndroidManifest.xml:8:5-24:19
-MERGED from [com.google.android.gms:play-services-base:18.0.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/bf0e5aa3395afeac256a40fe94a44c93/jetified-play-services-base-18.0.1/AndroidManifest.xml:19:5-23:19
-MERGED from [com.google.android.gms:play-services-base:18.0.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/bf0e5aa3395afeac256a40fe94a44c93/jetified-play-services-base-18.0.1/AndroidManifest.xml:19:5-23:19
-MERGED from [com.google.android.gms:play-services-tasks:18.0.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/317b5c06f21cbcdfbee826521a8be903/jetified-play-services-tasks-18.0.1/AndroidManifest.xml:5:5-20
-MERGED from [com.google.android.gms:play-services-tasks:18.0.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/317b5c06f21cbcdfbee826521a8be903/jetified-play-services-tasks-18.0.1/AndroidManifest.xml:5:5-20
-MERGED from [com.google.android.gms:play-services-basement:18.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/4127a4261a01000d5e1f23ce5b884202/jetified-play-services-basement-18.0.0/AndroidManifest.xml:20:5-24:19
-MERGED from [com.google.android.gms:play-services-basement:18.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/4127a4261a01000d5e1f23ce5b884202/jetified-play-services-basement-18.0.0/AndroidManifest.xml:20:5-24:19
-MERGED from [androidx.core:core:1.5.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/4e08b81c2a1c1aefac273845b51aa17c/core-1.5.0/AndroidManifest.xml:24:5-89
-MERGED from [androidx.core:core:1.5.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/4e08b81c2a1c1aefac273845b51aa17c/core-1.5.0/AndroidManifest.xml:24:5-89
-MERGED from [com.github.bumptech.glide:gifdecoder:4.12.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/a29cd48b0d3bb9da29fbc32b68595086/jetified-gifdecoder-4.12.0/AndroidManifest.xml:9:5-20
-MERGED from [com.github.bumptech.glide:gifdecoder:4.12.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/a29cd48b0d3bb9da29fbc32b68595086/jetified-gifdecoder-4.12.0/AndroidManifest.xml:9:5-20
-MERGED from [com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/b0b07d668fb05669fea93be346cdaca2/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:28:5-36:19
-MERGED from [com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/b0b07d668fb05669fea93be346cdaca2/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:28:5-36:19
-MERGED from [com.google.android.datatransport:transport-runtime:2.2.6] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/0b67044ceabbcacea62e90fd6e1fc6a0/jetified-transport-runtime-2.2.6/AndroidManifest.xml:25:5-39:19
-MERGED from [com.google.android.datatransport:transport-runtime:2.2.6] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/0b67044ceabbcacea62e90fd6e1fc6a0/jetified-transport-runtime-2.2.6/AndroidManifest.xml:25:5-39:19
-MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/3fb09b3bc7320ddf59f34af69eba561f/versionedparcelable-1.1.1/AndroidManifest.xml:24:5-25:19
-MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/3fb09b3bc7320ddf59f34af69eba561f/versionedparcelable-1.1.1/AndroidManifest.xml:24:5-25:19
-MERGED from [com.google.android.odml:image:1.0.0-beta1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/4f7cc3f0a1b8fce3778652a3c48c4b4d/jetified-image-1.0.0-beta1/AndroidManifest.xml:7:5-20
-MERGED from [com.google.android.odml:image:1.0.0-beta1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/4f7cc3f0a1b8fce3778652a3c48c4b4d/jetified-image-1.0.0-beta1/AndroidManifest.xml:7:5-20
-MERGED from [io.github.inflationx:calligraphy3:3.1.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/1bdb91a34a106fb240077b81c88e0e0f/jetified-calligraphy3-3.1.1/AndroidManifest.xml:11:5-20
-MERGED from [io.github.inflationx:calligraphy3:3.1.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/1bdb91a34a106fb240077b81c88e0e0f/jetified-calligraphy3-3.1.1/AndroidManifest.xml:11:5-20
-MERGED from [io.github.inflationx:viewpump:2.0.3] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/6250716e4291d5ca020e8ae0a47ea699/jetified-viewpump-2.0.3/AndroidManifest.xml:9:5-20
-MERGED from [io.github.inflationx:viewpump:2.0.3] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/6250716e4291d5ca020e8ae0a47ea699/jetified-viewpump-2.0.3/AndroidManifest.xml:9:5-20
+MERGED from [com.ramotion.paperonboarding:paper-onboarding:1.1.3] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/e202784f735be2289d60ffcf9c4d02a2/jetified-paper-onboarding-1.1.3/AndroidManifest.xml:11:5-15:19
+MERGED from [com.ramotion.paperonboarding:paper-onboarding:1.1.3] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/e202784f735be2289d60ffcf9c4d02a2/jetified-paper-onboarding-1.1.3/AndroidManifest.xml:11:5-15:19
+MERGED from [com.github.gzu-liyujiang.AndroidPicker:AddressPicker:4.1.7] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/909e05972f3c954ee1faaa324efecff6/jetified-AddressPicker-4.1.7/AndroidManifest.xml:21:5-22:19
+MERGED from [com.github.gzu-liyujiang.AndroidPicker:AddressPicker:4.1.7] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/909e05972f3c954ee1faaa324efecff6/jetified-AddressPicker-4.1.7/AndroidManifest.xml:21:5-22:19
+MERGED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/55e68f11103a896cb66d5f00463788a8/jetified-xutil-core-2.0.0/AndroidManifest.xml:20:5-36:19
+MERGED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/55e68f11103a896cb66d5f00463788a8/jetified-xutil-core-2.0.0/AndroidManifest.xml:20:5-36:19
+MERGED from [com.github.bmarrdev:android-DecoView-charting:v1.2] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/6ede7a58e135788fc4efb6bbb7a9ae1d/jetified-android-DecoView-charting-v1.2/AndroidManifest.xml:11:5-12:19
+MERGED from [com.github.bmarrdev:android-DecoView-charting:v1.2] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/6ede7a58e135788fc4efb6bbb7a9ae1d/jetified-android-DecoView-charting-v1.2/AndroidManifest.xml:11:5-12:19
+MERGED from [com.github.xuexiangjys:XUI:1.1.8] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/ddb31071937cdef067fa9e0f57987ebf/jetified-XUI-1.1.8/AndroidManifest.xml:9:5-22:19
+MERGED from [com.github.xuexiangjys:XUI:1.1.8] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/ddb31071937cdef067fa9e0f57987ebf/jetified-XUI-1.1.8/AndroidManifest.xml:9:5-22:19
+MERGED from [com.google.android.material:material:1.4.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/0768ed0860e59e1130f29c960ede0e0d/material-1.4.0/AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.material:material:1.4.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/0768ed0860e59e1130f29c960ede0e0d/material-1.4.0/AndroidManifest.xml:22:5-20
+MERGED from [androidx.constraintlayout:constraintlayout:2.0.4] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/60cf8b1bbb463430158388a20016515c/constraintlayout-2.0.4/AndroidManifest.xml:9:5-20
+MERGED from [androidx.constraintlayout:constraintlayout:2.0.4] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/60cf8b1bbb463430158388a20016515c/constraintlayout-2.0.4/AndroidManifest.xml:9:5-20
+MERGED from [com.github.bumptech.glide:glide:4.12.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/3134a2cbf73107aaa9b50d87bd84c580/jetified-glide-4.12.0/AndroidManifest.xml:10:5-20
+MERGED from [com.github.bumptech.glide:glide:4.12.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/3134a2cbf73107aaa9b50d87bd84c580/jetified-glide-4.12.0/AndroidManifest.xml:10:5-20
+MERGED from [com.google.mlkit:pose-detection:18.0.0-beta1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/16fd80c9464ef077cc1c7b0dda063343/jetified-pose-detection-18.0.0-beta1/AndroidManifest.xml:7:5-20
+MERGED from [com.google.mlkit:pose-detection:18.0.0-beta1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/16fd80c9464ef077cc1c7b0dda063343/jetified-pose-detection-18.0.0-beta1/AndroidManifest.xml:7:5-20
+MERGED from [com.google.mlkit:pose-detection-accurate:18.0.0-beta1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/315499c7e86e8cf17e5ea82ba60ff7e1/jetified-pose-detection-accurate-18.0.0-beta1/AndroidManifest.xml:7:5-20
+MERGED from [com.google.mlkit:pose-detection-accurate:18.0.0-beta1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/315499c7e86e8cf17e5ea82ba60ff7e1/jetified-pose-detection-accurate-18.0.0-beta1/AndroidManifest.xml:7:5-20
+MERGED from [com.google.mlkit:pose-detection-common:18.0.0-beta1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/c4440b61a8701ef90e203e3fa5e5014a/jetified-pose-detection-common-18.0.0-beta1/AndroidManifest.xml:10:5-18:19
+MERGED from [com.google.mlkit:pose-detection-common:18.0.0-beta1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/c4440b61a8701ef90e203e3fa5e5014a/jetified-pose-detection-common-18.0.0-beta1/AndroidManifest.xml:10:5-18:19
+MERGED from [com.google.mlkit:vision-common:17.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/c97775570c148fefb80f45853648be6c/jetified-vision-common-17.0.0/AndroidManifest.xml:8:5-16:19
+MERGED from [com.google.mlkit:vision-common:17.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/c97775570c148fefb80f45853648be6c/jetified-vision-common-17.0.0/AndroidManifest.xml:8:5-16:19
+MERGED from [com.google.mlkit:common:18.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/bbb000945e8f873c8ce6e92f333d82ec/jetified-common-18.0.0/AndroidManifest.xml:8:5-24:19
+MERGED from [com.google.mlkit:common:18.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/bbb000945e8f873c8ce6e92f333d82ec/jetified-common-18.0.0/AndroidManifest.xml:8:5-24:19
+MERGED from [com.google.android.gms:play-services-base:18.0.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/dd19b457df17abb1bf2ef9058f241061/jetified-play-services-base-18.0.1/AndroidManifest.xml:19:5-23:19
+MERGED from [com.google.android.gms:play-services-base:18.0.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/dd19b457df17abb1bf2ef9058f241061/jetified-play-services-base-18.0.1/AndroidManifest.xml:19:5-23:19
+MERGED from [com.google.android.gms:play-services-tasks:18.0.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/d7eddcbd8f5c5ede222cb89b0ed6ca12/jetified-play-services-tasks-18.0.1/AndroidManifest.xml:5:5-20
+MERGED from [com.google.android.gms:play-services-tasks:18.0.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/d7eddcbd8f5c5ede222cb89b0ed6ca12/jetified-play-services-tasks-18.0.1/AndroidManifest.xml:5:5-20
+MERGED from [com.google.android.gms:play-services-basement:18.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/d48ca8c39d3e9427eb4e3f541aa83c35/jetified-play-services-basement-18.0.0/AndroidManifest.xml:20:5-24:19
+MERGED from [com.google.android.gms:play-services-basement:18.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/d48ca8c39d3e9427eb4e3f541aa83c35/jetified-play-services-basement-18.0.0/AndroidManifest.xml:20:5-24:19
+MERGED from [androidx.core:core:1.5.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/add01e6b4df647dc5bb5fb5bd23c9fae/core-1.5.0/AndroidManifest.xml:24:5-89
+MERGED from [androidx.core:core:1.5.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/add01e6b4df647dc5bb5fb5bd23c9fae/core-1.5.0/AndroidManifest.xml:24:5-89
+MERGED from [com.github.bumptech.glide:gifdecoder:4.12.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/e2a53ad6674746b8ae534ac9a33044e0/jetified-gifdecoder-4.12.0/AndroidManifest.xml:9:5-20
+MERGED from [com.github.bumptech.glide:gifdecoder:4.12.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/e2a53ad6674746b8ae534ac9a33044e0/jetified-gifdecoder-4.12.0/AndroidManifest.xml:9:5-20
+MERGED from [com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/4c10a655c798cadb8dded10ce884c279/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:28:5-36:19
+MERGED from [com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/4c10a655c798cadb8dded10ce884c279/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:28:5-36:19
+MERGED from [com.google.android.datatransport:transport-runtime:2.2.6] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/62bb8a0d30908c0689a71b9237807aed/jetified-transport-runtime-2.2.6/AndroidManifest.xml:25:5-39:19
+MERGED from [com.google.android.datatransport:transport-runtime:2.2.6] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/62bb8a0d30908c0689a71b9237807aed/jetified-transport-runtime-2.2.6/AndroidManifest.xml:25:5-39:19
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/0a8058323ea717e22d6eb3a73696a2fc/versionedparcelable-1.1.1/AndroidManifest.xml:24:5-25:19
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/0a8058323ea717e22d6eb3a73696a2fc/versionedparcelable-1.1.1/AndroidManifest.xml:24:5-25:19
+MERGED from [com.google.android.odml:image:1.0.0-beta1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/f1925c329bf134bec80d564b9517dca6/jetified-image-1.0.0-beta1/AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.odml:image:1.0.0-beta1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/f1925c329bf134bec80d564b9517dca6/jetified-image-1.0.0-beta1/AndroidManifest.xml:7:5-20
+MERGED from [io.github.inflationx:calligraphy3:3.1.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/696f7a837b15cce7ad2be6e0efdff3c0/jetified-calligraphy3-3.1.1/AndroidManifest.xml:11:5-20
+MERGED from [io.github.inflationx:calligraphy3:3.1.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/696f7a837b15cce7ad2be6e0efdff3c0/jetified-calligraphy3-3.1.1/AndroidManifest.xml:11:5-20
+MERGED from [io.github.inflationx:viewpump:2.0.3] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/11d80dcfcd30daa0daf743d4b5787aa5/jetified-viewpump-2.0.3/AndroidManifest.xml:9:5-20
+MERGED from [io.github.inflationx:viewpump:2.0.3] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/11d80dcfcd30daa0daf743d4b5787aa5/jetified-viewpump-2.0.3/AndroidManifest.xml:9:5-20
 	android:requestLegacyExternalStorage
 		ADDED from /Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/AndroidManifest.xml:56:9-52
 	android:appComponentFactory
-		ADDED from [androidx.core:core:1.5.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/4e08b81c2a1c1aefac273845b51aa17c/core-1.5.0/AndroidManifest.xml:24:18-86
+		ADDED from [androidx.core:core:1.5.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/add01e6b4df647dc5bb5fb5bd23c9fae/core-1.5.0/AndroidManifest.xml:24:18-86
 	android:supportsRtl
-		ADDED from [com.ramotion.paperonboarding:paper-onboarding:1.1.3] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/11d1eb687d904552a97e83b049b42647/jetified-paper-onboarding-1.1.3/AndroidManifest.xml:14:9-35
+		ADDED from [com.ramotion.paperonboarding:paper-onboarding:1.1.3] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/e202784f735be2289d60ffcf9c4d02a2/jetified-paper-onboarding-1.1.3/AndroidManifest.xml:14:9-35
 	android:label
 		ADDED from /Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/AndroidManifest.xml:55:9-34
-		REJECTED from [com.ramotion.paperonboarding:paper-onboarding:1.1.3] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/11d1eb687d904552a97e83b049b42647/jetified-paper-onboarding-1.1.3/AndroidManifest.xml:13:9-41
+		REJECTED from [com.ramotion.paperonboarding:paper-onboarding:1.1.3] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/e202784f735be2289d60ffcf9c4d02a2/jetified-paper-onboarding-1.1.3/AndroidManifest.xml:13:9-41
 	android:allowBackup
-		ADDED from [com.ramotion.paperonboarding:paper-onboarding:1.1.3] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/11d1eb687d904552a97e83b049b42647/jetified-paper-onboarding-1.1.3/AndroidManifest.xml:12:9-35
+		ADDED from [com.ramotion.paperonboarding:paper-onboarding:1.1.3] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/e202784f735be2289d60ffcf9c4d02a2/jetified-paper-onboarding-1.1.3/AndroidManifest.xml:12:9-35
 	tools:targetApi
 		ADDED from /Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/AndroidManifest.xml:60:9-28
 	android:icon
@@ -473,8 +473,8 @@ ADDED from /Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/A
 		ADDED from /Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/AndroidManifest.xml:62:13-56
 meta-data#com.google.android.gms.version
 ADDED from /Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/AndroidManifest.xml:65:9-67:69
-MERGED from [com.google.android.gms:play-services-basement:18.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/4127a4261a01000d5e1f23ce5b884202/jetified-play-services-basement-18.0.0/AndroidManifest.xml:21:9-23:69
-MERGED from [com.google.android.gms:play-services-basement:18.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/4127a4261a01000d5e1f23ce5b884202/jetified-play-services-basement-18.0.0/AndroidManifest.xml:21:9-23:69
+MERGED from [com.google.android.gms:play-services-basement:18.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/d48ca8c39d3e9427eb4e3f541aa83c35/jetified-play-services-basement-18.0.0/AndroidManifest.xml:21:9-23:69
+MERGED from [com.google.android.gms:play-services-basement:18.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/d48ca8c39d3e9427eb4e3f541aa83c35/jetified-play-services-basement-18.0.0/AndroidManifest.xml:21:9-23:69
 	android:value
 		ADDED from /Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/AndroidManifest.xml:67:13-66
 	android:name
@@ -558,230 +558,230 @@ ADDED from /Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/A
 	android:name
 		ADDED from /Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/AndroidManifest.xml:101:13-56
 uses-permission#android.permission.KILL_BACKGROUND_PROCESSES
-ADDED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/8f7a3fb5b22fd814ba8707c967cb3ed6/jetified-xutil-core-2.0.0/AndroidManifest.xml:10:5-84
-MERGED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/f7f51381b29a2e8065e8059783dd5dad/jetified-xutil-sub-2.0.0/AndroidManifest.xml:69:5-84
-MERGED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/f7f51381b29a2e8065e8059783dd5dad/jetified-xutil-sub-2.0.0/AndroidManifest.xml:69:5-84
+ADDED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/55e68f11103a896cb66d5f00463788a8/jetified-xutil-core-2.0.0/AndroidManifest.xml:10:5-84
+MERGED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/456a6a1a2f0d53a9b974a1f880e26128/jetified-xutil-sub-2.0.0/AndroidManifest.xml:69:5-84
+MERGED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/456a6a1a2f0d53a9b974a1f880e26128/jetified-xutil-sub-2.0.0/AndroidManifest.xml:69:5-84
 	android:name
-		ADDED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/8f7a3fb5b22fd814ba8707c967cb3ed6/jetified-xutil-core-2.0.0/AndroidManifest.xml:10:22-81
+		ADDED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/55e68f11103a896cb66d5f00463788a8/jetified-xutil-core-2.0.0/AndroidManifest.xml:10:22-81
 uses-permission#android.permission.ACCESS_WIFI_STATE
-ADDED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/8f7a3fb5b22fd814ba8707c967cb3ed6/jetified-xutil-core-2.0.0/AndroidManifest.xml:16:5-76
-MERGED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/f7f51381b29a2e8065e8059783dd5dad/jetified-xutil-sub-2.0.0/AndroidManifest.xml:26:5-76
-MERGED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/f7f51381b29a2e8065e8059783dd5dad/jetified-xutil-sub-2.0.0/AndroidManifest.xml:26:5-76
+ADDED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/55e68f11103a896cb66d5f00463788a8/jetified-xutil-core-2.0.0/AndroidManifest.xml:16:5-76
+MERGED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/456a6a1a2f0d53a9b974a1f880e26128/jetified-xutil-sub-2.0.0/AndroidManifest.xml:26:5-76
+MERGED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/456a6a1a2f0d53a9b974a1f880e26128/jetified-xutil-sub-2.0.0/AndroidManifest.xml:26:5-76
 	android:name
-		ADDED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/8f7a3fb5b22fd814ba8707c967cb3ed6/jetified-xutil-core-2.0.0/AndroidManifest.xml:16:22-73
+		ADDED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/55e68f11103a896cb66d5f00463788a8/jetified-xutil-core-2.0.0/AndroidManifest.xml:16:22-73
 uses-permission#android.permission.CHANGE_WIFI_STATE
-ADDED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/8f7a3fb5b22fd814ba8707c967cb3ed6/jetified-xutil-core-2.0.0/AndroidManifest.xml:17:5-76
-MERGED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/f7f51381b29a2e8065e8059783dd5dad/jetified-xutil-sub-2.0.0/AndroidManifest.xml:27:5-76
-MERGED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/f7f51381b29a2e8065e8059783dd5dad/jetified-xutil-sub-2.0.0/AndroidManifest.xml:27:5-76
+ADDED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/55e68f11103a896cb66d5f00463788a8/jetified-xutil-core-2.0.0/AndroidManifest.xml:17:5-76
+MERGED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/456a6a1a2f0d53a9b974a1f880e26128/jetified-xutil-sub-2.0.0/AndroidManifest.xml:27:5-76
+MERGED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/456a6a1a2f0d53a9b974a1f880e26128/jetified-xutil-sub-2.0.0/AndroidManifest.xml:27:5-76
 	android:name
-		ADDED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/8f7a3fb5b22fd814ba8707c967cb3ed6/jetified-xutil-core-2.0.0/AndroidManifest.xml:17:22-73
+		ADDED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/55e68f11103a896cb66d5f00463788a8/jetified-xutil-core-2.0.0/AndroidManifest.xml:17:22-73
 activity#com.xuexiang.xutil.system.PermissionUtils$PermissionActivity
-ADDED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/8f7a3fb5b22fd814ba8707c967cb3ed6/jetified-xutil-core-2.0.0/AndroidManifest.xml:21:9-25:75
+ADDED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/55e68f11103a896cb66d5f00463788a8/jetified-xutil-core-2.0.0/AndroidManifest.xml:21:9-25:75
 	android:windowSoftInputMode
-		ADDED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/8f7a3fb5b22fd814ba8707c967cb3ed6/jetified-xutil-core-2.0.0/AndroidManifest.xml:25:13-72
+		ADDED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/55e68f11103a896cb66d5f00463788a8/jetified-xutil-core-2.0.0/AndroidManifest.xml:25:13-72
 	android:configChanges
-		ADDED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/8f7a3fb5b22fd814ba8707c967cb3ed6/jetified-xutil-core-2.0.0/AndroidManifest.xml:23:13-74
+		ADDED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/55e68f11103a896cb66d5f00463788a8/jetified-xutil-core-2.0.0/AndroidManifest.xml:23:13-74
 	android:theme
-		ADDED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/8f7a3fb5b22fd814ba8707c967cb3ed6/jetified-xutil-core-2.0.0/AndroidManifest.xml:24:13-62
+		ADDED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/55e68f11103a896cb66d5f00463788a8/jetified-xutil-core-2.0.0/AndroidManifest.xml:24:13-62
 	android:name
-		ADDED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/8f7a3fb5b22fd814ba8707c967cb3ed6/jetified-xutil-core-2.0.0/AndroidManifest.xml:22:13-88
+		ADDED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/55e68f11103a896cb66d5f00463788a8/jetified-xutil-core-2.0.0/AndroidManifest.xml:22:13-88
 provider#androidx.core.content.FileProvider4Utils
-ADDED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/8f7a3fb5b22fd814ba8707c967cb3ed6/jetified-xutil-core-2.0.0/AndroidManifest.xml:27:9-35:20
+ADDED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/55e68f11103a896cb66d5f00463788a8/jetified-xutil-core-2.0.0/AndroidManifest.xml:27:9-35:20
 	android:grantUriPermissions
-		ADDED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/8f7a3fb5b22fd814ba8707c967cb3ed6/jetified-xutil-core-2.0.0/AndroidManifest.xml:31:13-47
+		ADDED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/55e68f11103a896cb66d5f00463788a8/jetified-xutil-core-2.0.0/AndroidManifest.xml:31:13-47
 	android:authorities
-		ADDED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/8f7a3fb5b22fd814ba8707c967cb3ed6/jetified-xutil-core-2.0.0/AndroidManifest.xml:29:13-66
+		ADDED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/55e68f11103a896cb66d5f00463788a8/jetified-xutil-core-2.0.0/AndroidManifest.xml:29:13-66
 	android:exported
-		ADDED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/8f7a3fb5b22fd814ba8707c967cb3ed6/jetified-xutil-core-2.0.0/AndroidManifest.xml:30:13-37
+		ADDED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/55e68f11103a896cb66d5f00463788a8/jetified-xutil-core-2.0.0/AndroidManifest.xml:30:13-37
 	android:name
-		ADDED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/8f7a3fb5b22fd814ba8707c967cb3ed6/jetified-xutil-core-2.0.0/AndroidManifest.xml:28:13-68
+		ADDED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/55e68f11103a896cb66d5f00463788a8/jetified-xutil-core-2.0.0/AndroidManifest.xml:28:13-68
 meta-data#android.support.FILE_PROVIDER_PATHS
-ADDED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/8f7a3fb5b22fd814ba8707c967cb3ed6/jetified-xutil-core-2.0.0/AndroidManifest.xml:32:13-34:64
+ADDED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/55e68f11103a896cb66d5f00463788a8/jetified-xutil-core-2.0.0/AndroidManifest.xml:32:13-34:64
 	android:resource
-		ADDED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/8f7a3fb5b22fd814ba8707c967cb3ed6/jetified-xutil-core-2.0.0/AndroidManifest.xml:34:17-61
+		ADDED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/55e68f11103a896cb66d5f00463788a8/jetified-xutil-core-2.0.0/AndroidManifest.xml:34:17-61
 	android:name
-		ADDED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/8f7a3fb5b22fd814ba8707c967cb3ed6/jetified-xutil-core-2.0.0/AndroidManifest.xml:33:17-67
+		ADDED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/55e68f11103a896cb66d5f00463788a8/jetified-xutil-core-2.0.0/AndroidManifest.xml:33:17-67
 uses-permission#android.permission.BLUETOOTH_ADMIN
-ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/f7f51381b29a2e8065e8059783dd5dad/jetified-xutil-sub-2.0.0/AndroidManifest.xml:29:5-74
+ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/456a6a1a2f0d53a9b974a1f880e26128/jetified-xutil-sub-2.0.0/AndroidManifest.xml:29:5-74
 	android:name
-		ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/f7f51381b29a2e8065e8059783dd5dad/jetified-xutil-sub-2.0.0/AndroidManifest.xml:29:22-71
+		ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/456a6a1a2f0d53a9b974a1f880e26128/jetified-xutil-sub-2.0.0/AndroidManifest.xml:29:22-71
 uses-permission#android.permission.BLUETOOTH
-ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/f7f51381b29a2e8065e8059783dd5dad/jetified-xutil-sub-2.0.0/AndroidManifest.xml:30:5-68
+ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/456a6a1a2f0d53a9b974a1f880e26128/jetified-xutil-sub-2.0.0/AndroidManifest.xml:30:5-68
 	android:name
-		ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/f7f51381b29a2e8065e8059783dd5dad/jetified-xutil-sub-2.0.0/AndroidManifest.xml:30:22-65
+		ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/456a6a1a2f0d53a9b974a1f880e26128/jetified-xutil-sub-2.0.0/AndroidManifest.xml:30:22-65
 uses-permission#android.permission.ACCESS_COARSE_LOCATION
-ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/f7f51381b29a2e8065e8059783dd5dad/jetified-xutil-sub-2.0.0/AndroidManifest.xml:32:5-81
+ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/456a6a1a2f0d53a9b974a1f880e26128/jetified-xutil-sub-2.0.0/AndroidManifest.xml:32:5-81
 	android:name
-		ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/f7f51381b29a2e8065e8059783dd5dad/jetified-xutil-sub-2.0.0/AndroidManifest.xml:32:22-78
+		ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/456a6a1a2f0d53a9b974a1f880e26128/jetified-xutil-sub-2.0.0/AndroidManifest.xml:32:22-78
 uses-permission#android.permission.ACCESS_FINE_LOCATION
-ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/f7f51381b29a2e8065e8059783dd5dad/jetified-xutil-sub-2.0.0/AndroidManifest.xml:33:5-79
+ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/456a6a1a2f0d53a9b974a1f880e26128/jetified-xutil-sub-2.0.0/AndroidManifest.xml:33:5-79
 	android:name
-		ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/f7f51381b29a2e8065e8059783dd5dad/jetified-xutil-sub-2.0.0/AndroidManifest.xml:33:22-76
+		ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/456a6a1a2f0d53a9b974a1f880e26128/jetified-xutil-sub-2.0.0/AndroidManifest.xml:33:22-76
 uses-permission#android.permission.WAKE_LOCK
-ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/f7f51381b29a2e8065e8059783dd5dad/jetified-xutil-sub-2.0.0/AndroidManifest.xml:36:5-68
+ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/456a6a1a2f0d53a9b974a1f880e26128/jetified-xutil-sub-2.0.0/AndroidManifest.xml:36:5-68
 	android:name
-		ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/f7f51381b29a2e8065e8059783dd5dad/jetified-xutil-sub-2.0.0/AndroidManifest.xml:36:22-65
+		ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/456a6a1a2f0d53a9b974a1f880e26128/jetified-xutil-sub-2.0.0/AndroidManifest.xml:36:22-65
 uses-permission#android.permission.FOREGROUND_SERVICE
-ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/f7f51381b29a2e8065e8059783dd5dad/jetified-xutil-sub-2.0.0/AndroidManifest.xml:38:5-77
+ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/456a6a1a2f0d53a9b974a1f880e26128/jetified-xutil-sub-2.0.0/AndroidManifest.xml:38:5-77
 	android:name
-		ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/f7f51381b29a2e8065e8059783dd5dad/jetified-xutil-sub-2.0.0/AndroidManifest.xml:38:22-74
+		ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/456a6a1a2f0d53a9b974a1f880e26128/jetified-xutil-sub-2.0.0/AndroidManifest.xml:38:22-74
 uses-permission#android.permission.SYSTEM_ALERT_WINDOW
-ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/f7f51381b29a2e8065e8059783dd5dad/jetified-xutil-sub-2.0.0/AndroidManifest.xml:40:5-78
+ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/456a6a1a2f0d53a9b974a1f880e26128/jetified-xutil-sub-2.0.0/AndroidManifest.xml:40:5-78
 	android:name
-		ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/f7f51381b29a2e8065e8059783dd5dad/jetified-xutil-sub-2.0.0/AndroidManifest.xml:40:22-75
+		ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/456a6a1a2f0d53a9b974a1f880e26128/jetified-xutil-sub-2.0.0/AndroidManifest.xml:40:22-75
 uses-permission#android.permission.INSTALL_PACKAGES
-ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/f7f51381b29a2e8065e8059783dd5dad/jetified-xutil-sub-2.0.0/AndroidManifest.xml:42:5-44:47
+ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/456a6a1a2f0d53a9b974a1f880e26128/jetified-xutil-sub-2.0.0/AndroidManifest.xml:42:5-44:47
 	tools:ignore
-		ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/f7f51381b29a2e8065e8059783dd5dad/jetified-xutil-sub-2.0.0/AndroidManifest.xml:44:9-44
+		ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/456a6a1a2f0d53a9b974a1f880e26128/jetified-xutil-sub-2.0.0/AndroidManifest.xml:44:9-44
 	android:name
-		ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/f7f51381b29a2e8065e8059783dd5dad/jetified-xutil-sub-2.0.0/AndroidManifest.xml:43:9-59
+		ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/456a6a1a2f0d53a9b974a1f880e26128/jetified-xutil-sub-2.0.0/AndroidManifest.xml:43:9-59
 uses-permission#android.permission.REQUEST_INSTALL_PACKAGES
-ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/f7f51381b29a2e8065e8059783dd5dad/jetified-xutil-sub-2.0.0/AndroidManifest.xml:45:5-83
+ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/456a6a1a2f0d53a9b974a1f880e26128/jetified-xutil-sub-2.0.0/AndroidManifest.xml:45:5-83
 	android:name
-		ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/f7f51381b29a2e8065e8059783dd5dad/jetified-xutil-sub-2.0.0/AndroidManifest.xml:45:22-80
+		ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/456a6a1a2f0d53a9b974a1f880e26128/jetified-xutil-sub-2.0.0/AndroidManifest.xml:45:22-80
 uses-permission#android.permission.CALL_PHONE
-ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/f7f51381b29a2e8065e8059783dd5dad/jetified-xutil-sub-2.0.0/AndroidManifest.xml:50:5-69
+ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/456a6a1a2f0d53a9b974a1f880e26128/jetified-xutil-sub-2.0.0/AndroidManifest.xml:50:5-69
 	android:name
-		ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/f7f51381b29a2e8065e8059783dd5dad/jetified-xutil-sub-2.0.0/AndroidManifest.xml:50:22-66
+		ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/456a6a1a2f0d53a9b974a1f880e26128/jetified-xutil-sub-2.0.0/AndroidManifest.xml:50:22-66
 uses-permission#android.permission.SEND_SMS
-ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/f7f51381b29a2e8065e8059783dd5dad/jetified-xutil-sub-2.0.0/AndroidManifest.xml:51:5-67
+ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/456a6a1a2f0d53a9b974a1f880e26128/jetified-xutil-sub-2.0.0/AndroidManifest.xml:51:5-67
 	android:name
-		ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/f7f51381b29a2e8065e8059783dd5dad/jetified-xutil-sub-2.0.0/AndroidManifest.xml:51:22-64
+		ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/456a6a1a2f0d53a9b974a1f880e26128/jetified-xutil-sub-2.0.0/AndroidManifest.xml:51:22-64
 uses-permission#android.permission.READ_SMS
-ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/f7f51381b29a2e8065e8059783dd5dad/jetified-xutil-sub-2.0.0/AndroidManifest.xml:52:5-67
+ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/456a6a1a2f0d53a9b974a1f880e26128/jetified-xutil-sub-2.0.0/AndroidManifest.xml:52:5-67
 	android:name
-		ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/f7f51381b29a2e8065e8059783dd5dad/jetified-xutil-sub-2.0.0/AndroidManifest.xml:52:22-64
+		ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/456a6a1a2f0d53a9b974a1f880e26128/jetified-xutil-sub-2.0.0/AndroidManifest.xml:52:22-64
 uses-permission#android.permission.READ_CONTACTS
-ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/f7f51381b29a2e8065e8059783dd5dad/jetified-xutil-sub-2.0.0/AndroidManifest.xml:53:5-72
+ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/456a6a1a2f0d53a9b974a1f880e26128/jetified-xutil-sub-2.0.0/AndroidManifest.xml:53:5-72
 	android:name
-		ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/f7f51381b29a2e8065e8059783dd5dad/jetified-xutil-sub-2.0.0/AndroidManifest.xml:53:22-69
+		ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/456a6a1a2f0d53a9b974a1f880e26128/jetified-xutil-sub-2.0.0/AndroidManifest.xml:53:22-69
 uses-permission#android.permission.READ_CALENDAR
-ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/f7f51381b29a2e8065e8059783dd5dad/jetified-xutil-sub-2.0.0/AndroidManifest.xml:54:5-72
+ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/456a6a1a2f0d53a9b974a1f880e26128/jetified-xutil-sub-2.0.0/AndroidManifest.xml:54:5-72
 	android:name
-		ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/f7f51381b29a2e8065e8059783dd5dad/jetified-xutil-sub-2.0.0/AndroidManifest.xml:54:22-69
+		ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/456a6a1a2f0d53a9b974a1f880e26128/jetified-xutil-sub-2.0.0/AndroidManifest.xml:54:22-69
 uses-permission#android.permission.RECORD_AUDIO
-ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/f7f51381b29a2e8065e8059783dd5dad/jetified-xutil-sub-2.0.0/AndroidManifest.xml:55:5-71
+ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/456a6a1a2f0d53a9b974a1f880e26128/jetified-xutil-sub-2.0.0/AndroidManifest.xml:55:5-71
 	android:name
-		ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/f7f51381b29a2e8065e8059783dd5dad/jetified-xutil-sub-2.0.0/AndroidManifest.xml:55:22-68
+		ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/456a6a1a2f0d53a9b974a1f880e26128/jetified-xutil-sub-2.0.0/AndroidManifest.xml:55:22-68
 uses-permission#android.permission.MODIFY_PHONE_STATE
-ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/f7f51381b29a2e8065e8059783dd5dad/jetified-xutil-sub-2.0.0/AndroidManifest.xml:57:5-59:47
+ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/456a6a1a2f0d53a9b974a1f880e26128/jetified-xutil-sub-2.0.0/AndroidManifest.xml:57:5-59:47
 	tools:ignore
-		ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/f7f51381b29a2e8065e8059783dd5dad/jetified-xutil-sub-2.0.0/AndroidManifest.xml:59:9-44
+		ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/456a6a1a2f0d53a9b974a1f880e26128/jetified-xutil-sub-2.0.0/AndroidManifest.xml:59:9-44
 	android:name
-		ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/f7f51381b29a2e8065e8059783dd5dad/jetified-xutil-sub-2.0.0/AndroidManifest.xml:58:9-61
+		ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/456a6a1a2f0d53a9b974a1f880e26128/jetified-xutil-sub-2.0.0/AndroidManifest.xml:58:9-61
 uses-permission#android.permission.FLASHLIGHT
-ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/f7f51381b29a2e8065e8059783dd5dad/jetified-xutil-sub-2.0.0/AndroidManifest.xml:62:5-69
+ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/456a6a1a2f0d53a9b974a1f880e26128/jetified-xutil-sub-2.0.0/AndroidManifest.xml:62:5-69
 	android:name
-		ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/f7f51381b29a2e8065e8059783dd5dad/jetified-xutil-sub-2.0.0/AndroidManifest.xml:62:22-66
+		ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/456a6a1a2f0d53a9b974a1f880e26128/jetified-xutil-sub-2.0.0/AndroidManifest.xml:62:22-66
 uses-feature#android.hardware.camera.autofocus
-ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/f7f51381b29a2e8065e8059783dd5dad/jetified-xutil-sub-2.0.0/AndroidManifest.xml:65:5-70
+ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/456a6a1a2f0d53a9b974a1f880e26128/jetified-xutil-sub-2.0.0/AndroidManifest.xml:65:5-70
 	android:name
-		ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/f7f51381b29a2e8065e8059783dd5dad/jetified-xutil-sub-2.0.0/AndroidManifest.xml:65:19-67
+		ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/456a6a1a2f0d53a9b974a1f880e26128/jetified-xutil-sub-2.0.0/AndroidManifest.xml:65:19-67
 uses-feature#android.hardware.camera.flash
-ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/f7f51381b29a2e8065e8059783dd5dad/jetified-xutil-sub-2.0.0/AndroidManifest.xml:66:5-66
+ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/456a6a1a2f0d53a9b974a1f880e26128/jetified-xutil-sub-2.0.0/AndroidManifest.xml:66:5-66
 	android:name
-		ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/f7f51381b29a2e8065e8059783dd5dad/jetified-xutil-sub-2.0.0/AndroidManifest.xml:66:19-63
+		ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/456a6a1a2f0d53a9b974a1f880e26128/jetified-xutil-sub-2.0.0/AndroidManifest.xml:66:19-63
 uses-permission#android.permission.EXPAND_STATUS_BAR
-ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/f7f51381b29a2e8065e8059783dd5dad/jetified-xutil-sub-2.0.0/AndroidManifest.xml:71:5-76
+ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/456a6a1a2f0d53a9b974a1f880e26128/jetified-xutil-sub-2.0.0/AndroidManifest.xml:71:5-76
 	android:name
-		ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/f7f51381b29a2e8065e8059783dd5dad/jetified-xutil-sub-2.0.0/AndroidManifest.xml:71:22-73
+		ADDED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/456a6a1a2f0d53a9b974a1f880e26128/jetified-xutil-sub-2.0.0/AndroidManifest.xml:71:22-73
 provider#com.xuexiang.xui.XUIInitProvider
-ADDED from [com.github.xuexiangjys:XUI:1.1.8] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/cb3a340231d4295dbef6891df83e60a3/jetified-XUI-1.1.8/AndroidManifest.xml:10:9-14:43
+ADDED from [com.github.xuexiangjys:XUI:1.1.8] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/ddb31071937cdef067fa9e0f57987ebf/jetified-XUI-1.1.8/AndroidManifest.xml:10:9-14:43
 	android:authorities
-		ADDED from [com.github.xuexiangjys:XUI:1.1.8] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/cb3a340231d4295dbef6891df83e60a3/jetified-XUI-1.1.8/AndroidManifest.xml:12:13-69
+		ADDED from [com.github.xuexiangjys:XUI:1.1.8] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/ddb31071937cdef067fa9e0f57987ebf/jetified-XUI-1.1.8/AndroidManifest.xml:12:13-69
 	android:multiprocess
-		ADDED from [com.github.xuexiangjys:XUI:1.1.8] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/cb3a340231d4295dbef6891df83e60a3/jetified-XUI-1.1.8/AndroidManifest.xml:14:13-40
+		ADDED from [com.github.xuexiangjys:XUI:1.1.8] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/ddb31071937cdef067fa9e0f57987ebf/jetified-XUI-1.1.8/AndroidManifest.xml:14:13-40
 	android:exported
-		ADDED from [com.github.xuexiangjys:XUI:1.1.8] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/cb3a340231d4295dbef6891df83e60a3/jetified-XUI-1.1.8/AndroidManifest.xml:13:13-37
+		ADDED from [com.github.xuexiangjys:XUI:1.1.8] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/ddb31071937cdef067fa9e0f57987ebf/jetified-XUI-1.1.8/AndroidManifest.xml:13:13-37
 	android:name
-		ADDED from [com.github.xuexiangjys:XUI:1.1.8] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/cb3a340231d4295dbef6891df83e60a3/jetified-XUI-1.1.8/AndroidManifest.xml:11:13-60
+		ADDED from [com.github.xuexiangjys:XUI:1.1.8] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/ddb31071937cdef067fa9e0f57987ebf/jetified-XUI-1.1.8/AndroidManifest.xml:11:13-60
 activity#com.xuexiang.xui.widget.imageview.preview.ui.PreviewActivity
-ADDED from [com.github.xuexiangjys:XUI:1.1.8] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/cb3a340231d4295dbef6891df83e60a3/jetified-XUI-1.1.8/AndroidManifest.xml:16:9-18:59
+ADDED from [com.github.xuexiangjys:XUI:1.1.8] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/ddb31071937cdef067fa9e0f57987ebf/jetified-XUI-1.1.8/AndroidManifest.xml:16:9-18:59
 	android:theme
-		ADDED from [com.github.xuexiangjys:XUI:1.1.8] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/cb3a340231d4295dbef6891df83e60a3/jetified-XUI-1.1.8/AndroidManifest.xml:18:13-56
+		ADDED from [com.github.xuexiangjys:XUI:1.1.8] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/ddb31071937cdef067fa9e0f57987ebf/jetified-XUI-1.1.8/AndroidManifest.xml:18:13-56
 	android:name
-		ADDED from [com.github.xuexiangjys:XUI:1.1.8] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/cb3a340231d4295dbef6891df83e60a3/jetified-XUI-1.1.8/AndroidManifest.xml:17:13-88
+		ADDED from [com.github.xuexiangjys:XUI:1.1.8] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/ddb31071937cdef067fa9e0f57987ebf/jetified-XUI-1.1.8/AndroidManifest.xml:17:13-88
 activity#com.xuexiang.xui.widget.imageview.preview.ui.VideoPlayerActivity
-ADDED from [com.github.xuexiangjys:XUI:1.1.8] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/cb3a340231d4295dbef6891df83e60a3/jetified-XUI-1.1.8/AndroidManifest.xml:19:9-21:59
+ADDED from [com.github.xuexiangjys:XUI:1.1.8] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/ddb31071937cdef067fa9e0f57987ebf/jetified-XUI-1.1.8/AndroidManifest.xml:19:9-21:59
 	android:theme
-		ADDED from [com.github.xuexiangjys:XUI:1.1.8] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/cb3a340231d4295dbef6891df83e60a3/jetified-XUI-1.1.8/AndroidManifest.xml:21:13-56
+		ADDED from [com.github.xuexiangjys:XUI:1.1.8] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/ddb31071937cdef067fa9e0f57987ebf/jetified-XUI-1.1.8/AndroidManifest.xml:21:13-56
 	android:name
-		ADDED from [com.github.xuexiangjys:XUI:1.1.8] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/cb3a340231d4295dbef6891df83e60a3/jetified-XUI-1.1.8/AndroidManifest.xml:20:13-92
+		ADDED from [com.github.xuexiangjys:XUI:1.1.8] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/ddb31071937cdef067fa9e0f57987ebf/jetified-XUI-1.1.8/AndroidManifest.xml:20:13-92
 service#com.google.mlkit.common.internal.MlKitComponentDiscoveryService
-ADDED from [com.google.mlkit:pose-detection-common:18.0.0-beta1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/04b970f8fd742b3be056c2a28a00fd9a/jetified-pose-detection-common-18.0.0-beta1/AndroidManifest.xml:11:9-17:19
-MERGED from [com.google.mlkit:vision-common:17.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/19f0f43aabd601ca53374840b69d6a5e/jetified-vision-common-17.0.0/AndroidManifest.xml:9:9-15:19
-MERGED from [com.google.mlkit:vision-common:17.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/19f0f43aabd601ca53374840b69d6a5e/jetified-vision-common-17.0.0/AndroidManifest.xml:9:9-15:19
-MERGED from [com.google.mlkit:common:18.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/cd457c1b74bdcd8eb1f8ed1cd0edb60e/jetified-common-18.0.0/AndroidManifest.xml:15:9-23:19
-MERGED from [com.google.mlkit:common:18.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/cd457c1b74bdcd8eb1f8ed1cd0edb60e/jetified-common-18.0.0/AndroidManifest.xml:15:9-23:19
+ADDED from [com.google.mlkit:pose-detection-common:18.0.0-beta1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/c4440b61a8701ef90e203e3fa5e5014a/jetified-pose-detection-common-18.0.0-beta1/AndroidManifest.xml:11:9-17:19
+MERGED from [com.google.mlkit:vision-common:17.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/c97775570c148fefb80f45853648be6c/jetified-vision-common-17.0.0/AndroidManifest.xml:9:9-15:19
+MERGED from [com.google.mlkit:vision-common:17.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/c97775570c148fefb80f45853648be6c/jetified-vision-common-17.0.0/AndroidManifest.xml:9:9-15:19
+MERGED from [com.google.mlkit:common:18.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/bbb000945e8f873c8ce6e92f333d82ec/jetified-common-18.0.0/AndroidManifest.xml:15:9-23:19
+MERGED from [com.google.mlkit:common:18.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/bbb000945e8f873c8ce6e92f333d82ec/jetified-common-18.0.0/AndroidManifest.xml:15:9-23:19
 	android:exported
-		ADDED from [com.google.mlkit:pose-detection-common:18.0.0-beta1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/04b970f8fd742b3be056c2a28a00fd9a/jetified-pose-detection-common-18.0.0-beta1/AndroidManifest.xml:13:13-37
+		ADDED from [com.google.mlkit:pose-detection-common:18.0.0-beta1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/c4440b61a8701ef90e203e3fa5e5014a/jetified-pose-detection-common-18.0.0-beta1/AndroidManifest.xml:13:13-37
 	tools:targetApi
-		ADDED from [com.google.mlkit:common:18.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/cd457c1b74bdcd8eb1f8ed1cd0edb60e/jetified-common-18.0.0/AndroidManifest.xml:19:13-32
+		ADDED from [com.google.mlkit:common:18.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/bbb000945e8f873c8ce6e92f333d82ec/jetified-common-18.0.0/AndroidManifest.xml:19:13-32
 	android:directBootAware
-		ADDED from [com.google.mlkit:common:18.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/cd457c1b74bdcd8eb1f8ed1cd0edb60e/jetified-common-18.0.0/AndroidManifest.xml:17:13-43
+		ADDED from [com.google.mlkit:common:18.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/bbb000945e8f873c8ce6e92f333d82ec/jetified-common-18.0.0/AndroidManifest.xml:17:13-43
 	android:name
-		ADDED from [com.google.mlkit:pose-detection-common:18.0.0-beta1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/04b970f8fd742b3be056c2a28a00fd9a/jetified-pose-detection-common-18.0.0-beta1/AndroidManifest.xml:12:13-91
+		ADDED from [com.google.mlkit:pose-detection-common:18.0.0-beta1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/c4440b61a8701ef90e203e3fa5e5014a/jetified-pose-detection-common-18.0.0-beta1/AndroidManifest.xml:12:13-91
 meta-data#com.google.firebase.components:com.google.mlkit.vision.pose.internal.PoseRegistrar
-ADDED from [com.google.mlkit:pose-detection-common:18.0.0-beta1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/04b970f8fd742b3be056c2a28a00fd9a/jetified-pose-detection-common-18.0.0-beta1/AndroidManifest.xml:14:13-16:85
+ADDED from [com.google.mlkit:pose-detection-common:18.0.0-beta1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/c4440b61a8701ef90e203e3fa5e5014a/jetified-pose-detection-common-18.0.0-beta1/AndroidManifest.xml:14:13-16:85
 	android:value
-		ADDED from [com.google.mlkit:pose-detection-common:18.0.0-beta1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/04b970f8fd742b3be056c2a28a00fd9a/jetified-pose-detection-common-18.0.0-beta1/AndroidManifest.xml:16:17-82
+		ADDED from [com.google.mlkit:pose-detection-common:18.0.0-beta1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/c4440b61a8701ef90e203e3fa5e5014a/jetified-pose-detection-common-18.0.0-beta1/AndroidManifest.xml:16:17-82
 	android:name
-		ADDED from [com.google.mlkit:pose-detection-common:18.0.0-beta1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/04b970f8fd742b3be056c2a28a00fd9a/jetified-pose-detection-common-18.0.0-beta1/AndroidManifest.xml:15:17-114
+		ADDED from [com.google.mlkit:pose-detection-common:18.0.0-beta1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/c4440b61a8701ef90e203e3fa5e5014a/jetified-pose-detection-common-18.0.0-beta1/AndroidManifest.xml:15:17-114
 meta-data#com.google.firebase.components:com.google.mlkit.vision.common.internal.VisionCommonRegistrar
-ADDED from [com.google.mlkit:vision-common:17.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/19f0f43aabd601ca53374840b69d6a5e/jetified-vision-common-17.0.0/AndroidManifest.xml:12:13-14:85
+ADDED from [com.google.mlkit:vision-common:17.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/c97775570c148fefb80f45853648be6c/jetified-vision-common-17.0.0/AndroidManifest.xml:12:13-14:85
 	android:value
-		ADDED from [com.google.mlkit:vision-common:17.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/19f0f43aabd601ca53374840b69d6a5e/jetified-vision-common-17.0.0/AndroidManifest.xml:14:17-82
+		ADDED from [com.google.mlkit:vision-common:17.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/c97775570c148fefb80f45853648be6c/jetified-vision-common-17.0.0/AndroidManifest.xml:14:17-82
 	android:name
-		ADDED from [com.google.mlkit:vision-common:17.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/19f0f43aabd601ca53374840b69d6a5e/jetified-vision-common-17.0.0/AndroidManifest.xml:13:17-124
+		ADDED from [com.google.mlkit:vision-common:17.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/c97775570c148fefb80f45853648be6c/jetified-vision-common-17.0.0/AndroidManifest.xml:13:17-124
 provider#com.google.mlkit.common.internal.MlKitInitProvider
-ADDED from [com.google.mlkit:common:18.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/cd457c1b74bdcd8eb1f8ed1cd0edb60e/jetified-common-18.0.0/AndroidManifest.xml:9:9-13:38
+ADDED from [com.google.mlkit:common:18.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/bbb000945e8f873c8ce6e92f333d82ec/jetified-common-18.0.0/AndroidManifest.xml:9:9-13:38
 	android:authorities
-		ADDED from [com.google.mlkit:common:18.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/cd457c1b74bdcd8eb1f8ed1cd0edb60e/jetified-common-18.0.0/AndroidManifest.xml:11:13-69
+		ADDED from [com.google.mlkit:common:18.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/bbb000945e8f873c8ce6e92f333d82ec/jetified-common-18.0.0/AndroidManifest.xml:11:13-69
 	android:exported
-		ADDED from [com.google.mlkit:common:18.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/cd457c1b74bdcd8eb1f8ed1cd0edb60e/jetified-common-18.0.0/AndroidManifest.xml:12:13-37
+		ADDED from [com.google.mlkit:common:18.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/bbb000945e8f873c8ce6e92f333d82ec/jetified-common-18.0.0/AndroidManifest.xml:12:13-37
 	android:initOrder
-		ADDED from [com.google.mlkit:common:18.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/cd457c1b74bdcd8eb1f8ed1cd0edb60e/jetified-common-18.0.0/AndroidManifest.xml:13:13-35
+		ADDED from [com.google.mlkit:common:18.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/bbb000945e8f873c8ce6e92f333d82ec/jetified-common-18.0.0/AndroidManifest.xml:13:13-35
 	android:name
-		ADDED from [com.google.mlkit:common:18.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/cd457c1b74bdcd8eb1f8ed1cd0edb60e/jetified-common-18.0.0/AndroidManifest.xml:10:13-78
+		ADDED from [com.google.mlkit:common:18.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/bbb000945e8f873c8ce6e92f333d82ec/jetified-common-18.0.0/AndroidManifest.xml:10:13-78
 meta-data#com.google.firebase.components:com.google.mlkit.common.internal.CommonComponentRegistrar
-ADDED from [com.google.mlkit:common:18.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/cd457c1b74bdcd8eb1f8ed1cd0edb60e/jetified-common-18.0.0/AndroidManifest.xml:20:13-22:85
+ADDED from [com.google.mlkit:common:18.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/bbb000945e8f873c8ce6e92f333d82ec/jetified-common-18.0.0/AndroidManifest.xml:20:13-22:85
 	android:value
-		ADDED from [com.google.mlkit:common:18.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/cd457c1b74bdcd8eb1f8ed1cd0edb60e/jetified-common-18.0.0/AndroidManifest.xml:22:17-82
+		ADDED from [com.google.mlkit:common:18.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/bbb000945e8f873c8ce6e92f333d82ec/jetified-common-18.0.0/AndroidManifest.xml:22:17-82
 	android:name
-		ADDED from [com.google.mlkit:common:18.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/cd457c1b74bdcd8eb1f8ed1cd0edb60e/jetified-common-18.0.0/AndroidManifest.xml:21:17-120
+		ADDED from [com.google.mlkit:common:18.0.0] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/bbb000945e8f873c8ce6e92f333d82ec/jetified-common-18.0.0/AndroidManifest.xml:21:17-120
 activity#com.google.android.gms.common.api.GoogleApiActivity
-ADDED from [com.google.android.gms:play-services-base:18.0.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/bf0e5aa3395afeac256a40fe94a44c93/jetified-play-services-base-18.0.1/AndroidManifest.xml:20:9-22:45
+ADDED from [com.google.android.gms:play-services-base:18.0.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/dd19b457df17abb1bf2ef9058f241061/jetified-play-services-base-18.0.1/AndroidManifest.xml:20:9-22:45
 	android:exported
-		ADDED from [com.google.android.gms:play-services-base:18.0.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/bf0e5aa3395afeac256a40fe94a44c93/jetified-play-services-base-18.0.1/AndroidManifest.xml:22:19-43
+		ADDED from [com.google.android.gms:play-services-base:18.0.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/dd19b457df17abb1bf2ef9058f241061/jetified-play-services-base-18.0.1/AndroidManifest.xml:22:19-43
 	android:theme
-		ADDED from [com.google.android.gms:play-services-base:18.0.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/bf0e5aa3395afeac256a40fe94a44c93/jetified-play-services-base-18.0.1/AndroidManifest.xml:21:19-78
+		ADDED from [com.google.android.gms:play-services-base:18.0.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/dd19b457df17abb1bf2ef9058f241061/jetified-play-services-base-18.0.1/AndroidManifest.xml:21:19-78
 	android:name
-		ADDED from [com.google.android.gms:play-services-base:18.0.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/bf0e5aa3395afeac256a40fe94a44c93/jetified-play-services-base-18.0.1/AndroidManifest.xml:20:19-85
+		ADDED from [com.google.android.gms:play-services-base:18.0.1] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/dd19b457df17abb1bf2ef9058f241061/jetified-play-services-base-18.0.1/AndroidManifest.xml:20:19-85
 service#com.google.android.datatransport.runtime.backends.TransportBackendDiscovery
-ADDED from [com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/b0b07d668fb05669fea93be346cdaca2/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:29:9-35:19
-MERGED from [com.google.android.datatransport:transport-runtime:2.2.6] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/0b67044ceabbcacea62e90fd6e1fc6a0/jetified-transport-runtime-2.2.6/AndroidManifest.xml:36:9-38:40
-MERGED from [com.google.android.datatransport:transport-runtime:2.2.6] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/0b67044ceabbcacea62e90fd6e1fc6a0/jetified-transport-runtime-2.2.6/AndroidManifest.xml:36:9-38:40
+ADDED from [com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/4c10a655c798cadb8dded10ce884c279/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:29:9-35:19
+MERGED from [com.google.android.datatransport:transport-runtime:2.2.6] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/62bb8a0d30908c0689a71b9237807aed/jetified-transport-runtime-2.2.6/AndroidManifest.xml:36:9-38:40
+MERGED from [com.google.android.datatransport:transport-runtime:2.2.6] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/62bb8a0d30908c0689a71b9237807aed/jetified-transport-runtime-2.2.6/AndroidManifest.xml:36:9-38:40
 	android:exported
-		ADDED from [com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/b0b07d668fb05669fea93be346cdaca2/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:31:13-37
+		ADDED from [com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/4c10a655c798cadb8dded10ce884c279/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:31:13-37
 	android:name
-		ADDED from [com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/b0b07d668fb05669fea93be346cdaca2/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:30:13-103
+		ADDED from [com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/4c10a655c798cadb8dded10ce884c279/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:30:13-103
 meta-data#backend:com.google.android.datatransport.cct.CctBackendFactory
-ADDED from [com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/b0b07d668fb05669fea93be346cdaca2/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:32:13-34:39
+ADDED from [com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/4c10a655c798cadb8dded10ce884c279/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:32:13-34:39
 	android:value
-		ADDED from [com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/b0b07d668fb05669fea93be346cdaca2/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:34:17-36
+		ADDED from [com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/4c10a655c798cadb8dded10ce884c279/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:34:17-36
 	android:name
-		ADDED from [com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/b0b07d668fb05669fea93be346cdaca2/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:33:17-94
+		ADDED from [com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/4c10a655c798cadb8dded10ce884c279/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:33:17-94
 service#com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService
-ADDED from [com.google.android.datatransport:transport-runtime:2.2.6] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/0b67044ceabbcacea62e90fd6e1fc6a0/jetified-transport-runtime-2.2.6/AndroidManifest.xml:26:9-30:19
+ADDED from [com.google.android.datatransport:transport-runtime:2.2.6] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/62bb8a0d30908c0689a71b9237807aed/jetified-transport-runtime-2.2.6/AndroidManifest.xml:26:9-30:19
 	android:exported
-		ADDED from [com.google.android.datatransport:transport-runtime:2.2.6] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/0b67044ceabbcacea62e90fd6e1fc6a0/jetified-transport-runtime-2.2.6/AndroidManifest.xml:28:13-37
+		ADDED from [com.google.android.datatransport:transport-runtime:2.2.6] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/62bb8a0d30908c0689a71b9237807aed/jetified-transport-runtime-2.2.6/AndroidManifest.xml:28:13-37
 	android:permission
-		ADDED from [com.google.android.datatransport:transport-runtime:2.2.6] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/0b67044ceabbcacea62e90fd6e1fc6a0/jetified-transport-runtime-2.2.6/AndroidManifest.xml:29:13-69
+		ADDED from [com.google.android.datatransport:transport-runtime:2.2.6] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/62bb8a0d30908c0689a71b9237807aed/jetified-transport-runtime-2.2.6/AndroidManifest.xml:29:13-69
 	android:name
-		ADDED from [com.google.android.datatransport:transport-runtime:2.2.6] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/0b67044ceabbcacea62e90fd6e1fc6a0/jetified-transport-runtime-2.2.6/AndroidManifest.xml:27:13-117
+		ADDED from [com.google.android.datatransport:transport-runtime:2.2.6] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/62bb8a0d30908c0689a71b9237807aed/jetified-transport-runtime-2.2.6/AndroidManifest.xml:27:13-117
 receiver#com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver
-ADDED from [com.google.android.datatransport:transport-runtime:2.2.6] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/0b67044ceabbcacea62e90fd6e1fc6a0/jetified-transport-runtime-2.2.6/AndroidManifest.xml:32:9-34:40
+ADDED from [com.google.android.datatransport:transport-runtime:2.2.6] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/62bb8a0d30908c0689a71b9237807aed/jetified-transport-runtime-2.2.6/AndroidManifest.xml:32:9-34:40
 	android:exported
-		ADDED from [com.google.android.datatransport:transport-runtime:2.2.6] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/0b67044ceabbcacea62e90fd6e1fc6a0/jetified-transport-runtime-2.2.6/AndroidManifest.xml:34:13-37
+		ADDED from [com.google.android.datatransport:transport-runtime:2.2.6] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/62bb8a0d30908c0689a71b9237807aed/jetified-transport-runtime-2.2.6/AndroidManifest.xml:34:13-37
 	android:name
-		ADDED from [com.google.android.datatransport:transport-runtime:2.2.6] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/0b67044ceabbcacea62e90fd6e1fc6a0/jetified-transport-runtime-2.2.6/AndroidManifest.xml:33:13-132
+		ADDED from [com.google.android.datatransport:transport-runtime:2.2.6] /Users/markgosling/.gradle/caches/transforms-2/files-2.1/62bb8a0d30908c0689a71b9237807aed/jetified-transport-runtime-2.2.6/AndroidManifest.xml:33:13-132

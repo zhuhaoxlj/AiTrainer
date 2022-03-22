@@ -40,9 +40,13 @@ com/lindum/mlkit/vision/dev/preference/LivePreviewPreferenceFragment.java
  com.lindum.mlkit.vision.dev.preference.LivePreviewPreferenceFragment
 com/lindum/mlkit/vision/dev/datacenter/circleprogress/utils/Constant.java
  com.lindum.mlkit.vision.dev.datacenter.circleprogress.utils.Constant
+com/lindum/mlkit/vision/dev/view/UI.java
+ com.lindum.mlkit.vision.dev.view.UI
 com/lindum/mlkit/vision/dev/posedetector/ProcessImage.java
  com.lindum.mlkit.vision.dev.posedetector.ProcessImage
  com.lindum.mlkit.vision.dev.posedetector.ProcessImage$1
+com/lindum/mlkit/vision/dev/view/RollImageView.java
+ com.lindum.mlkit.vision.dev.view.RollImageView
 com/lindum/mlkit/vision/dev/posedetector/PoseGraphic.java
  com.lindum.mlkit.vision.dev.posedetector.PoseGraphic
 com/lindum/mlkit/vision/dev/utils/PictureUtils.java
@@ -225,6 +229,7 @@ com/lindum/mlkit/vision/dev/CameraXLivePreviewActivity.java
  com.lindum.mlkit.vision.dev.CameraXLivePreviewActivity$2
  com.lindum.mlkit.vision.dev.CameraXLivePreviewActivity$2$1
  com.lindum.mlkit.vision.dev.CameraXLivePreviewActivity$3
+ com.lindum.mlkit.vision.dev.CameraXLivePreviewActivity$3$1
 com/lindum/mlkit/vision/dev/datacenter/Calendar.java
  com.lindum.mlkit.vision.dev.datacenter.Calendar
 com/lindum/mlkit/vision/dev/datacenter/BaseActivity.java

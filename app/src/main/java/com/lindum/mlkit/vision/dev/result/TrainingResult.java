@@ -257,6 +257,7 @@ public class TrainingResult extends AppCompatActivity implements HorizontalProgr
     }
 
     @Override
+    // todo 卡路里进度条ß
     public void onHorizontalProgressUpdate(View view, float progress) {
         int progressInt = (int) progress;
         // 单位符号

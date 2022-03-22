@@ -51,6 +51,7 @@ public class PoseClassifierProcessor {
     private List<RepetitionCounter> repCounters;
     private PoseClassifier poseClassifier;
     private String lastRepResult;
+    volatile private boolean addWarnPartFlag = true;
     Context context;
     static volatile public String poseTips;
 
@@ -239,12 +240,14 @@ public class PoseClassifierProcessor {
                         }
                     }
                 }
-//                if (confidence < 0.6) {
+                if (confidence != 1) {
 //                    CameraXLivePreviewActivity.confidenceNotOne = true;
-//                }
+                    addWarnPartFlag = true;
+                }
                 // 判断是否全部满足动态部位第一个标准
                 // 能够分清动作是up or down 并且置信度等于 1
-                if (maxConfidenceClass != null&&confidence == 1) {
+                if (maxConfidenceClass != null&&confidence == 1&&addWarnPartFlag) {
+                    addWarnPartFlag = false;
                     for (PosePart part : dynamicPart) {
                         int partIndex = part.getPoseIndex();
                         // 当前帧的角度
@@ -275,7 +278,7 @@ public class PoseClassifierProcessor {
                                 CameraXLivePreviewActivity.addWarnPart(partIndex);
                             }
                             if (nowFrameAngle < part.getFirstStandardRange()[0]) {
-                                poseTips += "，" + getPartName(partIndex) + "角度要大一点";
+                                poseTips += "，" + getPartName(partIndex)+ "角度要大一点";
                             }
                             if (nowFrameAngle > part.getFirstStandardRange()[1]) {
                                 poseTips += "，" + getPartName(partIndex) + "角度小一点";

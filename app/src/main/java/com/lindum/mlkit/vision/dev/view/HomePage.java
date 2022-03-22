@@ -71,8 +71,10 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * @author MarkGosling
@@ -96,6 +98,8 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
     private TextView todaySteps;
     // 传感器管理类
     private SensorManager sensorManager;
+    // 今日日期
+    private LocalDate today;
     // 步数统计传感器监听
     private MySensorEventListener mySensorEventListener;
     /**
@@ -128,8 +132,8 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
     @NorIcons
     private static final int[] M_NORMAL_ICONS = {R.mipmap.home_gray, R.mipmap.social_gray, R.mipmap.library_gray, R.mipmap.personal_gray};
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @SuppressLint("InflateParams")
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -146,17 +150,37 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
 
 
         // todo 获取当前文件夹下所有文件
-        FileUtils.getFileName(this.getApplicationContext().getFilesDir()
-                .getParentFile().getAbsolutePath());
-        Logger.e("遍历的路径" + this.getApplicationContext().getFilesDir()
-                .getParentFile().getAbsolutePath());
+        FileUtils.getFileName(Objects.requireNonNull(this.getApplicationContext().getFilesDir()
+                .getParentFile()).getAbsolutePath());
+        // this.getApplicationContext().getFilesDir().getAbsolutePath()
+        // 获取的是本应用的files目录路径
+        Logger.e("遍历的路径" + this.getApplicationContext().getFilesDir().getParentFile().getAbsolutePath());
+        // 创建文件夹工具类测试
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            FileUtils.createFile(this.getApplicationContext().getFilesDir().getAbsolutePath() + "/" + "2022-03-23" + "/", FileUtils.CREATE_FOLDER);
+        }
+        // 创建文件测试
+        // todo 创建文件的时候，如果根目录不存在则创建根目录
+        String fileName = "test.txt";
+        FileUtils.createFile(this.getApplicationContext().getFilesDir().getAbsolutePath() + "/" + today.toString() + "/" + fileName, FileUtils.CREATE_FILE);
+        // 删除文件
+//        FileUtils.deleteFile(new File(this.getApplicationContext().getFilesDir().getAbsolutePath() + "/" + today.toString() + "/" + "test.txt"));
+//        FileUtils.moveFiles(this.getApplicationContext().getFilesDir().getAbsolutePath() + "/" + today.toString(),this.getApplicationContext().getFilesDir().getParentFile().getAbsolutePath()+"/"+today.toString());
+//        Logger.e("目标路径"+this.getApplicationContext().getFilesDir().getParentFile().getAbsolutePath());
+
     }
 
     /**
      * 初始化软件
      */
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @SuppressLint("ResourceType")
     public void init() {
+        // 创建今日文件夹
+        today = LocalDate.now();
+        // 创建分析文件夹
+        FileUtils.createFile(this.getApplicationContext().getFilesDir().getAbsolutePath() + "/" + "analysisReport" + "/", FileUtils.CREATE_FOLDER);
+        FileUtils.createFile(this.getApplicationContext().getFilesDir().getAbsolutePath() + "/" + "analysisReport" + "/"+today.toString(), FileUtils.CREATE_FOLDER);
         // 加载中图片设置
         loadingBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.loading3);
         isFirstUseApp = isFirstUseApp();
@@ -258,7 +282,6 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
                             break;
                         }
                     }
-                    Logger.e("更新动作库");
                 }
             }
         }.start();
@@ -543,6 +566,7 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
                 jpTabBar.hideBadge(3);
                 // 选择个人界面
                 if (index == personalPageIndex) {
+
                     // 更新用户信息
                     getUserInfoFromDateBase();
                     TextView nickName = findViewById(R.id.personalPageNickNameText);
@@ -721,7 +745,10 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
             } else if (event.sensor.getType() == Sensor.TYPE_STEP_COUNTER) {
                 mStepCounter = (int) event.values[0];
             }
+            // 设置今日步数
             todaySteps.setText(mStepCounter + " 步");
+            // 创建今日文件夹，存放今天产生的数据
+
         }
 
         @Override

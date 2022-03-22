@@ -338,7 +338,7 @@ public class UserInfoInitActivity extends AppCompatActivity implements OnDatePic
         };
         writeUserInfoToDataBase.start();
         FileUtils.writeStringToFile(JSON.toJSONString(userEntity), UserInfoInitActivity.this.getApplicationContext().getFilesDir()
-                .getAbsolutePath(), "userInfo.sys", FileUtils.overwriteText);
+                .getAbsolutePath(), "userInfo.sys", FileUtils.OVERWRITE_TEXT);
     }
 
     /**

@@ -1,9 +1,9 @@
 <component name="libraryTable">
   <library name="Gradle: com.github.sarnavakonar:TextWriter:v1.0@aar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/9166cc48870ee31e3c90a07aeabbf32c/jetified-TextWriter-v1.0/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/9166cc48870ee31e3c90a07aeabbf32c/jetified-TextWriter-v1.0/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/9166cc48870ee31e3c90a07aeabbf32c/jetified-TextWriter-v1.0/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/313638a11e0110ceceb5f0f82802a665/jetified-TextWriter-v1.0/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/313638a11e0110ceceb5f0f82802a665/jetified-TextWriter-v1.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/313638a11e0110ceceb5f0f82802a665/jetified-TextWriter-v1.0/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

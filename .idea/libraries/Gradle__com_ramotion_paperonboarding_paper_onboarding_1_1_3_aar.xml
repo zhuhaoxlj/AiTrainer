@@ -1,9 +1,9 @@
 <component name="libraryTable">
   <library name="Gradle: com.ramotion.paperonboarding:paper-onboarding:1.1.3@aar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/11d1eb687d904552a97e83b049b42647/jetified-paper-onboarding-1.1.3/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/11d1eb687d904552a97e83b049b42647/jetified-paper-onboarding-1.1.3/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/11d1eb687d904552a97e83b049b42647/jetified-paper-onboarding-1.1.3/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/e202784f735be2289d60ffcf9c4d02a2/jetified-paper-onboarding-1.1.3/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/e202784f735be2289d60ffcf9c4d02a2/jetified-paper-onboarding-1.1.3/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/e202784f735be2289d60ffcf9c4d02a2/jetified-paper-onboarding-1.1.3/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

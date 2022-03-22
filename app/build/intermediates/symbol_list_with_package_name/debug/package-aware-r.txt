@@ -4919,6 +4919,7 @@ layout text_view_without_line_height
 layout toggle_style
 layout training_result
 layout training_result_item
+layout ui
 layout user_info_input
 layout wheel_picker_date
 layout wheel_picker_datime
@@ -4994,6 +4995,8 @@ layout xui_layout_xtoast
 layout xutil_layout_toast
 layout zjj
 menu camera_button_menu
+mipmap ai
+mipmap aitrainer
 mipmap change_camera
 mipmap dialog_close_icon
 mipmap home
@@ -5023,6 +5026,7 @@ mipmap start_page_image
 mipmap take_photo
 mipmap tips
 mipmap training
+mipmap ui
 plurals mtrl_badge_content_description
 string abc_action_bar_home_description
 string abc_action_bar_up_description

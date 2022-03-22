@@ -1,9 +1,9 @@
 <component name="libraryTable">
   <library name="Gradle: com.google.mlkit:mediapipe-internal:17.0.0-beta6@aar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/a1af5a52db2147471aae5fc48d54f33d/jetified-mediapipe-internal-17.0.0-beta6/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/a1af5a52db2147471aae5fc48d54f33d/jetified-mediapipe-internal-17.0.0-beta6/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/a1af5a52db2147471aae5fc48d54f33d/jetified-mediapipe-internal-17.0.0-beta6/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/5ffed569c19d89b9787e74a8f709fb33/jetified-mediapipe-internal-17.0.0-beta6/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/5ffed569c19d89b9787e74a8f709fb33/jetified-mediapipe-internal-17.0.0-beta6/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.mlkit/mediapipe-internal/17.0.0-beta6/ace98f39b262c59be4be4d52b871d1ba5dfff723/mediapipe-internal-17.0.0-beta6-javadoc.jar!/" />
