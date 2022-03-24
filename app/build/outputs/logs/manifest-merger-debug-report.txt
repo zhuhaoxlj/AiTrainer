@@ -4,7 +4,6 @@ ADDED from /Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/A
 INJECTED from /Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/AndroidManifest.xml:2:1-105:12
 INJECTED from /Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/AndroidManifest.xml:2:1-105:12
 INJECTED from /Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/AndroidManifest.xml:2:1-105:12
-MERGED from [androidx.multidex:multidex:2.0.1] /Users/markgosling/.gradle/caches/transforms-3/fb76623316dc664136375cdaf630bbe5/transformed/multidex-2.0.1/AndroidManifest.xml:17:1-22:12
 MERGED from [com.github.sarnavakonar:TextWriter:v1.0] /Users/markgosling/.gradle/caches/transforms-3/e3ddce3a0ec3c859b9a8d33526f0957b/transformed/jetified-TextWriter-v1.0/AndroidManifest.xml:2:1-11:12
 MERGED from [com.github.warkiz.tickseekbar:tickseekbar:0.1.4] /Users/markgosling/.gradle/caches/transforms-3/01b00871aa91accb464e675a23a9f05c/transformed/jetified-tickseekbar-0.1.4/AndroidManifest.xml:2:1-11:12
 MERGED from [com.ramotion.paperonboarding:paper-onboarding:1.1.3] /Users/markgosling/.gradle/caches/transforms-3/2a77000eac9a0558cb65952e33b5296c/transformed/jetified-paper-onboarding-1.1.3/AndroidManifest.xml:2:1-17:12
@@ -26,6 +25,7 @@ MERGED from [androidx.appcompat:appcompat:1.3.1] /Users/markgosling/.gradle/cach
 MERGED from [androidx.viewpager2:viewpager2:1.0.0] /Users/markgosling/.gradle/caches/transforms-3/d53015c0ba07037c02de6f33f09c438b/transformed/jetified-viewpager2-1.0.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.recyclerview:recyclerview:1.2.1] /Users/markgosling/.gradle/caches/transforms-3/71723f5943d926522b9b0150cb5327e4/transformed/recyclerview-1.2.1/AndroidManifest.xml:17:1-24:12
 MERGED from [com.github.bumptech.glide:glide:4.12.0] /Users/markgosling/.gradle/caches/transforms-3/ed6d67cb187b0c854325b7cda663cc10/transformed/jetified-glide-4.12.0/AndroidManifest.xml:2:1-12:12
+MERGED from [androidx.multidex:multidex:2.0.1] /Users/markgosling/.gradle/caches/transforms-3/fb76623316dc664136375cdaf630bbe5/transformed/multidex-2.0.1/AndroidManifest.xml:17:1-22:12
 MERGED from [com.google.mlkit:pose-detection:18.0.0-beta1] /Users/markgosling/.gradle/caches/transforms-3/299b4a0f5538e877b7c07f43d17817b8/transformed/jetified-pose-detection-18.0.0-beta1/AndroidManifest.xml:2:1-9:12
 MERGED from [com.google.mlkit:pose-detection-accurate:18.0.0-beta1] /Users/markgosling/.gradle/caches/transforms-3/7a7209b658482bfc8fa6cb6987e989f1/transformed/jetified-pose-detection-accurate-18.0.0-beta1/AndroidManifest.xml:2:1-9:12
 MERGED from [androidx.camera:camera-camera2:1.0.0-SNAPSHOT] /Users/markgosling/.gradle/caches/transforms-3/aa295b8958d5dc8988d092024d41d7c6/transformed/jetified-camera-camera2-1.0.0-SNAPSHOT/AndroidManifest.xml:17:1-24:12
@@ -108,8 +108,6 @@ uses-sdk
 ADDED from /Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/AndroidManifest.xml:13:5-135
 INJECTED from /Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/AndroidManifest.xml:13:5-135
 INJECTED from /Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/AndroidManifest.xml:13:5-135
-MERGED from [androidx.multidex:multidex:2.0.1] /Users/markgosling/.gradle/caches/transforms-3/fb76623316dc664136375cdaf630bbe5/transformed/multidex-2.0.1/AndroidManifest.xml:20:5-43
-MERGED from [androidx.multidex:multidex:2.0.1] /Users/markgosling/.gradle/caches/transforms-3/fb76623316dc664136375cdaf630bbe5/transformed/multidex-2.0.1/AndroidManifest.xml:20:5-43
 MERGED from [com.github.sarnavakonar:TextWriter:v1.0] /Users/markgosling/.gradle/caches/transforms-3/e3ddce3a0ec3c859b9a8d33526f0957b/transformed/jetified-TextWriter-v1.0/AndroidManifest.xml:7:5-9:41
 MERGED from [com.github.sarnavakonar:TextWriter:v1.0] /Users/markgosling/.gradle/caches/transforms-3/e3ddce3a0ec3c859b9a8d33526f0957b/transformed/jetified-TextWriter-v1.0/AndroidManifest.xml:7:5-9:41
 MERGED from [com.github.warkiz.tickseekbar:tickseekbar:0.1.4] /Users/markgosling/.gradle/caches/transforms-3/01b00871aa91accb464e675a23a9f05c/transformed/jetified-tickseekbar-0.1.4/AndroidManifest.xml:7:5-9:41
@@ -152,6 +150,8 @@ MERGED from [androidx.recyclerview:recyclerview:1.2.1] /Users/markgosling/.gradl
 MERGED from [androidx.recyclerview:recyclerview:1.2.1] /Users/markgosling/.gradle/caches/transforms-3/71723f5943d926522b9b0150cb5327e4/transformed/recyclerview-1.2.1/AndroidManifest.xml:20:5-22:41
 MERGED from [com.github.bumptech.glide:glide:4.12.0] /Users/markgosling/.gradle/caches/transforms-3/ed6d67cb187b0c854325b7cda663cc10/transformed/jetified-glide-4.12.0/AndroidManifest.xml:6:5-8:41
 MERGED from [com.github.bumptech.glide:glide:4.12.0] /Users/markgosling/.gradle/caches/transforms-3/ed6d67cb187b0c854325b7cda663cc10/transformed/jetified-glide-4.12.0/AndroidManifest.xml:6:5-8:41
+MERGED from [androidx.multidex:multidex:2.0.1] /Users/markgosling/.gradle/caches/transforms-3/fb76623316dc664136375cdaf630bbe5/transformed/multidex-2.0.1/AndroidManifest.xml:20:5-43
+MERGED from [androidx.multidex:multidex:2.0.1] /Users/markgosling/.gradle/caches/transforms-3/fb76623316dc664136375cdaf630bbe5/transformed/multidex-2.0.1/AndroidManifest.xml:20:5-43
 MERGED from [com.google.mlkit:pose-detection:18.0.0-beta1] /Users/markgosling/.gradle/caches/transforms-3/299b4a0f5538e877b7c07f43d17817b8/transformed/jetified-pose-detection-18.0.0-beta1/AndroidManifest.xml:5:5-44
 MERGED from [com.google.mlkit:pose-detection:18.0.0-beta1] /Users/markgosling/.gradle/caches/transforms-3/299b4a0f5538e877b7c07f43d17817b8/transformed/jetified-pose-detection-18.0.0-beta1/AndroidManifest.xml:5:5-44
 MERGED from [com.google.mlkit:pose-detection-accurate:18.0.0-beta1] /Users/markgosling/.gradle/caches/transforms-3/7a7209b658482bfc8fa6cb6987e989f1/transformed/jetified-pose-detection-accurate-18.0.0-beta1/AndroidManifest.xml:5:5-44

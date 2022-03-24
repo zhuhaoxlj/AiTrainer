@@ -121,9 +121,11 @@
         <entry key="app/src/main/res/layout/main/layout/write_text.xml" value="0.2722222222222222" />
         <entry key="app/src/main/res/layout/personal/layout/personal_plan.xml" value="0.2722222222222222" />
         <entry key="app/src/main/res/layout/pose_info.xml" value="0.2722222222222222" />
+        <entry key="app/src/main/res/layout/result_list_item.xml" value="0.27307692307692305" />
         <entry key="app/src/main/res/layout/settings_style.xml" value="0.17028985507246377" />
         <entry key="app/src/main/res/layout/spinner_style.xml" value="0.17028985507246377" />
         <entry key="app/src/main/res/layout/toggle_style.xml" value="0.17028985507246377" />
+        <entry key="app/src/main/res/layout/train/layout/training_result.xml" value="0.14017094017094017" />
         <entry key="app/src/main/res/menu/camera_button_menu.xml" value="0.20989583333333334" />
         <entry key="app/src/main/res/xml/preference_live_preview_quickstart.xml" value="0.20989583333333334" />
         <entry key="app/src/main/res/xml/preference_still_image.xml" value="0.335" />

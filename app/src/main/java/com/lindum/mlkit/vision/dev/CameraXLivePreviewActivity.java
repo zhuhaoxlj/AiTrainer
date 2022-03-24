@@ -249,7 +249,7 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
         for (PoseEntity poseEntity : poseEntityList) {
             // 倒计时类型 0 计数类型 1
             poseEntity.setPoseType(0);
-            poseEntity.setPoseProcessValue(60);
+            poseEntity.setPoseProcessValue(3);
         }
 
         nowPoseName = poseEntityList.get(nowPoseIndex).getPoseName();

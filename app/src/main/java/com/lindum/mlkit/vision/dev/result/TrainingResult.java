@@ -143,6 +143,7 @@ public class TrainingResult extends AppCompatActivity implements HorizontalProgr
 //        }
         // 初始化控件
         listView = findViewById(R.id.resultList);
+        // 动作分析列表初始化
         ResultListAdapter resultListAdapter = new ResultListAdapter(this, R.layout.result_list_item, resultEntityList);
         listView.setAdapter(resultListAdapter);
         listView.setOnItemClickListener((adapterView, view, i, l) -> {
@@ -181,10 +182,11 @@ public class TrainingResult extends AppCompatActivity implements HorizontalProgr
      * 将训练结果保存到本地
      */
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-    public void saveTrainingResultToLocal(){
-        FileUtils.createFile(CameraXLivePreviewActivity.imageSavePath+"/resultData.sys",FileUtils.CREATE_FILE);
+    public void saveTrainingResultToLocal() {
+        FileUtils.createFile(CameraXLivePreviewActivity.imageSavePath + "/resultData.sys", FileUtils.CREATE_FILE);
 //        FileUtils.writeStringToFile();
     }
+
     /**
      * 通过动作名称，查找该动作在动作库的下标
      *
@@ -230,15 +232,25 @@ public class TrainingResult extends AppCompatActivity implements HorizontalProgr
 
     }
 
+    /**
+     * 设置进度条的数值
+     */
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public void startProcessBar() {
+        // 动作组数
+        int poseGroups = CameraXLivePreviewActivity.poseEntityList.size();
         hpvTime.startProgressAnimation();
         float groupsOfPoseProportion = 0;
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
-            groupsOfPoseProportion = 100 * ((float) groupsOfPose / (float) CameraXLivePreviewActivity.poseEntityList.size());
+            groupsOfPoseProportion = 100 * ((float) groupsOfPose / (float) poseGroups);
         }
+        // 设置动作组数进度条
         hpvGroup.setEndProgress(groupsOfPoseProportion);
         hpvGroup.startProgressAnimation();
         hpvCal.startProgressAnimation();
+        // 设置错误动作数进度条
+        float wrongPoseDecimal = 100 * ((resultImage.size()) / ((float) poseGroups * 20.0f));
+        hpvWrong.setEndProgress(wrongPoseDecimal);
         hpvWrong.startProgressAnimation();
         progressViewCircleMain.startProgressAnimation();
     }
@@ -267,8 +279,10 @@ public class TrainingResult extends AppCompatActivity implements HorizontalProgr
 
     }
 
+    @SuppressLint("SetTextI18n")
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
-    // todo 卡路里进度条ß
+    // todo 卡路里进度条
     public void onHorizontalProgressUpdate(View view, float progress) {
         int progressInt = (int) progress;
         // 单位符号
@@ -277,7 +291,7 @@ public class TrainingResult extends AppCompatActivity implements HorizontalProgr
                 progressTextTime.setText(progressInt + "'");
                 break;
             case R.id.hpv_wrong:
-                progressTextWrong.setText(progressInt + " 个");
+                progressTextWrong.setText((int)(progress*20*CameraXLivePreviewActivity.poseEntityList.size())/100 + " 个");
                 break;
             case R.id.hpv_cal:
                 progressTextCal.setText(progressInt + " kcal");
