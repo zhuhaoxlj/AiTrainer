@@ -10,9 +10,9 @@
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/2c1468f4ae9a00c8c51d71b4e50c5e36/jetified-ShadowDrawable-0.1/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/2c1468f4ae9a00c8c51d71b4e50c5e36/jetified-ShadowDrawable-0.1/AndroidManifest.xml" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/2c1468f4ae9a00c8c51d71b4e50c5e36/jetified-ShadowDrawable-0.1/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/e9a1f76d697e3a65057f1a045a46cdfc/jetified-ShadowDrawable-0.1/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/e9a1f76d697e3a65057f1a045a46cdfc/jetified-ShadowDrawable-0.1/AndroidManifest.xml" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/e9a1f76d697e3a65057f1a045a46cdfc/jetified-ShadowDrawable-0.1/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/7a56374b15a607d8055fa20c425556e5/transformed/jetified-ShadowDrawable-0.1/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/7a56374b15a607d8055fa20c425556e5/transformed/jetified-ShadowDrawable-0.1/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/7a56374b15a607d8055fa20c425556e5/transformed/jetified-ShadowDrawable-0.1/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

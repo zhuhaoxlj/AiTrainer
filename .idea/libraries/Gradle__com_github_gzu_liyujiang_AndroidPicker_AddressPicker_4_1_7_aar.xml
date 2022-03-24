@@ -2,8 +2,9 @@
   <library name="Gradle: com.github.gzu-liyujiang.AndroidPicker:AddressPicker:4.1.7@aar">
     <CLASSES>
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/c2bce357d8f6d392fd5333ca805c57f0/jetified-AddressPicker-4.1.7/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/909e05972f3c954ee1faaa324efecff6/jetified-AddressPicker-4.1.7/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/909e05972f3c954ee1faaa324efecff6/jetified-AddressPicker-4.1.7/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/585ddb1046a245523c71ce81f9f76267/transformed/jetified-AddressPicker-4.1.7/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/585ddb1046a245523c71ce81f9f76267/transformed/jetified-AddressPicker-4.1.7/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/585ddb1046a245523c71ce81f9f76267/transformed/jetified-AddressPicker-4.1.7/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

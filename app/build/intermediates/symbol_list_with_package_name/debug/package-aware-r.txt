@@ -862,7 +862,6 @@ attr iiv_is_show
 attr imageAspectRatio
 attr imageAspectRatioAdjust
 attr imageButtonStyle
-attr implementationMode
 attr indeterminateAnimationType
 attr indeterminateProgressStyle
 attr indicatorColor
@@ -4032,7 +4031,6 @@ id clip_horizontal
 id clip_vertical
 id clockwise
 id collapseActionView
-id compatible
 id confirm_button
 id container
 id content
@@ -4377,7 +4375,6 @@ id path
 id pathRelative
 id peekHeight
 id percent
-id performance
 id personalGoalBackButton
 id personalPageNickNameText
 id personalPageTitleBar
@@ -4402,6 +4399,7 @@ id poseResultName
 id poseResultTips
 id position
 id postLayout
+id practiceDays
 id preButton
 id prePoseImage
 id preview_view
@@ -6296,7 +6294,7 @@ styleable PhotoEditorView photo_src
 styleable PopupWindow android_popupBackground android_popupAnimationStyle overlapAnchor
 styleable PopupWindowBackgroundState state_above_anchor
 styleable PorterShapeImageView sb_icon_image
-styleable PreviewView implementationMode scaleType
+styleable PreviewView scaleType
 styleable PropertySet android_visibility android_alpha layout_constraintTag motionProgress visibilityMode
 styleable RadialViewGroup materialCircleRadius
 styleable RadiusImageView riv_border_color riv_border_width riv_corner_radius riv_is_circle riv_is_oval riv_is_touch_select_mode_enabled riv_selected_border_color riv_selected_border_width riv_selected_mask_color

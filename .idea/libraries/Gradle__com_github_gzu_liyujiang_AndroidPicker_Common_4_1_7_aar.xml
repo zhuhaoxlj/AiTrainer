@@ -1,9 +1,9 @@
 <component name="libraryTable">
   <library name="Gradle: com.github.gzu-liyujiang.AndroidPicker:Common:4.1.7@aar">
     <CLASSES>
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/a04efd12337f6ec0291e045651d018f2/jetified-Common-4.1.7/AndroidManifest.xml" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/a04efd12337f6ec0291e045651d018f2/jetified-Common-4.1.7/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/a04efd12337f6ec0291e045651d018f2/jetified-Common-4.1.7/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/c7790c9515961e3be9f0bb6c1257e38f/transformed/jetified-Common-4.1.7/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/c7790c9515961e3be9f0bb6c1257e38f/transformed/jetified-Common-4.1.7/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/c7790c9515961e3be9f0bb6c1257e38f/transformed/jetified-Common-4.1.7/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

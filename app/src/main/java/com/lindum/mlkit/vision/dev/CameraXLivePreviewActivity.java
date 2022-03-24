@@ -60,6 +60,7 @@ import com.lindum.mlkit.vision.dev.posedetector.classification.PoseClassifierPro
 import com.lindum.mlkit.vision.dev.preference.PreferenceUtils;
 import com.lindum.mlkit.vision.dev.preference.SettingsActivity;
 import com.lindum.mlkit.vision.dev.result.TrainingResult;
+import com.lindum.mlkit.vision.dev.utils.FileUtils;
 import com.lindum.mlkit.vision.dev.view.HomePage;
 import com.lindum.mlkit.vision.dev.view.PoseDetailsActivity;
 import com.orhanobut.logger.Logger;
@@ -74,7 +75,10 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.MessageFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
@@ -117,7 +121,7 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
     Button prePoseImageButton;
     // 下一个动作按钮
     Button nextPoseImageButton;
-    // mlkit 绘图层
+    // ml kit 绘图层
     private GraphicOverlay graphicOverlay;
     @Nullable
     // todo
@@ -149,6 +153,11 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
     public static int countdownSeconds = 5;
     // 训练是否结束
     public static boolean isEnd = false;
+    // 定时器
+    Handler mHandler2;
+    Runnable r2;
+    Handler mHandler3;
+    Runnable r3;
     /**
      * 左下角信息
      */
@@ -173,6 +182,9 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
     // 是否提醒过呼吸方法
     private boolean isRemindedBreathingMethods = false;
     public static ImageView imageView;
+    // 截图保存路径
+    public static String imageSavePath;
+
     @RequiresApi(api = VERSION_CODES.O)
     @SuppressLint("SetTextI18n")
     @Override
@@ -228,9 +240,9 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
         JSONArray jsonArray = (JSONArray) JSON.parse(jsonText);
         poseEntityArrayList = JSON.parseObject(jsonArray.toJSONString(), new TypeReference<ArrayList<PoseEntity>>() {
         });
-        Logger.e("entity-----"+poseEntityArrayList.size());
+        Logger.e("entity-----" + poseEntityArrayList.size());
         // html 中的动作数据
-        //        poseEntityList = poseEntityArrayList;
+//                poseEntityList = poseEntityArrayList;
         // 数据库中的动作数据
         poseEntityList = HomePage.poseEntityArrayList;
         // 设置动作持续变量类型
@@ -271,14 +283,16 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
             Intent intent = new Intent(CameraXLivePreviewActivity.this, TrainingResult.class);
             intent.putExtra("totalTrainingTime", totalTrainingTime);
             intent.putExtra("groupsOfPose", countGroupsOfPose);
+            // 停止训练
             isEnd = true;
             startActivity(intent);
+            finish();
         });
 
         // 启动截图定时器
         getScreenCut();
 
-            // 后台处理图片
+        // 后台处理图片
 //        ProcessImage processImage = new ProcessImage(findViewById(R.id.testImage));
 //        processImage.processImage();
 
@@ -382,10 +396,18 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
     @RequiresApi(api = VERSION_CODES.O)
     public void init() {
         // 初始化变量
+        countdownSeconds = 5;
+        nowPoseIndex = 0;
         warnPart = new ArrayList<>();
         poseEntityList = new ArrayList<>();
         pose1 = false;
-
+        // 创建截图文件夹
+        @SuppressLint("SimpleDateFormat")
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH-mm-ss");
+        Date date = new Date(System.currentTimeMillis());
+        String time = simpleDateFormat.format(date);
+        imageSavePath = HomePage.appFilePath + "/files/analysisReport/" + LocalDate.now().toString() + "/" + time + "/";
+        FileUtils.createFile(imageSavePath, FileUtils.CREATE_FOLDER);
         // 初始化组件
         poseName = findViewById(R.id.poseName);
         poseIndexText = findViewById(R.id.nowPoseIndexText);
@@ -454,8 +476,8 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
      * 定时清空警告点、倒数秒数刷新、计算总运动时长
      */
     public void updateVariable() {
-        Handler mHandler2 = new Handler();
-        Runnable r2 = new Runnable() {
+        mHandler2 = new Handler();
+        r2 = new Runnable() {
             @Override
             public void run() {
                 warnPart.clear();
@@ -631,6 +653,8 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
         if (imageProcessor != null) {
             imageProcessor.stop();
         }
+        mHandler3.removeCallbacks(r3);
+        mHandler2.removeCallbacks(r2);
     }
 
     /**
@@ -813,38 +837,42 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
         cameraProvider.bindToLifecycle(/* lifecycleOwner= */ this, cameraSelector, analysisUseCase);
     }
 
+    // // TODO: 2022/3/23 会连续多拍
     public void getScreenCut() {
         /* 实时监测是否有警告点，如果有就截图 */
-        Handler mHandler3 = new Handler();
-        Runnable r3 = new Runnable() {
+        mHandler3 = new Handler();
+        r3 = new Runnable() {
             @Override
             public void run() {
 //                if (!warnPart.isEmpty() && confidence == 1 && !confidenceNotOne) {
 //                if (!warnPart.isEmpty() && PoseClassifierProcessor.confidence == 1&& confidenceNotOne) {
-                if (!warnPart.isEmpty() && PoseClassifierProcessor.confidence == 1) {
-//                    confidenceNotOne = false;
+                // 如果这里置信度等于1才截图，其他情况的固定部位就不会截图
+                if (!warnPart.isEmpty() && confidence == 1 && confidenceNotOne) {
+                    confidenceNotOne = false;
                     Random random = new Random();
-                    String fileName = nowPoseIndex + "-" + Math.abs(random.nextInt())+"-"+PoseClassifierProcessor.maxConfidenceClass;
+                    String fileName = nowPoseIndex + "-" + Math.abs(random.nextInt()) + "-" + PoseClassifierProcessor.maxConfidenceClass;
                     Bitmap bitmap2 = com.lindum.mlkit.vision.dev.QuickShot.of(graphicOverlay).getBitmap();
-                    Logger.e("获取相机bitmap成功");
                     if (bitmap2 != null) {
                         imageView = findViewById(R.id.testImage);
                         Bitmap bitmap1 = previewView.getBitmap();
                         // 原图和关键点图片混合
-                        imageView.setImageBitmap(combineBitmap(bitmap1, bitmap2));
-                        TrainingResult.resultImage.add(combineBitmap(bitmap1, bitmap2));
-                        TrainingResult.resultName.add(nowPoseName);
-                        TrainingResult.resultTips.add(PoseClassifierProcessor.poseTips);
-                        Logger.e("生成的建议"+PoseClassifierProcessor.poseTips);
-                        // todo 这里会闪退
-                        assert bitmap1 != null;
-                        new Thread("截取图片并保存") {
-                            @Override
-                            public void run() {
-                                String filePath = Environment.getExternalStorageDirectory().getPath() + "/AiTrainer";
-                                saveBitmap(filePath, fileName, bitmap1);
-                            }
-                        }.start();
+//                        imageView.setImageBitmap(combineBitmap(bitmap1, bitmap2));
+                        // 将当前错误的分析结果传递至 TrainingResult 界面
+                        if (PoseClassifierProcessor.poseTips != null && !PoseClassifierProcessor.poseTips.equals("")) {
+                            TrainingResult.resultImage.add(combineBitmap(bitmap1, bitmap2));
+                            TrainingResult.resultName.add(nowPoseName);
+                            TrainingResult.resultTips.add(PoseClassifierProcessor.poseTips);
+                        }
+                        Logger.e("生成的建议" + PoseClassifierProcessor.poseTips);
+                        if (bitmap1 != null) {
+                            new Thread("截取图片并保存") {
+                                @RequiresApi(api = VERSION_CODES.O)
+                                @Override
+                                public void run() {
+                                    saveBitmap(imageSavePath, fileName, bitmap1);
+                                }
+                            }.start();
+                        }
                     }
                     cleanWarnPart();
                 }
@@ -857,12 +885,13 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
                     // 动作组数加一
                     countGroupsOfPose++;
                     if (nowPoseIndex == poseEntityList.size() - 1 && !isEnd) {
-                        isEnd = true;
                         Log.e("total", totalTrainingTime + "");
                         // 跳转到结果界面
                         Intent intent = new Intent(CameraXLivePreviewActivity.this, TrainingResult.class);
                         intent.putExtra("totalTrainingTime", totalTrainingTime);
                         intent.putExtra("groupsOfPose", countGroupsOfPose);
+                        // 停止训练
+                        isEnd = true;
                         startActivity(intent);
                         finish();
                     } else {
@@ -876,11 +905,12 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
                     countGroupsOfPose++;
                     // 最后一个动作
                     if (nowPoseIndex == poseEntityList.size() - 1 && !isEnd) {
-                        isEnd = true;
                         // 跳转到结果界面
                         Intent intent = new Intent(CameraXLivePreviewActivity.this, TrainingResult.class);
                         intent.putExtra("totalTrainingTime", totalTrainingTime);
                         intent.putExtra("groupsOfPose", countGroupsOfPose);
+                        // 停止训练
+                        isEnd = true;
                         startActivity(intent);
                         finish();
                     } else {
@@ -963,4 +993,5 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
     public void onQuickShotFailed(String path, String errorMsg) {
 
     }
+
 }

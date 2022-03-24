@@ -11,6 +11,7 @@ public class ResultEntity {
     private String tips;
     private Bitmap wrongPoseImage;
     private Bitmap rightPoseImage;
+    private String wrongPoseImagePath;
 
     public String getPoseName() {
         return poseName;

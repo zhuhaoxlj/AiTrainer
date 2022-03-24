@@ -114,7 +114,8 @@
         <entry key="app/src/main/res/layout/main/layout/chat_item.xml" value="0.13304093567251463" />
         <entry key="app/src/main/res/layout/main/layout/home_page.xml" value="0.2722222222222222" />
         <entry key="app/src/main/res/layout/main/layout/homepage.xml" value="0.2722222222222222" />
-        <entry key="app/src/main/res/layout/main/layout/personal_page.xml" value="0.2105978260869565" />
+        <entry key="app/src/main/res/layout/main/layout/personal_page.xml" value="0.2709401709401709" />
+        <entry key="app/src/main/res/layout/main/layout/pose_details.xml" value="0.2709401709401709" />
         <entry key="app/src/main/res/layout/main/layout/pose_library.xml" value="0.20425724637681159" />
         <entry key="app/src/main/res/layout/main/layout/row_item.xml" value="0.2722222222222222" />
         <entry key="app/src/main/res/layout/main/layout/write_text.xml" value="0.2722222222222222" />

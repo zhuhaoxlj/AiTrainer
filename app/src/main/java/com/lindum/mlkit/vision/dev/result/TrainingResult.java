@@ -18,6 +18,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.lindum.mlkit.vision.dev.CameraXLivePreviewActivity;
 import com.lindum.mlkit.vision.dev.R;
 import com.lindum.mlkit.vision.dev.entity.PoseEntity;
+import com.lindum.mlkit.vision.dev.utils.FileUtils;
 import com.lindum.mlkit.vision.dev.view.HomePage;
 import com.xuexiang.xui.widget.progress.CircleProgressView;
 import com.xuexiang.xui.widget.progress.HorizontalProgressView;
@@ -128,8 +129,8 @@ public class TrainingResult extends AppCompatActivity implements HorizontalProgr
                     resultEntityList.add(temp);
                 }
             });
-        }
 
+        }
 
         // 将识别结果放入列表数组中
 //        for (String tips : resultTips) {
@@ -172,8 +173,18 @@ public class TrainingResult extends AppCompatActivity implements HorizontalProgr
         progressViewCircleMain.setGraduatedEnabled(true);
         progressViewCircleMain.setProgressViewUpdateListener(this);
         startProcessBar();
+        // 将训练结果保存到本地
+        saveTrainingResultToLocal();
     }
 
+    /**
+     * 将训练结果保存到本地
+     */
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    public void saveTrainingResultToLocal(){
+        FileUtils.createFile(CameraXLivePreviewActivity.imageSavePath+"/resultData.sys",FileUtils.CREATE_FILE);
+//        FileUtils.writeStringToFile();
+    }
     /**
      * 通过动作名称，查找该动作在动作库的下标
      *

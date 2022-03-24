@@ -14,6 +14,7 @@ import com.lindum.mlkit.vision.dev.CameraXLivePreviewActivity;
 import com.lindum.mlkit.vision.dev.entity.PoseEntity;
 import com.lindum.mlkit.vision.dev.posedetector.PoseAngleDetector;
 import com.lindum.mlkit.vision.dev.posedetector.PosePart;
+import com.orhanobut.logger.Logger;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -44,7 +45,7 @@ public class PoseClassifierProcessor {
     private static final String[] POSE_CLASSES = {
             PUSHUPS_CLASS, SQUATS_CLASS
     };
-    private String[] poseClassifyFileName = {"fitness_pose_samples", "", "", "fitness_pose_samples", "tunqiao", "xixilijuanfu", "juanfumoxi", "guizijuanfu", "", ""};
+    private String[] poseClassifyFileName = {"fitness_pose_samples", "", "", "fitness_pose_samples", "tunqiao", "xixilijuanfu", "juanfumoxi", "guizifuwocheng", ""};
     private final boolean isStreamMode;
 
     private EMASmoothing emaSmoothing;
@@ -110,7 +111,7 @@ public class PoseClassifierProcessor {
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @WorkerThread
     public List<String> getPoseResult(Pose pose) {
-        if (!POSE_SAMPLES_FILE.equals("pose/" + poseClassifyFileName[CameraXLivePreviewActivity.nowPoseIndex] + ".csv")&&!poseClassifyFileName[CameraXLivePreviewActivity.nowPoseIndex].equals("")) {
+        if (!POSE_SAMPLES_FILE.equals("pose/" + poseClassifyFileName[CameraXLivePreviewActivity.nowPoseIndex] + ".csv") && !poseClassifyFileName[CameraXLivePreviewActivity.nowPoseIndex].equals("")) {
             loadPoseSamples(context);
         }
 
@@ -171,19 +172,23 @@ public class PoseClassifierProcessor {
 
         PoseAngleDetector poseAngleDetector = new PoseAngleDetector(pose);
         // 二维和三维同时显示
-        {
-            String angleText1 = "左膝3D" + poseAngleDetector.getLeftKnee3DAngle() + "°" + "2D" + poseAngleDetector.getLeftKneeAngle() + "°";
-            String angleText2 = "右膝3D" + poseAngleDetector.getRightKnee3DAngle() + "°" + "2D" + poseAngleDetector.getRightKneeAngle() + "°";
-            String angleText3 = "左胳3D" + poseAngleDetector.getLeftArm3DAngle() + "°" + "2D" + poseAngleDetector.getLeftArmAngle() + "°";
-            String angleText4 = "右胳3D" + poseAngleDetector.getRightArm3DAngle() + "°" + "2D" + poseAngleDetector.getRightArmAngle() + "°";
-            String angleText5 = "左躯3D" + poseAngleDetector.getLeftTrunk3DAngle() + "°" + "2D" + poseAngleDetector.getLeftTrunkAngle() + "°";
-            String angleText6 = "右躯3D" + poseAngleDetector.getRightTrunk3DAngle() + "°" + "2D" + poseAngleDetector.getRightTrunkAngle() + "°";
-            result.add(angleText1);
-            result.add(angleText2);
-            result.add(angleText3);
-            result.add(angleText4);
-            result.add(angleText5);
-            result.add(angleText6);
+
+        String angleText1 = "左膝3D" + poseAngleDetector.getLeftKnee3DAngle() + "°" + "2D" + poseAngleDetector.getLeftKneeAngle() + "°";
+        String angleText2 = "右膝3D" + poseAngleDetector.getRightKnee3DAngle() + "°" + "2D" + poseAngleDetector.getRightKneeAngle() + "°";
+        String angleText3 = "左胳3D" + poseAngleDetector.getLeftArm3DAngle() + "°" + "2D" + poseAngleDetector.getLeftArmAngle() + "°";
+        String angleText4 = "右胳3D" + poseAngleDetector.getRightArm3DAngle() + "°" + "2D" + poseAngleDetector.getRightArmAngle() + "°";
+        String angleText5 = "左躯3D" + poseAngleDetector.getLeftTrunk3DAngle() + "°" + "2D" + poseAngleDetector.getLeftTrunkAngle() + "°";
+        String angleText6 = "右躯3D" + poseAngleDetector.getRightTrunk3DAngle() + "°" + "2D" + poseAngleDetector.getRightTrunkAngle() + "°";
+        String angleText7 = "左肩3D" + poseAngleDetector.getLeftShoulder3DAngle() + "°" + "2D" + poseAngleDetector.getLeftShoulderAngle() + "°";
+        String angleText8 = "右肩3D" + poseAngleDetector.getRightShoulder3DAngle() + "°" + "2D" + poseAngleDetector.getRightShoulderAngle() + "°";
+        result.add(angleText1);
+        result.add(angleText2);
+        result.add(angleText3);
+        result.add(angleText4);
+        result.add(angleText5);
+        result.add(angleText6);
+        result.add(angleText7);
+        result.add(angleText8);
 
             /*
               !!!!!!!! 这个类可以理解每次截取一张图片进行判断 ！！！！！！！
@@ -191,30 +196,62 @@ public class PoseClassifierProcessor {
               !!!!!!!! 这个类可以理解每次截取一张图片进行判断 ！！！！！！！
              */
 //                Log.e("TEST", CameraXLivePreviewActivity.countdownSeconds + "S");
-            // 倒计时结束，开始训练
-            if (CameraXLivePreviewActivity.countdownSeconds == -1) {
-                // 动作模式： 普通模式 1 严格模式 2
-                // 普通模式 待定 todo
-                // 如果严格模式，则要求每个部位都要精准才算一个有效动作
-                int mode = 2;
-                // 获取监测的动作实体
-                PoseEntity poseEntity = CameraXLivePreviewActivity.getPoseEntityList().get(CameraXLivePreviewActivity.nowPoseIndex);
-                // 获取监测部位列表
-                List<PosePart> monitoringList = poseEntity.getMonitoringPosePartList();
-                // 固定部位列表
-                List<PosePart> fixedPartList = new ArrayList<>();
-                // 动态部位列表
-                List<PosePart> dynamicPart = new ArrayList<>();
-                // 将固定部位和动态部位分别筛选出来
-                for (PosePart part : monitoringList) {
-                    if (part.getPoseType() == 0)
-                        fixedPartList.add(part);
-                    if (part.getPoseType() == 1)
-                        dynamicPart.add(part);
-                }
+        // 倒计时结束，开始训练
+        if (CameraXLivePreviewActivity.countdownSeconds == -1) {
+            // 动作模式： 普通模式 1 严格模式 2
+            // 普通模式 待定 todo
+            // 如果严格模式，则要求每个部位都要精准才算一个有效动作
+            int mode = 2;
+            // 获取监测的动作实体
+            PoseEntity poseEntity = CameraXLivePreviewActivity.getPoseEntityList().get(CameraXLivePreviewActivity.nowPoseIndex);
+            // 获取监测部位列表
+            List<PosePart> monitoringList = poseEntity.getMonitoringPosePartList();
+            // 固定部位列表
+            List<PosePart> fixedPartList = new ArrayList<>();
+            // 动态部位列表
+            List<PosePart> dynamicPart = new ArrayList<>();
+            // 将固定部位和动态部位分别筛选出来
+            for (PosePart part : monitoringList) {
+                if (part.getPoseType() == 0)
+                    fixedPartList.add(part);
+                if (part.getPoseType() == 1)
+                    dynamicPart.add(part);
+            }
 //                    Log.e("测试", fixedPartList.size() + "");
-                // 判断是否全部满足固定部位标准
-                for (PosePart part : fixedPartList) {
+            // 判断是否全部满足固定部位标准
+            for (PosePart part : fixedPartList) {
+                int partIndex = part.getPoseIndex();
+                // 当前帧的角度
+                int nowFrameAngle;
+                // 自定义角度的情况
+                if (partIndex == -1) {
+                    nowFrameAngle = poseAngleDetector.getAnyAngleBy3Point(part.getThreePointIndex());
+                }
+                // 常规角度的情况
+                else {
+                    nowFrameAngle = poseAngleDetector.getPoseAngleFromPartIndex(partIndex);
+                }
+                if (!(nowFrameAngle >= part.getFixedRange()[0] && nowFrameAngle <= part.getFixedRange()[1])) {
+                    CameraXLivePreviewActivity.addWarnPart(partIndex);
+                }
+                if (partIndex != -1) {
+                    if (nowFrameAngle < part.getFixedRange()[0]) {
+                        poseTips += "，" + getPartName(partIndex) + "角度要大一点";
+                    }
+                    if (nowFrameAngle > part.getFixedRange()[1]) {
+                        poseTips += "，" + getPartName(partIndex) + "角度小一点";
+                    }
+                }
+            }
+            if (confidence != 1) {
+                CameraXLivePreviewActivity.confidenceNotOne = true;
+                addWarnPartFlag = true;
+            }
+            // 判断是否全部满足动态部位第一个标准
+            // 能够分清动作是up or down 并且置信度等于 1
+            if (maxConfidenceClass != null && confidence == 1) {
+
+                for (PosePart part : dynamicPart) {
                     int partIndex = part.getPoseIndex();
                     // 当前帧的角度
                     int nowFrameAngle;
@@ -222,72 +259,44 @@ public class PoseClassifierProcessor {
                     if (partIndex == -1) {
                         nowFrameAngle = poseAngleDetector.getAnyAngleBy3Point(part.getThreePointIndex());
                     }
-                    // 常规角度的情况
+                    // 常规部位角度情况
                     else {
                         nowFrameAngle = poseAngleDetector.getPoseAngleFromPartIndex(partIndex);
                     }
-                    if (!(nowFrameAngle >= part.getFixedRange()[0] && nowFrameAngle <= part.getFixedRange()[1])) {
-                        // 固定部位不满足标准的时候报红，那么动态部位什么情况下报红呢？ todo 我觉得是超过这个动态的总范围就报红
-                        // // TODO: 2022/3/8 动态点不标红
-                        CameraXLivePreviewActivity.addWarnPart(partIndex);
-                    }
-                    if (partIndex != -1) {
-                        if (nowFrameAngle < part.getFixedRange()[0]) {
+                    if (maxConfidenceClass.contains("down")) {
+                        // 判断当前的角度是否满足第二个标准
+                        if (!(nowFrameAngle >= part.getSecondStandardRange()[0] && nowFrameAngle <= part.getSecondStandardRange()[1]) && addWarnPartFlag) {
+                            CameraXLivePreviewActivity.addWarnPart(partIndex);
+                            Logger.e("当前置信度"+confidence);
+                        }
+                        if (nowFrameAngle < part.getSecondStandardRange()[0]) {
                             poseTips += "，" + getPartName(partIndex) + "角度要大一点";
                         }
-                        if (nowFrameAngle > part.getFixedRange()[1]) {
+                        if (nowFrameAngle > part.getSecondStandardRange()[1]) {
+                            poseTips += "，" + getPartName(partIndex) + "角度小一点";
+                        }
+                        if (!addWarnPartFlag && nowFrameAngle < part.getSecondStandardRange()[0]) {
+                            CameraXLivePreviewActivity.addWarnPart(partIndex);
+                            Logger.e("当前置信度"+confidence);
+                        }
+                    }
+                    if (maxConfidenceClass.contains("up")) {
+                        // 判断当前的角度是否满足第一个标准
+                        if (!(nowFrameAngle >= part.getFirstStandardRange()[0] && nowFrameAngle <= part.getFirstStandardRange()[1])&&addWarnPartFlag) {
+                            CameraXLivePreviewActivity.addWarnPart(partIndex);
+                        }
+                        if (nowFrameAngle < part.getFirstStandardRange()[0]) {
+                            poseTips += "，" + getPartName(partIndex) + "角度要大一点";
+                        }
+                        if (nowFrameAngle > part.getFirstStandardRange()[1]) {
                             poseTips += "，" + getPartName(partIndex) + "角度小一点";
                         }
                     }
                 }
-                if (confidence != 1) {
-//                    CameraXLivePreviewActivity.confidenceNotOne = true;
-                    addWarnPartFlag = true;
-                }
-                // 判断是否全部满足动态部位第一个标准
-                // 能够分清动作是up or down 并且置信度等于 1
-                if (maxConfidenceClass != null&&confidence == 1&&addWarnPartFlag) {
-                    addWarnPartFlag = false;
-                    for (PosePart part : dynamicPart) {
-                        int partIndex = part.getPoseIndex();
-                        // 当前帧的角度
-                        int nowFrameAngle;
-                        // 自定义角度的情况
-                        if (partIndex == -1) {
-                            nowFrameAngle = poseAngleDetector.getAnyAngleBy3Point(part.getThreePointIndex());
-                        }
-                        // 常规部位角度情况
-                        else {
-                            nowFrameAngle = poseAngleDetector.getPoseAngleFromPartIndex(partIndex);
-                        }
-                        if (confidence == 1 && maxConfidenceClass.contains("down")) {
-                            // 判断当前的角度是否满足第二个标准
-                            if (!(nowFrameAngle >= part.getSecondStandardRange()[0] && nowFrameAngle <= part.getSecondStandardRange()[1])) {
-                                CameraXLivePreviewActivity.addWarnPart(partIndex);
-                            }
-                            if (nowFrameAngle < part.getSecondStandardRange()[0]) {
-                                poseTips += "，" + getPartName(partIndex) + "角度要大一点";
-                            }
-                            if (nowFrameAngle > part.getSecondStandardRange()[1]) {
-                                poseTips += "，" + getPartName(partIndex) + "角度小一点";
-                            }
-                        }
-                        if (confidence == 1 && maxConfidenceClass.contains("up")) {
-                            // 判断当前的角度是否满足第一个标准
-                            if (!(nowFrameAngle >= part.getFirstStandardRange()[0] && nowFrameAngle <= part.getFirstStandardRange()[1])) {
-                                CameraXLivePreviewActivity.addWarnPart(partIndex);
-                            }
-                            if (nowFrameAngle < part.getFirstStandardRange()[0]) {
-                                poseTips += "，" + getPartName(partIndex)+ "角度要大一点";
-                            }
-                            if (nowFrameAngle > part.getFirstStandardRange()[1]) {
-                                poseTips += "，" + getPartName(partIndex) + "角度小一点";
-                            }
-                        }
-                    }
-                }
+                addWarnPartFlag = false;
             }
         }
+
         return result;
     }
 
@@ -297,6 +306,7 @@ public class PoseClassifierProcessor {
      * @param index 身体部位索引
      * @return 身体部位名称
      */
+    // // TODO: 2022/3/23 下标为-1的比如跪姿俯卧撑、卷腹摸膝会超过数组范围
     public String getPartName(int index) {
         String[] partNames = new String[]{"", "右手腕", "右胳膊肘", "右手臂与肩膀", "左手臂与肩膀", "左胳膊肘", "左手腕", "右腿与身体", "左腿与身体", "右膝盖", "左膝盖", "右脚腕", "左脚腕"};
         return partNames[index];

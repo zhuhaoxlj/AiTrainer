@@ -100,6 +100,8 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
     private SensorManager sensorManager;
     // 今日日期
     private LocalDate today;
+    // 应用文件夹路径
+    public static String appFilePath;
     // 步数统计传感器监听
     private MySensorEventListener mySensorEventListener;
     /**
@@ -147,27 +149,6 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
         Logger.addLogAdapter(new AndroidLogAdapter());
         // 初始化
         init();
-
-
-        // todo 获取当前文件夹下所有文件
-        FileUtils.getFileName(Objects.requireNonNull(this.getApplicationContext().getFilesDir()
-                .getParentFile()).getAbsolutePath());
-        // this.getApplicationContext().getFilesDir().getAbsolutePath()
-        // 获取的是本应用的files目录路径
-        Logger.e("遍历的路径" + this.getApplicationContext().getFilesDir().getParentFile().getAbsolutePath());
-        // 创建文件夹工具类测试
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            FileUtils.createFile(this.getApplicationContext().getFilesDir().getAbsolutePath() + "/" + "2022-03-23" + "/", FileUtils.CREATE_FOLDER);
-        }
-        // 创建文件测试
-        // todo 创建文件的时候，如果根目录不存在则创建根目录
-        String fileName = "test.txt";
-        FileUtils.createFile(this.getApplicationContext().getFilesDir().getAbsolutePath() + "/" + today.toString() + "/" + fileName, FileUtils.CREATE_FILE);
-        // 删除文件
-//        FileUtils.deleteFile(new File(this.getApplicationContext().getFilesDir().getAbsolutePath() + "/" + today.toString() + "/" + "test.txt"));
-//        FileUtils.moveFiles(this.getApplicationContext().getFilesDir().getAbsolutePath() + "/" + today.toString(),this.getApplicationContext().getFilesDir().getParentFile().getAbsolutePath()+"/"+today.toString());
-//        Logger.e("目标路径"+this.getApplicationContext().getFilesDir().getParentFile().getAbsolutePath());
-
     }
 
     /**
@@ -176,11 +157,15 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
     @RequiresApi(api = Build.VERSION_CODES.O)
     @SuppressLint("ResourceType")
     public void init() {
+        // 初始化应用文件夹路径
+        appFilePath = Objects.requireNonNull(this.getApplicationContext().getFilesDir().getParentFile()).getAbsolutePath();
+        // 创建分析文件夹
+        FileUtils.createFile( appFilePath+ "/files/analysisReport/", FileUtils.CREATE_FOLDER);
         // 创建今日文件夹
         today = LocalDate.now();
-        // 创建分析文件夹
-        FileUtils.createFile(this.getApplicationContext().getFilesDir().getAbsolutePath() + "/" + "analysisReport" + "/", FileUtils.CREATE_FOLDER);
-        FileUtils.createFile(this.getApplicationContext().getFilesDir().getAbsolutePath() + "/" + "analysisReport" + "/"+today.toString(), FileUtils.CREATE_FOLDER);
+        FileUtils.createFile(appFilePath + "/files/analysisReport/"+today.toString(), FileUtils.CREATE_FOLDER);
+        // 创建个人信息数据文件夹
+        FileUtils.createFile(appFilePath+"/files/personalData/",FileUtils.CREATE_FOLDER);
         // 加载中图片设置
         loadingBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.loading3);
         isFirstUseApp = isFirstUseApp();
@@ -248,7 +233,7 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
         // 初始化界面 start
         initHomePage();
         // 主线程更新动作库 handler
-        final Handler handler = new Handler() {
+        @SuppressLint("HandlerLeak") final Handler handler = new Handler() {
             @Override
             public void handleMessage(Message msg) {
                 if (msg.what == 0x1233) {
@@ -293,6 +278,7 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
     /**
      * 初始化主页
      */
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public void initHomePage() {
         // 日历按钮
         ImageView imageView = view1.findViewById(R.id.calendarButton);
@@ -302,6 +288,7 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
         });
         // 初始化轮播图
         SimpleImageBanner simpleImageBanner = view1.findViewById(R.id.banner);
+        simpleImageBanner.setFocusedByDefault(true);
         simpleImageBanner.setSource(getBannerList()).setOnItemClickListener((view, item, position1) -> Logger.e("headBanner position--->" + position1)).startScroll();
         // 初始化食物列表
         initFoodList();
@@ -310,9 +297,9 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
         ViewGroup.LayoutParams params = statusBar.getLayoutParams();
         params.height = StatusBarUtils.getStatusBarHeight(this);
 
-        // 聊天按钮
-        ImageView imageView1 = view1.findViewById(R.id.chatListButton);
-        imageView1.setOnClickListener(view -> {
+        // 消息通知按钮
+        ImageView chatListButton = view1.findViewById(R.id.chatListButton);
+        chatListButton.setOnClickListener(view -> {
             Intent intent = new Intent(HomePage.this, OfficialNoticeActivity.class);
             startActivity(intent);
         });
@@ -337,7 +324,11 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
     /**
      * 初始化个人界面
      */
+    @SuppressLint("SetTextI18n")
     public void initPersonalPage() {
+        // 训练天数
+        TextView practiceDays = view4.findViewById(R.id.practiceDays);
+        practiceDays.setText(FileUtils.countFoldersUnderPath(this.getApplicationContext().getFilesDir().getAbsolutePath()+"/analysisReport/")+"\n练习(天)");
         // 状态栏背景条
         LinearLayout statusBar = view4.findViewById(R.id.statusBar);
         // 状态栏背景颜色
@@ -557,7 +548,7 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
             // 设置未读消息红点
             jpTabBar.showBadge(3, "1", false);
         }
-        // tabbar 添加监听
+        // tabBar 添加监听
         jpTabBar.setTabListener(new OnTabSelectListener() {
             @Override
             public void onTabSelect(int index) {

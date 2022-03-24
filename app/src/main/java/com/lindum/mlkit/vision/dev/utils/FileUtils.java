@@ -137,6 +137,27 @@ public class FileUtils {
     }
 
     /**
+     *  获取当前路径下的文件夹个数
+     * @param path 路径
+     * @return 文件夹个数
+     */
+    public static int countFoldersUnderPath(String path){
+        File file = new File(path);
+        int count = 0;
+        if(file.exists()){
+            File[]files = file.listFiles();
+            if(files!=null){
+                for(File temp:files){
+                    if(temp.isDirectory()){
+                        count++;
+                    }
+                }
+            }
+            return count;
+        }
+        return count;
+    }
+    /**
      * 创建文件夹或者文件
      *
      * @param fileName 文件夹名称或者文件名称
