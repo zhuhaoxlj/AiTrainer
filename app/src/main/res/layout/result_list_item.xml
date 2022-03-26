@@ -9,6 +9,7 @@
     android:orientation="horizontal">
 
     <TextView
+        android:layout_margin="10dp"
         android:id="@+id/poseResultName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -20,14 +21,14 @@
     <LinearLayout
         android:id="@+id/imageGroup"
         android:layout_width="match_parent"
-        android:layout_height="400dp"
+        android:layout_height="360dp"
         android:layout_below="@+id/poseResultName"
         android:baselineAligned="false"
         android:orientation="horizontal">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="360dp"
             android:layout_weight="1">
 
             <androidx.cardview.widget.CardView
@@ -39,7 +40,7 @@
                 <ImageView
                     android:id="@+id/wrongPoseImage"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="360dp"
                     android:scaleType="fitXY"
                     tools:ignore="ContentDescription" />
             </androidx.cardview.widget.CardView>
@@ -47,19 +48,19 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="360dp"
             android:layout_weight="1">
 
             <androidx.cardview.widget.CardView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="360dp"
                 android:layout_marginStart="5dp"
                 app1:cardCornerRadius="10dp">
 
                 <ImageView
                     android:id="@+id/rightPoseImage"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="360dp"
                     android:scaleType="fitXY"
                     tools:ignore="ContentDescription" />
             </androidx.cardview.widget.CardView>

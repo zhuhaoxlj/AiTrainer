@@ -422,6 +422,8 @@ com/jpeng/jptabbar/anno/NorIcons.class
 com/jpeng/jptabbar/anno/SeleIcons.class
 com/jpeng/jptabbar/anno/Titles.class
 com/lindum/mlkit/vision/dev/utils/StatusBarUtils$StatusBarType.class
+com/vivian/timelineitemdecoration/itemdecoration/DotItemDecoration$ItemStyle.class
+com/vivian/timelineitemdecoration/itemdecoration/DotItemDecoration$Orientation.class
 com/xuexiang/constant/MemoryConstants$Unit.class
 com/xuexiang/constant/PermissionConstants$Permission.class
 com/xuexiang/constant/TimeConstants$Unit.class

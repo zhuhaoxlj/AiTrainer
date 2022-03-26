@@ -2,6 +2,8 @@ package com.lindum.mlkit.vision.dev.result;
 
 import android.graphics.Bitmap;
 
+import androidx.annotation.NonNull;
+
 /**
  * @author MarkGosling
  * @date 2022/2/12 10:17
@@ -45,10 +47,34 @@ public class ResultEntity {
         this.rightPoseImage = rightPoseImage;
     }
 
+    public String getWrongPoseImagePath() {
+        return wrongPoseImagePath;
+    }
+
+    public void setWrongPoseImagePath(String wrongPoseImagePath) {
+        this.wrongPoseImagePath = wrongPoseImagePath;
+    }
+
+    public ResultEntity() {
+
+    }
+
     public ResultEntity(String poseName, String tips, Bitmap wrongPoseImage, Bitmap rightPoseImage) {
         this.poseName = poseName;
         this.tips = tips;
         this.wrongPoseImage = wrongPoseImage;
         this.rightPoseImage = rightPoseImage;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return "ResultEntity{" +
+                "poseName='" + poseName + '\'' +
+                ", tips='" + tips + '\'' +
+                ", wrongPoseImage=" + wrongPoseImage +
+                ", rightPoseImage=" + rightPoseImage +
+                ", wrongPoseImagePath='" + wrongPoseImagePath + '\'' +
+                '}';
     }
 }

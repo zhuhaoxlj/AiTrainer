@@ -8,6 +8,7 @@ android {
             res.srcDirs = [
                     'src/main/res/layout/datacenter',
                     'src/main/res/layout/personal',
+                    'src/main/res/layout/result',
                     'src/main/res/layout/main',
                     'src/main/res/layout/train',
                     'src/main/res/layout',
@@ -58,7 +59,7 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
-    // Do NOT compress tflite model files (need to call out to developers!)
+    // Do NOT compress tf lite model files (need to call out to developers!)
     aaptOptions {
         noCompress "tflite"
     }
@@ -70,6 +71,8 @@ repositories {
 }
 
 dependencies {
+    // 纵向时间轴
+    implementation 'com.vivian.widgets:TimeLineItemDecoration:1.5'
     // 书写文字
     implementation 'com.github.sarnavakonar:TextWriter:v1.0'
     // 进度条

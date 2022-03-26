@@ -16,6 +16,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -33,6 +34,7 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
@@ -49,6 +51,8 @@ import com.lindum.mlkit.vision.dev.datacenter.PersonalPlan;
 import com.lindum.mlkit.vision.dev.datacenter.ProgressActivity;
 import com.lindum.mlkit.vision.dev.entity.PoseEntity;
 import com.lindum.mlkit.vision.dev.entity.UserEntity;
+import com.lindum.mlkit.vision.dev.result.DotTimeLineAdapter;
+import com.lindum.mlkit.vision.dev.result.Event;
 import com.lindum.mlkit.vision.dev.sql.ControlTable;
 import com.lindum.mlkit.vision.dev.sql.UpdateUserInfo;
 import com.lindum.mlkit.vision.dev.utils.DeviceIdUtils;
@@ -56,6 +60,8 @@ import com.lindum.mlkit.vision.dev.utils.FileUtils;
 import com.lindum.mlkit.vision.dev.utils.GetPermissionUtils;
 import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.Logger;
+import com.vivian.timelineitemdecoration.itemdecoration.DotItemDecoration;
+import com.vivian.timelineitemdecoration.util.Util;
 import com.xuexiang.xui.XUI;
 import com.xuexiang.xui.utils.StatusBarUtils;
 import com.xuexiang.xui.widget.actionbar.TitleBar;
@@ -73,6 +79,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
@@ -80,11 +87,13 @@ import java.util.Objects;
  * @author MarkGosling
  * @date 2022/2/13 23:24
  */
+@RequiresApi(api = Build.VERSION_CODES.O)
 public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListener {
     private Bitmap loadingBitmap;
     public static UserEntity userEntity = new UserEntity();
     public static ArrayList<Bitmap> poseLibrarySwiperImageArrayList = new ArrayList<>();
     public static ArrayList<Bitmap> poseDetailFeelingImageArrayList = new ArrayList<>();
+    public static ArrayList<Bitmap> poseRightImageArrayList = new ArrayList<>();
     private HomeAdapter adapter;
     private Handler addImageHandle;
     final int userInfoIntentCode = 1;
@@ -127,6 +136,15 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
             "运动使人健康",
             "运动是一切生命的源泉",
     };
+    // 训练历史记录 star
+    RecyclerView mRecyclerView;
+    List<Event> mList = new ArrayList<>();
+    DotTimeLineAdapter mAdapter;
+    DotItemDecoration mItemDecoration;
+    long time = (long) (System.currentTimeMillis() / 1000);
+    ArrayList<Long> times = new ArrayList<>();
+    ArrayList<String> events = new ArrayList<>();
+    // 训练历史记录 end
     @Titles
     private static final String[] TABBAR_TITLES = {"主页", "社区", "动作库", "个人"};
     @SeleIcons
@@ -160,12 +178,12 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
         // 初始化应用文件夹路径
         appFilePath = Objects.requireNonNull(this.getApplicationContext().getFilesDir().getParentFile()).getAbsolutePath();
         // 创建分析文件夹
-        FileUtils.createFile( appFilePath+ "/files/analysisReport/", FileUtils.CREATE_FOLDER);
+        FileUtils.createFile(appFilePath + "/files/analysisReport/", FileUtils.CREATE_FOLDER);
         // 创建今日文件夹
         today = LocalDate.now();
-        FileUtils.createFile(appFilePath + "/files/analysisReport/"+today.toString(), FileUtils.CREATE_FOLDER);
+        FileUtils.createFile(appFilePath + "/files/analysisReport/" + today.toString(), FileUtils.CREATE_FOLDER);
         // 创建个人信息数据文件夹
-        FileUtils.createFile(appFilePath+"/files/personalData/",FileUtils.CREATE_FOLDER);
+        FileUtils.createFile(appFilePath + "/files/personalData/", FileUtils.CREATE_FOLDER);
         // 加载中图片设置
         loadingBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.loading3);
         isFirstUseApp = isFirstUseApp();
@@ -175,6 +193,9 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
             startActivity(intent);
             // 聚焦视图
             guideView();
+            // 记录第一次使用AiTrainer
+            FileUtils.createFile(appFilePath + "/files/analysisReport/recordFile.sys", FileUtils.CREATE_FILE);
+            FileUtils.writeStringToFile("1648293855 第一次使用AiTrainer", appFilePath + "/files/analysisReport/", "recordFile.sys", FileUtils.APPEND_TEXT);
         }
         // 再次获取未授权权限
         if (!isFirstUseApp && !GetPermissionUtils.allPermissionsGranted(this)) {
@@ -187,7 +208,7 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
         LayoutInflater inflater = getLayoutInflater();
         //实例化view
         view1 = inflater.inflate(R.layout.homepage, null);
-        view2 = inflater.inflate(R.layout.page2, null);
+        view2 = inflater.inflate(R.layout.dot_timeline_layout, null);
         view3 = inflater.inflate(R.layout.pose_library, null);
         view4 = inflater.inflate(R.layout.personal_page, null);
         //将要显示的布局存放到list数组
@@ -270,9 +291,89 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
                 }
             }
         }.start();
-
+        // 初始化训练历史记录
+        initTrainingHistory();
         initPersonalPage();
         // 初始化界面 end
+    }
+
+    /**
+     * 初始化训练历史记录界面
+     */
+    public void initTrainingHistory() {
+        times.clear();
+        events.clear();
+        mList.clear();
+        // 状态栏背景条
+        LinearLayout statusBar = view2.findViewById(R.id.statusBarOfTrainingHistory);
+        // 状态栏背景颜色
+        statusBar.setBackgroundColor(Color.parseColor("#ffffff"));
+        ViewGroup.LayoutParams params = statusBar.getLayoutParams();
+        params.height = StatusBarUtils.getStatusBarHeight(this);
+        // 初始化时间戳
+        ArrayList<String> trainingHistory = FileUtils.readFileToString(appFilePath + "/files/analysisReport/", "recordFile.sys");
+        for (String temp : trainingHistory) {
+            long time = Long.parseLong(temp.split(" ")[0]);
+            String event = temp.split(" ")[1];
+            Util.LongtoStringFormat(1000 * time);
+            times.add(time);
+            events.add(event);
+        }
+        Collections.reverse(times);
+        Collections.reverse(events);
+        mRecyclerView = (RecyclerView) view2.findViewById(R.id.recycler_view);
+        mRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
+        mItemDecoration = new DotItemDecoration
+                .Builder(this)
+                .setOrientation(DotItemDecoration.VERTICAL)
+                .setItemStyle(DotItemDecoration.STYLE_DRAW)
+                .setTopDistance(20)//dp
+                .setItemInterVal(10)//dp
+                .setItemPaddingLeft(10)
+                .setItemPaddingRight(10)
+                .setDotColor(Color.parseColor("#FFCAFB"))
+                .setDotRadius(3)//dp
+                .setDotPaddingTop(20)
+                .setDotInItemOrientationCenter(false)
+                .setLineColor(Color.parseColor("#ffe8fe"))
+                .setLineWidth(1)//dp
+                .setEndText("END")
+                .setTextColor(Color.BLACK)
+                .setTextSize(10)//sp
+                .setDotPaddingText(2)
+                .setBottomDistance(40)
+                .create();
+        mItemDecoration.setSpanIndexListener((view, spanIndex) -> {
+            view.setBackgroundResource(spanIndex == 0 ? R.drawable.pop_left : R.drawable.pop_right);
+        });
+        if (mRecyclerView.getItemDecorationCount() == 0) {
+            mRecyclerView.addItemDecoration(mItemDecoration);
+        }
+        for (int i = 0; i < times.size(); i++) {
+            Event event = new Event();
+            event.setTime(times.get(i));
+            event.setEvent(events.get(i));
+            mList.add(event);
+        }
+
+        mAdapter = new DotTimeLineAdapter(this, mList);
+        mRecyclerView.setAdapter(mAdapter);
+        mRecyclerView.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
+            @Override
+            public boolean onInterceptTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) { ;
+                return false;
+            }
+
+            @Override
+            public void onTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
+
+            }
+
+            @Override
+            public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
+
+            }
+        });
     }
 
     /**
@@ -328,7 +429,7 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
     public void initPersonalPage() {
         // 训练天数
         TextView practiceDays = view4.findViewById(R.id.practiceDays);
-        practiceDays.setText(FileUtils.countFoldersUnderPath(this.getApplicationContext().getFilesDir().getAbsolutePath()+"/analysisReport/")+"\n练习(天)");
+        practiceDays.setText(FileUtils.countFoldersUnderPath(this.getApplicationContext().getFilesDir().getAbsolutePath() + "/analysisReport/") + "\n练习(天)");
         // 状态栏背景条
         LinearLayout statusBar = view4.findViewById(R.id.statusBar);
         // 状态栏背景颜色
@@ -441,6 +542,7 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
         for (int i = 0; i < poseEntityArrayList.size(); i++) {
             poseLibrarySwiperImageArrayList.add(loadingBitmap);
             poseDetailFeelingImageArrayList.add(null);
+            poseRightImageArrayList.add(null);
         }
         for (PoseEntity poseEntity : poseEntityArrayList) {
             int indexOfPoseEntityList = poseEntityArrayList.indexOf(poseEntity);
@@ -456,6 +558,13 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
                 public void run() {
                     super.run();
                     poseDetailFeelingImageArrayList.set(indexOfPoseEntityList, returnBitMap(poseEntity.getPoseFeelingImage()));
+                }
+            }.start();
+            new Thread() {
+                @Override
+                public void run() {
+                    super.run();
+                    poseRightImageArrayList.set(indexOfPoseEntityList, returnBitMap(poseEntity.getPoseSwiperImageUrl()[1]));
                 }
             }.start();
         }
@@ -541,6 +650,8 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
      * 初始化底部 TabBar，要在布局初始化之后调用
      */
     public void initTabBar() {
+        // 界面索引
+        final int trainingHistory = 1;
         final int personalPageIndex = 3;
         jpTabBar = findViewById(R.id.tabbar);
         jpTabBar.setContainer(viewPager);
@@ -555,6 +666,10 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
                 Logger.d("选中了" + TABBAR_TITLES[index]);
                 // 隐藏小红点
                 jpTabBar.hideBadge(3);
+                // 选择了 日记界面
+                if (index == trainingHistory) {
+                    initTrainingHistory();
+                }
                 // 选择个人界面
                 if (index == personalPageIndex) {
 
@@ -578,6 +693,7 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
                         Logger.e("用户已经填写过数据");
                     }
                 }
+
             }
 
             @Override

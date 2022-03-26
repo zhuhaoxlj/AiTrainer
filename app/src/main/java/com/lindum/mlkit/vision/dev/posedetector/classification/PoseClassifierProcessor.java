@@ -52,6 +52,8 @@ public class PoseClassifierProcessor {
     private List<RepetitionCounter> repCounters;
     private PoseClassifier poseClassifier;
     private String lastRepResult;
+    // 置信度
+    private String con = "";
     volatile private boolean addWarnPartFlag = true;
     Context context;
     static volatile public String poseTips;
@@ -70,7 +72,7 @@ public class PoseClassifierProcessor {
         loadPoseSamples(context);
     }
 
-    // // TODO: 2022/3/8
+    // TODO: 2022/3/8
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     private void loadPoseSamples(Context context) {
         List<PoseSample> poseSamples = new ArrayList<>();
@@ -189,7 +191,8 @@ public class PoseClassifierProcessor {
         result.add(angleText6);
         result.add(angleText7);
         result.add(angleText8);
-
+        con+=confidence+" ";
+        Logger.e(con);
             /*
               !!!!!!!! 这个类可以理解每次截取一张图片进行判断 ！！！！！！！
               !!!!!!!! 这个类可以理解每次截取一张图片进行判断 ！！！！！！！
@@ -267,7 +270,7 @@ public class PoseClassifierProcessor {
                         // 判断当前的角度是否满足第二个标准
                         if (!(nowFrameAngle >= part.getSecondStandardRange()[0] && nowFrameAngle <= part.getSecondStandardRange()[1]) && addWarnPartFlag) {
                             CameraXLivePreviewActivity.addWarnPart(partIndex);
-                            Logger.e("当前置信度"+confidence);
+                            Logger.e("当前置信度" + confidence);
                         }
                         if (nowFrameAngle < part.getSecondStandardRange()[0]) {
                             poseTips += "，" + getPartName(partIndex) + "角度要大一点";
@@ -277,12 +280,12 @@ public class PoseClassifierProcessor {
                         }
                         if (!addWarnPartFlag && nowFrameAngle < part.getSecondStandardRange()[0]) {
                             CameraXLivePreviewActivity.addWarnPart(partIndex);
-                            Logger.e("当前置信度"+confidence);
+                            Logger.e("当前置信度" + confidence);
                         }
                     }
                     if (maxConfidenceClass.contains("up")) {
                         // 判断当前的角度是否满足第一个标准
-                        if (!(nowFrameAngle >= part.getFirstStandardRange()[0] && nowFrameAngle <= part.getFirstStandardRange()[1])&&addWarnPartFlag) {
+                        if (!(nowFrameAngle >= part.getFirstStandardRange()[0] && nowFrameAngle <= part.getFirstStandardRange()[1]) && addWarnPartFlag) {
                             CameraXLivePreviewActivity.addWarnPart(partIndex);
                         }
                         if (nowFrameAngle < part.getFirstStandardRange()[0]) {
@@ -306,7 +309,6 @@ public class PoseClassifierProcessor {
      * @param index 身体部位索引
      * @return 身体部位名称
      */
-    // // TODO: 2022/3/23 下标为-1的比如跪姿俯卧撑、卷腹摸膝会超过数组范围
     public String getPartName(int index) {
         String[] partNames = new String[]{"", "右手腕", "右胳膊肘", "右手臂与肩膀", "左手臂与肩膀", "左胳膊肘", "左手腕", "右腿与身体", "左腿与身体", "右膝盖", "左膝盖", "右脚腕", "左脚腕"};
         return partNames[index];

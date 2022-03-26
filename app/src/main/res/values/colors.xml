@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="purple">#69415D</color>
+    <color name="purple_start_color">#6178f2</color>
+    <color name="purple_end_color">#925eff</color>
     <color name="colorPrimary">#4CAF50</color>
     <color name="colorPrimaryDark">#388E3C</color>
     <color name="colorAccent">#7C4DFF</color>
@@ -13,7 +16,10 @@
     <color name="XUIBlue">#299de3</color>
     <color name="red">#f44242</color>
     <color name="button">#f9b08e</color>
-
+    <color name="pink">#ff5c91</color>
+    <color name="yellow">#ffa921</color>
+    <color name="green">#7fc854</color>
+    <color name="grey">#eceef5</color>
     <color name="app_color_theme_1">#EF5362</color> <!-- Grapefruit -->
     <color name="app_color_theme_2">#FE6D4B</color> <!-- Bittersweet -->
     <color name="app_color_theme_3">#FFCF47</color> <!-- Sunflower -->

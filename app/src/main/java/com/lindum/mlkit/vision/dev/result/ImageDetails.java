@@ -7,6 +7,7 @@ import android.widget.ImageView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.lindum.mlkit.vision.dev.R;
+import com.lindum.mlkit.vision.dev.utils.StatusBarUtils;
 import com.xuexiang.xui.XUI;
 
 /**
@@ -20,6 +21,7 @@ public class ImageDetails extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         XUI.initTheme(this);
         super.onCreate(savedInstanceState);
+        StatusBarUtils.fullScreen(this);
         setContentView(R.layout.image_details);
         init();
     }

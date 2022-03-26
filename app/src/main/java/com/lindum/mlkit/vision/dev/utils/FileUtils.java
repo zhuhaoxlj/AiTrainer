@@ -1,7 +1,5 @@
 package com.lindum.mlkit.vision.dev.utils;
 
-import android.util.Log;
-
 import com.orhanobut.logger.Logger;
 
 import java.io.BufferedReader;
@@ -11,7 +9,7 @@ import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.RandomAccessFile;
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class FileUtils {
@@ -44,7 +42,6 @@ public class FileUtils {
             try {
                 Logger.e(file.getPath() + "---" + file.getName());
                 if (!file.exists()) {
-                    Log.d("TestFile", "Create the file:" + strFilePath);
                     file.getParentFile().mkdirs();
                     file.createNewFile();
                 }
@@ -52,19 +49,16 @@ public class FileUtils {
                 fileWriter.write(stringContent);
                 fileWriter.close();
             } catch (Exception e) {
-                Log.e("TestFile", "Error on write File:" + e);
+                Logger.e("TestFile", "Error on write File:" + e);
                 return false;
             }
         } else if (writeMethod == 1) {
             try {
-                // 打开一个随机访问文件流，按读写方式
-                RandomAccessFile randomFile = new RandomAccessFile(file, "rw");
-                // 文件长度，字节数
-                long fileLength = randomFile.length();
-                // 将写文件指针移到文件尾。
-                randomFile.seek(fileLength);
-                randomFile.writeBytes(stringContent + "\r\n");
-                randomFile.close();
+                File writeFile = new File(strFilePath);
+                FileOutputStream outputStream;
+                outputStream = new FileOutputStream(writeFile,true);
+                outputStream.write(("\n"+stringContent).getBytes());
+                outputStream.close();
             } catch (IOException e) {
                 e.printStackTrace();
                 return false;
@@ -80,8 +74,8 @@ public class FileUtils {
      * @param fileName 文件名称
      * @return 文件内容
      */
-    public static String readFileToString(String filePath, String fileName) {
-        String fileContent = "";
+    public static ArrayList<String> readFileToString(String filePath, String fileName) {
+        ArrayList<String> fileContent = new ArrayList<>();
         String strFilePath = filePath + fileName;
         //文件逐行读入
         try {
@@ -91,7 +85,9 @@ public class FileUtils {
             //按行读取 将每次读取一行的结果赋值给lineStr
             String lineStr;
             while ((lineStr = br.readLine()) != null) {
-                fileContent = fileContent + lineStr;
+                if(!lineStr.equals("")){
+                    fileContent.add(lineStr.trim());
+                }
             }
             br.close();//关闭IO
         } catch (Exception e) {

@@ -1,0 +1,18 @@
+<component name="libraryTable">
+  <library name="Gradle: com.vivian.widgets:TimeLineItemDecoration:1.5@aar">
+    <ANNOTATIONS>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/b0a2f334eab46479c671b9aa210048f8/transformed/jetified-TimeLineItemDecoration-1.5/annotations.zip!/" />
+    </ANNOTATIONS>
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/b0a2f334eab46479c671b9aa210048f8/transformed/jetified-TimeLineItemDecoration-1.5/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/b0a2f334eab46479c671b9aa210048f8/transformed/jetified-TimeLineItemDecoration-1.5/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/b0a2f334eab46479c671b9aa210048f8/transformed/jetified-TimeLineItemDecoration-1.5/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.vivian.widgets/TimeLineItemDecoration/1.5/e67e1e704269c62c5f7bc50821db530c7b29f5e7/TimeLineItemDecoration-1.5-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.vivian.widgets/TimeLineItemDecoration/1.5/76dabd560819f95072be5c93167cb24c7f48cb22/TimeLineItemDecoration-1.5-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

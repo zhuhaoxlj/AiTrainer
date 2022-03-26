@@ -75,10 +75,8 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.MessageFormat;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
@@ -184,7 +182,8 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
     public static ImageView imageView;
     // 截图保存路径
     public static String imageSavePath;
-
+    // 当前时间戳
+    public static long timeMarkPoint;
     @RequiresApi(api = VERSION_CODES.O)
     @SuppressLint("SetTextI18n")
     @Override
@@ -249,7 +248,7 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
         for (PoseEntity poseEntity : poseEntityList) {
             // 倒计时类型 0 计数类型 1
             poseEntity.setPoseType(0);
-            poseEntity.setPoseProcessValue(3);
+            poseEntity.setPoseProcessValue(8);
         }
 
         nowPoseName = poseEntityList.get(nowPoseIndex).getPoseName();
@@ -402,11 +401,8 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
         poseEntityList = new ArrayList<>();
         pose1 = false;
         // 创建截图文件夹
-        @SuppressLint("SimpleDateFormat")
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH-mm-ss");
-        Date date = new Date(System.currentTimeMillis());
-        String time = simpleDateFormat.format(date);
-        imageSavePath = HomePage.appFilePath + "/files/analysisReport/" + LocalDate.now().toString() + "/" + time + "/";
+        timeMarkPoint = (long) (System.currentTimeMillis() / 1000);
+        imageSavePath = HomePage.appFilePath + "/files/analysisReport/" + LocalDate.now().toString() + "/" + timeMarkPoint + "/";
         FileUtils.createFile(imageSavePath, FileUtils.CREATE_FOLDER);
         // 初始化组件
         poseName = findViewById(R.id.poseName);
@@ -444,8 +440,6 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
                 Logger.e("语音初始化失败");
             }
         });
-
-
     }
 
     public static void cleanWarnPart() {
@@ -862,6 +856,7 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
                             TrainingResult.resultImage.add(combineBitmap(bitmap1, bitmap2));
                             TrainingResult.resultName.add(nowPoseName);
                             TrainingResult.resultTips.add(PoseClassifierProcessor.poseTips);
+                            TrainingResult.wrongImagePath.add(imageSavePath + fileName + ".jpg");
                         }
                         Logger.e("生成的建议" + PoseClassifierProcessor.poseTips);
                         if (bitmap1 != null) {

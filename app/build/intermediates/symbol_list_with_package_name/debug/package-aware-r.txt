@@ -2517,6 +2517,8 @@ color error_color_material_light
 color foreground_material_dark
 color foreground_material_light
 color gray
+color green
+color grey
 color highlighted_text_material_dark
 color highlighted_text_material_light
 color label_back_dark
@@ -2621,6 +2623,7 @@ color notification_action_color_filter
 color notification_icon_bg_color
 color picker_view_bg_color_overlay
 color picker_view_bg_topbar
+color pink
 color primary_dark_material_dark
 color primary_dark_material_light
 color primary_material_dark
@@ -2629,6 +2632,9 @@ color primary_text_default_material_dark
 color primary_text_default_material_light
 color primary_text_disabled_material_dark
 color primary_text_disabled_material_light
+color purple
+color purple_end_color
+color purple_start_color
 color radiobutton_themeable_attribute_color
 color radius_button_color_blue
 color radius_button_color_blue_pressed
@@ -2747,6 +2753,7 @@ color xui_default_round_btn_green_bg
 color xui_default_round_btn_white_text
 color xui_selector_content_text_color
 color xui_transparent
+color yellow
 dimen abc_action_bar_content_inset_material
 dimen abc_action_bar_content_inset_with_nav
 dimen abc_action_bar_default_height_material
@@ -3566,6 +3573,7 @@ drawable abc_vector_test
 drawable alarm
 drawable avd_hide_password
 drawable avd_show_password
+drawable ball
 drawable banks
 drawable battle
 drawable beer
@@ -3610,9 +3618,11 @@ drawable design_ic_visibility
 drawable design_ic_visibility_off
 drawable design_password_eye
 drawable design_snackbar_background
+drawable dot
 drawable ferrari
 drawable googleg_disabled_color_18
 drawable googleg_standard_color_18
+drawable green_ball
 drawable hotels
 drawable ic_clock_black_24dp
 drawable ic_icon1
@@ -3696,7 +3706,11 @@ drawable pecan
 drawable personal_image
 drawable pet_icon_visibility_24dp
 drawable pet_icon_visibility_off_24dp
+drawable pink_ball
+drawable pop_left
+drawable pop_right
 drawable pose_training
+drawable purple_bg
 drawable rb_bg_disabled
 drawable rb_bg_normal
 drawable rb_bg_pressed
@@ -3723,6 +3737,7 @@ drawable tcv_right_option_selected
 drawable terraria
 drawable test_custom_background
 drawable three_d
+drawable time_line
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
 drawable train
@@ -3813,6 +3828,7 @@ drawable xui_sign_count_view_bg
 drawable xui_tips_point
 drawable xutil_bg_black_circular_10
 drawable yam
+drawable yellow_ball
 drawable zjj
 id ALT
 id AccelerateDecelerateInterpolator
@@ -4231,6 +4247,7 @@ id line3
 id linear
 id listMode
 id list_item
+id list_view
 id listview
 id ll_container
 id ll_content
@@ -4422,6 +4439,7 @@ id ratio
 id rectangle
 id rectangles
 id recyclerView
+id recycler_view
 id relativeLayout
 id resultContainer
 id resultList
@@ -4541,6 +4559,7 @@ id startVertical
 id staticLayout
 id staticPostLayout
 id statusBar
+id statusBarOfTrainingHistory
 id stepsDataButton
 id stop
 id stretch
@@ -4810,6 +4829,7 @@ layout dialog_header_style_1
 layout dialog_header_style_2
 layout dialog_header_style_3
 layout dialog_header_style_default
+layout dot_timeline_layout
 layout food_item
 layout gcv_layout_image
 layout gcv_layout_title
@@ -4881,6 +4901,7 @@ layout onboarding_text_content_layout
 layout page2
 layout personal_page
 layout personal_plan
+layout pop_item
 layout pose_details
 layout pose_info
 layout pose_library
@@ -4915,6 +4936,7 @@ layout text_view_with_line_height_from_style
 layout text_view_with_theme_line_height
 layout text_view_without_line_height
 layout toggle_style
+layout training_history
 layout training_result
 layout training_result_item
 layout ui

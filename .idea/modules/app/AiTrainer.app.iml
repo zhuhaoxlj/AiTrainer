@@ -4,7 +4,7 @@
     <facet type="android-gradle" name="Android-Gradle">
       <configuration>
         <option name="GRADLE_PROJECT_PATH" value=":app" />
-        <option name="LAST_SUCCESSFUL_SYNC_AGP_VERSION" value="4.2.2" />
+        <option name="LAST_SUCCESSFUL_SYNC_AGP_VERSION" value="7.1.2" />
         <option name="LAST_KNOWN_AGP_VERSION" value="7.1.2" />
       </configuration>
     </facet>
@@ -59,7 +59,7 @@
         <option name="ALLOW_USER_CONFIGURATION" value="false" />
         <option name="MANIFEST_FILE_RELATIVE_PATH" value="/src/main/AndroidManifest.xml" />
         <option name="RES_FOLDER_RELATIVE_PATH" value="/src/main/res/layout/datacenter" />
-        <option name="RES_FOLDERS_RELATIVE_PATH" value="file://$MODULE_DIR$/../../../app/src/main/res/layout/datacenter;file://$MODULE_DIR$/../../../app/src/main/res/layout/personal;file://$MODULE_DIR$/../../../app/src/main/res/layout/main;file://$MODULE_DIR$/../../../app/src/main/res/layout/train;file://$MODULE_DIR$/../../../app/src/main/res/layout;file://$MODULE_DIR$/../../../app/src/main/res;file://$MODULE_DIR$/../../../app/src/debug/res;file://$MODULE_DIR$/../../../app/build/generated/res/rs/debug;file://$MODULE_DIR$/../../../app/build/generated/res/resValues/debug" />
+        <option name="RES_FOLDERS_RELATIVE_PATH" value="file://$MODULE_DIR$/../../../app/src/main/res/layout/datacenter;file://$MODULE_DIR$/../../../app/src/main/res/layout/personal;file://$MODULE_DIR$/../../../app/src/main/res/layout/result;file://$MODULE_DIR$/../../../app/src/main/res/layout/main;file://$MODULE_DIR$/../../../app/src/main/res/layout/train;file://$MODULE_DIR$/../../../app/src/main/res/layout;file://$MODULE_DIR$/../../../app/src/main/res;file://$MODULE_DIR$/../../../app/src/debug/res;file://$MODULE_DIR$/../../../app/build/generated/res/rs/debug;file://$MODULE_DIR$/../../../app/build/generated/res/resValues/debug" />
         <option name="TEST_RES_FOLDERS_RELATIVE_PATH" value="" />
         <option name="ASSETS_FOLDER_RELATIVE_PATH" value="/src/main/assets" />
       </configuration>
@@ -81,6 +81,7 @@
       <sourceFolder url="file://$MODULE_DIR$/../../../app/src/main/res/layout/main" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/../../../app/src/main/res/layout/personal" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/../../../app/src/main/res/layout/train" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../app/src/main/res/layout/result" type="java-resource" />
       <excludeFolder url="file://$MODULE_DIR$/../../../app/.gradle" />
       <excludeFolder url="file://$MODULE_DIR$/../../../app/build" />
     </content>
@@ -116,6 +117,7 @@
     <orderEntry type="library" name="Gradle: com.google.errorprone:error_prone_annotations:2.3.4" level="project" />
     <orderEntry type="library" name="Gradle: com.google.j2objc:j2objc-annotations:1.3" level="project" />
     <orderEntry type="library" name="Gradle: androidx.multidex:multidex:2.0.1@aar" level="project" />
+    <orderEntry type="library" name="Gradle: com.vivian.widgets:TimeLineItemDecoration:1.5@aar" level="project" />
     <orderEntry type="library" name="Gradle: com.github.sarnavakonar:TextWriter:v1.0@aar" level="project" />
     <orderEntry type="library" name="Gradle: com.ramotion.paperonboarding:paper-onboarding:1.1.3@aar" level="project" />
     <orderEntry type="library" name="Gradle: com.github.bmarrdev:android-DecoView-charting:v1.2@aar" level="project" />

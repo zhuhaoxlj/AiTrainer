@@ -15,11 +15,13 @@ import android.widget.TextView;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.alibaba.fastjson.JSON;
 import com.lindum.mlkit.vision.dev.CameraXLivePreviewActivity;
 import com.lindum.mlkit.vision.dev.R;
 import com.lindum.mlkit.vision.dev.entity.PoseEntity;
 import com.lindum.mlkit.vision.dev.utils.FileUtils;
 import com.lindum.mlkit.vision.dev.view.HomePage;
+import com.orhanobut.logger.Logger;
 import com.xuexiang.xui.widget.progress.CircleProgressView;
 import com.xuexiang.xui.widget.progress.HorizontalProgressView;
 
@@ -33,6 +35,7 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -42,10 +45,15 @@ import butterknife.ButterKnife;
  * @date 2022/1/27 8:25
  */
 public class TrainingResult extends AppCompatActivity implements HorizontalProgressView.HorizontalProgressUpdateListener, CircleProgressView.CircleProgressUpdateListener {
-    private Map<String, Integer> poseResultMap = new HashMap<>();
+    // 要存储到本地的分析结果
+    private ArrayList<JSONResultEntity> jsonResultEntitiesArrayList;
+    private final Map<String, Integer> poseResultMap = new HashMap<>();
     public static List<String> resultName = new ArrayList<>();
     public static List<Bitmap> resultImage = new ArrayList<>();
     public static List<String> resultTips = new ArrayList<>();
+    public static List<String> wrongImagePath = new ArrayList<>();
+    // 运动总时长
+    int trainingTotalTimes;
     // 动作组数进度条占比
     int groupsOfPose;
     private ListView listView;
@@ -79,81 +87,107 @@ public class TrainingResult extends AppCompatActivity implements HorizontalProgr
     @BindView(R.id.progress_text_wrong)
     TextView progressTextWrong;
 
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    // 展示结果数组
+    public static ArrayList<ResultEntity> resultEntityList;
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.training_result);
         ButterKnife.bind(this);
+        // 记录训练日记
+        FileUtils.writeStringToFile(CameraXLivePreviewActivity.timeMarkPoint + " 完成训练", HomePage.appFilePath + "/files/analysisReport/", "recordFile.sys", FileUtils.APPEND_TEXT);
+
         Intent intent = getIntent();
-        // 识别结果数组
-        List<ResultEntity> resultEntityList = new ArrayList<>();
-        for (String tips : resultTips) {
-            int index = resultTips.indexOf(tips);
-            tips = index + tips;
-            if (poseResultMap.get(tips) == null) {
-                poseResultMap.put(tips, 1);
-            } else {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                    poseResultMap.replace(tips, poseResultMap.get(tips) + 1);
+        if(intent.getIntExtra("init",0)==0){
+            resultEntityList = new ArrayList<>();
+            for (String tips : resultTips) {
+                int index = resultTips.indexOf(tips);
+                tips = index + tips;
+                if (poseResultMap.get(tips) == null) {
+                    poseResultMap.put(tips, 1);
+                } else {
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                        poseResultMap.replace(tips, poseResultMap.get(tips) + 1);
+                    }
                 }
             }
-        }
-        List<Map.Entry<String, Integer>> list = new ArrayList<>(poseResultMap.entrySet());
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            list.sort(Comparator.comparing(Map.Entry::getValue));
-        }
-        Collections.reverse(list);
-        Map<String, Integer> map2 = new LinkedHashMap<>();
-        for (Map.Entry<String, Integer> entry : list) {
-            map2.put(entry.getKey(), entry.getValue());
-        }
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            map2.forEach((o1, o2) -> {
-                if (o1.length() > 3) {
-                    int index = Integer.parseInt(o1.split("，")[0]);
-                    String commonMistakes = "";
-                    String solveMethod = "";
-                    if (HomePage.poseEntityArrayList.get(getPoseIndexByName(resultName.get(index))).getCommonMistakes().length > 1) {
-                        commonMistakes = HomePage.poseEntityArrayList.get(getPoseIndexByName(resultName.get(index))).getCommonMistakes()[0];
-                        solveMethod = HomePage.poseEntityArrayList.get(getPoseIndexByName(resultName.get(index))).getCommonMistakes()[1].replace("解决：", "");
-                    }
-                    Bitmap rightPoseImage = null;
-                    for (PoseEntity poseEntity : HomePage.poseEntityArrayList) {
-                        if (poseEntity.getPoseName() == resultName.get(index)) {
-                            int indexOfPoseEntityList = HomePage.poseEntityArrayList.indexOf(poseEntity);
-                            rightPoseImage = HomePage.poseLibrarySwiperImageArrayList.get(indexOfPoseEntityList);
+            List<Map.Entry<String, Integer>> list = new ArrayList<>(poseResultMap.entrySet());
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                list.sort(Comparator.comparing(Map.Entry::getValue));
+            }
+            Collections.reverse(list);
+            Map<String, Integer> map2 = new LinkedHashMap<>();
+            for (Map.Entry<String, Integer> entry : list) {
+                map2.put(entry.getKey(), entry.getValue());
+            }
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                map2.forEach((o1, o2) -> {
+                    if (o1.length() > 3) {
+                        int index = Integer.parseInt(o1.split("，")[0]);
+                        String commonMistakes = "";
+                        String solveMethod = "";
+                        if (HomePage.poseEntityArrayList.get(getPoseIndexByName(resultName.get(index))).getCommonMistakes().length > 1) {
+                            commonMistakes = HomePage.poseEntityArrayList.get(getPoseIndexByName(resultName.get(index))).getCommonMistakes()[0];
+                            solveMethod = HomePage.poseEntityArrayList.get(getPoseIndexByName(resultName.get(index))).getCommonMistakes()[1].replace("解决：", "");
                         }
+                        Bitmap rightPoseImage = null;
+                        for (PoseEntity poseEntity : HomePage.poseEntityArrayList) {
+                            if (poseEntity.getPoseName() == resultName.get(index)) {
+                                int indexOfPoseEntityList = HomePage.poseEntityArrayList.indexOf(poseEntity);
+                                rightPoseImage = HomePage.poseRightImageArrayList.get(indexOfPoseEntityList);
+                            }
+                        }
+                        ResultEntity temp = new ResultEntity();
+//                    ResultEntity temp = new ResultEntity(resultName.get(index), "出错" + o2 + "次\n" + commonMistakes + "。" + "\nAi建议：" + "\n" + solveMethod + "。" + resultTips.get(index).substring(1) + "\n", resultImage.get(index), rightPoseImage);
+                        temp.setPoseName(resultName.get(index));
+                        temp.setTips("出错" + o2 + "次\n" + commonMistakes + "。" + "\nAi建议：" + "\n" + solveMethod + "。" + resultTips.get(index).substring(1) + "\n");
+                        temp.setWrongPoseImage(resultImage.get(index));
+                        temp.setRightPoseImage(rightPoseImage);
+                        temp.setWrongPoseImagePath(wrongImagePath.get(index));
+                        resultEntityList.add(temp);
                     }
-                    ResultEntity temp = new ResultEntity(resultName.get(index), "出错" + o2 + "次\n" + commonMistakes + "。" + "\nAi建议：" + "\n" + solveMethod + "。" + resultTips.get(index).substring(1) + "\n", resultImage.get(index), rightPoseImage);
-                    resultEntityList.add(temp);
-                }
-            });
-
+                });
+            }
+            // 将训练结果保存到本地
+            saveTrainingResultToLocal();
         }
 
-        // 将识别结果放入列表数组中
-//        for (String tips : resultTips) {
-//            int index = resultTips.indexOf(tips);
-//            if (tips.length() < 3) {
-//                break;
-//            }
-//            ResultEntity temp = new ResultEntity(resultName.get(index), tips.substring(1, tips.length()), resultImage.get(index), resultImage.get(index));
-//            resultEntityList.add(temp);
-//        }
+        // ResultEntity 转 JSONResultEntity
+        jsonResultEntitiesArrayList = new ArrayList<>();
+        for (ResultEntity resultEntity : resultEntityList) {
+            JSONResultEntity jsonResultEntity = new JSONResultEntity();
+            jsonResultEntity.setPoseName(resultEntity.getPoseName());
+            jsonResultEntity.setTips(resultEntity.getTips());
+            jsonResultEntity.setWrongPoseImagePath(resultEntity.getWrongPoseImagePath());
+            jsonResultEntitiesArrayList.add(jsonResultEntity);
+        }
         // 初始化控件
         listView = findViewById(R.id.resultList);
         // 动作分析列表初始化
         ResultListAdapter resultListAdapter = new ResultListAdapter(this, R.layout.result_list_item, resultEntityList);
         listView.setAdapter(resultListAdapter);
         listView.setOnItemClickListener((adapterView, view, i, l) -> {
-            ImageView imageView = view.findViewById(R.id.wrongPoseImage);
-            imageView.setDrawingCacheEnabled(true);
-            Bitmap bitmap = Bitmap.createBitmap(imageView.getDrawingCache());
-            Intent intent1 = new Intent(TrainingResult.this, ImageDetails.class);
-            ImageDetails.bitmap = bitmap;
-            imageView.setDrawingCacheEnabled(false);
-            startActivity(intent1);
+            ImageView wrongImageView = view.findViewById(R.id.wrongPoseImage);
+            wrongImageView.setOnClickListener(v -> {
+                wrongImageView.setDrawingCacheEnabled(true);
+                Bitmap bitmap = Bitmap.createBitmap(wrongImageView.getDrawingCache());
+                Logger.e("这是第" + l + "张图片");
+                Intent intent1 = new Intent(TrainingResult.this, ImageDetails.class);
+                ImageDetails.bitmap = bitmap;
+                wrongImageView.setDrawingCacheEnabled(false);
+                startActivity(intent1);
+            });
+            ImageView rightImageView = view.findViewById(R.id.rightPoseImage);
+            rightImageView.setOnClickListener(v -> {
+                rightImageView.setDrawingCacheEnabled(true);
+                Bitmap bitmap = Bitmap.createBitmap(rightImageView.getDrawingCache());
+                Logger.e("这是第" + l + "张图片");
+                Intent intent1 = new Intent(TrainingResult.this, ImageDetails.class);
+                ImageDetails.bitmap = bitmap;
+                rightImageView.setDrawingCacheEnabled(false);
+                startActivity(intent1);
+            });
         });
 
         //  初始化控件
@@ -165,17 +199,16 @@ public class TrainingResult extends AppCompatActivity implements HorizontalProgr
         progressViewCircleMain.setProgressViewUpdateListener(this);
 
         // 获取运动总时长
-        int data = intent.getIntExtra("totalTrainingTime", 0);
+        trainingTotalTimes = intent.getIntExtra("totalTrainingTime", 0);
         // 获取动作组数
         groupsOfPose = intent.getIntExtra("groupsOfPose", 0);
-        String minute = data / 60 + "'";
-        String time = (data / 60 == 0 ? "" : minute) + data % 60 + "\"";
+        String minute = trainingTotalTimes / 60 + "'";
+        String time = (trainingTotalTimes / 60 == 0 ? "" : minute) + trainingTotalTimes % 60 + "\"";
 
         progressViewCircleMain.setGraduatedEnabled(true);
         progressViewCircleMain.setProgressViewUpdateListener(this);
-        startProcessBar();
-        // 将训练结果保存到本地
-        saveTrainingResultToLocal();
+//        startProcessBar();
+
     }
 
     /**
@@ -184,7 +217,10 @@ public class TrainingResult extends AppCompatActivity implements HorizontalProgr
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public void saveTrainingResultToLocal() {
         FileUtils.createFile(CameraXLivePreviewActivity.imageSavePath + "/resultData.sys", FileUtils.CREATE_FILE);
-//        FileUtils.writeStringToFile();
+        // 将评分写入本地文件
+        FileUtils.writeStringToFile("123 456 789 " + new Random().nextInt(), CameraXLivePreviewActivity.imageSavePath, "resultData.sys", FileUtils.OVERWRITE_TEXT);
+        // 将动作分析结果保存到本地文件
+        FileUtils.writeStringToFile(JSON.toJSONString(jsonResultEntitiesArrayList), CameraXLivePreviewActivity.imageSavePath, "analysisReport.json", FileUtils.OVERWRITE_TEXT);
     }
 
     /**
@@ -193,6 +229,7 @@ public class TrainingResult extends AppCompatActivity implements HorizontalProgr
      * @param poseName 动作名称
      * @return 动作下标
      */
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public int getPoseIndexByName(String poseName) {
         for (PoseEntity poseEntity : HomePage.poseEntityArrayList) {
             int index = HomePage.poseEntityArrayList.indexOf(poseEntity);
@@ -237,9 +274,29 @@ public class TrainingResult extends AppCompatActivity implements HorizontalProgr
      */
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public void startProcessBar() {
-        // 动作组数
         int poseGroups = CameraXLivePreviewActivity.poseEntityList.size();
-        hpvTime.startProgressAnimation();
+        int scores = 60 + (int) (40 * (1 - ((float) resultImage.size() / (20 * poseGroups))));
+        if (trainingTotalTimes <= 100) {
+            // 设置训练时长进度条
+            hpvTime.setEndProgress(trainingTotalTimes);
+            hpvTime.startProgressAnimation();
+        }
+        float calSum = 0;
+        // 计算卡路里
+        int index = 0;
+        for (PoseEntity poseEntity : CameraXLivePreviewActivity.poseEntityList) {
+            if (index > CameraXLivePreviewActivity.nowPoseIndex) {
+                break;
+            }
+            index++;
+            if (poseEntity.getPoseType() == 1) {
+                calSum += poseEntity.getPoseProcessValue() * poseEntity.getPoseBurnCal();
+            } else {
+                calSum += ((float) trainingTotalTimes / 60) * poseEntity.getGetPoseBurnCalPerMin();
+            }
+        }
+        // 动作组数
+
         float groupsOfPoseProportion = 0;
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
             groupsOfPoseProportion = 100 * ((float) groupsOfPose / (float) poseGroups);
@@ -247,11 +304,18 @@ public class TrainingResult extends AppCompatActivity implements HorizontalProgr
         // 设置动作组数进度条
         hpvGroup.setEndProgress(groupsOfPoseProportion);
         hpvGroup.startProgressAnimation();
-        hpvCal.startProgressAnimation();
-        // 设置错误动作数进度条
+        if (calSum <= 100) {
+            // 设置卡路里进度条
+            hpvCal.setEndProgress(calSum);
+            hpvCal.startProgressAnimation();
+        }
         float wrongPoseDecimal = 100 * ((resultImage.size()) / ((float) poseGroups * 20.0f));
-        hpvWrong.setEndProgress(wrongPoseDecimal);
-        hpvWrong.startProgressAnimation();
+        if (wrongPoseDecimal <= 100) {
+            // 设置错误动作数进度条
+            hpvWrong.setEndProgress(wrongPoseDecimal);
+            hpvWrong.startProgressAnimation();
+        }
+        progressViewCircleMain.setEndProgress(scores);
         progressViewCircleMain.startProgressAnimation();
     }
 
@@ -279,10 +343,10 @@ public class TrainingResult extends AppCompatActivity implements HorizontalProgr
 
     }
 
+    // todo 卡路里进度条文本
     @SuppressLint("SetTextI18n")
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
-    // todo 卡路里进度条
     public void onHorizontalProgressUpdate(View view, float progress) {
         int progressInt = (int) progress;
         // 单位符号
@@ -291,7 +355,7 @@ public class TrainingResult extends AppCompatActivity implements HorizontalProgr
                 progressTextTime.setText(progressInt + "'");
                 break;
             case R.id.hpv_wrong:
-                progressTextWrong.setText((int)(progress*20*CameraXLivePreviewActivity.poseEntityList.size())/100 + " 个");
+                progressTextWrong.setText((int) (progress * 20 * CameraXLivePreviewActivity.poseEntityList.size()) / 100 + " 个");
                 break;
             case R.id.hpv_cal:
                 progressTextCal.setText(progressInt + " kcal");

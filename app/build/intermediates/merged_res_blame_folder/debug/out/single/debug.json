@@ -12,6 +12,14 @@
         "source": "/Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/res/drawable-ldpi/monkey.png"
     },
     {
+        "merged": "/Users/markgosling/Documents/Project/Android/AiTrainer/app/build/intermediates/merged_res/debug/drawable_pink_ball.xml.flat",
+        "source": "/Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/res/drawable/pink_ball.xml"
+    },
+    {
+        "merged": "/Users/markgosling/Documents/Project/Android/AiTrainer/app/build/intermediates/merged_res/debug/drawable-ldpi_pink_ball.xml.flat",
+        "source": "/Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/res/drawable-ldpi/pink_ball.xml"
+    },
+    {
         "merged": "/Users/markgosling/Documents/Project/Android/AiTrainer/app/build/intermediates/merged_res/debug/layout_page2.xml.flat",
         "source": "/Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/res/layout/main/layout/page2.xml"
     },
@@ -22,6 +30,14 @@
     {
         "merged": "/Users/markgosling/Documents/Project/Android/AiTrainer/app/build/intermediates/merged_res/debug/mipmap-mdpi_library_gray.png.flat",
         "source": "/Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/res/mipmap-mdpi/library_gray.png"
+    },
+    {
+        "merged": "/Users/markgosling/Documents/Project/Android/AiTrainer/app/build/intermediates/merged_res/debug/drawable-ldpi_ball.xml.flat",
+        "source": "/Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/res/drawable-ldpi/ball.xml"
+    },
+    {
+        "merged": "/Users/markgosling/Documents/Project/Android/AiTrainer/app/build/intermediates/merged_res/debug/drawable-ldpi_green_ball.xml.flat",
+        "source": "/Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/res/drawable-ldpi/green_ball.xml"
     },
     {
         "merged": "/Users/markgosling/Documents/Project/Android/AiTrainer/app/build/intermediates/merged_res/debug/layout_home_page.xml.flat",
@@ -56,6 +72,10 @@
         "source": "/Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/res/drawable-xxxhdpi/ic_settings_white_24dp.png"
     },
     {
+        "merged": "/Users/markgosling/Documents/Project/Android/AiTrainer/app/build/intermediates/merged_res/debug/drawable-ldpi_time_line.xml.flat",
+        "source": "/Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/res/drawable-ldpi/time_line.xml"
+    },
+    {
         "merged": "/Users/markgosling/Documents/Project/Android/AiTrainer/app/build/intermediates/merged_res/debug/layout_zjj.xml.flat",
         "source": "/Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/res/layout/zjj.xml"
     },
@@ -88,12 +108,24 @@
         "source": "/Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/res/layout/main/layout/homepage.xml"
     },
     {
+        "merged": "/Users/markgosling/Documents/Project/Android/AiTrainer/app/build/intermediates/merged_res/debug/drawable-ldpi_purple_bg.xml.flat",
+        "source": "/Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/res/drawable-ldpi/purple_bg.xml"
+    },
+    {
         "merged": "/Users/markgosling/Documents/Project/Android/AiTrainer/app/build/intermediates/merged_res/debug/drawable-xxhdpi_alarm.png.flat",
         "source": "/Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/res/drawable-xxhdpi/alarm.png"
     },
     {
+        "merged": "/Users/markgosling/Documents/Project/Android/AiTrainer/app/build/intermediates/merged_res/debug/drawable_yellow_ball.xml.flat",
+        "source": "/Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/res/drawable/yellow_ball.xml"
+    },
+    {
         "merged": "/Users/markgosling/Documents/Project/Android/AiTrainer/app/build/intermediates/merged_res/debug/layout_data_center.xml.flat",
         "source": "/Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/res/layout/datacenter/layout/data_center.xml"
+    },
+    {
+        "merged": "/Users/markgosling/Documents/Project/Android/AiTrainer/app/build/intermediates/merged_res/debug/layout_pop_item.xml.flat",
+        "source": "/Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/res/layout/result/layout/pop_item.xml"
     },
     {
         "merged": "/Users/markgosling/Documents/Project/Android/AiTrainer/app/build/intermediates/merged_res/debug/mipmap-xxhdpi_q3.jpg.flat",
@@ -128,8 +160,20 @@
         "source": "/Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/res/mipmap-mdpi/personal.png"
     },
     {
+        "merged": "/Users/markgosling/Documents/Project/Android/AiTrainer/app/build/intermediates/merged_res/debug/drawable_time_line.xml.flat",
+        "source": "/Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/res/drawable/time_line.xml"
+    },
+    {
+        "merged": "/Users/markgosling/Documents/Project/Android/AiTrainer/app/build/intermediates/merged_res/debug/layout_dot_timeline_layout.xml.flat",
+        "source": "/Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/res/layout/result/layout/dot_timeline_layout.xml"
+    },
+    {
         "merged": "/Users/markgosling/Documents/Project/Android/AiTrainer/app/build/intermediates/merged_res/debug/drawable-xxhdpi_personal_image.png.flat",
         "source": "/Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/res/drawable-xxhdpi/personal_image.png"
+    },
+    {
+        "merged": "/Users/markgosling/Documents/Project/Android/AiTrainer/app/build/intermediates/merged_res/debug/drawable-ldpi_pop_right.9.png.flat",
+        "source": "/Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/res/drawable-ldpi/pop_right.9.png"
     },
     {
         "merged": "/Users/markgosling/Documents/Project/Android/AiTrainer/app/build/intermediates/merged_res/debug/drawable_zjj.png.flat",
@@ -162,6 +206,10 @@
     {
         "merged": "/Users/markgosling/Documents/Project/Android/AiTrainer/app/build/intermediates/merged_res/debug/mipmap-xhdpi_aitrainer.png.flat",
         "source": "/Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/res/mipmap-xhdpi/aitrainer.png"
+    },
+    {
+        "merged": "/Users/markgosling/Documents/Project/Android/AiTrainer/app/build/intermediates/merged_res/debug/layout_training_history.xml.flat",
+        "source": "/Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/res/layout/result/layout/training_history.xml"
     },
     {
         "merged": "/Users/markgosling/Documents/Project/Android/AiTrainer/app/build/intermediates/merged_res/debug/drawable-ldpi_loading1.png.flat",
@@ -336,6 +384,14 @@
         "source": "/Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/res/mipmap-mdpi/training.png"
     },
     {
+        "merged": "/Users/markgosling/Documents/Project/Android/AiTrainer/app/build/intermediates/merged_res/debug/drawable-ldpi_pop_left.9.png.flat",
+        "source": "/Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/res/drawable-ldpi/pop_left.9.png"
+    },
+    {
+        "merged": "/Users/markgosling/Documents/Project/Android/AiTrainer/app/build/intermediates/merged_res/debug/drawable-ldpi_yellow_ball.xml.flat",
+        "source": "/Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/res/drawable-ldpi/yellow_ball.xml"
+    },
+    {
         "merged": "/Users/markgosling/Documents/Project/Android/AiTrainer/app/build/intermediates/merged_res/debug/drawable-hdpi_three_d.png.flat",
         "source": "/Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/res/drawable-hdpi/three_d.png"
     },
@@ -346,6 +402,10 @@
     {
         "merged": "/Users/markgosling/Documents/Project/Android/AiTrainer/app/build/intermediates/merged_res/debug/mipmap-xxhdpi_ic_launcher.png.flat",
         "source": "/Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/res/mipmap-xxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/markgosling/Documents/Project/Android/AiTrainer/app/build/intermediates/merged_res/debug/drawable_green_ball.xml.flat",
+        "source": "/Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/res/drawable/green_ball.xml"
     },
     {
         "merged": "/Users/markgosling/Documents/Project/Android/AiTrainer/app/build/intermediates/merged_res/debug/mipmap-mdpi_social_gray.png.flat",
@@ -430,6 +490,10 @@
     {
         "merged": "/Users/markgosling/Documents/Project/Android/AiTrainer/app/build/intermediates/merged_res/debug/drawable-xxxhdpi_ic_switch_camera_white_48dp_inset.png.flat",
         "source": "/Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/res/drawable-xxxhdpi/ic_switch_camera_white_48dp_inset.png"
+    },
+    {
+        "merged": "/Users/markgosling/Documents/Project/Android/AiTrainer/app/build/intermediates/merged_res/debug/drawable_ball.xml.flat",
+        "source": "/Users/markgosling/Documents/Project/Android/AiTrainer/app/src/main/res/drawable/ball.xml"
     },
     {
         "merged": "/Users/markgosling/Documents/Project/Android/AiTrainer/app/build/intermediates/merged_res/debug/mipmap-xhdpi_ic_launcher.png.flat",
