@@ -58,6 +58,7 @@ import com.lindum.mlkit.vision.dev.sql.UpdateUserInfo;
 import com.lindum.mlkit.vision.dev.utils.DeviceIdUtils;
 import com.lindum.mlkit.vision.dev.utils.FileUtils;
 import com.lindum.mlkit.vision.dev.utils.GetPermissionUtils;
+import com.lindum.mlkit.vision.dev.utils.PictureUtils;
 import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.Logger;
 import com.vivian.timelineitemdecoration.itemdecoration.DotItemDecoration;
@@ -146,7 +147,7 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
     ArrayList<String> events = new ArrayList<>();
     // 训练历史记录 end
     @Titles
-    private static final String[] TABBAR_TITLES = {"主页", "社区", "动作库", "个人"};
+    private static final String[] TABBAR_TITLES = {"主页", "日记", "动作库", "个人"};
     @SeleIcons
     private static final int[] M_SELE_ICONS = {R.mipmap.home, R.mipmap.social, R.mipmap.library, R.mipmap.personal};
     @NorIcons
@@ -184,6 +185,8 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
         FileUtils.createFile(appFilePath + "/files/analysisReport/" + today.toString(), FileUtils.CREATE_FOLDER);
         // 创建个人信息数据文件夹
         FileUtils.createFile(appFilePath + "/files/personalData/", FileUtils.CREATE_FOLDER);
+        // 创建动作库文件夹
+        FileUtils.createFile(appFilePath + "/files/poseLibrary/", FileUtils.CREATE_FOLDER);
         // 加载中图片设置
         loadingBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.loading3);
         isFirstUseApp = isFirstUseApp();
@@ -260,6 +263,27 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
                 if (msg.what == 0x1233) {
                     // 主线程更新动作库图片
                     initPoseLibrary();
+                } else if (msg.what == 0x1234 && FileUtils.isPathEmpty(appFilePath + "/files/poseLibrary/")) {
+
+                    new Thread() {
+                        @Override
+                        public void run() {
+                            super.run();
+                            try {
+                                Thread.sleep(30000);
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                            for (Bitmap temp : poseRightImageArrayList) {
+                                int bitmapIndex = poseRightImageArrayList.indexOf(temp);
+                                PictureUtils.saveBitmap(appFilePath + "/files/poseLibrary", bitmapIndex + "-right", temp);
+                                PictureUtils.saveBitmap(appFilePath + "/files/poseLibrary", bitmapIndex + "", poseLibrarySwiperImageArrayList.get(bitmapIndex));
+                                if (poseDetailFeelingImageArrayList.get(bitmapIndex) != null) {
+                                    PictureUtils.saveBitmap(appFilePath + "/files/poseLibrary", bitmapIndex + "-detail", poseDetailFeelingImageArrayList.get(bitmapIndex));
+                                }
+                            }
+                        }
+                    }.start();
                 }
             }
         };
@@ -269,9 +293,9 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
                 super.run();
                 ControlTable controlTable = new ControlTable();
                 poseEntityArrayList = controlTable.readTable();
-                // 把动作库的图片连接转换为图片
+                // 把动作库的图片链接转换为图片
                 initSwiperImage();
-                // 每隔500ms更新一次动作库，知道封面图片获取完毕
+                // 每隔500ms更新一次动作库，直到封面图片获取完毕
                 boolean reflash = true;
                 while (reflash) {
                     try {
@@ -289,6 +313,7 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
                         }
                     }
                 }
+                handler.sendEmptyMessage(0x1234);
             }
         }.start();
         // 初始化训练历史记录
@@ -360,7 +385,8 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
         mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
             @Override
-            public boolean onInterceptTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) { ;
+            public boolean onInterceptTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
+                ;
                 return false;
             }
 
@@ -495,11 +521,11 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
                 .fitWindowsAuto()
                 .focusOn(guideView1)
                 .build();
-        // 社区
+        // 日记
         LinearLayout guideView2 = findViewById(R.id.guideView2);
         GuideCaseView guideCaseView2 = new GuideCaseView.Builder(HomePage.this)
                 .focusCircleRadiusFactor(0.8)
-                .title("社区")
+                .title("日记")
                 .focusBorderColor(Color.GREEN)
                 .titleStyle(0, Gravity.CENTER)
                 .fitWindowsAuto()
@@ -544,27 +570,41 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
             poseDetailFeelingImageArrayList.add(null);
             poseRightImageArrayList.add(null);
         }
+        // // TODO: 2022/3/27  如果存在本地图片
+        boolean isCacheExist = !FileUtils.isPathEmpty(appFilePath + "/files/poseLibrary/");
         for (PoseEntity poseEntity : poseEntityArrayList) {
             int indexOfPoseEntityList = poseEntityArrayList.indexOf(poseEntity);
             new Thread() {
                 @Override
                 public void run() {
                     super.run();
-                    poseLibrarySwiperImageArrayList.set(indexOfPoseEntityList, returnBitMap(poseEntity.getPoseSwiperImageUrl()[0]));
+                    if (!isCacheExist) {
+                        poseLibrarySwiperImageArrayList.set(indexOfPoseEntityList, returnBitMap(poseEntity.getPoseSwiperImageUrl()[0]));
+                    } else {
+                        poseLibrarySwiperImageArrayList.set(indexOfPoseEntityList, PictureUtils.getBitmapFromLocalFile(appFilePath + "/files/poseLibrary/" + indexOfPoseEntityList + ".png"));
+                    }
                 }
             }.start();
             new Thread() {
                 @Override
                 public void run() {
                     super.run();
-                    poseDetailFeelingImageArrayList.set(indexOfPoseEntityList, returnBitMap(poseEntity.getPoseFeelingImage()));
+                    if (!isCacheExist) {
+                        poseDetailFeelingImageArrayList.set(indexOfPoseEntityList, returnBitMap(poseEntity.getPoseFeelingImage()));
+                    } else {
+                        poseDetailFeelingImageArrayList.set(indexOfPoseEntityList, PictureUtils.getBitmapFromLocalFile(appFilePath + "/files/poseLibrary/" + indexOfPoseEntityList + "-detail.png"));
+                    }
                 }
             }.start();
             new Thread() {
                 @Override
                 public void run() {
                     super.run();
-                    poseRightImageArrayList.set(indexOfPoseEntityList, returnBitMap(poseEntity.getPoseSwiperImageUrl()[1]));
+                    if (!isCacheExist) {
+                        poseRightImageArrayList.set(indexOfPoseEntityList, returnBitMap(poseEntity.getPoseSwiperImageUrl()[1]));
+                    } else {
+                        poseRightImageArrayList.set(indexOfPoseEntityList, PictureUtils.getBitmapFromLocalFile(appFilePath + "/files/poseLibrary/" + indexOfPoseEntityList + "-right.png"));
+                    }
                 }
             }.start();
         }
@@ -854,7 +894,7 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
             }
             // 设置今日步数
             todaySteps.setText(mStepCounter + " 步");
-            // 创建今日文件夹，存放今天产生的数据
+
 
         }
 

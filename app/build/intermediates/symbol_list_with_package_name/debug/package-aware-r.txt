@@ -107,6 +107,8 @@ animator mtrl_fab_transformation_sheet_collapse_spec
 animator mtrl_fab_transformation_sheet_expand_spec
 array branch_integer_array
 array branch_string_array
+array colors
+array icons
 array lunar_first_of_month
 array lunar_str
 array month_string_array
@@ -361,6 +363,8 @@ attr buttonStyle
 attr buttonStyleSmall
 attr buttonTint
 attr buttonTintMode
+attr button_colors
+attr button_icons
 attr cBackgroundColor
 attr cBackgroundDrawableRes
 attr cBothDividerLineMarginLeft
@@ -665,6 +669,7 @@ attr dialogCornerRadius
 attr dialogPreferredPadding
 attr dialogTheme
 attr displayOptions
+attr distance
 attr divider
 attr dividerHorizontal
 attr dividerPadding
@@ -686,6 +691,9 @@ attr drawerArrowStyle
 attr dropDownListViewStyle
 attr dropdownListPreferredItemHeight
 attr duration
+attr duration_close
+attr duration_open
+attr duration_ring
 attr dv_arc_gravity_horizontal
 attr dv_arc_gravity_vertical
 attr dv_lineWidth
@@ -855,6 +863,9 @@ attr iconSize
 attr iconStartPadding
 attr iconTint
 attr iconTintMode
+attr icon_close
+attr icon_color
+attr icon_menu
 attr iconifiedByDefault
 attr iiv_icon_res
 attr iiv_icon_scale
@@ -1029,6 +1040,7 @@ attr listPreferredItemPaddingStart
 attr lockWave
 attr logo
 attr logoDescription
+attr long_click_duration_ring
 attr lunar_text_size
 attr lv_arc_degree
 attr lv_arc_single
@@ -3625,14 +3637,20 @@ drawable googleg_standard_color_18
 drawable green_ball
 drawable hotels
 drawable ic_clock_black_24dp
+drawable ic_close_black_24dp
+drawable ic_home_white_24dp
 drawable ic_icon1
 drawable ic_icon2
 drawable ic_icon3
 drawable ic_keyboard_black_24dp
+drawable ic_menu_black_24dp
 drawable ic_mtrl_checked_circle
 drawable ic_mtrl_chip_checked_black
 drawable ic_mtrl_chip_checked_circle
 drawable ic_mtrl_chip_close_circle
+drawable ic_notifications_white_24dp
+drawable ic_place_white_24dp
+drawable ic_search_white_24dp
 drawable ic_settings_white_24dp
 drawable ic_switch_camera_white_48dp
 drawable ic_switch_camera_white_48dp_inset
@@ -4040,6 +4058,8 @@ id chip3
 id chip_group
 id chronometer
 id circle_center
+id circle_menu
+id circle_menu_main_button
 id circular
 id clear
 id clear_text
@@ -4452,6 +4472,7 @@ id right_center
 id right_icon
 id right_side
 id ring
+id ring_view
 id rl_root
 id rl_tool
 id rootView
@@ -4803,6 +4824,7 @@ layout change_nickname
 layout change_profile
 layout chat_item
 layout circle_button
+layout circle_menu
 layout custom_dialog
 layout cv_layout_calendar_view
 layout cv_week_bar
@@ -6201,6 +6223,7 @@ styleable CameraView captureMode flash lensFacing pinchToZoomEnabled scaleType
 styleable CardView android_minWidth android_minHeight cardBackgroundColor cardCornerRadius cardElevation cardMaxElevation cardPreventCornerOverlap cardUseCompatPadding contentPadding contentPaddingBottom contentPaddingLeft contentPaddingRight contentPaddingTop
 styleable Chip android_textAppearance android_textSize android_textColor android_ellipsize android_maxWidth android_text android_checkable checkedIcon checkedIconEnabled checkedIconTint checkedIconVisible chipBackgroundColor chipCornerRadius chipEndPadding chipIcon chipIconEnabled chipIconSize chipIconTint chipIconVisible chipMinHeight chipMinTouchTargetSize chipStartPadding chipStrokeColor chipStrokeWidth chipSurfaceColor closeIcon closeIconEnabled closeIconEndPadding closeIconSize closeIconStartPadding closeIconTint closeIconVisible ensureMinTouchTargetSize hideMotionSpec iconEndPadding iconStartPadding rippleColor shapeAppearance shapeAppearanceOverlay showMotionSpec textEndPadding textStartPadding
 styleable ChipGroup checkedChip chipSpacing chipSpacingHorizontal chipSpacingVertical selectionRequired singleLine singleSelection
+styleable CircleMenuView button_colors button_icons distance duration_close duration_open duration_ring icon_close icon_color icon_menu long_click_duration_ring
 styleable CircleProgressBar animTime antiAlias arcColors arcWidth bgArcColor bgArcWidth hint hintColor hintSize maxValue precision startAngle sweepAngle textOffsetPercentInRadius unit unitColor unitSize value valueColor valueSize
 styleable CircleProgressView cpv_animate_type cpv_circle_broken cpv_end_color cpv_end_progress cpv_isFilled cpv_isGraduated cpv_isTracked cpv_progress_duration cpv_progress_textColor cpv_progress_textSize cpv_progress_textVisibility cpv_progress_width cpv_scaleZone_corner_radius cpv_scaleZone_length cpv_scaleZone_padding cpv_scaleZone_width cpv_start_color cpv_start_progress cpv_track_color cpv_track_width
 styleable CircularProgressIndicator indicatorDirectionCircular indicatorInset indicatorSize

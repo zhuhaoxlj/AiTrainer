@@ -13,10 +13,12 @@ import android.os.Build.VERSION_CODES;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
+import android.os.Message;
 import android.os.StrictMode;
 import android.speech.tts.TextToSpeech;
 import android.util.Log;
 import android.util.Size;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
@@ -41,6 +43,7 @@ import androidx.camera.core.ImageAnalysis;
 import androidx.camera.core.Preview;
 import androidx.camera.lifecycle.ProcessCameraProvider;
 import androidx.camera.view.PreviewView;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.app.ActivityCompat;
 import androidx.core.app.ActivityCompat.OnRequestPermissionsResultCallback;
 import androidx.core.content.ContextCompat;
@@ -64,6 +67,7 @@ import com.lindum.mlkit.vision.dev.utils.FileUtils;
 import com.lindum.mlkit.vision.dev.view.HomePage;
 import com.lindum.mlkit.vision.dev.view.PoseDetailsActivity;
 import com.orhanobut.logger.Logger;
+import com.ramotion.circlemenu.CircleMenuView;
 import com.xuexiang.xui.XUI;
 import com.xuexiang.xui.widget.dialog.materialdialog.MaterialDialog;
 
@@ -94,7 +98,7 @@ import java.util.Random;
 public final class CameraXLivePreviewActivity extends AppCompatActivity
         implements OnRequestPermissionsResultCallback,
         OnItemSelectedListener,
-        CompoundButton.OnCheckedChangeListener, QuickShot.QuickShotListener {
+        CompoundButton.OnCheckedChangeListener, QuickShot.QuickShotListener, View.OnTouchListener {
     // TTS 语音助手
     private TextToSpeech textToSpeech;
     // 权限请求变量 todo
@@ -121,6 +125,7 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
     Button nextPoseImageButton;
     // ml kit 绘图层
     private GraphicOverlay graphicOverlay;
+
     @Nullable
     // todo
     private ProcessCameraProvider cameraProvider;
@@ -184,8 +189,15 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
     public static String imageSavePath;
     // 当前时间戳
     public static long timeMarkPoint;
+    // 环形按钮
+    CircleMenuView circleMenuView;
+    Runnable mLongPressRunnable;
+    int mLastMotionX, mLastMotionY;
+    boolean isLongPress;
+    boolean isMoved;
+
     @RequiresApi(api = VERSION_CODES.O)
-    @SuppressLint("SetTextI18n")
+    @SuppressLint({"SetTextI18n", "ClickableViewAccessibility"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -210,7 +222,12 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
         init();
         // 隐藏状态栏
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        mLongPressRunnable = () -> handler.sendMessage(handler.obtainMessage(1));
 
+
+        // 设置点击监听事件获取点击位置
+        ConstraintLayout rootView = findViewById(R.id.rootView);
+        rootView.setOnTouchListener(this);
 
         // SD 卡根目录
         String sdPath = Environment.getExternalStorageDirectory().getPath();
@@ -253,29 +270,6 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
 
         nowPoseName = poseEntityList.get(nowPoseIndex).getPoseName();
 
-//        String sdPath1 = Environment.getExternalStorageDirectory().getPath();
-//            // 姿态数据工具类
-//        PoseDataUtils.writeJSON2Loacl(poseEntityList, sdPath1 + "/AiTrainer/poseData123.json");
-//        Handler mHandler = new Handler();
-//        Runnable r = new Runnable() {
-//            @Override
-//            public void run() {
-////                if (count > 5) {
-//////                    Log.e("Tips", "太差劲了");
-////                    Toast.makeText(CameraXLivePreviewActivity.this, "非常棒", Toast.LENGTH_SHORT).show();
-////                    count = 0;
-////                }
-//                Log.e("count", (int) count + "");
-//                //do something
-//                //每隔1s循环执行run方法
-//                mHandler.postDelayed(this, 800);
-//            }
-//        };
-//
-//
-//        mHandler.postDelayed(r, 100);//延时100毫秒
-
-
         // 跳转至结果界面
         Button button = findViewById(R.id.analysisResult);
         button.setOnClickListener(view -> {
@@ -291,9 +285,6 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
         // 启动截图定时器
         getScreenCut();
 
-        // 后台处理图片
-//        ProcessImage processImage = new ProcessImage(findViewById(R.id.testImage));
-//        processImage.processImage();
 
         previewView = findViewById(R.id.preview_view);
         if (previewView == null) {
@@ -392,6 +383,56 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
         }
     }
 
+    @Override
+    public boolean onTouch(View v, MotionEvent event) {
+
+        int x = (int) event.getX(0);
+        int y = (int) event.getY(0);
+        switch (event.getAction()) {
+            /**
+             * 点击的开始位置
+             */
+            case MotionEvent.ACTION_DOWN:
+                circleMenuView.close(false);
+                isLongPress = false;
+                isMoved = false;
+                mLastMotionX = x;
+                mLastMotionY = y;
+                Logger.e("结束位置：(" + event.getX() + "," + event.getY());
+                circleMenuView.setX(event.getX() - 400);
+                circleMenuView.setY(event.getY() - 400);
+                handler.postDelayed(mLongPressRunnable, 300);
+                circleMenuView.setVisibility(View.INVISIBLE);
+                break;
+            /**
+             * 触屏实时位置
+             */
+            case MotionEvent.ACTION_MOVE:
+                if (isMoved)
+                    break;
+                if (Math.abs(mLastMotionX - x) > 50
+                        || Math.abs(mLastMotionY - y) > 50) {
+                    isMoved = true;
+                    handler.removeCallbacks(mLongPressRunnable);
+                }
+                break;
+            /**
+             * 离开屏幕的位置
+             */
+            case MotionEvent.ACTION_UP:
+                handler.removeCallbacks(mLongPressRunnable);
+                break;
+            default:
+                break;
+        }
+        /**
+         *  注意返回值
+         *  true：view继续响应Touch操作；
+         *  false：view不再响应Touch操作，故此处若为false，只能显示起始位置，不能显示实时位置和结束位置
+         */
+        return true;
+    }
+
     @RequiresApi(api = VERSION_CODES.O)
     public void init() {
         // 初始化变量
@@ -401,7 +442,7 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
         poseEntityList = new ArrayList<>();
         pose1 = false;
         // 创建截图文件夹
-        timeMarkPoint = (long) (System.currentTimeMillis() / 1000);
+        timeMarkPoint = System.currentTimeMillis() / 1000;
         imageSavePath = HomePage.appFilePath + "/files/analysisReport/" + LocalDate.now().toString() + "/" + timeMarkPoint + "/";
         FileUtils.createFile(imageSavePath, FileUtils.CREATE_FOLDER);
         // 初始化组件
@@ -414,6 +455,57 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
         prePoseButton = findViewById(R.id.preButton);
         prePoseImageButton = findViewById(R.id.prePoseImage);
         nextPoseImageButton = findViewById(R.id.nextPoseImage);
+        circleMenuView = findViewById(R.id.circle_menu);
+        circleMenuView.setVisibility(View.INVISIBLE);
+        circleMenuView.setEventListener(new CircleMenuView.EventListener() {
+            @Override
+            public void onMenuOpenAnimationStart(@NonNull CircleMenuView view) {
+                Log.d("D", "onMenuOpenAnimationStart");
+            }
+
+            @Override
+            public void onMenuOpenAnimationEnd(@NonNull CircleMenuView view) {
+                Log.d("D", "onMenuOpenAnimationEnd");
+            }
+
+            @Override
+            public void onMenuCloseAnimationStart(@NonNull CircleMenuView view) {
+                Log.d("D", "onMenuCloseAnimationStart");
+            }
+
+            @Override
+            public void onMenuCloseAnimationEnd(@NonNull CircleMenuView view) {
+                Log.d("D", "onMenuCloseAnimationEnd");
+            }
+
+            @Override
+            public void onButtonClickAnimationStart(@NonNull CircleMenuView view, int index) {
+                Log.d("D", "onButtonClickAnimationStart| index: " + index);
+            }
+
+            @Override
+            public void onButtonClickAnimationEnd(@NonNull CircleMenuView view, int index) {
+                Log.d("D", "onButtonClickAnimationEnd| index: " + index);
+                circleMenuView.setVisibility(View.INVISIBLE);
+            }
+
+            @Override
+            public boolean onButtonLongClick(@NonNull CircleMenuView view, int index) {
+                Log.d("D", "onButtonLongClick| index: " + index);
+                return true;
+            }
+
+            @Override
+            public void onButtonLongClickAnimationStart(@NonNull CircleMenuView view, int index) {
+                Log.d("D", "onButtonLongClickAnimationStart| index: " + index);
+            }
+
+            @Override
+            public void onButtonLongClickAnimationEnd(@NonNull CircleMenuView view, int index) {
+                Log.d("D", "onButtonLongClickAnimationEnd| index: " + index);
+                circleMenuView.setVisibility(View.INVISIBLE);
+            }
+        });
         LinearLayout explainButton = findViewById(R.id.explain);
         explainButton.setOnClickListener(view -> {
             Intent intent = new Intent(CameraXLivePreviewActivity.this, PoseDetailsActivity.class);
@@ -598,6 +690,20 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
         // Do nothing.
     }
 
+    @SuppressLint("HandlerLeak")
+    private final Handler handler = new Handler() {
+        @SuppressLint("HandlerLeak")
+        @Override
+        public void handleMessage(Message msg) {
+            if (msg.what == 1) {
+                circleMenuView.setVisibility(View.VISIBLE);
+                circleMenuView.open(true);
+            } else {
+
+            }
+        }
+    };
+
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
         if (cameraProvider == null) {
@@ -639,6 +745,13 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
         if (imageProcessor != null) {
             imageProcessor.stop();
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        mHandler3.removeCallbacks(r3);
+        mHandler2.removeCallbacks(r2);
     }
 
     @Override

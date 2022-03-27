@@ -10,7 +10,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -66,7 +65,6 @@ public class DotTimeLineAdapter extends RecyclerView.Adapter<DotTimeLineAdapter.
         holder.time.setTextColor(colors[position % colors.length]);
         // 添加点击监听事件
         holder.itemView.setOnClickListener(v -> {
-            Logger.e("这是第" + position + "个日记" + "--时间戳为：" + mList.get(position).getTime());
             String poseDataPath = HomePage.appFilePath + "/files/analysisReport/" + Util.LongtoStringFormat(1000 * mList.get(position).getTime()).split(" ")[0].replace(".", "-") + "/" + mList.get(position).getTime() + "";
             if (new File(poseDataPath).exists() && new File(poseDataPath + "/analysisReport.json").exists()) {
                 Logger.e("动作数据存在");
@@ -98,8 +96,6 @@ public class DotTimeLineAdapter extends RecyclerView.Adapter<DotTimeLineAdapter.
                 Intent intent = new Intent(mContext, TrainingResult.class);
                 intent.putExtra("init",1);
                 mContext.startActivity(intent);
-            } else {
-                Toast.makeText(mContext, "动作结果数据不存在或者已损坏", Toast.LENGTH_SHORT).show();
             }
         });
     }

@@ -11,7 +11,6 @@ android {
                     'src/main/res/layout/result',
                     'src/main/res/layout/main',
                     'src/main/res/layout/train',
-                    'src/main/res/layout',
                     'src/main/res'
             ]
         }
@@ -71,6 +70,8 @@ repositories {
 }
 
 dependencies {
+    // 环形按钮
+    implementation 'com.ramotion.circlemenu:circle-menu:0.3.2'
     // 纵向时间轴
     implementation 'com.vivian.widgets:TimeLineItemDecoration:1.5'
     // 书写文字

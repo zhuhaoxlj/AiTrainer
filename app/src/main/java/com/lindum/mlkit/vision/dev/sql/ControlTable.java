@@ -5,6 +5,7 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.lindum.mlkit.vision.dev.entity.PoseEntity;
 import com.lindum.mlkit.vision.dev.posedetector.PosePart;
+import com.orhanobut.logger.Logger;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -43,15 +44,15 @@ public class ControlTable {
             // 创建表
             statement = connection.createStatement();
             if (statement.executeUpdate(createTable) == 0) {
-                System.out.println("成功创建表");
+                Logger.e("成功创建表");
             } else {
-                System.out.println("创建失败");
+                Logger.e("创建失败");
             }
             // 关闭连接
             statement.close();
             connection.close();
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            Logger.e(e.getMessage());
         }
     }
 
@@ -66,15 +67,15 @@ public class ControlTable {
             // 创建表
             statement = connection.createStatement();
             if (statement.executeUpdate(addField) == 0) {
-                System.out.println("成功增加字段");
+                Logger.e("成功增加字段");
             } else {
-                System.out.println("增加失败");
+                Logger.e("增加失败");
             }
             // 关闭连接
             statement.close();
             connection.close();
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            Logger.e(e.getMessage());
         }
     }
 
@@ -171,13 +172,13 @@ public class ControlTable {
 
                 preparedStatement.executeUpdate();
             }
-            System.out.println("写入成功");
+            Logger.e("写入成功");
             // 关闭连接
             assert preparedStatement != null;
             preparedStatement.close();
             connection.close();
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            Logger.e(e.getMessage());
         }
     }
 
@@ -312,14 +313,14 @@ public class ControlTable {
 
                 preparedStatement.executeUpdate();
                 preparedStatement.close();
-                System.out.println("写入成功");
+                Logger.e("写入成功");
             } else {
-                System.out.println("请不要重复写入！");
+                Logger.e("请不要重复写入！");
             }
             // 关闭连接
             connection.close();
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            Logger.e(e.getMessage());
         }
     }
 
@@ -478,7 +479,7 @@ public class ControlTable {
             }
             return poseEntity;
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            Logger.e(e.getMessage());
             return null;
         }
     }
@@ -505,10 +506,10 @@ public class ControlTable {
             // 关闭连接
             preparedStatement.close();
             connection.close();
-            System.out.println("success");
+            Logger.e("success");
             return poseEntityList;
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            Logger.e(e.getMessage());
             return null;
         }
     }
@@ -532,7 +533,7 @@ public class ControlTable {
             connection.close();
             return result;
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            Logger.e(e.getMessage());
             return 0;
         }
     }
@@ -562,7 +563,7 @@ public class ControlTable {
             connection.close();
             return poseEntity;
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            Logger.e(e.getMessage());
             return null;
         }
 
@@ -588,7 +589,7 @@ public class ControlTable {
             connection.close();
             return count;
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            Logger.e(e.getMessage());
             return 0;
         }
     }
@@ -604,20 +605,20 @@ public class ControlTable {
             // 建立连接
             Connection connection = DriverManager.getConnection("jdbc:mysql://47.102.122.203:3306/aitrainer", "aitrainer", "jay666..");
             if (select(poseName) == 0) {
-                System.out.println("该动作不存在");
+                Logger.e("该动作不存在");
             } else {
                 String sql = "update poseEntity set " + variableName + " = ? where poseName = ?";
                 PreparedStatement preparedStatement = connection.prepareStatement(sql);
                 preparedStatement.setObject(1, object);
                 preparedStatement.setObject(2, poseName);
                 preparedStatement.executeUpdate();
-                System.out.println("修改成功");
+                Logger.e("修改成功");
             }
 //             关闭连接
             connection.close();
 
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            Logger.e(e.getMessage());
         }
     }
 

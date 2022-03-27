@@ -45,6 +45,8 @@ import butterknife.ButterKnife;
  * @date 2022/1/27 8:25
  */
 public class TrainingResult extends AppCompatActivity implements HorizontalProgressView.HorizontalProgressUpdateListener, CircleProgressView.CircleProgressUpdateListener {
+    // 展示结果数组
+    public static ArrayList<ResultEntity> resultEntityList;
     // 要存储到本地的分析结果
     private ArrayList<JSONResultEntity> jsonResultEntitiesArrayList;
     private final Map<String, Integer> poseResultMap = new HashMap<>();
@@ -87,19 +89,18 @@ public class TrainingResult extends AppCompatActivity implements HorizontalProgr
     @BindView(R.id.progress_text_wrong)
     TextView progressTextWrong;
 
-    // 展示结果数组
-    public static ArrayList<ResultEntity> resultEntityList;
+
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.training_result);
         ButterKnife.bind(this);
-        // 记录训练日记
-        FileUtils.writeStringToFile(CameraXLivePreviewActivity.timeMarkPoint + " 完成训练", HomePage.appFilePath + "/files/analysisReport/", "recordFile.sys", FileUtils.APPEND_TEXT);
-
         Intent intent = getIntent();
-        if(intent.getIntExtra("init",0)==0){
+        if (intent.getIntExtra("init", 0) == 0) {
+            // 记录训练日记
+            FileUtils.writeStringToFile(CameraXLivePreviewActivity.timeMarkPoint + " 完成训练", HomePage.appFilePath + "/files/analysisReport/", "recordFile.sys", FileUtils.APPEND_TEXT);
+            Logger.e("分析界面初始化数据");
             resultEntityList = new ArrayList<>();
             for (String tips : resultTips) {
                 int index = resultTips.indexOf(tips);
@@ -141,16 +142,15 @@ public class TrainingResult extends AppCompatActivity implements HorizontalProgr
                         ResultEntity temp = new ResultEntity();
 //                    ResultEntity temp = new ResultEntity(resultName.get(index), "出错" + o2 + "次\n" + commonMistakes + "。" + "\nAi建议：" + "\n" + solveMethod + "。" + resultTips.get(index).substring(1) + "\n", resultImage.get(index), rightPoseImage);
                         temp.setPoseName(resultName.get(index));
-                        temp.setTips("出错" + o2 + "次\n" + commonMistakes + "。" + "\nAi建议：" + "\n" + solveMethod + "。" + resultTips.get(index).substring(1) + "\n");
+                        temp.setTips("该错误出错" + o2 + "次\n" + commonMistakes + "。" + "\nAi建议：" + "\n" + solveMethod + "。" + resultTips.get(index).substring(1) + "\n");
                         temp.setWrongPoseImage(resultImage.get(index));
                         temp.setRightPoseImage(rightPoseImage);
                         temp.setWrongPoseImagePath(wrongImagePath.get(index));
+                        Logger.e("出错图片路径" + wrongImagePath.get(index));
                         resultEntityList.add(temp);
                     }
                 });
             }
-            // 将训练结果保存到本地
-            saveTrainingResultToLocal();
         }
 
         // ResultEntity 转 JSONResultEntity
@@ -208,7 +208,10 @@ public class TrainingResult extends AppCompatActivity implements HorizontalProgr
         progressViewCircleMain.setGraduatedEnabled(true);
         progressViewCircleMain.setProgressViewUpdateListener(this);
 //        startProcessBar();
-
+        if (intent.getIntExtra("init", 0) == 0) {
+            // 将训练结果保存到本地
+            saveTrainingResultToLocal();
+        }
     }
 
     /**

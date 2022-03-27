@@ -112,10 +112,12 @@
         <entry key="app/src/main/res/layout/activity_still_image.xml" value="0.17028985507246377" />
         <entry key="app/src/main/res/layout/activity_vision_camerax_live_preview.xml" value="0.17028985507246377" />
         <entry key="app/src/main/res/layout/activity_vision_live_preview.xml" value="0.17028985507246377" />
+        <entry key="app/src/main/res/layout/circle_button_view.xml" value="0.14017094017094017" />
         <entry key="app/src/main/res/layout/datacenter/layout/steps.xml" value="0.2722222222222222" />
         <entry key="app/src/main/res/layout/datacenter/layout/ui.xml" value="0.2722222222222222" />
         <entry key="app/src/main/res/layout/main/layout/activity_chat_list.xml" value="0.1" />
         <entry key="app/src/main/res/layout/main/layout/chat_item.xml" value="0.13304093567251463" />
+        <entry key="app/src/main/res/layout/main/layout/circle_button.xml" value="0.27307692307692305" />
         <entry key="app/src/main/res/layout/main/layout/home_page.xml" value="0.2722222222222222" />
         <entry key="app/src/main/res/layout/main/layout/homepage.xml" value="0.2722222222222222" />
         <entry key="app/src/main/res/layout/main/layout/personal_page.xml" value="0.2709401709401709" />
@@ -136,6 +138,7 @@
         <entry key="app/src/main/res/layout/toggle_style.xml" value="0.17028985507246377" />
         <entry key="app/src/main/res/layout/train/layout/training_result.xml" value="0.14017094017094017" />
         <entry key="app/src/main/res/layout/train/layout/training_result_item.xml" value="0.27307692307692305" />
+        <entry key="app/src/main/res/layout/zjj.xml" value="0.14017094017094017" />
         <entry key="app/src/main/res/menu/camera_button_menu.xml" value="0.20989583333333334" />
         <entry key="app/src/main/res/xml/preference_live_preview_quickstart.xml" value="0.20989583333333334" />
         <entry key="app/src/main/res/xml/preference_still_image.xml" value="0.335" />

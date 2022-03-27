@@ -30,14 +30,23 @@
         android:layout_width="300dp"
         android:layout_height="300dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/analysisResult"
-        android:text="分析结果" />
-
+        android:text="分析结果"
+        tools:ignore="MissingConstraints" />
+    <com.ramotion.circlemenu.CircleMenuView
+        android:id="@+id/circle_menu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:button_colors="@array/colors"
+        app:button_icons="@array/icons"
+        android:layout_alignParentEnd="true"
+        tools:ignore="MissingConstraints" />
     <TextView
         android:id="@+id/countdownSecondsText"
         android:layout_width="wrap_content"

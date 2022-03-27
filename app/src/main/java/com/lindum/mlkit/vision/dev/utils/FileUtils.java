@@ -56,8 +56,8 @@ public class FileUtils {
             try {
                 File writeFile = new File(strFilePath);
                 FileOutputStream outputStream;
-                outputStream = new FileOutputStream(writeFile,true);
-                outputStream.write(("\n"+stringContent).getBytes());
+                outputStream = new FileOutputStream(writeFile, true);
+                outputStream.write(("\n" + stringContent).getBytes());
                 outputStream.close();
             } catch (IOException e) {
                 e.printStackTrace();
@@ -85,7 +85,7 @@ public class FileUtils {
             //按行读取 将每次读取一行的结果赋值给lineStr
             String lineStr;
             while ((lineStr = br.readLine()) != null) {
-                if(!lineStr.equals("")){
+                if (!lineStr.equals("")) {
                     fileContent.add(lineStr.trim());
                 }
             }
@@ -133,18 +133,19 @@ public class FileUtils {
     }
 
     /**
-     *  获取当前路径下的文件夹个数
+     * 获取当前路径下的文件夹个数
+     *
      * @param path 路径
      * @return 文件夹个数
      */
-    public static int countFoldersUnderPath(String path){
+    public static int countFoldersUnderPath(String path) {
         File file = new File(path);
         int count = 0;
-        if(file.exists()){
-            File[]files = file.listFiles();
-            if(files!=null){
-                for(File temp:files){
-                    if(temp.isDirectory()){
+        if (file.exists()) {
+            File[] files = file.listFiles();
+            if (files != null) {
+                for (File temp : files) {
+                    if (temp.isDirectory()) {
                         count++;
                     }
                 }
@@ -153,6 +154,7 @@ public class FileUtils {
         }
         return count;
     }
+
     /**
      * 创建文件夹或者文件
      *
@@ -258,5 +260,24 @@ public class FileUtils {
         } catch (Exception e) {
             System.out.println("复制整个文件夹内容操作出错");
         }
+    }
+
+    /**
+     * 判断文件夹是否为空
+     * @param path 文件夹路径
+     * @return 是否为空
+     */
+    public static boolean isPathEmpty(String path) {
+        File file = new File(path);
+        if (file.isDirectory()) {
+            if (Objects.requireNonNull(file.list()).length > 0) {
+                return false;
+            } else {
+                return true;
+            }
+        } else {
+            Logger.e("这不是一个目录!");
+        }
+        return true;
     }
 }
