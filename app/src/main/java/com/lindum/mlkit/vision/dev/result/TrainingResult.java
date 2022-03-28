@@ -3,10 +3,8 @@ package com.lindum.mlkit.vision.dev.result;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Environment;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -25,9 +23,6 @@ import com.orhanobut.logger.Logger;
 import com.xuexiang.xui.widget.progress.CircleProgressView;
 import com.xuexiang.xui.widget.progress.HorizontalProgressView;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -35,7 +30,6 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Random;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -58,6 +52,12 @@ public class TrainingResult extends AppCompatActivity implements HorizontalProgr
     int trainingTotalTimes;
     // 动作组数进度条占比
     int groupsOfPose;
+    // 消耗的时间转分秒
+    String costTime;
+    // 消耗的卡路里
+    float calSum = 0;
+    // 错误动作数
+    int countWrongImage = 0;
     private ListView listView;
     @SuppressLint("NonConstantResourceId")
     @BindView(R.id.progressView_circle_main)
@@ -66,19 +66,24 @@ public class TrainingResult extends AppCompatActivity implements HorizontalProgr
     @BindView(R.id.progress_text_main)
     TextView progressTextMain;
     // 运动时长
+    @SuppressLint("NonConstantResourceId")
     @BindView(R.id.hpv_time)
     HorizontalProgressView hpvTime;
+    @SuppressLint("NonConstantResourceId")
     @BindView(R.id.progress_text_time)
     TextView progressTextTime;
     // 卡路里
+    @SuppressLint("NonConstantResourceId")
     @BindView(R.id.hpv_cal)
     HorizontalProgressView hpvCal;
     @SuppressLint("NonConstantResourceId")
     @BindView(R.id.progress_text_cal)
     TextView progressTextCal;
     // 动作组数
+    @SuppressLint("NonConstantResourceId")
     @BindView(R.id.hpv_group)
     HorizontalProgressView hpvGroup;
+    @SuppressLint("NonConstantResourceId")
     @BindView(R.id.progress_text_group)
     TextView progressTextGroup;
 
@@ -86,6 +91,7 @@ public class TrainingResult extends AppCompatActivity implements HorizontalProgr
     @SuppressLint("NonConstantResourceId")
     @BindView(R.id.hpv_wrong)
     HorizontalProgressView hpvWrong;
+    @SuppressLint("NonConstantResourceId")
     @BindView(R.id.progress_text_wrong)
     TextView progressTextWrong;
 
@@ -98,6 +104,10 @@ public class TrainingResult extends AppCompatActivity implements HorizontalProgr
         ButterKnife.bind(this);
         Intent intent = getIntent();
         if (intent.getIntExtra("init", 0) == 0) {
+            // 获取运动总时长
+            trainingTotalTimes = intent.getIntExtra("totalTrainingTime", 0);
+            // 获取动作组数
+            groupsOfPose = intent.getIntExtra("groupsOfPose", 0);
             // 记录训练日记
             FileUtils.writeStringToFile(CameraXLivePreviewActivity.timeMarkPoint + " 完成训练", HomePage.appFilePath + "/files/analysisReport/", "recordFile.sys", FileUtils.APPEND_TEXT);
             Logger.e("分析界面初始化数据");
@@ -150,9 +160,15 @@ public class TrainingResult extends AppCompatActivity implements HorizontalProgr
                         resultEntityList.add(temp);
                     }
                 });
+                countWrongImage = resultImage.size();
             }
+        } else {
+            Logger.e("===" + intent.getStringExtra("poseDataPath"));
+            String data = FileUtils.readFileToString(intent.getStringExtra("poseDataPath") + "/", "resultData.sys").get(0);
+            trainingTotalTimes = Integer.parseInt(data.split(" ")[0]);
+            groupsOfPose = Integer.parseInt(data.split(" ")[1]);
+            countWrongImage = Integer.parseInt(data.split(" ")[2]);
         }
-
         // ResultEntity 转 JSONResultEntity
         jsonResultEntitiesArrayList = new ArrayList<>();
         for (ResultEntity resultEntity : resultEntityList) {
@@ -198,16 +214,15 @@ public class TrainingResult extends AppCompatActivity implements HorizontalProgr
         progressViewCircleMain.setGraduatedEnabled(true);
         progressViewCircleMain.setProgressViewUpdateListener(this);
 
-        // 获取运动总时长
-        trainingTotalTimes = intent.getIntExtra("totalTrainingTime", 0);
-        // 获取动作组数
-        groupsOfPose = intent.getIntExtra("groupsOfPose", 0);
+
         String minute = trainingTotalTimes / 60 + "'";
-        String time = (trainingTotalTimes / 60 == 0 ? "" : minute) + trainingTotalTimes % 60 + "\"";
+        costTime = (trainingTotalTimes / 60 == 0 ? "" : minute) + trainingTotalTimes % 60 + "\"";
+
 
         progressViewCircleMain.setGraduatedEnabled(true);
         progressViewCircleMain.setProgressViewUpdateListener(this);
-//        startProcessBar();
+        // 初始化进度条
+        startProcessBar();
         if (intent.getIntExtra("init", 0) == 0) {
             // 将训练结果保存到本地
             saveTrainingResultToLocal();
@@ -220,8 +235,8 @@ public class TrainingResult extends AppCompatActivity implements HorizontalProgr
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public void saveTrainingResultToLocal() {
         FileUtils.createFile(CameraXLivePreviewActivity.imageSavePath + "/resultData.sys", FileUtils.CREATE_FILE);
-        // 将评分写入本地文件
-        FileUtils.writeStringToFile("123 456 789 " + new Random().nextInt(), CameraXLivePreviewActivity.imageSavePath, "resultData.sys", FileUtils.OVERWRITE_TEXT);
+        // 将评分写入本地文件 时长 动作组数
+        FileUtils.writeStringToFile(trainingTotalTimes + " " + groupsOfPose + " " + countWrongImage, CameraXLivePreviewActivity.imageSavePath, "resultData.sys", FileUtils.OVERWRITE_TEXT);
         // 将动作分析结果保存到本地文件
         FileUtils.writeStringToFile(JSON.toJSONString(jsonResultEntitiesArrayList), CameraXLivePreviewActivity.imageSavePath, "analysisReport.json", FileUtils.OVERWRITE_TEXT);
     }
@@ -236,98 +251,71 @@ public class TrainingResult extends AppCompatActivity implements HorizontalProgr
     public int getPoseIndexByName(String poseName) {
         for (PoseEntity poseEntity : HomePage.poseEntityArrayList) {
             int index = HomePage.poseEntityArrayList.indexOf(poseEntity);
-            if (poseEntity.getPoseName() == poseName) {
+            if (poseEntity.getPoseName().equals(poseName)) {
                 return index;
             }
         }
         return -1;
     }
 
-    public static void addResultData(Bitmap bitmap, String tip) {
-        resultImage.add(bitmap);
-        resultTips.add(tip);
-    }
-
-    public Bitmap getBitmap() {
-        String sdPath = Environment.getExternalStorageDirectory().getPath();
-        File imagePath = new File(sdPath + "/AiTrainer");
-        File[] files = imagePath.listFiles();// 读取
-        assert files != null;
-        for (File file : files) {
-            if (file.getName().contains(".jpg")) {
-                FileInputStream fis = null;
-                try {
-                    fis = new FileInputStream(file.getPath());
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace();
-                }
-                return BitmapFactory.decodeStream(fis);
-            }
-        }
-        return getBitmap();
-    }
-
-    @Override
-    public void onCircleProgressStart(View view) {
-
-    }
 
     /**
      * 设置进度条的数值
      */
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public void startProcessBar() {
-        int poseGroups = CameraXLivePreviewActivity.poseEntityList.size();
-        int scores = 60 + (int) (40 * (1 - ((float) resultImage.size() / (20 * poseGroups))));
-        if (trainingTotalTimes <= 100) {
-            // 设置训练时长进度条
-            hpvTime.setEndProgress(trainingTotalTimes);
-            hpvTime.startProgressAnimation();
-        }
-        float calSum = 0;
-        // 计算卡路里
-        int index = 0;
-        for (PoseEntity poseEntity : CameraXLivePreviewActivity.poseEntityList) {
-            if (index > CameraXLivePreviewActivity.nowPoseIndex) {
-                break;
-            }
-            index++;
-            if (poseEntity.getPoseType() == 1) {
-                calSum += poseEntity.getPoseProcessValue() * poseEntity.getPoseBurnCal();
-            } else {
-                calSum += ((float) trainingTotalTimes / 60) * poseEntity.getGetPoseBurnCalPerMin();
-            }
-        }
         // 动作组数
-
-        float groupsOfPoseProportion = 0;
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
-            groupsOfPoseProportion = 100 * ((float) groupsOfPose / (float) poseGroups);
-        }
+        int poseGroups = HomePage.poseEntityArrayList.size();
+        int groupsRate = (int) (100 * ((float) groupsOfPose / poseGroups));
         // 设置动作组数进度条
-        hpvGroup.setEndProgress(groupsOfPoseProportion);
+        hpvGroup.setEndProgress(groupsRate);
         hpvGroup.startProgressAnimation();
-        if (calSum <= 100) {
-            // 设置卡路里进度条
-            hpvCal.setEndProgress(calSum);
-            hpvCal.startProgressAnimation();
+
+        // 时长
+        int timeRate = (int) (100 * ((float) trainingTotalTimes / (poseGroups * (HomePage.poseEntityArrayList.get(0).getPoseProcessValue() + 4))));
+        if (timeRate > 100) {
+            timeRate = 100;
         }
-        float wrongPoseDecimal = 100 * ((resultImage.size()) / ((float) poseGroups * 20.0f));
-        if (wrongPoseDecimal <= 100) {
-            // 设置错误动作数进度条
-            hpvWrong.setEndProgress(wrongPoseDecimal);
-            hpvWrong.startProgressAnimation();
+        hpvTime.setEndProgress(timeRate);
+        hpvTime.startProgressAnimation();
+
+        // 计算卡路里
+
+        float totalCalSum = 0;
+        int index = 0;
+        Logger.e("动作个数" + HomePage.poseEntityArrayList.size());
+        for (PoseEntity poseEntity : HomePage.poseEntityArrayList) {
+            if (index <= groupsOfPose) {
+                calSum += ((float) poseEntity.getPoseProcessValue() / 60) * poseEntity.getGetPoseBurnCalPerMin();
+            }
+            totalCalSum += ((float) poseEntity.getPoseProcessValue() / 60) * poseEntity.getGetPoseBurnCalPerMin();
+            index++;
         }
+        Logger.e("卡路里" + calSum);
+        int calRate = (int) (100 * (calSum / totalCalSum));
+        hpvCal.setEndProgress(calRate);
+        hpvCal.startProgressAnimation();
+
+        // 错误动作数
+        int wrongRate = (int) (((float) countWrongImage / (groupsOfPose * 20)) * 100);
+        if (wrongRate > 100) {
+            wrongRate = 100;
+        }
+        hpvWrong.setEndProgress(wrongRate);
+        hpvWrong.startProgressAnimation();
+        // 评分
+        int scores = 60 + (int) (40 * (1 - ((float) countWrongImage / (20 * poseGroups))));
         progressViewCircleMain.setEndProgress(scores);
         progressViewCircleMain.startProgressAnimation();
     }
 
     /**
-     * 环形进度条数值更新
+     * 评分环形进度条数值更新
      *
-     * @param view
-     * @param progress
+     * @param view     环形进度条 View
+     * @param progress 数值
      */
+    @SuppressLint("SetTextI18n")
     @Override
     public void onCircleProgressUpdate(View view, float progress) {
         int progressInt = (int) progress;
@@ -336,32 +324,26 @@ public class TrainingResult extends AppCompatActivity implements HorizontalProgr
         }
     }
 
-    @Override
-    public void onCircleProgressFinished(View view) {
 
-    }
-
-    @Override
-    public void onHorizontalProgressStart(View view) {
-
-    }
-
-    // todo 卡路里进度条文本
-    @SuppressLint("SetTextI18n")
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    /**
+     * 卡路里进度条文本
+     *
+     * @param view     水平进度条布局
+     * @param progress 实时更新的进度
+     */
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    @SuppressLint({"SetTextI18n", "NonConstantResourceId"})
     @Override
     public void onHorizontalProgressUpdate(View view, float progress) {
-        int progressInt = (int) progress;
-        // 单位符号
         switch (view.getId()) {
             case R.id.hpv_time:
-                progressTextTime.setText(progressInt + "'");
+                progressTextTime.setText(costTime);
                 break;
             case R.id.hpv_wrong:
-                progressTextWrong.setText((int) (progress * 20 * CameraXLivePreviewActivity.poseEntityList.size()) / 100 + " 个");
+                progressTextWrong.setText((int) (progress * 20 * groupsOfPose) / 100 + " 个");
                 break;
             case R.id.hpv_cal:
-                progressTextCal.setText(progressInt + " kcal");
+                progressTextCal.setText((int) calSum + " kcal");
                 break;
             case R.id.hpv_group:
                 progressTextGroup.setText(groupsOfPose + " 组");
@@ -375,4 +357,20 @@ public class TrainingResult extends AppCompatActivity implements HorizontalProgr
     public void onHorizontalProgressFinished(View view) {
 
     }
+
+    @Override
+    public void onCircleProgressFinished(View view) {
+
+    }
+
+    @Override
+    public void onHorizontalProgressStart(View view) {
+
+    }
+
+    @Override
+    public void onCircleProgressStart(View view) {
+
+    }
+
 }

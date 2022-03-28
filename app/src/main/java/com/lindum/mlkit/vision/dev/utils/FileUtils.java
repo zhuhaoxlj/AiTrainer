@@ -90,6 +90,8 @@ public class FileUtils {
                 }
             }
             br.close();//关闭IO
+            Logger.e(fileContent+"");
+            return fileContent;
         } catch (Exception e) {
             System.out.println("文件操作失败");
             e.printStackTrace();
@@ -163,6 +165,9 @@ public class FileUtils {
      */
     public static boolean createFile(String fileName, int fileType) {
         File file = new File(fileName);
+        if (!Objects.requireNonNull(file.getParentFile()).exists()) {
+            file.getParentFile().mkdirs();
+        }
         if (!file.exists()) {
             if (fileType == 0) {
                 return file.mkdir();

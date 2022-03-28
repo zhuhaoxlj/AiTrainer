@@ -142,7 +142,7 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
     List<Event> mList = new ArrayList<>();
     DotTimeLineAdapter mAdapter;
     DotItemDecoration mItemDecoration;
-    long time = (long) (System.currentTimeMillis() / 1000);
+    long time = System.currentTimeMillis() / 1000;
     ArrayList<Long> times = new ArrayList<>();
     ArrayList<String> events = new ArrayList<>();
     // 训练历史记录 end
@@ -176,29 +176,24 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
     @RequiresApi(api = Build.VERSION_CODES.O)
     @SuppressLint("ResourceType")
     public void init() {
-        // 初始化应用文件夹路径
-        appFilePath = Objects.requireNonNull(this.getApplicationContext().getFilesDir().getParentFile()).getAbsolutePath();
-        // 创建分析文件夹
-        FileUtils.createFile(appFilePath + "/files/analysisReport/", FileUtils.CREATE_FOLDER);
-        // 创建今日文件夹
-        today = LocalDate.now();
-        FileUtils.createFile(appFilePath + "/files/analysisReport/" + today.toString(), FileUtils.CREATE_FOLDER);
-        // 创建个人信息数据文件夹
-        FileUtils.createFile(appFilePath + "/files/personalData/", FileUtils.CREATE_FOLDER);
-        // 创建动作库文件夹
-        FileUtils.createFile(appFilePath + "/files/poseLibrary/", FileUtils.CREATE_FOLDER);
-        // 加载中图片设置
+//        initValue();
+        // 创建文件夹、初始化文件
+        fileInit();
+        // 初始化 HomePage 四个界面
+        initViewPaper();
+        // 动作库封面加载中图片设置
         loadingBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.loading3);
+        // 是否第一次使用 App
         isFirstUseApp = isFirstUseApp();
-        // 是否第一次使用软件
         if (isFirstUseApp) {
+            // 如果第一次使用 跳转到 Intro 介绍界面
             Intent intent = new Intent(HomePage.this, IntroView.class);
             startActivity(intent);
             // 聚焦视图
             guideView();
             // 记录第一次使用AiTrainer
             FileUtils.createFile(appFilePath + "/files/analysisReport/recordFile.sys", FileUtils.CREATE_FILE);
-            FileUtils.writeStringToFile("1648293855 第一次使用AiTrainer", appFilePath + "/files/analysisReport/", "recordFile.sys", FileUtils.APPEND_TEXT);
+            FileUtils.writeStringToFile(time + " 第一次使用AiTrainer", appFilePath + "/files/analysisReport/", "recordFile.sys", FileUtils.APPEND_TEXT);
         }
         // 再次获取未授权权限
         if (!isFirstUseApp && !GetPermissionUtils.allPermissionsGranted(this)) {
@@ -206,51 +201,7 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
                 GetPermissionUtils.getRuntimePermissions(this);
             }
         }
-        viewPager = findViewById(R.id.viewPager);
-        //获取布局对象管理
-        LayoutInflater inflater = getLayoutInflater();
-        //实例化view
-        view1 = inflater.inflate(R.layout.homepage, null);
-        view2 = inflater.inflate(R.layout.dot_timeline_layout, null);
-        view3 = inflater.inflate(R.layout.pose_library, null);
-        view4 = inflater.inflate(R.layout.personal_page, null);
-        //将要显示的布局存放到list数组
-        mViews = new ArrayList<>();
-        mViews.add(view1);
-        mViews.add(view2);
-        mViews.add(view3);
-        mViews.add(view4);
-        //实例化一个PagerAdapter的适配器
-        //返回要滑动的VIew的个数
-        //来判断pager的一个view是否和instantiateItem方法返回的object有关联
-        //从当前container中删除指定位置（position）的View;
-        //第一：将当前视图添加到container中，第二：返回当前View
-        // 适配器
-        PagerAdapter mPagerAdapter = new PagerAdapter() {
-            @Override   //返回要滑动的VIew的个数
-            public int getCount() {
-                return mViews.size();
-            }
 
-            @Override  //来判断pager的一个view是否和instantiateItem方法返回的object有关联
-            public boolean isViewFromObject(@NonNull View view, @NonNull Object object) {
-                return view == object;
-            }
-
-            @Override  //从当前container中删除指定位置（position）的View;
-            public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
-                container.removeView(mViews.get(position));
-            }
-
-            @NonNull
-            @Override  //第一：将当前视图添加到container中，第二：返回当前View
-            public Object instantiateItem(@NonNull ViewGroup container, int position) {
-                container.addView(mViews.get(position));
-                return mViews.get(position);
-            }
-        };
-        //设置适配器
-        viewPager.setAdapter(mPagerAdapter);
         // 初始化底部 TabBar
         initTabBar();
         initSensor();
@@ -270,7 +221,7 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
                         public void run() {
                             super.run();
                             try {
-                                Thread.sleep(30000);
+                                Thread.sleep(10000);
                             } catch (InterruptedException e) {
                                 e.printStackTrace();
                             }
@@ -293,6 +244,14 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
                 super.run();
                 ControlTable controlTable = new ControlTable();
                 poseEntityArrayList = controlTable.readTable();
+
+                // 设置动作持续变量类型
+                for (PoseEntity poseEntity : poseEntityArrayList) {
+                    // 倒计时类型 0 计数类型 1
+                    poseEntity.setPoseType(0);
+                    poseEntity.setPoseProcessValue(8);
+                }
+
                 // 把动作库的图片链接转换为图片
                 initSwiperImage();
                 // 每隔500ms更新一次动作库，直到封面图片获取完毕
@@ -323,7 +282,83 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
     }
 
     /**
-     * 初始化训练历史记录界面
+     * 初始化 HomePage 四个 ViewPage 界面
+     */
+    @SuppressLint("InflateParams")
+    public void initViewPaper() {
+        viewPager = findViewById(R.id.viewPager);
+        //获取布局对象管理
+        LayoutInflater inflater = getLayoutInflater();
+        //实例化view
+        view1 = inflater.inflate(R.layout.homepage, null);
+        view2 = inflater.inflate(R.layout.dot_timeline_layout, null);
+        view3 = inflater.inflate(R.layout.pose_library, null);
+        view4 = inflater.inflate(R.layout.personal_page, null);
+        //将要显示的布局存放到list数组
+        mViews = new ArrayList<>();
+        mViews.add(view1);
+        mViews.add(view2);
+        mViews.add(view3);
+        mViews.add(view4);
+        /* 实例化一个PagerAdapter的适配器
+         * 返回要滑动的VIew的个数
+         * 来判断pager的一个view是否和instantiateItem方法返回的object有关联
+         * 从当前container中删除指定位置（position）的View;
+         * 第一：将当前视图添加到container中，第二：返回当前View
+         * 适配器
+         */
+        PagerAdapter mPagerAdapter = new PagerAdapter() {
+            //返回要滑动的View的个数
+            @Override
+            public int getCount() {
+                return mViews.size();
+            }
+
+            //来判断pager的一个view是否和instantiateItem方法返回的object有关联
+            @Override
+            public boolean isViewFromObject(@NonNull View view, @NonNull Object object) {
+                return view == object;
+            }
+
+            //从当前container中删除指定位置（position）的View;
+            @Override
+            public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
+                container.removeView(mViews.get(position));
+            }
+
+            //第一：将当前视图添加到container中，第二：返回当前View
+            @NonNull
+            @Override
+            public Object instantiateItem(@NonNull ViewGroup container, int position) {
+                container.addView(mViews.get(position));
+                return mViews.get(position);
+            }
+        };
+        //设置适配器
+        viewPager.setAdapter(mPagerAdapter);
+    }
+
+    /**
+     * 初始化文件夹和文件
+     */
+    public void fileInit() {
+        // 初始化应用文件夹路径
+        appFilePath = Objects.requireNonNull(this.getApplicationContext().getFilesDir().getParentFile()).getAbsolutePath();
+        // 创建分析文件夹
+        FileUtils.createFile(appFilePath + "/files/analysisReport/", FileUtils.CREATE_FOLDER);
+        // 创建今日文件夹 例如 2022-03-27
+        today = LocalDate.now();
+        FileUtils.createFile(appFilePath + "/files/analysisReport/" + today.toString(), FileUtils.CREATE_FOLDER);
+        // 创建个人信息数据文件夹
+        FileUtils.createFile(appFilePath + "/files/personalData/", FileUtils.CREATE_FOLDER);
+        // 创建动作库文件夹 存储动作库的图片缓存
+        FileUtils.createFile(appFilePath + "/files/poseLibrary/", FileUtils.CREATE_FOLDER);
+        // 创建动作文件 存储动作检测数据
+        FileUtils.createFile(appFilePath + "/files/poseData/poseData.json", FileUtils.CREATE_FILE);
+    }
+
+    /**
+     * 初始化训练日记界面
      */
     public void initTrainingHistory() {
         times.clear();

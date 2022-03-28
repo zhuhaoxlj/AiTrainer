@@ -94,7 +94,8 @@ public class DotTimeLineAdapter extends RecyclerView.Adapter<DotTimeLineAdapter.
                 }
                 TrainingResult.resultEntityList = resultEntities;
                 Intent intent = new Intent(mContext, TrainingResult.class);
-                intent.putExtra("init",1);
+                intent.putExtra("init", 1);
+                intent.putExtra("poseDataPath", poseDataPath);
                 mContext.startActivity(intent);
             }
         });

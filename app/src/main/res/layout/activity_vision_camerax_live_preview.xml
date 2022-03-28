@@ -40,6 +40,7 @@
         android:text="分析结果"
         tools:ignore="MissingConstraints" />
     <com.ramotion.circlemenu.CircleMenuView
+        android:visibility="invisible"
         android:id="@+id/circle_menu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

@@ -26,6 +26,11 @@ import java.util.List;
 public class GetPermissionUtils {
     private static final int PERMISSION_REQUESTS = 1;
 
+    /**
+     * 获取需要的权限
+     * @param context 上下文
+     * @return 获取所需权限的权限数组
+     */
     public static String[] getRequiredPermissions(Context context) {
         try {
             PackageInfo info =
@@ -42,7 +47,12 @@ public class GetPermissionUtils {
         }
     }
 
-
+    /**
+     * 权限是否授权
+     * @param context 上下文
+     * @param permission 权限的名称
+     * @return 是否授权
+     */
     public static boolean isPermissionGranted(Context context, String permission) {
         if (ContextCompat.checkSelfPermission(context, permission)
                 == PackageManager.PERMISSION_GRANTED) {
@@ -53,6 +63,11 @@ public class GetPermissionUtils {
         return false;
     }
 
+    /**
+     * 所有权限是否已经授权
+     * @param context 上下文
+     * @return 是否授权
+     */
     public static boolean allPermissionsGranted(Context context) {
         for (String permission : getRequiredPermissions(context)) {
             if (!isPermissionGranted(context, permission)) {
@@ -62,6 +77,10 @@ public class GetPermissionUtils {
         return true;
     }
 
+    /**
+     * 获取运行时需要的权限
+     * @param context 尚贤文
+     */
     public static void getRuntimePermissions(Context context) {
         List<String> allNeededPermissions = new ArrayList<>();
         for (String permission : getRequiredPermissions(context)) {

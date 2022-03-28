@@ -14,7 +14,6 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
-import android.os.StrictMode;
 import android.speech.tts.TextToSpeech;
 import android.util.Log;
 import android.util.Size;
@@ -50,9 +49,6 @@ import androidx.core.content.ContextCompat;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProvider.AndroidViewModelFactory;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONArray;
-import com.alibaba.fastjson.TypeReference;
 import com.google.android.gms.common.annotation.KeepName;
 import com.google.mlkit.common.MlKitException;
 import com.google.mlkit.vision.pose.PoseDetectorOptionsBase;
@@ -70,10 +66,6 @@ import com.orhanobut.logger.Logger;
 import com.ramotion.circlemenu.CircleMenuView;
 import com.xuexiang.xui.XUI;
 import com.xuexiang.xui.widget.dialog.materialdialog.MaterialDialog;
-
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -238,35 +230,9 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
 
         // 定时更新变量定时器
         updateVariable();
-        // 使主线程可以进行简单的网络请求
-        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-        StrictMode.setThreadPolicy(policy);
-        Document document = null;
-        try {
-            document = Jsoup.connect("http://lindum.top/poseData.html").get();
-            Log.e("html", document.toString());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        assert document != null;
-        Element element = document.body();
-        String jsonText = element.ownText();
-
-        ArrayList<PoseEntity> poseEntityArrayList;
-        JSONArray jsonArray = (JSONArray) JSON.parse(jsonText);
-        poseEntityArrayList = JSON.parseObject(jsonArray.toJSONString(), new TypeReference<ArrayList<PoseEntity>>() {
-        });
-        Logger.e("entity-----" + poseEntityArrayList.size());
-        // html 中的动作数据
-//                poseEntityList = poseEntityArrayList;
-        // 数据库中的动作数据
+        // 从主页获取数据库中的动作数据
         poseEntityList = HomePage.poseEntityArrayList;
-        // 设置动作持续变量类型
-        for (PoseEntity poseEntity : poseEntityList) {
-            // 倒计时类型 0 计数类型 1
-            poseEntity.setPoseType(0);
-            poseEntity.setPoseProcessValue(8);
-        }
+
 
         nowPoseName = poseEntityList.get(nowPoseIndex).getPoseName();
 
