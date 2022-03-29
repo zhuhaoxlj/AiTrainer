@@ -4085,6 +4085,8 @@ id custom
 id customPanel
 id cut
 id dark
+id dataCenterCostCal
+id dataCenterSportsTime
 id dataCenterTitle
 id date_picker_actions
 id day
@@ -4441,6 +4443,7 @@ id preButton
 id prePoseImage
 id preview_view
 id profileEditText
+id profileImage
 id profileInfoButton
 id profileTextLimit
 id profileTitleBar
@@ -4550,6 +4553,7 @@ id spinner
 id spinner_item
 id spline
 id split_action_bar
+id sportsCal
 id sportsGoal
 id sportsLevel
 id sportsLevel1

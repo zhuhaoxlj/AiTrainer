@@ -89,7 +89,7 @@ public class IntroView extends AppCompatActivity {
     /**
      * 获取 Intro 界面数据
      *
-     * @return 返回 PaperOnboardingPage 数组
+     * @return 返回 PaperOnBoardingPage 数组
      */
     private ArrayList<PaperOnboardingPage> getDataForOnboard() {
         PaperOnboardingPage scr1 = new PaperOnboardingPage("AiTrainer", "你的私人Ai健身教练",

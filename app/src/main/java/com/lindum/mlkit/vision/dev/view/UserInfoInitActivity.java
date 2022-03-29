@@ -61,6 +61,7 @@ public class UserInfoInitActivity extends AppCompatActivity implements OnDatePic
     ArrayList<String> sportsPreference;
     String profileImageUrl = "";
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -103,6 +104,7 @@ public class UserInfoInitActivity extends AppCompatActivity implements OnDatePic
     /**
      * 初始化函数
      */
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @SuppressLint("SetTextI18n")
     public void init() {
         nickNameText = findViewById(R.id.nickNameText);

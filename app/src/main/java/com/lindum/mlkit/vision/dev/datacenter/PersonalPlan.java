@@ -53,6 +53,7 @@ public class PersonalPlan extends AppCompatActivity {
     // 设备识别码
     String IMEI;
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,8 +65,8 @@ public class PersonalPlan extends AppCompatActivity {
         intent = getIntent();
 //        nowStepsValue = intent.getIntExtra("steps", 0);
 //        nowCalValue = intent.getIntExtra("cal", 0);
-        nowCalValue = 6000;
-        nowStepsValue = 4000;
+        nowCalValue = HomePage.todayCals;
+        nowStepsValue = HomePage.mStepCounter;
         // 从数据库读取用户信息
         // 初始化组件
         initComponent();
@@ -83,7 +84,7 @@ public class PersonalPlan extends AppCompatActivity {
             stepsGoalValue = HomePage.userEntity.getStepsGoalValue();
         }
         if (HomePage.userEntity.getCalGoalValue() == 0) {
-            calGoalValue = 5000;
+            calGoalValue = 400;
         }
         if (HomePage.userEntity.getStepsGoalValue() == 0) {
             stepsGoalValue = 5000;
@@ -115,17 +116,17 @@ public class PersonalPlan extends AppCompatActivity {
         trainGoalText = findViewById(R.id.trainGoalText);
         // 卡路里目标选择器
         tickSeekBar = findViewById(R.id.calGoalSelector);
-        tickSeekBar.setProgress(calGoalValue / 1000);
+        tickSeekBar.setProgress(calGoalValue / 100);
         tickSeekBar.setOnSeekChangeListener(new OnSeekChangeListener() {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @SuppressLint("SetTextI18n")
             @Override
             public void onSeeking(SeekParams seekParams) {
-                Logger.e(seekParams.progress + "" + "000cal");
+//                Logger.e(seekParams.progress + "" + "000cal");
                 if (viewFlag) {
-                    calGoalValue = seekParams.progress * 1000;
-                    trainGoalText.setText("今日消耗卡路里目标(千卡 kcal):" + seekParams.progress + "000cal");
-                    int waveProgressValue = (int) (100.0 * (3500.0 / (seekParams.progress * 1000.0)));
+                    calGoalValue = seekParams.progress * 100;
+                    trainGoalText.setText("今日消耗卡路里目标(千卡 kcal):" + seekParams.progress + "kcal");
+                    int waveProgressValue = (int) (100.0 * (nowCalValue / (seekParams.progress * 100.0)));
                     waveProgress.setValue(waveProgressValue);
                     if (waveProgressValue >= 100) {
                         Logger.e("恭喜你完成目标");
@@ -133,7 +134,7 @@ public class PersonalPlan extends AppCompatActivity {
                 } else {
                     stepsGoalValue = seekParams.progress * 1000;
                     trainGoalText.setText("今日步数目标(步 step):" + seekParams.progress + "000step");
-                    int waveProgressValue = (int) (100.0 * (3500.0 / (seekParams.progress * 1000.0)));
+                    int waveProgressValue = (int) (100.0 * (nowStepsValue / (seekParams.progress * 1000.0)));
                     waveProgress.setValue(waveProgressValue);
                     if (waveProgressValue >= 100) {
                         Logger.e("恭喜你完成目标");
@@ -208,12 +209,13 @@ public class PersonalPlan extends AppCompatActivity {
     @SuppressLint("SetTextI18n")
     public void updateTextView(boolean type) {
         if (type) {
-            trainPlanDataText.setText(nowCalValue + "/" + calGoalValue + "Cal");
-            int value = (int) (100.0 * ((float) nowCalValue / (float) calGoalValue));
-            Logger.e("当前值" + value);
+            trainPlanDataText.setText(nowCalValue + "/" + calGoalValue + "KCal");
+            float value = (100.0f * ((float) nowCalValue / (float) calGoalValue));
+            Logger.e("当前值" + value + "---" + nowCalValue + "/" + calGoalValue);
+            waveProgress.setValue(100);
             waveProgress.setValue(value);
-            tickSeekBar.setProgress(calGoalValue / 1000);
-            trainGoalText.setText("今日消耗卡路里目标(千卡 kcal):" + calGoalValue + "cal");
+            tickSeekBar.setProgress(calGoalValue / 100);
+            trainGoalText.setText("今日消耗卡路里目标(千卡 kcal):" + calGoalValue + "kcal");
         } else {
             trainPlanDataText.setText(nowStepsValue + "/" + stepsGoalValue + "Step");
             int value = (int) (100.0 * ((float) nowStepsValue / (float) stepsGoalValue));

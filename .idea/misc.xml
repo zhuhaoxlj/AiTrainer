@@ -126,6 +126,7 @@
         <entry key="app/src/main/res/layout/main/layout/row_item.xml" value="0.2722222222222222" />
         <entry key="app/src/main/res/layout/main/layout/write_text.xml" value="0.2722222222222222" />
         <entry key="app/src/main/res/layout/personal/layout/personal_plan.xml" value="0.2722222222222222" />
+        <entry key="app/src/main/res/layout/personal/layout/user_info_input.xml" value="0.27307692307692305" />
         <entry key="app/src/main/res/layout/pose_info.xml" value="0.2722222222222222" />
         <entry key="app/src/main/res/layout/result/layout/dot_timeline_layout.xml" value="0.26153846153846155" />
         <entry key="app/src/main/res/layout/result/layout/history_item.xml" value="0.1" />

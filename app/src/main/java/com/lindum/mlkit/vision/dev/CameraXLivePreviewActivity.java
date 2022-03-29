@@ -1028,7 +1028,9 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
         List<String> allNeededPermissions = new ArrayList<>();
         for (String permission : getRequiredPermissions()) {
             if (!isPermissionGranted(this, permission)) {
-                allNeededPermissions.add(permission);
+                if (!permission.contains("LOCATION") && !permission.contains("CONTACT")&&!permission.contains("AUDIO")&&!permission.contains("CALL")&&!permission.contains("SMS")) {
+                    allNeededPermissions.add(permission);
+                }
             }
         }
 

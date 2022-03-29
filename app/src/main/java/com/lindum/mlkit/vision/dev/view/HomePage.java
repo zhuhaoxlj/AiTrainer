@@ -110,6 +110,12 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
     private SensorManager sensorManager;
     // 今日日期
     private LocalDate today;
+    // 今日消耗卡路里
+    public static int todayCals = 0;
+    // 今日运动时长
+    public static int todaySportsTime = 0;
+    // 今日步数
+    public static int mStepCounter = 0;
     // 应用文件夹路径
     public static String appFilePath;
     // 步数统计传感器监听
@@ -249,7 +255,7 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
                 for (PoseEntity poseEntity : poseEntityArrayList) {
                     // 倒计时类型 0 计数类型 1
                     poseEntity.setPoseType(0);
-                    poseEntity.setPoseProcessValue(8);
+                    poseEntity.setPoseProcessValue(30);
                 }
 
                 // 把动作库的图片链接转换为图片
@@ -488,6 +494,26 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
      */
     @SuppressLint("SetTextI18n")
     public void initPersonalPage() {
+        // 统计运动时长和消耗卡路里数
+        ArrayList<String> fileNames = FileUtils.getFileName(appFilePath + "/files/analysisReport/" + today.toString(), FileUtils.CREATE_FOLDER);
+        todayCals = 0;
+        todaySportsTime = 0;
+        assert fileNames != null;
+        for (String temp : fileNames) {
+            if (FileUtils.isFileExist(temp + "/", "resultData.sys")) {
+                String sportsData = FileUtils.readFileToString(temp + "/", "resultData.sys").get(0);
+                todayCals += Integer.parseInt(sportsData.split(" ")[1]);
+                todaySportsTime += Integer.parseInt(sportsData.split(" ")[0]);
+            }
+        }
+        TextView dataCenterCostCal = view4.findViewById(R.id.dataCenterCostCal);
+        TextView dataCenterSportsTime = view4.findViewById(R.id.dataCenterSportsTime);
+        TextView sportsTime = view4.findViewById(R.id.sportsTime);
+        TextView sportsCal = view4.findViewById(R.id.sportsCal);
+        dataCenterSportsTime.setText(todaySportsTime / 60 + "\n累计(分钟)");
+        dataCenterCostCal.setText(todayCals + "\n消耗(千卡)");
+        sportsTime.setText(todaySportsTime / 60 + " 分钟");
+        sportsCal.setText("消耗" + todayCals + "千卡");
         // 训练天数
         TextView practiceDays = view4.findViewById(R.id.practiceDays);
         practiceDays.setText(FileUtils.countFoldersUnderPath(this.getApplicationContext().getFilesDir().getAbsolutePath() + "/analysisReport/") + "\n练习(天)");
@@ -929,8 +955,7 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
             }
             // 设置今日步数
             todaySteps.setText(mStepCounter + " 步");
-
-
+            HomePage.mStepCounter = mStepCounter;
         }
 
         @Override

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
@@ -30,11 +31,13 @@
             android:background="#7684ff">
 
             <ImageView
+                android:id="@+id/profileImage"
                 android:layout_width="65dp"
                 android:layout_height="65dp"
                 android:layout_marginStart="25dp"
                 android:layout_marginTop="25dp"
-                android:src="@drawable/personal_image" />
+                android:src="@drawable/personal_image"
+                tools:ignore="ContentDescription" />
 
             <TextView
                 android:id="@+id/personalPageNickNameText"
@@ -53,6 +56,15 @@
                 android:layout_marginStart="268dp"
                 android:layout_marginTop="38dp"
                 android:src="@drawable/more" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/profileImage"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="20dp"
+                android:textColor="@color/white"
+                android:text="只有运动才可以除去各种各样的疑虑。" />
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
 
@@ -101,6 +113,7 @@
                 android:paddingTop="15dp">
 
                 <TextView
+                    android:id="@+id/dataCenterSportsTime"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="30dp"
@@ -118,6 +131,7 @@
                     android:textColor="@color/black" />
 
                 <TextView
+                    android:id="@+id/dataCenterCostCal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="30dp"
@@ -170,12 +184,13 @@
                     android:textSize="23sp" />
 
                 <TextView
+                    android:id="@+id/sportsCal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/sportsTime"
                     android:layout_marginStart="30dp"
                     android:layout_marginTop="10dp"
-                    android:text="消耗了0千卡"
+                    android:text="消耗0千卡"
                     android:textColor="@color/black"
                     android:textSize="20sp" />
 

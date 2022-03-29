@@ -25,6 +25,12 @@ public class FileUtils {
     public final static int MOVE_FOLDER = 0;
     // 移动文件
     public final static int MOVE_FILE = 1;
+    // 获取文件夹列表
+    public final static int GET_FOLDER_LIST = 0;
+    // 获取文件列表
+    public final static int GET_FILE_LIST = 1;
+    // 全部获取
+    public final static int GET_ALL_LIST = 2;
 
     /**
      * 字符串写入本地txt，覆盖原内容
@@ -90,7 +96,7 @@ public class FileUtils {
                 }
             }
             br.close();//关闭IO
-            Logger.e(fileContent+"");
+            Logger.e(fileContent + "");
             return fileContent;
         } catch (Exception e) {
             System.out.println("文件操作失败");
@@ -114,23 +120,32 @@ public class FileUtils {
     /**
      * 获取当前路径下的文件名和文件夹名
      *
-     * @param filePath 路径
+     * @param filePath       文件路径
+     * @param getContentType 获取列表的类型
+     * @return 返回文件名或文件夹路径列表
      */
-    public static void getFileName(String filePath) {
+    public static ArrayList<String> getFileName(String filePath, int getContentType) {
+        ArrayList<String> fileNameList = new ArrayList<>();
         File file = new File(filePath);
         if (file.exists()) {
             File[] files = file.listFiles();
             if (null != files) {
                 for (File file2 : files) {
                     if (file2.isDirectory()) {
-                        Logger.e("123文件夹:" + file2.getAbsolutePath());
+                        if (getContentType == 0 || getContentType == 2) {
+                            fileNameList.add(file2.getAbsolutePath());
+                        }
                     } else {
-                        Logger.e("123文件:" + file2.getAbsolutePath());
+                        if (getContentType == 1 || getContentType == 2) {
+                            fileNameList.add(file2.getAbsolutePath());
+                        }
                     }
                 }
             }
+            return fileNameList;
         } else {
             Logger.e("文件不存在!");
+            return null;
         }
     }
 
@@ -269,6 +284,7 @@ public class FileUtils {
 
     /**
      * 判断文件夹是否为空
+     *
      * @param path 文件夹路径
      * @return 是否为空
      */
