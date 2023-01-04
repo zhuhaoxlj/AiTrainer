@@ -1,4 +1,4 @@
-![运动健身](https://markgosling.oss-cn-beijing.aliyuncs.com/img/202301041430838.png)
+<p align="center"><img width="180" src="https://markgosling.oss-cn-beijing.aliyuncs.com/img/202301041430838.png" alt="logo"></p>
 
 <p align="center">
   <a href="https://www.npmjs.com/package/vuepress-theme-vdoing"><img alt="npm" src="https://img.shields.io/npm/v/vuepress-theme-vdoing"></a>
@@ -10,7 +10,7 @@
 
 <h2 align="center">AiTrainer - Ai 健身教练</h2>
 
-README English|中文
+README [English](https://github.com/zhuhaoxlj/AiTrainer/tree/hot_fix) | 中文
 
 ## 状态
 
@@ -26,7 +26,7 @@ AiTrainer是一款结合人工智能机器视觉的智能健身系统，使用�
 
 ### 项目预览
 
-<center>
+<p align="center">
 	<img src="https://markgosling.oss-cn-beijing.aliyuncs.com/img/202301041459061.png" width="30%" />
 	&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 	<img src="https://markgosling.oss-cn-beijing.aliyuncs.com/img/202301041457593.png" width="30%" />
@@ -36,9 +36,9 @@ AiTrainer是一款结合人工智能机器视觉的智能健身系统，使用�
 	&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 	&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 	<font color="AAAAAA">002.jpg</font>
-</center>
+</p>
 
-<center>
+<p align="center">
 	<img src="https://markgosling.oss-cn-beijing.aliyuncs.com/img/202301041458017.png" width="30%" />
 	&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 	<img src="https://markgosling.oss-cn-beijing.aliyuncs.com/img/202301041458521.png" width="30%" />
@@ -48,7 +48,7 @@ AiTrainer是一款结合人工智能机器视觉的智能健身系统，使用�
 	&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 	&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 	<font color="AAAAAA">004.jpg</font>
-</center>
+</p>
 
 ### 项目演示
 
@@ -56,7 +56,7 @@ AiTrainer是一款结合人工智能机器视觉的智能健身系统，使用�
 
 ## 安装包
 
-
+https://github.com/zhuhaoxlj/AiTrainer/blob/hot_fix/AiTrainer.apk
 
 ## 文档
 
