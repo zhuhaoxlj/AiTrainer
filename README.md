@@ -9,7 +9,7 @@
 
 <h2 align="center">AiTrainer</h2>
 
-README English|[Chinese](https://github.com/zhuhaoxlj/AiTrainer/blob/hot_fix/README-CN.md)
+README English | [Chinese](https://github.com/zhuhaoxlj/AiTrainer/blob/hot_fix/README-CN.md)
 
 ## Status
 
@@ -59,7 +59,7 @@ AiTrainer is an intelligent fitness system combining artificial intelligence mac
 
 ## Documentation
 
-For detailed documents, please visit https://vuepress.vuejs.org/.
+For detailed documents, please visit https://zhuhaoxlj.github.io/.
 
 ## Reference documents
 
