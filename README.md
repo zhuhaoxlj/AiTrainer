@@ -55,7 +55,7 @@ AiTrainer is an intelligent fitness system combining artificial intelligence mac
 
 ## Installation package
 
-
+https://github.com/zhuhaoxlj/AiTrainer/blob/hot_fix/AiTrainer.apk
 
 ## Documentation
 
