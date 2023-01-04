@@ -54,7 +54,7 @@ https://github.com/zhuhaoxlj/AiTrainer/blob/hot_fix/AiTrainer.apk
 
 ## 文档
 
-详细文档请访问 https://vuepress.vuejs.org/.
+详细文档请访问 https://zhuhaoxlj.github.io/.
 
 ## 参考文献
 
