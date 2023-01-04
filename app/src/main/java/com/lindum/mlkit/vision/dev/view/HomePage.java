@@ -193,7 +193,7 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
         isFirstUseApp = isFirstUseApp();
         if (isFirstUseApp) {
             // 如果第一次使用 跳转到 Intro 介绍界面
-            Intent intent = new Intent(HomePage.this, IntroView.class);
+            Intent intent = new Intent(HomePage.this, IntroActivity.class);
             startActivity(intent);
             // 聚焦视图
             guideView();
@@ -370,7 +370,7 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
         times.clear();
         events.clear();
         mList.clear();
-        // 状态栏背景条
+        // 状态栏背景条 虚拟状态栏
         LinearLayout statusBar = view2.findViewById(R.id.statusBarOfTrainingHistory);
         // 状态栏背景颜色
         statusBar.setBackgroundColor(Color.parseColor("#ffffff"));
@@ -387,7 +387,7 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
         }
         Collections.reverse(times);
         Collections.reverse(events);
-        mRecyclerView = (RecyclerView) view2.findViewById(R.id.recycler_view);
+        mRecyclerView = view2.findViewById(R.id.recycler_view);
         mRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
         mItemDecoration = new DotItemDecoration
                 .Builder(this)

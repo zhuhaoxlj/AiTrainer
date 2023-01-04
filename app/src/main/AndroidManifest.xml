@@ -79,7 +79,7 @@
         <activity android:name=".view.ChangeProfileActivity" />
         <activity android:name=".view.ChangeNickName" />
         <activity android:name=".view.UserInfoInitActivity" />
-        <activity android:name=".view.IntroView" />
+        <activity android:name=".view.IntroActivity" />
         <activity android:name=".CameraXLivePreviewActivity" />
         <activity android:name=".view.SelectSportsPreference" />
         <activity android:name=".datacenter.PersonalPlan" />

@@ -79,7 +79,6 @@
         android:label="AiTrainer"
         android:requestLegacyExternalStorage="true"
         android:supportsRtl="true"
-        android:testOnly="true"
         android:theme="@style/Theme.AppCompat"
         android:usesCleartextTraffic="true" >
         <activity
@@ -103,7 +102,7 @@
         <activity android:name="com.lindum.mlkit.vision.dev.view.ChangeProfileActivity" />
         <activity android:name="com.lindum.mlkit.vision.dev.view.ChangeNickName" />
         <activity android:name="com.lindum.mlkit.vision.dev.view.UserInfoInitActivity" />
-        <activity android:name="com.lindum.mlkit.vision.dev.view.IntroView" />
+        <activity android:name="com.lindum.mlkit.vision.dev.view.IntroActivity" />
         <activity android:name="com.lindum.mlkit.vision.dev.CameraXLivePreviewActivity" />
         <activity android:name="com.lindum.mlkit.vision.dev.view.SelectSportsPreference" />
         <activity android:name="com.lindum.mlkit.vision.dev.datacenter.PersonalPlan" />

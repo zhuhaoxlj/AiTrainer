@@ -4,15 +4,18 @@
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/b5430ed957ec7f184e2e4e64ba638437/jetified-android-DecoView-charting-v1.2/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/b5430ed957ec7f184e2e4e64ba638437/jetified-android-DecoView-charting-v1.2/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/b5430ed957ec7f184e2e4e64ba638437/jetified-android-DecoView-charting-v1.2/AndroidManifest.xml" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/f863409aef31e4c554905076947a4312/jetified-android-DecoView-charting-v1.2/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/f863409aef31e4c554905076947a4312/jetified-android-DecoView-charting-v1.2/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/f863409aef31e4c554905076947a4312/jetified-android-DecoView-charting-v1.2/AndroidManifest.xml" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/6691141aa4ec36a04d3b831befc2f469/jetified-android-DecoView-charting-v1.2/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/6691141aa4ec36a04d3b831befc2f469/jetified-android-DecoView-charting-v1.2/AndroidManifest.xml" />
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/6691141aa4ec36a04d3b831befc2f469/jetified-android-DecoView-charting-v1.2/jars/classes.jar!/" />
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/a3cbdac9ab38be1ac949c14ae93bbda8/transformed/jetified-android-DecoView-charting-v1.2/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/a3cbdac9ab38be1ac949c14ae93bbda8/transformed/jetified-android-DecoView-charting-v1.2/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/a3cbdac9ab38be1ac949c14ae93bbda8/transformed/jetified-android-DecoView-charting-v1.2/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/e6890df8f5a141799881c969381c07bd/transformed/jetified-android-DecoView-charting-v1.2/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/e6890df8f5a141799881c969381c07bd/transformed/jetified-android-DecoView-charting-v1.2/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/e6890df8f5a141799881c969381c07bd/transformed/jetified-android-DecoView-charting-v1.2/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/b48c76c269e5ed17b6d4fa301554e9a3/transformed/jetified-android-DecoView-charting-v1.2/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/b48c76c269e5ed17b6d4fa301554e9a3/transformed/jetified-android-DecoView-charting-v1.2/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/b48c76c269e5ed17b6d4fa301554e9a3/transformed/jetified-android-DecoView-charting-v1.2/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

@@ -99,7 +99,7 @@ dependencies {
     implementation 'com.orhanobut:logger:2.2.0'
     // TabBar
     implementation 'com.jpeng:JPTabBar:1.4.0'
-    //DecoView
+    // DecoView
     implementation 'com.github.bmarrdev:android-DecoView-charting:v1.2'
     // XUI
     implementation 'com.github.xuexiangjys:XUI:1.1.8'
