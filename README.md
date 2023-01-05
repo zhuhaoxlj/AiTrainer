@@ -58,7 +58,7 @@ For detailed documents, please visit https://zhuhaoxlj.github.io/.
 
 ## Reference documents
 
-Grishchenko, Ivan, Valentin Bazarevsky, Andrei Zanfir, Eduard Gabriel Bazavan, Mihai Zanfir, Richard Yee, Karthik Raveendran, Matsvei Zhdanovich, Matthias Grundmann和Cristian Sminchisescu. 《BlazePose GHUM Holistic: Real-Time 3D Human Landmarks and Pose Estimation》. arXiv, June 23, 2022. http://arxiv.org/abs/2206.11678.
+Grishchenko, Ivan, Valentin Bazarevsky, Andrei Zanfir, Eduard Gabriel Bazavan, Mihai Zanfir, Richard Yee, Karthik Raveendran, Matsvei Zhdanovich, Matthias Grundmann and Cristian Sminchisescu. 《BlazePose GHUM Holistic: Real-Time 3D Human Landmarks and Pose Estimation》. arXiv, June 23, 2022. http://arxiv.org/abs/2206.11678.
 
 ## License
 
