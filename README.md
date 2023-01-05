@@ -44,7 +44,7 @@ AiTrainer is an intelligent fitness system combining artificial intelligence mac
 	<font color="AAAAAA">004.jpg</font>
 </p>
 
-### Project Demo
+### Project demo
 
 [Android AiTrainer Demo Video_bilibili](https://www.bilibili.com/video/BV1JZ4y1177W/?spm_id_from=333.999.0.0&vd_source=2560cad70be7bb6cc853f08dd5ef5e6d)
 
