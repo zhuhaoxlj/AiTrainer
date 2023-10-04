@@ -1,16 +1,12 @@
 <component name="libraryTable">
   <library name="Gradle: com.github.gzu-liyujiang.AndroidPicker:WheelPicker:4.1.7@aar">
     <CLASSES>
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/04298869d33298e79f83bc50df81db02/transformed/jetified-WheelPicker-4.1.7/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/04298869d33298e79f83bc50df81db02/transformed/jetified-WheelPicker-4.1.7/AndroidManifest.xml" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/04298869d33298e79f83bc50df81db02/transformed/jetified-WheelPicker-4.1.7/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/dc6ca0ef57698b830ab9b7e2e8bff996/transformed/jetified-WheelPicker-4.1.7/AndroidManifest.xml" />
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/dc6ca0ef57698b830ab9b7e2e8bff996/transformed/jetified-WheelPicker-4.1.7/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/dc6ca0ef57698b830ab9b7e2e8bff996/transformed/jetified-WheelPicker-4.1.7/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
-      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.gzu-liyujiang.AndroidPicker/WheelPicker/4.1.7/d0396998f9b8673721f0cb567f02d1d7e9499019/WheelPicker-4.1.7-sources.jar!/" />
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.gzu-liyujiang.AndroidPicker/WheelPicker/4.1.7/2ee4b79954c6e7c47e1eb6487275b4d16a7009cb/WheelPicker-4.1.7-sources.jar!/" />
     </SOURCES>
   </library>

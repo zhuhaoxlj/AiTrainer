@@ -1,10 +1,8 @@
 <component name="libraryTable">
   <library name="Gradle: com.google.mlkit:camera:16.0.0-beta1@aar">
     <CLASSES>
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/ebdf43113743875641aee584777c8abd/jetified-camera-16.0.0-beta1/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/e75cb0aa761369a441c5e01e3ded7842/transformed/jetified-camera-16.0.0-beta1/AndroidManifest.xml" />
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/e75cb0aa761369a441c5e01e3ded7842/transformed/jetified-camera-16.0.0-beta1/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/e75cb0aa761369a441c5e01e3ded7842/transformed/jetified-camera-16.0.0-beta1/res" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.mlkit/camera/16.0.0-beta1/b374a86ea8b95b910bd73ed34ee47a349c05d6d3/camera-16.0.0-beta1-javadoc.jar!/" />

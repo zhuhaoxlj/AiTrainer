@@ -1,16 +1,12 @@
 <component name="libraryTable">
   <library name="Gradle: com.github.gzu-liyujiang.AndroidPicker:Common:4.1.7@aar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/c7790c9515961e3be9f0bb6c1257e38f/transformed/jetified-Common-4.1.7/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/c7790c9515961e3be9f0bb6c1257e38f/transformed/jetified-Common-4.1.7/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/c7790c9515961e3be9f0bb6c1257e38f/transformed/jetified-Common-4.1.7/AndroidManifest.xml" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/6620a9d0fb365a7e1142c0391cec8360/transformed/jetified-Common-4.1.7/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/6620a9d0fb365a7e1142c0391cec8360/transformed/jetified-Common-4.1.7/AndroidManifest.xml" />
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/6620a9d0fb365a7e1142c0391cec8360/transformed/jetified-Common-4.1.7/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
-      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.gzu-liyujiang.AndroidPicker/Common/4.1.7/d76f4be727790e40ba0fa2669d6e24adebcfd2a4/Common-4.1.7-sources.jar!/" />
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.gzu-liyujiang.AndroidPicker/Common/4.1.7/b39bbc76a5a301bb479026389c9561da88697529/Common-4.1.7-sources.jar!/" />
     </SOURCES>
   </library>

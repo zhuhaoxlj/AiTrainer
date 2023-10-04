@@ -1,16 +1,12 @@
 <component name="libraryTable">
   <library name="Gradle: com.github.gzu-liyujiang.AndroidPicker:WheelView:4.1.7@aar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/c754d08090571d609eb71bfe1e2c4ffd/transformed/jetified-WheelView-4.1.7/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/c754d08090571d609eb71bfe1e2c4ffd/transformed/jetified-WheelView-4.1.7/AndroidManifest.xml" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/c754d08090571d609eb71bfe1e2c4ffd/transformed/jetified-WheelView-4.1.7/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/1b0b12129fa1ce7f9905bf6ec67e3fa8/transformed/jetified-WheelView-4.1.7/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/1b0b12129fa1ce7f9905bf6ec67e3fa8/transformed/jetified-WheelView-4.1.7/AndroidManifest.xml" />
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/1b0b12129fa1ce7f9905bf6ec67e3fa8/transformed/jetified-WheelView-4.1.7/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
-      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.gzu-liyujiang.AndroidPicker/WheelView/4.1.7/979d5bcc5bd363b3b9f4090ac1be5ad9361434b5/WheelView-4.1.7-sources.jar!/" />
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.gzu-liyujiang.AndroidPicker/WheelView/4.1.7/c86699edefd6a93c72632e87609c033fbf3a6192/WheelView-4.1.7-sources.jar!/" />
     </SOURCES>
   </library>

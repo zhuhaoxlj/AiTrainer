@@ -1,18 +1,9 @@
 <component name="libraryTable">
   <library name="Gradle: com.github.warkiz.tickseekbar:tickseekbar:0.1.4@aar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/1fc6d52b096b44a373c3e26b3bbede70/jetified-tickseekbar-0.1.4/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/1fc6d52b096b44a373c3e26b3bbede70/jetified-tickseekbar-0.1.4/AndroidManifest.xml" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/1fc6d52b096b44a373c3e26b3bbede70/jetified-tickseekbar-0.1.4/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/01b00871aa91accb464e675a23a9f05c/transformed/jetified-tickseekbar-0.1.4/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/01b00871aa91accb464e675a23a9f05c/transformed/jetified-tickseekbar-0.1.4/AndroidManifest.xml" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/01b00871aa91accb464e675a23a9f05c/transformed/jetified-tickseekbar-0.1.4/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/24e7c3cf05cc4f83b67aaf4a57c7b9e8/transformed/jetified-tickseekbar-0.1.4/AndroidManifest.xml" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/24e7c3cf05cc4f83b67aaf4a57c7b9e8/transformed/jetified-tickseekbar-0.1.4/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/24e7c3cf05cc4f83b67aaf4a57c7b9e8/transformed/jetified-tickseekbar-0.1.4/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/e27fe8973e11d771f0ddddfa238cb104/transformed/jetified-tickseekbar-0.1.4/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/e27fe8973e11d771f0ddddfa238cb104/transformed/jetified-tickseekbar-0.1.4/AndroidManifest.xml" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/e27fe8973e11d771f0ddddfa238cb104/transformed/jetified-tickseekbar-0.1.4/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/376df93331033d9363e60323fafcde06/transformed/jetified-tickseekbar-0.1.4/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/376df93331033d9363e60323fafcde06/transformed/jetified-tickseekbar-0.1.4/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/376df93331033d9363e60323fafcde06/transformed/jetified-tickseekbar-0.1.4/res" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.warkiz.tickseekbar/tickseekbar/0.1.4/78e1e25ceed5e69c42be8b07fd91da926f00e683/tickseekbar-0.1.4-javadoc.jar!/" />

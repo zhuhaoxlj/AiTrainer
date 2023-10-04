@@ -1,16 +1,11 @@
 <component name="libraryTable">
   <library name="Gradle: com.github.gzu-liyujiang.AndroidPicker:AddressPicker:4.1.7@aar">
     <CLASSES>
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/c2bce357d8f6d392fd5333ca805c57f0/jetified-AddressPicker-4.1.7/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/585ddb1046a245523c71ce81f9f76267/transformed/jetified-AddressPicker-4.1.7/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/585ddb1046a245523c71ce81f9f76267/transformed/jetified-AddressPicker-4.1.7/AndroidManifest.xml" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/585ddb1046a245523c71ce81f9f76267/transformed/jetified-AddressPicker-4.1.7/res" />
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/515fa86ba5941f96092956c47a0eb819/transformed/jetified-AddressPicker-4.1.7/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/515fa86ba5941f96092956c47a0eb819/transformed/jetified-AddressPicker-4.1.7/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
-      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.gzu-liyujiang.AndroidPicker/AddressPicker/4.1.7/681d971e042659a93781adfeb09068979088d932/AddressPicker-4.1.7-sources.jar!/" />
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.gzu-liyujiang.AndroidPicker/AddressPicker/4.1.7/f7152e5475b20325d05cac66e2196c55dc984600/AddressPicker-4.1.7-sources.jar!/" />
     </SOURCES>
   </library>
