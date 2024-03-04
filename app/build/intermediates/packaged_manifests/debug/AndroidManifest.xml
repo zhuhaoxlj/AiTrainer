@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.lindum.mlkit.vision.demo"
+    package="com.lindum.mlkit.vision.dev"
     android:installLocation="auto"
     android:versionCode="11"
     android:versionName="1.11" >
@@ -13,18 +13,24 @@
     APIs.
     -->
     <uses-sdk
-        android:minSdkVersion="16"
+        android:minSdkVersion="19"
         android:targetSdkVersion="30" />
 
-    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera" /> <!-- 步数获取 -->
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
 
+    <uses-feature android:name="android.hardware.sensor.accelerometer" />
+
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.ACTIVITY_RECOGNITION" /> <!-- 获取手机的 IMEI（设备标识码） -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <!-- 写外置存储 -->
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <!-- 读取外置存储 -->
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <!-- 这个权限用于跳转外部存储授权界面 -->
+    <uses-permission android:name="android.permission.READ_PRIVILEGED_PHONE_STATE" /> <!-- 写外置存储 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> <!-- 读取外置存储 -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> <!-- 这个权限用于跳转外部存储授权界面 -->
     <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -34,31 +40,80 @@
         <intent>
             <action android:name="android.media.action.IMAGE_CAPTURE" />
         </intent>
+        <intent>
+            <action android:name="android.intent.action.TTS_SERVICE" />
+        </intent>
     </queries>
+
+    <!-- 进程杀死 -->
+    <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" /> <!-- 蓝牙权限 -->
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.BLUETOOTH" /> <!-- 定位权限 -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /> <!-- 锁屏权限 -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" /> <!-- 前台服务，兼容9.0 -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" /> <!-- 悬浮窗 -->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" /> <!-- APK安装 -->
+    <uses-permission android:name="android.permission.INSTALL_PACKAGES" />
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.READ_SMS" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.READ_CALENDAR" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" /> <!-- 修改手机状态 -->
+    <uses-permission android:name="android.permission.MODIFY_PHONE_STATE" />
+    <uses-permission android:name="android.permission.FLASHLIGHT" />
+
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+    <uses-feature android:name="android.hardware.camera.flash" /> <!-- 状态栏权限 -->
+    <uses-permission android:name="android.permission.EXPAND_STATUS_BAR" />
 
     <application
         android:name="androidx.multidex.MultiDexApplication"
+        android:allowBackup="true"
         android:appComponentFactory="androidx.core.app.CoreComponentFactory"
         android:debuggable="true"
         android:icon="@drawable/train"
         android:label="AiTrainer"
+        android:requestLegacyExternalStorage="true"
+        android:supportsRtl="true"
         android:testOnly="true"
         android:theme="@style/Theme.AppCompat"
         android:usesCleartextTraffic="true" >
+        <activity
+            android:name="com.lindum.mlkit.vision.dev.view.OfficialNoticeActivity"
+            android:exported="false" />
+
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
-
         <!--
-          Optional: Add it to automatically download ML model to device after
+ Optional: Add it to automatically download ML model to device after
           your app is installed.
         -->
         <meta-data
             android:name="com.google.mlkit.vision.DEPENDENCIES"
             android:value="barcode,face,ocr,ica" />
 
+        <activity android:name="com.lindum.mlkit.vision.dev.datacenter.ProgressActivity" />
+        <activity android:name="com.lindum.mlkit.vision.dev.view.PoseDetailsActivity" />
+        <activity android:name="com.lindum.mlkit.vision.dev.result.ImageDetails" />
+        <activity android:name="com.lindum.mlkit.vision.dev.view.ChangeProfileActivity" />
+        <activity android:name="com.lindum.mlkit.vision.dev.view.ChangeNickName" />
+        <activity android:name="com.lindum.mlkit.vision.dev.view.UserInfoInitActivity" />
+        <activity android:name="com.lindum.mlkit.vision.dev.view.IntroActivity" />
+        <activity android:name="com.lindum.mlkit.vision.dev.CameraXLivePreviewActivity" />
+        <activity android:name="com.lindum.mlkit.vision.dev.view.SelectSportsPreference" />
+        <activity android:name="com.lindum.mlkit.vision.dev.datacenter.PersonalPlan" />
         <activity
-            android:name="com.lindum.mlkit.vision.demo.java.CameraXLivePreviewActivity"
+            android:name="com.lindum.mlkit.vision.dev.result.TrainingResult"
+            android:exported="false"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name="com.lindum.mlkit.vision.dev.view.HomePage"
             android:exported="true"
             android:theme="@style/AppTheme" >
             <intent-filter>
@@ -67,55 +122,41 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="com.lindum.mlkit.vision.dev.preference.SettingsActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.xuexiang.xutil.system.PermissionUtils$PermissionActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:theme="@style/XUtil_Activity_Translucent"
+            android:windowSoftInputMode="stateHidden|stateAlwaysHidden" />
 
-        <!-- <activity -->
-        <!-- android:name=".java.LivePreviewActivity" -->
-        <!-- android:exported="true" -->
-        <!-- android:theme="@style/AppTheme"> -->
-        <!-- </activity> -->
-
-
-        <!-- <activity -->
-        <!-- android:name=".java.CameraXLivePreviewActivity" -->
-        <!-- android:exported="true" -->
-        <!-- android:theme="@style/AppTheme"> -->
-        <!-- </activity> -->
+        <provider
+            android:name="androidx.core.content.FileProvider4Utils"
+            android:authorities="com.lindum.mlkit.vision.dev.xutil.provider"
+            android:exported="false"
+            android:grantUriPermissions="true" >
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/xutil_provider_paths" />
+        </provider>
+        <provider
+            android:name="com.xuexiang.xui.XUIInitProvider"
+            android:authorities="com.lindum.mlkit.vision.dev.xui-init-provider"
+            android:exported="false"
+            android:multiprocess="true" />
 
         <activity
-            android:name="com.lindum.mlkit.vision.demo.preference.SettingsActivity"
-            android:exported="false" />
+            android:name="com.xuexiang.xui.widget.imageview.preview.ui.PreviewActivity"
+            android:theme="@style/XUITheme.Translucent" />
+        <activity
+            android:name="com.xuexiang.xui.widget.imageview.preview.ui.VideoPlayerActivity"
+            android:theme="@style/XUITheme.Translucent" />
 
         <service
             android:name="com.google.mlkit.common.internal.MlKitComponentDiscoveryService"
             android:directBootAware="true"
             android:exported="false" >
-            <meta-data
-                android:name="com.google.firebase.components:com.google.mlkit.vision.objects.defaults.internal.DefaultObjectsRegistrar"
-                android:value="com.google.firebase.components.ComponentRegistrar" />
-            <meta-data
-                android:name="com.google.firebase.components:com.google.mlkit.vision.objects.custom.internal.CustomObjectsRegistrar"
-                android:value="com.google.firebase.components.ComponentRegistrar" />
-            <meta-data
-                android:name="com.google.firebase.components:com.google.mlkit.vision.label.defaults.internal.BundledLabelRegistrar"
-                android:value="com.google.firebase.components.ComponentRegistrar" />
-            <meta-data
-                android:name="com.google.firebase.components:com.google.mlkit.vision.label.custom.internal.CustomLabelRegistrar"
-                android:value="com.google.firebase.components.ComponentRegistrar" />
-            <meta-data
-                android:name="com.google.firebase.components:com.google.mlkit.vision.segmentation.internal.SegmentationRegistrar"
-                android:value="com.google.firebase.components.ComponentRegistrar" />
-            <meta-data
-                android:name="com.google.firebase.components:com.google.mlkit.vision.barcode.internal.BarcodeRegistrar"
-                android:value="com.google.firebase.components.ComponentRegistrar" />
-            <meta-data
-                android:name="com.google.firebase.components:com.google.mlkit.vision.vkp.VkpRegistrar"
-                android:value="com.google.firebase.components.ComponentRegistrar" />
-            <meta-data
-                android:name="com.google.firebase.components:com.google.mlkit.vision.face.internal.FaceRegistrar"
-                android:value="com.google.firebase.components.ComponentRegistrar" />
-            <meta-data
-                android:name="com.google.firebase.components:com.google.mlkit.vision.text.internal.TextRegistrar"
-                android:value="com.google.firebase.components.ComponentRegistrar" />
             <meta-data
                 android:name="com.google.firebase.components:com.google.mlkit.vision.pose.internal.PoseRegistrar"
                 android:value="com.google.firebase.components.ComponentRegistrar" />
@@ -129,7 +170,7 @@
 
         <provider
             android:name="com.google.mlkit.common.internal.MlKitInitProvider"
-            android:authorities="com.lindum.mlkit.vision.demo.mlkitinitprovider"
+            android:authorities="com.lindum.mlkit.vision.dev.mlkitinitprovider"
             android:exported="false"
             android:initOrder="99" />
 
@@ -154,12 +195,6 @@
         <receiver
             android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver"
             android:exported="false" />
-
-        <provider
-            android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer"
-            android:authorities="com.lindum.mlkit.vision.demo.lifecycle-process"
-            android:exported="false"
-            android:multiprocess="true" />
     </application>
 
 </manifest>

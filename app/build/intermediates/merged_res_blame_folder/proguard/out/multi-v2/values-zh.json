@@ -1,0 +1,20 @@
+{
+    "logs": [
+        {
+            "outputFile": "/Users/mark/Documents/Project/01-Android/AiTrainer/app/build/intermediates/incremental/mergeProguardResources/merged.dir/values-zh/values-zh.xml",
+            "map": [
+                {
+                    "source": "/Users/mark/.gradle/caches/transforms-3/e987b6aec311fbe238994b95e7164233/transformed/jetified-calendarview-3.7.1/res/values-zh/values-zh.xml",
+                    "from": {
+                        "startLines": "2,16,31,45,77,91,111,137,142,151,164,176,185,194,195,196,197,198,199,200,201",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "100,448,791,1146,1922,2278,2892,3525,3664,3921,4221,4516,4741,4976,5029,5063,5097,5131,5165,5199,5233",
+                        "endLines": "15,30,44,76,90,110,136,141,150,163,175,184,193,194,195,196,197,198,199,200,201",
+                        "endColumns": "20,19,19,19,19,19,19,19,19,20,19,19,19,52,33,33,33,33,33,33,33",
+                        "endOffsets": "443,786,1141,1917,2273,2887,3520,3659,3916,4216,4511,4736,4971,5024,5058,5092,5126,5160,5194,5228,5262"
+                    }
+                }
+            ]
+        }
+    ]
+}

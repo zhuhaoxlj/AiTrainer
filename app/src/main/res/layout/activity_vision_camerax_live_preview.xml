@@ -1,35 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:keepScreenOn="true">
 
-    <include
-        android:id="@+id/nextButton"
-        layout="@layout/next_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/preview_view"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
-    <include
-        android:id="@+id/preButton"
-        layout="@layout/pre_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/preview_view"
-        app:layout_constraintTop_toTopOf="parent" />
-
+    <!--    相机视图    -->
     <androidx.camera.view.PreviewView
         android:id="@+id/preview_view"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/control"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <com.lindum.mlkit.vision.demo.GraphicOverlay
+    <!--    mlkit 绘制图层  -->
+    <com.lindum.mlkit.vision.dev.GraphicOverlay
         android:id="@+id/graphic_overlay"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -38,39 +25,149 @@
         app:layout_constraintRight_toRightOf="@id/preview_view"
         app:layout_constraintTop_toTopOf="@id/preview_view" />
 
-    <include
-        android:id="@+id/settings_button"
-        layout="@layout/settings_style"
+    <ImageView
+        android:id="@+id/testImage"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintRight_toRightOf="@id/preview_view"
-        app:layout_constraintTop_toTopOf="@id/preview_view" />
-
+        android:id="@+id/analysisResult"
+        android:text="分析结果"
+        tools:ignore="MissingConstraints" />
+    <com.ramotion.circlemenu.CircleMenuView
+        android:visibility="invisible"
+        android:id="@+id/circle_menu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:button_colors="@array/colors"
+        app:button_icons="@array/icons"
+        android:layout_alignParentEnd="true"
+        tools:ignore="MissingConstraints" />
+    <TextView
+        android:id="@+id/countdownSecondsText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="3"
+        android:textColor="@color/light_green_700"
+        android:textSize="260sp"
+        app:layout_constraintBottom_toBottomOf="@+id/preview_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/preview_view" />
+    <!--    右侧按钮    -->
     <LinearLayout
-        android:id="@id/control"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="MissingConstraints">
+
+        <include
+            android:id="@+id/settings_button"
+            layout="@layout/settings_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintRight_toRightOf="@id/preview_view"
+            app:layout_constraintTop_toTopOf="@id/preview_view" />
+
+        <include
+            android:id="@+id/explain"
+            layout="@layout/look_explanation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <!--    下方卡片    -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:background="@color/blue"
-        android:orientation="horizontal"
+        android:layout_height="70dp"
+        android:layout_margin="20dp"
+        app:cardCornerRadius="10dp"
         app:layout_constraintBottom_toBottomOf="parent">
 
-        <ToggleButton
-            android:id="@+id/facing_switch"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_gravity="center_vertical"
-            android:background="@layout/toggle_style"
-            android:checked="false"
-            android:textOff=""
-            android:textOn="" />
+        <RelativeLayout
+            android:id="@id/control"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:orientation="horizontal">
 
-        <Spinner
-            android:id="@+id/spinner"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="1" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                tools:ignore="DisableBaselineAlignment">
 
-    </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/preButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center">
 
+                    <include
+                        android:id="@+id/prePoseImage"
+                        layout="@layout/pre_button"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center">
+
+                    <ToggleButton
+                        android:id="@+id/facing_switch"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center_vertical"
+                        android:background="@mipmap/change_camera"
+                        android:checked="false"
+                        android:gravity="center"
+                        android:textOff=""
+                        android:textOn="" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/nextButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center">
+
+                    <include
+                        android:id="@+id/nextPoseImage"
+                        layout="@layout/next_button"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <Spinner
+                android:id="@+id/spinner"
+                android:layout_width="0dp"
+                android:layout_height="0dp" />
+
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!--    左下角信息   -->
+    <include
+        android:id="@+id/poseInfo"
+        layout="@layout/pose_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/cardView"
+        app:layout_constraintStart_toStartOf="@+id/preview_view" />
 </androidx.constraintlayout.widget.ConstraintLayout>
