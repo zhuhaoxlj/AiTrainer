@@ -34,6 +34,7 @@
   <androidx.compose.foundation/>
   <androidx.compose.material/>
   <androidx.compose.material3/>
+  <androidx.compose.material3.adaptive/>
   <androidx.compose.runtime/>
   <androidx.compose.ui/>
   <androidx.concurrent/>
@@ -71,6 +72,7 @@
   <androidx.leanback/>
   <androidx.legacy/>
   <androidx.lifecycle/>
+  <androidx.lint/>
   <androidx.loader/>
   <androidx.localbroadcastmanager/>
   <androidx.media/>
@@ -206,6 +208,7 @@
   <com.google.android.gms.strict-version-matcher-plugin/>
   <com.google.android.instantapps/>
   <com.google.android.instantapps.thirdpartycompat/>
+  <com.google.android.libraries.ads.mobile.sdk/>
   <com.google.android.libraries.car/>
   <com.google.android.libraries.cloud.telco.subgraph/>
   <com.google.android.libraries.enterprise.amapi/>

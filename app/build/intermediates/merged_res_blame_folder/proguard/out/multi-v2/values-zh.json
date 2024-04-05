@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/mark/Documents/Project/01-Android/AiTrainer/app/build/intermediates/incremental/mergeProguardResources/merged.dir/values-zh/values-zh.xml",
+            "outputFile": "/Users/mark/Documents/100-Project/01-Android/AiTrainer/app/build/intermediates/incremental/mergeProguardResources/merged.dir/values-zh/values-zh.xml",
             "map": [
                 {
                     "source": "/Users/mark/.gradle/caches/transforms-3/e987b6aec311fbe238994b95e7164233/transformed/jetified-calendarview-3.7.1/res/values-zh/values-zh.xml",

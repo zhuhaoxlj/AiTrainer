@@ -1,7 +1,7 @@
 # compiler: R8
 # compiler_version: 3.1.66
 # min_api: 24
-# pg_map_id: 0234a8a
+# pg_map_id: 585a4ee
 # common_typos_disable
 # {"id":"com.android.tools.r8.mapping","version":"1.0"}
 androidx.activity.Cancellable -> androidx.activity.a:
@@ -39108,50 +39108,54 @@ com.lindum.mlkit.vision.dev.view.HomeAdapter$ViewHolder -> com.lindum.mlkit.visi
 com.lindum.mlkit.vision.dev.view.HomePage -> com.lindum.mlkit.vision.dev.view.HomePage:
     android.view.View view1 -> x
     android.view.View view3 -> z
-    java.lang.String[] TABBAR_TITLES -> Y
-    int[] M_SELE_ICONS -> Z
-    com.vivian.timelineitemdecoration.itemdecoration.DotItemDecoration mItemDecoration -> J
-    java.util.ArrayList times -> L
-    int todaySportsTime -> T
-    java.lang.String[] urls -> W
+    java.lang.String[] urls -> Y
+    java.time.LocalDate today -> F
+    com.vivian.timelineitemdecoration.itemdecoration.DotItemDecoration mItemDecoration -> L
+    java.util.ArrayList times -> N
+    int todaySportsTime -> V
     int userInfoIntentCode -> u
-    java.util.ArrayList poseDetailFeelingImageArrayList -> P
+    java.util.ArrayList poseDetailFeelingImageArrayList -> R
     android.view.View view2 -> y
-    java.util.List poseEntityArrayList -> R
-    long time -> K
     android.graphics.Bitmap loadingBitmap -> s
-    java.lang.String[] titles -> X
+    java.util.List poseEntityArrayList -> T
+    java.lang.String[] titles -> Z
+    android.hardware.SensorManager sensorManager -> E
+    com.lindum.mlkit.vision.dev.view.HomePage$MySensorEventListener mySensorEventListener -> G
     androidx.activity.result.ActivityResultLauncher intentActivityResultLauncher -> v
-    java.time.LocalDate today -> E
-    com.lindum.mlkit.vision.dev.result.DotTimeLineAdapter mAdapter -> I
-    androidx.recyclerview.widget.RecyclerView mRecyclerView -> G
-    java.util.ArrayList poseLibrarySwiperImageArrayList -> O
-    java.lang.String appFilePath -> V
+    com.lindum.mlkit.vision.dev.result.DotTimeLineAdapter mAdapter -> K
+    java.util.ArrayList events -> O
     androidx.viewpager.widget.ViewPager viewPager -> w
-    java.util.ArrayList events -> M
-    java.util.List mViews -> F
+    androidx.recyclerview.widget.RecyclerView mRecyclerView -> I
+    com.lindum.mlkit.vision.dev.entity.UserEntity userEntity -> P
+    java.lang.String appFilePath -> X
+    java.lang.String[] TABBAR_TITLES -> a0
     com.lindum.mlkit.vision.dev.view.HomeAdapter adapter -> t
     android.widget.TextView todaySteps -> D
     android.view.View view4 -> A
+    java.util.List mList -> J
+    int[] M_NORMAL_ICONS -> c0
+    int mStepCounter -> W
     com.jpeng.jptabbar.JPTabBar jpTabBar -> C
-    java.util.List mList -> H
-    int mStepCounter -> U
-    com.lindum.mlkit.vision.dev.entity.UserEntity userEntity -> N
+    java.util.List mViews -> H
+    int todayCals -> U
+    java.util.ArrayList poseRightImageArrayList -> S
     boolean isFirstUseApp -> B
-    int todayCals -> S
-    java.util.ArrayList poseRightImageArrayList -> Q
-    int[] M_NORMAL_ICONS -> a0
-    void lambda$initHomePage$2(android.view.View,com.xuexiang.xui.widget.banner.widget.banner.BannerItem,int) -> A0
-    void lambda$initHomePage$3(android.view.View) -> B0
-    void lambda$initPersonalPage$4(android.view.View) -> C0
-    void lambda$initPersonalPage$5(android.view.View) -> D0
+    long time -> M
+    java.util.ArrayList poseLibrarySwiperImageArrayList -> Q
+    int[] M_SELE_ICONS -> b0
+    void lambda$initFoodList$8(android.widget.AdapterView,android.view.View,int,long) -> A0
+    void lambda$initHomePage$1(android.view.View) -> B0
+    void lambda$initHomePage$2(android.view.View,com.xuexiang.xui.widget.banner.widget.banner.BannerItem,int) -> C0
+    void lambda$initHomePage$3(android.view.View) -> D0
     void init() -> E
-    void lambda$initTabBar$6(com.xuexiang.xui.widget.dialog.materialdialog.MaterialDialog,com.xuexiang.xui.widget.dialog.materialdialog.DialogAction) -> E0
-    void lambda$initTabBar$7(android.view.View) -> F0
-    void lambda$initTrainingHistory$0(android.view.View,int) -> G0
-    void lambda$registerGetIntentData$9(androidx.activity.result.ActivityResult) -> H0
-    void registerGetIntentData() -> I0
-    android.graphics.Bitmap returnBitMap(java.lang.String) -> J0
+    void lambda$initPersonalPage$4(android.view.View) -> E0
+    void lambda$initPersonalPage$5(android.view.View) -> F0
+    void lambda$initTabBar$6(com.xuexiang.xui.widget.dialog.materialdialog.MaterialDialog,com.xuexiang.xui.widget.dialog.materialdialog.DialogAction) -> G0
+    void lambda$initTabBar$7(android.view.View) -> H0
+    void lambda$initTrainingHistory$0(android.view.View,int) -> I0
+    void lambda$registerGetIntentData$9(androidx.activity.result.ActivityResult) -> J0
+    void registerGetIntentData() -> K0
+    android.graphics.Bitmap returnBitMap(java.lang.String) -> L0
     void $r8$lambda$0RtJsMj57dI6RuH0APxhye9Ha1M(android.view.View,com.xuexiang.xui.widget.banner.widget.banner.BannerItem,int) -> W
       # {"id":"com.android.tools.r8.synthesized"}
     void $r8$lambda$0U0HMd_VMIALnL01IOHxtH9VQFg(com.lindum.mlkit.vision.dev.view.HomePage,com.xuexiang.xui.widget.dialog.materialdialog.MaterialDialog,com.xuexiang.xui.widget.dialog.materialdialog.DialogAction) -> X
@@ -39175,24 +39179,24 @@ com.lindum.mlkit.vision.dev.view.HomePage -> com.lindum.mlkit.vision.dev.view.Ho
     android.graphics.Bitmap access$000(com.lindum.mlkit.vision.dev.view.HomePage) -> g0
     java.util.List access$100(com.lindum.mlkit.vision.dev.view.HomePage) -> h0
     java.lang.String[] access$200() -> i0
-    void fileInit() -> j0
-    java.util.List getBannerList() -> k0
-    void getPoseEntityFromDataBase() -> l0
+    android.widget.TextView access$300(com.lindum.mlkit.vision.dev.view.HomePage) -> j0
+    void fileInit() -> k0
+    java.util.List getBannerList() -> l0
     void onItemClick(com.lindum.mlkit.vision.dev.view.PoseLibraryItem) -> m
-    java.lang.String getStringFromIntentResult(androidx.activity.result.ActivityResult,java.lang.String) -> m0
-    void getUserInfoFromDateBase() -> n0
-    void guideView() -> o0
-    void initFoodList() -> p0
-    void initHomePage() -> q0
-    void initPersonalPage() -> r0
-    void initPoseLibrary() -> s0
-    void initSwiperImage() -> t0
-    void initTabBar() -> u0
-    void initTrainingHistory() -> v0
-    void initViewPaper() -> w0
-    boolean isFirstUseApp() -> x0
-    void lambda$initFoodList$8(android.widget.AdapterView,android.view.View,int,long) -> y0
-    void lambda$initHomePage$1(android.view.View) -> z0
+    void getPoseEntityFromDataBase() -> m0
+    java.lang.String getStringFromIntentResult(androidx.activity.result.ActivityResult,java.lang.String) -> n0
+    void getUserInfoFromDateBase() -> o0
+    void guideView() -> p0
+    void initFoodList() -> q0
+    void initHomePage() -> r0
+    void initPersonalPage() -> s0
+    void initPoseLibrary() -> t0
+    void initSensor() -> u0
+    void initSwiperImage() -> v0
+    void initTabBar() -> w0
+    void initTrainingHistory() -> x0
+    void initViewPaper() -> y0
+    boolean isFirstUseApp() -> z0
 com.lindum.mlkit.vision.dev.view.HomePage$1 -> com.lindum.mlkit.vision.dev.view.HomePage$a:
     com.lindum.mlkit.vision.dev.view.HomePage this$0 -> a
 com.lindum.mlkit.vision.dev.view.HomePage$1$1 -> com.lindum.mlkit.vision.dev.view.HomePage$a$a:
@@ -39248,6 +39252,11 @@ com.lindum.mlkit.vision.dev.view.HomePage$8 -> com.lindum.mlkit.vision.dev.view.
 com.lindum.mlkit.vision.dev.view.HomePage$9 -> com.lindum.mlkit.vision.dev.view.HomePage$j:
     com.lindum.mlkit.vision.dev.view.HomePage this$0 -> c
     java.util.ArrayList val$arrayList -> b
+com.lindum.mlkit.vision.dev.view.HomePage$MySensorEventListener -> com.lindum.mlkit.vision.dev.view.HomePage$k:
+    com.lindum.mlkit.vision.dev.view.HomePage this$0 -> c
+    int mStepCounter -> b
+    int mStepDetector -> a
+    int getSteps() -> a
 com.lindum.mlkit.vision.dev.view.IntroActivity -> com.lindum.mlkit.vision.dev.view.IntroActivity:
     void $r8$lambda$1QiEa2b-NVjGrnXoVWCwWYFWMMQ(com.lindum.mlkit.vision.dev.view.IntroActivity,com.xuexiang.xui.widget.dialog.materialdialog.MaterialDialog,com.xuexiang.xui.widget.dialog.materialdialog.DialogAction) -> W
       # {"id":"com.android.tools.r8.synthesized"}

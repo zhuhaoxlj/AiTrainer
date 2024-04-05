@@ -1,4 +1,4 @@
-# The proguard configuration file for the following section is /Users/mark/Documents/Project/01-Android/AiTrainer/app/build/intermediates/default_proguard_files/global/proguard-android.txt-7.1.2
+# The proguard configuration file for the following section is /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/build/intermediates/default_proguard_files/global/proguard-android.txt-7.1.2
 # This is a configuration file for ProGuard.
 # http://proguard.sourceforge.net/index.html#manual/usage.html
 #
@@ -116,8 +116,8 @@
 # These classes are duplicated between android.jar and core-lambda-stubs.jar.
 -dontnote java.lang.invoke.**
 
-# End of content from /Users/mark/Documents/Project/01-Android/AiTrainer/app/build/intermediates/default_proguard_files/global/proguard-android.txt-7.1.2
-# The proguard configuration file for the following section is /Users/mark/Documents/Project/01-Android/AiTrainer/app/build/intermediates/aapt_proguard_file/proguard/aapt_rules.txt
+# End of content from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/build/intermediates/default_proguard_files/global/proguard-android.txt-7.1.2
+# The proguard configuration file for the following section is /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/build/intermediates/aapt_proguard_file/proguard/aapt_rules.txt
 -keep class androidx.core.app.CoreComponentFactory { <init>(); }
 -keep class androidx.core.content.FileProvider4Utils { <init>(); }
 -keep class androidx.multidex.MultiDexApplication { <init>(); }
@@ -340,7 +340,7 @@
 -keep class com.xuexiang.xui.widget.textview.AutoMoveTextView { <init>(android.content.Context, android.util.AttributeSet); }
 
 
-# End of content from /Users/mark/Documents/Project/01-Android/AiTrainer/app/build/intermediates/aapt_proguard_file/proguard/aapt_rules.txt
+# End of content from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/build/intermediates/aapt_proguard_file/proguard/aapt_rules.txt
 # The proguard configuration file for the following section is /Users/mark/.gradle/caches/transforms-3/e3ddce3a0ec3c859b9a8d33526f0957b/transformed/jetified-TextWriter-v1.0/proguard.txt
 
 # End of content from /Users/mark/.gradle/caches/transforms-3/e3ddce3a0ec3c859b9a8d33526f0957b/transformed/jetified-TextWriter-v1.0/proguard.txt

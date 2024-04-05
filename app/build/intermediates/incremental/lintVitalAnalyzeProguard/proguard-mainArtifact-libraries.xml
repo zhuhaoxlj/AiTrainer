@@ -14,9 +14,9 @@
       proguardRules="proguard.txt"/>
   <library
       name="com.vivian.widgets:TimeLineItemDecoration:1.5@aar"
-      jars="/Users/mark/.gradle/caches/transforms-3/0535c2553375ce5bc00b372456c583ed/transformed/jetified-TimeLineItemDecoration-1.5/jars/classes.jar"
+      jars="/Users/mark/.gradle/caches/transforms-3/297293198dd62f5d85a53c447346dcd4/transformed/jetified-TimeLineItemDecoration-1.5/jars/classes.jar"
       resolved="com.vivian.widgets:TimeLineItemDecoration:1.5"
-      folder="/Users/mark/.gradle/caches/transforms-3/0535c2553375ce5bc00b372456c583ed/transformed/jetified-TimeLineItemDecoration-1.5"
+      folder="/Users/mark/.gradle/caches/transforms-3/297293198dd62f5d85a53c447346dcd4/transformed/jetified-TimeLineItemDecoration-1.5"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -40,9 +40,9 @@
       proguardRules="proguard.txt"/>
   <library
       name="com.github.warkiz.tickseekbar:tickseekbar:0.1.4@aar"
-      jars="/Users/mark/.gradle/caches/transforms-3/3c43440958165e4c9fa4e1cbcd21e665/transformed/jetified-tickseekbar-0.1.4/jars/classes.jar"
+      jars="/Users/mark/.gradle/caches/transforms-3/a83be5ae696f0d043a7c26536a5fd3d6/transformed/jetified-tickseekbar-0.1.4/jars/classes.jar"
       resolved="com.github.warkiz.tickseekbar:tickseekbar:0.1.4"
-      folder="/Users/mark/.gradle/caches/transforms-3/3c43440958165e4c9fa4e1cbcd21e665/transformed/jetified-tickseekbar-0.1.4"
+      folder="/Users/mark/.gradle/caches/transforms-3/a83be5ae696f0d043a7c26536a5fd3d6/transformed/jetified-tickseekbar-0.1.4"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -139,9 +139,9 @@
       proguardRules="proguard.txt"/>
   <library
       name="com.orhanobut:logger:2.2.0@aar"
-      jars="/Users/mark/.gradle/caches/transforms-3/90f989a450cad81d17aa1347e741a197/transformed/jetified-logger-2.2.0/jars/classes.jar"
+      jars="/Users/mark/.gradle/caches/transforms-3/3e0a09fd1291c3086917f4c456deddb7/transformed/jetified-logger-2.2.0/jars/classes.jar"
       resolved="com.orhanobut:logger:2.2.0"
-      folder="/Users/mark/.gradle/caches/transforms-3/90f989a450cad81d17aa1347e741a197/transformed/jetified-logger-2.2.0"
+      folder="/Users/mark/.gradle/caches/transforms-3/3e0a09fd1291c3086917f4c456deddb7/transformed/jetified-logger-2.2.0"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -152,9 +152,9 @@
       proguardRules="proguard.txt"/>
   <library
       name="com.jpeng:JPTabBar:1.4.0@aar"
-      jars="/Users/mark/.gradle/caches/transforms-3/2c0c4acfc0126d1d1c4787639c7aa83a/transformed/jetified-JPTabBar-1.4.0/jars/classes.jar"
+      jars="/Users/mark/.gradle/caches/transforms-3/83f1c79ecd66d605ce69e3238d046753/transformed/jetified-JPTabBar-1.4.0/jars/classes.jar"
       resolved="com.jpeng:JPTabBar:1.4.0"
-      folder="/Users/mark/.gradle/caches/transforms-3/2c0c4acfc0126d1d1c4787639c7aa83a/transformed/jetified-JPTabBar-1.4.0"
+      folder="/Users/mark/.gradle/caches/transforms-3/83f1c79ecd66d605ce69e3238d046753/transformed/jetified-JPTabBar-1.4.0"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -165,9 +165,9 @@
       proguardRules="proguard.txt"/>
   <library
       name="com.github.bmarrdev:android-DecoView-charting:v1.2@aar"
-      jars="/Users/mark/.gradle/caches/transforms-3/a73820d03793f3c28fc19a123bf58fa5/transformed/jetified-android-DecoView-charting-v1.2/jars/classes.jar"
+      jars="/Users/mark/.gradle/caches/transforms-3/a980d88a6794b259cb79919d4a236494/transformed/jetified-android-DecoView-charting-v1.2/jars/classes.jar"
       resolved="com.github.bmarrdev:android-DecoView-charting:v1.2"
-      folder="/Users/mark/.gradle/caches/transforms-3/a73820d03793f3c28fc19a123bf58fa5/transformed/jetified-android-DecoView-charting-v1.2"
+      folder="/Users/mark/.gradle/caches/transforms-3/a980d88a6794b259cb79919d4a236494/transformed/jetified-android-DecoView-charting-v1.2"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -290,9 +290,9 @@
       proguardRules="proguard.txt"/>
   <library
       name="com.github.Liberuman:ShadowDrawable:0.1@aar"
-      jars="/Users/mark/.gradle/caches/transforms-3/d3f6e2e35945fd5ea73521b57434e3c3/transformed/jetified-ShadowDrawable-0.1/jars/classes.jar"
+      jars="/Users/mark/.gradle/caches/transforms-3/933723ebc205fa6dcfad6e4dc1936fd3/transformed/jetified-ShadowDrawable-0.1/jars/classes.jar"
       resolved="com.github.Liberuman:ShadowDrawable:0.1"
-      folder="/Users/mark/.gradle/caches/transforms-3/d3f6e2e35945fd5ea73521b57434e3c3/transformed/jetified-ShadowDrawable-0.1"
+      folder="/Users/mark/.gradle/caches/transforms-3/933723ebc205fa6dcfad6e4dc1936fd3/transformed/jetified-ShadowDrawable-0.1"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"

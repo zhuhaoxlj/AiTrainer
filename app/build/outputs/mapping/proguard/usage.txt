@@ -28436,19 +28436,9 @@ com.lindum.mlkit.vision.dev.view.FoodEntity:
     public void setFibre(java.lang.String)
     public void setFoodImage(android.graphics.drawable.Drawable)
     public void setFoodName(java.lang.String)
-com.lindum.mlkit.vision.dev.view.HomePage$MySensorEventListener:
-    public int mStepCounter
-    private int mStepDetector
-    final synthetic com.lindum.mlkit.vision.dev.view.HomePage this$0
-    void <init>(com.lindum.mlkit.vision.dev.view.HomePage)
-    public void onAccuracyChanged(android.hardware.Sensor,int)
-    public void onSensorChanged(android.hardware.SensorEvent)
 com.lindum.mlkit.vision.dev.view.HomePage:
     private android.os.Handler addImageHandle
-    private android.hardware.SensorManager sensorManager
-    static synthetic android.widget.TextView access$300(com.lindum.mlkit.vision.dev.view.HomePage)
     public com.lindum.mlkit.vision.dev.entity.UserEntity convertJSON2UserEntity(java.lang.String)
-    public void initSensor()
     public boolean isUserInfoInit(java.lang.String)
 com.lindum.mlkit.vision.dev.view.LoginActivity
 com.lindum.mlkit.vision.dev.view.PaperOnboardingEngine$1
@@ -42522,10 +42512,8 @@ com.lindum.mlkit.vision.dev.utils.StatusBarUtils:
     private static int sStatusbarHeight
     public static float sVirtualDensity
     public static float sVirtualDensityDpi
-com.lindum.mlkit.vision.dev.view.HomePage$MySensorEventListener
 com.lindum.mlkit.vision.dev.view.HomePage:
     static final synthetic boolean $assertionsDisabled
-    private com.lindum.mlkit.vision.dev.view.HomePage$MySensorEventListener mySensorEventListener
 com.lindum.mlkit.vision.dev.view.UserInfoInitActivity:
     static final synthetic boolean $assertionsDisabled
 com.xuexiang.xui.utils.DrawableUtils:

@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/mark/Documents/Project/01-Android/AiTrainer/app/build/intermediates/incremental/mergeProguardResources/merged.dir/values-sq/values-sq.xml",
+            "outputFile": "/Users/mark/Documents/100-Project/01-Android/AiTrainer/app/build/intermediates/incremental/mergeProguardResources/merged.dir/values-sq/values-sq.xml",
             "map": [
                 {
                     "source": "/Users/mark/.gradle/caches/transforms-3/e7b17e1b50063d4f787dbf735b6db0a4/transformed/material-1.4.0/res/values-sq/values-sq.xml",

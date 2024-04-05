@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/mark/Documents/Project/01-Android/AiTrainer/app/build/intermediates/incremental/mergeProguardResources/merged.dir/values-lt/values-lt.xml",
+            "outputFile": "/Users/mark/Documents/100-Project/01-Android/AiTrainer/app/build/intermediates/incremental/mergeProguardResources/merged.dir/values-lt/values-lt.xml",
             "map": [
                 {
                     "source": "/Users/mark/.gradle/caches/transforms-3/38502c25712391513677dfb3facb03a0/transformed/jetified-play-services-base-18.0.1/res/values-lt/values.xml",

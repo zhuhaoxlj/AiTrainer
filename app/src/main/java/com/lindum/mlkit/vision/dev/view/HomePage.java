@@ -14,6 +14,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -40,6 +41,8 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.FutureTarget;
 import com.jpeng.jptabbar.JPTabBar;
 import com.jpeng.jptabbar.OnTabSelectListener;
 import com.jpeng.jptabbar.anno.NorIcons;
@@ -83,6 +86,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
+import java.util.concurrent.ExecutionException;
 
 /**
  * @author MarkGosling
@@ -130,10 +134,10 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
      * 图片 2：
      * 图片 3：
      */
-    public static String[] urls = new String[]{
-            "http://lindum.top/AiTrainer/cover/cover1.png",
-            "http://lindum.top/AiTrainer/cover/cover2.png",
-            "http://lindum.top/AiTrainer/cover/cover3.png",
+    public static String[] coverUrls = new String[]{
+            "file:///android_asset/images/cover1.png",
+            "file:///android_asset/images/cover2.png",
+            "file:///android_asset/images/cover3.png",
     };
     /**
      * 轮播图标题
@@ -142,6 +146,34 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
             "生命在于运动'",
             "运动使人健康",
             "运动是一切生命的源泉",
+    };
+    /**
+     * 动作库动作封面图
+     */
+    public static String[] poseLibraryCoverImageUrl = new String[]{
+            "file:///android_asset/pose_cover/shendun.png",
+            "file:///android_asset/pose_cover/kaoqiangzhanli.png",
+            "file:///android_asset/pose_cover/pingbanzhicheng.png",
+            "file:///android_asset/pose_cover/fuwocheng.png",
+            "file:///android_asset/pose_cover/tunqiao.png",
+            "file:///android_asset/pose_cover/xixilijuanfu.png",
+            "file:///android_asset/pose_cover/juanfumoxi.png",
+            "file:///android_asset/pose_cover/guizifuwocheng.png",
+            "file:///android_asset/pose_cover/juanfumoxi.png",
+    };
+    /**
+     * 动作库动作封面图
+     */
+    public static String[] poseFeelingImageUrl = new String[]{
+            "file:///android_asset/feeling/shendun/male.png",
+            null,
+            "file:///android_asset/feeling/pingbanzhicheng/male.png",
+            "file:///android_asset/feeling/fuwocheng/male.png",
+            "file:///android_asset/feeling/tunqiao/male.png",
+            "file:///android_asset/feeling/xixilijuanfu/male.png",
+            "file:///android_asset/feeling/juanfumoxi/male.png",
+            "file:///android_asset/feeling/guizifuwocheng/male.png",
+            "file:///android_asset/feeling/juanfumoxi/male.png",
     };
     // 训练历史记录 star
     RecyclerView mRecyclerView;
@@ -220,27 +252,6 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
                 if (msg.what == 0x1233) {
                     // 主线程更新动作库图片
                     initPoseLibrary();
-                } else if (msg.what == 0x1234 && FileUtils.isPathEmpty(appFilePath + "/files/poseLibrary/")) {
-
-                    new Thread() {
-                        @Override
-                        public void run() {
-                            super.run();
-                            try {
-                                Thread.sleep(10000);
-                            } catch (InterruptedException e) {
-                                e.printStackTrace();
-                            }
-                            for (Bitmap temp : poseRightImageArrayList) {
-                                int bitmapIndex = poseRightImageArrayList.indexOf(temp);
-                                PictureUtils.saveBitmap(appFilePath + "/files/poseLibrary", bitmapIndex + "-right", temp);
-                                PictureUtils.saveBitmap(appFilePath + "/files/poseLibrary", bitmapIndex + "", poseLibrarySwiperImageArrayList.get(bitmapIndex));
-                                if (poseDetailFeelingImageArrayList.get(bitmapIndex) != null) {
-                                    PictureUtils.saveBitmap(appFilePath + "/files/poseLibrary", bitmapIndex + "-detail", poseDetailFeelingImageArrayList.get(bitmapIndex));
-                                }
-                            }
-                        }
-                    }.start();
                 }
             }
         };
@@ -623,56 +634,29 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
     }
 
     /**
-     * 获取动作库图片
+     * 获取动作库图片 从 assets 目录
      */
     public void initSwiperImage() {
-        for (int i = 0; i < poseEntityArrayList.size(); i++) {
-            poseLibrarySwiperImageArrayList.add(loadingBitmap);
+        for (int i = 0; i < poseLibraryCoverImageUrl.length; i++) {
+            try {
+                FutureTarget<Bitmap> futureTarget1 =
+                        Glide.with(this)
+                                .asBitmap()
+                                .load(poseLibraryCoverImageUrl[i])
+                                .submit();
+                FutureTarget<Bitmap> futureTarget2 =
+                        Glide.with(this)
+                                .asBitmap()
+                                .load(poseFeelingImageUrl[i])
+                                .submit();
+                poseLibrarySwiperImageArrayList.add(futureTarget1.get());
+                poseDetailFeelingImageArrayList.add(futureTarget2.get());
+            } catch (ExecutionException | InterruptedException e) {
+                Log.i("error", Objects.requireNonNull(e.getMessage()));
+            }
             poseDetailFeelingImageArrayList.add(null);
             poseRightImageArrayList.add(null);
         }
-        // // TODO: 2022/3/27  如果存在本地图片
-        boolean isCacheExist = !FileUtils.isPathEmpty(appFilePath + "/files/poseLibrary/");
-        for (PoseEntity poseEntity : poseEntityArrayList) {
-            int indexOfPoseEntityList = poseEntityArrayList.indexOf(poseEntity);
-            new Thread() {
-                @Override
-                public void run() {
-                    super.run();
-                    if (!isCacheExist) {
-                        poseLibrarySwiperImageArrayList.set(indexOfPoseEntityList, returnBitMap(poseEntity.getPoseSwiperImageUrl()[0]));
-                    } else {
-                        poseLibrarySwiperImageArrayList.set(indexOfPoseEntityList, PictureUtils.getBitmapFromLocalFile(appFilePath + "/files/poseLibrary/" + indexOfPoseEntityList + ".png"));
-                    }
-                }
-            }.start();
-            new Thread() {
-                @Override
-                public void run() {
-                    super.run();
-                    if (!isCacheExist) {
-                        poseDetailFeelingImageArrayList.set(indexOfPoseEntityList, returnBitMap(poseEntity.getPoseFeelingImage()));
-                    } else {
-                        poseDetailFeelingImageArrayList.set(indexOfPoseEntityList, PictureUtils.getBitmapFromLocalFile(appFilePath + "/files/poseLibrary/" + indexOfPoseEntityList + "-detail.png"));
-                    }
-                }
-            }.start();
-            new Thread() {
-                @Override
-                public void run() {
-                    super.run();
-                    if (!isCacheExist) {
-                        poseRightImageArrayList.set(indexOfPoseEntityList, returnBitMap(poseEntity.getPoseSwiperImageUrl()[1]));
-                    } else {
-                        poseRightImageArrayList.set(indexOfPoseEntityList, PictureUtils.getBitmapFromLocalFile(appFilePath + "/files/poseLibrary/" + indexOfPoseEntityList + "-right.png"));
-                    }
-                }
-            }.start();
-        }
-//        for (PoseEntity poseEntity : poseEntityArrayList) {
-//            poseLibrarySwiperImageArrayList.add(returnBitMap(poseEntity.getPoseSwiperImageUrl()[0]));
-//            poseDetailFeelingImageArrayList.add(returnBitMap(poseEntity.getPoseFeelingImage()));
-//        }
     }
 
     public Bitmap returnBitMap(final String url) {
@@ -905,9 +889,9 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
      */
     public static List<BannerItem> getBannerList() {
         List<BannerItem> list = new ArrayList<>();
-        for (int i = 0; i < urls.length; i++) {
+        for (int i = 0; i < coverUrls.length; i++) {
             BannerItem item = new BannerItem();
-            item.imgUrl = urls[i];
+            item.imgUrl = coverUrls[i];
             item.title = titles[i];
             list.add(item);
         }
