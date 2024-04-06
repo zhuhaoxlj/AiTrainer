@@ -159,10 +159,10 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
             "file:///android_asset/pose_cover/xixilijuanfu.png",
             "file:///android_asset/pose_cover/juanfumoxi.png",
             "file:///android_asset/pose_cover/guizifuwocheng.png",
-            "file:///android_asset/pose_cover/juanfumoxi.png",
+            "file:///android_asset/pose_cover/fubulashen.png",
     };
     /**
-     * 动作库动作封面图
+     * 动作库感觉图
      */
     public static String[] poseFeelingImageUrl = new String[]{
             "file:///android_asset/feeling/shendun/male.png",
@@ -173,7 +173,21 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
             "file:///android_asset/feeling/xixilijuanfu/male.png",
             "file:///android_asset/feeling/juanfumoxi/male.png",
             "file:///android_asset/feeling/guizifuwocheng/male.png",
-            "file:///android_asset/feeling/juanfumoxi/male.png",
+            null,
+    };
+    /**
+     * 正确动作图
+     */
+    public static String[] rightPoseImageUrl = new String[]{
+            "file:///android_asset/feeling/shendun/2.png",
+            "file:///android_asset/feeling/kaoqiangzhanli/2.png",
+            "file:///android_asset/feeling/pingbanzhicheng/2.png",
+            "file:///android_asset/feeling/fuwocheng/2.png",
+            "file:///android_asset/feeling/tunqiao/2.png",
+            "file:///android_asset/feeling/xixilijuanfu/2.png",
+            "file:///android_asset/feeling/juanfumoxi/2.png",
+            "file:///android_asset/feeling/guizifuwocheng/2.png",
+            "file:///android_asset/feeling/fubulashen/2.png",
     };
     // 训练历史记录 star
     RecyclerView mRecyclerView;
@@ -652,13 +666,18 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
                                 .asBitmap()
                                 .load(poseFeelingImageUrl[i])
                                 .submit();
+                FutureTarget<Bitmap> futureTarget3 =
+                        Glide.with(this)
+                                .asBitmap()
+                                .load(rightPoseImageUrl[i])
+                                .submit();
                 poseLibrarySwiperImageArrayList.add(futureTarget1.get());
+                poseRightImageArrayList.add(futureTarget3.get());
                 poseDetailFeelingImageArrayList.add(futureTarget2.get());
             } catch (ExecutionException | InterruptedException e) {
                 Log.i("error", Objects.requireNonNull(e.getMessage()));
+                poseDetailFeelingImageArrayList.add(null);
             }
-            poseDetailFeelingImageArrayList.add(null);
-            poseRightImageArrayList.add(null);
         }
     }
 

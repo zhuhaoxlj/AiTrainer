@@ -297,7 +297,7 @@ public class TrainingResult extends AppCompatActivity implements HorizontalProgr
         hpvCal.startProgressAnimation();
 
         // 错误动作数
-        int wrongRate = (int) (((float) countWrongImage / (groupsOfPose * 20)) * 100);
+        int wrongRate = (int) (((float) countWrongImage / ((groupsOfPose) * 20)) * 100);
         if (wrongRate > 100) {
             wrongRate = 100;
         }
