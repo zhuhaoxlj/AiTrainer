@@ -1,25 +1,25 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:2:1-105:12
-INJECTED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:2:1-105:12
-INJECTED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:2:1-105:12
-INJECTED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:2:1-105:12
+ADDED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:2:1-105:12
+INJECTED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:2:1-105:12
+INJECTED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:2:1-105:12
+INJECTED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:2:1-105:12
 MERGED from [com.ramotion.circlemenu:circle-menu:0.3.2] /Users/mark/.gradle/caches/transforms-3/e2b7f515c4b51e0551ca7cab309934b4/transformed/jetified-circle-menu-0.3.2/AndroidManifest.xml:2:1-17:12
-MERGED from [com.vivian.widgets:TimeLineItemDecoration:1.5] /Users/mark/.gradle/caches/transforms-3/0535c2553375ce5bc00b372456c583ed/transformed/jetified-TimeLineItemDecoration-1.5/AndroidManifest.xml:2:1-17:12
+MERGED from [com.vivian.widgets:TimeLineItemDecoration:1.5] /Users/mark/.gradle/caches/transforms-3/297293198dd62f5d85a53c447346dcd4/transformed/jetified-TimeLineItemDecoration-1.5/AndroidManifest.xml:2:1-17:12
 MERGED from [com.github.sarnavakonar:TextWriter:v1.0] /Users/mark/.gradle/caches/transforms-3/e3ddce3a0ec3c859b9a8d33526f0957b/transformed/jetified-TextWriter-v1.0/AndroidManifest.xml:2:1-11:12
-MERGED from [com.github.warkiz.tickseekbar:tickseekbar:0.1.4] /Users/mark/.gradle/caches/transforms-3/3c43440958165e4c9fa4e1cbcd21e665/transformed/jetified-tickseekbar-0.1.4/AndroidManifest.xml:2:1-11:12
+MERGED from [com.github.warkiz.tickseekbar:tickseekbar:0.1.4] /Users/mark/.gradle/caches/transforms-3/a83be5ae696f0d043a7c26536a5fd3d6/transformed/jetified-tickseekbar-0.1.4/AndroidManifest.xml:2:1-11:12
 MERGED from [com.ramotion.paperonboarding:paper-onboarding:1.1.3] /Users/mark/.gradle/caches/transforms-3/2a77000eac9a0558cb65952e33b5296c/transformed/jetified-paper-onboarding-1.1.3/AndroidManifest.xml:2:1-17:12
 MERGED from [com.haibin:calendarview:3.7.1] /Users/mark/.gradle/caches/transforms-3/e987b6aec311fbe238994b95e7164233/transformed/jetified-calendarview-3.7.1/AndroidManifest.xml:2:1-11:12
 MERGED from [com.github.gzu-liyujiang.AndroidPicker:AddressPicker:4.1.7] /Users/mark/.gradle/caches/transforms-3/515fa86ba5941f96092956c47a0eb819/transformed/jetified-AddressPicker-4.1.7/AndroidManifest.xml:14:1-24:12
 MERGED from [com.jakewharton:butterknife:10.2.3] /Users/mark/.gradle/caches/transforms-3/a82257cebd5aa9b6d2d0fc041c8a4291/transformed/jetified-butterknife-10.2.3/AndroidManifest.xml:2:1-7:12
 MERGED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] /Users/mark/.gradle/caches/transforms-3/f8f85fca6b6afb51bc4c81e026a1abee/transformed/jetified-xutil-core-2.0.0/AndroidManifest.xml:2:1-38:12
 MERGED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/mark/.gradle/caches/transforms-3/ec76a3ab93056a123fdbd55cfd9141e7/transformed/jetified-xutil-sub-2.0.0/AndroidManifest.xml:17:1-82:12
-MERGED from [com.orhanobut:logger:2.2.0] /Users/mark/.gradle/caches/transforms-3/90f989a450cad81d17aa1347e741a197/transformed/jetified-logger-2.2.0/AndroidManifest.xml:2:1-8:12
-MERGED from [com.jpeng:JPTabBar:1.4.0] /Users/mark/.gradle/caches/transforms-3/2c0c4acfc0126d1d1c4787639c7aa83a/transformed/jetified-JPTabBar-1.4.0/AndroidManifest.xml:2:1-12:12
-MERGED from [com.github.bmarrdev:android-DecoView-charting:v1.2] /Users/mark/.gradle/caches/transforms-3/a73820d03793f3c28fc19a123bf58fa5/transformed/jetified-android-DecoView-charting-v1.2/AndroidManifest.xml:2:1-14:12
+MERGED from [com.orhanobut:logger:2.2.0] /Users/mark/.gradle/caches/transforms-3/3e0a09fd1291c3086917f4c456deddb7/transformed/jetified-logger-2.2.0/AndroidManifest.xml:2:1-8:12
+MERGED from [com.jpeng:JPTabBar:1.4.0] /Users/mark/.gradle/caches/transforms-3/83f1c79ecd66d605ce69e3238d046753/transformed/jetified-JPTabBar-1.4.0/AndroidManifest.xml:2:1-12:12
+MERGED from [com.github.bmarrdev:android-DecoView-charting:v1.2] /Users/mark/.gradle/caches/transforms-3/a980d88a6794b259cb79919d4a236494/transformed/jetified-android-DecoView-charting-v1.2/AndroidManifest.xml:2:1-14:12
 MERGED from [com.github.xuexiangjys:XUI:1.1.8] /Users/mark/.gradle/caches/transforms-3/1c309978d08cba0bdffcddfbf36a3477/transformed/jetified-XUI-1.1.8/AndroidManifest.xml:2:1-24:12
 MERGED from [com.google.android.material:material:1.4.0] /Users/mark/.gradle/caches/transforms-3/e7b17e1b50063d4f787dbf735b6db0a4/transformed/material-1.4.0/AndroidManifest.xml:17:1-24:12
-MERGED from [com.github.Liberuman:ShadowDrawable:0.1] /Users/mark/.gradle/caches/transforms-3/d3f6e2e35945fd5ea73521b57434e3c3/transformed/jetified-ShadowDrawable-0.1/AndroidManifest.xml:2:1-11:12
+MERGED from [com.github.Liberuman:ShadowDrawable:0.1] /Users/mark/.gradle/caches/transforms-3/933723ebc205fa6dcfad6e4dc1936fd3/transformed/jetified-ShadowDrawable-0.1/AndroidManifest.xml:2:1-11:12
 MERGED from [androidx.constraintlayout:constraintlayout:2.0.4] /Users/mark/.gradle/caches/transforms-3/d7c3ec06031fd63fc1dc86267d735253/transformed/constraintlayout-2.0.4/AndroidManifest.xml:2:1-11:12
 MERGED from [com.google.mlkit:camera:16.0.0-beta1] /Users/mark/.gradle/caches/transforms-3/e75cb0aa761369a441c5e01e3ded7842/transformed/jetified-camera-16.0.0-beta1/AndroidManifest.xml:2:1-8:12
 MERGED from [androidx.camera:camera-view:1.0.0-SNAPSHOT] /Users/mark/.gradle/caches/transforms-3/f369b3f6c387cd3b892e6d20da0a94fe/transformed/jetified-camera-view-1.0.0-SNAPSHOT/AndroidManifest.xml:17:1-24:12
@@ -85,39 +85,39 @@ MERGED from [com.google.android.odml:image:1.0.0-beta1] /Users/mark/.gradle/cach
 MERGED from [io.github.inflationx:calligraphy3:3.1.1] /Users/mark/.gradle/caches/transforms-3/89a8e6bd5b82a646238516cb27a30cf9/transformed/jetified-calligraphy3-3.1.1/AndroidManifest.xml:2:1-13:12
 MERGED from [io.github.inflationx:viewpump:2.0.3] /Users/mark/.gradle/caches/transforms-3/ccc14f33c015fe6cf6cd8d210fcd1479/transformed/jetified-viewpump-2.0.3/AndroidManifest.xml:2:1-11:12
 MERGED from [androidx.annotation:annotation-experimental:1.0.0] /Users/mark/.gradle/caches/transforms-3/2c4feee4574f7aa24620685e20318e47/transformed/jetified-annotation-experimental-1.0.0/AndroidManifest.xml:17:1-24:12
-INJECTED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:2:1-105:12
-INJECTED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:2:1-105:12
-INJECTED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:2:1-105:12
+INJECTED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:2:1-105:12
+INJECTED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:2:1-105:12
+INJECTED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:2:1-105:12
 	package
-		ADDED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:4:5-42
-		INJECTED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml
-		INJECTED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml
+		ADDED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:4:5-42
+		INJECTED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml
 	android:versionName
-		INJECTED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml
-		ADDED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:2:1-105:12
-		INJECTED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml
+		ADDED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:2:1-105:12
+		INJECTED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml
 	xmlns:tools
-		ADDED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:3:5-51
+		ADDED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:3:5-51
 	android:versionCode
-		INJECTED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml
-		ADDED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:2:1-105:12
-		INJECTED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml
+		ADDED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:2:1-105:12
+		INJECTED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml
 	xmlns:android
-		ADDED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:2:11-69
+		ADDED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:2:11-69
 	android:installLocation
-		ADDED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:5:5-35
+		ADDED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:5:5-35
 uses-sdk
-ADDED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:13:5-135
-INJECTED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:13:5-135
-INJECTED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:13:5-135
+ADDED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:13:5-135
+INJECTED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:13:5-135
+INJECTED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:13:5-135
 MERGED from [com.ramotion.circlemenu:circle-menu:0.3.2] /Users/mark/.gradle/caches/transforms-3/e2b7f515c4b51e0551ca7cab309934b4/transformed/jetified-circle-menu-0.3.2/AndroidManifest.xml:7:5-9:41
 MERGED from [com.ramotion.circlemenu:circle-menu:0.3.2] /Users/mark/.gradle/caches/transforms-3/e2b7f515c4b51e0551ca7cab309934b4/transformed/jetified-circle-menu-0.3.2/AndroidManifest.xml:7:5-9:41
-MERGED from [com.vivian.widgets:TimeLineItemDecoration:1.5] /Users/mark/.gradle/caches/transforms-3/0535c2553375ce5bc00b372456c583ed/transformed/jetified-TimeLineItemDecoration-1.5/AndroidManifest.xml:7:5-9:41
-MERGED from [com.vivian.widgets:TimeLineItemDecoration:1.5] /Users/mark/.gradle/caches/transforms-3/0535c2553375ce5bc00b372456c583ed/transformed/jetified-TimeLineItemDecoration-1.5/AndroidManifest.xml:7:5-9:41
+MERGED from [com.vivian.widgets:TimeLineItemDecoration:1.5] /Users/mark/.gradle/caches/transforms-3/297293198dd62f5d85a53c447346dcd4/transformed/jetified-TimeLineItemDecoration-1.5/AndroidManifest.xml:7:5-9:41
+MERGED from [com.vivian.widgets:TimeLineItemDecoration:1.5] /Users/mark/.gradle/caches/transforms-3/297293198dd62f5d85a53c447346dcd4/transformed/jetified-TimeLineItemDecoration-1.5/AndroidManifest.xml:7:5-9:41
 MERGED from [com.github.sarnavakonar:TextWriter:v1.0] /Users/mark/.gradle/caches/transforms-3/e3ddce3a0ec3c859b9a8d33526f0957b/transformed/jetified-TextWriter-v1.0/AndroidManifest.xml:7:5-9:41
 MERGED from [com.github.sarnavakonar:TextWriter:v1.0] /Users/mark/.gradle/caches/transforms-3/e3ddce3a0ec3c859b9a8d33526f0957b/transformed/jetified-TextWriter-v1.0/AndroidManifest.xml:7:5-9:41
-MERGED from [com.github.warkiz.tickseekbar:tickseekbar:0.1.4] /Users/mark/.gradle/caches/transforms-3/3c43440958165e4c9fa4e1cbcd21e665/transformed/jetified-tickseekbar-0.1.4/AndroidManifest.xml:7:5-9:41
-MERGED from [com.github.warkiz.tickseekbar:tickseekbar:0.1.4] /Users/mark/.gradle/caches/transforms-3/3c43440958165e4c9fa4e1cbcd21e665/transformed/jetified-tickseekbar-0.1.4/AndroidManifest.xml:7:5-9:41
+MERGED from [com.github.warkiz.tickseekbar:tickseekbar:0.1.4] /Users/mark/.gradle/caches/transforms-3/a83be5ae696f0d043a7c26536a5fd3d6/transformed/jetified-tickseekbar-0.1.4/AndroidManifest.xml:7:5-9:41
+MERGED from [com.github.warkiz.tickseekbar:tickseekbar:0.1.4] /Users/mark/.gradle/caches/transforms-3/a83be5ae696f0d043a7c26536a5fd3d6/transformed/jetified-tickseekbar-0.1.4/AndroidManifest.xml:7:5-9:41
 MERGED from [com.ramotion.paperonboarding:paper-onboarding:1.1.3] /Users/mark/.gradle/caches/transforms-3/2a77000eac9a0558cb65952e33b5296c/transformed/jetified-paper-onboarding-1.1.3/AndroidManifest.xml:7:5-9:41
 MERGED from [com.ramotion.paperonboarding:paper-onboarding:1.1.3] /Users/mark/.gradle/caches/transforms-3/2a77000eac9a0558cb65952e33b5296c/transformed/jetified-paper-onboarding-1.1.3/AndroidManifest.xml:7:5-9:41
 MERGED from [com.haibin:calendarview:3.7.1] /Users/mark/.gradle/caches/transforms-3/e987b6aec311fbe238994b95e7164233/transformed/jetified-calendarview-3.7.1/AndroidManifest.xml:7:5-9:41
@@ -130,18 +130,18 @@ MERGED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] /Users/mark/.gradle/
 MERGED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] /Users/mark/.gradle/caches/transforms-3/f8f85fca6b6afb51bc4c81e026a1abee/transformed/jetified-xutil-core-2.0.0/AndroidManifest.xml:5:5-7:41
 MERGED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/mark/.gradle/caches/transforms-3/ec76a3ab93056a123fdbd55cfd9141e7/transformed/jetified-xutil-sub-2.0.0/AndroidManifest.xml:21:5-23:41
 MERGED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/mark/.gradle/caches/transforms-3/ec76a3ab93056a123fdbd55cfd9141e7/transformed/jetified-xutil-sub-2.0.0/AndroidManifest.xml:21:5-23:41
-MERGED from [com.orhanobut:logger:2.2.0] /Users/mark/.gradle/caches/transforms-3/90f989a450cad81d17aa1347e741a197/transformed/jetified-logger-2.2.0/AndroidManifest.xml:6:5-43
-MERGED from [com.orhanobut:logger:2.2.0] /Users/mark/.gradle/caches/transforms-3/90f989a450cad81d17aa1347e741a197/transformed/jetified-logger-2.2.0/AndroidManifest.xml:6:5-43
-MERGED from [com.jpeng:JPTabBar:1.4.0] /Users/mark/.gradle/caches/transforms-3/2c0c4acfc0126d1d1c4787639c7aa83a/transformed/jetified-JPTabBar-1.4.0/AndroidManifest.xml:8:5-10:41
-MERGED from [com.jpeng:JPTabBar:1.4.0] /Users/mark/.gradle/caches/transforms-3/2c0c4acfc0126d1d1c4787639c7aa83a/transformed/jetified-JPTabBar-1.4.0/AndroidManifest.xml:8:5-10:41
-MERGED from [com.github.bmarrdev:android-DecoView-charting:v1.2] /Users/mark/.gradle/caches/transforms-3/a73820d03793f3c28fc19a123bf58fa5/transformed/jetified-android-DecoView-charting-v1.2/AndroidManifest.xml:7:5-9:41
-MERGED from [com.github.bmarrdev:android-DecoView-charting:v1.2] /Users/mark/.gradle/caches/transforms-3/a73820d03793f3c28fc19a123bf58fa5/transformed/jetified-android-DecoView-charting-v1.2/AndroidManifest.xml:7:5-9:41
+MERGED from [com.orhanobut:logger:2.2.0] /Users/mark/.gradle/caches/transforms-3/3e0a09fd1291c3086917f4c456deddb7/transformed/jetified-logger-2.2.0/AndroidManifest.xml:6:5-43
+MERGED from [com.orhanobut:logger:2.2.0] /Users/mark/.gradle/caches/transforms-3/3e0a09fd1291c3086917f4c456deddb7/transformed/jetified-logger-2.2.0/AndroidManifest.xml:6:5-43
+MERGED from [com.jpeng:JPTabBar:1.4.0] /Users/mark/.gradle/caches/transforms-3/83f1c79ecd66d605ce69e3238d046753/transformed/jetified-JPTabBar-1.4.0/AndroidManifest.xml:8:5-10:41
+MERGED from [com.jpeng:JPTabBar:1.4.0] /Users/mark/.gradle/caches/transforms-3/83f1c79ecd66d605ce69e3238d046753/transformed/jetified-JPTabBar-1.4.0/AndroidManifest.xml:8:5-10:41
+MERGED from [com.github.bmarrdev:android-DecoView-charting:v1.2] /Users/mark/.gradle/caches/transforms-3/a980d88a6794b259cb79919d4a236494/transformed/jetified-android-DecoView-charting-v1.2/AndroidManifest.xml:7:5-9:41
+MERGED from [com.github.bmarrdev:android-DecoView-charting:v1.2] /Users/mark/.gradle/caches/transforms-3/a980d88a6794b259cb79919d4a236494/transformed/jetified-android-DecoView-charting-v1.2/AndroidManifest.xml:7:5-9:41
 MERGED from [com.github.xuexiangjys:XUI:1.1.8] /Users/mark/.gradle/caches/transforms-3/1c309978d08cba0bdffcddfbf36a3477/transformed/jetified-XUI-1.1.8/AndroidManifest.xml:5:5-7:41
 MERGED from [com.github.xuexiangjys:XUI:1.1.8] /Users/mark/.gradle/caches/transforms-3/1c309978d08cba0bdffcddfbf36a3477/transformed/jetified-XUI-1.1.8/AndroidManifest.xml:5:5-7:41
 MERGED from [com.google.android.material:material:1.4.0] /Users/mark/.gradle/caches/transforms-3/e7b17e1b50063d4f787dbf735b6db0a4/transformed/material-1.4.0/AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.material:material:1.4.0] /Users/mark/.gradle/caches/transforms-3/e7b17e1b50063d4f787dbf735b6db0a4/transformed/material-1.4.0/AndroidManifest.xml:20:5-44
-MERGED from [com.github.Liberuman:ShadowDrawable:0.1] /Users/mark/.gradle/caches/transforms-3/d3f6e2e35945fd5ea73521b57434e3c3/transformed/jetified-ShadowDrawable-0.1/AndroidManifest.xml:7:5-9:41
-MERGED from [com.github.Liberuman:ShadowDrawable:0.1] /Users/mark/.gradle/caches/transforms-3/d3f6e2e35945fd5ea73521b57434e3c3/transformed/jetified-ShadowDrawable-0.1/AndroidManifest.xml:7:5-9:41
+MERGED from [com.github.Liberuman:ShadowDrawable:0.1] /Users/mark/.gradle/caches/transforms-3/933723ebc205fa6dcfad6e4dc1936fd3/transformed/jetified-ShadowDrawable-0.1/AndroidManifest.xml:7:5-9:41
+MERGED from [com.github.Liberuman:ShadowDrawable:0.1] /Users/mark/.gradle/caches/transforms-3/933723ebc205fa6dcfad6e4dc1936fd3/transformed/jetified-ShadowDrawable-0.1/AndroidManifest.xml:7:5-9:41
 MERGED from [androidx.constraintlayout:constraintlayout:2.0.4] /Users/mark/.gradle/caches/transforms-3/d7c3ec06031fd63fc1dc86267d735253/transformed/constraintlayout-2.0.4/AndroidManifest.xml:5:5-7:41
 MERGED from [androidx.constraintlayout:constraintlayout:2.0.4] /Users/mark/.gradle/caches/transforms-3/d7c3ec06031fd63fc1dc86267d735253/transformed/constraintlayout-2.0.4/AndroidManifest.xml:5:5-7:41
 MERGED from [com.google.mlkit:camera:16.0.0-beta1] /Users/mark/.gradle/caches/transforms-3/e75cb0aa761369a441c5e01e3ded7842/transformed/jetified-camera-16.0.0-beta1/AndroidManifest.xml:6:5-44
@@ -272,66 +272,66 @@ MERGED from [io.github.inflationx:viewpump:2.0.3] /Users/mark/.gradle/caches/tra
 MERGED from [io.github.inflationx:viewpump:2.0.3] /Users/mark/.gradle/caches/transforms-3/ccc14f33c015fe6cf6cd8d210fcd1479/transformed/jetified-viewpump-2.0.3/AndroidManifest.xml:5:5-7:41
 MERGED from [androidx.annotation:annotation-experimental:1.0.0] /Users/mark/.gradle/caches/transforms-3/2c4feee4574f7aa24620685e20318e47/transformed/jetified-annotation-experimental-1.0.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.annotation:annotation-experimental:1.0.0] /Users/mark/.gradle/caches/transforms-3/2c4feee4574f7aa24620685e20318e47/transformed/jetified-annotation-experimental-1.0.0/AndroidManifest.xml:20:5-22:41
-INJECTED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:13:5-135
-INJECTED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:13:5-135
+INJECTED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:13:5-135
+INJECTED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:13:5-135
 	tools:overrideLibrary
-		ADDED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:13:15-132
+		ADDED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:13:15-132
 	android:targetSdkVersion
-		INJECTED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml
-		ADDED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:13:5-135
-		INJECTED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml
+		ADDED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:13:5-135
+		INJECTED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml
 	android:minSdkVersion
-		INJECTED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml
-		ADDED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:13:5-135
-		INJECTED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml
+		ADDED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:13:5-135
+		INJECTED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml
 uses-feature#android.hardware.camera
-ADDED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:15:5-60
+ADDED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:15:5-60
 MERGED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/mark/.gradle/caches/transforms-3/ec76a3ab93056a123fdbd55cfd9141e7/transformed/jetified-xutil-sub-2.0.0/AndroidManifest.xml:64:5-60
 MERGED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/mark/.gradle/caches/transforms-3/ec76a3ab93056a123fdbd55cfd9141e7/transformed/jetified-xutil-sub-2.0.0/AndroidManifest.xml:64:5-60
 	android:name
-		ADDED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:15:19-57
+		ADDED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:15:19-57
 uses-permission#android.permission.VIBRATE
-ADDED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:16:5-66
+ADDED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:16:5-66
 MERGED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/mark/.gradle/caches/transforms-3/ec76a3ab93056a123fdbd55cfd9141e7/transformed/jetified-xutil-sub-2.0.0/AndroidManifest.xml:47:5-66
 MERGED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/mark/.gradle/caches/transforms-3/ec76a3ab93056a123fdbd55cfd9141e7/transformed/jetified-xutil-sub-2.0.0/AndroidManifest.xml:47:5-66
 	android:name
-		ADDED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:16:22-63
+		ADDED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:16:22-63
 uses-permission#android.permission.WRITE_SETTINGS
-ADDED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:17:5-19:47
+ADDED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:17:5-19:47
 MERGED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/mark/.gradle/caches/transforms-3/ec76a3ab93056a123fdbd55cfd9141e7/transformed/jetified-xutil-sub-2.0.0/AndroidManifest.xml:78:5-80:47
 MERGED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/mark/.gradle/caches/transforms-3/ec76a3ab93056a123fdbd55cfd9141e7/transformed/jetified-xutil-sub-2.0.0/AndroidManifest.xml:78:5-80:47
 	tools:ignore
-		ADDED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:19:9-44
+		ADDED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:19:9-44
 	android:name
-		ADDED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:18:9-57
+		ADDED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:18:9-57
 uses-feature#android.hardware.sensor.accelerometer
-ADDED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:21:5-74
+ADDED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:21:5-74
 	android:name
-		ADDED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:21:19-71
+		ADDED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:21:19-71
 uses-permission#android.permission.RECEIVE_BOOT_COMPLETED
-ADDED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:23:5-81
+ADDED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:23:5-81
 	android:name
-		ADDED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:23:22-78
+		ADDED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:23:22-78
 uses-permission#android.permission.MOUNT_UNMOUNT_FILESYSTEMS
-ADDED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:24:5-26:47
+ADDED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:24:5-26:47
 MERGED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/mark/.gradle/caches/transforms-3/ec76a3ab93056a123fdbd55cfd9141e7/transformed/jetified-xutil-sub-2.0.0/AndroidManifest.xml:74:5-76:47
 MERGED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/mark/.gradle/caches/transforms-3/ec76a3ab93056a123fdbd55cfd9141e7/transformed/jetified-xutil-sub-2.0.0/AndroidManifest.xml:74:5-76:47
 	tools:ignore
-		ADDED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:26:9-44
+		ADDED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:26:9-44
 	android:name
-		ADDED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:25:9-68
+		ADDED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:25:9-68
 uses-permission#android.permission.ACTIVITY_RECOGNITION
-ADDED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:27:5-79
+ADDED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:27:5-79
 	android:name
-		ADDED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:27:22-76
+		ADDED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:27:22-76
 uses-permission#android.permission.READ_PHONE_STATE
-ADDED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:28:5-75
+ADDED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:28:5-75
 MERGED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/mark/.gradle/caches/transforms-3/ec76a3ab93056a123fdbd55cfd9141e7/transformed/jetified-xutil-sub-2.0.0/AndroidManifest.xml:49:5-75
 MERGED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/mark/.gradle/caches/transforms-3/ec76a3ab93056a123fdbd55cfd9141e7/transformed/jetified-xutil-sub-2.0.0/AndroidManifest.xml:49:5-75
 	android:name
-		ADDED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:28:22-72
+		ADDED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:28:22-72
 uses-permission#android.permission.INTERNET
-ADDED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:29:5-67
+ADDED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:29:5-67
 MERGED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] /Users/mark/.gradle/caches/transforms-3/f8f85fca6b6afb51bc4c81e026a1abee/transformed/jetified-xutil-core-2.0.0/AndroidManifest.xml:15:5-67
 MERGED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] /Users/mark/.gradle/caches/transforms-3/f8f85fca6b6afb51bc4c81e026a1abee/transformed/jetified-xutil-core-2.0.0/AndroidManifest.xml:15:5-67
 MERGED from [com.google.mlkit:pose-detection-common:18.0.0-beta1] /Users/mark/.gradle/caches/transforms-3/0be81233ce51078e084e47f5ff999085/transformed/jetified-pose-detection-common-18.0.0-beta1/AndroidManifest.xml:8:5-67
@@ -339,9 +339,9 @@ MERGED from [com.google.mlkit:pose-detection-common:18.0.0-beta1] /Users/mark/.g
 MERGED from [com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/mark/.gradle/caches/transforms-3/9505863359002d336d0987b65f01919e/transformed/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:26:5-67
 MERGED from [com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/mark/.gradle/caches/transforms-3/9505863359002d336d0987b65f01919e/transformed/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:26:5-67
 	android:name
-		ADDED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:29:22-64
+		ADDED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:29:22-64
 uses-permission#android.permission.ACCESS_NETWORK_STATE
-ADDED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:30:5-79
+ADDED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:30:5-79
 MERGED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] /Users/mark/.gradle/caches/transforms-3/f8f85fca6b6afb51bc4c81e026a1abee/transformed/jetified-xutil-core-2.0.0/AndroidManifest.xml:18:5-79
 MERGED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] /Users/mark/.gradle/caches/transforms-3/f8f85fca6b6afb51bc4c81e026a1abee/transformed/jetified-xutil-core-2.0.0/AndroidManifest.xml:18:5-79
 MERGED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/mark/.gradle/caches/transforms-3/ec76a3ab93056a123fdbd55cfd9141e7/transformed/jetified-xutil-sub-2.0.0/AndroidManifest.xml:25:5-79
@@ -353,65 +353,65 @@ MERGED from [com.google.android.datatransport:transport-backend-cct:2.3.3] /User
 MERGED from [com.google.android.datatransport:transport-runtime:2.2.6] /Users/mark/.gradle/caches/transforms-3/aaee5eec9febf736f1e0fa9da03fa6aa/transformed/jetified-transport-runtime-2.2.6/AndroidManifest.xml:22:5-79
 MERGED from [com.google.android.datatransport:transport-runtime:2.2.6] /Users/mark/.gradle/caches/transforms-3/aaee5eec9febf736f1e0fa9da03fa6aa/transformed/jetified-transport-runtime-2.2.6/AndroidManifest.xml:22:5-79
 	android:name
-		ADDED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:30:22-76
+		ADDED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:30:22-76
 uses-permission#android.permission.READ_PRIVILEGED_PHONE_STATE
-ADDED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:31:5-33:47
+ADDED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:31:5-33:47
 	tools:ignore
-		ADDED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:33:9-44
+		ADDED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:33:9-44
 	android:name
-		ADDED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:32:9-70
+		ADDED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:32:9-70
 uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
-ADDED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:34:5-81
+ADDED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:34:5-81
 MERGED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] /Users/mark/.gradle/caches/transforms-3/f8f85fca6b6afb51bc4c81e026a1abee/transformed/jetified-xutil-core-2.0.0/AndroidManifest.xml:13:5-81
 MERGED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] /Users/mark/.gradle/caches/transforms-3/f8f85fca6b6afb51bc4c81e026a1abee/transformed/jetified-xutil-core-2.0.0/AndroidManifest.xml:13:5-81
 	android:name
-		ADDED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:34:22-78
+		ADDED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:34:22-78
 uses-permission#android.permission.READ_EXTERNAL_STORAGE
-ADDED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:35:5-80
+ADDED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:35:5-80
 MERGED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] /Users/mark/.gradle/caches/transforms-3/f8f85fca6b6afb51bc4c81e026a1abee/transformed/jetified-xutil-core-2.0.0/AndroidManifest.xml:12:5-80
 MERGED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] /Users/mark/.gradle/caches/transforms-3/f8f85fca6b6afb51bc4c81e026a1abee/transformed/jetified-xutil-core-2.0.0/AndroidManifest.xml:12:5-80
 	android:name
-		ADDED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:35:22-77
+		ADDED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:35:22-77
 uses-permission#android.permission.MANAGE_EXTERNAL_STORAGE
-ADDED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:36:5-38:40
+ADDED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:36:5-38:40
 	tools:ignore
-		ADDED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:38:9-37
+		ADDED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:38:9-37
 	android:name
-		ADDED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:37:9-66
+		ADDED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:37:9-66
 uses-permission#android.permission.CAMERA
-ADDED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:41:5-65
+ADDED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:41:5-65
 MERGED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/mark/.gradle/caches/transforms-3/ec76a3ab93056a123fdbd55cfd9141e7/transformed/jetified-xutil-sub-2.0.0/AndroidManifest.xml:61:5-65
 MERGED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/mark/.gradle/caches/transforms-3/ec76a3ab93056a123fdbd55cfd9141e7/transformed/jetified-xutil-sub-2.0.0/AndroidManifest.xml:61:5-65
 	android:name
-		ADDED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:41:22-62
+		ADDED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:41:22-62
 queries
-ADDED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:43:5-50:15
+ADDED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:43:5-50:15
 intent#action:name:android.media.action.IMAGE_CAPTURE
-ADDED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:44:9-46:18
+ADDED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:44:9-46:18
 action#android.media.action.IMAGE_CAPTURE
-ADDED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:45:13-73
+ADDED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:45:13-73
 	android:name
-		ADDED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:45:21-70
+		ADDED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:45:21-70
 intent#action:name:android.intent.action.TTS_SERVICE
-ADDED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:47:9-49:18
+ADDED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:47:9-49:18
 action#android.intent.action.TTS_SERVICE
-ADDED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:48:13-72
+ADDED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:48:13-72
 	android:name
-		ADDED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:48:21-69
+		ADDED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:48:21-69
 application
-ADDED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:52:5-103:19
+ADDED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:52:5-103:19
 MERGED from [com.ramotion.circlemenu:circle-menu:0.3.2] /Users/mark/.gradle/caches/transforms-3/e2b7f515c4b51e0551ca7cab309934b4/transformed/jetified-circle-menu-0.3.2/AndroidManifest.xml:11:5-15:19
 MERGED from [com.ramotion.circlemenu:circle-menu:0.3.2] /Users/mark/.gradle/caches/transforms-3/e2b7f515c4b51e0551ca7cab309934b4/transformed/jetified-circle-menu-0.3.2/AndroidManifest.xml:11:5-15:19
-MERGED from [com.vivian.widgets:TimeLineItemDecoration:1.5] /Users/mark/.gradle/caches/transforms-3/0535c2553375ce5bc00b372456c583ed/transformed/jetified-TimeLineItemDecoration-1.5/AndroidManifest.xml:11:5-15:19
-MERGED from [com.vivian.widgets:TimeLineItemDecoration:1.5] /Users/mark/.gradle/caches/transforms-3/0535c2553375ce5bc00b372456c583ed/transformed/jetified-TimeLineItemDecoration-1.5/AndroidManifest.xml:11:5-15:19
+MERGED from [com.vivian.widgets:TimeLineItemDecoration:1.5] /Users/mark/.gradle/caches/transforms-3/297293198dd62f5d85a53c447346dcd4/transformed/jetified-TimeLineItemDecoration-1.5/AndroidManifest.xml:11:5-15:19
+MERGED from [com.vivian.widgets:TimeLineItemDecoration:1.5] /Users/mark/.gradle/caches/transforms-3/297293198dd62f5d85a53c447346dcd4/transformed/jetified-TimeLineItemDecoration-1.5/AndroidManifest.xml:11:5-15:19
 MERGED from [com.ramotion.paperonboarding:paper-onboarding:1.1.3] /Users/mark/.gradle/caches/transforms-3/2a77000eac9a0558cb65952e33b5296c/transformed/jetified-paper-onboarding-1.1.3/AndroidManifest.xml:11:5-15:19
 MERGED from [com.ramotion.paperonboarding:paper-onboarding:1.1.3] /Users/mark/.gradle/caches/transforms-3/2a77000eac9a0558cb65952e33b5296c/transformed/jetified-paper-onboarding-1.1.3/AndroidManifest.xml:11:5-15:19
 MERGED from [com.github.gzu-liyujiang.AndroidPicker:AddressPicker:4.1.7] /Users/mark/.gradle/caches/transforms-3/515fa86ba5941f96092956c47a0eb819/transformed/jetified-AddressPicker-4.1.7/AndroidManifest.xml:21:5-22:19
 MERGED from [com.github.gzu-liyujiang.AndroidPicker:AddressPicker:4.1.7] /Users/mark/.gradle/caches/transforms-3/515fa86ba5941f96092956c47a0eb819/transformed/jetified-AddressPicker-4.1.7/AndroidManifest.xml:21:5-22:19
 MERGED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] /Users/mark/.gradle/caches/transforms-3/f8f85fca6b6afb51bc4c81e026a1abee/transformed/jetified-xutil-core-2.0.0/AndroidManifest.xml:20:5-36:19
 MERGED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] /Users/mark/.gradle/caches/transforms-3/f8f85fca6b6afb51bc4c81e026a1abee/transformed/jetified-xutil-core-2.0.0/AndroidManifest.xml:20:5-36:19
-MERGED from [com.github.bmarrdev:android-DecoView-charting:v1.2] /Users/mark/.gradle/caches/transforms-3/a73820d03793f3c28fc19a123bf58fa5/transformed/jetified-android-DecoView-charting-v1.2/AndroidManifest.xml:11:5-12:19
-MERGED from [com.github.bmarrdev:android-DecoView-charting:v1.2] /Users/mark/.gradle/caches/transforms-3/a73820d03793f3c28fc19a123bf58fa5/transformed/jetified-android-DecoView-charting-v1.2/AndroidManifest.xml:11:5-12:19
+MERGED from [com.github.bmarrdev:android-DecoView-charting:v1.2] /Users/mark/.gradle/caches/transforms-3/a980d88a6794b259cb79919d4a236494/transformed/jetified-android-DecoView-charting-v1.2/AndroidManifest.xml:11:5-12:19
+MERGED from [com.github.bmarrdev:android-DecoView-charting:v1.2] /Users/mark/.gradle/caches/transforms-3/a980d88a6794b259cb79919d4a236494/transformed/jetified-android-DecoView-charting-v1.2/AndroidManifest.xml:11:5-12:19
 MERGED from [com.github.xuexiangjys:XUI:1.1.8] /Users/mark/.gradle/caches/transforms-3/1c309978d08cba0bdffcddfbf36a3477/transformed/jetified-XUI-1.1.8/AndroidManifest.xml:9:5-22:19
 MERGED from [com.github.xuexiangjys:XUI:1.1.8] /Users/mark/.gradle/caches/transforms-3/1c309978d08cba0bdffcddfbf36a3477/transformed/jetified-XUI-1.1.8/AndroidManifest.xml:9:5-22:19
 MERGED from [com.google.android.material:material:1.4.0] /Users/mark/.gradle/caches/transforms-3/e7b17e1b50063d4f787dbf735b6db0a4/transformed/material-1.4.0/AndroidManifest.xml:22:5-20
@@ -453,122 +453,122 @@ MERGED from [io.github.inflationx:calligraphy3:3.1.1] /Users/mark/.gradle/caches
 MERGED from [io.github.inflationx:viewpump:2.0.3] /Users/mark/.gradle/caches/transforms-3/ccc14f33c015fe6cf6cd8d210fcd1479/transformed/jetified-viewpump-2.0.3/AndroidManifest.xml:9:5-20
 MERGED from [io.github.inflationx:viewpump:2.0.3] /Users/mark/.gradle/caches/transforms-3/ccc14f33c015fe6cf6cd8d210fcd1479/transformed/jetified-viewpump-2.0.3/AndroidManifest.xml:9:5-20
 	android:requestLegacyExternalStorage
-		ADDED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:56:9-52
+		ADDED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:56:9-52
 	android:appComponentFactory
 		ADDED from [androidx.core:core:1.5.0] /Users/mark/.gradle/caches/transforms-3/93bddb18763edb8d55a90a707dfd3e76/transformed/core-1.5.0/AndroidManifest.xml:24:18-86
 	android:supportsRtl
 		ADDED from [com.ramotion.circlemenu:circle-menu:0.3.2] /Users/mark/.gradle/caches/transforms-3/e2b7f515c4b51e0551ca7cab309934b4/transformed/jetified-circle-menu-0.3.2/AndroidManifest.xml:14:9-35
 	android:label
-		ADDED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:55:9-34
+		ADDED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:55:9-34
 		REJECTED from [com.ramotion.circlemenu:circle-menu:0.3.2] /Users/mark/.gradle/caches/transforms-3/e2b7f515c4b51e0551ca7cab309934b4/transformed/jetified-circle-menu-0.3.2/AndroidManifest.xml:13:9-41
-		REJECTED from [com.vivian.widgets:TimeLineItemDecoration:1.5] /Users/mark/.gradle/caches/transforms-3/0535c2553375ce5bc00b372456c583ed/transformed/jetified-TimeLineItemDecoration-1.5/AndroidManifest.xml:13:9-41
+		REJECTED from [com.vivian.widgets:TimeLineItemDecoration:1.5] /Users/mark/.gradle/caches/transforms-3/297293198dd62f5d85a53c447346dcd4/transformed/jetified-TimeLineItemDecoration-1.5/AndroidManifest.xml:13:9-41
 		REJECTED from [com.ramotion.paperonboarding:paper-onboarding:1.1.3] /Users/mark/.gradle/caches/transforms-3/2a77000eac9a0558cb65952e33b5296c/transformed/jetified-paper-onboarding-1.1.3/AndroidManifest.xml:13:9-41
 	android:allowBackup
 		ADDED from [com.ramotion.circlemenu:circle-menu:0.3.2] /Users/mark/.gradle/caches/transforms-3/e2b7f515c4b51e0551ca7cab309934b4/transformed/jetified-circle-menu-0.3.2/AndroidManifest.xml:12:9-35
 	tools:targetApi
-		ADDED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:60:9-28
+		ADDED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:60:9-28
 	android:icon
-		ADDED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:54:9-39
+		ADDED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:54:9-39
 	android:theme
-		ADDED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:57:9-47
+		ADDED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:57:9-47
 	tools:replace
-		ADDED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:59:9-38
+		ADDED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:59:9-38
 	android:usesCleartextTraffic
-		ADDED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:58:9-44
+		ADDED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:58:9-44
 	android:name
-		ADDED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:53:9-61
+		ADDED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:53:9-61
 activity#com.lindum.mlkit.vision.dev.view.OfficialNoticeActivity
-ADDED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:61:9-63:40
+ADDED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:61:9-63:40
 	android:exported
-		ADDED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:63:13-37
+		ADDED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:63:13-37
 	android:name
-		ADDED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:62:13-56
+		ADDED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:62:13-56
 meta-data#com.google.android.gms.version
-ADDED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:65:9-67:69
+ADDED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:65:9-67:69
 MERGED from [com.google.android.gms:play-services-basement:18.0.0] /Users/mark/.gradle/caches/transforms-3/128c0e661abaa87ec86bd2c52126230e/transformed/jetified-play-services-basement-18.0.0/AndroidManifest.xml:21:9-23:69
 MERGED from [com.google.android.gms:play-services-basement:18.0.0] /Users/mark/.gradle/caches/transforms-3/128c0e661abaa87ec86bd2c52126230e/transformed/jetified-play-services-basement-18.0.0/AndroidManifest.xml:21:9-23:69
 	android:value
-		ADDED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:67:13-66
+		ADDED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:67:13-66
 	android:name
-		ADDED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:66:13-58
+		ADDED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:66:13-58
 meta-data#com.google.mlkit.vision.DEPENDENCIES
-ADDED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:72:9-74:52
+ADDED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:72:9-74:52
 	android:value
-		ADDED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:74:13-49
+		ADDED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:74:13-49
 	android:name
-		ADDED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:73:13-64
+		ADDED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:73:13-64
 activity#com.lindum.mlkit.vision.dev.datacenter.ProgressActivity
-ADDED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:76:9-65
+ADDED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:76:9-65
 	android:name
-		ADDED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:76:19-62
+		ADDED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:76:19-62
 activity#com.lindum.mlkit.vision.dev.view.PoseDetailsActivity
-ADDED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:77:9-62
+ADDED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:77:9-62
 	android:name
-		ADDED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:77:19-59
+		ADDED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:77:19-59
 activity#com.lindum.mlkit.vision.dev.result.ImageDetails
-ADDED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:78:9-57
+ADDED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:78:9-57
 	android:name
-		ADDED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:78:19-54
+		ADDED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:78:19-54
 activity#com.lindum.mlkit.vision.dev.view.ChangeProfileActivity
-ADDED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:79:9-64
+ADDED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:79:9-64
 	android:name
-		ADDED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:79:19-61
+		ADDED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:79:19-61
 activity#com.lindum.mlkit.vision.dev.view.ChangeNickName
-ADDED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:80:9-57
+ADDED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:80:9-57
 	android:name
-		ADDED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:80:19-54
+		ADDED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:80:19-54
 activity#com.lindum.mlkit.vision.dev.view.UserInfoInitActivity
-ADDED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:81:9-63
+ADDED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:81:9-63
 	android:name
-		ADDED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:81:19-60
+		ADDED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:81:19-60
 activity#com.lindum.mlkit.vision.dev.view.IntroActivity
-ADDED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:82:9-56
+ADDED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:82:9-56
 	android:name
-		ADDED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:82:19-53
+		ADDED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:82:19-53
 activity#com.lindum.mlkit.vision.dev.CameraXLivePreviewActivity
-ADDED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:83:9-64
+ADDED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:83:9-64
 	android:name
-		ADDED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:83:19-61
+		ADDED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:83:19-61
 activity#com.lindum.mlkit.vision.dev.view.SelectSportsPreference
-ADDED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:84:9-65
+ADDED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:84:9-65
 	android:name
-		ADDED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:84:19-62
+		ADDED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:84:19-62
 activity#com.lindum.mlkit.vision.dev.datacenter.PersonalPlan
-ADDED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:85:9-61
+ADDED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:85:9-61
 	android:name
-		ADDED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:85:19-58
+		ADDED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:85:19-58
 activity#com.lindum.mlkit.vision.dev.result.TrainingResult
-ADDED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:86:9-89:47
+ADDED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:86:9-89:47
 	android:exported
-		ADDED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:88:13-37
+		ADDED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:88:13-37
 	android:theme
-		ADDED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:89:13-44
+		ADDED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:89:13-44
 	android:name
-		ADDED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:87:13-50
+		ADDED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:87:13-50
 activity#com.lindum.mlkit.vision.dev.view.HomePage
-ADDED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:90:9-99:20
+ADDED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:90:9-99:20
 	android:exported
-		ADDED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:92:13-36
+		ADDED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:92:13-36
 	android:theme
-		ADDED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:93:13-44
+		ADDED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:93:13-44
 	android:name
-		ADDED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:91:13-42
+		ADDED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:91:13-42
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:94:13-98:29
+ADDED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:94:13-98:29
 action#android.intent.action.MAIN
-ADDED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:95:17-69
+ADDED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:95:17-69
 	android:name
-		ADDED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:95:25-66
+		ADDED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:95:25-66
 category#android.intent.category.LAUNCHER
-ADDED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:97:17-77
+ADDED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:97:17-77
 	android:name
-		ADDED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:97:27-74
+		ADDED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:97:27-74
 activity#com.lindum.mlkit.vision.dev.preference.SettingsActivity
-ADDED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:100:9-102:40
+ADDED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:100:9-102:40
 	android:exported
-		ADDED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:102:13-37
+		ADDED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:102:13-37
 	android:name
-		ADDED from /Users/mark/Documents/Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:101:13-56
+		ADDED from /Users/mark/Documents/100-Project/01-Android/AiTrainer/app/src/main/AndroidManifest.xml:101:13-56
 uses-permission#android.permission.KILL_BACKGROUND_PROCESSES
 ADDED from [com.github.xuexiangjys.XUtil:xutil-core:2.0.0] /Users/mark/.gradle/caches/transforms-3/f8f85fca6b6afb51bc4c81e026a1abee/transformed/jetified-xutil-core-2.0.0/AndroidManifest.xml:10:5-84
 MERGED from [com.github.xuexiangjys.XUtil:xutil-sub:2.0.0] /Users/mark/.gradle/caches/transforms-3/ec76a3ab93056a123fdbd55cfd9141e7/transformed/jetified-xutil-sub-2.0.0/AndroidManifest.xml:69:5-84

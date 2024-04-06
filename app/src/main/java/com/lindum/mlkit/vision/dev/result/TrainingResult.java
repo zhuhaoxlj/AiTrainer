@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -297,7 +298,13 @@ public class TrainingResult extends AppCompatActivity implements HorizontalProgr
         hpvCal.startProgressAnimation();
 
         // 错误动作数
-        int wrongRate = (int) (((float) countWrongImage / (groupsOfPose * 20)) * 100);
+        int wrongRate;
+        if (groupsOfPose == 0) {
+            wrongRate = (int) (((float) countWrongImage / ((groupsOfPose + 1) * 20)) * 100);
+        }else {
+            wrongRate = (int) (((float) countWrongImage / ((groupsOfPose) * 20)) * 100);
+        }
+        Log.i("test_wrong", wrongRate + "");
         if (wrongRate > 100) {
             wrongRate = 100;
         }
@@ -340,7 +347,7 @@ public class TrainingResult extends AppCompatActivity implements HorizontalProgr
                 progressTextTime.setText(costTime);
                 break;
             case R.id.hpv_wrong:
-                progressTextWrong.setText((int) (progress * 20 * groupsOfPose) / 100 + " 个");
+                progressTextWrong.setText((int) countWrongImage + " 个");
                 break;
             case R.id.hpv_cal:
                 progressTextCal.setText((int) calSum + " kcal");

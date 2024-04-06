@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/mark/Documents/Project/01-Android/AiTrainer/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-fr-rCA/values-fr-rCA.xml",
+            "outputFile": "/Users/mark/Documents/100-Project/01-Android/AiTrainer/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-fr-rCA/values-fr-rCA.xml",
             "map": [
                 {
                     "source": "/Users/mark/.gradle/caches/transforms-3/93bddb18763edb8d55a90a707dfd3e76/transformed/core-1.5.0/res/values-fr-rCA/values-fr-rCA.xml",
