@@ -1,4 +1,0 @@
-#Tue Mar 12 12:53:36 CST 2024
-base.0=/Users/mark/Documents/100-Project/01-Android/AiTrainer/app/build/intermediates/dex/proguard/minifyProguardWithR8/classes.dex
-renamed.0=classes.dex
-path.0=classes.dex

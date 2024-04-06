@@ -263,6 +263,9 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
                 poseEntityArrayList = controlTable.readTable();
 
                 // 设置动作持续变量类型
+                if (poseEntityArrayList == null || poseEntityArrayList.isEmpty()) {
+                    return;
+                }
                 for (PoseEntity poseEntity : poseEntityArrayList) {
                     // 倒计时类型 0 计数类型 1
                     poseEntity.setPoseType(0);

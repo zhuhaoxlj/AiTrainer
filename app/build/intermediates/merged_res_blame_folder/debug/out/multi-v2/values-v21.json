@@ -61,25 +61,6 @@
                     }
                 },
                 {
-                    "source": "/Users/mark/.gradle/caches/transforms-3/48e4b4ccdd65c27ec35dd33bb5a7313f/transformed/jetified-camera-camera2-1.0.0-rc04/res/values-v21/values-v21.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endLines": "4",
-                        "endColumns": "13",
-                        "endOffsets": "207"
-                    },
-                    "to": {
-                        "startLines": "16",
-                        "startColumns": "4",
-                        "startOffsets": "1215",
-                        "endLines": "18",
-                        "endColumns": "13",
-                        "endOffsets": "1367"
-                    }
-                },
-                {
                     "source": "/Users/mark/.gradle/caches/transforms-3/f8f85fca6b6afb51bc4c81e026a1abee/transformed/jetified-xutil-core-2.0.0/res/values-v21/values-v21.xml",
                     "from": {
                         "startLines": "2",
@@ -96,6 +77,25 @@
                         "endLines": "408",
                         "endColumns": "12",
                         "endOffsets": "30245"
+                    }
+                },
+                {
+                    "source": "/Users/mark/.gradle/caches/transforms-3/aa295b8958d5dc8988d092024d41d7c6/transformed/jetified-camera-camera2-1.0.0-SNAPSHOT/res/values-v21/values-v21.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endLines": "4",
+                        "endColumns": "13",
+                        "endOffsets": "207"
+                    },
+                    "to": {
+                        "startLines": "16",
+                        "startColumns": "4",
+                        "startOffsets": "1215",
+                        "endLines": "18",
+                        "endColumns": "13",
+                        "endOffsets": "1367"
                     }
                 }
             ]
