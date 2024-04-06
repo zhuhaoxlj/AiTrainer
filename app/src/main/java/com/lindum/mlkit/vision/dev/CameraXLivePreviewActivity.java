@@ -702,6 +702,8 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
     @Override
     public void onResume() {
         super.onResume();
+        // 开始训练
+        isEnd = false;
         bindAllCameraUseCases();
     }
 
