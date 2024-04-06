@@ -1,1 +1,0 @@
-com.lindum.mlkit.vision.dev
