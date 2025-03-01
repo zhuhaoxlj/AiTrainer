@@ -106,7 +106,7 @@ public class UpdateUserInfo {
         Statement statement;
         try {
             // 建立连接
-            Connection connection = DriverManager.getConnection("jdbc:mysql://47.102.122.203:3306/aitrainer", "aitrainer", "jay666..");
+            Connection connection = DriverManager.getConnection("jdbc:mysql://1.94.217.144:3306/aitrainer", "aitrainer", "jay666..");
             // 创建表
             statement = connection.createStatement();
             if (statement.executeUpdate(createTable) == 0) {
@@ -130,7 +130,7 @@ public class UpdateUserInfo {
         Statement statement;
         try {
             // 建立连接
-            Connection connection = DriverManager.getConnection("jdbc:mysql://47.102.122.203:3306/aitrainer", "aitrainer", "jay666..");
+            Connection connection = DriverManager.getConnection("jdbc:mysql://1.94.217.144:3306/aitrainer", "aitrainer", "jay666..");
             // 创建表
             statement = connection.createStatement();
             if (statement.executeUpdate(addField) == 0) {
@@ -183,7 +183,7 @@ public class UpdateUserInfo {
         PreparedStatement preparedStatement = null;
         try {
             // 建立连接
-            Connection connection = DriverManager.getConnection("jdbc:mysql://47.102.122.203:3306/aitrainer", "aitrainer", "jay666..");
+            Connection connection = DriverManager.getConnection("jdbc:mysql://1.94.217.144:3306/aitrainer", "aitrainer", "jay666..");
             String s = readJsonFile(jsonPath);
             JSONObject jsonObject = JSON.parseObject(s);
             JSONArray poseEntity = jsonObject.getJSONArray("userEntities");
@@ -254,7 +254,7 @@ public class UpdateUserInfo {
         String sql;
         try {
             // 建立连接
-            Connection connection = DriverManager.getConnection("jdbc:mysql://47.102.122.203:3306/aitrainer", "aitrainer", "jay666..");
+            Connection connection = DriverManager.getConnection("jdbc:mysql://1.94.217.144:3306/aitrainer", "aitrainer", "jay666..");
             String jsonStr = JSONObject.toJSONString(userEntity);
             JSONObject jsonObject = JSON.parseObject(jsonStr);
 
@@ -354,7 +354,7 @@ public class UpdateUserInfo {
         ResultSet resultSet;
         try {
             // 建立连接
-            Connection connection = DriverManager.getConnection("jdbc:mysql://47.102.122.203:3306/aitrainer", "aitrainer", "jay666..");
+            Connection connection = DriverManager.getConnection("jdbc:mysql://1.94.217.144:3306/aitrainer", "aitrainer", "jay666..");
             String sql = "select * from userEntity";
             preparedStatement = connection.prepareStatement(sql);
             resultSet = preparedStatement.executeQuery();
@@ -384,7 +384,7 @@ public class UpdateUserInfo {
         String sql;
         try {
             // 建立连接
-            Connection connection = DriverManager.getConnection("jdbc:mysql://47.102.122.203:3306/aitrainer", "aitrainer", "jay666..");
+            Connection connection = DriverManager.getConnection("jdbc:mysql://1.94.217.144:3306/aitrainer", "aitrainer", "jay666..");
             sql = "delete from userEntity where userUniqueId = " + "\"" + userUniqueId + "\"";
             preparedStatement = connection.prepareStatement(sql);
             int result = preparedStatement.executeUpdate(sql);
@@ -407,7 +407,7 @@ public class UpdateUserInfo {
     public UserEntity search(String userUniqueId) {
         try {
             // 建立连接
-            Connection connection = DriverManager.getConnection("jdbc:mysql://47.102.122.203:3306/aitrainer", "aitrainer", "jay666..");
+            Connection connection = DriverManager.getConnection("jdbc:mysql://1.94.217.144:3306/aitrainer", "aitrainer", "jay666..");
             String sql = "select * from userEntity where userUniqueId = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setObject(1,userUniqueId);
@@ -438,7 +438,7 @@ public class UpdateUserInfo {
     public int select(String userUniqueId) {
         try {
             // 建立连接
-            Connection connection = DriverManager.getConnection("jdbc:mysql://47.102.122.203:3306/aitrainer", "aitrainer", "jay666..");
+            Connection connection = DriverManager.getConnection("jdbc:mysql://1.94.217.144:3306/aitrainer", "aitrainer", "jay666..");
             String sql = "select * from userEntity where userUniqueId = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setObject(1,userUniqueId);
@@ -465,7 +465,7 @@ public class UpdateUserInfo {
     public void upDate(String userUniqueId, String variableName, Object object) {
         try {
             // 建立连接
-            Connection connection = DriverManager.getConnection("jdbc:mysql://47.102.122.203:3306/aitrainer", "aitrainer", "jay666..");
+            Connection connection = DriverManager.getConnection("jdbc:mysql://1.94.217.144:3306/aitrainer", "aitrainer", "jay666..");
             if (select(userUniqueId) == 0) {
                 System.out.println("该动作不存在");
             } else {

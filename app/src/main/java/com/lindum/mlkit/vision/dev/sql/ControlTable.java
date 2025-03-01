@@ -40,7 +40,7 @@ public class ControlTable {
         Statement statement;
         try {
             // 建立连接
-            Connection connection = DriverManager.getConnection("jdbc:mysql://47.102.122.203:3306/aitrainer", "aitrainer", "jay666..");
+            Connection connection = DriverManager.getConnection("jdbc:mysql://1.94.217.144:3306/aitrainer", "aitrainer", "jay666..");
             // 创建表
             statement = connection.createStatement();
             if (statement.executeUpdate(createTable) == 0) {
@@ -63,7 +63,7 @@ public class ControlTable {
         Statement statement;
         try {
             // 建立连接
-            Connection connection = DriverManager.getConnection("jdbc:mysql://47.102.122.203:3306/aitrainer", "aitrainer", "jay666..");
+            Connection connection = DriverManager.getConnection("jdbc:mysql://1.94.217.144:3306/aitrainer", "aitrainer", "jay666..");
             // 创建表
             statement = connection.createStatement();
             if (statement.executeUpdate(addField) == 0) {
@@ -115,7 +115,7 @@ public class ControlTable {
         PreparedStatement preparedStatement = null;
         try {
             // 建立连接
-            Connection connection = DriverManager.getConnection("jdbc:mysql://47.102.122.203:3306/aitrainer", "aitrainer", "jay666..");
+            Connection connection = DriverManager.getConnection("jdbc:mysql://1.94.217.144:3306/aitrainer", "aitrainer", "jay666..");
             String s = readJsonFile(jsonPath);
             JSONObject jsonObject = JSON.parseObject(s);
             JSONArray poseEntity = jsonObject.getJSONArray("poseEntities");
@@ -192,7 +192,7 @@ public class ControlTable {
         String sql;
         try {
             // 建立连接
-            Connection connection = DriverManager.getConnection("jdbc:mysql://47.102.122.203:3306/aitrainer", "aitrainer", "jay666..");
+            Connection connection = DriverManager.getConnection("jdbc:mysql://1.94.217.144:3306/aitrainer", "aitrainer", "jay666..");
             String jsonStr = JSONObject.toJSONString(poseEntity);
             JSONObject jsonObject = JSON.parseObject(jsonStr);
 
@@ -496,7 +496,7 @@ public class ControlTable {
         ResultSet resultSet;
         try {
             // 建立连接
-            Connection connection = DriverManager.getConnection("jdbc:mysql://47.102.122.203:3306/aitrainer", "aitrainer", "jay666..");
+            Connection connection = DriverManager.getConnection("jdbc:mysql://1.94.217.144:3306/aitrainer", "aitrainer", "jay666..");
             String sql = "select * from poseEntity";
             preparedStatement = connection.prepareStatement(sql);
             resultSet = preparedStatement.executeQuery();
@@ -524,7 +524,7 @@ public class ControlTable {
         String sql;
         try {
             // 建立连接
-            Connection connection = DriverManager.getConnection("jdbc:mysql://47.102.122.203:3306/aitrainer", "aitrainer", "jay666..");
+            Connection connection = DriverManager.getConnection("jdbc:mysql://1.94.217.144:3306/aitrainer", "aitrainer", "jay666..");
             sql = "delete from poseEntity where poseName = " + "\"" + poseName + "\"";
             preparedStatement = connection.prepareStatement(sql);
             int result = preparedStatement.executeUpdate(sql);
@@ -545,7 +545,7 @@ public class ControlTable {
     public PoseEntity search(String poseName) {
         try {
             // 建立连接
-            Connection connection = DriverManager.getConnection("jdbc:mysql://47.102.122.203:3306/aitrainer", "aitrainer", "jay666..");
+            Connection connection = DriverManager.getConnection("jdbc:mysql://1.94.217.144:3306/aitrainer", "aitrainer", "jay666..");
             String sql = "select * from poseEntity where poseName = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setObject(1, poseName);
@@ -576,7 +576,7 @@ public class ControlTable {
     public int select(String poseName) {
         try {
             // 建立连接
-            Connection connection = DriverManager.getConnection("jdbc:mysql://47.102.122.203:3306/aitrainer", "aitrainer", "jay666..");
+            Connection connection = DriverManager.getConnection("jdbc:mysql://1.94.217.144:3306/aitrainer", "aitrainer", "jay666..");
             String sql = "select * from poseEntity where poseName = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setObject(1, poseName);
@@ -603,7 +603,7 @@ public class ControlTable {
     public void upDate(String poseName, String variableName, Object object) {
         try {
             // 建立连接
-            Connection connection = DriverManager.getConnection("jdbc:mysql://47.102.122.203:3306/aitrainer", "aitrainer", "jay666..");
+            Connection connection = DriverManager.getConnection("jdbc:mysql://1.94.217.144:3306/aitrainer", "aitrainer", "jay666..");
             if (select(poseName) == 0) {
                 Logger.e("该动作不存在");
             } else {
