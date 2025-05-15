@@ -13,25 +13,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package com.lindum.mlkit.vision.dev
 
-package com.lindum.mlkit.vision.dev;
+import android.graphics.Bitmap
+import android.graphics.Canvas
+import com.lindum.mlkit.vision.dev.GraphicOverlay.Graphic
 
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import com.lindum.mlkit.vision.dev.GraphicOverlay.Graphic;
-
-/** Draw camera image to background. */
-public class CameraImageGraphic extends Graphic {
-
-  private final Bitmap bitmap;
-
-  public CameraImageGraphic(GraphicOverlay overlay, Bitmap bitmap) {
-    super(overlay);
-    this.bitmap = bitmap;
-  }
-
-  @Override
-  public void draw(Canvas canvas) {
-    canvas.drawBitmap(bitmap, getTransformationMatrix(), null);
-  }
+/** Draw camera image to background.  */
+class CameraImageGraphic(overlay: GraphicOverlay?, private val bitmap: Bitmap) :
+    Graphic(overlay!!) {
+    override fun draw(canvas: Canvas?) {
+        canvas?.drawBitmap(bitmap, getTransformationMatrix(), null)
+    }
 }

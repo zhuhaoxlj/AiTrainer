@@ -34,20 +34,22 @@
         tools:ignore="MissingConstraints" />
 
     <Button
+        android:id="@+id/analysisResult"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/analysisResult"
         android:text="分析结果"
         tools:ignore="MissingConstraints" />
+
     <com.ramotion.circlemenu.CircleMenuView
-        android:visibility="invisible"
         android:id="@+id/circle_menu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:visibility="invisible"
         app:button_colors="@array/colors"
         app:button_icons="@array/icons"
-        android:layout_alignParentEnd="true"
         tools:ignore="MissingConstraints" />
+
     <TextView
         android:id="@+id/countdownSecondsText"
         android:layout_width="wrap_content"

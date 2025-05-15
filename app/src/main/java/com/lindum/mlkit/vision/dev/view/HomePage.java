@@ -817,9 +817,7 @@ public class HomePage extends AppCompatActivity implements HomeAdapter.ItemListe
                 .onPositive((dialog, which) -> {
                     // 不要忘记在 AndroidManifest 中声明 Activity
                     Intent intent = null;
-                    if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
-                        intent = new Intent(HomePage.this, CameraXLivePreviewActivity.class);
-                    }
+                    intent = new Intent(HomePage.this, CameraXLivePreviewActivity.class);
                     startActivity(intent);
                 })
                 .show());
