@@ -72,3 +72,5 @@ freeline_core
 /app/bugly/
 /app/bugly/
 /native_app/.cxx/
+# SpecStory explanation file
+.specstory/.what-is-this.md
