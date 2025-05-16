@@ -57,7 +57,6 @@ import com.lindum.mlkit.vision.dev.preference.PreferenceUtils
 import com.lindum.mlkit.vision.dev.preference.SettingsActivity
 import com.lindum.mlkit.vision.dev.result.TrainingResult
 import com.lindum.mlkit.vision.dev.utils.FileUtils
-import com.lindum.mlkit.vision.dev.view.HomePage
 import com.lindum.mlkit.vision.dev.view.PoseDetailsActivity
 import com.orhanobut.logger.Logger
 import com.ramotion.circlemenu.CircleMenuView
@@ -214,7 +213,7 @@ class CameraXLivePreviewActivity : AppCompatActivity(), OnRequestPermissionsResu
         // 定时更新变量定时器
         updateVariable()
         // 从主页获取数据库中的动作数据
-        poseEntityList = HomePage.poseEntityArrayList
+        poseEntityList = MainActivity.poseEntityArrayList
 
 
         nowPoseName = poseEntityList!!.get(nowPoseIndex).getPoseName()
@@ -392,7 +391,7 @@ class CameraXLivePreviewActivity : AppCompatActivity(), OnRequestPermissionsResu
         pose1 = false
         // 创建截图文件夹
         timeMarkPoint = System.currentTimeMillis() / 1000
-        imageSavePath = HomePage.appFilePath + "/files/analysisReport/" + LocalDate.now()
+        imageSavePath = MainActivity.appFilePath + "/files/analysisReport/" + LocalDate.now()
             .toString() + "/" + timeMarkPoint + "/"
         FileUtils.createFile(imageSavePath, FileUtils.CREATE_FOLDER)
         // 初始化组件

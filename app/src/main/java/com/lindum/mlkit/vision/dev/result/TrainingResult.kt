@@ -15,10 +15,10 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.alibaba.fastjson.JSON
 import com.lindum.mlkit.vision.dev.CameraXLivePreviewActivity
+import com.lindum.mlkit.vision.dev.MainActivity
 import com.lindum.mlkit.vision.dev.R
 import com.lindum.mlkit.vision.dev.databinding.TrainingResultBinding
 import com.lindum.mlkit.vision.dev.utils.FileUtils
-import com.lindum.mlkit.vision.dev.view.HomePage
 import com.orhanobut.logger.Logger
 import com.xuexiang.xui.widget.progress.CircleProgressView
 import com.xuexiang.xui.widget.progress.CircleProgressView.CircleProgressUpdateListener
@@ -69,7 +69,7 @@ class TrainingResult : AppCompatActivity(), HorizontalProgressUpdateListener,
             // 记录训练日记
             FileUtils.writeStringToFile(
                 CameraXLivePreviewActivity.timeMarkPoint.toString() + " 完成训练",
-                HomePage.appFilePath + "/files/analysisReport/",
+                MainActivity.appFilePath + "/files/analysisReport/",
                 "recordFile.sys",
                 FileUtils.APPEND_TEXT
             )
@@ -100,27 +100,33 @@ class TrainingResult : AppCompatActivity(), HorizontalProgressUpdateListener,
                             .toTypedArray()[0].toInt()
                         var commonMistakes: String? = ""
                         var solveMethod = ""
-                        if (HomePage.poseEntityArrayList.get(getPoseIndexByName(resultName.get(index)))
+                        if (MainActivity.poseEntityArrayList!!.get(
+                                getPoseIndexByName(
+                                    resultName.get(
+                                        index
+                                    )
+                                )
+                            )
                                 .getCommonMistakes().size > 1
                         ) {
-                            commonMistakes = HomePage.poseEntityArrayList.get(
+                            commonMistakes = MainActivity.poseEntityArrayList!!.get(
                                 getPoseIndexByName(
                                     resultName.get(index)
                                 )
                             ).getCommonMistakes()[0]
-                            solveMethod = HomePage.poseEntityArrayList.get(
+                            solveMethod = MainActivity.poseEntityArrayList!!.get(
                                 getPoseIndexByName(
                                     resultName.get(index)
                                 )
                             ).getCommonMistakes()[1].replace("解决：", "")
                         }
                         var rightPoseImage: Bitmap? = null
-                        for (poseEntity in HomePage.poseEntityArrayList) {
+                        for (poseEntity in MainActivity.poseEntityArrayList!!) {
                             if (poseEntity.getPoseName() === resultName.get(index)) {
                                 val indexOfPoseEntityList =
-                                    HomePage.poseEntityArrayList.indexOf(poseEntity)
+                                    MainActivity.poseEntityArrayList!!.indexOf(poseEntity)
                                 rightPoseImage =
-                                    HomePage.poseRightImageArrayList.get(indexOfPoseEntityList)
+                                    MainActivity.poseRightImageArrayList.get(indexOfPoseEntityList)
                             }
                         }
                         val temp = ResultEntity()
@@ -247,8 +253,8 @@ class TrainingResult : AppCompatActivity(), HorizontalProgressUpdateListener,
      */
     @RequiresApi(api = Build.VERSION_CODES.O)
     fun getPoseIndexByName(poseName: String?): Int {
-        for (poseEntity in HomePage.poseEntityArrayList) {
-            val index = HomePage.poseEntityArrayList.indexOf(poseEntity)
+        for (poseEntity in MainActivity.poseEntityArrayList!!) {
+            val index = MainActivity.poseEntityArrayList!!.indexOf(poseEntity)
             if (poseEntity.getPoseName() == poseName) {
                 return index
             }
@@ -263,7 +269,7 @@ class TrainingResult : AppCompatActivity(), HorizontalProgressUpdateListener,
     @RequiresApi(api = Build.VERSION_CODES.O)
     fun startProcessBar() {
         // 动作组数
-        val poseGroups = HomePage.poseEntityArrayList.size
+        val poseGroups = MainActivity.poseEntityArrayList!!.size
         val groupsRate = (100 * (groupsOfPose.toFloat() / poseGroups)).toInt()
         // 设置动作组数进度条
         binding.hpvGroup.setEndProgress(groupsRate.toFloat())
@@ -271,7 +277,9 @@ class TrainingResult : AppCompatActivity(), HorizontalProgressUpdateListener,
 
         // 时长
         var timeRate =
-            (100 * (trainingTotalTimes.toFloat() / (poseGroups * (HomePage.poseEntityArrayList.get(0)
+            (100 * (trainingTotalTimes.toFloat() / (poseGroups * (MainActivity.poseEntityArrayList!!.get(
+                0
+            )
                 .getPoseProcessValue() + 4)))).toInt()
         if (timeRate > 100) {
             timeRate = 100
@@ -280,9 +288,9 @@ class TrainingResult : AppCompatActivity(), HorizontalProgressUpdateListener,
         binding.hpvTime.startProgressAnimation()
 
         // 计算卡路里
-        Logger.e("动作个数" + HomePage.poseEntityArrayList.size)
-        for (i in HomePage.poseEntityArrayList.indices) {
-            val poseEntity = HomePage.poseEntityArrayList.get(i)
+        Logger.e("动作个数" + MainActivity.poseEntityArrayList!!.size)
+        for (i in MainActivity.poseEntityArrayList!!.indices) {
+            val poseEntity = MainActivity.poseEntityArrayList!!.get(i)
             if (poseEntity.getCountTimes() != 0) {
                 calSum += poseEntity.getPoseBurnCal() * poseEntity.getCountTimes()
             } else {

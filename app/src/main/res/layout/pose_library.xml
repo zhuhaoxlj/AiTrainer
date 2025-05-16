@@ -5,14 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    android:orientation="vertical"
-    tools:showIn="@layout/pose_library">
-
-    <LinearLayout
-        android:id="@+id/poseLibraryStatusBar"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:orientation="horizontal" />
+    android:orientation="vertical">
 
     <com.xuexiang.xui.widget.actionbar.TitleBar
         android:id="@+id/poseLibraryTitleBar"
@@ -24,11 +17,10 @@
         app:tb_subTitleText="Ai辅助训练动作库"
         app:tb_titleText="动作库" />
 
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scrollbars="vertical" />
 
-</LinearLayout>
+</LinearLayout> 

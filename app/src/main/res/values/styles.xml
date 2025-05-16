@@ -1,6 +1,6 @@
 <resources>
 
-    <style name="AppTheme" parent="XUITheme.Phone" />
+    <style name="AppTheme" parent="Theme.AppCompat.Light" />
 
     <style name="RoundButton.SelectSportsPreference">
         <item name="android:paddingStart">?attr/xui_config_content_spacing_horizontal</item>
