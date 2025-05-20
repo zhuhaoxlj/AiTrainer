@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="nickNameHint">昵称</string>
-    <string name="inputNickNameHint">请输入您的昵称</string>
-    <string name="changeNickNameTips">昵称每半年只能修改一次，请谨慎修改</string>
-    <string name="inputProfileTips">请输入您的个人简介</string>
-    <string name="profileHint">简介</string>
-    <string name="profileTextLimit">0/160</string>
-</resources>

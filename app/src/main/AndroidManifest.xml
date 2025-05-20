@@ -39,6 +39,10 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
+    <!-- Android 13 新的媒体权限 -->
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+    <uses-permission android:name="android.permission.READ_MEDIA_VIDEO" />
+    <uses-permission android:name="android.permission.READ_MEDIA_AUDIO" />
 
     <queries>
         <intent>
@@ -51,7 +55,8 @@
 
     <application
         android:name="androidx.multidex.MultiDexApplication"
-        android:icon="@drawable/train"
+        android:icon="@drawable/logo"
+        android:roundIcon="@drawable/logo_round"
         android:label="AiTrainer"
         android:requestLegacyExternalStorage="true"
         android:theme="@style/Theme.AppCompat"
@@ -59,7 +64,7 @@
         tools:replace="android:label"
         tools:targetApi="m">
         <activity
-            android:name=".view.OfficialNoticeActivity"
+            android:name="com.lindum.mlkit.vision.view.OfficialNoticeActivity"
             android:exported="false" />
 
         <meta-data
@@ -73,20 +78,19 @@
             android:name="com.google.mlkit.vision.DEPENDENCIES"
             android:value="barcode,face,ocr,ica" />
 
-        <activity android:name=".datacenter.ProgressActivity" />
-        <activity android:name=".view.PoseDetailsActivity" />
-        <activity android:name=".result.ImageDetails" />
-        <activity android:name=".view.ChangeProfileActivity" />
-        <activity android:name=".view.ChangeNickName" />
-        <activity android:name=".view.IntroActivity" />
-        <activity android:name=".CameraXLivePreviewActivity" />
-        <activity android:name=".view.SelectSportsPreference" />
+        <activity android:name="com.lindum.mlkit.vision.datacenter.ProgressActivity" />
+        <activity android:name="com.lindum.mlkit.vision.view.PoseDetailsActivity" />
+        <activity android:name="com.lindum.mlkit.vision.result.ImageDetails" />
+        <activity android:name="com.lindum.mlkit.vision.view.IntroActivity" />
         <activity
-            android:name=".result.TrainingResult"
+            android:name="com.lindum.mlkit.vision.CameraXLivePreviewActivity"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name="com.lindum.mlkit.vision.result.TrainingResult"
             android:exported="false"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".MainActivity"
+            android:name="com.lindum.mlkit.vision.MainActivity"
             android:exported="true"
             android:theme="@style/AppTheme"
             tools:targetApi="26">
@@ -97,7 +101,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".preference.SettingsActivity"
+            android:name="com.lindum.mlkit.vision.preference.SettingsActivity"
             android:exported="false" />
     </application>
 

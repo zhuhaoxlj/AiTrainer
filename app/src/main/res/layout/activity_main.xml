@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
@@ -10,8 +9,8 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".MainActivity">
-
+        android:background="#826b48"
+        tools:context="com.lindum.mlkit.vision.MainActivity">
         <!-- 内容区域 -->
         <FrameLayout
             android:id="@+id/fragment_container"
@@ -20,7 +19,7 @@
             android:layout_above="@+id/custom_tab_bar" />
 
         <!-- 自定义底部导航栏 -->
-        <com.lindum.mlkit.vision.dev.CustomTabBarView
+        <com.lindum.mlkit.vision.CustomTabBarView
             android:id="@+id/custom_tab_bar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

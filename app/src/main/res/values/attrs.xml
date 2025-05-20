@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="BubbleView">
+        <attr name="triangleTopMargin" format="dimension"/>
+        <attr name="arrowDirection" format="enum">
+            <enum name="right" value="0"/>
+            <enum name="left" value="1"/>
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="FontTextView">
+        <attr name="fontAsset" format="string" />
+    </declare-styleable>
+</resources> 
