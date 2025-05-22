@@ -7,6 +7,7 @@ import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.view.WindowManager
 import android.widget.AdapterView
 import android.widget.ImageView
 import android.widget.ListView
@@ -18,6 +19,7 @@ import com.lindum.mlkit.vision.MainActivity
 import com.lindum.mlkit.vision.dev.R
 import com.lindum.mlkit.vision.dev.databinding.TrainingResultBinding
 import com.lindum.mlkit.vision.utils.FileUtils
+import com.lindum.mlkit.vision.utils.StatusBarUtils
 import com.orhanobut.logger.Logger
 import com.xuexiang.xui.widget.progress.CircleProgressView.CircleProgressUpdateListener
 import com.xuexiang.xui.widget.progress.HorizontalProgressView.HorizontalProgressUpdateListener
@@ -26,7 +28,7 @@ import com.xuexiang.xui.widget.progress.HorizontalProgressView.HorizontalProgres
  * @author MarkGosling
  * @date 2022/1/27 8:25
  */
-class TrainingResult : AppCompatActivity(), HorizontalProgressUpdateListener,
+class TrainingResultActivity : AppCompatActivity(), HorizontalProgressUpdateListener,
     CircleProgressUpdateListener {
     // 要存储到本地的分析结果
     private var jsonResultEntitiesArrayList: ArrayList<JSONResultEntity?>? = null
@@ -49,11 +51,22 @@ class TrainingResult : AppCompatActivity(), HorizontalProgressUpdateListener,
     private var listView: ListView? = null
     private lateinit var binding: TrainingResultBinding
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = TrainingResultBinding.inflate(layoutInflater)
+        window.setFlags(
+            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
+            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
+        )
+        // 设置状态栏文字和图标为深色
+        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR;
+        // 设置状态栏背景色
         setContentView(binding.root)
+
+        val layoutParams = binding.vFakeStatusBar.layoutParams
+        layoutParams.height = StatusBarUtils.getStatusBarHeight(this)
+        binding.vFakeStatusBar.layoutParams = layoutParams
+
         val intent = getIntent()
         if (intent.getIntExtra("init", 0) == 0) {
             // 获取运动总时长
@@ -73,7 +86,7 @@ class TrainingResult : AppCompatActivity(), HorizontalProgressUpdateListener,
                 var tips = tips
                 val index: Int = resultTips.indexOf(tips)
                 tips = index.toString() + tips
-                if (poseResultMap.get(tips) == null) {
+                if (poseResultMap[tips] == null) {
                     poseResultMap.put(tips, 1)
                 } else {
                     poseResultMap.replace(tips, poseResultMap[tips]!! + 1)
@@ -87,60 +100,60 @@ class TrainingResult : AppCompatActivity(), HorizontalProgressUpdateListener,
             for (entry in list) {
                 map2.put(entry.key, entry.value)
             }
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                map2.forEach { (o1: String?, o2: Int?) ->
-                    if (o1!!.length > 3) {
-                        val index = o1.split("，".toRegex()).dropLastWhile { it.isEmpty() }
-                            .toTypedArray()[0].toInt()
-                        var commonMistakes: String? = ""
-                        var solveMethod = ""
-                        if (MainActivity.Companion.poseEntityArrayList!!.get(
-                                getPoseIndexByName(
-                                    resultName.get(
-                                        index
-                                    )
+            map2.forEach { (o1: String?, o2: Int?) ->
+                if (o1!!.length > 3) {
+                    val index = o1.split("，".toRegex()).dropLastWhile { it.isEmpty() }
+                        .toTypedArray()[0].toInt()
+                    var commonMistakes: String? = ""
+                    var solveMethod = ""
+                    if (MainActivity.Companion.poseEntityArrayList!!.get(
+                            getPoseIndexByName(
+                                resultName.get(
+                                    index
                                 )
                             )
-                                .getCommonMistakes().size > 1
-                        ) {
-                            commonMistakes = MainActivity.Companion.poseEntityArrayList!!.get(
-                                getPoseIndexByName(
-                                    resultName.get(index)
-                                )
-                            ).getCommonMistakes()[0]
-                            solveMethod = MainActivity.Companion.poseEntityArrayList!!.get(
-                                getPoseIndexByName(
-                                    resultName.get(index)
-                                )
-                            ).getCommonMistakes()[1].replace("解决：", "")
-                        }
-                        var rightPoseImage: Bitmap? = null
-                        for (poseEntity in MainActivity.Companion.poseEntityArrayList!!) {
-                            if (poseEntity.getPoseName() === resultName.get(index)) {
-                                val indexOfPoseEntityList =
-                                    MainActivity.Companion.poseEntityArrayList!!.indexOf(poseEntity)
-                                rightPoseImage =
-                                    MainActivity.Companion.poseRightImageArrayList.get(indexOfPoseEntityList)
-                            }
-                        }
-                        val temp = ResultEntity()
-                        //                    ResultEntity temp = new ResultEntity(resultName.get(index), "出错" + o2 + "次\n" + commonMistakes + "。" + "\nAi建议：" + "\n" + solveMethod + "。" + resultTips.get(index).substring(1) + "\n", resultImage.get(index), rightPoseImage);
-                        temp.setPoseName(resultName.get(index))
-                        temp.setTips(
-                            "该错误出错" + o2 + "次\n" + commonMistakes + "。" + "\nAi建议：" + "\n" + solveMethod + "。" + resultTips.get(
-                                index
-                            )!!
-                                .substring(1) + "\n"
                         )
-                        temp.setWrongPoseImage(resultImage.get(index))
-                        temp.setRightPoseImage(rightPoseImage)
-                        temp.setWrongPoseImagePath(wrongImagePath.get(index))
-                        Logger.e("出错图片路径" + wrongImagePath.get(index))
-                        resultEntityList!!.add(temp)
+                            .getCommonMistakes().size > 1
+                    ) {
+                        commonMistakes = MainActivity.Companion.poseEntityArrayList!!.get(
+                            getPoseIndexByName(
+                                resultName.get(index)
+                            )
+                        ).getCommonMistakes()[0]
+                        solveMethod = MainActivity.Companion.poseEntityArrayList!!.get(
+                            getPoseIndexByName(
+                                resultName.get(index)
+                            )
+                        ).getCommonMistakes()[1].replace("解决：", "")
                     }
+                    var rightPoseImage: Bitmap? = null
+                    for (poseEntity in MainActivity.Companion.poseEntityArrayList!!) {
+                        if (poseEntity.getPoseName() === resultName.get(index)) {
+                            val indexOfPoseEntityList =
+                                MainActivity.Companion.poseEntityArrayList!!.indexOf(poseEntity)
+                            rightPoseImage =
+                                MainActivity.Companion.poseRightImageArrayList.get(
+                                    indexOfPoseEntityList
+                                )
+                        }
+                    }
+                    val temp = ResultEntity()
+                    //                    ResultEntity temp = new ResultEntity(resultName.get(index), "出错" + o2 + "次\n" + commonMistakes + "。" + "\nAi建议：" + "\n" + solveMethod + "。" + resultTips.get(index).substring(1) + "\n", resultImage.get(index), rightPoseImage);
+                    temp.setPoseName(resultName.get(index))
+                    temp.setTips(
+                        "该错误出错" + o2 + "次\n" + commonMistakes + "。" + "\nAi建议：" + "\n" + solveMethod + "。" + resultTips.get(
+                            index
+                        )!!
+                            .substring(1) + "\n"
+                    )
+                    temp.setWrongPoseImage(resultImage.get(index))
+                    temp.setRightPoseImage(rightPoseImage)
+                    temp.setWrongPoseImagePath(wrongImagePath.get(index))
+                    Logger.e("出错图片路径" + wrongImagePath.get(index))
+                    resultEntityList!!.add(temp)
                 }
-                countWrongImage = resultImage.size
             }
+            countWrongImage = resultImage.size
         } else {
             Logger.e("===" + intent.getStringExtra("poseDataPath"))
             val data = FileUtils.readFileToString(
@@ -168,28 +181,29 @@ class TrainingResult : AppCompatActivity(), HorizontalProgressUpdateListener,
         // 动作分析列表初始化
         val resultListAdapter = ResultListAdapter(this, R.layout.result_list_item, resultEntityList)
         listView!!.setAdapter(resultListAdapter)
-        listView!!.setOnItemClickListener(AdapterView.OnItemClickListener { adapterView: AdapterView<*>?, view: View?, i: Int, l: Long ->
-            val wrongImageView = view!!.findViewById<ImageView>(R.id.wrongPoseImage)
-            wrongImageView.setOnClickListener(View.OnClickListener { v: View? ->
-                wrongImageView.setDrawingCacheEnabled(true)
-                val bitmap = Bitmap.createBitmap(wrongImageView.getDrawingCache())
-                Logger.e("这是第" + l + "张图片")
-                val intent1 = Intent(this@TrainingResult, ImageDetails::class.java)
-                ImageDetails.bitmap = bitmap
-                wrongImageView.setDrawingCacheEnabled(false)
-                startActivity(intent1)
-            })
-            val rightImageView = view.findViewById<ImageView>(R.id.rightPoseImage)
-            rightImageView.setOnClickListener(View.OnClickListener { v: View? ->
-                rightImageView.setDrawingCacheEnabled(true)
-                val bitmap = Bitmap.createBitmap(rightImageView.getDrawingCache())
-                Logger.e("这是第" + l + "张图片")
-                val intent1 = Intent(this@TrainingResult, ImageDetails::class.java)
-                ImageDetails.bitmap = bitmap
-                rightImageView.setDrawingCacheEnabled(false)
-                startActivity(intent1)
-            })
-        })
+        listView?.onItemClickListener =
+            AdapterView.OnItemClickListener { adapterView: AdapterView<*>?, view: View?, i: Int, l: Long ->
+                val wrongImageView = view!!.findViewById<ImageView>(R.id.wrongPoseImage)
+                wrongImageView.setOnClickListener(View.OnClickListener { v: View? ->
+                    wrongImageView.setDrawingCacheEnabled(true)
+                    val bitmap = Bitmap.createBitmap(wrongImageView.getDrawingCache())
+                    Logger.e("这是第" + l + "张图片")
+                    val intent1 = Intent(this@TrainingResultActivity, ImageDetails::class.java)
+                    ImageDetails.bitmap = bitmap
+                    wrongImageView.setDrawingCacheEnabled(false)
+                    startActivity(intent1)
+                })
+                val rightImageView = view.findViewById<ImageView>(R.id.rightPoseImage)
+                rightImageView.setOnClickListener(View.OnClickListener { v: View? ->
+                    rightImageView.setDrawingCacheEnabled(true)
+                    val bitmap = Bitmap.createBitmap(rightImageView.getDrawingCache())
+                    Logger.e("这是第" + l + "张图片")
+                    val intent1 = Intent(this@TrainingResultActivity, ImageDetails::class.java)
+                    ImageDetails.bitmap = bitmap
+                    rightImageView.setDrawingCacheEnabled(false)
+                    startActivity(intent1)
+                })
+            }
 
         //  初始化控件
         binding.hpvTime.setProgressViewUpdateListener(this)
@@ -245,7 +259,6 @@ class TrainingResult : AppCompatActivity(), HorizontalProgressUpdateListener,
      * @param poseName 动作名称
      * @return 动作下标
      */
-    @RequiresApi(api = Build.VERSION_CODES.O)
     fun getPoseIndexByName(poseName: String?): Int {
         for (poseEntity in MainActivity.Companion.poseEntityArrayList!!) {
             val index = MainActivity.Companion.poseEntityArrayList!!.indexOf(poseEntity)
@@ -260,7 +273,6 @@ class TrainingResult : AppCompatActivity(), HorizontalProgressUpdateListener,
     /**
      * 设置进度条的数值
      */
-    @RequiresApi(api = Build.VERSION_CODES.O)
     fun startProcessBar() {
         // 动作组数
         val poseGroups = MainActivity.Companion.poseEntityArrayList!!.size
@@ -324,8 +336,8 @@ class TrainingResult : AppCompatActivity(), HorizontalProgressUpdateListener,
     @SuppressLint("SetTextI18n")
     override fun onCircleProgressUpdate(view: View, progress: Float) {
         val progressInt = progress.toInt()
-        if (view.getId() == R.id.progressView_circle_main) {
-            binding.progressTextMain.setText(progressInt.toString() + "")
+        if (view.id == R.id.progressView_circle_main) {
+            binding.progressTextMain.text = progressInt.toString() + ""
         }
     }
 
@@ -336,7 +348,6 @@ class TrainingResult : AppCompatActivity(), HorizontalProgressUpdateListener,
      * @param view     水平进度条布局
      * @param progress 实时更新的进度
      */
-    @RequiresApi(api = Build.VERSION_CODES.O)
     @SuppressLint("SetTextI18n", "NonConstantResourceId")
     override fun onHorizontalProgressUpdate(view: View, progress: Float) {
         when (view.id) {

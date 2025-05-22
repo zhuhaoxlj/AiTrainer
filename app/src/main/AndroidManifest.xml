@@ -86,7 +86,7 @@
             android:name="com.lindum.mlkit.vision.CameraXLivePreviewActivity"
             android:theme="@style/AppTheme" />
         <activity
-            android:name="com.lindum.mlkit.vision.result.TrainingResult"
+            android:name="com.lindum.mlkit.vision.result.TrainingResultActivity"
             android:exported="false"
             android:theme="@style/AppTheme" />
         <activity

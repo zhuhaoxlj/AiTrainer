@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.view.WindowManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.edit
 import androidx.fragment.app.Fragment
 import com.hjq.permissions.OnPermissionCallback
 import com.hjq.permissions.Permission
@@ -21,9 +22,9 @@ import com.lindum.mlkit.vision.fragments.PoseLibraryFragment
 import com.lindum.mlkit.vision.utils.FileUtils
 import com.orhanobut.logger.AndroidLogAdapter
 import com.orhanobut.logger.Logger
+import com.xuexiang.xui.XUI
 import java.time.LocalDate
 import java.util.Objects
-import androidx.core.content.edit
 
 class MainActivity : AppCompatActivity() {
 
@@ -75,15 +76,14 @@ class MainActivity : AppCompatActivity() {
 
         // 正确动作图
         val rightPoseImageUrl = arrayOf(
-            "file:///android_asset/feeling/shendun/2.png",
-            "file:///android_asset/feeling/kaoqiangzhanli/2.png",
-            "file:///android_asset/feeling/pingbanzhicheng/2.png",
-            "file:///android_asset/feeling/fuwocheng/2.png",
-            "file:///android_asset/feeling/tunqiao/2.png",
-            "file:///android_asset/feeling/xixilijuanfu/2.png",
-            "file:///android_asset/feeling/juanfumoxi/2.png",
-            "file:///android_asset/feeling/guizifuwocheng/2.png",
-            "file:///android_asset/feeling/fubulashen/2.png"
+            "file:///android_asset/pose_detail/1.png",
+            "file:///android_asset/pose_detail/2.png",
+            "file:///android_asset/pose_detail/3.png",
+            "file:///android_asset/pose_detail/4.png",
+            "file:///android_asset/pose_detail/5.png",
+            "file:///android_asset/pose_detail/6.png",
+            "file:///android_asset/pose_detail/7.png",
+            "file:///android_asset/pose_detail/8.png"
         )
     }
 
@@ -94,6 +94,7 @@ class MainActivity : AppCompatActivity() {
             WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
             WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
         )
+        XUI.initTheme(this)
         setContentView(binding.root)
 
         // 初始化Logger
@@ -303,6 +304,17 @@ class MainActivity : AppCompatActivity() {
                         }
                     }
                 })
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        // 正确姿势图
+        rightPoseImageUrl.forEachIndexed { index, url ->
+            val rightBitmap = BitmapFactory.decodeStream(
+                assets.open(url.replace("file:///android_asset/", ""))
+            )
+            poseRightImageArrayList.add(rightBitmap)
         }
     }
 } 

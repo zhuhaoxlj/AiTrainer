@@ -3,8 +3,6 @@ package com.lindum.mlkit.vision.fragments
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
-import android.graphics.Color
-import android.graphics.ColorStateList
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
@@ -42,10 +40,6 @@ class PoseLibraryFragment : Fragment(R.layout.fragment_pose_library), HomeAdapte
         val layoutParams = binding.vFakeStatusBar.layoutParams
         layoutParams.height = StatusBarUtils.getStatusBarHeight(requireContext())
         binding.vFakeStatusBar.layoutParams = layoutParams
-        
-        // 设置进度条颜色（可选，因为我们已在XML中设置了）
-        binding.progressBar.indeterminateTintList = ColorStateList.valueOf(Color.parseColor("#FFB511"))
-        
         // 确保占位图正确初始化
         try {
             loadingPlaceHolderBitmap = BitmapFactory.decodeResource(resources, R.drawable.loading3)
@@ -144,7 +138,6 @@ class PoseLibraryFragment : Fragment(R.layout.fragment_pose_library), HomeAdapte
     private suspend fun loadImages() {
         // 准备新的图片数据
         val coverImages = ArrayList<Bitmap>()
-        val rightImages = ArrayList<Bitmap>()
         val feelingImages = ArrayList<Bitmap>()
 
         try {
@@ -157,14 +150,12 @@ class PoseLibraryFragment : Fragment(R.layout.fragment_pose_library), HomeAdapte
             // 预先为所有数组添加占位图，确保即使加载失败也有内容展示
             for (i in MainActivity.Companion.poseLibraryCoverImageUrl.indices) {
                 coverImages.add(loadingPlaceHolderBitmap!!)
-                rightImages.add(loadingPlaceHolderBitmap!!)
                 feelingImages.add(loadingPlaceHolderBitmap!!)
             }
 
             // 在IO线程上先一次性更新空的图片集合并显示占位图
             withContext(Dispatchers.Main) {
                 mViewModel.updateCoverImages(coverImages)
-                mViewModel.updateRightImages(rightImages)
                 mViewModel.updateFeelingImages(feelingImages)
                 // 先使用占位图更新UI，让用户看到内容
                 updateLibraryItemsUI()
@@ -190,7 +181,6 @@ class PoseLibraryFragment : Fragment(R.layout.fragment_pose_library), HomeAdapte
                                     .replace("file:///android_asset/", "")
                             )
                         )
-                        rightImages[i] = rightBitmap
 
                         // 感受图
                         try {
@@ -208,7 +198,6 @@ class PoseLibraryFragment : Fragment(R.layout.fragment_pose_library), HomeAdapte
                         // 每当有一个图片加载完成，就更新一次UI
                         withContext(Dispatchers.Main) {
                             mViewModel.updateCoverImages(ArrayList(coverImages))
-                            mViewModel.updateRightImages(ArrayList(rightImages))
                             mViewModel.updateFeelingImages(ArrayList(feelingImages))
                             updateLibraryItemsUI()
                         }

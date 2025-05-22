@@ -4,13 +4,10 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
-import android.graphics.Color
-import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.alibaba.fastjson.JSONObject
 import com.lindum.mlkit.vision.MainActivity
@@ -90,8 +87,8 @@ internal class DotTimeLineAdapter : RecyclerView.Adapter<DotTimeLineAdapter.View
                     resultEntity.setTips(temp.getTips())
                     resultEntities.add(resultEntity)
                 }
-                TrainingResult.resultEntityList = resultEntities
-                val intent = Intent(mContext, TrainingResult::class.java)
+                TrainingResultActivity.resultEntityList = resultEntities
+                val intent = Intent(mContext, TrainingResultActivity::class.java)
                 intent.putExtra("init", 1)
                 intent.putExtra("poseDataPath", poseDataPath)
                 mContext.startActivity(intent)
