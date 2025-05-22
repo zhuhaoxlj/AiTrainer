@@ -159,7 +159,7 @@ class TrainingResultActivity : AppCompatActivity(), HorizontalProgressUpdateList
             val data = FileUtils.readFileToString(
                 intent.getStringExtra("poseDataPath") + "/",
                 "resultData.sys"
-            ).get(0)
+            )[0]
             trainingTotalTimes =
                 data.split(" ".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()[0].toInt()
             groupsOfPose =
@@ -171,9 +171,9 @@ class TrainingResultActivity : AppCompatActivity(), HorizontalProgressUpdateList
         jsonResultEntitiesArrayList = ArrayList<JSONResultEntity?>()
         for (resultEntity in resultEntityList!!) {
             val jsonResultEntity = JSONResultEntity()
-            jsonResultEntity.setPoseName(resultEntity.getPoseName())
-            jsonResultEntity.setTips(resultEntity.getTips())
-            jsonResultEntity.setWrongPoseImagePath(resultEntity.getWrongPoseImagePath())
+            jsonResultEntity.poseName = resultEntity.poseName
+            jsonResultEntity.tips = resultEntity.tips
+            jsonResultEntity.wrongPoseImagePath = resultEntity.wrongPoseImagePath
             jsonResultEntitiesArrayList!!.add(jsonResultEntity)
         }
         // 初始化控件
@@ -239,7 +239,7 @@ class TrainingResultActivity : AppCompatActivity(), HorizontalProgressUpdateList
         )
         // 将评分写入本地文件 时长 动作组数
         FileUtils.writeStringToFile(
-            trainingTotalTimes.toString() + " " + groupsOfPose + " " + countWrongImage,
+            "$trainingTotalTimes $groupsOfPose $countWrongImage",
             CameraXLivePreviewActivity.imageSavePath,
             "resultData.sys",
             FileUtils.OVERWRITE_TEXT
@@ -303,7 +303,7 @@ class TrainingResultActivity : AppCompatActivity(), HorizontalProgressUpdateList
                 calSum += poseEntity.getGetPoseBurnCalPerMin() * poseEntity.getCountMinutes()
             }
         }
-        Logger.e("卡路里" + calSum)
+        Logger.e("卡路里$calSum")
         val calRate = (100 * (calSum / 50)).toInt()
         binding.hpvCal.setEndProgress(calRate.toFloat())
         binding.hpvCal.startProgressAnimation()

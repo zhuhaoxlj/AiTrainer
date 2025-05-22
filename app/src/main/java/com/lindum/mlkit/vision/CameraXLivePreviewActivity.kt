@@ -382,6 +382,7 @@ class CameraXLivePreviewActivity : AppCompatActivity(), OnRequestPermissionsResu
         timeMarkPoint = System.currentTimeMillis() / 1000
         imageSavePath = MainActivity.appFilePath + "/files/analysisReport/" + LocalDate.now()
             .toString() + "/" + timeMarkPoint + "/"
+        Log.i("test_path", imageSavePath.toString())
         FileUtils.createFile(imageSavePath, FileUtils.CREATE_FOLDER)
         // 初始化组件
         poseName = findViewById<TextView>(R.id.poseName)
@@ -823,7 +824,9 @@ class CameraXLivePreviewActivity : AppCompatActivity(), OnRequestPermissionsResu
                                     )
                                 )
                                 TrainingResultActivity.Companion.resultName.add(nowPoseName)
-                                TrainingResultActivity.Companion.resultTips.add(PoseClassifierProcessor.Companion.poseTips)
+                                TrainingResultActivity.Companion.resultTips.add(
+                                    PoseClassifierProcessor.Companion.poseTips
+                                )
                                 TrainingResultActivity.Companion.wrongImagePath.add(imageSavePath + fileName + ".jpg")
                             }
                             Logger.e("生成的建议" + PoseClassifierProcessor.Companion.poseTips)
@@ -859,7 +862,10 @@ class CameraXLivePreviewActivity : AppCompatActivity(), OnRequestPermissionsResu
                             Log.e("total", totalTrainingTime.toString() + "")
                             // 跳转到结果界面
                             val intent =
-                                Intent(this@CameraXLivePreviewActivity, TrainingResultActivity::class.java)
+                                Intent(
+                                    this@CameraXLivePreviewActivity,
+                                    TrainingResultActivity::class.java
+                                )
                             intent.putExtra("totalTrainingTime", totalTrainingTime)
                             intent.putExtra("groupsOfPose", countGroupsOfPose)
                             // 停止训练
@@ -890,7 +896,10 @@ class CameraXLivePreviewActivity : AppCompatActivity(), OnRequestPermissionsResu
                         if (nowPoseIndex == poseEntityList!!.size - 1 && !isEnd) {
                             // 跳转到结果界面
                             val intent =
-                                Intent(this@CameraXLivePreviewActivity, TrainingResultActivity::class.java)
+                                Intent(
+                                    this@CameraXLivePreviewActivity,
+                                    TrainingResultActivity::class.java
+                                )
                             intent.putExtra("totalTrainingTime", totalTrainingTime)
                             intent.putExtra("groupsOfPose", countGroupsOfPose)
                             // 停止训练
