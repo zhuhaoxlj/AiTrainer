@@ -12,9 +12,12 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import com.lindum.mlkit.vision.MainActivity
 import com.lindum.mlkit.vision.dev.R
 import com.lindum.mlkit.vision.dev.databinding.FragmentPoseLibraryBinding
+import com.lindum.mlkit.vision.entity.PoseEntity
 import com.lindum.mlkit.vision.sql.ControlTable
 import com.lindum.mlkit.vision.utils.StatusBarUtils
 import com.lindum.mlkit.vision.view.HomeAdapter
@@ -96,10 +99,12 @@ class PoseLibraryFragment : Fragment(R.layout.fragment_pose_library), HomeAdapte
 
         lifecycleScope.launch(Dispatchers.IO) {
             try {
-                // 从数据库加载动作库数据
-                val controlTable = ControlTable()
-                val poseEntities = controlTable.readTable() ?: return@launch
-
+                // 从assets文件夹读取JSON数据
+                val jsonString = requireContext().assets.open("pose_list.json").bufferedReader()
+                    .use { it.readText() }
+                val gson = Gson()
+                val type = object : TypeToken<List<PoseEntity>>() {}.type
+                val poseEntities = gson.fromJson<List<PoseEntity>>(jsonString, type)
                 // 更新ViewModel中的实体数据
                 mViewModel.updatePoseEntities(poseEntities)
 

@@ -58,9 +58,6 @@ class TrainingResultActivity : AppCompatActivity(), HorizontalProgressUpdateList
             WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
             WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
         )
-        // 设置状态栏文字和图标为深色
-        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR;
-        // 设置状态栏背景色
         setContentView(binding.root)
 
         val layoutParams = binding.vFakeStatusBar.layoutParams

@@ -1,9 +1,11 @@
 package com.lindum.mlkit.vision
 
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.os.Build
 import android.os.Bundle
 import android.view.WindowManager
 import android.widget.Toast
@@ -23,6 +25,9 @@ import com.lindum.mlkit.vision.utils.FileUtils
 import com.orhanobut.logger.AndroidLogAdapter
 import com.orhanobut.logger.Logger
 import com.xuexiang.xui.XUI
+import com.xuexiang.xui.widget.dialog.materialdialog.DialogAction
+import com.xuexiang.xui.widget.dialog.materialdialog.MaterialDialog
+import com.xuexiang.xui.widget.dialog.materialdialog.MaterialDialog.SingleButtonCallback
 import java.time.LocalDate
 import java.util.Objects
 
@@ -195,8 +200,21 @@ class MainActivity : AppCompatActivity() {
                     }
 
                     1 -> {
-                        // 中间按钮 - 启动相机进行姿势检测
-                        CameraXLivePreviewActivity.start(this@MainActivity)
+                        MaterialDialog.Builder(this@MainActivity)
+                            .iconRes(R.mipmap.tips)
+                            .title("提示")
+                            .content("1.请选择空旷的场地，或者纯色背景可以提高Ai健身教练的识别精准度。\n2.识别过程中，尽量保持身体在手机屏幕中，尽量选择遮挡人体部位最少的角度进行拍摄，再次感谢您的使用！")
+                            .positiveText("确定")
+                            .onPositive(SingleButtonCallback { dialog: MaterialDialog?, which: DialogAction? ->
+                                // 不要忘记在 AndroidManifest 中声明 Activity
+                                var intent: Intent? = null
+                                intent = Intent(
+                                    this@MainActivity,
+                                    CameraXLivePreviewActivity::class.java
+                                )
+                                startActivity(intent)
+                            })
+                            .show();
                     }
 
                     2 -> {
@@ -218,92 +236,98 @@ class MainActivity : AppCompatActivity() {
     }
 
     /**
-     * 请求存储权限
+     * 请求应用所需的所有权限
      */
     private fun requestStoragePermissions() {
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU) {
-            // Android 13 及以上版本使用分类媒体权限
-            XXPermissions.with(this)
-                .permission(Permission.READ_MEDIA_IMAGES)
-                .permission(Permission.READ_MEDIA_VIDEO)
-                .request(object : OnPermissionCallback {
-                    override fun onGranted(permissions: MutableList<String>, allGranted: Boolean) {
-                        if (allGranted) {
-                            Logger.d("所有媒体权限已授予")
-                            // 如果是首次启动，执行首次启动逻辑
-                            handleFirstLaunch()
-                        } else {
-                            Logger.w("部分媒体权限未授予")
-                            Toast.makeText(
-                                this@MainActivity,
-                                "部分权限未授予，应用可能无法正常工作",
-                                Toast.LENGTH_SHORT
-                            ).show()
-                        }
-                    }
+        // 创建一个包含所有需要请求的常规权限的列表
+        val permissions = mutableListOf(
+            Permission.CAMERA,
+            Permission.ACTIVITY_RECOGNITION,
+            Permission.READ_PHONE_STATE,
+            Permission.READ_CALENDAR,
+        )
 
-                    override fun onDenied(
-                        permissions: MutableList<String>,
-                        doNotAskAgain: Boolean
-                    ) {
-                        if (doNotAskAgain) {
-                            Toast.makeText(
-                                this@MainActivity,
-                                "请在设置中手动开启媒体访问权限",
-                                Toast.LENGTH_SHORT
-                            ).show()
-                            // 引导用户去设置中手动授权
-                            XXPermissions.startPermissionActivity(this@MainActivity, permissions)
-                        } else {
-                            Toast.makeText(
-                                this@MainActivity,
-                                "媒体访问权限被拒绝，应用功能受限",
-                                Toast.LENGTH_SHORT
-                            ).show()
-                        }
-                    }
-                })
+        // 根据系统版本添加合适的存储权限
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) { // Android 13+
+            permissions.addAll(
+                listOf(
+                    Permission.READ_MEDIA_IMAGES,
+                    Permission.READ_MEDIA_VIDEO,
+                    Permission.READ_MEDIA_AUDIO
+                )
+            )
         } else {
-            // Android 12 及以下版本使用旧权限
-            XXPermissions.with(this)
-                .permission(Permission.READ_EXTERNAL_STORAGE)
-                .permission(Permission.WRITE_EXTERNAL_STORAGE)
-                .permission(Permission.MANAGE_EXTERNAL_STORAGE)
-                .request(object : OnPermissionCallback {
-                    override fun onGranted(permissions: MutableList<String>, allGranted: Boolean) {
-                        if (allGranted) {
-                            Logger.d("所有存储权限已授予")
-                        } else {
-                            Logger.w("部分存储权限未授予")
-                            Toast.makeText(
-                                this@MainActivity,
-                                "部分权限未授予，应用可能无法正常工作",
-                                Toast.LENGTH_SHORT
-                            ).show()
-                        }
-                    }
+            // 旧版本Android使用存储权限
+            permissions.addAll(
+                listOf(
+                    Permission.READ_EXTERNAL_STORAGE,
+                    Permission.WRITE_EXTERNAL_STORAGE
+                )
+            )
 
-                    override fun onDenied(
-                        permissions: MutableList<String>,
-                        doNotAskAgain: Boolean
-                    ) {
-                        if (doNotAskAgain) {
-                            Toast.makeText(
-                                this@MainActivity,
-                                "请在设置中手动开启存储权限",
-                                Toast.LENGTH_SHORT
-                            ).show()
-                            // 引导用户去设置中手动授权
-                            XXPermissions.startPermissionActivity(this@MainActivity, permissions)
-                        } else {
-                            Toast.makeText(
-                                this@MainActivity,
-                                "存储权限被拒绝，应用功能受限",
-                                Toast.LENGTH_SHORT
-                            ).show()
-                        }
+            // Android 11+ 需要管理所有文件的权限
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                permissions.add(Permission.MANAGE_EXTERNAL_STORAGE)
+            }
+        }
+
+        // 请求所有权限
+        XXPermissions.with(this)
+            .permission(permissions)
+            .request(object : OnPermissionCallback {
+                override fun onGranted(permissions: MutableList<String>, allGranted: Boolean) {
+                    if (allGranted) {
+                        Logger.d("所有权限已授予")
+                        // 如果是首次启动，执行首次启动逻辑
+                        handleFirstLaunch()
+                    } else {
+                        Logger.w("部分权限未授予")
+                        Toast.makeText(
+                            this@MainActivity,
+                            "部分权限未授予，应用可能无法正常工作",
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
-                })
+                }
+
+                override fun onDenied(
+                    permissions: MutableList<String>,
+                    doNotAskAgain: Boolean
+                ) {
+                    if (doNotAskAgain) {
+                        Toast.makeText(
+                            this@MainActivity,
+                            "请在设置中手动开启必要权限",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                        // 引导用户去设置中手动授权
+                        XXPermissions.startPermissionActivity(this@MainActivity, permissions)
+                    } else {
+                        Toast.makeText(
+                            this@MainActivity,
+                            "权限被拒绝，应用功能受限",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                }
+            })
+
+        // 对于需要特殊处理的系统权限（受保护权限），可以提示用户手动前往设置授权
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            // WRITE_SETTINGS权限需要特殊处理
+            if (!android.provider.Settings.System.canWrite(this)) {
+                MaterialDialog.Builder(this)
+                    .title("需要额外权限")
+                    .content("应用需要修改系统设置的权限，请在接下来的界面中授予此权限")
+                    .positiveText("去设置")
+                    .onPositive { _, _ ->
+                        val intent = Intent(android.provider.Settings.ACTION_MANAGE_WRITE_SETTINGS)
+                        intent.data = android.net.Uri.parse("package:$packageName")
+                        startActivity(intent)
+                    }
+                    .negativeText("取消")
+                    .show()
+            }
         }
     }
 
