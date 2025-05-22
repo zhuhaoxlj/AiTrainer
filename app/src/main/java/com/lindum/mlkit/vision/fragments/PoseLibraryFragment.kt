@@ -3,6 +3,8 @@ package com.lindum.mlkit.vision.fragments
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.graphics.Color
+import android.graphics.ColorStateList
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
@@ -40,6 +42,10 @@ class PoseLibraryFragment : Fragment(R.layout.fragment_pose_library), HomeAdapte
         val layoutParams = binding.vFakeStatusBar.layoutParams
         layoutParams.height = StatusBarUtils.getStatusBarHeight(requireContext())
         binding.vFakeStatusBar.layoutParams = layoutParams
+        
+        // 设置进度条颜色（可选，因为我们已在XML中设置了）
+        binding.progressBar.indeterminateTintList = ColorStateList.valueOf(Color.parseColor("#FFB511"))
+        
         // 确保占位图正确初始化
         try {
             loadingPlaceHolderBitmap = BitmapFactory.decodeResource(resources, R.drawable.loading3)
@@ -141,54 +147,83 @@ class PoseLibraryFragment : Fragment(R.layout.fragment_pose_library), HomeAdapte
         val rightImages = ArrayList<Bitmap>()
         val feelingImages = ArrayList<Bitmap>()
 
-        for (i in MainActivity.Companion.poseLibraryCoverImageUrl.indices) {
-            try {
-                // 使用协程加载图片
-                val coverBitmap =
-                    loadBitmapWithGlide(MainActivity.Companion.poseLibraryCoverImageUrl[i])
-                val rightBitmap = loadBitmapWithGlide(MainActivity.Companion.rightPoseImageUrl[i])
+        try {
+            // 检查URL数组是否为空
+            if (MainActivity.Companion.poseLibraryCoverImageUrl.isEmpty()) {
+                Logger.e("封面图片URL数组为空")
+                return
+            }
 
-                coverImages.add(coverBitmap)
-                rightImages.add(rightBitmap)
-
-                try {
-                    val feelingBitmap =
-                        loadBitmapWithGlide(MainActivity.Companion.poseFeelingImageUrl[i].toString())
-                    feelingImages.add(feelingBitmap)
-                } catch (e: Exception) {
-                    Logger.e("加载感受图片失败: ${e.message}")
-                    feelingImages.add(loadingPlaceHolderBitmap!!)
-                }
-
-            } catch (e: Exception) {
-                Logger.e("图片加载失败: ${e.message}")
-                // 确保即使加载失败也添加占位图，保持图片集合大小一致
+            // 预先为所有数组添加占位图，确保即使加载失败也有内容展示
+            for (i in MainActivity.Companion.poseLibraryCoverImageUrl.indices) {
                 coverImages.add(loadingPlaceHolderBitmap!!)
                 rightImages.add(loadingPlaceHolderBitmap!!)
                 feelingImages.add(loadingPlaceHolderBitmap!!)
             }
-        }
 
-        // 检查图片集合，确保至少有一些数据
-        if (coverImages.isEmpty()) {
-            Logger.e("封面图片集合为空，将添加默认占位图")
-            coverImages.add(loadingPlaceHolderBitmap!!)
-        }
+            // 在IO线程上先一次性更新空的图片集合并显示占位图
+            withContext(Dispatchers.Main) {
+                mViewModel.updateCoverImages(coverImages)
+                mViewModel.updateRightImages(rightImages)
+                mViewModel.updateFeelingImages(feelingImages)
+                // 先使用占位图更新UI，让用户看到内容
+                updateLibraryItemsUI()
+            }
 
-        if (rightImages.isEmpty()) {
-            Logger.e("正确姿势图片集合为空，将添加默认占位图")
-            rightImages.add(loadingPlaceHolderBitmap!!)
-        }
+            // 使用协程的异步特性加载实际图片
+            val loadJobs = MainActivity.Companion.poseLibraryCoverImageUrl.indices.map { i ->
+                lifecycleScope.launch(Dispatchers.IO) {
+                    try {
+                        // 封面图
+                        val coverBitmap = BitmapFactory.decodeStream(
+                            requireContext().assets.open(
+                                MainActivity.Companion.poseLibraryCoverImageUrl[i]
+                                    .replace("file:///android_asset/", "")
+                            )
+                        )
+                        coverImages[i] = coverBitmap
 
-        if (feelingImages.isEmpty()) {
-            Logger.e("感受图片集合为空，将添加默认占位图")
-            feelingImages.add(loadingPlaceHolderBitmap!!)
-        }
+                        // 正确姿势图
+                        val rightBitmap = BitmapFactory.decodeStream(
+                            requireContext().assets.open(
+                                MainActivity.Companion.rightPoseImageUrl[i]
+                                    .replace("file:///android_asset/", "")
+                            )
+                        )
+                        rightImages[i] = rightBitmap
 
-        // 在IO线程上一次性更新所有图片集合
-        mViewModel.updateCoverImages(coverImages)
-        mViewModel.updateRightImages(rightImages)
-        mViewModel.updateFeelingImages(feelingImages)
+                        // 感受图
+                        try {
+                            val feelingBitmap = BitmapFactory.decodeStream(
+                                requireContext().assets.open(
+                                    MainActivity.Companion.poseFeelingImageUrl[i]
+                                        .replace("file:///android_asset/", "")
+                                )
+                            )
+                            feelingImages[i] = feelingBitmap
+                        } catch (e: Exception) {
+                            Logger.e("加载感受图片失败: ${e.message}")
+                        }
+
+                        // 每当有一个图片加载完成，就更新一次UI
+                        withContext(Dispatchers.Main) {
+                            mViewModel.updateCoverImages(ArrayList(coverImages))
+                            mViewModel.updateRightImages(ArrayList(rightImages))
+                            mViewModel.updateFeelingImages(ArrayList(feelingImages))
+                            updateLibraryItemsUI()
+                        }
+                    } catch (e: Exception) {
+                        Logger.e("图片加载失败: ${e.message}")
+                    }
+                }
+            }
+
+            // 等待所有图片加载完成
+            loadJobs.forEach { it.join() }
+
+        } catch (e: Exception) {
+            Logger.e("加载图片过程失败: ${e.message}")
+        }
     }
 
     private suspend fun loadBitmapWithGlide(url: String): Bitmap {
@@ -199,7 +234,21 @@ class PoseLibraryFragment : Fragment(R.layout.fragment_pose_library), HomeAdapte
                     return@withContext loadingPlaceHolderBitmap!!
                 }
 
-                Glide.with(requireContext())
+                // 直接从Assets读取位图，而不是使用Glide的阻塞式加载
+                if (url.startsWith("file:///android_asset/")) {
+                    val assetPath = url.replace("file:///android_asset/", "")
+                    try {
+                        return@withContext BitmapFactory.decodeStream(
+                            requireContext().assets.open(assetPath)
+                        )
+                    } catch (e: Exception) {
+                        Logger.e("从assets加载图片失败: $assetPath - ${e.message}")
+                        return@withContext loadingPlaceHolderBitmap!!
+                    }
+                }
+
+                // 对于非asset资源，仍然使用Glide但采用非阻塞方式
+                val target = Glide.with(requireContext())
                     .asBitmap()
                     .load(url)
                     .apply(
@@ -207,27 +256,20 @@ class PoseLibraryFragment : Fragment(R.layout.fragment_pose_library), HomeAdapte
                             .diskCacheStrategy(DiskCacheStrategy.ALL)
                             .placeholder(R.drawable.loading3)
                             .error(R.drawable.loading3)
-                            .timeout(10000) // 设置10秒超时
                     )
-                    .submit()
-                    .get()
+                    .submit(300, 300)
+
+                try {
+                    // 设置较短的超时时间以避免长时间阻塞
+                    return@withContext target.get(5, java.util.concurrent.TimeUnit.SECONDS)
+                } catch (e: Exception) {
+                    Logger.e("Glide加载图片超时: $url - ${e.message}")
+                    return@withContext loadingPlaceHolderBitmap!!
+                }
             } catch (e: Exception) {
                 Logger.e("Glide加载图片失败: $url - ${e.message}")
                 // 确保返回有效的占位图
-                if (loadingPlaceHolderBitmap == null) {
-                    try {
-                        return@withContext BitmapFactory.decodeResource(
-                            resources,
-                            R.drawable.loading3
-                        )
-                    } catch (e2: Exception) {
-                        Logger.e("加载占位图失败: ${e2.message}")
-                        // 创建一个简单的1x1像素图
-                        return@withContext Bitmap.createBitmap(1, 1, Bitmap.Config.ARGB_8888)
-                    }
-                } else {
-                    return@withContext loadingPlaceHolderBitmap!!
-                }
+                return@withContext loadingPlaceHolderBitmap!!
             }
         }
     }
