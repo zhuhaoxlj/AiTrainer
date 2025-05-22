@@ -164,7 +164,6 @@ class CameraXLivePreviewActivity : AppCompatActivity(), OnRequestPermissionsResu
     var isLongPress: Boolean = false
     var isMoved: Boolean = false
 
-    @RequiresApi(api = VERSION_CODES.O)
     @SuppressLint("SetTextI18n", "ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
