@@ -534,6 +534,9 @@ class CameraXLivePreviewActivity : AppCompatActivity(), OnRequestPermissionsResu
         )
         poseName!!.setText(nowPoseName)
         Log.e("TEST", poseEntityList!!.get(nowPoseIndex).getPoseType().toString() + "")
+        // 更新当前动作进度 个数
+        poseProcessInfo!!.text = count.toInt().toString() + ""
+        Log.e("count", count.toInt().toString())
         if (poseEntityList!!.get(nowPoseIndex).getPoseType() == 1) {
             // 更新当前动作进度 个数
             poseProcessInfo!!.setText(count.toInt().toString() + "")
@@ -1123,29 +1126,6 @@ class CameraXLivePreviewActivity : AppCompatActivity(), OnRequestPermissionsResu
             canvas.save()
             canvas.restore()
             return newmap
-        }
-
-        /**
-         * 缩放bitmap
-         *
-         * @param bm
-         * @param newWidth
-         * @param newHeight
-         * @return
-         */
-        fun zoomImg(bm: Bitmap, newWidth: Int, newHeight: Int): Bitmap {
-            // 获得图片的宽高
-            val width = bm.getWidth()
-            val height = bm.getHeight()
-            // 计算缩放比例
-            val scaleWidth = (newWidth.toFloat()) / width
-            val scaleHeight = (newHeight.toFloat()) / height
-            // 取得想要缩放的matrix参数
-            val matrix = Matrix()
-            matrix.postScale(scaleWidth, scaleHeight)
-            // 得到新的图片
-            val newbm = Bitmap.createBitmap(bm, 0, 0, width, height, matrix, true)
-            return newbm
         }
 
         private fun isPermissionGranted(context: Context, permission: String): Boolean {
