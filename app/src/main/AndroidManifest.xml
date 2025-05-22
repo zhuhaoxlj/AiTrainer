@@ -56,13 +56,12 @@
     <application
         android:name="androidx.multidex.MultiDexApplication"
         android:icon="@drawable/logo"
-        android:roundIcon="@drawable/logo_round"
         android:label="AiTrainer"
         android:requestLegacyExternalStorage="true"
+        android:roundIcon="@drawable/logo_round"
         android:theme="@style/Theme.AppCompat"
         android:usesCleartextTraffic="true"
-        tools:replace="android:label"
-        tools:targetApi="m">
+        tools:replace="android:label">
         <activity
             android:name="com.lindum.mlkit.vision.view.OfficialNoticeActivity"
             android:exported="false" />
@@ -78,10 +77,15 @@
             android:name="com.google.mlkit.vision.DEPENDENCIES"
             android:value="barcode,face,ocr,ica" />
 
-        <activity android:name="com.lindum.mlkit.vision.datacenter.ProgressActivity" />
-        <activity android:name="com.lindum.mlkit.vision.view.PoseDetailsActivity" />
-        <activity android:name="com.lindum.mlkit.vision.result.ImageDetails" />
-        <activity android:name="com.lindum.mlkit.vision.view.IntroActivity" />
+        <activity
+            android:name="com.lindum.mlkit.vision.view.PoseDetailsActivity"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name="com.lindum.mlkit.vision.result.ImageDetails"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name="com.lindum.mlkit.vision.view.IntroActivity"
+            android:theme="@style/AppTheme" />
         <activity
             android:name="com.lindum.mlkit.vision.CameraXLivePreviewActivity"
             android:theme="@style/AppTheme" />
@@ -92,8 +96,7 @@
         <activity
             android:name="com.lindum.mlkit.vision.MainActivity"
             android:exported="true"
-            android:theme="@style/AppTheme"
-            tools:targetApi="26">
+            android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

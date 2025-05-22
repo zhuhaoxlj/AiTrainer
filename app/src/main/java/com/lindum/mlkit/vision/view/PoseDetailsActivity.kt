@@ -5,11 +5,14 @@ import android.graphics.Bitmap
 import android.os.Build
 import android.os.Bundle
 import android.view.View
+import android.view.WindowManager
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.lindum.mlkit.vision.MainActivity
 import com.lindum.mlkit.vision.dev.R
+import com.lindum.mlkit.vision.dev.databinding.PoseDetailsBinding
+import com.lindum.mlkit.vision.utils.StatusBarUtils
 import com.orhanobut.logger.Logger
 import com.xuexiang.xui.XUI
 
@@ -18,42 +21,44 @@ import com.xuexiang.xui.XUI
  * @date 2022/2/16 1:10
  */
 class PoseDetailsActivity : AppCompatActivity() {
+    private lateinit var binding: PoseDetailsBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        XUI.initTheme(this)
-        setContentView(R.layout.pose_details)
+        window.setFlags(
+            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
+            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
+        )
+        binding = PoseDetailsBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         init()
     }
 
     fun init() {
+        val layoutParams = binding.vFakeStatusBar.layoutParams
+        layoutParams.height = StatusBarUtils.getStatusBarHeight(this)
+        binding.vFakeStatusBar.layoutParams = layoutParams
         // 动作展示轮播图
         val poseSwiperImage = findViewById<ImageView>(R.id.poseDetailImage)
         val intent = getIntent()
         val poseIndex = intent.getIntExtra("poseIndex", 0)
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            poseSwiperImage.setImageBitmap(
-                MainActivity.Companion.poseLibrarySwiperImageArrayList.get(
-                    poseIndex
-                )
+        poseSwiperImage.setImageBitmap(
+            MainActivity.Companion.poseLibrarySwiperImageArrayList.get(
+                poseIndex
             )
-        }
+        )
         // 动作感觉图片
         val poseDetailFeelingImage = findViewById<ImageView>(R.id.poseDetailFeelingImage)
         var bitmap: Bitmap? = null
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            bitmap = MainActivity.Companion.poseDetailFeelingImageArrayList.get(poseIndex)
-        }
+        bitmap = MainActivity.Companion.poseDetailFeelingImageArrayList[poseIndex]
         if (bitmap == null) {
             poseDetailFeelingImage.setVisibility(View.GONE)
         }
         poseDetailFeelingImage.setImageBitmap(bitmap)
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            Logger.e(
-                "第" + poseIndex + " " + MainActivity.Companion.poseEntityArrayList!!.get(
-                    poseIndex
-                ).getPoseSwiperImageUrl()[0]
-            )
-        }
+        Logger.e(
+            "第$poseIndex " + MainActivity.Companion.poseEntityArrayList!!.get(
+                poseIndex
+            ).getPoseSwiperImageUrl()[0]
+        )
         val poseDetailFeeling = findViewById<TextView>(R.id.poseDetailFeeling)
         val poseDetailSteps = findViewById<TextView>(R.id.poseDetailSteps)
         val poseDetailCommonMistakes = findViewById<TextView>(R.id.poseDetailCommonMistakes)
@@ -62,11 +67,9 @@ class PoseDetailsActivity : AppCompatActivity() {
         val poseDetailBreath = findViewById<TextView>(R.id.poseDetailBreath)
         // 动作名称
         var poseDetailNameString: String? = null
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            poseDetailNameString =
-                MainActivity.Companion.poseEntityArrayList!!.get(poseIndex).getPoseName()
-        }
-        poseDetailName.setText(poseDetailNameString)
+        poseDetailNameString =
+            MainActivity.Companion.poseEntityArrayList!!.get(poseIndex).getPoseName()
+        poseDetailName.text = poseDetailNameString
         val feeling = intent.getStringArrayExtra("feeling")
         val steps = intent.getStringArrayExtra("steps")
         val commonMistakes = intent.getStringArrayExtra("commonMistakes")
@@ -83,14 +86,14 @@ class PoseDetailsActivity : AppCompatActivity() {
     fun setTextView(textView: TextView, words: Array<String?>) {
         var originText = textView.getText() as String?
         if ("" == words[0]) {
-            textView.setText(originText + "\n无")
+            textView.text = "$originText\n无"
         } else {
             originText += "\n"
             for (word in words) {
                 originText += "•"
                 originText += word + "\n"
             }
-            textView.setText(originText)
+            textView.text = originText
         }
     }
 }

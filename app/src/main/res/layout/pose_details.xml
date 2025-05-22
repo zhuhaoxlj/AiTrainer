@@ -1,88 +1,122 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <ScrollView
+    <data>
+
+    </data>
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <View
+            android:id="@+id/v_fake_status_bar"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#CCCEC1"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/poseDetailImage"
+            android:layout_width="match_parent"
+            android:layout_height="230dp"
+            android:scaleType="fitXY"
+            android:src="@mipmap/pose_detail_swiper"
+            tools:ignore="ContentDescription" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:orientation="vertical">
+            android:layout_height="60dp"
+            android:background="#D9D9D9">
 
-            <ImageView
-                android:id="@+id/poseDetailImage"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="230dp"
-                android:scaleType="fitXY"
-                android:src="@mipmap/pose_detail_swiper"
-                tools:ignore="ContentDescription" />
+                android:layout_height="59.5dp"
+                android:background="@color/white">
+
+                <com.lindum.mlkit.vision.view.FontTextView
+                    android:id="@+id/poseDetailName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="20dp"
+                    android:text="卷腹"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"
+                    app:fontAsset="fonts/LXGWWenKai-Regular.ttf" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:background="@color/gray">
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical">
 
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="59dp"
-                    android:background="@color/white">
+                <com.lindum.mlkit.vision.view.FontTextView
+                    android:id="@+id/poseDetailSteps"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:text="步骤"
+                    android:textColor="@color/black"
+                    android:textSize="16dp"
+                    app:fontAsset="fonts/LXGWWenKai-Regular.ttf" />
 
-                    <TextView
-                        android:id="@+id/poseDetailName"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_marginStart="20dp"
-                        android:text="卷腹"
-                        android:textColor="@color/black"
-                        android:textSize="20sp" />
-                </RelativeLayout>
+                <com.lindum.mlkit.vision.view.FontTextView
+                    android:id="@+id/poseDetailBreath"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:text="呼吸"
+                    android:textColor="@color/black"
+                    android:textSize="16dp"
+                    app:fontAsset="fonts/LXGWWenKai-Regular.ttf" />
+
+                <com.lindum.mlkit.vision.view.FontTextView
+                    android:id="@+id/poseDetailFeeling"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:text="动作感觉"
+                    android:textColor="@color/black"
+                    android:textSize="16dp"
+                    app:fontAsset="fonts/LXGWWenKai-Regular.ttf" />
+
+                <ImageView
+                    android:id="@+id/poseDetailFeelingImage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="200dp" />
+
+                <com.lindum.mlkit.vision.view.FontTextView
+                    android:id="@+id/poseDetailCommonMistakes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:text="常见错误"
+                    android:textColor="@color/black"
+                    android:textSize="16dp"
+                    app:fontAsset="fonts/LXGWWenKai-Regular.ttf" />
+
+                <com.lindum.mlkit.vision.view.FontTextView
+                    android:id="@+id/poseDetails"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:text="动作细节"
+                    android:textColor="@color/black"
+                    android:textSize="16dp"
+                    app:fontAsset="fonts/LXGWWenKai-Regular.ttf" />
             </LinearLayout>
-
-            <TextView
-                android:id="@+id/poseDetailSteps"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="步骤"
-                android:textColor="@color/black" />
-
-            <TextView
-                android:id="@+id/poseDetailBreath"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="呼吸"
-                android:textColor="@color/black" />
-
-            <TextView
-                android:id="@+id/poseDetailFeeling"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="动作感觉"
-                android:textColor="@color/black" />
-
-            <ImageView
-                android:id="@+id/poseDetailFeelingImage"
-                android:layout_width="wrap_content"
-                android:layout_height="200dp" />
-
-            <TextView
-                android:id="@+id/poseDetailCommonMistakes"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="常见错误"
-                android:textColor="@color/black" />
-
-            <TextView
-                android:id="@+id/poseDetails"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="细节图示"
-                android:textColor="@color/black" />
-        </LinearLayout>
-    </ScrollView>
-</LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+</layout>
