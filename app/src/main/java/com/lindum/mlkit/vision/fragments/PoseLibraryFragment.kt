@@ -32,7 +32,7 @@ class PoseLibraryFragment : Fragment(R.layout.fragment_pose_library), HomeAdapte
     private val poseLibraryItems = ArrayList<PoseLibraryItem>()
     private lateinit var binding: FragmentPoseLibraryBinding
     private var loadingPlaceHolderBitmap: Bitmap? = null
-    private lateinit var viewModel: PoseLibraryViewModel
+    private lateinit var mViewModel: PoseLibraryViewModel
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -53,7 +53,7 @@ class PoseLibraryFragment : Fragment(R.layout.fragment_pose_library), HomeAdapte
         }
 
         // 使用activity范围的ViewModel，确保数据在Fragment之间共享
-        viewModel = ViewModelProvider(requireActivity()).get(PoseLibraryViewModel::class.java)
+        mViewModel = ViewModelProvider(requireActivity()).get(PoseLibraryViewModel::class.java)
 
         initView()
         observeViewModel()
@@ -63,13 +63,13 @@ class PoseLibraryFragment : Fragment(R.layout.fragment_pose_library), HomeAdapte
     }
 
     private fun observeViewModel() {
-        viewModel.poseLibraryItems.observe(viewLifecycleOwner) { items ->
+        mViewModel.poseLibraryItems.observe(viewLifecycleOwner) { items ->
             poseLibraryItems.clear()
             poseLibraryItems.addAll(items)
             adapter.notifyDataSetChanged()
         }
 
-        viewModel.isLoading.observe(viewLifecycleOwner) { isLoading ->
+        mViewModel.isLoading.observe(viewLifecycleOwner) { isLoading ->
             binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
         }
     }
@@ -84,15 +84,15 @@ class PoseLibraryFragment : Fragment(R.layout.fragment_pose_library), HomeAdapte
     }
 
     private fun checkAndLoadData() {
-        // 只在ViewModel指示需要加载数据时加载
-        if (true) {
+        // 只在ViewModel中没有数据时加载
+        if (mViewModel.poseLibraryItems.value.isNullOrEmpty()) {
             loadPoseLibraryData()
         }
     }
 
     private fun loadPoseLibraryData() {
         // 标记开始加载
-        viewModel.setLoading(true)
+        mViewModel.setLoading(true)
 
         lifecycleScope.launch(Dispatchers.IO) {
             try {
@@ -101,7 +101,7 @@ class PoseLibraryFragment : Fragment(R.layout.fragment_pose_library), HomeAdapte
                 val poseEntities = controlTable.readTable() ?: return@launch
 
                 // 更新ViewModel中的实体数据
-                viewModel.updatePoseEntities(poseEntities)
+                mViewModel.updatePoseEntities(poseEntities)
 
                 // 设置动作持续变量类型
                 if (poseEntities.isNotEmpty()) {
@@ -114,18 +114,23 @@ class PoseLibraryFragment : Fragment(R.layout.fragment_pose_library), HomeAdapte
                     // 加载图片
                     loadImages()
 
-                    // 更新UI
-                    updateLibraryItemsUI()
+                    // 切换到主线程更新UI
+                    withContext(Dispatchers.Main) {
+                        // 更新UI
+                        updateLibraryItemsUI()
+                    }
                 }
 
                 // 标记数据已加载
-                viewModel.setDataLoaded(true)
+                mViewModel.setDataLoaded(true)
 
             } catch (e: Exception) {
                 Logger.e("加载动作库数据失败: ${e.message}")
             } finally {
                 // 标记加载结束
-                viewModel.setLoading(false)
+                withContext(Dispatchers.Main) {
+                    mViewModel.setLoading(false)
+                }
             }
         }
     }
@@ -181,9 +186,9 @@ class PoseLibraryFragment : Fragment(R.layout.fragment_pose_library), HomeAdapte
         }
 
         // 在IO线程上一次性更新所有图片集合
-        viewModel.updateCoverImages(coverImages)
-        viewModel.updateRightImages(rightImages)
-        viewModel.updateFeelingImages(feelingImages)
+        mViewModel.updateCoverImages(coverImages)
+        mViewModel.updateRightImages(rightImages)
+        mViewModel.updateFeelingImages(feelingImages)
     }
 
     private suspend fun loadBitmapWithGlide(url: String): Bitmap {
@@ -231,8 +236,8 @@ class PoseLibraryFragment : Fragment(R.layout.fragment_pose_library), HomeAdapte
         val newItems = ArrayList<PoseLibraryItem>()
 
         // 获取数据，如果为空则使用空列表代替null
-        val poseList = viewModel.poseEntities.value ?: ArrayList()
-        val coverImages = viewModel.coverImages.value ?: ArrayList()
+        val poseList = mViewModel.poseEntities.value ?: ArrayList()
+        val coverImages = mViewModel.coverImages.value ?: ArrayList()
 
         if (poseList.isEmpty()) {
             Logger.e("姿势数据为空，无法显示列表项")
@@ -266,7 +271,7 @@ class PoseLibraryFragment : Fragment(R.layout.fragment_pose_library), HomeAdapte
         }
 
         // 确保UI总是更新，即使列表为空也发送更新通知
-        viewModel.updatePoseLibraryItems(newItems)
+        mViewModel.updatePoseLibraryItems(newItems)
         if (newItems.isEmpty()) {
             Logger.e("更新后的姿势列表为空，请检查数据源")
         } else {
@@ -275,7 +280,7 @@ class PoseLibraryFragment : Fragment(R.layout.fragment_pose_library), HomeAdapte
     }
 
     override fun onItemClick(item: PoseLibraryItem) {
-        val poseList = viewModel.poseEntities.value ?: return
+        val poseList = mViewModel.poseEntities.value ?: return
 
         if (item.index < poseList.size) {
             val intent = Intent(activity, PoseDetailsActivity::class.java)
