@@ -112,7 +112,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="时长"
+                                android:text="运动时长"
                                 android:textColor="#F3BF4C"
                                 android:textSize="12sp" />
 
@@ -149,26 +149,25 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="消耗卡路里"
+                                android:text="错误动作数"
                                 android:textColor="#F3BF4C"
                                 android:textSize="12sp" />
 
                             <com.xuexiang.xui.widget.progress.HorizontalProgressView
-                                android:id="@+id/hpv_cal"
+                                android:id="@+id/hpv_wrong"
                                 android:layout_width="120dp"
                                 android:layout_height="30dp"
-                                app:hpv_end_color="#EE8A3A"
-                                app:hpv_end_progress="23"
+                                app:hpv_end_color="#3BB2B8"
+                                app:hpv_end_progress="16"
                                 app:hpv_isTracked="true"
-                                app:hpv_progress_duration="2200"
+                                app:hpv_progress_duration="2900"
                                 app:hpv_progress_textColor="#696969"
                                 app:hpv_progress_textVisibility="false"
-                                app:hpv_start_color="#FFC2AA"
+                                app:hpv_start_color="#42E695"
                                 app:hpv_track_color="#ADA895"
                                 app:hpv_track_width="8dp" />
 
                             <TextView
-                                android:id="@+id/progress_text_cal"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="10dp"
@@ -176,6 +175,7 @@
                                 android:textColor="#AAAAAA"
                                 android:textSize="12sp" />
                         </LinearLayout>
+
                     </LinearLayout>
 
 
@@ -228,7 +228,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="48dp"
-                            android:orientation="vertical">
+                            android:orientation="vertical"
+                            android:visibility="invisible">
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -238,7 +239,6 @@
                                 android:textSize="12sp" />
 
                             <com.xuexiang.xui.widget.progress.HorizontalProgressView
-                                android:id="@+id/hpv_wrong"
                                 android:layout_width="120dp"
                                 android:layout_height="30dp"
                                 app:hpv_end_color="#3BB2B8"
@@ -260,6 +260,7 @@
                                 android:textColor="#AAAAAA"
                                 android:textSize="12sp" />
                         </LinearLayout>
+
                     </LinearLayout>
                 </RelativeLayout>
 

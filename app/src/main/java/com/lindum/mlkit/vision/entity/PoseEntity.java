@@ -17,14 +17,6 @@ public class PoseEntity {
      */
     int poseLevel;
     /**
-     * 每次动作消耗的卡路里
-     */
-    double poseBurnCal;
-    /**
-     * 每分钟动作消耗卡路里
-     */
-    double getPoseBurnCalPerMin;
-    /**
      * 动作库封面图
      */
     String poseCoverImage;
@@ -112,22 +104,6 @@ public class PoseEntity {
 
     public void setPoseLevel(int poseLevel) {
         this.poseLevel = poseLevel;
-    }
-
-    public double getPoseBurnCal() {
-        return poseBurnCal;
-    }
-
-    public void setPoseBurnCal(double poseBurnCal) {
-        this.poseBurnCal = poseBurnCal;
-    }
-
-    public double getGetPoseBurnCalPerMin() {
-        return getPoseBurnCalPerMin;
-    }
-
-    public void setGetPoseBurnCalPerMin(double getPoseBurnCalPerMin) {
-        this.getPoseBurnCalPerMin = getPoseBurnCalPerMin;
     }
 
     public String[] getPoseSwiperImageUrl() {
@@ -243,8 +219,6 @@ public class PoseEntity {
     public String toString() {
         return "PoseEntity{" +
                 "poseLevel=" + poseLevel +
-                ", poseBurnCal=" + poseBurnCal +
-                ", getPoseBurnCalPerMin=" + getPoseBurnCalPerMin +
                 ", poseCoverImage='" + poseCoverImage + '\'' +
                 ", poseSwiperImageUrl=" + Arrays.toString(poseSwiperImageUrl) +
                 ", poseName='" + poseName + '\'' +

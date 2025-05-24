@@ -312,7 +312,6 @@ class CameraXLivePreviewActivity : AppCompatActivity(), OnRequestPermissionsResu
         // 初始化变量
         countdownSeconds = 5
         nowPoseIndex = 0
-        warnPart = ArrayList<IntArray?>()
         poseEntityList = ArrayList<PoseEntity>()
         pose1 = false
         // 创建截图文件夹
@@ -371,7 +370,6 @@ class CameraXLivePreviewActivity : AppCompatActivity(), OnRequestPermissionsResu
         mHandler2 = Handler()
         r2 = object : Runnable {
             override fun run() {
-                warnPart!!.clear()
                 updatePoseInfo()
                 if (countdownSeconds >= 0) {
                     countdownSecondsTextView!!.visibility = View.VISIBLE
@@ -430,11 +428,9 @@ class CameraXLivePreviewActivity : AppCompatActivity(), OnRequestPermissionsResu
                 poseEntityList!!.size
             )
         )
-        poseName!!.setText(nowPoseName)
-        Log.e("TEST", poseEntityList!![nowPoseIndex].getPoseType().toString() + "")
+        poseName!!.text = nowPoseName
         // 更新当前动作进度 个数
         poseProcessInfo!!.text = count.toInt().toString() + ""
-        Log.e("count", count.toInt().toString())
         if (poseEntityList!![nowPoseIndex].getPoseType() == 1) {
             // 更新当前动作进度 个数
             poseProcessInfo!!.text = count.toInt().toString() + ""
@@ -848,9 +844,6 @@ class CameraXLivePreviewActivity : AppCompatActivity(), OnRequestPermissionsResu
         // 动作计数
         private var count = 0f
 
-        // 警告部位列表
-        private var warnPart: MutableList<IntArray?>? = null
-
         private var pose1 = false
 
         // 训练动作数据列表
@@ -886,60 +879,9 @@ class CameraXLivePreviewActivity : AppCompatActivity(), OnRequestPermissionsResu
         @Volatile
         var currentFrameBitmap: Bitmap? = null
 
-        fun cleanWarnPart() {
-            warnPart!!.clear()
-        }
-
-        fun isPose1(): Boolean {
-            return pose1
-        }
-
-        fun setPose1(pose1: Boolean) {
-            Companion.pose1 = pose1
-        }
-
         fun start(context: Context) {
             val intent = Intent(context, CameraXLivePreviewActivity::class.java)
             context.startActivity(intent)
-        }
-
-        /**
-         * 添加报错部位
-         *
-         * @param partIndex 报错部位的索引
-         */
-        @JvmStatic
-        fun addWarnPart(partIndex: Int) {
-            if (partIndex == 12) {
-                warnPart!!.add(intArrayOf(25, 27, 31))
-            } else if (partIndex == 11) {
-                warnPart!!.add(intArrayOf(26, 28, 32))
-            } else if (partIndex == 10) { // 左膝
-                warnPart!!.add(intArrayOf(23, 25, 27))
-            } else if (partIndex == 9) { // 右膝
-                warnPart!!.add(intArrayOf(24, 26, 28))
-            } else if (partIndex == 8) {
-                warnPart!!.add(intArrayOf(11, 23, 25))
-            } else if (partIndex == 7) {
-                warnPart!!.add(intArrayOf(12, 24, 26))
-            } else if (partIndex == 6) {
-                warnPart!!.add(intArrayOf(13, 15, 19))
-            } else if (partIndex == 5) { // 左手臂
-                warnPart!!.add(intArrayOf(11, 13, 15))
-            } else if (partIndex == 4) {
-                warnPart!!.add(intArrayOf(13, 11, 23))
-            } else if (partIndex == 3) {
-                warnPart!!.add(intArrayOf(14, 12, 24))
-            } else if (partIndex == 2) { // 右手臂
-                warnPart!!.add(intArrayOf(12, 14, 16))
-            } else if (partIndex == 1) {
-                warnPart!!.add(intArrayOf(20, 16, 14))
-            }
-        }
-
-        @JvmStatic
-        fun getWarnPart(): MutableList<IntArray?> {
-            return warnPart!!
         }
 
         fun addCount() {

@@ -18,8 +18,6 @@ import com.lindum.mlkit.vision.MainActivity
 import com.lindum.mlkit.vision.dev.R
 import com.lindum.mlkit.vision.dev.databinding.FragmentPoseLibraryBinding
 import com.lindum.mlkit.vision.entity.PoseEntity
-import com.lindum.mlkit.vision.sql.ControlTable
-import com.lindum.mlkit.vision.utils.StatusBarUtils
 import com.lindum.mlkit.vision.view.HomeAdapter
 import com.lindum.mlkit.vision.view.PoseDetailsActivity
 import com.lindum.mlkit.vision.view.PoseLibraryItem
@@ -29,6 +27,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import androidx.core.graphics.createBitmap
+import com.lindum.mlkit.vision.utils.StatusBarUtils
 
 class PoseLibraryFragment : Fragment(R.layout.fragment_pose_library), HomeAdapter.ItemListener {
 
@@ -309,11 +308,6 @@ class PoseLibraryFragment : Fragment(R.layout.fragment_pose_library), HomeAdapte
 
         // 确保UI总是更新，即使列表为空也发送更新通知
         mViewModel.updatePoseLibraryItems(newItems)
-        if (newItems.isEmpty()) {
-            Logger.e("更新后的姿势列表为空，请检查数据源")
-        } else {
-            Logger.d("成功更新姿势列表项，共${newItems.size}项")
-        }
     }
 
     override fun onItemClick(item: PoseLibraryItem) {

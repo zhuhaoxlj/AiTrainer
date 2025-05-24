@@ -10,15 +10,12 @@ import java.util.Arrays;
  **/
 public class PosePart {
     /**
-     * 部位的索引 当索引为 -1时为任意三点夹角监测
+     * 部位的索引
      */
-    int poseIndex;
+    int[] poseIndex;
+
     /**
-     * 三点索引
-     */
-    int[] threePointIndex;
-    /**
-     * 0 保持型 1 计数型
+     * 0 固定观测角度 1 动态角度
      */
     int poseType;
     /**
@@ -30,19 +27,31 @@ public class PosePart {
      */
     int[] fixedRange;
     /**
-     * 计数型 该部位第一个标准角度范围
+     * 计数型 该部位第一个标准角度范围；上，左
      */
     int[] firstStandardRange;
     /**
-     * 计数型 该部位第二个标准角度范围
+     * 计数型 该部位第二个标准角度范围；下，右
      */
     int[] secondStandardRange;
+    /**
+     * 固定角度错误纠正建议
+     */
+    String tips;
 
-    public int getPoseIndex() {
+    public String getTips() {
+        return tips;
+    }
+
+    public void setTips(String tips) {
+        this.tips = tips;
+    }
+
+    public int[] getPoseIndex() {
         return poseIndex;
     }
 
-    public void setPoseIndex(int poseIndex) {
+    public void setPoseIndex(int[] poseIndex) {
         this.poseIndex = poseIndex;
     }
 
@@ -86,20 +95,11 @@ public class PosePart {
         this.secondStandardRange = secondStandardRange;
     }
 
-    public int[] getThreePointIndex() {
-        return threePointIndex;
-    }
-
-    public void setThreePointIndex(int[] threePointIndex) {
-        this.threePointIndex = threePointIndex;
-    }
-
     @NonNull
     @Override
     public String toString() {
         return "PosePart{" +
-                "poseIndex=" + poseIndex +
-                ", threePointIndex=" + Arrays.toString(threePointIndex) +
+                "poseIndex=" + Arrays.toString(poseIndex) +
                 ", poseType=" + poseType +
                 ", poseAngleType=" + poseAngleType +
                 ", fixedRange=" + Arrays.toString(fixedRange) +

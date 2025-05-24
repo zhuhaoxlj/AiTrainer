@@ -12,7 +12,6 @@ import com.google.common.base.Preconditions
 import com.google.gson.Gson
 import com.google.mlkit.vision.pose.Pose
 import com.lindum.mlkit.vision.CameraXLivePreviewActivity
-import com.lindum.mlkit.vision.CameraXLivePreviewActivity.Companion.addWarnPart
 import com.lindum.mlkit.vision.CameraXLivePreviewActivity.Companion.currentFrameBitmap
 import com.lindum.mlkit.vision.CameraXLivePreviewActivity.Companion.poseEntityList
 import com.lindum.mlkit.vision.posedetector.PoseAngleDetector
@@ -217,94 +216,6 @@ class PoseClassifierProcessor @WorkerThread constructor(
         detector: PoseAngleDetector
     ) {
         result.add(BaduanjinPoseEvaluator.Pose1.getScore(maxConfidenceClass, parts, detector, currentFrameBitmap, detector.detectPose))
-    }
-
-    /**
-     * 老代码逻辑
-     */
-    private fun originalLogic(
-        monitoringList: List<PosePart>,
-        poseAngleDetector: PoseAngleDetector
-    ) {
-        // 固定部位列表
-        val fixedPartList: MutableList<PosePart> = ArrayList<PosePart>()
-        // 动态部位列表
-        val dynamicPart: MutableList<PosePart> = ArrayList<PosePart>()
-        // 将固定部位和动态部位分别筛选出来
-        for (part in monitoringList) {
-            if (part.getPoseType() == 0) fixedPartList.add(part)
-            if (part.getPoseType() == 1) dynamicPart.add(part)
-        }
-        // 判断是否全部满足固定部位标准
-        for (part in fixedPartList) {
-            val partIndex = part.getPoseIndex()
-            // 自定义角度的情况
-            // 当前帧的角度
-            val nowFrameAngle: Int = if (partIndex == -1) {
-                poseAngleDetector.getAnyAngleBy3Point(part.getThreePointIndex())
-            } else {
-                poseAngleDetector.getPoseAngleFromPartIndex(partIndex)
-            }
-            if (!(nowFrameAngle >= part.getFixedRange()[0] && nowFrameAngle <= part.getFixedRange()[1])) {
-                addWarnPart(partIndex)
-            }
-            if (partIndex != -1) {
-                if (nowFrameAngle < part.getFixedRange()[0]) {
-                    poseTips += "，" + getPartName(partIndex) + "角度要大一点"
-                }
-                if (nowFrameAngle > part.getFixedRange()[1]) {
-                    poseTips += "，" + getPartName(partIndex) + "角度小一点"
-                }
-            }
-        }
-        if (classifierConfidence != 1f) {
-            CameraXLivePreviewActivity.confidenceNotOne = true
-            addWarnPartFlag = true
-        }
-        // 判断是否全部满足动态部位第一个标准
-        // 能够分清动作是up or down 并且置信度等于 1
-        if (maxConfidenceClass != null && classifierConfidence == 1f) {
-            for (part in dynamicPart) {
-                val partIndex = part.getPoseIndex()
-                // 自定义角度的情况
-                // 当前帧的角度
-                val nowFrameAngle: Int = if (partIndex == -1) {
-                    poseAngleDetector.getAnyAngleBy3Point(part.getThreePointIndex())
-                } else {
-                    poseAngleDetector.getPoseAngleFromPartIndex(partIndex)
-                }
-                if (maxConfidenceClass!!.contains("down")) {
-                    // 判断当前的角度是否满足第二个标准
-                    if (!(nowFrameAngle >= part.getSecondStandardRange()[0] && nowFrameAngle <= part.getSecondStandardRange()[1]) && addWarnPartFlag) {
-                        addWarnPart(partIndex)
-                        Logger.e("当前置信度$classifierConfidence")
-                    }
-                    if (nowFrameAngle < part.getSecondStandardRange()[0]) {
-                        poseTips += "，" + getPartName(partIndex) + "角度要大一点"
-                    }
-                    if (nowFrameAngle > part.getSecondStandardRange()[1]) {
-                        poseTips += "，" + getPartName(partIndex) + "角度小一点"
-                    }
-                    if (!addWarnPartFlag && nowFrameAngle < part.getSecondStandardRange()[0]) {
-                        addWarnPart(partIndex)
-                        Logger.e("当前置信度$classifierConfidence")
-                    }
-                }
-                if (maxConfidenceClass!!.contains("up")) {
-                    // 判断当前的角度是否满足第一个标准
-                    if (!(nowFrameAngle >= part.getFirstStandardRange()[0] && nowFrameAngle <= part.getFirstStandardRange()[1]) && addWarnPartFlag) {
-                        addWarnPart(partIndex)
-                    }
-                    if (nowFrameAngle < part.getFirstStandardRange()[0]) {
-                        poseTips += "，" + getPartName(partIndex) + "角度要大一点"
-                    }
-                    if (nowFrameAngle > part.getFirstStandardRange()[1]) {
-                        poseTips += "，" + getPartName(partIndex) + "角度小一点"
-                    }
-                }
-            }
-            addWarnPartFlag = false
-        }
     }
 
     /**

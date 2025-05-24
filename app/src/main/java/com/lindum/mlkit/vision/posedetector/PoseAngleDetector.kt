@@ -131,27 +131,27 @@ class PoseAngleDetector(internal val detectPose: Pose) {
             9 -> this.rightKneeAngle
             10 -> this.leftKneeAngle
             11 -> this.rightAnkleAngle
-            12 -> this.leftAnkle3DAngle
+            12 -> this.leftAnkleAngle
             else -> 0
         }
     }
 
     // 通过部位索引获取3D夹角
     fun getPose3DAngleFromPartIndex(posePart: Int): Int {
-        when (posePart) {
-            1 -> return this.rightWristAngle
-            2 -> return this.rightArmAngle
-            3 -> return this.rightShoulderAngle
-            4 -> return this.leftShoulderAngle
-            5 -> return this.leftArmAngle
-            6 -> return this.leftWristAngle
-            7 -> return this.rightTrunkAngle
-            8 -> return this.leftTrunkAngle
-            9 -> return this.rightKneeAngle
-            10 -> return this.leftKneeAngle
-            11 -> return this.rightAnkleAngle
-            12 -> return this.leftAnkle3DAngle
-            else -> return 0
+        return when (posePart) {
+            1 -> this.rightWristAngle
+            2 -> this.rightArmAngle
+            3 -> this.rightShoulderAngle
+            4 -> this.leftShoulderAngle
+            5 -> this.leftArmAngle
+            6 -> this.leftWristAngle
+            7 -> this.rightTrunkAngle
+            8 -> this.leftTrunkAngle
+            9 -> this.rightKneeAngle
+            10 -> this.leftKneeAngle
+            11 -> this.rightAnkleAngle
+            12 -> this.leftAnkleAngle
+            else -> 0
         }
     }
 

@@ -203,23 +203,6 @@ public class PoseGraphic extends Graphic {
         drawLine(canvas, rightAnkle, rightHeel, rightPaint);
         drawLine(canvas, rightHeel, rightFootIndex, rightPaint);
 
-        // 将不标准的部位标出
-        List<int[]> drawList = CameraXLivePreviewActivity.getWarnPart();
-        if (!drawList.isEmpty()) {
-            String w = "";
-            for (int i = 0; i < drawList.size(); i++) {
-                int[] tempArray = drawList.get(i);
-                w += Arrays.toString(tempArray);
-                for (int j = 0; j < tempArray.length - 1; j++) {
-                    PoseLandmark poseLandmark1 = pose.getPoseLandmark(tempArray[j]);
-                    PoseLandmark poseLandmark2 = pose.getPoseLandmark(tempArray[j + 1]);
-                    assert poseLandmark1 != null;
-                    assert poseLandmark2 != null;
-                    drawLine(canvas, poseLandmark1, poseLandmark2, warnPaint);
-                }
-            }
-        }
-
         // Draw inFrameLikelihood for all points
         if (showInFrameLikelihood) {
             for (PoseLandmark landmark : landmarks) {

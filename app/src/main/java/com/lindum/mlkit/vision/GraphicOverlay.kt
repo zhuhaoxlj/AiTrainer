@@ -108,7 +108,7 @@ open class GraphicOverlay(context: Context?, attrs: AttributeSet?) : View(contex
          */
         fun translateX(x: Float): Float {
             if (overlay.isImageFlipped) {
-                return overlay.getWidth() - (scale(x) - overlay.postScaleWidthOffset)
+                return overlay.width - (scale(x) - overlay.postScaleWidthOffset)
             } else {
                 return scale(x) - overlay.postScaleWidthOffset
             }

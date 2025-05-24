@@ -18,7 +18,7 @@ import java.util.List;
 
 /**
  * @author MarkGosling
- * @date 2022/2/12 10:31
+ * @time 2022/2/12 10:31
  */
 public class ResultListAdapter extends ArrayAdapter<ResultEntity> {
     private final int resourceId;
@@ -38,6 +38,7 @@ public class ResultListAdapter extends ArrayAdapter<ResultEntity> {
         view.setPadding(5, 5, 5, 5);
         TextView poseName = view.findViewById(R.id.poseResultName);
         TextView poseTips = view.findViewById(R.id.poseResultTips);
+        assert resultEntity != null;
         rightPoseImage.setImageBitmap(resultEntity.getRightPoseImage());
         wrongPoseImage.setImageBitmap(resultEntity.getWrongPoseImage());
         poseName.setText(resultEntity.getPoseName());

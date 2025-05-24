@@ -43,9 +43,6 @@ class TrainingResultActivity : AppCompatActivity(), HorizontalProgressUpdateList
     // 消耗的时间转分秒
     var costTime: String? = null
 
-    // 消耗的卡路里
-    var calSum: Double = 0.0
-
     // 错误动作数
     var countWrongImage: Int = 0
     private var listView: ListView? = null
@@ -205,7 +202,6 @@ class TrainingResultActivity : AppCompatActivity(), HorizontalProgressUpdateList
         //  初始化控件
         binding.hpvTime.setProgressViewUpdateListener(this)
         binding.hpvGroup.setProgressViewUpdateListener(this)
-        binding.hpvCal.setProgressViewUpdateListener(this)
         binding.hpvWrong.setProgressViewUpdateListener(this)
         binding.progressViewCircleMain.setGraduatedEnabled(true)
         binding.progressViewCircleMain.setProgressViewUpdateListener(this)
@@ -294,16 +290,7 @@ class TrainingResultActivity : AppCompatActivity(), HorizontalProgressUpdateList
         Logger.e("动作个数" + MainActivity.Companion.poseEntityArrayList!!.size)
         for (i in MainActivity.Companion.poseEntityArrayList!!.indices) {
             val poseEntity = MainActivity.Companion.poseEntityArrayList!!.get(i)
-            if (poseEntity.getCountTimes() != 0) {
-                calSum += poseEntity.getPoseBurnCal() * poseEntity.getCountTimes()
-            } else {
-                calSum += poseEntity.getGetPoseBurnCalPerMin() * poseEntity.getCountMinutes()
-            }
         }
-        Logger.e("卡路里$calSum")
-        val calRate = (100 * (calSum / 50)).toInt()
-        binding.hpvCal.setEndProgress(calRate.toFloat())
-        binding.hpvCal.startProgressAnimation()
 
         // 错误动作数
         var wrongRate: Int
@@ -350,7 +337,6 @@ class TrainingResultActivity : AppCompatActivity(), HorizontalProgressUpdateList
         when (view.id) {
             R.id.hpv_time -> binding.progressTextTime.text = costTime
             R.id.hpv_wrong -> binding.progressTextWrong.text = "$countWrongImage 个"
-            R.id.hpv_cal -> binding.progressTextCal.text = calSum.toInt().toString() + " kcal"
             R.id.hpv_group -> binding.progressTextGroup.text = "$groupsOfPose 组"
             else -> {}
         }

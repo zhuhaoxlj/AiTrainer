@@ -30,15 +30,16 @@ object BaduanjinPoseEvaluator {
     class Pose1 {
         companion object {
             var maxCombineAngle = 0
-
+            var minAngle = 999
             private var maxUpFrame: Bitmap? = null
-            private var maxAngle4Frame: Bitmap? = null
+            private var minDownFrame: Bitmap? = null
 
             // 调整系数 - 根据图像测试调整以获得最佳匹配效果
-            private const val SCALE_FACTOR = 1.5f       // 缩放因子
-            private const val X_OFFSET_FACTOR = 3f    // X轴偏移因子
             private const val DOT_RADIUS = 8f           // 关键点半径
             private const val LINE_WIDTH = 10f          // 线条宽度
+
+            // 存储需要标红的身体部位索引
+            private val warningParts = mutableSetOf<IntArray>()
 
             fun getScore(
                 poseStage: String,
@@ -48,9 +49,11 @@ object BaduanjinPoseEvaluator {
                 pose: Pose? = null
             ): String {
                 Log.i("test_stage", poseStage)
+                // 每次调用前清空警告部位
+                warningParts.clear()
+
                 with(detector) {
-                    val angle1 = getAngle(16, 24, 23) // 右手腕，右胯，左胯
-                    val angle2 = getAngle(15, 23, 24) // 左手腕，左胯，右胯
+                    val angle1 = getAngle(15, 0, 16) // 左手，鼻子，右手
                     val angle3 = getAngle(15, 11, 23) // 左手腕，左肩，左胯
                     val angle4 = getAngle(16, 12, 24) // 右手腕，右肩，右胯
                     if (poseStage.contains("up")) {
@@ -65,8 +68,37 @@ object BaduanjinPoseEvaluator {
                                 }
                             }
                         }
+                        saveFrame(minDownFrame, "minDownFrame_$minDownFrame")
                     } else if (poseStage.contains("down")) {
-                        saveMaxAngleFrame(maxUpFrame, "maxUpFrame_$maxUpFrame")
+                        if (angle1 < minAngle) {
+                            minAngle = angle1
+                            if (currentFrame != null) {
+                                // 如果有pose信息，绘制关键点后再保存
+                                if (maxCombineAngle !in 165 * 2..180 * 2) {
+                                    // 添加警告部位到集合中，而不是直接调用addWarnPart
+                                    // 仍然保留原有的addWarnPart调用用于其他地方的使用
+                                    addWarnPart(2)
+                                    addWarnPart(5)
+
+                                    Log.i("test_tips", "手臂伸直，不要弯腰驼背")
+                                }
+
+                                minDownFrame = if (pose != null) {
+                                    drawPoseOnBitmap(currentFrame, pose)
+                                } else {
+                                    currentFrame.copy(currentFrame.config!!, true)
+                                }
+                            }
+                        }
+                        saveFrame(maxUpFrame, "maxUpFrame_$maxUpFrame")
+                    }
+                    // 筛选出固定部位角度
+                    monitoringList.filter { it.poseType == 0 }.forEach {
+                        if (getAnyAngleBy3Point(it.poseIndex) !in it.firstStandardRange[0]..it.firstStandardRange[1]) {
+                            // 如果检测到问题角度，也可以添加到警告集合
+                            warningParts.add(it.poseIndex)
+                            Log.i("test_tips", it.tips)
+                        }
                     }
                 }
                 return ""
@@ -79,7 +111,7 @@ object BaduanjinPoseEvaluator {
                 // 创建一个副本，避免修改原始bitmap
                 val mutableBitmap = bitmap.copy(bitmap.config!!, true)
                 val canvas = Canvas(mutableBitmap)
-                
+
                 // 设置画笔
                 val whitePaint = Paint().apply {
                     color = Color.WHITE
@@ -97,11 +129,16 @@ object BaduanjinPoseEvaluator {
                     color = Color.WHITE
                     strokeWidth = DOT_RADIUS
                 }
-                
+                // 添加红色画笔用于标记警告部位
+                val warningPaint = Paint().apply {
+                    color = Color.RED
+                    strokeWidth = LINE_WIDTH * 1.2f  // 使警告线条稍粗一些
+                }
+
                 // 获取所有关键点
                 val landmarks = pose.allPoseLandmarks
                 if (landmarks.isEmpty()) return mutableBitmap
-                
+
                 // 提取常用关键点
                 val nose = pose.getPoseLandmark(PoseLandmark.NOSE)
                 val leftEyeInner = pose.getPoseLandmark(PoseLandmark.LEFT_EYE_INNER)
@@ -114,7 +151,7 @@ object BaduanjinPoseEvaluator {
                 val rightEar = pose.getPoseLandmark(PoseLandmark.RIGHT_EAR)
                 val leftMouth = pose.getPoseLandmark(PoseLandmark.LEFT_MOUTH)
                 val rightMouth = pose.getPoseLandmark(PoseLandmark.RIGHT_MOUTH)
-                
+
                 val leftShoulder = pose.getPoseLandmark(PoseLandmark.LEFT_SHOULDER)
                 val rightShoulder = pose.getPoseLandmark(PoseLandmark.RIGHT_SHOULDER)
                 val leftElbow = pose.getPoseLandmark(PoseLandmark.LEFT_ELBOW)
@@ -127,7 +164,7 @@ object BaduanjinPoseEvaluator {
                 val rightKnee = pose.getPoseLandmark(PoseLandmark.RIGHT_KNEE)
                 val leftAnkle = pose.getPoseLandmark(PoseLandmark.LEFT_ANKLE)
                 val rightAnkle = pose.getPoseLandmark(PoseLandmark.RIGHT_ANKLE)
-                
+
                 val leftPinky = pose.getPoseLandmark(PoseLandmark.LEFT_PINKY)
                 val rightPinky = pose.getPoseLandmark(PoseLandmark.RIGHT_PINKY)
                 val leftIndex = pose.getPoseLandmark(PoseLandmark.LEFT_INDEX)
@@ -138,13 +175,17 @@ object BaduanjinPoseEvaluator {
                 val rightHeel = pose.getPoseLandmark(PoseLandmark.RIGHT_HEEL)
                 val leftFootIndex = pose.getPoseLandmark(PoseLandmark.LEFT_FOOT_INDEX)
                 val rightFootIndex = pose.getPoseLandmark(PoseLandmark.RIGHT_FOOT_INDEX)
-                
+
                 // 绘制所有关键点
                 for (landmark in landmarks) {
-                    val (x, y) = transformCoordinate(landmark.position.x, landmark.position.y, bitmap.width)
+                    val (x, y) = transformCoordinate(
+                        landmark.position.x,
+                        landmark.position.y,
+                        bitmap.width
+                    )
                     canvas.drawCircle(x, y, DOT_RADIUS, dotPaint)
                 }
-                
+
                 // 绘制连接线
                 // 面部
                 drawLine(canvas, nose, leftEyeInner, whitePaint, bitmap.width)
@@ -156,11 +197,11 @@ object BaduanjinPoseEvaluator {
                 drawLine(canvas, rightEye, rightEyeOuter, whitePaint, bitmap.width)
                 drawLine(canvas, rightEyeOuter, rightEar, whitePaint, bitmap.width)
                 drawLine(canvas, leftMouth, rightMouth, whitePaint, bitmap.width)
-                
+
                 // 身体
                 drawLine(canvas, leftShoulder, rightShoulder, whitePaint, bitmap.width)
                 drawLine(canvas, leftHip, rightHip, whitePaint, bitmap.width)
-                
+
                 // 左侧身体
                 drawLine(canvas, leftShoulder, leftElbow, leftPaint, bitmap.width)
                 drawLine(canvas, leftElbow, leftWrist, leftPaint, bitmap.width)
@@ -173,7 +214,7 @@ object BaduanjinPoseEvaluator {
                 drawLine(canvas, leftIndex, leftPinky, leftPaint, bitmap.width)
                 drawLine(canvas, leftAnkle, leftHeel, leftPaint, bitmap.width)
                 drawLine(canvas, leftHeel, leftFootIndex, leftPaint, bitmap.width)
-                
+
                 // 右侧身体
                 drawLine(canvas, rightShoulder, rightElbow, rightPaint, bitmap.width)
                 drawLine(canvas, rightElbow, rightWrist, rightPaint, bitmap.width)
@@ -186,10 +227,27 @@ object BaduanjinPoseEvaluator {
                 drawLine(canvas, rightIndex, rightPinky, rightPaint, bitmap.width)
                 drawLine(canvas, rightAnkle, rightHeel, rightPaint, bitmap.width)
                 drawLine(canvas, rightHeel, rightFootIndex, rightPaint, bitmap.width)
-                
+
+                warningParts.forEach {
+                    drawLine(
+                        canvas,
+                        pose.getPoseLandmark(it[0]),
+                        pose.getPoseLandmark(it[1]),
+                        warningPaint,
+                        bitmap.width
+                    )
+                    drawLine(
+                        canvas,
+                        pose.getPoseLandmark(it[1]),
+                        pose.getPoseLandmark(it[2]),
+                        warningPaint,
+                        bitmap.width
+                    )
+                }
+
                 return mutableBitmap
             }
-            
+
             /**
              * 在Canvas上绘制两点之间的连线
              */
@@ -201,41 +259,46 @@ object BaduanjinPoseEvaluator {
                 imageWidth: Int
             ) {
                 if (startLandmark == null || endLandmark == null) return
-                
+
                 val (startX, startY) = transformCoordinate(
                     startLandmark.position.x,
                     startLandmark.position.y,
                     imageWidth
                 )
-                
+
                 val (endX, endY) = transformCoordinate(
                     endLandmark.position.x,
                     endLandmark.position.y,
                     imageWidth
                 )
-                
+
                 canvas.drawLine(startX, startY, endX, endY, paint)
             }
-            
+
             /**
              * 转换坐标 - 使用从图像测试中确定的简单缩放和偏移
              */
-            private fun transformCoordinate(x: Float, y: Float, imageWidth: Int): Pair<Float, Float> {
+            private fun transformCoordinate(
+                x: Float,
+                y: Float,
+                imageWidth: Int
+            ): Pair<Float, Float> {
                 return Pair(
-                    x * SCALE_FACTOR - imageWidth / X_OFFSET_FACTOR,
-                    y * SCALE_FACTOR
+                    x,
+                    y
                 )
             }
 
             fun reset() {
                 maxCombineAngle = 0
                 maxUpFrame?.recycle()
-                maxAngle4Frame?.recycle()
+                minDownFrame?.recycle()
                 maxUpFrame = null
-                maxAngle4Frame = null
+                minDownFrame = null
+                warningParts.clear()
             }
 
-            private fun saveMaxAngleFrame(bitmap: Bitmap?, filename: String) {
+            private fun saveFrame(bitmap: Bitmap?, filename: String) {
                 bitmap?.let {
                     try {
                         val directory = File(
@@ -261,6 +324,40 @@ object BaduanjinPoseEvaluator {
                     }
                 }
             }
+
+            /**
+             * 添加报错部位
+             *
+             * @param partIndex 报错部位的索引
+             */
+            fun addWarnPart(partIndex: Int) {
+                if (partIndex == 12) {
+                    warningParts.add(intArrayOf(25, 27, 31))
+                } else if (partIndex == 11) {
+                    warningParts.add(intArrayOf(26, 28, 32))
+                } else if (partIndex == 10) { // 左膝
+                    warningParts.add(intArrayOf(23, 25, 27))
+                } else if (partIndex == 9) { // 右膝
+                    warningParts.add(intArrayOf(24, 26, 28))
+                } else if (partIndex == 8) {
+                    warningParts.add(intArrayOf(11, 23, 25))
+                } else if (partIndex == 7) {
+                    warningParts.add(intArrayOf(12, 24, 26))
+                } else if (partIndex == 6) {
+                    warningParts.add(intArrayOf(13, 15, 19))
+                } else if (partIndex == 5) { // 左手臂
+                    warningParts.add(intArrayOf(11, 13, 15))
+                } else if (partIndex == 4) {
+                    warningParts.add(intArrayOf(13, 11, 23))
+                } else if (partIndex == 3) {
+                    warningParts.add(intArrayOf(14, 12, 24))
+                } else if (partIndex == 2) { // 右手臂
+                    warningParts.add(intArrayOf(12, 14, 16))
+                } else if (partIndex == 1) {
+                    warningParts.add(intArrayOf(20, 16, 14))
+                }
+            }
         }
+
     }
 }
