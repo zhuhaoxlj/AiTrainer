@@ -35,6 +35,8 @@ object BaduanjinPoseEvaluator {
             private var minDownFrame: Bitmap? = null
 
             // 调整系数 - 根据图像测试调整以获得最佳匹配效果
+            private const val SCALE_FACTOR = 1.5f       // 缩放因子
+            private const val X_OFFSET_FACTOR = 3f    // X轴偏移因子
             private const val DOT_RADIUS = 8f           // 关键点半径
             private const val LINE_WIDTH = 10f          // 线条宽度
 
@@ -228,23 +230,6 @@ object BaduanjinPoseEvaluator {
                 drawLine(canvas, rightAnkle, rightHeel, rightPaint, bitmap.width)
                 drawLine(canvas, rightHeel, rightFootIndex, rightPaint, bitmap.width)
 
-                warningParts.forEach {
-                    drawLine(
-                        canvas,
-                        pose.getPoseLandmark(it[0]),
-                        pose.getPoseLandmark(it[1]),
-                        warningPaint,
-                        bitmap.width
-                    )
-                    drawLine(
-                        canvas,
-                        pose.getPoseLandmark(it[1]),
-                        pose.getPoseLandmark(it[2]),
-                        warningPaint,
-                        bitmap.width
-                    )
-                }
-
                 return mutableBitmap
             }
 
@@ -284,8 +269,8 @@ object BaduanjinPoseEvaluator {
                 imageWidth: Int
             ): Pair<Float, Float> {
                 return Pair(
-                    x,
-                    y
+                    x * SCALE_FACTOR - imageWidth / X_OFFSET_FACTOR,
+                    y * SCALE_FACTOR
                 )
             }
 
