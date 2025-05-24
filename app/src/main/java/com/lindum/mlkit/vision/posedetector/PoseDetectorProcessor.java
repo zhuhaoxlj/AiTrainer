@@ -103,7 +103,6 @@ public class PoseDetectorProcessor
                                 if (poseClassifierProcessor == null) {
                                     poseClassifierProcessor = new PoseClassifierProcessor(context, isStreamMode);
                                 }
-                                Logger.e("666");
                                 classificationResult = poseClassifierProcessor.getPoseResult(pose);
                             }
                             return new PoseWithClassification(pose, classificationResult);
@@ -124,11 +123,6 @@ public class PoseDetectorProcessor
                                     poseClassifierProcessor = new PoseClassifierProcessor(context, isStreamMode);
                                 }
                                 classificationResult = poseClassifierProcessor.getPoseResult(pose);
-//                                PoseLandmark ft = pose.getPoseLandmark(24);
-//                                PoseLandmark md = pose.getPoseLandmark(26);
-//                                PoseLandmark lt = pose.getPoseLandmark(28);
-//                                if (ft != null && md != null && lt != null)
-//                                    Log.e("腿部夹角", getAngle(ft, md, lt) + "");
                             }
                             return new PoseWithClassification(pose, classificationResult);
                         });
