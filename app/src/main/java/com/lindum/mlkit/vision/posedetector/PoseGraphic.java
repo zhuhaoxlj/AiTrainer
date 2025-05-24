@@ -205,7 +205,7 @@ public class PoseGraphic extends Graphic {
 
         // 将不标准的部位标出
         List<int[]> drawList = CameraXLivePreviewActivity.getWarnPart();
-        if (drawList.size() != 0) {
+        if (!drawList.isEmpty()) {
             String w = "";
             for (int i = 0; i < drawList.size(); i++) {
                 int[] tempArray = drawList.get(i);

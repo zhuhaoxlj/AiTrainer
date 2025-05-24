@@ -1,10 +1,20 @@
 package com.lindum.mlkit.vision.utils
 
+import android.graphics.Bitmap
+import android.graphics.Canvas
+import android.os.Environment
 import android.util.Log
-import com.lindum.mlkit.vision.CameraXLivePreviewActivity.Companion.addWarnPart
+import com.google.mlkit.vision.pose.Pose
+import com.google.mlkit.vision.pose.PoseLandmark
+import com.lindum.mlkit.vision.GraphicOverlay
 import com.lindum.mlkit.vision.posedetector.PoseAngleDetector
+import com.lindum.mlkit.vision.posedetector.PoseGraphic
 import com.lindum.mlkit.vision.posedetector.PosePart
-import java.util.logging.Logger
+import java.io.File
+import java.io.FileOutputStream
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 /**
  * 八段锦动作检测与评分
@@ -19,13 +29,18 @@ object BaduanjinPoseEvaluator {
      */
     class Pose1 {
         companion object {
-            var maxLeftArmAngle = 0
-            var maxRightArmAngle = 0
+            var maxCombineAngle = 0
+
+            private var maxUpFrame: Bitmap? = null
+            private var maxAngle4Frame: Bitmap? = null
+            private var currentPose: Pose? = null
 
             fun getScore(
                 poseStage: String,
                 monitoringList: List<PosePart>,
-                detector: PoseAngleDetector
+                detector: PoseAngleDetector,
+                currentFrame: Bitmap? = null,
+                pose: Pose? = null
             ): String {
                 Log.i("test_stage", poseStage)
                 with(detector) {
@@ -33,88 +48,162 @@ object BaduanjinPoseEvaluator {
                     val angle2 = getAngle(15, 23, 24) // 左手腕，左胯，右胯
                     val angle3 = getAngle(15, 11, 23) // 左手腕，左肩，左胯
                     val angle4 = getAngle(16, 12, 24) // 右手腕，右肩，右胯
-                    // 确定当前帧的状态
-                    val currentFrameState = when {
-                        // 最底部状态条件
-                        angle1 in 135..180 && angle2 in 135..180 &&
-                                angle3 in 5..15 && angle4 in 5..15 -> 0
-
-                        // 最顶部状态条件
-                        leftArmAngle > 140 && rightArmAngle > 140 &&
-                                leftShoulderAngle > 150 && rightShoulderAngle > 150 -> 2
-
-                        // 中间状态
-                        else -> 1
-                    }
-
-                    // 更新最大角度记录（不管状态如何）
-                    if (currentFrameState == 2) {
-                        if (maxLeftArmAngle < leftArmAngle) {
-                            maxLeftArmAngle = leftArmAngle
+                    if (poseStage.contains("up")) {
+                        if (maxCombineAngle < angle3 + angle4) {
+                            maxCombineAngle = angle3 + angle4
+                            if (currentFrame != null) {
+                                maxUpFrame = currentFrame.copy(currentFrame.config!!, true)
+                                currentPose = pose
+                            }
                         }
-                        if (maxRightArmAngle < rightArmAngle) {
-                            maxRightArmAngle = rightArmAngle
-                        }
-                    } else {
-                        if (maxLeftArmAngle < 165) {
-                            addWarnPart(5)
-                        }
-                        if (maxRightArmAngle < 165) {
-                            addWarnPart(4)
-                        }
-                        if (leftKneeAngle < 165) {
-                            addWarnPart(10)
-                        }
-                        if (leftKneeAngle < 165) {
-                            addWarnPart(9)
-                        }
-                    }
-
-                    // 状态稳定性检查
-                    if (currentFrameState == lastDetectedState) {
-                        stableCount++
-                    } else {
-                        // 状态变化，重置计数器
-                        stableCount = 1
-                        lastDetectedState = currentFrameState
-                    }
-
-                    // 只有当状态稳定一段时间后才真正改变stage
-                    if (stableCount >= STABLE_THRESHOLD) {
-                        // 只在状态真正改变时赋值，避免不必要的赋值
-                        if (stage != currentFrameState) {
-                            stage = currentFrameState
-                            // 重置计数器，让新状态也有稳定期
-                            stableCount = 0
-                        }
+                    } else if (poseStage.contains("down")) {
+                        saveMaxAngleFrame(maxUpFrame, "maxUpFrame_$maxUpFrame")
                     }
                 }
+                return ""
+            }
 
-                return when (stage) {
-                    0 -> {
-                        // todo 计算分数
-                        "最底部分数：${calculateBottomScore()}"
+            fun reset() {
+                maxCombineAngle = 0
+                maxUpFrame?.recycle()
+                maxAngle4Frame?.recycle()
+                maxUpFrame = null
+                maxAngle4Frame = null
+                currentPose = null
+            }
+
+            private fun saveMaxAngleFrame(bitmap: Bitmap?, filename: String) {
+                bitmap?.let {
+                    try {
+                        // Draw pose keypoints on the bitmap if pose is available
+                        val frameWithPose = if (currentPose != null) {
+                            drawPoseOnBitmap(it, currentPose!!)
+                        } else {
+                            it
+                        }
+
+                        val directory = File(
+                            Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES),
+                            "AiTrainer"
+                        )
+                        if (!directory.exists()) {
+                            directory.mkdirs()
+                        }
+
+                        val timeStamp =
+                            SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(Date())
+                        val file = File(directory, "${filename}_$timeStamp.jpg")
+
+                        val outputStream = FileOutputStream(file)
+                        frameWithPose.compress(Bitmap.CompressFormat.JPEG, 60, outputStream)
+                        outputStream.flush()
+                        outputStream.close()
+                        reset()
+                        Log.d("PoseCapture", "Saved max angle frame to: ${file.absolutePath}")
+                    } catch (e: Exception) {
+                        Log.e("PoseCapture", "Error saving max angle frame", e)
                     }
-
-                    2 -> {
-                        // todo 计算分数
-                        "最顶部分数：${calculateTopScore()}"
-                    }
-
-                    else -> "待机中..."
                 }
             }
 
-            // 添加分数计算方法
-            private fun calculateBottomScore(): Int {
-                // 根据具体需求实现分数计算
-                return 100
-            }
-
-            private fun calculateTopScore(): Int {
-                // 根据最大角度等参数计算顶部动作的分数
-                val angleScore = (maxLeftArmAngle + maxRightArmAngle) / 3
-                return minOf(100, angleScore)
+            /**
+             * Draw pose keypoints on the bitmap
+             */
+            private fun drawPoseOnBitmap(bitmap: Bitmap, pose: Pose): Bitmap {
+                // Create a new bitmap to draw on
+                val resultBitmap = bitmap.copy(bitmap.config!!, true)
+                val canvas = Canvas(resultBitmap)
+                
+                // Create transformers similar to GraphicOverlay
+                val imageWidth = bitmap.width
+                val imageHeight = bitmap.height
+                
+                // Determine scale factor
+                val scaleFactor = imageWidth.toFloat() / imageHeight.toFloat()
+                
+                // Create coordinate transformation functions like in GraphicOverlay
+                fun scale(imagePixel: Float): Float {
+                    return imagePixel * scaleFactor
+                }
+                
+                fun translateX(x: Float): Float {
+                    // This is the key transformation that correctly positions X coordinates
+                    return x
+                }
+                
+                fun translateY(y: Float): Float {
+                    // This is the key transformation that correctly positions Y coordinates
+                    return y
+                }
+                
+                // Paint for drawing landmarks
+                val pointPaint = android.graphics.Paint().apply {
+                    color = android.graphics.Color.RED
+                    style = android.graphics.Paint.Style.FILL
+                    strokeWidth = 4f
+                }
+                
+                // Paint for drawing connections
+                val linePaint = android.graphics.Paint().apply {
+                    color = android.graphics.Color.GREEN
+                    strokeWidth = 4f
+                    style = android.graphics.Paint.Style.STROKE
+                }
+                
+                // Draw all landmarks
+                for (landmark in pose.allPoseLandmarks) {
+                    canvas.drawCircle(
+                        landmark.position.x,
+                        landmark.position.y,
+                        8f,
+                        pointPaint
+                    )
+                }
+                
+                // Define connections (pairs of landmarks to connect with lines)
+                val connections = listOf(
+                    // Face connections
+                    Pair(PoseLandmark.NOSE, PoseLandmark.LEFT_EYE_INNER),
+                    Pair(PoseLandmark.LEFT_EYE_INNER, PoseLandmark.LEFT_EYE),
+                    Pair(PoseLandmark.LEFT_EYE, PoseLandmark.LEFT_EYE_OUTER),
+                    Pair(PoseLandmark.LEFT_EYE_OUTER, PoseLandmark.LEFT_EAR),
+                    Pair(PoseLandmark.NOSE, PoseLandmark.RIGHT_EYE_INNER),
+                    Pair(PoseLandmark.RIGHT_EYE_INNER, PoseLandmark.RIGHT_EYE),
+                    Pair(PoseLandmark.RIGHT_EYE, PoseLandmark.RIGHT_EYE_OUTER),
+                    Pair(PoseLandmark.RIGHT_EYE_OUTER, PoseLandmark.RIGHT_EAR),
+                    
+                    // Body connections
+                    Pair(PoseLandmark.LEFT_SHOULDER, PoseLandmark.RIGHT_SHOULDER),
+                    Pair(PoseLandmark.LEFT_SHOULDER, PoseLandmark.LEFT_ELBOW),
+                    Pair(PoseLandmark.LEFT_ELBOW, PoseLandmark.LEFT_WRIST),
+                    Pair(PoseLandmark.RIGHT_SHOULDER, PoseLandmark.RIGHT_ELBOW),
+                    Pair(PoseLandmark.RIGHT_ELBOW, PoseLandmark.RIGHT_WRIST),
+                    Pair(PoseLandmark.LEFT_SHOULDER, PoseLandmark.LEFT_HIP),
+                    Pair(PoseLandmark.RIGHT_SHOULDER, PoseLandmark.RIGHT_HIP),
+                    Pair(PoseLandmark.LEFT_HIP, PoseLandmark.RIGHT_HIP),
+                    Pair(PoseLandmark.LEFT_HIP, PoseLandmark.LEFT_KNEE),
+                    Pair(PoseLandmark.LEFT_KNEE, PoseLandmark.LEFT_ANKLE),
+                    Pair(PoseLandmark.RIGHT_HIP, PoseLandmark.RIGHT_KNEE),
+                    Pair(PoseLandmark.RIGHT_KNEE, PoseLandmark.RIGHT_ANKLE)
+                )
+                
+                // Draw each connection
+                for (connection in connections) {
+                    val startLandmark = pose.getPoseLandmark(connection.first)
+                    val endLandmark = pose.getPoseLandmark(connection.second)
+                    
+                    if (startLandmark != null && endLandmark != null) {
+                        canvas.drawLine(
+                            startLandmark.position.x,
+                            startLandmark.position.y,
+                            endLandmark.position.x,
+                            endLandmark.position.y,
+                            linePaint
+                        )
+                    }
+                }
+                
+                return resultBitmap
             }
         }
     }

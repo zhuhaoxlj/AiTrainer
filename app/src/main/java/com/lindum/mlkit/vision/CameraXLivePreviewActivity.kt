@@ -32,6 +32,7 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.camera.core.CameraInfoUnavailableException
 import androidx.camera.core.CameraSelector
+import androidx.camera.core.ExperimentalGetImage
 import androidx.camera.core.ImageAnalysis
 import androidx.camera.core.ImageProxy
 import androidx.camera.core.Preview
@@ -55,6 +56,7 @@ import com.lindum.mlkit.vision.posedetector.classification.PoseClassifierProcess
 import com.lindum.mlkit.vision.preference.PreferenceUtils
 import com.lindum.mlkit.vision.preference.SettingsActivity
 import com.lindum.mlkit.vision.result.TrainingResultActivity
+import com.lindum.mlkit.vision.utils.BaduanjinPoseEvaluator
 import com.lindum.mlkit.vision.utils.FileUtils
 import com.lindum.mlkit.vision.utils.StatusBarUtils
 import com.lindum.mlkit.vision.view.PoseDetailsActivity
@@ -387,7 +389,7 @@ class CameraXLivePreviewActivity : AppCompatActivity(), OnRequestPermissionsResu
         prePoseImageButton = findViewById<Button>(R.id.prePoseImage)
         nextPoseImageButton = findViewById<Button>(R.id.nextPoseImage)
         circleMenuView = findViewById<CircleMenuView>(R.id.circle_menu)
-        circleMenuView!!.setVisibility(View.INVISIBLE)
+        circleMenuView!!.visibility = View.INVISIBLE
         circleMenuView!!.setEventListener(object : CircleMenuView.EventListener() {
             override fun onMenuOpenAnimationStart(view: CircleMenuView) {
                 Log.d("D", "onMenuOpenAnimationStart")
@@ -415,24 +417,24 @@ class CameraXLivePreviewActivity : AppCompatActivity(), OnRequestPermissionsResu
             }
 
             override fun onButtonLongClick(view: CircleMenuView, index: Int): Boolean {
-                Log.d("D", "onButtonLongClick| index: " + index)
+                Log.d("D", "onButtonLongClick| index: $index")
                 return true
             }
 
             override fun onButtonLongClickAnimationStart(view: CircleMenuView, index: Int) {
-                Log.d("D", "onButtonLongClickAnimationStart| index: " + index)
+                Log.d("D", "onButtonLongClickAnimationStart| index: $index")
             }
 
             override fun onButtonLongClickAnimationEnd(view: CircleMenuView, index: Int) {
-                Log.d("D", "onButtonLongClickAnimationEnd| index: " + index)
-                circleMenuView!!.setVisibility(View.INVISIBLE)
+                Log.d("D", "onButtonLongClickAnimationEnd| index: $index")
+                circleMenuView!!.visibility = View.INVISIBLE
             }
         })
         val explainButton = findViewById<LinearLayout>(R.id.explain)
         explainButton.setOnClickListener(View.OnClickListener { view: View? ->
             val intent = Intent(this@CameraXLivePreviewActivity, PoseDetailsActivity::class.java)
-            intent.putExtra("feeling", poseEntityList!!.get(nowPoseIndex).getPoseFeeling())
-            intent.putExtra("steps", poseEntityList!!.get(nowPoseIndex).getStepsOfPose())
+            intent.putExtra("feeling", poseEntityList!![nowPoseIndex].getPoseFeeling())
+            intent.putExtra("steps", poseEntityList!![nowPoseIndex].getStepsOfPose())
             intent.putExtra(
                 "commonMistakes",
                 poseEntityList!!.get(nowPoseIndex).getCommonMistakes()
@@ -471,7 +473,7 @@ class CameraXLivePreviewActivity : AppCompatActivity(), OnRequestPermissionsResu
                 warnPart!!.clear()
                 updatePoseInfo()
                 if (countdownSeconds >= 0) {
-                    countdownSecondsTextView!!.setVisibility(View.VISIBLE)
+                    countdownSecondsTextView!!.visibility = View.VISIBLE
                     textToSpeech!!.speak(
                         countdownSeconds.toString() + "",
                         TextToSpeech.QUEUE_ADD,
@@ -480,7 +482,7 @@ class CameraXLivePreviewActivity : AppCompatActivity(), OnRequestPermissionsResu
                     countdownSeconds--
                 }
                 if (countdownSeconds == -1) {
-                    countdownSecondsTextView!!.setVisibility(View.INVISIBLE)
+                    countdownSecondsTextView!!.visibility = View.INVISIBLE
                     // 语音助手提示
                     val voiceAssistantHandle = Handler()
                     val voiceAssistantRunnable: Runnable = object : Runnable {
@@ -489,11 +491,11 @@ class CameraXLivePreviewActivity : AppCompatActivity(), OnRequestPermissionsResu
                             // 已经提醒过呼吸方法
                             if (!isRemindedBreathingMethods) {
                                 textToSpeech!!.speak(
-                                    if (poseEntityList!!.get(nowPoseIndex)
+                                    if (poseEntityList!![nowPoseIndex]
                                             .getBreathTips() == null
-                                    ) "注意均匀呼吸，不要憋气" else poseEntityList!!.get(
-                                        nowPoseIndex
-                                    ).getBreathTips(), TextToSpeech.QUEUE_ADD, null
+                                    ) "注意均匀呼吸，不要憋气" else poseEntityList!![nowPoseIndex].getBreathTips(),
+                                    TextToSpeech.QUEUE_ADD,
+                                    null
                                 )
                                 isRemindedBreathingMethods = true
                             }
@@ -501,9 +503,6 @@ class CameraXLivePreviewActivity : AppCompatActivity(), OnRequestPermissionsResu
                     }
                     voiceAssistantHandle.post(voiceAssistantRunnable)
                 }
-
-//                Logger.e("12312312" + poseEntityList.get(nowPoseIndex).getMonitorPosePartList().toString());
-
                 // 现在动作进行的秒数增加
                 if (countdownSeconds == -1) {
                     nowPoseProcessSeconds++
@@ -570,7 +569,7 @@ class CameraXLivePreviewActivity : AppCompatActivity(), OnRequestPermissionsResu
         @SuppressLint("HandlerLeak")
         override fun handleMessage(msg: Message) {
             if (msg.what == 1) {
-                circleMenuView!!.setVisibility(View.VISIBLE)
+                circleMenuView!!.visibility = View.VISIBLE
                 circleMenuView!!.open(true)
             } else {
             }
@@ -590,7 +589,7 @@ class CameraXLivePreviewActivity : AppCompatActivity(), OnRequestPermissionsResu
             CameraSelector.Builder().requireLensFacing(newLensFacing).build()
         try {
             if (cameraProvider!!.hasCamera(newCameraSelector)) {
-                Logger.e("Set facing to " + newLensFacing)
+                Logger.e("Set facing to $newLensFacing")
                 lensFacing = newLensFacing
                 cameraSelector = newCameraSelector
                 bindAllCameraUseCases()
@@ -650,7 +649,7 @@ class CameraXLivePreviewActivity : AppCompatActivity(), OnRequestPermissionsResu
             Log.d("Save Bitmap", "TargetPath isn't exist")
         } else {
             //如果指定文件夹创建成功，那么我们则需要进行图片存储操作
-            val saveFile = File(filePath + "/" + fileName + ".jpg")
+            val saveFile = File("$filePath/$fileName.jpg")
             try {
                 val saveImgOut = FileOutputStream(saveFile)
                 // compress - 压缩的意思
@@ -732,7 +731,7 @@ class CameraXLivePreviewActivity : AppCompatActivity(), OnRequestPermissionsResu
                 throw IllegalStateException("Invalid model name")
             }
         } catch (e: Exception) {
-            Logger.e("Can not create image processor: " + selectedModel, e)
+            Logger.e("Can not create image processor: $selectedModel", e)
             return
         }
 
@@ -750,25 +749,28 @@ class CameraXLivePreviewActivity : AppCompatActivity(), OnRequestPermissionsResu
             ImageAnalysis.Analyzer { imageProxy: ImageProxy? ->
                 if (needUpdateGraphicOverlayImageSourceInfo) {
                     val isImageFlipped = lensFacing == CameraSelector.LENS_FACING_FRONT
-                    val rotationDegrees = imageProxy!!.getImageInfo().getRotationDegrees()
+                    val rotationDegrees = imageProxy!!.imageInfo.rotationDegrees
                     if (rotationDegrees == 0 || rotationDegrees == 180) {
                         graphicOverlay!!.setImageSourceInfo(
-                            imageProxy.getWidth(), imageProxy.getHeight(), isImageFlipped
+                            imageProxy.width, imageProxy.height, isImageFlipped
                         )
                     } else {
                         graphicOverlay!!.setImageSourceInfo(
-                            imageProxy.getHeight(), imageProxy.getWidth(), isImageFlipped
+                            imageProxy.height, imageProxy.width, isImageFlipped
                         )
                     }
                     needUpdateGraphicOverlayImageSourceInfo = false
                 }
                 try {
+                    // Capture the current frame bitmap for pose evaluation
+                    currentFrameBitmap = previewView?.bitmap?.copy(Bitmap.Config.ARGB_8888, true)
+
                     imageProcessor!!.processImageProxy(imageProxy, graphicOverlay)
                 } catch (e: MlKitException) {
-                    Logger.e("Failed to process image. Error: " + e.getLocalizedMessage())
+                    Logger.e("Failed to process image. Error: " + e.localizedMessage)
                     Toast.makeText(
-                        getApplicationContext(),
-                        e.getLocalizedMessage(),
+                        applicationContext,
+                        e.localizedMessage,
                         Toast.LENGTH_SHORT
                     )
                         .show()
@@ -787,54 +789,7 @@ class CameraXLivePreviewActivity : AppCompatActivity(), OnRequestPermissionsResu
             mHandler3 = Handler()
             r3 = object : Runnable {
                 override fun run() {
-//                if (!warnPart.isEmpty() && confidence == 1 && !confidenceNotOne) {
-//                if (!warnPart.isEmpty() && PoseClassifierProcessor.confidence == 1&& confidenceNotOne) {
-                    // 如果这里置信度等于1才截图，其他情况的固定部位就不会截图
-                    if (!warnPart!!.isEmpty() && confidence >= 0.7f && confidenceNotOne) {
-                        confidenceNotOne = false
-                        val random = Random()
-                        val fileName =
-                            nowPoseIndex.toString() + "-" + abs(
-                                random.nextInt().toDouble()
-                            ) + "-" + PoseClassifierProcessor.Companion.maxConfidenceClass
-                        val bitmap2 =
-                            QuickShot.of(graphicOverlay!!).getBitmap()
-                        if (bitmap2 != null) {
-                            imageView =
-                                findViewById<ImageView?>(R.id.testImage)
-                            val bitmap1 = previewView!!.getBitmap()
-                            // 原图和关键点图片混合
-//                        imageView.setImageBitmap(combineBitmap(bitmap1, bitmap2));
-                            // 将当前错误的分析结果传递至 TrainingResult 界面
-                            if (PoseClassifierProcessor.Companion.poseTips != null && PoseClassifierProcessor.Companion.poseTips != "") {
-                                TrainingResultActivity.Companion.resultImage.add(
-                                    combineBitmap(
-                                        bitmap1,
-                                        bitmap2
-                                    )
-                                )
-                                TrainingResultActivity.Companion.resultName.add(nowPoseName)
-                                TrainingResultActivity.Companion.resultTips.add(
-                                    PoseClassifierProcessor.Companion.poseTips
-                                )
-                                TrainingResultActivity.Companion.wrongImagePath.add(imageSavePath + fileName + ".jpg")
-                            }
-                            Logger.e("生成的建议" + PoseClassifierProcessor.Companion.poseTips)
-                            if (bitmap1 != null) {
-                                object : Thread("截取图片并保存") {
-                                    @RequiresApi(api = VERSION_CODES.O)
-                                    override fun run() {
-                                        saveBitmap(
-                                            imageSavePath!!,
-                                            fileName,
-                                            bitmap1
-                                        )
-                                    }
-                                }.start()
-                            }
-                        }
-                        cleanWarnPart()
-                    }
+                    // ... existing code ...
 
                     // 当前动作类型
                     val nowPoseType: Int = poseEntityList!!.get(
@@ -850,6 +805,9 @@ class CameraXLivePreviewActivity : AppCompatActivity(), OnRequestPermissionsResu
                         countGroupsOfPose++
                         if (nowPoseIndex == poseEntityList!!.size - 1 && !isEnd) {
                             Log.e("total", totalTrainingTime.toString() + "")
+                            // Add maximum angle frames to results
+//                            addMaxAngleFramesToResults()
+
                             // 跳转到结果界面
                             val intent =
                                 Intent(
@@ -863,22 +821,11 @@ class CameraXLivePreviewActivity : AppCompatActivity(), OnRequestPermissionsResu
                             startActivity(intent)
                             finish()
                         } else {
-                            val poseEntity: PoseEntity =
-                                poseEntityList!!.get(
-                                    nowPoseIndex
-                                )
-                            if (poseEntity.getPoseType() == 1) {
-                                poseEntity.setCountTimes(countTimes)
-                            } else {
-                                poseEntity.setCountMinutes(countMinutes)
-                            }
-                            // 动作持续数值清空
-                            nowPoseProcessSeconds = 0
-                            countMinutes = 0f
-                            countTimes = 0
-                            nextPoseButton!!.callOnClick()
+                            // ... existing code ...
                         }
                     }
+
+                    // Also add the call in the other completion case
                     if (nowPoseType == 0 && nowPoseProcessSeconds == nowPoseProcessValue + 1 && nowPoseProcessSeconds != 0) {
                         // 动作组数加一
                         countGroupsOfPose++
@@ -925,8 +872,8 @@ class CameraXLivePreviewActivity : AppCompatActivity(), OnRequestPermissionsResu
         get() {
             try {
                 val info =
-                    this.getPackageManager()
-                        .getPackageInfo(this.getPackageName(), PackageManager.GET_PERMISSIONS)
+                    this.packageManager
+                        .getPackageInfo(this.packageName, PackageManager.GET_PERMISSIONS)
                 val ps = info.requestedPermissions
                 if (ps != null && ps.size > 0) {
                     return ps
@@ -1042,6 +989,10 @@ class CameraXLivePreviewActivity : AppCompatActivity(), OnRequestPermissionsResu
 
         @JvmField
         var countTimes: Int = 0
+
+        // Store the current camera frame
+        @Volatile
+        var currentFrameBitmap: Bitmap? = null
 
         fun cleanWarnPart() {
             warnPart!!.clear()

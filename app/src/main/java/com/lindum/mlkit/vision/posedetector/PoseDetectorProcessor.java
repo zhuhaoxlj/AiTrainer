@@ -1,6 +1,7 @@
 package com.lindum.mlkit.vision.posedetector;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.os.Build;
 import android.util.Log;
 
@@ -14,6 +15,7 @@ import com.google.mlkit.vision.pose.Pose;
 import com.google.mlkit.vision.pose.PoseDetection;
 import com.google.mlkit.vision.pose.PoseDetector;
 import com.google.mlkit.vision.pose.PoseDetectorOptionsBase;
+import com.lindum.mlkit.vision.CameraXLivePreviewActivity;
 import com.lindum.mlkit.vision.GraphicOverlay;
 import com.lindum.mlkit.vision.VisionProcessorBase;
 import com.lindum.mlkit.vision.posedetector.classification.PoseClassifierProcessor;

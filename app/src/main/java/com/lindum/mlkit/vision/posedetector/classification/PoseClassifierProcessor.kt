@@ -1,1 +1,362 @@
-package com.lindum.mlkit.vision.posedetector.classificationimport android.content.Contextimport android.media.AudioManagerimport android.media.ToneGeneratorimport android.os.Looperimport android.text.TextUtilsimport android.util.Logimport androidx.annotation.WorkerThreadimport com.google.common.base.Preconditionsimport com.google.gson.Gsonimport com.google.mlkit.vision.pose.Poseimport com.lindum.mlkit.vision.CameraXLivePreviewActivityimport com.lindum.mlkit.vision.CameraXLivePreviewActivity.Companion.addWarnPartimport com.lindum.mlkit.vision.CameraXLivePreviewActivity.Companion.poseEntityListimport com.lindum.mlkit.vision.posedetector.PoseAngleDetectorimport com.lindum.mlkit.vision.posedetector.PosePartimport com.lindum.mlkit.vision.utils.BaduanjinPoseEvaluatorimport com.orhanobut.logger.Loggerimport java.io.BufferedReaderimport java.io.IOExceptionimport java.io.InputStreamReaderimport java.util.Locale/** * 接受姿态流进行计数和分类 */class PoseClassifierProcessor @WorkerThread constructor(    context: Context,    isStreamMode: Boolean) {    // 姿态二分类文件，用于计数    private val poseClassifyFileName = arrayOf<String>(        "pose/lsttlsj.csv", // 两手托天理三焦        "pose/zykgssd.csv", // 左右开弓似射雕        "pose/tlpwxdj.csv", // 调理脾胃需单举        "pose/wlqswhq.csv", // 五劳七伤往后瞧        "pose/ytbwqxh.csv", // 摇头摆尾去心火        "pose/lspzgsy.csv", // ‌两手攀足固肾腰        "pose/cqnmzql.csv", // ‌攒拳怒目增气力        "pose/bhqdbbx.csv", // ‌背后七颠百病消    )    /**     * 区分连续分析与单帧分析：     * true：表示连续的视频流分析模式，需要跟踪姿态变化、计数动作、平滑结果等     * false：表示单帧分析模式，只需要对当前帧进行姿态分类，不需要维护状态或计数     */    private val isStreamMode: Boolean    private var emaSmoothing: EMASmoothing? = null    // 计数器    private var repCounters: MutableList<RepetitionCounter>? = null    // 基于 K 最近邻(KNN) 算法的姿态分类    private var poseClassifier: PoseClassifier? = null    private var lastRepResult: String? = null    @Volatile    private var addWarnPartFlag = true    var context: Context    init {        Preconditions.checkState(Looper.myLooper() != Looper.getMainLooper())        this.isStreamMode = isStreamMode        if (isStreamMode) {            emaSmoothing = EMASmoothing()            repCounters = ArrayList<RepetitionCounter>()            lastRepResult = ""        }        this.context = context        loadPoseSamples(context)    }    private fun loadPoseSamples(context: Context) {        val poseSamples: MutableList<PoseSample?> = ArrayList<PoseSample?>()        try {            POSE_SAMPLES_FILE =                poseClassifyFileName.getOrNull(CameraXLivePreviewActivity.nowPoseIndex)                    ?: "pose/lsttlsj.csv"            val reader = BufferedReader(                InputStreamReader(context.assets.open(POSE_SAMPLES_FILE))            )            var csvLine = reader.readLine()            while (csvLine != null) {                // 如果行不是有效的{@link PoseSample}，获得空值并跳过添加到列表中                val poseSample = PoseSample.getPoseSample(csvLine, ",")                if (poseSample != null) {                    poseSamples.add(poseSample)                }                csvLine = reader.readLine()            }        } catch (e: IOException) {            Log.e(TAG, "Error when loading pose samples.\n$e")        }        poseClassifier = PoseClassifier(poseSamples)        if (isStreamMode) {            for (className in POSE_CLASSES) {                repCounters!!.add(RepetitionCounter(className))            }        }    }    /**     * 给定一个新的[Pose]输入，返回带有姿势的格式化[String]列表     * 分类结果。     *     *     * 目前它最多返回 2 个字符串，如下所示：     * 0：姿势类：X代表     * 1：PoseClass：[0.0-1.0] 置信度     */    @WorkerThread    fun getPoseResult(pose: Pose): MutableList<String?> {        // 如果是下一个新的二分类文件，则加载新的        if (!TextUtils.equals(                POSE_SAMPLES_FILE,                poseClassifyFileName[CameraXLivePreviewActivity.nowPoseIndex]            ) && poseClassifyFileName[CameraXLivePreviewActivity.nowPoseIndex] != ""        ) {            loadPoseSamples(context)        }        // 清空纠错建议        poseTips = ""        // 确保当前代码不在Android的主线程（UI线程）上执行，否则抛出异常        Preconditions.checkState(Looper.myLooper() != Looper.getMainLooper())        // 屏幕左下角显示的检测结果信息        val result: MutableList<String?> = ArrayList<String?>()        var classification = poseClassifier!!.classify(pose)        // Update {@link RepetitionCounter}s if {@code isStreamMode}.        if (isStreamMode) {            // 即使没有检测到人体关键点，也要平滑姿势。            classification = emaSmoothing?.getSmoothedResult(classification)            // 如果没有检测到姿态，则提前返回结果，不更新重复计数器            if (pose.allPoseLandmarks.isEmpty()) {                result.add(lastRepResult)                return result            }            repCounters?.let {                for (repCounter in repCounters) {                    val repsBefore = repCounter.numRepeats                    val repsAfter = repCounter.addClassificationResult(classification)                    if (repsAfter > repsBefore) {                        // 计数器更新时播放蜂鸣声                        val tg = ToneGenerator(AudioManager.STREAM_NOTIFICATION, 100)                        tg.startTone(ToneGenerator.TONE_PROP_BEEP);                        lastRepResult = String.format(                            Locale.US, "已做 %d 个", repsAfter                        )                        CameraXLivePreviewActivity.countTimes = repsAfter                        break                    }                }            }            result.add(lastRepResult)        }        // 确保 pose 对象不为null，如果是 null 则抛出异常        checkNotNull(pose)        // 如果检测到人体关键点，将当前帧的 maxConfidence 类添加到结果中        if (!pose.allPoseLandmarks.isEmpty()) {            maxConfidenceClass = classification.maxConfidenceClass            val maxConfidenceClassResult = String.format(                Locale.US,                "%s : %.2f confidence",                maxConfidenceClass,                classification.getClassConfidence(maxConfidenceClass)                        / poseClassifier!!.confidenceRange()            )            classifierConfidence =                classification.getClassConfidence(maxConfidenceClass) / poseClassifier!!.confidenceRange()            CameraXLivePreviewActivity.confidence = classifierConfidence            if (poseClassifyFileName[CameraXLivePreviewActivity.nowPoseIndex] != "") {                result.add(maxConfidenceClassResult)            }        }        // 人体关键的监测        val poseAngleDetector = PoseAngleDetector(pose)        // 倒计时结束，开始检测        if (CameraXLivePreviewActivity.countdownSeconds == -1) {            // 获取监测的动作实体            val poseEntity = poseEntityList!!.getOrNull(CameraXLivePreviewActivity.nowPoseIndex)            // 获取监测部位列表            val monitoringList = poseEntity!!.monitoringPosePartList//            originalLogic(monitoringList, poseAngleDetector)            newLogic(maxConfidenceClass ?: "", result, monitoringList, poseAngleDetector)        }        // 把结果顶上去        result.add(" ")        result.add(" ")        result.add(" ")        result.add(" ")        result.add(" ")        return result    }    /**     * 新增逻辑     */    private fun newLogic(        maxConfidenceClass: String,        result: MutableList<String?>,        parts: MutableList<PosePart>,        detector: PoseAngleDetector    ) {        result.add(BaduanjinPoseEvaluator.Pose1.getScore(maxConfidenceClass, parts, detector))    }    /**     * 老代码逻辑     */    private fun originalLogic(        monitoringList: List<PosePart>,        poseAngleDetector: PoseAngleDetector    ) {        // 固定部位列表        val fixedPartList: MutableList<PosePart> = ArrayList<PosePart>()        // 动态部位列表        val dynamicPart: MutableList<PosePart> = ArrayList<PosePart>()        // 将固定部位和动态部位分别筛选出来        for (part in monitoringList) {            if (part.getPoseType() == 0) fixedPartList.add(part)            if (part.getPoseType() == 1) dynamicPart.add(part)        }        // 判断是否全部满足固定部位标准        for (part in fixedPartList) {            val partIndex = part.getPoseIndex()            // 自定义角度的情况            // 当前帧的角度            val nowFrameAngle: Int = if (partIndex == -1) {                poseAngleDetector.getAnyAngleBy3Point(part.getThreePointIndex())            } else {                poseAngleDetector.getPoseAngleFromPartIndex(partIndex)            }            if (!(nowFrameAngle >= part.getFixedRange()[0] && nowFrameAngle <= part.getFixedRange()[1])) {                addWarnPart(partIndex)            }            if (partIndex != -1) {                if (nowFrameAngle < part.getFixedRange()[0]) {                    poseTips += "，" + getPartName(partIndex) + "角度要大一点"                }                if (nowFrameAngle > part.getFixedRange()[1]) {                    poseTips += "，" + getPartName(partIndex) + "角度小一点"                }            }        }        if (classifierConfidence != 1f) {            CameraXLivePreviewActivity.confidenceNotOne = true            addWarnPartFlag = true        }        // 判断是否全部满足动态部位第一个标准        // 能够分清动作是up or down 并且置信度等于 1        if (maxConfidenceClass != null && classifierConfidence == 1f) {            for (part in dynamicPart) {                val partIndex = part.getPoseIndex()                // 自定义角度的情况                // 当前帧的角度                val nowFrameAngle: Int = if (partIndex == -1) {                    poseAngleDetector.getAnyAngleBy3Point(part.getThreePointIndex())                } else {                    poseAngleDetector.getPoseAngleFromPartIndex(partIndex)                }                if (maxConfidenceClass!!.contains("down")) {                    // 判断当前的角度是否满足第二个标准                    if (!(nowFrameAngle >= part.getSecondStandardRange()[0] && nowFrameAngle <= part.getSecondStandardRange()[1]) && addWarnPartFlag) {                        addWarnPart(partIndex)                        Logger.e("当前置信度$classifierConfidence")                    }                    if (nowFrameAngle < part.getSecondStandardRange()[0]) {                        poseTips += "，" + getPartName(partIndex) + "角度要大一点"                    }                    if (nowFrameAngle > part.getSecondStandardRange()[1]) {                        poseTips += "，" + getPartName(partIndex) + "角度小一点"                    }                    if (!addWarnPartFlag && nowFrameAngle < part.getSecondStandardRange()[0]) {                        addWarnPart(partIndex)                        Logger.e("当前置信度$classifierConfidence")                    }                }                if (maxConfidenceClass!!.contains("up")) {                    // 判断当前的角度是否满足第一个标准                    if (!(nowFrameAngle >= part.getFirstStandardRange()[0] && nowFrameAngle <= part.getFirstStandardRange()[1]) && addWarnPartFlag) {                        addWarnPart(partIndex)                    }                    if (nowFrameAngle < part.getFirstStandardRange()[0]) {                        poseTips += "，" + getPartName(partIndex) + "角度要大一点"                    }                    if (nowFrameAngle > part.getFirstStandardRange()[1]) {                        poseTips += "，" + getPartName(partIndex) + "角度小一点"                    }                }            }            addWarnPartFlag = false        }    }    /**     * 获取部位名称     *     * @param index 身体部位索引     * @return 身体部位名称     */    fun getPartName(index: Int): String {        val partNames = arrayOf<String>(            "",            "右手腕",            "右胳膊肘",            "右手臂与肩膀",            "左手臂与肩膀",            "左胳膊肘",            "左手腕",            "右腿与身体",            "左腿与身体",            "右膝盖",            "左膝盖",            "右脚腕",            "左脚腕"        )        return partNames[index]    }    companion object {        private const val TAG = "PoseClassifierProcessor"        private var POSE_SAMPLES_FILE = ""        @Volatile        var maxConfidenceClass: String? = null        // 置信度        @Volatile        var classifierConfidence: Float = 0f        // zh-todo 剩余动作适配        private val POSE_CLASSES = arrayOf<String?>(            "lsttlsj_down",            "lsttlsj_down",            "lsttlsj_down",            "lsttlsj_down",            "lsttlsj_down",            "lsttlsj_down",            "lsttlsj_down",            "lsttlsj_down",        )        @Volatile        var poseTips: String? = null    }}
+package com.lindum.mlkit.vision.posedetector.classification
+
+import android.content.Context
+import android.graphics.Bitmap
+import android.media.AudioManager
+import android.media.ToneGenerator
+import android.os.Looper
+import android.text.TextUtils
+import android.util.Log
+import androidx.annotation.WorkerThread
+import com.google.common.base.Preconditions
+import com.google.gson.Gson
+import com.google.mlkit.vision.pose.Pose
+import com.lindum.mlkit.vision.CameraXLivePreviewActivity
+import com.lindum.mlkit.vision.CameraXLivePreviewActivity.Companion.addWarnPart
+import com.lindum.mlkit.vision.CameraXLivePreviewActivity.Companion.currentFrameBitmap
+import com.lindum.mlkit.vision.CameraXLivePreviewActivity.Companion.poseEntityList
+import com.lindum.mlkit.vision.posedetector.PoseAngleDetector
+import com.lindum.mlkit.vision.posedetector.PosePart
+import com.lindum.mlkit.vision.utils.BaduanjinPoseEvaluator
+import com.orhanobut.logger.Logger
+import java.io.BufferedReader
+import java.io.IOException
+import java.io.InputStreamReader
+import java.util.Locale
+
+/**
+ * 接受姿态流进行计数和分类
+ */
+class PoseClassifierProcessor @WorkerThread constructor(
+    context: Context,
+    isStreamMode: Boolean
+) {
+    // 姿态二分类文件，用于计数
+    private val poseClassifyFileName = arrayOf<String>(
+        "pose/lsttlsj.csv", // 两手托天理三焦
+        "pose/zykgssd.csv", // 左右开弓似射雕
+        "pose/tlpwxdj.csv", // 调理脾胃需单举
+        "pose/wlqswhq.csv", // 五劳七伤往后瞧
+        "pose/ytbwqxh.csv", // 摇头摆尾去心火
+        "pose/lspzgsy.csv", // ‌两手攀足固肾腰
+        "pose/cqnmzql.csv", // ‌攒拳怒目增气力
+        "pose/bhqdbbx.csv", // ‌背后七颠百病消
+    )
+
+    /**
+     * 区分连续分析与单帧分析：
+     * true：表示连续的视频流分析模式，需要跟踪姿态变化、计数动作、平滑结果等
+     * false：表示单帧分析模式，只需要对当前帧进行姿态分类，不需要维护状态或计数
+     */
+    private val isStreamMode: Boolean
+    private var emaSmoothing: EMASmoothing? = null
+
+    // 计数器
+    private var repCounters: MutableList<RepetitionCounter>? = null
+
+    // 基于 K 最近邻(KNN) 算法的姿态分类
+    private var poseClassifier: PoseClassifier? = null
+    private var lastRepResult: String? = null
+
+    @Volatile
+    private var addWarnPartFlag = true
+    var context: Context
+
+    init {
+        Preconditions.checkState(Looper.myLooper() != Looper.getMainLooper())
+        this.isStreamMode = isStreamMode
+        if (isStreamMode) {
+            emaSmoothing = EMASmoothing()
+            repCounters = ArrayList<RepetitionCounter>()
+            lastRepResult = ""
+        }
+        this.context = context
+        loadPoseSamples(context)
+    }
+
+    private fun loadPoseSamples(context: Context) {
+        val poseSamples: MutableList<PoseSample?> = ArrayList<PoseSample?>()
+        try {
+            POSE_SAMPLES_FILE =
+                poseClassifyFileName.getOrNull(CameraXLivePreviewActivity.nowPoseIndex)
+                    ?: "pose/lsttlsj.csv"
+            val reader = BufferedReader(
+                InputStreamReader(context.assets.open(POSE_SAMPLES_FILE))
+            )
+            var csvLine = reader.readLine()
+            while (csvLine != null) {
+                // 如果行不是有效的{@link PoseSample}，获得空值并跳过添加到列表中
+                val poseSample = PoseSample.getPoseSample(csvLine, ",")
+                if (poseSample != null) {
+                    poseSamples.add(poseSample)
+                }
+                csvLine = reader.readLine()
+            }
+        } catch (e: IOException) {
+            Log.e(TAG, "Error when loading pose samples.\n$e")
+        }
+        poseClassifier = PoseClassifier(poseSamples)
+        if (isStreamMode) {
+            for (className in POSE_CLASSES) {
+                repCounters!!.add(RepetitionCounter(className))
+            }
+        }
+    }
+
+    /**
+     * 给定一个新的[Pose]输入，返回带有姿势的格式化[String]列表
+     * 分类结果。
+     *
+     *
+     * 目前它最多返回 2 个字符串，如下所示：
+     * 0：姿势类：X代表
+     * 1：PoseClass：[0.0-1.0] 置信度
+     */
+    @WorkerThread
+    fun getPoseResult(pose: Pose): MutableList<String?> {
+        // 如果是下一个新的二分类文件，则加载新的
+        if (!TextUtils.equals(
+                POSE_SAMPLES_FILE,
+                poseClassifyFileName[CameraXLivePreviewActivity.nowPoseIndex]
+            ) && poseClassifyFileName[CameraXLivePreviewActivity.nowPoseIndex] != ""
+        ) {
+            loadPoseSamples(context)
+        }
+
+        // 清空纠错建议
+        poseTips = ""
+
+        // 确保当前代码不在Android的主线程（UI线程）上执行，否则抛出异常
+        Preconditions.checkState(Looper.myLooper() != Looper.getMainLooper())
+        // 屏幕左下角显示的检测结果信息
+        val result: MutableList<String?> = ArrayList<String?>()
+        var classification = poseClassifier!!.classify(pose)
+
+        // Update {@link RepetitionCounter}s if {@code isStreamMode}.
+        if (isStreamMode) {
+            // 即使没有检测到人体关键点，也要平滑姿势。
+            classification = emaSmoothing?.getSmoothedResult(classification)
+
+            // 如果没有检测到姿态，则提前返回结果，不更新重复计数器
+            if (pose.allPoseLandmarks.isEmpty()) {
+                result.add(lastRepResult)
+                return result
+            }
+            repCounters?.let {
+                for (repCounter in repCounters) {
+                    val repsBefore = repCounter.numRepeats
+                    val repsAfter = repCounter.addClassificationResult(classification)
+
+                    if (repsAfter > repsBefore) {
+                        // 计数器更新时播放蜂鸣声
+                        val tg = ToneGenerator(AudioManager.STREAM_NOTIFICATION, 100)
+                        tg.startTone(ToneGenerator.TONE_PROP_BEEP);
+                        lastRepResult = String.format(
+                            Locale.US, "已做 %d 个", repsAfter
+                        )
+                        CameraXLivePreviewActivity.countTimes = repsAfter
+                        break
+                    }
+                }
+            }
+            result.add(lastRepResult)
+        }
+
+        // 确保 pose 对象不为null，如果是 null 则抛出异常
+        checkNotNull(pose)
+
+        // 如果检测到人体关键点，将当前帧的 maxConfidence 类添加到结果中
+        if (!pose.allPoseLandmarks.isEmpty()) {
+            maxConfidenceClass = classification.maxConfidenceClass
+            val maxConfidenceClassResult = String.format(
+                Locale.US,
+                "%s : %.2f confidence",
+                maxConfidenceClass,
+                classification.getClassConfidence(maxConfidenceClass)
+                        / poseClassifier!!.confidenceRange()
+            )
+            classifierConfidence =
+                classification.getClassConfidence(maxConfidenceClass) / poseClassifier!!.confidenceRange()
+            CameraXLivePreviewActivity.confidence = classifierConfidence
+
+            if (poseClassifyFileName[CameraXLivePreviewActivity.nowPoseIndex] != "") {
+                result.add(maxConfidenceClassResult)
+            }
+        }
+
+        // 人体关键的监测
+        val poseAngleDetector = PoseAngleDetector(pose)
+
+        // 倒计时结束，开始检测
+        if (CameraXLivePreviewActivity.countdownSeconds == -1) {
+            // 获取监测的动作实体
+            val poseEntity = poseEntityList!!.getOrNull(CameraXLivePreviewActivity.nowPoseIndex)
+            // 获取监测部位列表
+            val monitoringList = poseEntity!!.monitoringPosePartList
+
+//            originalLogic(monitoringList, poseAngleDetector)
+
+            newLogic(maxConfidenceClass ?: "", result, monitoringList, poseAngleDetector)
+        }
+        // 把结果顶上去，类似于换行
+        result.add(" ")
+        result.add(" ")
+        result.add(" ")
+        result.add(" ")
+        result.add(" ")
+        return result
+    }
+
+    /**
+     * 新增逻辑
+     */
+    private fun newLogic(
+        maxConfidenceClass: String,
+        result: MutableList<String?>,
+        parts: MutableList<PosePart>,
+        detector: PoseAngleDetector
+    ) {
+        result.add(BaduanjinPoseEvaluator.Pose1.getScore(maxConfidenceClass, parts, detector, currentFrameBitmap, detector.pose))
+    }
+
+    /**
+     * 老代码逻辑
+     */
+    private fun originalLogic(
+        monitoringList: List<PosePart>,
+        poseAngleDetector: PoseAngleDetector
+    ) {
+        // 固定部位列表
+        val fixedPartList: MutableList<PosePart> = ArrayList<PosePart>()
+        // 动态部位列表
+        val dynamicPart: MutableList<PosePart> = ArrayList<PosePart>()
+        // 将固定部位和动态部位分别筛选出来
+        for (part in monitoringList) {
+            if (part.getPoseType() == 0) fixedPartList.add(part)
+            if (part.getPoseType() == 1) dynamicPart.add(part)
+        }
+        // 判断是否全部满足固定部位标准
+        for (part in fixedPartList) {
+            val partIndex = part.getPoseIndex()
+            // 自定义角度的情况
+            // 当前帧的角度
+            val nowFrameAngle: Int = if (partIndex == -1) {
+                poseAngleDetector.getAnyAngleBy3Point(part.getThreePointIndex())
+            } else {
+                poseAngleDetector.getPoseAngleFromPartIndex(partIndex)
+            }
+            if (!(nowFrameAngle >= part.getFixedRange()[0] && nowFrameAngle <= part.getFixedRange()[1])) {
+                addWarnPart(partIndex)
+            }
+            if (partIndex != -1) {
+                if (nowFrameAngle < part.getFixedRange()[0]) {
+                    poseTips += "，" + getPartName(partIndex) + "角度要大一点"
+                }
+                if (nowFrameAngle > part.getFixedRange()[1]) {
+                    poseTips += "，" + getPartName(partIndex) + "角度小一点"
+                }
+            }
+        }
+        if (classifierConfidence != 1f) {
+            CameraXLivePreviewActivity.confidenceNotOne = true
+            addWarnPartFlag = true
+        }
+        // 判断是否全部满足动态部位第一个标准
+        // 能够分清动作是up or down 并且置信度等于 1
+        if (maxConfidenceClass != null && classifierConfidence == 1f) {
+            for (part in dynamicPart) {
+                val partIndex = part.getPoseIndex()
+                // 自定义角度的情况
+                // 当前帧的角度
+                val nowFrameAngle: Int = if (partIndex == -1) {
+                    poseAngleDetector.getAnyAngleBy3Point(part.getThreePointIndex())
+                } else {
+                    poseAngleDetector.getPoseAngleFromPartIndex(partIndex)
+                }
+                if (maxConfidenceClass!!.contains("down")) {
+                    // 判断当前的角度是否满足第二个标准
+                    if (!(nowFrameAngle >= part.getSecondStandardRange()[0] && nowFrameAngle <= part.getSecondStandardRange()[1]) && addWarnPartFlag) {
+                        addWarnPart(partIndex)
+                        Logger.e("当前置信度$classifierConfidence")
+                    }
+                    if (nowFrameAngle < part.getSecondStandardRange()[0]) {
+                        poseTips += "，" + getPartName(partIndex) + "角度要大一点"
+                    }
+                    if (nowFrameAngle > part.getSecondStandardRange()[1]) {
+                        poseTips += "，" + getPartName(partIndex) + "角度小一点"
+                    }
+                    if (!addWarnPartFlag && nowFrameAngle < part.getSecondStandardRange()[0]) {
+                        addWarnPart(partIndex)
+                        Logger.e("当前置信度$classifierConfidence")
+                    }
+                }
+                if (maxConfidenceClass!!.contains("up")) {
+                    // 判断当前的角度是否满足第一个标准
+                    if (!(nowFrameAngle >= part.getFirstStandardRange()[0] && nowFrameAngle <= part.getFirstStandardRange()[1]) && addWarnPartFlag) {
+                        addWarnPart(partIndex)
+                    }
+                    if (nowFrameAngle < part.getFirstStandardRange()[0]) {
+                        poseTips += "，" + getPartName(partIndex) + "角度要大一点"
+                    }
+                    if (nowFrameAngle > part.getFirstStandardRange()[1]) {
+                        poseTips += "，" + getPartName(partIndex) + "角度小一点"
+                    }
+                }
+            }
+            addWarnPartFlag = false
+        }
+    }
+
+    /**
+     * 获取部位名称
+     *
+     * @param index 身体部位索引
+     * @return 身体部位名称
+     */
+    fun getPartName(index: Int): String {
+        val partNames = arrayOf<String>(
+            "",
+            "右手腕",
+            "右胳膊肘",
+            "右手臂与肩膀",
+            "左手臂与肩膀",
+            "左胳膊肘",
+            "左手腕",
+            "右腿与身体",
+            "左腿与身体",
+            "右膝盖",
+            "左膝盖",
+            "右脚腕",
+            "左脚腕"
+        )
+        return partNames[index]
+    }
+
+    companion object {
+        private const val TAG = "PoseClassifierProcessor"
+
+        private var POSE_SAMPLES_FILE = ""
+
+        @Volatile
+        var maxConfidenceClass: String? = null
+
+        // 置信度
+        @Volatile
+        var classifierConfidence: Float = 0f
+
+        // zh-todo 剩余动作适配
+        private val POSE_CLASSES = arrayOf<String?>(
+            "lsttlsj_down",
+            "lsttlsj_down",
+            "lsttlsj_down",
+            "lsttlsj_down",
+            "lsttlsj_down",
+            "lsttlsj_down",
+            "lsttlsj_down",
+            "lsttlsj_down",
+        )
+
+        @Volatile
+        var poseTips: String? = null
+    }
+}
