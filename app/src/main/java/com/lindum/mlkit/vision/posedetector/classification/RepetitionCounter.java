@@ -17,60 +17,60 @@
 package com.lindum.mlkit.vision.posedetector.classification;
 
 /**
- * Counts reps for the give class.
+ * 给指定的动作类别计数
  */
 public class RepetitionCounter {
-  // These thresholds can be tuned in conjunction with the Top K values in {@link PoseClassifier}.
-  // The default Top K value is 10 so the range here is [0-10].
-  private static final float DEFAULT_ENTER_THRESHOLD = 6f;
-  private static final float DEFAULT_EXIT_THRESHOLD = 4f;
+    // 这些阈值可以与{@link PoseClassifier}中的Top K值一起调整。
+    // 默认的Top K值是10，所以这里的范围是[0-10]。
+    private static final float DEFAULT_ENTER_THRESHOLD = 6f;
+    private static final float DEFAULT_EXIT_THRESHOLD = 4f;
 
-  private final String className;
-  private final float enterThreshold;
-  private final float exitThreshold;
+    private final String className;
+    private final float enterThreshold;
+    private final float exitThreshold;
 
-  private int numRepeats;
-  private boolean poseEntered;
+    private int numRepeats;
+    private boolean poseEntered;
 
-  public RepetitionCounter(String className) {
-    this(className, DEFAULT_ENTER_THRESHOLD, DEFAULT_EXIT_THRESHOLD);
-  }
-
-  public RepetitionCounter(String className, float enterThreshold, float exitThreshold) {
-    this.className = className;
-    this.enterThreshold = enterThreshold;
-    this.exitThreshold = exitThreshold;
-    numRepeats = 0;
-    poseEntered = false;
-  }
-
-  /**
-   * Adds a new Pose classification result and updates reps for given class.
-   *
-   * @param classificationResult {link ClassificationResult} of class to confidence values.
-   * @return number of reps.
-   */
-  public int addClassificationResult(ClassificationResult classificationResult) {
-    float poseConfidence = classificationResult.getClassConfidence(className);
-
-    if (!poseEntered) {
-      poseEntered = poseConfidence > enterThreshold;
-      return numRepeats;
+    public RepetitionCounter(String className) {
+        this(className, DEFAULT_ENTER_THRESHOLD, DEFAULT_EXIT_THRESHOLD);
     }
 
-    if (poseConfidence < exitThreshold) {
-      numRepeats++;
-      poseEntered = false;
+    public RepetitionCounter(String className, float enterThreshold, float exitThreshold) {
+        this.className = className;
+        this.enterThreshold = enterThreshold;
+        this.exitThreshold = exitThreshold;
+        numRepeats = 0;
+        poseEntered = false;
     }
 
-    return numRepeats;
-  }
+    /**
+     * 添加一个新的姿势分类结果，并更新给定动作类别的数量
+     *
+     * @param classificationResult {link ClassificationResult} 动作类别的置信度
+     * @return 重复次数
+     */
+    public int addClassificationResult(ClassificationResult classificationResult) {
+        float poseConfidence = classificationResult.getClassConfidence(className);
 
-  public String getClassName() {
-    return className;
-  }
+        if (!poseEntered) {
+            poseEntered = poseConfidence > enterThreshold;
+            return numRepeats;
+        }
 
-  public int getNumRepeats() {
-    return numRepeats;
-  }
+        if (poseConfidence < exitThreshold) {
+            numRepeats++;
+            poseEntered = false;
+        }
+
+        return numRepeats;
+    }
+
+    public String getClassName() {
+        return className;
+    }
+
+    public int getNumRepeats() {
+        return numRepeats;
+    }
 }

@@ -37,14 +37,10 @@ class PoseDetailsActivity : AppCompatActivity() {
         val layoutParams = binding.vFakeStatusBar.layoutParams
         layoutParams.height = StatusBarUtils.getStatusBarHeight(this)
         binding.vFakeStatusBar.layoutParams = layoutParams
-        // 动作展示轮播图
-        val poseSwiperImage = findViewById<ImageView>(R.id.poseDetailImage)
         val intent = getIntent()
         val poseIndex = intent.getIntExtra("poseIndex", 0)
-        poseSwiperImage.setImageBitmap(
-            MainActivity.Companion.poseLibrarySwiperImageArrayList.get(
-                poseIndex
-            )
+        binding.poseDetailImage.setImageBitmap(
+            MainActivity.Companion.poseLibrarySwiperImageArrayList[poseIndex]
         )
         // 动作感觉图片
         val poseDetailFeelingImage = findViewById<ImageView>(R.id.poseDetailFeelingImage)

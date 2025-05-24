@@ -28,6 +28,7 @@ import com.orhanobut.logger.Logger
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import androidx.core.graphics.createBitmap
 
 class PoseLibraryFragment : Fragment(R.layout.fragment_pose_library), HomeAdapter.ItemListener {
 
@@ -48,11 +49,11 @@ class PoseLibraryFragment : Fragment(R.layout.fragment_pose_library), HomeAdapte
             loadingPlaceHolderBitmap = BitmapFactory.decodeResource(resources, R.drawable.loading3)
             if (loadingPlaceHolderBitmap == null) {
                 Logger.e("占位图初始化失败，创建默认1x1占位图")
-                loadingPlaceHolderBitmap = Bitmap.createBitmap(1, 1, Bitmap.Config.ARGB_8888)
+                loadingPlaceHolderBitmap = createBitmap(1, 1)
             }
         } catch (e: Exception) {
             Logger.e("初始化占位图失败: ${e.message}")
-            loadingPlaceHolderBitmap = Bitmap.createBitmap(1, 1, Bitmap.Config.ARGB_8888)
+            loadingPlaceHolderBitmap = createBitmap(1, 1)
         }
 
         // 使用activity范围的ViewModel，确保数据在Fragment之间共享

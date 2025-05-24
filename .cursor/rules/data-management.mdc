@@ -1,0 +1,31 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Data Management System
+
+## Overview
+
+AiTrainer manages various types of data including user profiles, workout records, exercise definitions, and pose detection results. The data management system handles storage, retrieval, and synchronization of this information.
+
+## Key Components
+
+### Data Entities
+- [app/src/main/java/com/lindum/mlkit/vision/entity/UserEntity.kt](mdc:app/src/main/java/com/lindum/mlkit/vision/entity/UserEntity.kt): User profile information
+- [app/src/main/java/com/lindum/mlkit/vision/entity/PoseEntity.kt](mdc:app/src/main/java/com/lindum/mlkit/vision/entity/PoseEntity.kt): Exercise pose definitions and metadata
+
+### Storage
+- [app/src/main/java/com/lindum/mlkit/vision/sql/](mdc:app/src/main/java/com/lindum/mlkit/vision/sql): Local database for persistent data storage
+- [app/src/main/java/com/lindum/mlkit/vision/utils/FileUtils.kt](mdc:app/src/main/java/com/lindum/mlkit/vision/utils/FileUtils.kt): File system utilities for storing pose data and images
+
+### Data Processing
+- [app/src/main/java/com/lindum/mlkit/vision/datacenter/](mdc:app/src/main/java/com/lindum/mlkit/vision/datacenter): Data processing and synchronization logic
+
+## Data Workflow
+
+1. User profile data is stored in UserEntity and persisted to local storage
+2. Exercise pose definitions are loaded from assets and stored in PoseEntity objects
+3. During workouts, pose detection results are processed and analyzed
+4. Workout results are saved to the local database
+5. Historical workout data is available for review in the Diary section
