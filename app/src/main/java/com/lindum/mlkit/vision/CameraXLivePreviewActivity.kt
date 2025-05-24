@@ -1071,9 +1071,9 @@ class CameraXLivePreviewActivity : AppCompatActivity(), OnRequestPermissionsResu
                 warnPart!!.add(intArrayOf(25, 27, 31))
             } else if (partIndex == 11) {
                 warnPart!!.add(intArrayOf(26, 28, 32))
-            } else if (partIndex == 10) {
+            } else if (partIndex == 10) { // 左膝
                 warnPart!!.add(intArrayOf(23, 25, 27))
-            } else if (partIndex == 9) {
+            } else if (partIndex == 9) { // 右膝
                 warnPart!!.add(intArrayOf(24, 26, 28))
             } else if (partIndex == 8) {
                 warnPart!!.add(intArrayOf(11, 23, 25))
@@ -1081,13 +1081,13 @@ class CameraXLivePreviewActivity : AppCompatActivity(), OnRequestPermissionsResu
                 warnPart!!.add(intArrayOf(12, 24, 26))
             } else if (partIndex == 6) {
                 warnPart!!.add(intArrayOf(13, 15, 19))
-            } else if (partIndex == 5) {
+            } else if (partIndex == 5) { // 左手臂
                 warnPart!!.add(intArrayOf(11, 13, 15))
             } else if (partIndex == 4) {
                 warnPart!!.add(intArrayOf(13, 11, 23))
             } else if (partIndex == 3) {
                 warnPart!!.add(intArrayOf(14, 12, 24))
-            } else if (partIndex == 2) {
+            } else if (partIndex == 2) { // 右手臂
                 warnPart!!.add(intArrayOf(12, 14, 16))
             } else if (partIndex == 1) {
                 warnPart!!.add(intArrayOf(20, 16, 14))

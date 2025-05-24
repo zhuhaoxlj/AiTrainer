@@ -22,7 +22,7 @@ import android.os.Build
 import androidx.annotation.RequiresApi
 
 /**
- * Graphic instance for rendering inference info (latency, FPS, resolution) in an overlay view.
+ * 用于在叠加视图中渲染推理信息（延迟、FPS、分辨率）的图形实例
  */
 class InferenceInfoGraphic(
     private val overlay: GraphicOverlay,
@@ -31,15 +31,14 @@ class InferenceInfoGraphic(
 // Only valid when a stream of input images is being processed. Null for single image mode.
     private val framesPerSecond: Int?
 ) : GraphicOverlay.Graphic(overlay) {
-    private val textPaint: Paint
+    private val textPaint: Paint = Paint()
     private var poseName: String? = null
 
     private var showLatencyInfo = true
 
     init {
-        textPaint = Paint()
         textPaint.setColor(TEXT_COLOR)
-        textPaint.setTextSize(TEXT_SIZE)
+        textPaint.textSize = TEXT_SIZE
         textPaint.setShadowLayer(5.0f, 0f, 0f, Color.BLACK)
         postInvalidate()
     }
@@ -51,7 +50,6 @@ class InferenceInfoGraphic(
         showLatencyInfo = false
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Synchronized
     override fun draw(canvas: Canvas?) {
         val x: Float = TEXT_SIZE * 0.5f
@@ -70,27 +68,24 @@ class InferenceInfoGraphic(
         // Draw FPS (if valid) and inference latency
         if (framesPerSecond != null) {
             canvas?.drawText(
-                "FPS帧率  " + framesPerSecond + "  单帧处理时长  " + frameLatency + " ms",
+                "FPS帧率  $framesPerSecond  单帧处理时长  $frameLatency ms",
                 x,
                 y + TEXT_SIZE,
                 textPaint
             )
         } else {
-            canvas?.drawText("单帧处理时长  " + frameLatency + " ms", x, y + TEXT_SIZE, textPaint)
+            canvas?.drawText("单帧处理时长  $frameLatency ms", x, y + TEXT_SIZE, textPaint)
         }
         canvas?.drawText(
-            "检测器处理时长: " + detectorLatency + " ms",
+            "检测器处理时长: $detectorLatency ms",
             x,
             y + TEXT_SIZE * 2,
             textPaint
         )
-        //        poseName = CameraXLivePreviewActivity.nowPoseName;
-//        canvas.drawText(poseName, x, y + TEXT_SIZE * 2, textPaint);
-//        Log.e("poseName",CameraXLivePreviewActivity.nowPoseIndex+"");
     }
 
     companion object {
-        private val TEXT_COLOR = Color.WHITE
+        private const val TEXT_COLOR = Color.WHITE
         private const val TEXT_SIZE = 60.0f
     }
 }
