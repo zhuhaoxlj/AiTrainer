@@ -409,19 +409,12 @@ public class ControlTable {
             }
             poseEntity.setMonitorPosePartList(monitorPosePartList);
 
-            int bestMonitorAngle = resultSet.getInt("bestMonitorAngle");
-            poseEntity.setBestMonitorAngle(bestMonitorAngle);
-
             List<String> trainPartList = new ArrayList<>();
             String trainPartListStr = resultSet.getString("trainPartList");
             if (trainPartListStr != null) {
                 String[] trainPartListString = trainPartListStr.replace("[", "").replace("]", "").split(",");
                 Collections.addAll(trainPartList, trainPartListString);
             }
-            poseEntity.setTrainPartList(trainPartList);
-
-            String videoUrl = resultSet.getString("videoURL");
-            poseEntity.setVideoUrl(videoUrl);
 
             String stepsOfPoseStr = resultSet.getString("stepsOfPose");
             if (stepsOfPoseStr != null) {

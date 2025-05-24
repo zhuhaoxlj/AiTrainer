@@ -46,15 +46,7 @@ class PoseDetailsActivity : AppCompatActivity() {
         val poseDetailFeelingImage = findViewById<ImageView>(R.id.poseDetailFeelingImage)
         var bitmap: Bitmap? = null
         bitmap = MainActivity.Companion.poseDetailFeelingImageArrayList[poseIndex]
-        if (bitmap == null) {
-            poseDetailFeelingImage.setVisibility(View.GONE)
-        }
         poseDetailFeelingImage.setImageBitmap(bitmap)
-        Logger.e(
-            "第$poseIndex " + MainActivity.Companion.poseEntityArrayList!!.get(
-                poseIndex
-            ).getPoseSwiperImageUrl()[0]
-        )
         val poseDetailFeeling = findViewById<TextView>(R.id.poseDetailFeeling)
         val poseDetailSteps = findViewById<TextView>(R.id.poseDetailSteps)
         val poseDetailCommonMistakes = findViewById<TextView>(R.id.poseDetailCommonMistakes)

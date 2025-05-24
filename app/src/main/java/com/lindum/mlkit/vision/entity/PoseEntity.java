@@ -49,21 +49,8 @@ public class PoseEntity {
      * 需要监测的部位列表
      */
     List<PosePart> monitorPosePartList;
-    /**
-     * 锻炼的部位 通过这个进行检索针对某个部位的锻炼
-     */
-    List<String> trainPartList;
-    /**
-     * 最佳拍摄监测角度
-     */
-    int bestMonitorAngle;
+
     // ↓↓↓ 注意事项 ↓↓↓
-
-
-    /**
-     * 视频链接
-     */
-    String videoUrl;
     /**
      * 动作步骤
      */
@@ -159,22 +146,6 @@ public class PoseEntity {
         this.poseCoverImage = poseCoverImage;
     }
 
-    public int getBestMonitorAngle() {
-        return bestMonitorAngle;
-    }
-
-    public void setBestMonitorAngle(int bestMonitorAngle) {
-        this.bestMonitorAngle = bestMonitorAngle;
-    }
-
-    public String getVideoUrl() {
-        return videoUrl;
-    }
-
-    public void setVideoUrl(String videoUrl) {
-        this.videoUrl = videoUrl;
-    }
-
     public String[] getStepsOfPose() {
         return stepsOfPose;
     }
@@ -267,10 +238,6 @@ public class PoseEntity {
         this.monitorPosePartList = monitorPosePartList;
     }
 
-    public List<String> getTrainPartList() {
-        return trainPartList;
-    }
-
     @NonNull
     @Override
     public String toString() {
@@ -284,9 +251,6 @@ public class PoseEntity {
                 ", poseType=" + poseType +
                 ", poseProcessValue=" + poseProcessValue +
                 ", monitorPosePartList=" + monitorPosePartList +
-                ", trainPartList=" + trainPartList +
-                ", bestMonitorAngle=" + bestMonitorAngle +
-                ", videoUrl='" + videoUrl + '\'' +
                 ", stepsOfPose=" + Arrays.toString(stepsOfPose) +
                 ", breathTips='" + breathTips + '\'' +
                 ", poseFeeling=" + Arrays.toString(poseFeeling) +
@@ -295,9 +259,5 @@ public class PoseEntity {
                 ", detailImageUrl=" + Arrays.toString(detailImageUrl) +
                 ", detailTips=" + Arrays.toString(detailTips) +
                 '}';
-    }
-
-    public void setTrainPartList(List<String> trainPartList) {
-        this.trainPartList = trainPartList;
     }
 }
