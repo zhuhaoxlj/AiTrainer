@@ -8,11 +8,6 @@
     ],
     "countMinutes": 0.0,
     "countTimes": 0,
-    "detailImageUrl": [
-      "http://bt.lindum.top:8888/down/6EsYIDdWzAro",
-      "http://bt.lindum.top:8888/down/3Nl4L6oHL2d6",
-      "http://bt.lindum.top:8888/down/SrVTaX1nyHJy"
-    ],
     "detailTips": [
       "掌心相对，手臂前平举",
       "腰背挺直",
@@ -123,15 +118,9 @@
     "poseFeeling": [
       "脊柱、肩颈有明显拉伸感，腹部轻微收紧"
     ],
-    "poseFeelingImage": "http://lindum.top/AiTrainer/poseFeelingImage/shendun/male.png",
     "poseLevel": 1,
     "poseName": "双手托天理三焦",
     "poseProcessValue": 6,
-    "poseSwiperImageUrl": [
-      "http://lindum.top/AiTrainer/poseLibraySwiperImage/shendun/1.png",
-      "http://lindum.top/AiTrainer/poseLibraySwiperImage/shendun/2.png",
-      "http://lindum.top/AiTrainer/poseLibraySwiperImage/shendun/3.png"
-    ],
     "poseType": 1,
     "stepsOfPose": [
       "自然站立，双脚与肩同宽，双臂下垂放松",
@@ -152,11 +141,6 @@
     ],
     "countMinutes": 0.0,
     "countTimes": 0,
-    "detailImageUrl": [
-      "http://bt.lindum.top:8888/down/iu8Z9wAMhyvf",
-      "http://bt.lindum.top:8888/down/rzXrtVPH1fpm",
-      "http://bt.lindum.top:8888/down/fZgfqHRNbnBz"
-    ],
     "detailTips": [
       "拉弓时食指上翘呈“八字掌”，手臂与肩平"
     ],
@@ -235,10 +219,6 @@
     "poseLevel": 1,
     "poseName": "左右开弓似射雕",
     "poseProcessValue": 3,
-    "poseSwiperImageUrl": [
-      "http://lindum.top/AiTrainer/poseLibraySwiperImage/kaoqiangzhanli/1.png",
-      "http://lindum.top/AiTrainer/poseLibraySwiperImage/kaoqiangzhanli/2.png"
-    ],
     "poseType": 1,
     "stepsOfPose": [
       "左脚向左迈步成马步，双手胸前交叉（左外右内），左手平推如“弓背”，右手拉弦如“箭”，目视左手指尖",
@@ -258,9 +238,6 @@
     ],
     "countMinutes": 0.0,
     "countTimes": 0,
-    "detailImageUrl": [
-      "http://bt.lindum.top:8888/down/Xt3N9ifYKvj2"
-    ],
     "detailTips": [
       "上托手五指并拢，下按手虎口撑开，力达掌根"
     ],
@@ -353,14 +330,9 @@
     "poseFeeling": [
       "胁肋部及侧腰有明显牵拉感，脾胃区域微热"
     ],
-    "poseFeelingImage": "http://lindum.top/AiTrainer/poseFeelingImage/pingbanzhicheng/male.png",
     "poseLevel": 2,
     "poseName": "调理脾胃须单举",
     "poseProcessValue": 3,
-    "poseSwiperImageUrl": [
-      "http://lindum.top/AiTrainer/poseLibraySwiperImage/pingbanzhicheng/1.png",
-      "http://lindum.top/AiTrainer/poseLibraySwiperImage/pingbanzhicheng/2.png"
-    ],
     "poseType": 1,
     "stepsOfPose": [
       "左手掌心向上托举至头顶，右手掌心下压至髋侧，形成上下对拉",
@@ -380,10 +352,6 @@
     ],
     "countMinutes": 0.0,
     "countTimes": 0,
-    "detailImageUrl": [
-      "http://bt.lindum.top:8888/down/hdyxQnmplFS5",
-      "http://bt.lindum.top:8888/down/PioYq05vLYmU"
-    ],
     "detailTips": [
       "转动时脊柱保持直立，双肩下沉"
     ],
@@ -472,15 +440,9 @@
     "poseFeeling": [
       "颈部及肩胛骨周围肌肉舒展，头部轻微眩晕感（正常）"
     ],
-    "poseFeelingImage": "http://lindum.top/AiTrainer/poseFeelingImage/fuwocheng/male.png",
     "poseLevel": 5,
     "poseName": "五劳七伤往后瞧",
     "poseProcessValue": 3,
-    "poseSwiperImageUrl": [
-      "http://lindum.top/AiTrainer/poseLibraySwiperImage/fuwocheng/1.png",
-      "http://lindum.top/AiTrainer/poseLibraySwiperImage/fuwocheng/2.png",
-      "http://lindum.top/AiTrainer/poseLibraySwiperImage/fuwocheng/3.png"
-    ],
     "poseType": 1,
     "stepsOfPose": [
       "双脚与肩同宽，吸气时头部向左后方转动，目视后方，同时手臂内旋掌心向后",
@@ -500,10 +462,6 @@
     ],
     "countMinutes": 0.0,
     "countTimes": 0,
-    "detailImageUrl": [
-      "http://bt.lindum.top:8888/down/PspnskNX6s0W",
-      "http://bt.lindum.top:8888/down/vEWlLlXsqqZA"
-    ],
     "detailTips": [
       "头部与臀部反向摆动，形成“摇头摆尾”弧线"
     ],
@@ -584,15 +542,9 @@
     "poseFeeling": [
       "腰腹及大腿内侧肌肉收紧，脊柱灵活度增加"
     ],
-    "poseFeelingImage": "http://lindum.top/AiTrainer/poseFeelingImage/tunqiao/male.png",
     "poseLevel": 2,
     "poseName": "‌摇头摆尾去心火",
     "poseProcessValue": 3,
-    "poseSwiperImageUrl": [
-      "http://lindum.top/AiTrainer/poseLibraySwiperImage/tunqiao/1.png",
-      "http://lindum.top/AiTrainer/poseLibraySwiperImage/tunqiao/2.png",
-      "http://lindum.top/AiTrainer/poseLibraySwiperImage/tunqiao/3.png"
-    ],
     "poseType": 1,
     "stepsOfPose": [
       "马步下蹲，双手扶膝，以腰为轴，头部和臀部画“∞”字摆动",
@@ -612,12 +564,6 @@
     ],
     "countMinutes": 0.0,
     "countTimes": 0,
-    "detailImageUrl": [
-      "http://bt.lindum.top:8888/down/XEvnqn1r7jTz",
-      "http://bt.lindum.top:8888/down/tkgSRll5evXQ",
-      "http://bt.lindum.top:8888/down/SY0wgxDvcrLh",
-      "http://bt.lindum.top:8888/down/W0uiLYlPXaNZ"
-    ],
     "detailTips": [
       "前俯时掌心贴脚背，目视脚尖"
     ],
@@ -718,15 +664,9 @@
     "poseFeeling": [
       "腰背及腿后侧有明显拉伸感，肾区微热"
     ],
-    "poseFeelingImage": "http://lindum.top/AiTrainer/poseFeelingImage/xixilijuanfu/male.png",
     "poseLevel": 6,
     "poseName": "‌两手攀足固肾腰",
     "poseProcessValue": 6,
-    "poseSwiperImageUrl": [
-      "http://lindum.top/AiTrainer/poseLibraySwiperImage/xixilijuanfu/1.png",
-      "http://lindum.top/AiTrainer/poseLibraySwiperImage/xixilijuanfu/2.png",
-      "http://lindum.top/AiTrainer/poseLibraySwiperImage/xixilijuanfu/3.png"
-    ],
     "poseType": 1,
     "stepsOfPose": [
       "双脚并拢，双臂上举后仰，呼气前俯，双手触脚背（或小腿）",
@@ -746,11 +686,6 @@
     ],
     "countMinutes": 0.0,
     "countTimes": 0,
-    "detailImageUrl": [
-      "http://lindum.top/AiTrainer/poseLibraySwiperImage/juanfumoxi/1.png",
-      "http://lindum.top/AiTrainer/poseLibraySwiperImage/juanfumoxi/2.png",
-      "http://lindum.top/AiTrainer/poseLibraySwiperImage/juanfumoxi/3.png"
-    ],
     "detailTips": [
       "冲拳时手腕旋转，力达拳面"
     ],
@@ -857,15 +792,9 @@
     "poseFeeling": [
       "手臂及核心肌群发力，肝区有轻微牵拉感"
     ],
-    "poseFeelingImage": "http://lindum.top/AiTrainer/poseFeelingImage/juanfumoxi/male.png",
     "poseLevel": 5,
     "poseName": "‌攒拳怒目增气力",
     "poseProcessValue": 3,
-    "poseSwiperImageUrl": [
-      "http://lindum.top/AiTrainer/poseLibraySwiperImage/juanfumoxi/1.png",
-      "http://lindum.top/AiTrainer/poseLibraySwiperImage/juanfumoxi/2.png",
-      "http://lindum.top/AiTrainer/poseLibraySwiperImage/juanfumoxi/3.png"
-    ],
     "poseType": 1,
     "stepsOfPose": [
       "马步下蹲，双拳置于腰间，吸气蓄力",
@@ -882,11 +811,6 @@
     ],
     "countMinutes": 0.0,
     "countTimes": 0,
-    "detailImageUrl": [
-      "http://lindum.top/AiTrainer/poseLibraySwiperImage/guizifuwocheng/1.png",
-      "http://lindum.top/AiTrainer/poseLibraySwiperImage/guizifuwocheng/2.png",
-      "http://lindum.top/AiTrainer/poseLibraySwiperImage/guizifuwocheng/3.png"
-    ],
     "detailTips": [
       "提踵时双手叉腰，目视前方"
     ],
@@ -1001,15 +925,9 @@
     "poseFeeling": [
       "足底及脊柱轻微震动，全身松弛感明显"
     ],
-    "poseFeelingImage": "http://lindum.top/AiTrainer/poseFeelingImage/guizifuwocheng/male.png",
     "poseLevel": 4,
     "poseName": "‌背后七颠百病消",
     "poseProcessValue": 7,
-    "poseSwiperImageUrl": [
-      "http://lindum.top/AiTrainer/poseLibraySwiperImage/guizifuwocheng/1.png",
-      "http://lindum.top/AiTrainer/poseLibraySwiperImage/guizifuwocheng/2.png",
-      "http://lindum.top/AiTrainer/poseLibraySwiperImage/guizifuwocheng/3.png"
-    ],
     "poseType": 1,
     "stepsOfPose": [
       "双脚并拢，吸气提踵，身体向上拔高",

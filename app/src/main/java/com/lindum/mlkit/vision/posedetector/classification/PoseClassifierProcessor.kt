@@ -198,7 +198,7 @@ class PoseClassifierProcessor @WorkerThread constructor(
 
             newLogic(maxConfidenceClass ?: "", result, monitoringList, poseAngleDetector)
         }
-        // 把结果顶上去，类似于换行
+        // 把结果顶上去
         result.add(" ")
         result.add(" ")
         result.add(" ")
@@ -216,7 +216,7 @@ class PoseClassifierProcessor @WorkerThread constructor(
         parts: MutableList<PosePart>,
         detector: PoseAngleDetector
     ) {
-        result.add(BaduanjinPoseEvaluator.Pose1.getScore(maxConfidenceClass, parts, detector, currentFrameBitmap, detector.pose))
+        result.add(BaduanjinPoseEvaluator.Pose1.getScore(maxConfidenceClass, parts, detector, currentFrameBitmap, detector.detectPose))
     }
 
     /**

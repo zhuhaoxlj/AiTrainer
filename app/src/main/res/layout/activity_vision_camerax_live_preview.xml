@@ -44,24 +44,6 @@
             app:layout_constraintStart_toStartOf="parent"
             tools:ignore="MissingConstraints" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/acb_analyse_result"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="分析结果"
-            app:layout_constraintTop_toBottomOf="@+id/v_fake_status_bar"
-            tools:ignore="MissingConstraints" />
-
-        <com.ramotion.circlemenu.CircleMenuView
-            android:id="@+id/circle_menu"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:visibility="invisible"
-            app:button_colors="@array/colors"
-            app:button_icons="@array/icons"
-            tools:ignore="MissingConstraints" />
-
         <TextView
             android:id="@+id/countdownSecondsText"
             android:layout_width="wrap_content"
@@ -77,6 +59,7 @@
         <LinearLayout
             android:layout_width="60dp"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
             android:gravity="center"
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
@@ -85,7 +68,7 @@
 
             <include
                 android:id="@+id/settings_button"
-                layout="@layout/settings_style"
+                layout="@layout/camera_setting"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -97,7 +80,14 @@
                 layout="@layout/look_explanation"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp" />
+                android:layout_marginTop="15dp" />
+
+            <include
+                android:id="@+id/analyse_result"
+                layout="@layout/analyse_result"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp" />
         </LinearLayout>
         <!--    下方卡片    -->
         <androidx.cardview.widget.CardView

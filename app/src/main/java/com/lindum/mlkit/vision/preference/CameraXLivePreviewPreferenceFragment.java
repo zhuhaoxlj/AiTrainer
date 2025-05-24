@@ -26,7 +26,6 @@ import java.util.List;
 /**
  * Configures CameraX live preview demo settings.
  */
-@RequiresApi(VERSION_CODES.LOLLIPOP)
 public class CameraXLivePreviewPreferenceFragment extends LivePreviewPreferenceFragment {
 
     @Override
@@ -52,6 +51,7 @@ public class CameraXLivePreviewPreferenceFragment extends LivePreviewPreferenceF
         if (cameraCharacteristics != null) {
             StreamConfigurationMap map =
                     cameraCharacteristics.get(CameraCharacteristics.SCALER_STREAM_CONFIGURATION_MAP);
+            assert map != null;
             Size[] outputSizes = map.getOutputSizes(SurfaceTexture.class);
             entries = new String[outputSizes.length];
             for (int i = 0; i < outputSizes.length; i++) {
@@ -73,7 +73,7 @@ public class CameraXLivePreviewPreferenceFragment extends LivePreviewPreferenceF
         }
         pref.setEntries(entries);
         pref.setEntryValues(entries);
-        pref.setSummary(pref.getEntry() == null ? "Default" : pref.getEntry());
+        pref.setSummary(pref.getEntry() == null ? "默认" : pref.getEntry());
         pref.setOnPreferenceChangeListener(
                 (preference, newValue) -> {
                     String newStringValue = (String) newValue;
@@ -88,7 +88,7 @@ public class CameraXLivePreviewPreferenceFragment extends LivePreviewPreferenceF
             Context context, Integer lensFacing) {
         CameraManager cameraManager = (CameraManager) context.getSystemService(Context.CAMERA_SERVICE);
         try {
-            List<String> cameraList = Arrays.asList(cameraManager.getCameraIdList());
+            String[] cameraList = cameraManager.getCameraIdList();
             for (String availableCameraId : cameraList) {
                 CameraCharacteristics availableCameraCharacteristics =
                         cameraManager.getCameraCharacteristics(availableCameraId);

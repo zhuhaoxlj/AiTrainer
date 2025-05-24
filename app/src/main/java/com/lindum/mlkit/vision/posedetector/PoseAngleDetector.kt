@@ -12,11 +12,7 @@ import kotlin.math.sqrt
 /**
  * 角度计算工具
  */
-class PoseAngleDetector(private val detectPose: Pose) {
-    // Getter for the pose
-    val pose: Pose
-        get() = detectPose
-
+class PoseAngleDetector(internal val detectPose: Pose) {
     @Deprecated("3D angle isn't accurate")
     val leftArm3DAngle: Int
         // 左胳膊三维夹角
