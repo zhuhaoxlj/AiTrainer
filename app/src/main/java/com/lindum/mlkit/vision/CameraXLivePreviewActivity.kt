@@ -94,28 +94,21 @@ class CameraXLivePreviewActivity : AppCompatActivity(), OnRequestPermissionsResu
     // ml kit 绘图层
     private var graphicOverlay: GraphicOverlay? = null
 
-    // todo
     private var cameraProvider: ProcessCameraProvider? = null
 
-    // todo
     private var previewUseCase: Preview? = null
 
-    // todo
     private var analysisUseCase: ImageAnalysis? = null
 
-    // todo
     private var imageProcessor: VisionImageProcessor? = null
 
-    // todo
     private var needUpdateGraphicOverlayImageSourceInfo = false
 
     // 选择模型 姿态检测
     private var selectedModel: String = POSE_DETECTION
 
-    // todo
     private var lensFacing = CameraSelector.LENS_FACING_BACK
 
-    // todo
     private var cameraSelector: CameraSelector? = null
 
     // 定时器
@@ -173,7 +166,6 @@ class CameraXLivePreviewActivity : AppCompatActivity(), OnRequestPermissionsResu
             WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
             WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
         )
-        // todo
         cameraSelector = CameraSelector.Builder().requireLensFacing(lensFacing).build()
         // 设置布局
         binding = ActivityVisionCameraxLivePreviewBinding.inflate(layoutInflater)
@@ -510,7 +502,6 @@ class CameraXLivePreviewActivity : AppCompatActivity(), OnRequestPermissionsResu
                     voiceAssistantHandle.post(voiceAssistantRunnable)
                 }
 
-                // TODO: 2022/3/8
 //                Logger.e("12312312" + poseEntityList.get(nowPoseIndex).getMonitorPosePartList().toString());
 
                 // 现在动作进行的秒数增加
@@ -791,7 +782,6 @@ class CameraXLivePreviewActivity : AppCompatActivity(), OnRequestPermissionsResu
     }
 
     val screenCut: Unit
-        // // TODO: 2022/3/23 会连续多拍
         get() {
             /* 实时监测是否有警告点，如果有就截图 */
             mHandler3 = Handler()
@@ -998,7 +988,6 @@ class CameraXLivePreviewActivity : AppCompatActivity(), OnRequestPermissionsResu
     }
 
     companion object {
-        // 权限请求变量 todo
         private const val PERMISSION_REQUESTS = 1
 
         // 动作置信度不为 1 flag 变量
@@ -1023,7 +1012,6 @@ class CameraXLivePreviewActivity : AppCompatActivity(), OnRequestPermissionsResu
         // 警告部位列表
         private var warnPart: MutableList<IntArray?>? = null
 
-        // todo 判断的 flag 变量
         private var pose1 = false
 
         // 训练动作数据列表

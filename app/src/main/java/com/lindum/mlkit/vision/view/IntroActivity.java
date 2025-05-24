@@ -31,7 +31,6 @@ public class IntroActivity extends AppCompatActivity {
         Logger.addLogAdapter(new AndroidLogAdapter());
         // 隐藏状态栏
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        // todo 适配水滴屏幕 当隐藏状态栏的时候上面是黑边
         super.onCreate(savedInstanceState);
         setContentView(R.layout.onboarding_main_layout);
         // 适配安卓11及以下版本的存储权限请求

@@ -58,7 +58,6 @@ internal class QuickShotUtils {
             viewHolder.itemView.setDrawingCacheEnabled(false)
             viewHolder.itemView.destroyDrawingCache()
 
-            //            //TODO This should work but doesn't
 //            recyclerView.getAdapter().onBindViewHolder(viewHolder, i);
 //            viewHolder.itemView.draw(canvas);
 //            canvas.drawBitmap(recyclerViewBitmap, 0f, viewHolderTopPadding, null);

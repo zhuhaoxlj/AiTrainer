@@ -89,7 +89,6 @@ public class PoseDetectorProcessor
         detector.close();
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected Task<PoseWithClassification> detectInImage(InputImage image) {
         return detector
@@ -102,7 +101,6 @@ public class PoseDetectorProcessor
                             List<String> classificationResult = new ArrayList<>();
                             if (runClassification) {
                                 if (poseClassifierProcessor == null) {
-                                    // // TODO: 2022/3/8  这里生成分类器
                                     poseClassifierProcessor = new PoseClassifierProcessor(context, isStreamMode);
                                 }
                                 Logger.e("666");
@@ -112,7 +110,6 @@ public class PoseDetectorProcessor
                         });
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected Task<PoseWithClassification> detectInImage(MlImage image) {
         return detector

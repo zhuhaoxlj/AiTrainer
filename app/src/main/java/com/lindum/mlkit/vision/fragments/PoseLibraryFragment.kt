@@ -111,11 +111,11 @@ class PoseLibraryFragment : Fragment(R.layout.fragment_pose_library), HomeAdapte
 
                 // 设置动作持续变量类型
                 if (poseEntities.isNotEmpty()) {
-                    for (poseEntity in poseEntities) {
-                        // 倒计时类型0 计数类型1
-                        poseEntity.setPoseType(0)
-                        poseEntity.setPoseProcessValue(30)
-                    }
+//                    for (poseEntity in poseEntities) {
+//                        // 倒计时类型0 计数类型1
+//                        poseEntity.setPoseType(0)
+//                        poseEntity.setPoseProcessValue(30)
+//                    }
 
                     // 加载图片
                     loadImages()

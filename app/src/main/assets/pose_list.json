@@ -126,7 +126,7 @@
     "poseFeelingImage": "http://lindum.top/AiTrainer/poseFeelingImage/shendun/male.png",
     "poseLevel": 1,
     "poseName": "双手托天理三焦",
-    "poseProcessValue": 0,
+    "poseProcessValue": 6,
     "poseSwiperImageUrl": [
       "http://lindum.top/AiTrainer/poseLibraySwiperImage/shendun/1.png",
       "http://lindum.top/AiTrainer/poseLibraySwiperImage/shendun/2.png",
@@ -234,7 +234,7 @@
     "poseFeelingImage": "",
     "poseLevel": 1,
     "poseName": "左右开弓似射雕",
-    "poseProcessValue": 0,
+    "poseProcessValue": 3,
     "poseSwiperImageUrl": [
       "http://lindum.top/AiTrainer/poseLibraySwiperImage/kaoqiangzhanli/1.png",
       "http://lindum.top/AiTrainer/poseLibraySwiperImage/kaoqiangzhanli/2.png"
@@ -356,7 +356,7 @@
     "poseFeelingImage": "http://lindum.top/AiTrainer/poseFeelingImage/pingbanzhicheng/male.png",
     "poseLevel": 2,
     "poseName": "调理脾胃须单举",
-    "poseProcessValue": 0,
+    "poseProcessValue": 3,
     "poseSwiperImageUrl": [
       "http://lindum.top/AiTrainer/poseLibraySwiperImage/pingbanzhicheng/1.png",
       "http://lindum.top/AiTrainer/poseLibraySwiperImage/pingbanzhicheng/2.png"
@@ -475,7 +475,7 @@
     "poseFeelingImage": "http://lindum.top/AiTrainer/poseFeelingImage/fuwocheng/male.png",
     "poseLevel": 5,
     "poseName": "五劳七伤往后瞧",
-    "poseProcessValue": 0,
+    "poseProcessValue": 3,
     "poseSwiperImageUrl": [
       "http://lindum.top/AiTrainer/poseLibraySwiperImage/fuwocheng/1.png",
       "http://lindum.top/AiTrainer/poseLibraySwiperImage/fuwocheng/2.png",
@@ -587,7 +587,7 @@
     "poseFeelingImage": "http://lindum.top/AiTrainer/poseFeelingImage/tunqiao/male.png",
     "poseLevel": 2,
     "poseName": "‌摇头摆尾去心火",
-    "poseProcessValue": 0,
+    "poseProcessValue": 3,
     "poseSwiperImageUrl": [
       "http://lindum.top/AiTrainer/poseLibraySwiperImage/tunqiao/1.png",
       "http://lindum.top/AiTrainer/poseLibraySwiperImage/tunqiao/2.png",
@@ -721,7 +721,7 @@
     "poseFeelingImage": "http://lindum.top/AiTrainer/poseFeelingImage/xixilijuanfu/male.png",
     "poseLevel": 6,
     "poseName": "‌两手攀足固肾腰",
-    "poseProcessValue": 0,
+    "poseProcessValue": 6,
     "poseSwiperImageUrl": [
       "http://lindum.top/AiTrainer/poseLibraySwiperImage/xixilijuanfu/1.png",
       "http://lindum.top/AiTrainer/poseLibraySwiperImage/xixilijuanfu/2.png",
@@ -860,7 +860,7 @@
     "poseFeelingImage": "http://lindum.top/AiTrainer/poseFeelingImage/juanfumoxi/male.png",
     "poseLevel": 5,
     "poseName": "‌攒拳怒目增气力",
-    "poseProcessValue": 0,
+    "poseProcessValue": 3,
     "poseSwiperImageUrl": [
       "http://lindum.top/AiTrainer/poseLibraySwiperImage/juanfumoxi/1.png",
       "http://lindum.top/AiTrainer/poseLibraySwiperImage/juanfumoxi/2.png",
@@ -1004,7 +1004,7 @@
     "poseFeelingImage": "http://lindum.top/AiTrainer/poseFeelingImage/guizifuwocheng/male.png",
     "poseLevel": 4,
     "poseName": "‌背后七颠百病消",
-    "poseProcessValue": 0,
+    "poseProcessValue": 7,
     "poseSwiperImageUrl": [
       "http://lindum.top/AiTrainer/poseLibraySwiperImage/guizifuwocheng/1.png",
       "http://lindum.top/AiTrainer/poseLibraySwiperImage/guizifuwocheng/2.png",
