@@ -8,9 +8,16 @@ import android.os.Environment
 import android.util.Log
 import com.google.mlkit.vision.pose.Pose
 import com.google.mlkit.vision.pose.PoseLandmark
+import com.lindum.mlkit.vision.MainActivity.Companion.poseRightImageArrayList
+import com.lindum.mlkit.vision.entity.WrongPoseModel
 import com.lindum.mlkit.vision.posedetector.PoseAngleDetector
 import com.lindum.mlkit.vision.posedetector.PosePart
+import com.lindum.mlkit.vision.utils.BaduanjinPoseEvaluator.Pose1.Companion.maxShoulderCombineAngle
+import com.lindum.mlkit.vision.utils.BaduanjinPoseEvaluator.Pose1.Companion.maxUpFrame
+import com.lindum.mlkit.vision.utils.BaduanjinPoseEvaluator.Pose1.Companion.maxUpWrongModel
 import com.lindum.mlkit.vision.utils.BaduanjinPoseEvaluator.Pose1.Companion.minAngle
+import com.lindum.mlkit.vision.utils.BaduanjinPoseEvaluator.Pose1.Companion.minDownFrame
+import com.lindum.mlkit.vision.utils.BaduanjinPoseEvaluator.Pose1.Companion.minDownWrongModel
 import java.io.File
 import java.io.FileOutputStream
 import java.text.SimpleDateFormat
@@ -24,26 +31,32 @@ import java.util.Locale
  * @date  20:07
  **/
 object BaduanjinPoseEvaluator {
-    // 存储需要标红的身体部位索引
-    private val warningParts = mutableSetOf<IntArray>()
-    private var isUpWarn = true
+    // 防止多次重复触发保存
+    private const val FRAME_COOLDOWN = 5
+    private var countFrame = 0
+    private val allWarningPoseList = mutableListOf<WrongPoseModel>()
 
-    // 存储最近发出的警告，用于防止重复警告
-    private val recentWarnings = mutableMapOf<String, Long>()
-
-    // 警告冷却时间 (毫秒)
-    private const val WARNING_COOLDOWN = 2000L
-
-    private fun saveFrame(isUp: Boolean, bitmap: Bitmap?, filename: String) {
-        if (isUp) {
-            minAngle = 999
-            // Don't reset maxCombineAngle here to preserve the value between phases
-        } else {
-            // Only reset maxCombineAngle when explicitly needed, not during normal saving
-            // maxCombineAngle = 0
+    private fun saveFrame(
+        isUp: Boolean,
+        bitmap: Bitmap?, filename: String
+    ) {
+        if (countFrame < FRAME_COOLDOWN) {
         }
+
         bitmap?.let {
             try {
+                if (maxUpWrongModel != null) {
+                    maxUpWrongModel!!.wrongPoseImage = bitmap.copy(bitmap.config!!, true)
+                    maxUpWrongModel!!.rightPoseBitmap =
+                        poseRightImageArrayList[maxUpWrongModel!!.poseIndex!!]
+                    allWarningPoseList.add(0, maxUpWrongModel!!)
+                }
+                if (minDownWrongModel != null) {
+                    minDownWrongModel!!.wrongPoseImage = bitmap.copy(bitmap.config!!, true)
+                    minDownWrongModel!!.rightPoseBitmap =
+                        poseRightImageArrayList[minDownWrongModel!!.poseIndex!!]
+                    allWarningPoseList.add(0, minDownWrongModel!!)
+                }
                 val directory = File(
                     Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES),
                     "AiTrainer"
@@ -60,8 +73,53 @@ object BaduanjinPoseEvaluator {
                 it.compress(Bitmap.CompressFormat.JPEG, 60, outputStream)
                 outputStream.flush()
                 outputStream.close()
-                // Don't call reset() here as it will clear important angle values
-                // reset()
+                if (isUp) {
+                    maxShoulderCombineAngle = 0
+                    maxUpFrame?.recycle()
+                    maxUpFrame = null
+                    maxUpWrongModel = null
+                } else {
+                    minAngle = 999
+                    minDownFrame?.recycle()
+                    minDownFrame = null
+                    minDownWrongModel = null
+                }
+                Log.d("PoseCapture", "Saved max angle frame to: ${file.absolutePath}")
+            } catch (e: Exception) {
+                Log.e("PoseCapture", "Error saving max angle frame", e)
+            }
+        }
+    }
+
+    private fun saveFixedFrame(
+        wrongPoseModel: WrongPoseModel,
+        bitmap: Bitmap?, filename: String
+    ) {
+        if (countFrame < FRAME_COOLDOWN) {
+        }
+
+        bitmap?.let {
+            try {
+                wrongPoseModel.wrongPoseImage = bitmap.copy(bitmap.config!!, true)
+                wrongPoseModel.rightPoseBitmap =
+                    poseRightImageArrayList[maxUpWrongModel!!.poseIndex!!]
+                allWarningPoseList.add(0, wrongPoseModel)
+                val directory = File(
+                    Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES),
+                    "AiTrainer"
+                )
+                if (!directory.exists()) {
+                    directory.mkdirs()
+                }
+
+                val timeStamp =
+                    SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(Date())
+                val file = File(directory, "${filename}_$timeStamp.jpg")
+
+                val outputStream = FileOutputStream(file)
+                it.compress(Bitmap.CompressFormat.JPEG, 60, outputStream)
+                outputStream.flush()
+                outputStream.close()
                 Log.d("PoseCapture", "Saved max angle frame to: ${file.absolutePath}")
             } catch (e: Exception) {
                 Log.e("PoseCapture", "Error saving max angle frame", e)
@@ -74,7 +132,7 @@ object BaduanjinPoseEvaluator {
      *
      * @param partIndex 报错部位的索引
      */
-    fun addWarnPart(partIndex: Int) {
+    fun addWarnPart(warningParts: MutableList<IntArray>, partIndex: Int): MutableList<IntArray> {
         if (partIndex == 12) {
             warningParts.add(intArrayOf(25, 27, 31))
         } else if (partIndex == 11) {
@@ -100,20 +158,7 @@ object BaduanjinPoseEvaluator {
         } else if (partIndex == 1) {
             warningParts.add(intArrayOf(20, 16, 14))
         }
-    }
-
-    /**
-     * 防止重复警告的日志记录方法
-     */
-    private fun logWarning(angle: Int, message: String) {
-        val currentTime = System.currentTimeMillis()
-        val lastWarningTime = recentWarnings[message] ?: 0L
-
-        // 只有当距离上次警告超过冷却时间，才发出新警告
-        if (currentTime - lastWarningTime > WARNING_COOLDOWN) {
-            Log.i("test_tips", "$angle---$message")
-            recentWarnings[message] = currentTime
-        }
+        return warningParts
     }
 
     /**
@@ -121,12 +166,27 @@ object BaduanjinPoseEvaluator {
      */
     class Pose1 {
         companion object {
-            // 用于判断是否进入 up 状态
+            // 用于判断是否进入 up 状态，当这个值最大时就说明运动到最顶部了
             var maxShoulderCombineAngle = 0
-            var maxArmCombineAngle = 0
+
+            // 最顶部的两个手臂的角度 Pair(left,right)
+            var maxArmCombineAngle = Pair(0, 0)
+
+            // 最顶部的一帧图片
+            internal var maxUpFrame: Bitmap? = null
+
+            // 最顶部的一帧错误 model
+            internal var maxUpWrongModel: WrongPoseModel? = null
+
             var minAngle = 999
-            private var maxUpFrame: Bitmap? = null
-            private var minDownFrame: Bitmap? = null
+            internal var minDownFrame: Bitmap? = null
+
+            // 最底部的两个手臂的角度 Pair(left,right)
+            var minArmCombineAngle = Pair(999, 999)
+
+            // 最底部部的一帧错误 model
+            internal var minDownWrongModel: WrongPoseModel? = null
+
 
             // 调整系数 - 根据图像测试调整以获得最佳匹配效果
             private const val SCALE_FACTOR = 1.5f       // 缩放因子
@@ -139,66 +199,71 @@ object BaduanjinPoseEvaluator {
                 poseStage: String,
                 monitoringList: List<PosePart>,
                 detector: PoseAngleDetector,
-                currentFrame: Bitmap? = null,
-                pose: Pose? = null
+                currentFrame: Bitmap,
+                pose: Pose
             ): String {
-                Log.i("test_stage", poseStage)
-                // 每次调用前清空警告部位
-                warningParts.clear()
+                countFrame += 1
 
                 with(detector) {
-                    val angle1 = getAngle(15, 0, 16) // 左手，鼻子，右手
                     val angle3 = getAngle(15, 11, 23) // 左手腕，左肩，左胯
                     val angle4 = getAngle(16, 12, 24) // 右手腕，右肩，右胯
-
+                    val tempWrongModel = WrongPoseModel()
+                    tempWrongModel.poseIndex = 0
+                    tempWrongModel.poseName = "两手托天理三焦"
                     // 从detector中获取左右手臂角度
                     val leftArm = leftArmAngle
                     val rightArm = rightArmAngle
 
                     if (poseStage.contains("up")) {
-                        // 如果这是 up 阶段的第一帧，重置 maxShoulderCombineAngle
-                        if (maxShoulderCombineAngle == 0) {
+                        // 有最大值就更新，同时记录这一帧图片、错误地方、错误建议
+                        if (maxShoulderCombineAngle < angle3 + angle4) {
                             maxShoulderCombineAngle = angle3 + angle4
-                        } else if (maxShoulderCombineAngle < angle3 + angle4) {
-                            maxShoulderCombineAngle = angle3 + angle4
-                            maxArmCombineAngle = leftArm + rightArm
-                            if (currentFrame != null) {
-                                if (maxShoulderCombineAngle > 0 && maxArmCombineAngle !in 165 * 2..180 * 2) {
-                                    addWarnPart(2)
-                                    addWarnPart(5)
-                                    isUpWarn = true
-                                    // 使用带防抖的日志方法
-                                    logWarning(maxShoulderCombineAngle, "手臂伸直，不要弯腰驼背")
-                                }
-                                maxUpFrame = if (pose != null) {
-                                    drawPoseOnBitmap(false, currentFrame, pose)
-                                } else {
-                                    currentFrame.copy(currentFrame.config!!, true)
-                                }
+                            maxArmCombineAngle = Pair(leftArm, rightArm)
+
+                            val tempWrongParts = mutableListOf<IntArray>()
+                            // 手臂角度不对
+                            if (maxArmCombineAngle.first !in 165..180) {
+                                addWarnPart(tempWrongParts, 5)
+                                tempWrongModel.poseTips = "手臂伸直，不要弯腰驼背"
                             }
+                            if (maxArmCombineAngle.second !in 165..180) {
+                                addWarnPart(tempWrongParts, 2)
+                                tempWrongModel.poseTips = "手臂伸直，不要弯腰驼背"
+                            }
+
+                            // 绘制人体关键点和错误区域，记录 up 最顶部关键帧
+                            maxUpFrame = drawPoseOnBitmap(tempWrongParts, currentFrame, pose)
+                            maxUpWrongModel = tempWrongModel
                         }
-                        // Don't save frame every time, only when needed
                         if (minDownFrame != null) {
                             saveFrame(false, minDownFrame, "minDownFrame_$minDownFrame")
-                            minDownFrame = null
                         }
                     } else if (poseStage.contains("down")) {
-                        if (angle1 < minAngle) {
-                            minAngle = angle1
-                            if (currentFrame != null) {
-                                minDownFrame = if (pose != null) {
-                                    drawPoseOnBitmap(true, currentFrame, pose)
-                                } else {
-                                    currentFrame.copy(currentFrame.config!!, true)
-                                }
+                        // 找到最下面的一帧
+                        if (angle3 + angle4 < minAngle) {
+                            minAngle = angle3 + angle4
+                            minArmCombineAngle = Pair(leftArm, rightArm)
+
+                            val tempWrongParts = mutableListOf<IntArray>()
+                            // 手臂角度不对
+                            if (minArmCombineAngle.first !in 130..145) {
+                                addWarnPart(tempWrongParts, 5)
+                                tempWrongModel.poseTips = "双手掌心向上交叉于下腹部"
                             }
+                            if (minArmCombineAngle.second !in 130..145) {
+                                addWarnPart(tempWrongParts, 2)
+                                tempWrongModel.poseTips = "双手掌心向上交叉于下腹部"
+                            }
+
+                            // 绘制人体关键点和错误区域，记录 up 最顶部关键帧
+                            minDownFrame = drawPoseOnBitmap(tempWrongParts, currentFrame, pose)
+                            minDownWrongModel = tempWrongModel
                         }
-                        // Don't save frame every time, only when needed
                         if (maxUpFrame != null) {
                             saveFrame(true, maxUpFrame, "maxUpFrame_$maxUpFrame")
-                            maxUpFrame = null
                         }
                     }
+
                     // 筛选出固定部位角度
                     monitoringList.filter { it.poseType == 0 }.forEach {
                         val fixAngle = if (it.poseIndex.size == 3) {
@@ -207,10 +272,16 @@ object BaduanjinPoseEvaluator {
                             getAnyAngleBy4Point(it.poseIndex)
                         }
                         if (fixAngle !in it.firstStandardRange[0]..it.firstStandardRange[1]) {
-                            // 如果检测到问题角度，也可以添加到警告集合
-                            warningParts.add(it.poseIndex)
+                            val tempWrongParts = mutableListOf<IntArray>()
+                            if (it.poseIndex.size == 3) {
+                                tempWrongParts.add(0, it.poseIndex)
+                            }
+                            tempWrongModel.poseTips = it.tips
+                            val paintResult = drawPoseOnBitmap(tempWrongParts, currentFrame, pose)
+                            saveFixedFrame(tempWrongModel, paintResult, "fixedFrame_$paintResult")
+
                             // 使用带防抖的日志方法
-                            logWarning(fixAngle, it.tips)
+//                            logWarning(fixAngle, it.tips)
                         }
                     }
                 }
@@ -220,10 +291,14 @@ object BaduanjinPoseEvaluator {
             /**
              * 在Bitmap上绘制人体姿态关键点
              */
-            private fun drawPoseOnBitmap(isUp: Boolean, bitmap: Bitmap, pose: Pose): Bitmap {
+            private fun drawPoseOnBitmap(
+                warningParts: MutableList<IntArray>,
+                bitmap: Bitmap,
+                pose: Pose
+            ): Bitmap {
                 // 创建一个副本，避免修改原始bitmap
-                val mutableBitmap = bitmap.copy(bitmap.config!!, true)
-                val canvas = Canvas(mutableBitmap)
+                val bitmapWithWrongParts = bitmap.copy(bitmap.config!!, true)
+                val canvas = Canvas(bitmapWithWrongParts)
 
                 // 设置画笔
                 val whitePaint = Paint().apply {
@@ -250,7 +325,7 @@ object BaduanjinPoseEvaluator {
 
                 // 获取所有关键点
                 val landmarks = pose.allPoseLandmarks
-                if (landmarks.isEmpty()) return mutableBitmap
+                if (landmarks.isEmpty()) return bitmapWithWrongParts
 
                 // 提取常用关键点
                 val nose = pose.getPoseLandmark(PoseLandmark.NOSE)
@@ -341,25 +416,23 @@ object BaduanjinPoseEvaluator {
                 drawLine(canvas, rightAnkle, rightHeel, rightPaint, bitmap.width)
                 drawLine(canvas, rightHeel, rightFootIndex, rightPaint, bitmap.width)
 
-                if (isUp && isUpWarn) {
-                    warningParts.forEach {
-                        drawLine(
-                            canvas,
-                            pose.getPoseLandmark(it[0]),
-                            pose.getPoseLandmark(it[1]),
-                            warningPaint,
-                            bitmap.width
-                        )
-                        drawLine(
-                            canvas,
-                            pose.getPoseLandmark(it[1]),
-                            pose.getPoseLandmark(it[2]),
-                            warningPaint,
-                            bitmap.width
-                        )
-                    }
+                warningParts.forEach {
+                    drawLine(
+                        canvas,
+                        pose.getPoseLandmark(it[0]),
+                        pose.getPoseLandmark(it[1]),
+                        warningPaint,
+                        bitmap.width
+                    )
+                    drawLine(
+                        canvas,
+                        pose.getPoseLandmark(it[1]),
+                        pose.getPoseLandmark(it[2]),
+                        warningPaint,
+                        bitmap.width
+                    )
                 }
-                return mutableBitmap
+                return bitmapWithWrongParts
             }
 
             /**
@@ -403,21 +476,11 @@ object BaduanjinPoseEvaluator {
                 )
             }
 
-            fun reset() {
-                // Only release bitmap resources, don't reset angle values here
-                maxUpFrame?.recycle()
-                minDownFrame?.recycle()
-                maxUpFrame = null
-                minDownFrame = null
-                warningParts.clear()
-                recentWarnings.clear() // Clear the warning history
-                // Don't reset maxCombineAngle and minAngle here
-            }
 
             // Add a new method for explicitly resetting angles when needed (e.g., between exercises)
             fun resetAngles() {
                 maxShoulderCombineAngle = 0
-                maxArmCombineAngle = 0
+                maxArmCombineAngle = Pair(0, 0)
                 minAngle = 999
             }
         }

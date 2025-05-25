@@ -215,7 +215,7 @@ class PoseClassifierProcessor @WorkerThread constructor(
         parts: MutableList<PosePart>,
         detector: PoseAngleDetector
     ) {
-        result.add(BaduanjinPoseEvaluator.Pose1.getScore(maxConfidenceClass, parts, detector, currentFrameBitmap, detector.detectPose))
+        result.add(BaduanjinPoseEvaluator.Pose1.getScore(maxConfidenceClass, parts, detector, currentFrameBitmap!!, detector.detectPose))
     }
 
     /**
