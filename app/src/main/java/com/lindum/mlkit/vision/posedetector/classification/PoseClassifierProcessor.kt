@@ -227,8 +227,12 @@ class PoseClassifierProcessor @WorkerThread constructor(
         detector: PoseAngleDetector
     ) {
         if (currentFrameBitmap == null) return
+        
+        // 获取BaduanjinPoseEvaluator实例
+        val evaluator = BaduanjinPoseEvaluator.getInstance()
+        
         when (CameraXLivePreviewActivity.nowPoseIndex) {
-            0 -> BaduanjinPoseEvaluator.Pose1.getScore(
+            0 -> evaluator.getPose1Score(
                 maxConfidenceClass,
                 result,
                 parts,
@@ -237,8 +241,7 @@ class PoseClassifierProcessor @WorkerThread constructor(
                 detector.detectPose
             )
 
-
-            1 -> BaduanjinPoseEvaluator.Pose2.getScore(
+            1 -> evaluator.getPose2Score(
                 maxConfidenceClass,
                 result,
                 parts,

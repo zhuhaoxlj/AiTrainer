@@ -17,7 +17,7 @@ data class WrongPoseModel(
     var wrongPoseImage: Bitmap? = null,
     var rightPoseBitmap: Bitmap? = null,
     val wrongTypeId: Int? = null, // 错误的 ID 用于筛选出同类的动作出错几次
-    val poseDetail: String? = null,// 动作细节描述
+    var poseDetail: String? = null,// 动作细节描述
     var poseTips: String? = null,// 错误姿态建议
     var angle: Pair<Int, Int>? = null,
 ) : Serializable

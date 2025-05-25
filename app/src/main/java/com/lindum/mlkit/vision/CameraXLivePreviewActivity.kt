@@ -8,19 +8,14 @@ import android.graphics.Bitmap
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.os.Message
 import android.speech.tts.TextToSpeech
 import android.speech.tts.TextToSpeech.OnInitListener
 import android.util.Log
 import android.view.View
 import android.view.WindowManager
 import android.widget.ArrayAdapter
-import android.widget.Button
 import android.widget.CompoundButton
-import android.widget.LinearLayout
-import android.widget.TextView
 import android.widget.Toast
-import android.widget.ToggleButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.camera.core.CameraInfoUnavailableException
 import androidx.camera.core.CameraSelector
@@ -28,7 +23,6 @@ import androidx.camera.core.ImageAnalysis
 import androidx.camera.core.ImageProxy
 import androidx.camera.core.Preview
 import androidx.camera.lifecycle.ProcessCameraProvider
-import androidx.camera.view.PreviewView
 import androidx.core.app.ActivityCompat
 import androidx.core.app.ActivityCompat.OnRequestPermissionsResultCallback
 import androidx.core.content.ContextCompat
@@ -45,7 +39,6 @@ import com.lindum.mlkit.vision.preference.PreferenceUtils
 import com.lindum.mlkit.vision.preference.SettingsActivity
 import com.lindum.mlkit.vision.utils.ActivityStarter
 import com.lindum.mlkit.vision.utils.BaduanjinPoseEvaluator
-import com.lindum.mlkit.vision.utils.BaduanjinPoseEvaluator.clearAllWarningPoseList
 import com.lindum.mlkit.vision.utils.FileUtils
 import com.lindum.mlkit.vision.utils.StatusBarUtils
 import com.lindum.mlkit.vision.view.PoseDetailsActivity
@@ -121,7 +114,8 @@ class CameraXLivePreviewActivity : AppCompatActivity(), OnRequestPermissionsResu
         // 从主页获取数据库中的动作数据
         poseEntityList = MainActivity.poseEntityArrayList
         init()
-        clearAllWarningPoseList()
+        // 重置姿势评估器
+        BaduanjinPoseEvaluator.resetInstance()
 
         // 定时更新变量定时器
         updateVariable()
@@ -142,7 +136,7 @@ class CameraXLivePreviewActivity : AppCompatActivity(), OnRequestPermissionsResu
             countTimes = 0
 
             // 使用 ActivityStarter 启动训练结果页面，传递错误姿势列表
-            val wrongPoseList = BaduanjinPoseEvaluator.getAllWarningPoseList()
+            val wrongPoseList = BaduanjinPoseEvaluator.getInstance().getAllWarningPoseList()
             ActivityStarter.startTrainingResultActivity(
                 this@CameraXLivePreviewActivity,
                 wrongPoseList,
