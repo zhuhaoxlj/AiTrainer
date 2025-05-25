@@ -94,7 +94,7 @@
     <string name="lookExplanation">查看\n讲解</string>
     <string name="analyse_result">分析\n结果</string>
     <string name="camera_setting">相机\n设置</string>
-    <string name="one">30\"</string>
+    <string name="one">0\"</string>
     <string name="poseProcess">1/14</string>
     <string name="poseName">卷腹</string>
     <string name="posename">PoseName</string>

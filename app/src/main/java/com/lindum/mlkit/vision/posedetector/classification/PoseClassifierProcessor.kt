@@ -1,7 +1,6 @@
 package com.lindum.mlkit.vision.posedetector.classification
 
 import android.content.Context
-import android.graphics.Bitmap
 import android.media.AudioManager
 import android.media.ToneGenerator
 import android.os.Looper
@@ -9,7 +8,6 @@ import android.text.TextUtils
 import android.util.Log
 import androidx.annotation.WorkerThread
 import com.google.common.base.Preconditions
-import com.google.gson.Gson
 import com.google.mlkit.vision.pose.Pose
 import com.lindum.mlkit.vision.CameraXLivePreviewActivity
 import com.lindum.mlkit.vision.CameraXLivePreviewActivity.Companion.currentFrameBitmap
@@ -17,7 +15,6 @@ import com.lindum.mlkit.vision.CameraXLivePreviewActivity.Companion.poseEntityLi
 import com.lindum.mlkit.vision.posedetector.PoseAngleDetector
 import com.lindum.mlkit.vision.posedetector.PosePart
 import com.lindum.mlkit.vision.utils.BaduanjinPoseEvaluator
-import com.orhanobut.logger.Logger
 import java.io.BufferedReader
 import java.io.IOException
 import java.io.InputStreamReader
@@ -153,7 +150,24 @@ class PoseClassifierProcessor @WorkerThread constructor(
                         lastRepResult = String.format(
                             Locale.US, "已做 %d 个", repsAfter
                         )
-                        CameraXLivePreviewActivity.countTimes = repsAfter
+                        val currentPose =
+                            poseEntityList?.getOrNull(CameraXLivePreviewActivity.nowPoseIndex)
+                        var activity: CameraXLivePreviewActivity? = null
+                        if (context is CameraXLivePreviewActivity) {
+                            activity = context as CameraXLivePreviewActivity
+                        }
+                        currentPose?.let { pose ->
+                            // 计数动作
+                            if (pose.poseType == 1) {
+                                activity?.updatePoseCount(repsAfter)
+                                if (repsAfter == pose.poseProcessValue) {
+                                    activity?.clickNextPoseButton()
+                                }
+                            } else {
+                                activity?.clickNextPoseButton()
+                            }
+                        }
+
                         break
                     }
                 }
@@ -176,7 +190,6 @@ class PoseClassifierProcessor @WorkerThread constructor(
             )
             classifierConfidence =
                 classification.getClassConfidence(maxConfidenceClass) / poseClassifier!!.confidenceRange()
-            CameraXLivePreviewActivity.confidence = classifierConfidence
 
             if (poseClassifyFileName[CameraXLivePreviewActivity.nowPoseIndex] != "") {
                 result.add(maxConfidenceClassResult)
@@ -192,8 +205,6 @@ class PoseClassifierProcessor @WorkerThread constructor(
             val poseEntity = poseEntityList!!.getOrNull(CameraXLivePreviewActivity.nowPoseIndex)
             // 获取监测部位列表
             val monitoringList = poseEntity!!.monitoringPosePartList
-
-//            originalLogic(monitoringList, poseAngleDetector)
 
             newLogic(maxConfidenceClass ?: "", result, monitoringList, poseAngleDetector)
         }
@@ -215,15 +226,27 @@ class PoseClassifierProcessor @WorkerThread constructor(
         parts: MutableList<PosePart>,
         detector: PoseAngleDetector
     ) {
-        result.add(
-            BaduanjinPoseEvaluator.Pose1.getScore(
+        if (currentFrameBitmap == null) return
+        when (CameraXLivePreviewActivity.nowPoseIndex) {
+            0 -> BaduanjinPoseEvaluator.Pose1.getScore(
                 maxConfidenceClass,
+                result,
                 parts,
                 detector,
                 currentFrameBitmap!!,
                 detector.detectPose
             )
-        )
+
+
+            1 -> BaduanjinPoseEvaluator.Pose2.getScore(
+                maxConfidenceClass,
+                result,
+                parts,
+                detector,
+                currentFrameBitmap!!,
+                detector.detectPose
+            )
+        }
     }
 
     /**

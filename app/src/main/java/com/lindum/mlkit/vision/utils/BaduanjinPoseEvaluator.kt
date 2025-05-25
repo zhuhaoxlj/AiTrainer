@@ -18,6 +18,12 @@ import com.lindum.mlkit.vision.utils.BaduanjinPoseEvaluator.Pose1.Companion.maxU
 import com.lindum.mlkit.vision.utils.BaduanjinPoseEvaluator.Pose1.Companion.minAngle
 import com.lindum.mlkit.vision.utils.BaduanjinPoseEvaluator.Pose1.Companion.minDownFrame
 import com.lindum.mlkit.vision.utils.BaduanjinPoseEvaluator.Pose1.Companion.minDownWrongModel
+import com.lindum.mlkit.vision.utils.BaduanjinPoseEvaluator.Pose2.Companion.leftMaxAngle
+import com.lindum.mlkit.vision.utils.BaduanjinPoseEvaluator.Pose2.Companion.leftMaxFrame
+import com.lindum.mlkit.vision.utils.BaduanjinPoseEvaluator.Pose2.Companion.leftMaxWrongModel
+import com.lindum.mlkit.vision.utils.BaduanjinPoseEvaluator.Pose2.Companion.rightMaxAngle
+import com.lindum.mlkit.vision.utils.BaduanjinPoseEvaluator.Pose2.Companion.rightMaxFrame
+import com.lindum.mlkit.vision.utils.BaduanjinPoseEvaluator.Pose2.Companion.rightMaxWrongModel
 import java.io.File
 import java.io.FileOutputStream
 import java.text.SimpleDateFormat
@@ -35,6 +41,12 @@ object BaduanjinPoseEvaluator {
     private const val FRAME_COOLDOWN = 5
     private var countFrame = 0
 
+    // 调整系数 - 根据图像测试调整以获得最佳匹配效果
+    private const val SCALE_FACTOR = 1.5f       // 缩放因子
+    private const val X_OFFSET_FACTOR = 3f    // X轴偏移因子
+    private const val DOT_RADIUS = 8f           // 关键点半径
+    private const val LINE_WIDTH = 10f          // 线条宽度
+
     // 最大错误姿势记录数
     private const val MAX_WARNING_POSES = 20
 
@@ -49,6 +61,198 @@ object BaduanjinPoseEvaluator {
     // 清空错误姿势列表
     fun clearAllWarningPoseList() {
         allWarningPoseList.clear()
+        leftMaxFrame = null
+        rightMaxFrame = null
+        leftMaxAngle = 0
+        rightMaxAngle = 0
+    }
+
+    /**
+     * 在Bitmap上绘制人体姿态关键点
+     */
+    private fun drawPoseOnBitmap(
+        warningParts: MutableList<IntArray>,
+        bitmap: Bitmap,
+        pose: Pose
+    ): Bitmap {
+        // 创建一个副本，避免修改原始bitmap
+        val bitmapWithWrongParts = bitmap.copy(bitmap.config!!, true)
+        val canvas = Canvas(bitmapWithWrongParts)
+
+        // 设置画笔
+        val whitePaint = Paint().apply {
+            color = Color.WHITE
+            strokeWidth = LINE_WIDTH
+        }
+        val leftPaint = Paint().apply {
+            color = Color.GREEN
+            strokeWidth = LINE_WIDTH
+        }
+        val rightPaint = Paint().apply {
+            color = Color.YELLOW
+            strokeWidth = LINE_WIDTH
+        }
+        val dotPaint = Paint().apply {
+            color = Color.WHITE
+            strokeWidth = DOT_RADIUS
+        }
+        // 添加红色画笔用于标记警告部位
+        val warningPaint = Paint().apply {
+            color = Color.RED
+            strokeWidth = LINE_WIDTH * 1.2f  // 使警告线条稍粗一些
+        }
+
+        // 获取所有关键点
+        val landmarks = pose.allPoseLandmarks
+        if (landmarks.isEmpty()) return bitmapWithWrongParts
+
+        // 提取常用关键点
+        val nose = pose.getPoseLandmark(PoseLandmark.NOSE)
+        val leftEyeInner = pose.getPoseLandmark(PoseLandmark.LEFT_EYE_INNER)
+        val leftEye = pose.getPoseLandmark(PoseLandmark.LEFT_EYE)
+        val leftEyeOuter = pose.getPoseLandmark(PoseLandmark.LEFT_EYE_OUTER)
+        val rightEyeInner = pose.getPoseLandmark(PoseLandmark.RIGHT_EYE_INNER)
+        val rightEye = pose.getPoseLandmark(PoseLandmark.RIGHT_EYE)
+        val rightEyeOuter = pose.getPoseLandmark(PoseLandmark.RIGHT_EYE_OUTER)
+        val leftEar = pose.getPoseLandmark(PoseLandmark.LEFT_EAR)
+        val rightEar = pose.getPoseLandmark(PoseLandmark.RIGHT_EAR)
+        val leftMouth = pose.getPoseLandmark(PoseLandmark.LEFT_MOUTH)
+        val rightMouth = pose.getPoseLandmark(PoseLandmark.RIGHT_MOUTH)
+
+        val leftShoulder = pose.getPoseLandmark(PoseLandmark.LEFT_SHOULDER)
+        val rightShoulder = pose.getPoseLandmark(PoseLandmark.RIGHT_SHOULDER)
+        val leftElbow = pose.getPoseLandmark(PoseLandmark.LEFT_ELBOW)
+        val rightElbow = pose.getPoseLandmark(PoseLandmark.RIGHT_ELBOW)
+        val leftWrist = pose.getPoseLandmark(PoseLandmark.LEFT_WRIST)
+        val rightWrist = pose.getPoseLandmark(PoseLandmark.RIGHT_WRIST)
+        val leftHip = pose.getPoseLandmark(PoseLandmark.LEFT_HIP)
+        val rightHip = pose.getPoseLandmark(PoseLandmark.RIGHT_HIP)
+        val leftKnee = pose.getPoseLandmark(PoseLandmark.LEFT_KNEE)
+        val rightKnee = pose.getPoseLandmark(PoseLandmark.RIGHT_KNEE)
+        val leftAnkle = pose.getPoseLandmark(PoseLandmark.LEFT_ANKLE)
+        val rightAnkle = pose.getPoseLandmark(PoseLandmark.RIGHT_ANKLE)
+
+        val leftPinky = pose.getPoseLandmark(PoseLandmark.LEFT_PINKY)
+        val rightPinky = pose.getPoseLandmark(PoseLandmark.RIGHT_PINKY)
+        val leftIndex = pose.getPoseLandmark(PoseLandmark.LEFT_INDEX)
+        val rightIndex = pose.getPoseLandmark(PoseLandmark.RIGHT_INDEX)
+        val leftThumb = pose.getPoseLandmark(PoseLandmark.LEFT_THUMB)
+        val rightThumb = pose.getPoseLandmark(PoseLandmark.RIGHT_THUMB)
+        val leftHeel = pose.getPoseLandmark(PoseLandmark.LEFT_HEEL)
+        val rightHeel = pose.getPoseLandmark(PoseLandmark.RIGHT_HEEL)
+        val leftFootIndex = pose.getPoseLandmark(PoseLandmark.LEFT_FOOT_INDEX)
+        val rightFootIndex = pose.getPoseLandmark(PoseLandmark.RIGHT_FOOT_INDEX)
+
+        // 绘制所有关键点
+        for (landmark in landmarks) {
+            val (x, y) = transformCoordinate(
+                landmark.position.x,
+                landmark.position.y,
+                bitmap.width
+            )
+            canvas.drawCircle(x, y, DOT_RADIUS, dotPaint)
+        }
+
+        // 绘制连接线
+        // 面部
+        drawLine(canvas, nose, leftEyeInner, whitePaint, bitmap.width)
+        drawLine(canvas, leftEyeInner, leftEye, whitePaint, bitmap.width)
+        drawLine(canvas, leftEye, leftEyeOuter, whitePaint, bitmap.width)
+        drawLine(canvas, leftEyeOuter, leftEar, whitePaint, bitmap.width)
+        drawLine(canvas, nose, rightEyeInner, whitePaint, bitmap.width)
+        drawLine(canvas, rightEyeInner, rightEye, whitePaint, bitmap.width)
+        drawLine(canvas, rightEye, rightEyeOuter, whitePaint, bitmap.width)
+        drawLine(canvas, rightEyeOuter, rightEar, whitePaint, bitmap.width)
+        drawLine(canvas, leftMouth, rightMouth, whitePaint, bitmap.width)
+
+        // 身体
+        drawLine(canvas, leftShoulder, rightShoulder, whitePaint, bitmap.width)
+        drawLine(canvas, leftHip, rightHip, whitePaint, bitmap.width)
+
+        // 左侧身体
+        drawLine(canvas, leftShoulder, leftElbow, leftPaint, bitmap.width)
+        drawLine(canvas, leftElbow, leftWrist, leftPaint, bitmap.width)
+        drawLine(canvas, leftShoulder, leftHip, leftPaint, bitmap.width)
+        drawLine(canvas, leftHip, leftKnee, leftPaint, bitmap.width)
+        drawLine(canvas, leftKnee, leftAnkle, leftPaint, bitmap.width)
+        drawLine(canvas, leftWrist, leftThumb, leftPaint, bitmap.width)
+        drawLine(canvas, leftWrist, leftPinky, leftPaint, bitmap.width)
+        drawLine(canvas, leftWrist, leftIndex, leftPaint, bitmap.width)
+        drawLine(canvas, leftIndex, leftPinky, leftPaint, bitmap.width)
+        drawLine(canvas, leftAnkle, leftHeel, leftPaint, bitmap.width)
+        drawLine(canvas, leftHeel, leftFootIndex, leftPaint, bitmap.width)
+
+        // 右侧身体
+        drawLine(canvas, rightShoulder, rightElbow, rightPaint, bitmap.width)
+        drawLine(canvas, rightElbow, rightWrist, rightPaint, bitmap.width)
+        drawLine(canvas, rightShoulder, rightHip, rightPaint, bitmap.width)
+        drawLine(canvas, rightHip, rightKnee, rightPaint, bitmap.width)
+        drawLine(canvas, rightKnee, rightAnkle, rightPaint, bitmap.width)
+        drawLine(canvas, rightWrist, rightThumb, rightPaint, bitmap.width)
+        drawLine(canvas, rightWrist, rightPinky, rightPaint, bitmap.width)
+        drawLine(canvas, rightWrist, rightIndex, rightPaint, bitmap.width)
+        drawLine(canvas, rightIndex, rightPinky, rightPaint, bitmap.width)
+        drawLine(canvas, rightAnkle, rightHeel, rightPaint, bitmap.width)
+        drawLine(canvas, rightHeel, rightFootIndex, rightPaint, bitmap.width)
+
+        warningParts.forEach {
+            drawLine(
+                canvas,
+                pose.getPoseLandmark(it[0]),
+                pose.getPoseLandmark(it[1]),
+                warningPaint,
+                bitmap.width
+            )
+            drawLine(
+                canvas,
+                pose.getPoseLandmark(it[1]),
+                pose.getPoseLandmark(it[2]),
+                warningPaint,
+                bitmap.width
+            )
+        }
+        return bitmapWithWrongParts
+    }
+
+    /**
+     * 在Canvas上绘制两点之间的连线
+     */
+    private fun drawLine(
+        canvas: Canvas,
+        startLandmark: PoseLandmark?,
+        endLandmark: PoseLandmark?,
+        paint: Paint,
+        imageWidth: Int
+    ) {
+        if (startLandmark == null || endLandmark == null) return
+
+        val (startX, startY) = transformCoordinate(
+            startLandmark.position.x,
+            startLandmark.position.y,
+            imageWidth
+        )
+
+        val (endX, endY) = transformCoordinate(
+            endLandmark.position.x,
+            endLandmark.position.y,
+            imageWidth
+        )
+
+        canvas.drawLine(startX, startY, endX, endY, paint)
+    }
+
+    /**
+     * 转换坐标 - 使用从图像测试中确定的简单缩放和偏移
+     */
+    private fun transformCoordinate(
+        x: Float,
+        y: Float,
+        imageWidth: Int
+    ): Pair<Float, Float> {
+        return Pair(
+            x * SCALE_FACTOR - imageWidth / X_OFFSET_FACTOR,
+            y * SCALE_FACTOR
+        )
     }
 
     // 添加错误姿势模型，并限制数量
@@ -108,6 +312,18 @@ object BaduanjinPoseEvaluator {
                         poseRightImageArrayList[minDownWrongModel!!.poseIndex!!]
                     addWrongPoseToList(minDownWrongModel!!)
                 }
+                if (leftMaxWrongModel != null) {
+                    leftMaxWrongModel!!.wrongPoseImage = bitmap.copy(bitmap.config!!, true)
+                    leftMaxWrongModel!!.rightPoseBitmap =
+                        poseRightImageArrayList[leftMaxWrongModel!!.poseIndex!!]
+                    addWrongPoseToList(leftMaxWrongModel!!)
+                }
+                if (rightMaxWrongModel != null) {
+                    rightMaxWrongModel!!.wrongPoseImage = bitmap.copy(bitmap.config!!, true)
+                    rightMaxWrongModel!!.rightPoseBitmap =
+                        poseRightImageArrayList[rightMaxWrongModel!!.poseIndex!!]
+                    addWrongPoseToList(rightMaxWrongModel!!)
+                }
                 val directory = File(
                     Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES),
                     "AiTrainer"
@@ -129,6 +345,11 @@ object BaduanjinPoseEvaluator {
                     maxUpFrame?.recycle()
                     maxUpFrame = null
                     maxUpWrongModel = null
+
+                    leftMaxAngle = 0
+                    rightMaxAngle = 0
+                    leftMaxFrame = null
+                    rightMaxFrame = null
                 } else {
                     minAngle = 999
                     minDownFrame?.recycle()
@@ -238,27 +459,20 @@ object BaduanjinPoseEvaluator {
             var minAngle = 999
             internal var minDownFrame: Bitmap? = null
 
-            // 最底部的两个手臂的角度 Pair(left,right)
+            // 最底部的两个手臂的角度 Pair(left,right) zh-todo 最底部动作判断
             var minArmCombineAngle = Pair(999, 999)
 
             // 最底部部的一帧错误 model
             internal var minDownWrongModel: WrongPoseModel? = null
 
-
-            // 调整系数 - 根据图像测试调整以获得最佳匹配效果
-            private const val SCALE_FACTOR = 1.5f       // 缩放因子
-            private const val X_OFFSET_FACTOR = 3f    // X轴偏移因子
-            private const val DOT_RADIUS = 8f           // 关键点半径
-            private const val LINE_WIDTH = 10f          // 线条宽度
-
-
             fun getScore(
                 poseStage: String,
+                result: MutableList<String?>? = null,
                 monitoringList: List<PosePart>,
                 detector: PoseAngleDetector,
                 currentFrame: Bitmap,
                 pose: Pose
-            ): String {
+            ) {
                 countFrame += 1
 
                 with(detector) {
@@ -321,208 +535,115 @@ object BaduanjinPoseEvaluator {
                             tempWrongModel.poseTips = it.tips
                             val paintResult = drawPoseOnBitmap(tempWrongParts, currentFrame, pose)
                             saveFixedFrame(tempWrongModel, paintResult, "fixedFrame_$paintResult")
-
-                            // 使用带防抖的日志方法
-//                            logWarning(fixAngle, it.tips)
                         }
                     }
                 }
-                return ""
             }
+        }
+    }
 
-            /**
-             * 在Bitmap上绘制人体姿态关键点
-             */
-            private fun drawPoseOnBitmap(
-                warningParts: MutableList<IntArray>,
-                bitmap: Bitmap,
+    /**
+     * 左右开弓似射雕 检测器
+     */
+    class Pose2 {
+        companion object {
+            // 用于判断是否进入 up 状态，当这个值最大时就说明运动到最顶部了
+            var maxShoulderCombineAngle = 0
+
+            // --------------- 右边 ---------------
+            // 最大的一帧图片
+            internal var rightMaxFrame: Bitmap? = null
+
+            // 最大的一帧错误 model
+            internal var rightMaxWrongModel: WrongPoseModel? = null
+
+            // 最大的角度
+            var rightMaxAngle = 0
+
+
+            // --------------- 左边 ---------------
+            // 最大的一帧图片
+            internal var leftMaxFrame: Bitmap? = null
+
+            // 最大的一帧错误 model
+            internal var leftMaxWrongModel: WrongPoseModel? = null
+
+            // 最大的角度
+            var leftMaxAngle = 0
+
+            fun getScore(
+                poseStage: String,
+                result: MutableList<String?>? = null,
+                monitoringList: List<PosePart>,
+                detector: PoseAngleDetector,
+                currentFrame: Bitmap,
                 pose: Pose
-            ): Bitmap {
-                // 创建一个副本，避免修改原始bitmap
-                val bitmapWithWrongParts = bitmap.copy(bitmap.config!!, true)
-                val canvas = Canvas(bitmapWithWrongParts)
-
-                // 设置画笔
-                val whitePaint = Paint().apply {
-                    color = Color.WHITE
-                    strokeWidth = LINE_WIDTH
-                }
-                val leftPaint = Paint().apply {
-                    color = Color.GREEN
-                    strokeWidth = LINE_WIDTH
-                }
-                val rightPaint = Paint().apply {
-                    color = Color.YELLOW
-                    strokeWidth = LINE_WIDTH
-                }
-                val dotPaint = Paint().apply {
-                    color = Color.WHITE
-                    strokeWidth = DOT_RADIUS
-                }
-                // 添加红色画笔用于标记警告部位
-                val warningPaint = Paint().apply {
-                    color = Color.RED
-                    strokeWidth = LINE_WIDTH * 1.2f  // 使警告线条稍粗一些
-                }
-
-                // 获取所有关键点
-                val landmarks = pose.allPoseLandmarks
-                if (landmarks.isEmpty()) return bitmapWithWrongParts
-
-                // 提取常用关键点
-                val nose = pose.getPoseLandmark(PoseLandmark.NOSE)
-                val leftEyeInner = pose.getPoseLandmark(PoseLandmark.LEFT_EYE_INNER)
-                val leftEye = pose.getPoseLandmark(PoseLandmark.LEFT_EYE)
-                val leftEyeOuter = pose.getPoseLandmark(PoseLandmark.LEFT_EYE_OUTER)
-                val rightEyeInner = pose.getPoseLandmark(PoseLandmark.RIGHT_EYE_INNER)
-                val rightEye = pose.getPoseLandmark(PoseLandmark.RIGHT_EYE)
-                val rightEyeOuter = pose.getPoseLandmark(PoseLandmark.RIGHT_EYE_OUTER)
-                val leftEar = pose.getPoseLandmark(PoseLandmark.LEFT_EAR)
-                val rightEar = pose.getPoseLandmark(PoseLandmark.RIGHT_EAR)
-                val leftMouth = pose.getPoseLandmark(PoseLandmark.LEFT_MOUTH)
-                val rightMouth = pose.getPoseLandmark(PoseLandmark.RIGHT_MOUTH)
-
-                val leftShoulder = pose.getPoseLandmark(PoseLandmark.LEFT_SHOULDER)
-                val rightShoulder = pose.getPoseLandmark(PoseLandmark.RIGHT_SHOULDER)
-                val leftElbow = pose.getPoseLandmark(PoseLandmark.LEFT_ELBOW)
-                val rightElbow = pose.getPoseLandmark(PoseLandmark.RIGHT_ELBOW)
-                val leftWrist = pose.getPoseLandmark(PoseLandmark.LEFT_WRIST)
-                val rightWrist = pose.getPoseLandmark(PoseLandmark.RIGHT_WRIST)
-                val leftHip = pose.getPoseLandmark(PoseLandmark.LEFT_HIP)
-                val rightHip = pose.getPoseLandmark(PoseLandmark.RIGHT_HIP)
-                val leftKnee = pose.getPoseLandmark(PoseLandmark.LEFT_KNEE)
-                val rightKnee = pose.getPoseLandmark(PoseLandmark.RIGHT_KNEE)
-                val leftAnkle = pose.getPoseLandmark(PoseLandmark.LEFT_ANKLE)
-                val rightAnkle = pose.getPoseLandmark(PoseLandmark.RIGHT_ANKLE)
-
-                val leftPinky = pose.getPoseLandmark(PoseLandmark.LEFT_PINKY)
-                val rightPinky = pose.getPoseLandmark(PoseLandmark.RIGHT_PINKY)
-                val leftIndex = pose.getPoseLandmark(PoseLandmark.LEFT_INDEX)
-                val rightIndex = pose.getPoseLandmark(PoseLandmark.RIGHT_INDEX)
-                val leftThumb = pose.getPoseLandmark(PoseLandmark.LEFT_THUMB)
-                val rightThumb = pose.getPoseLandmark(PoseLandmark.RIGHT_THUMB)
-                val leftHeel = pose.getPoseLandmark(PoseLandmark.LEFT_HEEL)
-                val rightHeel = pose.getPoseLandmark(PoseLandmark.RIGHT_HEEL)
-                val leftFootIndex = pose.getPoseLandmark(PoseLandmark.LEFT_FOOT_INDEX)
-                val rightFootIndex = pose.getPoseLandmark(PoseLandmark.RIGHT_FOOT_INDEX)
-
-                // 绘制所有关键点
-                for (landmark in landmarks) {
-                    val (x, y) = transformCoordinate(
-                        landmark.position.x,
-                        landmark.position.y,
-                        bitmap.width
-                    )
-                    canvas.drawCircle(x, y, DOT_RADIUS, dotPaint)
-                }
-
-                // 绘制连接线
-                // 面部
-                drawLine(canvas, nose, leftEyeInner, whitePaint, bitmap.width)
-                drawLine(canvas, leftEyeInner, leftEye, whitePaint, bitmap.width)
-                drawLine(canvas, leftEye, leftEyeOuter, whitePaint, bitmap.width)
-                drawLine(canvas, leftEyeOuter, leftEar, whitePaint, bitmap.width)
-                drawLine(canvas, nose, rightEyeInner, whitePaint, bitmap.width)
-                drawLine(canvas, rightEyeInner, rightEye, whitePaint, bitmap.width)
-                drawLine(canvas, rightEye, rightEyeOuter, whitePaint, bitmap.width)
-                drawLine(canvas, rightEyeOuter, rightEar, whitePaint, bitmap.width)
-                drawLine(canvas, leftMouth, rightMouth, whitePaint, bitmap.width)
-
-                // 身体
-                drawLine(canvas, leftShoulder, rightShoulder, whitePaint, bitmap.width)
-                drawLine(canvas, leftHip, rightHip, whitePaint, bitmap.width)
-
-                // 左侧身体
-                drawLine(canvas, leftShoulder, leftElbow, leftPaint, bitmap.width)
-                drawLine(canvas, leftElbow, leftWrist, leftPaint, bitmap.width)
-                drawLine(canvas, leftShoulder, leftHip, leftPaint, bitmap.width)
-                drawLine(canvas, leftHip, leftKnee, leftPaint, bitmap.width)
-                drawLine(canvas, leftKnee, leftAnkle, leftPaint, bitmap.width)
-                drawLine(canvas, leftWrist, leftThumb, leftPaint, bitmap.width)
-                drawLine(canvas, leftWrist, leftPinky, leftPaint, bitmap.width)
-                drawLine(canvas, leftWrist, leftIndex, leftPaint, bitmap.width)
-                drawLine(canvas, leftIndex, leftPinky, leftPaint, bitmap.width)
-                drawLine(canvas, leftAnkle, leftHeel, leftPaint, bitmap.width)
-                drawLine(canvas, leftHeel, leftFootIndex, leftPaint, bitmap.width)
-
-                // 右侧身体
-                drawLine(canvas, rightShoulder, rightElbow, rightPaint, bitmap.width)
-                drawLine(canvas, rightElbow, rightWrist, rightPaint, bitmap.width)
-                drawLine(canvas, rightShoulder, rightHip, rightPaint, bitmap.width)
-                drawLine(canvas, rightHip, rightKnee, rightPaint, bitmap.width)
-                drawLine(canvas, rightKnee, rightAnkle, rightPaint, bitmap.width)
-                drawLine(canvas, rightWrist, rightThumb, rightPaint, bitmap.width)
-                drawLine(canvas, rightWrist, rightPinky, rightPaint, bitmap.width)
-                drawLine(canvas, rightWrist, rightIndex, rightPaint, bitmap.width)
-                drawLine(canvas, rightIndex, rightPinky, rightPaint, bitmap.width)
-                drawLine(canvas, rightAnkle, rightHeel, rightPaint, bitmap.width)
-                drawLine(canvas, rightHeel, rightFootIndex, rightPaint, bitmap.width)
-
-                warningParts.forEach {
-                    drawLine(
-                        canvas,
-                        pose.getPoseLandmark(it[0]),
-                        pose.getPoseLandmark(it[1]),
-                        warningPaint,
-                        bitmap.width
-                    )
-                    drawLine(
-                        canvas,
-                        pose.getPoseLandmark(it[1]),
-                        pose.getPoseLandmark(it[2]),
-                        warningPaint,
-                        bitmap.width
-                    )
-                }
-                return bitmapWithWrongParts
-            }
-
-            /**
-             * 在Canvas上绘制两点之间的连线
-             */
-            private fun drawLine(
-                canvas: Canvas,
-                startLandmark: PoseLandmark?,
-                endLandmark: PoseLandmark?,
-                paint: Paint,
-                imageWidth: Int
             ) {
-                if (startLandmark == null || endLandmark == null) return
+                countFrame += 1
 
-                val (startX, startY) = transformCoordinate(
-                    startLandmark.position.x,
-                    startLandmark.position.y,
-                    imageWidth
-                )
+                with(detector) {
+                    val leftShoulderAngle = getAngle(13, 11, 23)
+                    val rightShoulderAngle = getAngle(14, 12, 24)
+                    val tempWrongModel = WrongPoseModel()
+                    tempWrongModel.poseIndex = 1
+                    tempWrongModel.poseName = "左右开弓似射雕"
 
-                val (endX, endY) = transformCoordinate(
-                    endLandmark.position.x,
-                    endLandmark.position.y,
-                    imageWidth
-                )
+                    if (poseStage.contains("up")) {
+                        if (leftArmAngle < 90 && rightArmAngle > 90 && leftShoulderAngle > 50 && rightShoulderAngle > 50) {
+                            result?.add("朝右")
 
-                canvas.drawLine(startX, startY, endX, endY, paint)
-            }
+                            // 找到朝右且右手臂角度最大（伸直）的一帧
+                            if (rightMaxAngle < rightArmAngle) {
+                                rightMaxAngle = rightArmAngle
+                                result?.add("最大值:$rightMaxAngle")
+                                // 绘制人体关键点和错误区域，记录 up 最顶部关键帧
+                                val tempWrongParts = mutableListOf<IntArray>()
+                                rightMaxFrame =
+                                    drawPoseOnBitmap(tempWrongParts, currentFrame, pose)
+                                rightMaxWrongModel = tempWrongModel
+                            }
+                        }
+                        if (rightArmAngle < 90 && leftArmAngle > 90 && leftShoulderAngle > 50 && rightShoulderAngle > 50) {
+                            result?.add("朝左")
 
-            /**
-             * 转换坐标 - 使用从图像测试中确定的简单缩放和偏移
-             */
-            private fun transformCoordinate(
-                x: Float,
-                y: Float,
-                imageWidth: Int
-            ): Pair<Float, Float> {
-                return Pair(
-                    x * SCALE_FACTOR - imageWidth / X_OFFSET_FACTOR,
-                    y * SCALE_FACTOR
-                )
-            }
+                            // 找到朝左且左手臂角度最大（伸直）的一帧
+                            if (leftMaxAngle < leftArmAngle) {
+                                leftMaxAngle = leftArmAngle
+                                val tempWrongParts = mutableListOf<IntArray>()
+                                // 绘制人体关键点和错误区域，记录 up 最顶部关键帧
+                                leftMaxFrame =
+                                    drawPoseOnBitmap(tempWrongParts, currentFrame, pose)
+                                leftMaxWrongModel = tempWrongModel
+                            }
+                        }
 
+                    } else if (poseStage.contains("down")) {
+                        if (leftMaxFrame != null && leftMaxAngle !in 165..180) {
+                            saveFrame(true, leftMaxFrame, "leftMaxFrame_$leftMaxFrame")
+                        }
+                        if (rightMaxFrame != null && rightMaxAngle !in 165..180) {
+                            saveFrame(true, rightMaxFrame, "rightMaxFrame_$rightMaxFrame")
+                        }
+                    }
 
-            // Add a new method for explicitly resetting angles when needed (e.g., between exercises)
-            fun resetAngles() {
-                maxShoulderCombineAngle = 0
-                minAngle = 999
+                    // 筛选出固定部位角度
+                    monitoringList.filter { it.poseType == 0 }.forEach {
+                        val fixAngle = if (it.poseIndex.size == 3) {
+                            getAnyAngleBy3Point(it.poseIndex)
+                        } else {
+                            getAnyAngleBy4Point(it.poseIndex)
+                        }
+                        if (fixAngle !in it.firstStandardRange[0]..it.firstStandardRange[1]) {
+                            val tempWrongParts = mutableListOf<IntArray>()
+                            if (it.poseIndex.size == 3) {
+                                tempWrongParts.add(0, it.poseIndex)
+                            }
+                            tempWrongModel.poseTips = it.tips
+                            val paintResult = drawPoseOnBitmap(tempWrongParts, currentFrame, pose)
+                            saveFixedFrame(tempWrongModel, paintResult, "fixedFrame_$paintResult")
+                        }
+                    }
+                }
             }
         }
     }

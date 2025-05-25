@@ -12,7 +12,6 @@
       "腰背挺直",
       "脚跟与肩同宽"
     ],
-    "getPoseBurnCalPerMin": 10.0,
     "monitorPosePartList": [
       {
         "firstStandardRange": [
@@ -66,7 +65,6 @@
       "拉弓时食指上翘呈“八字掌”，手臂与肩平"
     ],
     "monitorPosePartList": [
-
     ],
     "poseFeeling": [
       "胸部扩张，肩背肌肉收紧，手臂有对抗发力感"

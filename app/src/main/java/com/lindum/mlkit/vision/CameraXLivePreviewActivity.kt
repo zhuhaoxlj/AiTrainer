@@ -5,23 +5,19 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
-import android.graphics.Canvas
 import android.os.Bundle
-import android.os.Environment
 import android.os.Handler
+import android.os.Looper
 import android.os.Message
 import android.speech.tts.TextToSpeech
 import android.speech.tts.TextToSpeech.OnInitListener
 import android.util.Log
 import android.view.View
 import android.view.WindowManager
-import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.CompoundButton
-import android.widget.ImageView
 import android.widget.LinearLayout
-import android.widget.Spinner
 import android.widget.TextView
 import android.widget.Toast
 import android.widget.ToggleButton
@@ -36,8 +32,6 @@ import androidx.camera.view.PreviewView
 import androidx.core.app.ActivityCompat
 import androidx.core.app.ActivityCompat.OnRequestPermissionsResultCallback
 import androidx.core.content.ContextCompat
-import androidx.core.graphics.createBitmap
-import androidx.core.graphics.withSave
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProvider.AndroidViewModelFactory
@@ -46,11 +40,12 @@ import com.google.mlkit.common.MlKitException
 import com.lindum.mlkit.vision.dev.R
 import com.lindum.mlkit.vision.dev.databinding.ActivityVisionCameraxLivePreviewBinding
 import com.lindum.mlkit.vision.entity.PoseEntity
-import com.lindum.mlkit.vision.posedetector.PoseDataUtils
 import com.lindum.mlkit.vision.posedetector.PoseDetectorProcessor
 import com.lindum.mlkit.vision.preference.PreferenceUtils
 import com.lindum.mlkit.vision.preference.SettingsActivity
-import com.lindum.mlkit.vision.result.TrainingResultActivity
+import com.lindum.mlkit.vision.utils.ActivityStarter
+import com.lindum.mlkit.vision.utils.BaduanjinPoseEvaluator
+import com.lindum.mlkit.vision.utils.BaduanjinPoseEvaluator.clearAllWarningPoseList
 import com.lindum.mlkit.vision.utils.FileUtils
 import com.lindum.mlkit.vision.utils.StatusBarUtils
 import com.lindum.mlkit.vision.view.PoseDetailsActivity
@@ -60,34 +55,19 @@ import java.io.FileOutputStream
 import java.io.IOException
 import java.text.MessageFormat
 import java.time.LocalDate
-import com.lindum.mlkit.vision.utils.ActivityStarter
-import com.lindum.mlkit.vision.utils.BaduanjinPoseEvaluator
-import com.lindum.mlkit.vision.utils.BaduanjinPoseEvaluator.clearAllWarningPoseList
 
 /**
- * Live preview demo app for ML Kit APIs using CameraX.
+ * 姿态识别
  *
  * @author: MarkGosling
  * @date: 2022/1/25 16:13
  */
 @KeepName
 class CameraXLivePreviewActivity : AppCompatActivity(), OnRequestPermissionsResultCallback,
-    AdapterView.OnItemSelectedListener, CompoundButton.OnCheckedChangeListener,
+    CompoundButton.OnCheckedChangeListener,
     QuickShot.QuickShotListener {
-    // TTS 语音助手
+    // TTS 语音助手 zh-todo 说话太卡
     private var textToSpeech: TextToSpeech? = null
-
-    // 相机预览视图组件
-    private var previewView: PreviewView? = null
-
-    // 上一个动作按钮
-    var prePoseImageButton: Button? = null
-
-    // 下一个动作按钮
-    var nextPoseImageButton: Button? = null
-
-    // ml kit 绘图层
-    private var graphicOverlay: GraphicOverlay? = null
 
     private var cameraProvider: ProcessCameraProvider? = null
 
@@ -109,23 +89,6 @@ class CameraXLivePreviewActivity : AppCompatActivity(), OnRequestPermissionsResu
     // 定时器
     var mHandler2: Handler? = null
     var r2: Runnable? = null
-    var mHandler3: Handler? = null
-    var r3: Runnable? = null
-
-    /**
-     * 左下角信息
-     */
-    // 动作名称
-    private var poseName: TextView? = null
-
-    // 第几个动作
-    private var poseIndexText: TextView? = null
-
-    // 当前动作进度
-    private var poseProcessInfo: TextView? = null
-
-    // 倒计时秒数
-    private var countdownSecondsTextView: TextView? = null
 
     // 现在动作进行的秒数
     private var nowPoseProcessSeconds = 0
@@ -136,20 +99,9 @@ class CameraXLivePreviewActivity : AppCompatActivity(), OnRequestPermissionsResu
     // 完成动作组数
     private var countGroupsOfPose = 0
 
-    // 下一个动作按钮
-    var nextPoseButton: LinearLayout? = null
-
-    // 上一个动作按钮
-    var prePoseButton: LinearLayout? = null
-
     // 是否提醒过呼吸方法
     private var isRemindedBreathingMethods = false
 
-    var mLongPressRunnable: Runnable? = null
-    var mLastMotionX: Int = 0
-    var mLastMotionY: Int = 0
-    var isLongPress: Boolean = false
-    var isMoved: Boolean = false
     private lateinit var binding: ActivityVisionCameraxLivePreviewBinding
 
     @SuppressLint("SetTextI18n", "ClickableViewAccessibility")
@@ -166,27 +118,19 @@ class CameraXLivePreviewActivity : AppCompatActivity(), OnRequestPermissionsResu
 
 
         // 初始化
+        // 从主页获取数据库中的动作数据
+        poseEntityList = MainActivity.poseEntityArrayList
         init()
-        mLongPressRunnable = Runnable { handler.sendMessage(handler.obtainMessage(1)) }
         clearAllWarningPoseList()
-        // SD 卡根目录
-        val sdPath = Environment.getExternalStorageDirectory().path
-        //            // 姿态数据工具类
-        PoseDataUtils.writeJSON2Loacl(poseEntityList, "$sdPath/AiTrainer/poseData.json")
-
-        //            isPermissionRequested = true;
-//        }
 
         // 定时更新变量定时器
         updateVariable()
-        // 从主页获取数据库中的动作数据
-        poseEntityList = MainActivity.poseEntityArrayList
 
 
         nowPoseName = poseEntityList!![nowPoseIndex].getPoseName()
 
         // 跳转至结果界面
-        binding.analyseResult?.setOnClickListener(View.OnClickListener { view: View? ->
+        binding.analyseResult.setOnClickListener(View.OnClickListener { view: View? ->
             val poseEntity: PoseEntity = poseEntityList!![nowPoseIndex]
             countMinutes = nowPoseProcessSeconds / 60f
             if (poseEntity.getPoseType() == 1) {
@@ -210,20 +154,6 @@ class CameraXLivePreviewActivity : AppCompatActivity(), OnRequestPermissionsResu
             isEnd = true
         })
 
-        // 启动截图定时器
-        this.screenCut
-
-
-        previewView = findViewById<PreviewView?>(R.id.preview_view)
-        if (previewView == null) {
-            Logger.e("previewView is null")
-        }
-
-        // 截图
-        if (graphicOverlay == null) {
-            Logger.e("graphicOverlay is null")
-        }
-        val spinner = findViewById<Spinner>(R.id.spinner)
         val options: MutableList<String?> = ArrayList<String?>()
         options.add(POSE_DETECTION)
         // Creating adapter for spinner
@@ -231,11 +161,8 @@ class CameraXLivePreviewActivity : AppCompatActivity(), OnRequestPermissionsResu
         // Drop down layout style - list view with radio button
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         // attaching data adapter to spinner
-        spinner.setAdapter(dataAdapter)
-        spinner.onItemSelectedListener = this
 
-        val facingSwitch = findViewById<ToggleButton>(R.id.facing_switch)
-        facingSwitch.setOnCheckedChangeListener(this)
+        binding.facingSwitch.setOnCheckedChangeListener(this)
 
         ViewModelProvider(this, AndroidViewModelFactory.getInstance(application))
             .get<CameraXViewModel>(CameraXViewModel::class.java)
@@ -258,13 +185,12 @@ class CameraXLivePreviewActivity : AppCompatActivity(), OnRequestPermissionsResu
                 startActivity(intent)
             })
 
-        nextPoseImageButton!!.setOnClickListener(View.OnClickListener { view: View? ->
+        binding.nextPoseImage.setOnClickListener(View.OnClickListener { view: View? ->
             if (nowPoseIndex + 1 < poseEntityList!!.size) {
-                nowPoseIndex++
-                count = 0f
                 countdownSeconds = 3
                 nowPoseProcessSeconds = 0
                 updatePoseInfo()
+                nowPoseIndex++
                 textToSpeech!!.speak(
                     "下一个动作" + poseEntityList!![nowPoseIndex].getPoseName(),
                     TextToSpeech.QUEUE_FLUSH,
@@ -273,22 +199,20 @@ class CameraXLivePreviewActivity : AppCompatActivity(), OnRequestPermissionsResu
                 isRemindedBreathingMethods = false
             }
         })
-        prePoseImageButton!!.setOnClickListener(View.OnClickListener { view: View? ->
+        binding.prePoseImage.setOnClickListener(View.OnClickListener { view: View? ->
             if (nowPoseIndex - 1 >= 0) {
-                nowPoseIndex--
-                count = 0f
                 countdownSeconds = 3
                 nowPoseProcessSeconds = 0
                 updatePoseInfo()
+                nowPoseIndex--
             }
         })
-        nextPoseButton!!.setOnClickListener(View.OnClickListener { view: View? ->
+        binding.nextButton.setOnClickListener(View.OnClickListener { view: View? ->
             if (nowPoseIndex + 1 < poseEntityList!!.size) {
-                nowPoseIndex++
-                count = 0f
                 countdownSeconds = 3
                 nowPoseProcessSeconds = 0
                 updatePoseInfo()
+                nowPoseIndex++
                 textToSpeech!!.speak(
                     "下一个动作" + poseEntityList!![nowPoseIndex].getPoseName(),
                     TextToSpeech.QUEUE_FLUSH,
@@ -297,13 +221,12 @@ class CameraXLivePreviewActivity : AppCompatActivity(), OnRequestPermissionsResu
                 isRemindedBreathingMethods = false
             }
         })
-        prePoseButton!!.setOnClickListener(View.OnClickListener { view: View? ->
+        binding.preButton.setOnClickListener(View.OnClickListener { view: View? ->
             if (nowPoseIndex - 1 >= 0) {
-                nowPoseIndex--
-                count = 0f
                 countdownSeconds = 3
                 nowPoseProcessSeconds = 0
                 updatePoseInfo()
+                nowPoseIndex--
             }
         })
         if (!allPermissionsGranted()) {
@@ -316,36 +239,32 @@ class CameraXLivePreviewActivity : AppCompatActivity(), OnRequestPermissionsResu
         layoutParams.height = StatusBarUtils.getStatusBarHeight(this)
         binding.vFakeStatusBar.layoutParams = layoutParams
 
-
         // 初始化变量
         countdownSeconds = 5
-        nowPoseIndex = 0
-        poseEntityList = ArrayList<PoseEntity>()
-        pose1 = false
-        // 创建截图文件夹
+        // zh-todo 记得改回来
+        nowPoseIndex = 1
+
+        val poseEntity = poseEntityList?.getOrNull(nowPoseIndex)
+        if (poseEntity?.poseType == 0) {
+            binding.poseProcessInfo.text = getText(R.string.one)
+        } else if (poseEntity?.poseType == 1) {
+            binding.poseProcessInfo.text = "0"
+        }
+
         timeMarkPoint = System.currentTimeMillis() / 1000
         imageSavePath = MainActivity.appFilePath + "/files/analysisReport/" + LocalDate.now()
             .toString() + "/" + timeMarkPoint + "/"
         Log.i("test_path", imageSavePath.toString())
         FileUtils.createFile(imageSavePath, FileUtils.CREATE_FOLDER)
+
         // 初始化组件
-        poseName = findViewById<TextView>(R.id.poseName)
-        poseIndexText = findViewById<TextView>(R.id.nowPoseIndexText)
-        graphicOverlay = findViewById<GraphicOverlay?>(R.id.graphic_overlay)
-        poseProcessInfo = findViewById<TextView>(R.id.poseProcessInfo)
-        countdownSecondsTextView = findViewById<TextView>(R.id.countdownSecondsText)
-        nextPoseButton = findViewById<LinearLayout>(R.id.nextButton)
-        prePoseButton = findViewById<LinearLayout>(R.id.preButton)
-        prePoseImageButton = findViewById<Button>(R.id.prePoseImage)
-        nextPoseImageButton = findViewById<Button>(R.id.nextPoseImage)
-        val explainButton = findViewById<LinearLayout>(R.id.explain)
-        explainButton.setOnClickListener(View.OnClickListener { view: View? ->
+        binding.explain.setOnClickListener(View.OnClickListener { view: View? ->
             val intent = Intent(this@CameraXLivePreviewActivity, PoseDetailsActivity::class.java)
             intent.putExtra("feeling", poseEntityList!![nowPoseIndex].getPoseFeeling())
             intent.putExtra("steps", poseEntityList!![nowPoseIndex].getStepsOfPose())
             intent.putExtra(
                 "commonMistakes",
-                poseEntityList!!.get(nowPoseIndex).getCommonMistakes()
+                poseEntityList!![nowPoseIndex].getCommonMistakes()
             )
             intent.putExtra("details", poseEntityList!![nowPoseIndex].getDetailTips())
             intent.putExtra("breath", poseEntityList!![nowPoseIndex].getBreathTips())
@@ -371,16 +290,28 @@ class CameraXLivePreviewActivity : AppCompatActivity(), OnRequestPermissionsResu
         })
     }
 
+    fun clickNextPoseButton() {
+        runOnUiThread {
+            binding.nextPoseImage.callOnClick()
+        }
+    }
+
+    fun updatePoseCount(poseCount: Int) {
+        runOnUiThread {
+            binding.poseProcessInfo.text = "$poseCount"
+        }
+    }
+
     /**
      * 定时清空警告点、倒数秒数刷新、计算总运动时长
      */
     fun updateVariable() {
-        mHandler2 = Handler()
+        mHandler2 = Handler(Looper.getMainLooper())
         r2 = object : Runnable {
             override fun run() {
                 updatePoseInfo()
                 if (countdownSeconds >= 0) {
-                    countdownSecondsTextView!!.visibility = View.VISIBLE
+                    binding.countdownSecondsText.visibility = View.VISIBLE
                     textToSpeech!!.speak(
                         countdownSeconds.toString() + "",
                         TextToSpeech.QUEUE_ADD,
@@ -389,7 +320,7 @@ class CameraXLivePreviewActivity : AppCompatActivity(), OnRequestPermissionsResu
                     countdownSeconds--
                 }
                 if (countdownSeconds == -1) {
-                    countdownSecondsTextView!!.visibility = View.INVISIBLE
+                    binding.countdownSecondsText.visibility = View.INVISIBLE
                     // 语音助手提示
                     val voiceAssistantHandle = Handler()
                     val voiceAssistantRunnable: Runnable = object : Runnable {
@@ -413,6 +344,12 @@ class CameraXLivePreviewActivity : AppCompatActivity(), OnRequestPermissionsResu
                 // 现在动作进行的秒数增加
                 if (countdownSeconds == -1) {
                     nowPoseProcessSeconds++
+                    val poseEntity = poseEntityList?.getOrNull(nowPoseIndex)
+                    poseEntity?.let { pose ->
+                        if (pose.poseType == 0 && nowPoseProcessSeconds > poseEntity.poseProcessValue) {
+                            clickNextPoseButton()
+                        }
+                    }
                 }
                 if (!isEnd) {
                     totalTrainingTime++
@@ -429,51 +366,26 @@ class CameraXLivePreviewActivity : AppCompatActivity(), OnRequestPermissionsResu
     fun updatePoseInfo() {
         // 更新姿势名称
         nowPoseName = poseEntityList!![nowPoseIndex].getPoseName()
-        poseIndexText!!.setText(
-            MessageFormat.format(
-                "{0}/{1}",
-                nowPoseIndex + 1,
-                poseEntityList!!.size
-            )
+        binding.nowPoseIndexText.text = MessageFormat.format(
+            "{0}/{1}",
+            nowPoseIndex + 1,
+            poseEntityList!!.size
         )
-        poseName!!.text = nowPoseName
+        binding.poseName.text = nowPoseName
         // 更新当前动作进度 个数
-        poseProcessInfo!!.text = count.toInt().toString() + ""
         if (poseEntityList!![nowPoseIndex].getPoseType() == 1) {
             // 更新当前动作进度 个数
-            poseProcessInfo!!.text = count.toInt().toString() + ""
         } else if (poseEntityList!![nowPoseIndex].getPoseType() == 0) {
             // 更新当前动作进度 秒数
-            poseProcessInfo!!.text = nowPoseProcessSeconds.toString() + "\""
+            binding.poseProcessInfo.text = nowPoseProcessSeconds.toString() + "\""
         }
         // 更新倒数秒数
-        countdownSecondsTextView!!.text = countdownSeconds.toString() + ""
+        binding.countdownSecondsText.text = countdownSeconds.toString() + ""
     }
 
     override fun onSaveInstanceState(bundle: Bundle) {
         super.onSaveInstanceState(bundle)
         bundle.putString(STATE_SELECTED_MODEL, selectedModel)
-    }
-
-    @Synchronized
-    override fun onItemSelected(
-        parent: AdapterView<*>, view: View?, pos: Int,
-        id: Long
-    ) {
-        selectedModel = parent.getItemAtPosition(pos).toString()
-        Logger.e("Selected model: $selectedModel")
-        bindAnalysisUseCase()
-    }
-
-    override fun onNothingSelected(parent: AdapterView<*>?) {
-        // Do nothing.
-    }
-
-    @SuppressLint("HandlerLeak")
-    private val handler: Handler = object : Handler() {
-        @SuppressLint("HandlerLeak")
-        override fun handleMessage(msg: Message) {
-        }
     }
 
     override fun onCheckedChanged(buttonView: CompoundButton?, isChecked: Boolean) {
@@ -522,7 +434,6 @@ class CameraXLivePreviewActivity : AppCompatActivity(), OnRequestPermissionsResu
 
     override fun onBackPressed() {
         super.onBackPressed()
-        mHandler3!!.removeCallbacks(r3!!)
         mHandler2!!.removeCallbacks(r2!!)
     }
 
@@ -531,7 +442,6 @@ class CameraXLivePreviewActivity : AppCompatActivity(), OnRequestPermissionsResu
         if (imageProcessor != null) {
             imageProcessor!!.stop()
         }
-        mHandler3!!.removeCallbacks(r3!!)
         mHandler2!!.removeCallbacks(r2!!)
     }
 
@@ -590,7 +500,7 @@ class CameraXLivePreviewActivity : AppCompatActivity(), OnRequestPermissionsResu
             builder.setTargetResolution(targetResolution)
         }
         previewUseCase = builder.build()
-        previewUseCase!!.setSurfaceProvider(previewView!!.getSurfaceProvider())
+        previewUseCase!!.setSurfaceProvider(binding.previewView.getSurfaceProvider())
         cameraProvider!!.bindToLifecycle( /* lifecycleOwner= */this,
             cameraSelector!!,
             previewUseCase
@@ -651,11 +561,11 @@ class CameraXLivePreviewActivity : AppCompatActivity(), OnRequestPermissionsResu
                     val isImageFlipped = lensFacing == CameraSelector.LENS_FACING_FRONT
                     val rotationDegrees = imageProxy!!.imageInfo.rotationDegrees
                     if (rotationDegrees == 0 || rotationDegrees == 180) {
-                        graphicOverlay!!.setImageSourceInfo(
+                        binding.graphicOverlay.setImageSourceInfo(
                             imageProxy.width, imageProxy.height, isImageFlipped
                         )
                     } else {
-                        graphicOverlay!!.setImageSourceInfo(
+                        binding.graphicOverlay.setImageSourceInfo(
                             imageProxy.height, imageProxy.width, isImageFlipped
                         )
                     }
@@ -663,9 +573,10 @@ class CameraXLivePreviewActivity : AppCompatActivity(), OnRequestPermissionsResu
                 }
                 try {
                     // Capture the current frame bitmap for pose evaluation
-                    currentFrameBitmap = previewView?.bitmap?.copy(Bitmap.Config.ARGB_8888, true)
+                    currentFrameBitmap =
+                        binding.previewView.bitmap?.copy(Bitmap.Config.ARGB_8888, true)
 
-                    imageProcessor!!.processImageProxy(imageProxy, graphicOverlay)
+                    imageProcessor!!.processImageProxy(imageProxy, binding.graphicOverlay)
                 } catch (e: MlKitException) {
                     Logger.e("Failed to process image. Error: " + e.localizedMessage)
                     Toast.makeText(
@@ -683,87 +594,6 @@ class CameraXLivePreviewActivity : AppCompatActivity(), OnRequestPermissionsResu
         )
     }
 
-    val screenCut: Unit
-        get() {
-            /* 实时监测是否有警告点，如果有就截图 */
-            mHandler3 = Handler()
-            r3 = object : Runnable {
-                override fun run() {
-                    // ... existing code ...
-
-                    // 当前动作类型
-                    val nowPoseType: Int = poseEntityList!![nowPoseIndex].getPoseType()
-                    // 当前动作过程量上限
-                    val nowPoseProcessValue: Int =
-                        poseEntityList!!.get(
-                            nowPoseIndex
-                        ).getPoseProcessValue()
-                    if (nowPoseType == 1 && count == (nowPoseProcessValue + 1).toFloat()) {
-                        // 动作组数加一
-                        countGroupsOfPose++
-                        if (nowPoseIndex == poseEntityList!!.size - 1 && !isEnd) {
-                            Log.e("total", totalTrainingTime.toString() + "")
-                            // Add maximum angle frames to results
-//                            addMaxAngleFramesToResults()
-
-                            // 跳转到结果界面
-                            val intent =
-                                Intent(
-                                    this@CameraXLivePreviewActivity,
-                                    TrainingResultActivity::class.java
-                                )
-                            intent.putExtra("totalTrainingTime", totalTrainingTime)
-                            intent.putExtra("groupsOfPose", countGroupsOfPose)
-                            // 停止训练
-                            isEnd = true
-                            startActivity(intent)
-                            finish()
-                        } else {
-                            // ... existing code ...
-                        }
-                    }
-
-                    // Also add the call in the other completion case
-                    if (nowPoseType == 0 && nowPoseProcessSeconds == nowPoseProcessValue + 1 && nowPoseProcessSeconds != 0) {
-                        // 动作组数加一
-                        countGroupsOfPose++
-                        // 最后一个动作
-                        if (nowPoseIndex == poseEntityList!!.size - 1 && !isEnd) {
-                            // 跳转到结果界面
-                            val intent =
-                                Intent(
-                                    this@CameraXLivePreviewActivity,
-                                    TrainingResultActivity::class.java
-                                )
-                            intent.putExtra("totalTrainingTime", totalTrainingTime)
-                            intent.putExtra("groupsOfPose", countGroupsOfPose)
-                            // 停止训练
-                            isEnd = true
-                            startActivity(intent)
-                            finish()
-                        } else {
-                            val poseEntity: PoseEntity =
-                                poseEntityList!![nowPoseIndex]
-                            countMinutes =
-                                nowPoseProcessSeconds / 60f
-                            if (poseEntity.getPoseType() == 1) {
-                                poseEntity.setCountTimes(countTimes)
-                            } else {
-                                poseEntity.setCountMinutes(countMinutes)
-                            }
-                            // 动作持续数值清空
-                            nowPoseProcessSeconds = 0
-                            countMinutes = 0f
-                            countTimes = 0
-                            nextPoseButton!!.callOnClick()
-                        }
-                    }
-                    mHandler3!!.postDelayed(this, 800)
-                }
-            }
-            mHandler3!!.post(r3!!)
-        }
-
     private val requiredPermissions: Array<String>
         get() {
             try {
@@ -771,12 +601,12 @@ class CameraXLivePreviewActivity : AppCompatActivity(), OnRequestPermissionsResu
                     this.packageManager
                         .getPackageInfo(this.packageName, PackageManager.GET_PERMISSIONS)
                 val ps = info.requestedPermissions
-                if (ps != null && ps.size > 0) {
-                    return ps
+                return if (ps != null && ps.size > 0) {
+                    ps
                 } else {
-                    return arrayOf<String>("0")
+                    arrayOf<String>("0")
                 }
-            } catch (e: Exception) {
+            } catch (_: Exception) {
                 return arrayOf<String>("0")
             }
         }
@@ -830,18 +660,9 @@ class CameraXLivePreviewActivity : AppCompatActivity(), OnRequestPermissionsResu
     override fun onQuickShotFailed(path: String?, errorMsg: String?) {
     }
 
+
     companion object {
         private const val PERMISSION_REQUESTS = 1
-
-        // 动作置信度不为 1 flag 变量
-        @JvmField
-        @Volatile
-        var confidenceNotOne: Boolean = true
-
-        // 动作置信度变量
-        @JvmField
-        @Volatile
-        var confidence: Float = 0f
 
         // 姿态检测模型
         private const val POSE_DETECTION = "姿态检测"
@@ -849,10 +670,6 @@ class CameraXLivePreviewActivity : AppCompatActivity(), OnRequestPermissionsResu
         // 选择模型变量
         private const val STATE_SELECTED_MODEL = "selected_model"
 
-        // 动作计数
-        private var count = 0f
-
-        private var pose1 = false
 
         // 训练动作数据列表
         var poseEntityList: MutableList<PoseEntity>? = null
@@ -871,9 +688,7 @@ class CameraXLivePreviewActivity : AppCompatActivity(), OnRequestPermissionsResu
         // 训练是否结束
         @JvmField
         var isEnd: Boolean = false
-        var imageView: ImageView? = null
 
-        // 截图保存路径
         var imageSavePath: String? = null
 
         // 当前时间戳
@@ -890,38 +705,6 @@ class CameraXLivePreviewActivity : AppCompatActivity(), OnRequestPermissionsResu
         fun start(context: Context) {
             val intent = Intent(context, CameraXLivePreviewActivity::class.java)
             context.startActivity(intent)
-        }
-
-        fun addCount() {
-            count += 0.5f
-        }
-
-        fun getCount(): Int {
-            return count.toInt()
-        }
-
-        /**
-         * 合并两张bitmap为一张
-         *
-         * @param background 底层的图片
-         * @param foreground 上层的图片
-         * @return Bitmap 合成后的图片
-         */
-        fun combineBitmap(background: Bitmap?, foreground: Bitmap): Bitmap? {
-            if (background == null) {
-                return null
-            }
-            val bgWidth = background.getWidth()
-            val bgHeight = background.getHeight()
-            val fgWidth = foreground.getWidth()
-            val fgHeight = foreground.getHeight()
-            val newmap = createBitmap(bgWidth, bgHeight)
-            val canvas = Canvas(newmap)
-            canvas.drawBitmap(background, 0f, 0f, null)
-            canvas.drawBitmap(foreground, 0f, 0f, null)
-            canvas.withSave {
-            }
-            return newmap
         }
 
         private fun isPermissionGranted(context: Context, permission: String): Boolean {

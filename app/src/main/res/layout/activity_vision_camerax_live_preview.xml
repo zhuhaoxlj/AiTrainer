@@ -99,7 +99,7 @@
             app:layout_constraintBottom_toBottomOf="parent">
 
             <RelativeLayout
-                android:id="@id/control"
+                android:id="@+id/control"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@color/white"
@@ -159,23 +159,54 @@
                     </LinearLayout>
                 </LinearLayout>
 
-                <Spinner
-                    android:id="@+id/spinner"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp" />
-
             </RelativeLayout>
         </androidx.cardview.widget.CardView>
 
-        <!--    左下角信息   -->
-        <include
+        <LinearLayout
             android:id="@+id/poseInfo"
-            layout="@layout/pose_info"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginBottom="10dp"
+            android:orientation="vertical"
             app:layout_constraintBottom_toTopOf="@+id/cardView"
-            app:layout_constraintStart_toStartOf="@+id/preview_view" />
+            app:layout_constraintStart_toStartOf="@+id/preview_view"
+            tools:ignore="MissingConstraints">
+
+            <TextView
+                android:id="@+id/poseProcessInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#dddfdf"
+                android:textSize="46sp"
+                android:textStyle="bold"
+                tools:text="@string/one" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/nowPoseIndexText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/poseProcess"
+                    android:textColor="#dddfdf"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/poseName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="@string/poseName"
+                    android:textColor="#dddfdf"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </LinearLayout>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
