@@ -34,14 +34,62 @@ object BaduanjinPoseEvaluator {
     // 防止多次重复触发保存
     private const val FRAME_COOLDOWN = 5
     private var countFrame = 0
+    
+    // 最大错误姿势记录数
+    private const val MAX_WARNING_POSES = 20
+    
+    // 将 allWarningPoseList 改为可访问的，并添加获取方法
     private val allWarningPoseList = mutableListOf<WrongPoseModel>()
+    
+    // 获取所有错误姿势的列表
+    fun getAllWarningPoseList(): List<WrongPoseModel> {
+        return allWarningPoseList.toList()
+    }
+    
+    // 清空错误姿势列表
+    fun clearAllWarningPoseList() {
+        allWarningPoseList.clear()
+    }
+    
+    // 添加错误姿势模型，并限制数量
+    private fun addWrongPoseToList(wrongPoseModel: WrongPoseModel) {
+        // 检查是否已存在相同的提示信息，避免重复添加
+        val existingModel = allWarningPoseList.find { model -> 
+            model.poseTips == wrongPoseModel.poseTips && 
+            model.poseName == wrongPoseModel.poseName 
+        }
+        
+        // 如果已存在相同提示的错误，则不添加
+        if (existingModel != null) {
+            return
+        }
+        
+        // 添加到列表开头
+        allWarningPoseList.add(0, wrongPoseModel)
+        
+        // 如果超过最大数量，则移除最早添加的
+        if (allWarningPoseList.size > MAX_WARNING_POSES) {
+            allWarningPoseList.removeAt(allWarningPoseList.size - 1)
+            Log.i("WrongPose", "Removed oldest warning due to max limit")
+        }
+        
+        Log.i("WrongPose", "Added pose error: ${wrongPoseModel.poseTips}, total: ${allWarningPoseList.size}")
+    }
 
     private fun saveFrame(
         isUp: Boolean,
         bitmap: Bitmap?, filename: String
     ) {
+        // 增加计数
+        countFrame++
+        
+        // 如果计数小于冷却时间，直接返回不处理
         if (countFrame < FRAME_COOLDOWN) {
+            return
         }
+        
+        // 重置计数
+        countFrame = 0
 
         bitmap?.let {
             try {
@@ -49,13 +97,13 @@ object BaduanjinPoseEvaluator {
                     maxUpWrongModel!!.wrongPoseImage = bitmap.copy(bitmap.config!!, true)
                     maxUpWrongModel!!.rightPoseBitmap =
                         poseRightImageArrayList[maxUpWrongModel!!.poseIndex!!]
-                    allWarningPoseList.add(0, maxUpWrongModel!!)
+                    addWrongPoseToList(maxUpWrongModel!!)
                 }
                 if (minDownWrongModel != null) {
                     minDownWrongModel!!.wrongPoseImage = bitmap.copy(bitmap.config!!, true)
                     minDownWrongModel!!.rightPoseBitmap =
                         poseRightImageArrayList[minDownWrongModel!!.poseIndex!!]
-                    allWarningPoseList.add(0, minDownWrongModel!!)
+                    addWrongPoseToList(minDownWrongModel!!)
                 }
                 val directory = File(
                     Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES),
@@ -95,15 +143,24 @@ object BaduanjinPoseEvaluator {
         wrongPoseModel: WrongPoseModel,
         bitmap: Bitmap?, filename: String
     ) {
+        // 增加计数
+        countFrame++
+        
+        // 如果计数小于冷却时间，直接返回不处理
         if (countFrame < FRAME_COOLDOWN) {
+            return
         }
+        
+        // 重置计数
+        countFrame = 0
 
         bitmap?.let {
             try {
                 wrongPoseModel.wrongPoseImage = bitmap.copy(bitmap.config!!, true)
                 wrongPoseModel.rightPoseBitmap =
                     poseRightImageArrayList[maxUpWrongModel!!.poseIndex!!]
-                allWarningPoseList.add(0, wrongPoseModel)
+                addWrongPoseToList(wrongPoseModel)
+                
                 val directory = File(
                     Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES),
                     "AiTrainer"
@@ -246,11 +303,11 @@ object BaduanjinPoseEvaluator {
 
                             val tempWrongParts = mutableListOf<IntArray>()
                             // 手臂角度不对
-                            if (minArmCombineAngle.first !in 130..145) {
+                            if (minArmCombineAngle.first !in 130..150) {
                                 addWarnPart(tempWrongParts, 5)
                                 tempWrongModel.poseTips = "双手掌心向上交叉于下腹部"
                             }
-                            if (minArmCombineAngle.second !in 130..145) {
+                            if (minArmCombineAngle.second !in 130..150) {
                                 addWarnPart(tempWrongParts, 2)
                                 tempWrongModel.poseTips = "双手掌心向上交叉于下腹部"
                             }

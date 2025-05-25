@@ -215,7 +215,15 @@ class PoseClassifierProcessor @WorkerThread constructor(
         parts: MutableList<PosePart>,
         detector: PoseAngleDetector
     ) {
-        result.add(BaduanjinPoseEvaluator.Pose1.getScore(maxConfidenceClass, parts, detector, currentFrameBitmap!!, detector.detectPose))
+        result.add(
+            BaduanjinPoseEvaluator.Pose1.getScore(
+                maxConfidenceClass,
+                parts,
+                detector,
+                currentFrameBitmap!!,
+                detector.detectPose
+            )
+        )
     }
 
     /**
@@ -258,7 +266,7 @@ class PoseClassifierProcessor @WorkerThread constructor(
         // zh-todo 剩余动作适配
         private val POSE_CLASSES = arrayOf<String?>(
             "lsttlsj_down",
-            "lsttlsj_down",
+            "zykgssd_up",
             "lsttlsj_down",
             "lsttlsj_down",
             "lsttlsj_down",

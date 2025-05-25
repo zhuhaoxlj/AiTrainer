@@ -60,6 +60,9 @@ import java.io.FileOutputStream
 import java.io.IOException
 import java.text.MessageFormat
 import java.time.LocalDate
+import com.lindum.mlkit.vision.utils.ActivityStarter
+import com.lindum.mlkit.vision.utils.BaduanjinPoseEvaluator
+import com.lindum.mlkit.vision.utils.BaduanjinPoseEvaluator.clearAllWarningPoseList
 
 /**
  * Live preview demo app for ML Kit APIs using CameraX.
@@ -165,7 +168,7 @@ class CameraXLivePreviewActivity : AppCompatActivity(), OnRequestPermissionsResu
         // 初始化
         init()
         mLongPressRunnable = Runnable { handler.sendMessage(handler.obtainMessage(1)) }
-
+        clearAllWarningPoseList()
         // SD 卡根目录
         val sdPath = Environment.getExternalStorageDirectory().path
         //            // 姿态数据工具类
@@ -193,13 +196,18 @@ class CameraXLivePreviewActivity : AppCompatActivity(), OnRequestPermissionsResu
             }
             countMinutes = 0f
             countTimes = 0
-            val intent = Intent(this@CameraXLivePreviewActivity, TrainingResultActivity::class.java)
-            intent.putExtra("totalTrainingTime", totalTrainingTime)
-            intent.putExtra("groupsOfPose", countGroupsOfPose)
+
+            // 使用 ActivityStarter 启动训练结果页面，传递错误姿势列表
+            val wrongPoseList = BaduanjinPoseEvaluator.getAllWarningPoseList()
+            ActivityStarter.startTrainingResultActivity(
+                this@CameraXLivePreviewActivity,
+                wrongPoseList,
+                totalTrainingTime,
+                countGroupsOfPose
+            )
+
             // 停止训练
             isEnd = true
-            startActivity(intent)
-            finish()
         })
 
         // 启动截图定时器
