@@ -16,16 +16,29 @@
     "monitorPosePartList": [
       {
         "firstStandardRange": [
-          10,
-          20
+          155,
+          180
         ],
         "poseIndex": [
           28,
-          0,
+          26,
+          24
+        ],
+        "poseType": 0,
+        "tips": "腿不要弯曲"
+      },
+      {
+        "firstStandardRange": [
+          155,
+          180
+        ],
+        "poseIndex": [
+          23,
+          25,
           27
         ],
         "poseType": 0,
-        "tips": "两脚与肩同宽"
+        "tips": "腿不要弯曲"
       }
     ],
     "poseFeeling": [

@@ -117,6 +117,39 @@ class PoseAngleDetector(internal val detectPose: Pose) {
         return getAngle(points[0], points[1], points[2])
     }
 
+    fun getAnyAngleBy4Point(points: IntArray): Int {
+        val firstPoint = detectPose.getPoseLandmark(points[0])
+        val secondPoint = detectPose.getPoseLandmark(points[1])
+        val thirdPoint = detectPose.getPoseLandmark(points[2])
+        val fourthPoint = detectPose.getPoseLandmark(points[3])
+        
+        checkNotNull(firstPoint)
+        checkNotNull(secondPoint)
+        checkNotNull(thirdPoint)
+        checkNotNull(fourthPoint)
+        
+        // Calculate the midpoint between points[1] and points[2]
+        val midpointX = (secondPoint.position.x + thirdPoint.position.x) / 2
+        val midpointY = (secondPoint.position.y + thirdPoint.position.y) / 2
+        
+        // Calculate the angle using the first point, midpoint, and fourth point
+        var result = Math.toDegrees(
+            atan2(
+                (fourthPoint.position.y - midpointY).toDouble(),
+                (fourthPoint.position.x - midpointX).toDouble()
+            ) - atan2(
+                (firstPoint.position.y - midpointY).toDouble(),
+                (firstPoint.position.x - midpointX).toDouble()
+            )
+        ).toInt()
+        
+        result = abs(result.toDouble()).toInt()
+        if (result > 180) {
+            result = (360.0 - result).toInt()
+        }
+        return result
+    }
+
     // 通过部位索引获取夹角
     fun getPoseAngleFromPartIndex(posePart: Int): Int {
         return when (posePart) {
