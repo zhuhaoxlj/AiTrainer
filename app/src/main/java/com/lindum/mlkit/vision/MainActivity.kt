@@ -12,6 +12,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.edit
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import com.hjq.permissions.OnPermissionCallback
 import com.hjq.permissions.Permission
 import com.hjq.permissions.XXPermissions
@@ -28,6 +29,8 @@ import com.xuexiang.xui.XUI
 import com.xuexiang.xui.widget.dialog.materialdialog.DialogAction
 import com.xuexiang.xui.widget.dialog.materialdialog.MaterialDialog
 import com.xuexiang.xui.widget.dialog.materialdialog.MaterialDialog.SingleButtonCallback
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import java.time.LocalDate
 import java.util.Objects
 
@@ -126,8 +129,23 @@ class MainActivity : AppCompatActivity() {
         // 设置底部导航栏监听
         setupTabBarListeners()
 
-        // 加载动作库数据
-//        loadPoseData()
+        // 预加载数据
+        preloadData()
+    }
+
+    /**
+     * 预加载数据，提高用户体验
+     */
+    private fun preloadData() {
+        lifecycleScope.launch(Dispatchers.IO) {
+            // 预加载日记数据
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                diaryFragment.preloadData()
+            }
+            
+            // 预加载其他可能需要的数据
+            // ...
+        }
     }
 
     /**
@@ -333,11 +351,13 @@ class MainActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         // 正确姿势图
-        rightPoseImageUrl.forEachIndexed { index, url ->
-            val rightBitmap = BitmapFactory.decodeStream(
-                assets.open(url.replace("file:///android_asset/", ""))
-            )
-            poseRightImageArrayList.add(rightBitmap)
+        if (poseRightImageArrayList.isEmpty()) {
+            rightPoseImageUrl.forEachIndexed { index, url ->
+                val rightBitmap = BitmapFactory.decodeStream(
+                    assets.open(url.replace("file:///android_asset/", ""))
+                )
+                poseRightImageArrayList.add(rightBitmap)
+            }
         }
     }
 } 

@@ -26,7 +26,11 @@ import com.lindum.mlkit.vision.utils.TemporaryDataHolder
 import com.orhanobut.logger.Logger
 import com.xuexiang.xui.widget.progress.CircleProgressView.CircleProgressUpdateListener
 import com.xuexiang.xui.widget.progress.HorizontalProgressView.HorizontalProgressUpdateListener
+import nl.dionsegijn.konfetti.core.Party
+import nl.dionsegijn.konfetti.core.Position
+import nl.dionsegijn.konfetti.core.emitter.Emitter
 import java.io.Serializable
+import java.util.concurrent.TimeUnit
 
 /**
  * @author MarkGosling
@@ -54,6 +58,17 @@ class TrainingResultActivity : AppCompatActivity(), HorizontalProgressUpdateList
 
     // 添加 WrongPoseModel 列表
     private var wrongPoseModelList = mutableListOf<WrongPoseModel>()
+    private val party by lazy {
+        Party(
+            speed = 0f,
+            maxSpeed = 30f,
+            damping = 0.9f,
+            spread = 360,
+            colors = listOf(0xfce18a, 0xff726d, 0xf4306d, 0xb48def),
+            emitter = Emitter(duration = 100, TimeUnit.MILLISECONDS).max(100),
+            position = Position.Relative(0.5, 0.3) // 从屏幕水平居中 30% 高度位置发射
+        )
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -63,6 +78,7 @@ class TrainingResultActivity : AppCompatActivity(), HorizontalProgressUpdateList
             WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
         )
         setContentView(binding.root)
+
 
         val layoutParams = binding.vFakeStatusBar.layoutParams
         layoutParams.height = StatusBarUtils.getStatusBarHeight(this)
@@ -448,6 +464,16 @@ class TrainingResultActivity : AppCompatActivity(), HorizontalProgressUpdateList
     }
 
     override fun onCircleProgressFinished(view: View?) {
+        // 当环形进度条动画完成后，如果分数是100分，启动烟花特效
+        if (view?.id == R.id.progressView_circle_main) {
+            val poseGroups = MainActivity.Companion.poseEntityArrayList!!.size
+            val scores = 60 + (40 * (1 - (countWrongImage.toFloat() / (20 * poseGroups)))).toInt()
+            if (scores == 100) {
+                binding.konfettiView.post {
+                    binding.konfettiView.start(party)
+                }
+            }
+        }
     }
 
     override fun onHorizontalProgressStart(view: View?) {

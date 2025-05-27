@@ -32,6 +32,10 @@ public class FileUtils {
     // 全部获取
     public final static int GET_ALL_LIST = 2;
 
+    // 缓存最近读取的文件内容
+    private static String lastReadFilePath = "";
+    private static ArrayList<String> cachedFileContent = new ArrayList<>();
+
     /**
      * 字符串写入本地txt，覆盖原内容
      *
@@ -65,6 +69,11 @@ public class FileUtils {
                 outputStream = new FileOutputStream(writeFile, true);
                 outputStream.write(("\n" + stringContent).getBytes());
                 outputStream.close();
+                
+                // 如果写入的文件正好是缓存的文件，清除缓存
+                if ((filePath + fileName).equals(lastReadFilePath)) {
+                    clearFileCache();
+                }
             } catch (IOException e) {
                 e.printStackTrace();
                 return false;
@@ -81,13 +90,19 @@ public class FileUtils {
      * @return 文件内容
      */
     public static ArrayList<String> readFileToString(String filePath, String fileName) {
+        String fullPath = filePath + fileName;
+        
+        // 检查是否有缓存
+        if (fullPath.equals(lastReadFilePath) && !cachedFileContent.isEmpty()) {
+            return new ArrayList<>(cachedFileContent);
+        }
+        
         ArrayList<String> fileContent = new ArrayList<>();
-        String strFilePath = filePath + fileName;
         //文件逐行读入
         try {
             BufferedReader br = new BufferedReader(
                     new InputStreamReader(
-                            new FileInputStream(strFilePath)));
+                            new FileInputStream(fullPath)));
             //按行读取 将每次读取一行的结果赋值给lineStr
             String lineStr;
             while ((lineStr = br.readLine()) != null) {
@@ -96,13 +111,85 @@ public class FileUtils {
                 }
             }
             br.close();//关闭IO
-            Logger.e(fileContent + "");
+            
+            // 更新缓存
+            lastReadFilePath = fullPath;
+            cachedFileContent = new ArrayList<>(fileContent);
+            
             return fileContent;
         } catch (Exception e) {
             System.out.println("文件操作失败");
             e.printStackTrace();
         }
         return fileContent;
+    }
+    
+    /**
+     * 分页读取文件
+     *
+     * @param filePath 文件路径
+     * @param fileName 文件名称
+     * @param pageSize 每页大小
+     * @param pageNum 页码（从0开始）
+     * @return 文件内容
+     */
+    public static ArrayList<String> readFileToStringPaged(String filePath, String fileName, int pageSize, int pageNum) {
+        String fullPath = filePath + fileName;
+        ArrayList<String> fileContent = new ArrayList<>();
+        ArrayList<String> allContent;
+        
+        // 检查是否有缓存
+        if (fullPath.equals(lastReadFilePath) && !cachedFileContent.isEmpty()) {
+            allContent = new ArrayList<>(cachedFileContent);
+        } else {
+            allContent = new ArrayList<>();
+            //文件逐行读入
+            try {
+                BufferedReader br = new BufferedReader(
+                        new InputStreamReader(
+                                new FileInputStream(fullPath)));
+                //按行读取 将每次读取一行的结果赋值给lineStr
+                String lineStr;
+                while ((lineStr = br.readLine()) != null) {
+                    if (!lineStr.equals("")) {
+                        allContent.add(lineStr.trim());
+                    }
+                }
+                br.close();//关闭IO
+                
+                // 更新缓存
+                lastReadFilePath = fullPath;
+                cachedFileContent = new ArrayList<>(allContent);
+            } catch (Exception e) {
+                System.out.println("文件操作失败");
+                e.printStackTrace();
+                return fileContent;
+            }
+        }
+        
+        // 计算分页
+        int startIndex = pageNum * pageSize;
+        int endIndex = Math.min(startIndex + pageSize, allContent.size());
+        
+        // 如果起始索引超出范围，返回空列表
+        if (startIndex >= allContent.size()) {
+            return fileContent;
+        }
+        
+        // 返回请求的页
+        for (int i = startIndex; i < endIndex; i++) {
+            fileContent.add(allContent.get(i));
+        }
+        
+        return fileContent;
+    }
+    
+    /**
+     * 清除文件缓存
+     */
+    public static void clearFileCache() {
+        lastReadFilePath = "";
+        cachedFileContent.clear();
     }
 
     /**

@@ -262,7 +262,13 @@
                         </LinearLayout>
 
                     </LinearLayout>
+
+                    <nl.dionsegijn.konfetti.xml.KonfettiView
+                        android:id="@+id/konfettiView"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
                 </RelativeLayout>
+
 
                 <com.lindum.mlkit.vision.result.MyListView
                     android:id="@+id/resultList"
