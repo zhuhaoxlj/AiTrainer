@@ -180,7 +180,7 @@ class CameraXLivePreviewActivity : AppCompatActivity(), OnRequestPermissionsResu
             })
 
         binding.nextPoseImage.setOnClickListener(View.OnClickListener { view: View? ->
-            if (nowPoseIndex + 1 < poseEntityList!!.size) {
+            if (nowPoseIndex + 1 < (poseEntityList?.size ?: 0)) {
                 countdownSeconds = 3
                 nowPoseProcessSeconds = 0
                 updatePoseInfo()
@@ -191,6 +191,11 @@ class CameraXLivePreviewActivity : AppCompatActivity(), OnRequestPermissionsResu
                     null
                 )
                 isRemindedBreathingMethods = false
+            } else {
+                r2?.let {
+                    mHandler2?.removeCallbacks(it)
+                }
+                binding.analyseResult.callOnClick()
             }
         })
         binding.prePoseImage.setOnClickListener(View.OnClickListener { view: View? ->
@@ -347,10 +352,8 @@ class CameraXLivePreviewActivity : AppCompatActivity(), OnRequestPermissionsResu
                 }
                 if (!isEnd) {
                     totalTrainingTime++
+                    mHandler2!!.postDelayed(this, 1000)
                 }
-                //do something
-                //每隔1s循环执行run方法
-                mHandler2!!.postDelayed(this, 1000)
             }
         }
         mHandler2!!.post(r2!!)
@@ -421,22 +424,22 @@ class CameraXLivePreviewActivity : AppCompatActivity(), OnRequestPermissionsResu
 
     override fun onPause() {
         super.onPause()
-        if (imageProcessor != null) {
-            imageProcessor!!.stop()
-        }
+        imageProcessor?.stop()
     }
 
     override fun onBackPressed() {
         super.onBackPressed()
-        mHandler2!!.removeCallbacks(r2!!)
+        r2?.let {
+            mHandler2?.removeCallbacks(it)
+        }
     }
 
     public override fun onDestroy() {
         super.onDestroy()
-        if (imageProcessor != null) {
-            imageProcessor!!.stop()
+        imageProcessor?.stop()
+        r2?.let {
+            mHandler2?.removeCallbacks(it)
         }
-        mHandler2!!.removeCallbacks(r2!!)
     }
 
     /**
@@ -469,23 +472,18 @@ class CameraXLivePreviewActivity : AppCompatActivity(), OnRequestPermissionsResu
     }
 
     private fun bindAllCameraUseCases() {
-        if (cameraProvider != null) {
-            // As required by CameraX API, unbinds all use cases before trying to re-bind any of them.
-            cameraProvider!!.unbindAll()
-            bindPreviewUseCase()
-            bindAnalysisUseCase()
-        }
+        // As required by CameraX API, unbinds all use cases before trying to re-bind any of them.
+        cameraProvider?.unbindAll()
+        bindPreviewUseCase()
+        bindAnalysisUseCase()
     }
 
     private fun bindPreviewUseCase() {
         if (!PreferenceUtils.isCameraLiveViewportEnabled(this)) {
             return
         }
-        if (cameraProvider == null) {
-            return
-        }
         if (previewUseCase != null) {
-            cameraProvider!!.unbind(previewUseCase)
+            cameraProvider?.unbind(previewUseCase)
         }
 
         val builder = Preview.Builder()
@@ -494,23 +492,18 @@ class CameraXLivePreviewActivity : AppCompatActivity(), OnRequestPermissionsResu
             builder.setTargetResolution(targetResolution)
         }
         previewUseCase = builder.build()
-        previewUseCase!!.setSurfaceProvider(binding.previewView.getSurfaceProvider())
-        cameraProvider!!.bindToLifecycle( /* lifecycleOwner= */this,
+        previewUseCase?.setSurfaceProvider(binding.previewView.getSurfaceProvider())
+        cameraProvider?.bindToLifecycle( /* lifecycleOwner= */this,
             cameraSelector!!,
             previewUseCase
         )
     }
 
     private fun bindAnalysisUseCase() {
-        if (cameraProvider == null) {
-            return
-        }
         if (analysisUseCase != null) {
-            cameraProvider!!.unbind(analysisUseCase)
+            cameraProvider?.unbind(analysisUseCase)
         }
-        if (imageProcessor != null) {
-            imageProcessor!!.stop()
-        }
+        imageProcessor?.stop()
 
         try {
             if (POSE_DETECTION == selectedModel) {
@@ -582,7 +575,7 @@ class CameraXLivePreviewActivity : AppCompatActivity(), OnRequestPermissionsResu
                 }
             })
 
-        cameraProvider!!.bindToLifecycle( /* lifecycleOwner= */this,
+        cameraProvider?.bindToLifecycle( /* lifecycleOwner= */this,
             cameraSelector!!,
             analysisUseCase
         )

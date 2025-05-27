@@ -295,10 +295,7 @@ class PoseClassifierProcessor @WorkerThread constructor(
             "zykgssd_up",
             "tlpwxdj_up",
             "wlqswhq_up",
-            "lsttlsj_down",
-            "lsttlsj_down",
-            "lsttlsj_down",
-            "lsttlsj_down",
+            "ytbwqxh_up",
         )
 
         @Volatile

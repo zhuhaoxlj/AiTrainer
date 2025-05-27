@@ -216,7 +216,7 @@
     ],
     "poseName": "‌攒拳怒目增气力",
     "poseProcessValue": 3,
-    "poseType": 1,
+    "poseType": 0,
     "stepsOfPose": [
       "马步下蹲，双拳置于腰间，吸气蓄力",
       "呼气时右拳冲出，怒目圆睁，拳心向下，收拳换侧重复"
@@ -292,7 +292,7 @@
     ],
     "poseName": "‌背后七颠百病消",
     "poseProcessValue": 3,
-    "poseType": 1,
+    "poseType": 0,
     "stepsOfPose": [
       "双脚并拢，吸气提踵，身体向上拔高",
       "呼气时脚跟轻震地面，全身放松，重复7次"
