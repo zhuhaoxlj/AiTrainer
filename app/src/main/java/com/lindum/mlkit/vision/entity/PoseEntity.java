@@ -13,10 +13,6 @@ import java.util.List;
  **/
 public class PoseEntity {
     /**
-     * 动作强度
-     */
-    int poseLevel;
-    /**
      * 动作库封面图
      */
     String poseCoverImage;
@@ -98,13 +94,6 @@ public class PoseEntity {
         this.countTimes = countTimes;
     }
 
-    public int getPoseLevel() {
-        return poseLevel;
-    }
-
-    public void setPoseLevel(int poseLevel) {
-        this.poseLevel = poseLevel;
-    }
 
     public String[] getPoseSwiperImageUrl() {
         return poseSwiperImageUrl;
@@ -218,7 +207,6 @@ public class PoseEntity {
     @Override
     public String toString() {
         return "PoseEntity{" +
-                "poseLevel=" + poseLevel +
                 ", poseCoverImage='" + poseCoverImage + '\'' +
                 ", poseSwiperImageUrl=" + Arrays.toString(poseSwiperImageUrl) +
                 ", poseName='" + poseName + '\'' +

@@ -35,8 +35,8 @@ class PoseClassifierProcessor @WorkerThread constructor(
         "pose/wlqswhq.csv", // 五劳七伤往后瞧
         "pose/ytbwqxh.csv", // 摇头摆尾去心火
         "pose/lspzgsy.csv", // ‌两手攀足固肾腰
-        "pose/cqnmzql.csv", // ‌攒拳怒目增气力
-        "pose/bhqdbbx.csv", // ‌背后七颠百病消
+        "", // ‌攒拳怒目增气力
+        "", // ‌背后七颠百病消
     )
 
     /**
@@ -293,8 +293,8 @@ class PoseClassifierProcessor @WorkerThread constructor(
         private val POSE_CLASSES = arrayOf<String?>(
             "lsttlsj_down",
             "zykgssd_up",
-            "lsttlsj_down",
-            "lsttlsj_down",
+            "tlpwxdj_up",
+            "wlqswhq_up",
             "lsttlsj_down",
             "lsttlsj_down",
             "lsttlsj_down",

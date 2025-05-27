@@ -43,7 +43,6 @@
     "poseFeeling": [
       "脊柱、肩颈有明显拉伸感，腹部轻微收紧"
     ],
-    "poseLevel": 1,
     "poseName": "双手托天理三焦",
     "poseProcessValue": 6,
     "poseType": 1,
@@ -69,13 +68,234 @@
     "poseFeeling": [
       "胸部扩张，肩背肌肉收紧，手臂有对抗发力感"
     ],
-    "poseLevel": 1,
     "poseName": "左右开弓似射雕",
     "poseProcessValue": 3,
     "poseType": 1,
     "stepsOfPose": [
       "左脚向左迈步成马步，双手胸前交叉（左外右内），左手平推如“弓背”，右手拉弦如“箭”，目视左手指尖",
       "保持拉弓姿势3-5秒后，呼气收势，换右侧重复"
+    ]
+  },
+  {
+    "breathTips": "上举时吸气，下落时呼气",
+    "commonMistakes": [
+      "错误：身体倾斜，手臂未垂直",
+      "解决：保持躯干中正，双肩放松"
+    ],
+    "countMinutes": 0.0,
+    "countTimes": 0,
+    "detailTips": [
+      "上托手五指并拢，下按手虎口撑开，力达掌根"
+    ],
+    "monitorPosePartList": [
+    ],
+    "poseFeeling": [
+      "胁肋部及侧腰有明显牵拉感，脾胃区域微热"
+    ],
+    "poseName": "调理脾胃须单举",
+    "poseProcessValue": 3,
+    "poseType": 1,
+    "stepsOfPose": [
+      "左手掌心向上托举至头顶，右手掌心下压至髋侧，形成上下对拉",
+      "保持3秒后呼气下落，换右侧重复"
+    ]
+  },
+  {
+    "breathTips": "转头时吸气，回正时呼气",
+    "commonMistakes": [
+      "错误：转颈速度过快，导致头晕",
+      "解决：动作缓慢，幅度以舒适为限"
+    ],
+    "countMinutes": 0.0,
+    "countTimes": 0,
+    "detailTips": [
+      "转动时脊柱保持直立，双肩下沉"
+    ],
+    "monitorPosePartList": [
+    ],
+    "poseFeeling": [
+      "颈部及肩胛骨周围肌肉舒展，头部轻微眩晕感（正常）"
+    ],
+    "poseName": "五劳七伤往后瞧",
+    "poseProcessValue": 3,
+    "poseType": 1,
+    "stepsOfPose": [
+      "双脚与肩同宽，吸气时头部向左后方转动，目视后方，同时手臂内旋掌心向后",
+      "保持3秒后呼气回正，换右侧重复"
+    ]
+  },
+  {
+    "breathTips": "自然呼吸，保持均匀",
+    "commonMistakes": [
+      "错误：身体前倾或后仰，失去平衡",
+      "解决：重心居中，臀部微收"
+    ],
+    "countMinutes": 0.0,
+    "countTimes": 0,
+    "detailTips": [
+      "头部与臀部反向摆动，形成“摇头摆尾”弧线"
+    ],
+    "monitorPosePartList": [
+    ],
+    "poseFeeling": [
+      "腰腹及大腿内侧肌肉收紧，脊柱灵活度增加"
+    ],
+    "poseName": "‌摇头摆尾去心火",
+    "poseProcessValue": 3,
+    "poseType": 1,
+    "stepsOfPose": [
+      "马步下蹲，双手扶膝，以腰为轴，头部和臀部画“∞”字摆动",
+      "左倾时吸气，右摆时呼气，完成3圈后换方向"
+    ]
+  },
+  {
+    "breathTips": "前俯时呼气，起身时吸气",
+    "commonMistakes": [
+      "错误：膝盖弯曲，弯腰弓背",
+      "解决：腿伸直，以髋为轴前屈"
+    ],
+    "countMinutes": 0.0,
+    "countTimes": 0,
+    "detailTips": [
+      "前俯时掌心贴脚背，目视脚尖"
+    ],
+    "monitorPosePartList": [
+    ],
+    "poseFeeling": [
+      "腰背及腿后侧有明显拉伸感，肾区微热"
+    ],
+    "poseName": "‌两手攀足固肾腰",
+    "poseProcessValue": 3,
+    "poseType": 1,
+    "stepsOfPose": [
+      "双脚并拢，双臂上举后仰，呼气前俯，双手触脚背（或小腿）",
+      "吸气时逐节挺直脊柱，恢复站立"
+    ]
+  },
+  {
+    "breathTips": "冲拳时呼气，收拳时吸气",
+    "commonMistakes": [
+      "错误：耸肩或身体晃动",
+      "解决：沉肩坠肘，重心稳定"
+    ],
+    "countMinutes": 0.0,
+    "countTimes": 0,
+    "detailTips": [
+      "冲拳时手腕旋转，力达拳面"
+    ],
+    "monitorPosePartList": [
+      {
+        "firstStandardRange": [
+          145,
+          165
+        ],
+        "poseIndex": [
+          24,
+          26,
+          28
+        ],
+        "poseType": 0,
+        "tips": "马步下蹲,注意腿部不要僵直"
+      },
+      {
+        "firstStandardRange": [
+          145,
+          165
+        ],
+        "poseIndex": [
+          23,
+          25,
+          27
+        ],
+        "poseType": 0,
+        "tips": "马步下蹲,注意腿部不要僵直"
+      }
+    ],
+    "poseFeeling": [
+      "手臂及核心肌群发力，肝区有轻微牵拉感"
+    ],
+    "poseName": "‌攒拳怒目增气力",
+    "poseProcessValue": 3,
+    "poseType": 1,
+    "stepsOfPose": [
+      "马步下蹲，双拳置于腰间，吸气蓄力",
+      "呼气时右拳冲出，怒目圆睁，拳心向下，收拳换侧重复"
+    ]
+  },
+  {
+    "breathTips": "提踵时吸气，下落时呼气",
+    "commonMistakes": [
+      "错误：下落时用力过猛，损伤关节",
+      "解决：控制下落速度，轻震即可"
+    ],
+    "countMinutes": 0.0,
+    "countTimes": 0,
+    "detailTips": [
+      "提踵时双手叉腰，目视前方"
+    ],
+    "monitorPosePartList": [
+      {
+        "firstStandardRange": [
+          160,
+          180
+        ],
+        "poseIndex": [
+          12,
+          14,
+          16
+        ],
+        "poseType": 0,
+        "tips": "注意手臂不要弯曲"
+      },
+      {
+        "firstStandardRange": [
+          160,
+          180
+        ],
+        "poseIndex": [
+          11,
+          13,
+          15
+        ],
+        "poseType": 0,
+        "tips": "注意手臂不要弯曲"
+      },
+      {
+        "firstStandardRange": [
+          160,
+          180
+        ],
+        "poseIndex": [
+          24,
+          26,
+          28
+        ],
+        "poseType": 0,
+        "tips": "双腿并拢，腿部不要弯曲"
+      },
+      {
+        "firstStandardRange": [
+          160,
+          180
+        ],
+        "poseIndex": [
+          23,
+          25,
+          27
+        ],
+        "poseType": 0,
+        "tips": "双腿并拢，腿部不要弯曲"
+      }
+    ],
+    "poseFeeling": [
+      "足底及脊柱轻微震动，全身松弛感明显"
+    ],
+    "poseName": "‌背后七颠百病消",
+    "poseProcessValue": 3,
+    "poseType": 1,
+    "stepsOfPose": [
+      "双脚并拢，吸气提踵，身体向上拔高",
+      "呼气时脚跟轻震地面，全身放松，重复7次"
     ]
   }
 ]
