@@ -48,6 +48,14 @@ import java.io.FileOutputStream
 import java.io.IOException
 import java.text.MessageFormat
 import java.time.LocalDate
+import android.animation.ArgbEvaluator
+import android.animation.ValueAnimator
+import android.view.animation.AlphaAnimation
+import android.view.animation.Animation
+import androidx.cardview.widget.CardView
+import android.widget.TextView
+import android.widget.ImageView
+import android.widget.LinearLayout
 
 /**
  * 姿态识别
@@ -83,6 +91,10 @@ class CameraXLivePreviewActivity : AppCompatActivity(), OnRequestPermissionsResu
     var mHandler2: Handler? = null
     var r2: Runnable? = null
 
+    // 状态更新定时器
+    private var statusUpdateHandler: Handler? = null
+    private var statusUpdateRunnable: Runnable? = null
+
     // 现在动作进行的秒数
     private var nowPoseProcessSeconds = 0
 
@@ -117,14 +129,14 @@ class CameraXLivePreviewActivity : AppCompatActivity(), OnRequestPermissionsResu
         // 重置姿势评估器
         BaduanjinPoseEvaluator.resetInstance()
 
-        // 定时更新变量定时器
+        // 定时更新姿势状态
         updateVariable()
-
+        updatePoseStatus()
 
         nowPoseName = poseEntityList!![nowPoseIndex].getPoseName()
 
         // 跳转至结果界面
-        binding.analyseResult.setOnClickListener(View.OnClickListener { view: View? ->
+        binding.statusCapsule.setOnClickListener { view: View? ->
             val poseEntity: PoseEntity = poseEntityList!![nowPoseIndex]
             countMinutes = nowPoseProcessSeconds / 60f
             if (poseEntity.getPoseType() == 1) {
@@ -146,7 +158,7 @@ class CameraXLivePreviewActivity : AppCompatActivity(), OnRequestPermissionsResu
 
             // 停止训练
             isEnd = true
-        })
+        }
 
         val options: MutableList<String?> = ArrayList<String?>()
         options.add(POSE_DETECTION)
@@ -195,7 +207,7 @@ class CameraXLivePreviewActivity : AppCompatActivity(), OnRequestPermissionsResu
                 r2?.let {
                     mHandler2?.removeCallbacks(it)
                 }
-                binding.analyseResult.callOnClick()
+                binding.statusCapsule.callOnClick()
             }
         })
         binding.prePoseImage.setOnClickListener(View.OnClickListener { view: View? ->
@@ -420,17 +432,25 @@ class CameraXLivePreviewActivity : AppCompatActivity(), OnRequestPermissionsResu
         // 开始训练
         isEnd = false
         bindAllCameraUseCases()
+        // 重新启动状态更新定时器
+        updatePoseStatus()
     }
 
     override fun onPause() {
         super.onPause()
         imageProcessor?.stop()
+        statusUpdateRunnable?.let {
+            statusUpdateHandler?.removeCallbacks(it)
+        }
     }
 
     override fun onBackPressed() {
         super.onBackPressed()
         r2?.let {
             mHandler2?.removeCallbacks(it)
+        }
+        statusUpdateRunnable?.let {
+            statusUpdateHandler?.removeCallbacks(it)
         }
     }
 
@@ -439,6 +459,9 @@ class CameraXLivePreviewActivity : AppCompatActivity(), OnRequestPermissionsResu
         imageProcessor?.stop()
         r2?.let {
             mHandler2?.removeCallbacks(it)
+        }
+        statusUpdateRunnable?.let {
+            statusUpdateHandler?.removeCallbacks(it)
         }
     }
 
@@ -647,6 +670,48 @@ class CameraXLivePreviewActivity : AppCompatActivity(), OnRequestPermissionsResu
     override fun onQuickShotFailed(path: String?, errorMsg: String?) {
     }
 
+    /**
+     * 定时更新姿势状态
+     */
+    private fun updatePoseStatus() {
+        statusUpdateHandler = Handler(Looper.getMainLooper())
+        statusUpdateRunnable = object : Runnable {
+            @SuppressLint("SetTextI18n")
+            override fun run() {
+                val warningPoseList = BaduanjinPoseEvaluator.getInstance().getAllWarningPoseList()
+
+                runOnUiThread {
+                    if (warningPoseList.isEmpty()) {
+                        // 正常状态
+                        binding.capsuleBackground.setBackgroundResource(R.drawable.capsule_background_normal)
+                        binding.statusText.text = "正常"
+                        binding.statusIcon.setImageResource(R.drawable.ic_status_normal)
+                        // 停止闪烁动画
+                        binding.statusCapsule.clearAnimation()
+                    } else {
+                        // 错误状态
+                        binding.capsuleBackground.setBackgroundResource(R.drawable.capsule_background_error)
+                        binding.statusText.text = "错误: ${warningPoseList.size}"
+                        binding.statusIcon.setImageResource(R.drawable.ic_status_error)
+
+                        // 添加闪烁动画
+                        if (binding.statusCapsule.animation == null) {
+                            val blinkAnimation = AlphaAnimation(1.0f, 0.6f).apply {
+                                duration = 500
+                                repeatMode = Animation.REVERSE
+                                repeatCount = Animation.INFINITE
+                            }
+                            binding.statusCapsule.startAnimation(blinkAnimation)
+                        }
+                    }
+                }
+
+                // 每500毫秒更新一次状态
+                statusUpdateHandler?.postDelayed(this, 500)
+            }
+        }
+        statusUpdateHandler?.post(statusUpdateRunnable!!)
+    }
 
     companion object {
         private const val PERMISSION_REQUESTS = 1

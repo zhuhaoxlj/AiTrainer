@@ -84,13 +84,6 @@ class BaduanjinPoseEvaluator {
 
     // 获取所有错误姿势的列表
     fun getAllWarningPoseList(): List<WrongPoseModel> {
-        allWarningPoseList.forEach {
-            val commonWrong = CameraXLivePreviewActivity.poseEntityList?.get(
-                it.poseIndex ?: 0
-            )?.commonMistakes[0]
-            it.poseTips =
-                (it.poseDetail ?: "") + " " + it.poseTips + "\n" + commonWrong
-        }
         return allWarningPoseList.toList()
     }
 
@@ -302,7 +295,7 @@ class BaduanjinPoseEvaluator {
     private fun addWrongPoseToList(wrongPoseModel: WrongPoseModel) {
         // 检查是否已存在相同的提示信息，避免重复添加
         val existingModel = allWarningPoseList.find { model ->
-            model.poseTips == wrongPoseModel.poseTips &&
+            model.wrongPart == wrongPoseModel.wrongPart &&
                     model.poseName == wrongPoseModel.poseName
         }
 
@@ -486,6 +479,42 @@ class BaduanjinPoseEvaluator {
     }
 
     /**
+     * 检查固定部位角度
+     */
+    private fun checkFixedPartAngles(
+        monitoringList: List<PosePart>,
+        detector: PoseAngleDetector,
+        currentFrame: Bitmap,
+        pose: Pose,
+        poseIndex: Int,
+        poseName: String
+    ) {
+        val tempWrongModel = WrongPoseModel()
+        tempWrongModel.poseIndex = poseIndex
+        tempWrongModel.poseName = poseName
+
+        // 筛选出固定部位角度
+        monitoringList.filter { it.poseType == 0 }.forEach {
+            val fixAngle = if (it.poseIndex.size == 3) {
+                detector.getAnyAngleBy3Point(it.poseIndex)
+            } else {
+                detector.getAnyAngleBy4Point(it.poseIndex)
+            }
+            if (fixAngle !in it.firstStandardRange[0]..it.firstStandardRange[1]) {
+                val tempWrongParts = mutableListOf<IntArray>()
+                if (it.poseIndex.size == 3) {
+                    tempWrongParts.add(0, it.poseIndex)
+                }
+                tempWrongModel.poseTips = it.tips
+                tempWrongModel.wrongPart = it.partName
+                tempWrongModel.poseDetail = "${it.partName}角度：$fixAngle°"
+                val paintResult = drawPoseOnBitmap(tempWrongParts, currentFrame, pose)
+                saveFixedFrame(tempWrongModel, paintResult, "fixedFrame_$paintResult")
+            }
+        }
+    }
+
+    /**
      * 两手托天理三焦 检测器
      * 将内部类重构为实例方法
      */
@@ -514,6 +543,7 @@ class BaduanjinPoseEvaluator {
                     val tempLeftWrongParts = mutableListOf<IntArray>()
                     addWarnPart(tempLeftWrongParts, 5)
                     tempWrongModel.poseTips = "左手臂伸直，不要弯腰驼背"
+                    tempWrongModel.wrongPart = "左手臂"
                     tempWrongModel.poseDetail = "左手臂角度：$leftArmAngle"
                     // 绘制人体关键点和错误区域，记录 up 最顶部关键帧
                     leftMaxFrame = drawPoseOnBitmap(tempLeftWrongParts, currentFrame, pose)
@@ -522,6 +552,7 @@ class BaduanjinPoseEvaluator {
                     val tempRightWrongParts = mutableListOf<IntArray>()
                     addWarnPart(tempRightWrongParts, 2)
                     tempWrongModel.poseTips = "右手臂伸直，不要弯腰驼背"
+                    tempWrongModel.wrongPart = "右手臂"
                     tempWrongModel.poseDetail = "右手臂角度：$rightArmAngle°"
                     // 绘制人体关键点和错误区域，记录 up 最顶部关键帧
                     rightMaxFrame = drawPoseOnBitmap(tempRightWrongParts, currentFrame, pose)
@@ -535,24 +566,9 @@ class BaduanjinPoseEvaluator {
                     saveFrame(true, rightMaxFrame, "rightMaxFrame_$rightMaxFrame")
                 }
             }
-            // 筛选出固定部位角度
-            monitoringList.filter { it.poseType == 0 }.forEach {
-                val fixAngle = if (it.poseIndex.size == 3) {
-                    getAnyAngleBy3Point(it.poseIndex)
-                } else {
-                    getAnyAngleBy4Point(it.poseIndex)
-                }
-                if (fixAngle !in it.firstStandardRange[0]..it.firstStandardRange[1]) {
-                    val tempWrongParts = mutableListOf<IntArray>()
-                    if (it.poseIndex.size == 3) {
-                        tempWrongParts.add(0, it.poseIndex)
-                    }
-                    tempWrongModel.poseTips = it.tips
-                    tempWrongModel.poseDetail = "${it.partName}角度：$fixAngle°"
-                    val paintResult = drawPoseOnBitmap(tempWrongParts, currentFrame, pose)
-                    saveFixedFrame(tempWrongModel, paintResult, "fixedFrame_$paintResult")
-                }
-            }
+
+            // 调用共用方法检查固定部位角度
+            checkFixedPartAngles(monitoringList, detector, currentFrame, pose, 0, "两手托天理三焦")
         }
     }
 
@@ -589,6 +605,7 @@ class BaduanjinPoseEvaluator {
                         val tempWrongParts = mutableListOf<IntArray>()
                         addWarnPart(tempWrongParts, 2)
                         tempWrongModel.poseTips = "开弓时需手臂伸直"
+                        tempWrongModel.wrongPart = "右手臂"
                         tempWrongModel.angle = Pair(leftArmAngle, rightArmAngle)
                         rightMaxFrame =
                             drawPoseOnBitmap(tempWrongParts, currentFrame, pose)
@@ -604,6 +621,7 @@ class BaduanjinPoseEvaluator {
                         val tempWrongParts = mutableListOf<IntArray>()
                         addWarnPart(tempWrongParts, 5)
                         tempWrongModel.poseTips = "开弓时需手臂伸直"
+                        tempWrongModel.wrongPart = "左手臂"
                         tempWrongModel.angle = Pair(leftArmAngle, rightArmAngle)
                         // 绘制人体关键点和错误区域，记录 up 最顶部关键帧
                         leftMaxFrame =
@@ -621,24 +639,8 @@ class BaduanjinPoseEvaluator {
                 }
             }
 
-            // 筛选出固定部位角度
-            monitoringList.filter { it.poseType == 0 }.forEach {
-                val fixAngle = if (it.poseIndex.size == 3) {
-                    getAnyAngleBy3Point(it.poseIndex)
-                } else {
-                    getAnyAngleBy4Point(it.poseIndex)
-                }
-                if (fixAngle !in it.firstStandardRange[0]..it.firstStandardRange[1]) {
-                    val tempWrongParts = mutableListOf<IntArray>()
-                    if (it.poseIndex.size == 3) {
-                        tempWrongParts.add(0, it.poseIndex)
-                    }
-                    tempWrongModel.poseTips = it.tips
-                    tempWrongModel.poseDetail = "${it.partName}角度：$fixAngle°"
-                    val paintResult = drawPoseOnBitmap(tempWrongParts, currentFrame, pose)
-                    saveFixedFrame(tempWrongModel, paintResult, "fixedFrame_$paintResult")
-                }
-            }
+            // 调用共用方法检查固定部位角度
+            checkFixedPartAngles(monitoringList, detector, currentFrame, pose, 1, "左右开弓似射雕")
         }
     }
 }

@@ -73,7 +73,13 @@ class TrainingResultActivity : AppCompatActivity(), HorizontalProgressUpdateList
         if (intent.getBooleanExtra("hasWrongPoseList", false)) {
             // 从临时存储中获取错误姿势列表而不是从 intent 中获取
             wrongPoseModelList = TemporaryDataHolder.getAndClearWrongPoseModels().toMutableList()
-
+            wrongPoseModelList.forEach {
+                val commonWrong = CameraXLivePreviewActivity.poseEntityList?.get(
+                    it.poseIndex ?: 0
+                )?.commonMistakes[0]
+                it.poseTips =
+                    (it.poseDetail ?: "") + " " + it.poseTips + "\n" + commonWrong
+            }
             // 获取运动总时长
             trainingTotalTimes = intent.getIntExtra("totalTrainingTime", 0)
             // 获取动作组数

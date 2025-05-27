@@ -242,7 +242,6 @@ class MainActivity : AppCompatActivity() {
         // 创建一个包含所有需要请求的常规权限的列表
         val permissions = mutableListOf(
             Permission.CAMERA,
-            Permission.ACTIVITY_RECOGNITION,
             Permission.READ_PHONE_STATE,
             Permission.READ_CALENDAR,
         )
