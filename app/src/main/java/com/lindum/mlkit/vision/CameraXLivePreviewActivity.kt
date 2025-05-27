@@ -211,7 +211,7 @@ class CameraXLivePreviewActivity : AppCompatActivity(), OnRequestPermissionsResu
             }
         }
         binding.nextButton.setOnClickListener { view: View? ->
-            if (nowPoseIndex + 1 < poseEntityList!!.size) {
+            if (nowPoseIndex + 1 < (poseEntityList?.size ?: 0)) {
                 countdownSeconds = 3
                 nowPoseProcessSeconds = 0
                 updatePoseInfo()
@@ -607,10 +607,10 @@ class CameraXLivePreviewActivity : AppCompatActivity(), OnRequestPermissionsResu
                 return if (ps != null && ps.size > 0) {
                     ps
                 } else {
-                    arrayOf<String>("0")
+                    arrayOf("0")
                 }
             } catch (_: Exception) {
-                return arrayOf<String>("0")
+                return arrayOf("0")
             }
         }
 
@@ -738,8 +738,11 @@ class CameraXLivePreviewActivity : AppCompatActivity(), OnRequestPermissionsResu
 
         // 当前时间戳
         var timeMarkPoint: Long = 0
+
+        // 训练总时长（分钟）
         var countMinutes: Float = 0f
 
+        // 训练总时长（秒）
         @JvmField
         var countTimes: Int = 0
 

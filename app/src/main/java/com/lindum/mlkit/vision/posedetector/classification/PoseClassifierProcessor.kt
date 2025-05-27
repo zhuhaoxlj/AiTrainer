@@ -147,6 +147,9 @@ class PoseClassifierProcessor @WorkerThread constructor(
                         // 计数器更新时播放蜂鸣声
                         val tg = ToneGenerator(AudioManager.STREAM_NOTIFICATION, 100)
                         tg.startTone(ToneGenerator.TONE_PROP_BEEP);
+                        lastRepResult = String.format(
+                            Locale.US, "已做 %d 个", repsAfter
+                        )
                         val currentPose =
                             poseEntityList?.getOrNull(CameraXLivePreviewActivity.nowPoseIndex)
                         var activity: CameraXLivePreviewActivity? = null
@@ -157,11 +160,10 @@ class PoseClassifierProcessor @WorkerThread constructor(
                             // 计数动作
                             if (pose.poseType == 1) {
                                 activity?.updatePoseCount(repsAfter)
-                                if (repsAfter == pose.poseProcessValue) {
+                                if (repsAfter == pose.poseProcessValue && CameraXLivePreviewActivity.countdownSeconds == -1) {
                                     activity?.clickNextPoseButton()
                                 }
                             } else {
-                                activity?.clickNextPoseButton()
                             }
                         }
 
@@ -224,11 +226,11 @@ class PoseClassifierProcessor @WorkerThread constructor(
         parts: MutableList<PosePart>,
         detector: PoseAngleDetector
     ) {
-        if (currentFrameBitmap == null) return
-        
+        if (currentFrameBitmap == null || CameraXLivePreviewActivity.countdownSeconds >= 0) return
+
         // 获取BaduanjinPoseEvaluator实例
         val evaluator = BaduanjinPoseEvaluator.getInstance()
-        
+
         when (CameraXLivePreviewActivity.nowPoseIndex) {
             0 -> evaluator.getPose1Score(
                 maxConfidenceClass,
