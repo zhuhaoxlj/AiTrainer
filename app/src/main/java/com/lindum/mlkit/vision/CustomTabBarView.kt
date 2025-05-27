@@ -1,6 +1,5 @@
 package com.lindum.mlkit.vision
 
-import android.R
 import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
@@ -90,8 +89,18 @@ class CustomTabBarView @JvmOverloads constructor(
             iconView.setColorFilter("#F3BF4C".toColorInt())
         } else {
             // 未选中状态下颜色变为灰色
-            textView.setTextColor(ContextCompat.getColor(context, com.lindum.mlkit.vision.dev.R.color.tab_unselected))
-            iconView.setColorFilter(ContextCompat.getColor(context, com.lindum.mlkit.vision.dev.R.color.tab_unselected))
+            textView.setTextColor(
+                ContextCompat.getColor(
+                    context,
+                    com.lindum.mlkit.vision.dev.R.color.tab_unselected
+                )
+            )
+            iconView.setColorFilter(
+                ContextCompat.getColor(
+                    context,
+                    com.lindum.mlkit.vision.dev.R.color.tab_unselected
+                )
+            )
         }
     }
 

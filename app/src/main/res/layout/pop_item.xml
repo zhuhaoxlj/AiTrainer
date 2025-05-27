@@ -9,8 +9,9 @@
     <com.lindum.mlkit.vision.view.BubbleView
         android:id="@+id/bv_background"
         android:layout_width="wrap_content"
-        android:layout_height="130dp"
+        android:layout_height="0dp"
         android:layerType="hardware"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -20,9 +21,9 @@
         android:id="@+id/time"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="5dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
         android:textColor="@color/black"
         android:textSize="14sp"
         app:fontAsset="fonts/LXGWWenKai-Regular.ttf"
@@ -35,18 +36,147 @@
         android:id="@+id/text"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:paddingLeft="5dp"
-        android:paddingRight="5dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
         android:textColor="@color/black"
-        android:textSize="18dp"
+        android:textSize="18sp"
         app:fontAsset="fonts/LXGWWenKai-Regular.ttf"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/time"
-        tools:text="内容" />
-        
+        tools:text="完成训练" />
+
+    <!-- 分割线 -->
+    <View
+        android:id="@+id/divider"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text" />
+
+    <!-- 训练数据卡片 -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/training_data_card"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        app:cardBackgroundColor="#F8F8F8"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/divider">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="8dp">
+
+            <!-- 分数 -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <com.lindum.mlkit.vision.view.FontTextView
+                    android:id="@+id/score_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#FF4081"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:fontAsset="fonts/LXGWWenKai-Regular.ttf"
+                    tools:text="95" />
+
+                <com.lindum.mlkit.vision.view.FontTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="分数"
+                    android:textColor="#757575"
+                    android:textSize="12sp"
+                    app:fontAsset="fonts/LXGWWenKai-Regular.ttf" />
+            </LinearLayout>
+
+            <!-- 分隔线 -->
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="#E0E0E0" />
+
+            <!-- 训练时长 -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <com.lindum.mlkit.vision.view.FontTextView
+                    android:id="@+id/duration_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#2196F3"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:fontAsset="fonts/LXGWWenKai-Regular.ttf"
+                    tools:text="5'30&quot;" />
+
+                <com.lindum.mlkit.vision.view.FontTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="时长"
+                    android:textColor="#757575"
+                    android:textSize="12sp"
+                    app:fontAsset="fonts/LXGWWenKai-Regular.ttf" />
+            </LinearLayout>
+
+            <!-- 分隔线 -->
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="#E0E0E0" />
+
+            <!-- 错误次数 -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <com.lindum.mlkit.vision.view.FontTextView
+                    android:id="@+id/error_count_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#FF9800"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:fontAsset="fonts/LXGWWenKai-Regular.ttf"
+                    tools:text="3" />
+
+                <com.lindum.mlkit.vision.view.FontTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="错误"
+                    android:textColor="#757575"
+                    android:textSize="12sp"
+                    app:fontAsset="fonts/LXGWWenKai-Regular.ttf" />
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
     <!-- 加载指示器 -->
     <FrameLayout
         android:id="@+id/loading_view"
@@ -58,7 +188,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-        
+
         <ProgressBar
             android:layout_width="30dp"
             android:layout_height="30dp"

@@ -496,14 +496,14 @@ class TrainingResultActivity : AppCompatActivity(), HorizontalProgressUpdateList
         // 将评分写入本地文件 时长 动作组数
         FileUtils.writeStringToFile(
             "$trainingTotalTimes $groupsOfPose $countWrongImage",
-            CameraXLivePreviewActivity.imageSavePath,
+            CameraXLivePreviewActivity.imageSavePath + "/",
             "resultData.sys",
             FileUtils.OVERWRITE_TEXT
         )
         // 将动作分析结果保存到本地文件
         FileUtils.writeStringToFile(
             JSON.toJSONString(jsonResultEntitiesArrayList),
-            CameraXLivePreviewActivity.imageSavePath,
+            CameraXLivePreviewActivity.imageSavePath + "/",
             "analysisReport.json",
             FileUtils.OVERWRITE_TEXT
         )

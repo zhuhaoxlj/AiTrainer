@@ -27,7 +27,7 @@ class BubbleView @JvmOverloads constructor(
         color = "#F9E9CD".toColorInt() // 气泡背景色
         style = Paint.Style.FILL
     }
-    private val cornerRadius = 8f // 圆角半径
+    private val cornerRadius = 12f // 圆角半径，调整为12f以与内部卡片协调
     private val triangleWidth = 20f // 三角宽
     private val triangleHeight = 20f // 三角高
 

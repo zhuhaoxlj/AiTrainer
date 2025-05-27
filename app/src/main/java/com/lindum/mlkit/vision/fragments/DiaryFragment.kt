@@ -23,6 +23,7 @@ import kotlinx.coroutines.async
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.io.File
 
 class DiaryFragment : Fragment(R.layout.fragment_train_diary) {
 
@@ -36,7 +37,7 @@ class DiaryFragment : Fragment(R.layout.fragment_train_diary) {
     private val eventList = ArrayList<Event?>()
 
     // 分页加载参数
-    private val PAGE_SIZE = 30
+    private val PAGE_SIZE = 100
     private var currentPage = 0
     private var isLoading = false
     private var hasMoreData = true
@@ -291,10 +292,6 @@ class DiaryFragment : Fragment(R.layout.fragment_train_diary) {
 
             // 等待数据加载完成
             val result = dataDeferred.await()
-            Log.d(
-                TAG,
-                "loadFirstPageData: data loading took ${System.currentTimeMillis() - loadStartTime}ms"
-            )
 
             withContext(Dispatchers.Main) {
                 val uiUpdateStartTime = System.currentTimeMillis()
@@ -437,6 +434,113 @@ class DiaryFragment : Fragment(R.layout.fragment_train_diary) {
             val eventObj = Event()
             eventObj.setTime(time)
             eventObj.setEvent(event)
+
+            // 构建数据路径 - 使用正确的日期格式
+            val date = java.time.Instant.ofEpochSecond(time)
+                .atZone(java.time.ZoneId.systemDefault())
+                .toLocalDate()
+            val dateFormatted = date.toString() // 使用ISO格式 YYYY-MM-DD
+
+            val poseDataPath =
+                "${MainActivity.appFilePath}/files/analysisReport/$dateFormatted/$time"
+            eventObj.setPoseDataPath(poseDataPath)
+            Log.d(TAG, "处理记录: 时间=$time, 事件=$event, 日期=$dateFormatted, 路径=$poseDataPath")
+
+            // 尝试读取训练结果数据
+            try {
+                val resultDataFile = File("$poseDataPath/resultData.sys")
+                if (resultDataFile.exists()) {
+                    Log.d(TAG, "找到结果数据文件: $poseDataPath/resultData.sys")
+                    // 直接使用文件路径，而不是目录+文件名
+                    val resultData = FileUtils.readFileToString("$poseDataPath/", "resultData.sys")
+                    if (resultData.isNotEmpty()) {
+                        Log.d(TAG, "读取到结果数据: ${resultData[0]}")
+                        val dataParts = resultData[0].split(" ")
+                        if (dataParts.size >= 3) {
+                            // 读取训练时长
+                            val duration = dataParts[0].toIntOrNull() ?: 0
+                            eventObj.setDuration(duration)
+
+                            // 读取动作组数 (可以在界面上显示，但我们这里不使用)
+                            val groupsOfPose = dataParts[1].toIntOrNull() ?: 0
+
+                            // 读取错误次数
+                            val errorCount = dataParts[2].toIntOrNull() ?: 0
+                            eventObj.setErrorCount(errorCount)
+
+                            // 计算分数 (基于TrainingResultActivity中的计算方式)
+                            val poseGroups = MainActivity.poseEntityArrayList?.size ?: 8
+                            val score =
+                                60 + (40 * (1 - (errorCount.toFloat() / (20 * poseGroups)))).toInt()
+                            val finalScore = score.coerceIn(0, 100) // 确保分数在0-100之间
+                            eventObj.setScore(finalScore)
+
+                            Log.d(
+                                TAG,
+                                "设置训练数据 - 时长: $duration, 组数: $groupsOfPose, 错误数: $errorCount, 分数: $finalScore"
+                            )
+                        } else {
+                            Log.e(
+                                TAG,
+                                "结果数据格式不正确: ${resultData[0]}, 部分数量: ${dataParts.size}"
+                            )
+                        }
+                    } else {
+                        Log.e(TAG, "结果数据为空")
+                    }
+                } else {
+                    Log.d(TAG, "结果数据文件不存在: $poseDataPath/resultData.sys")
+
+                    // 尝试使用旧格式的路径
+                    val oldFormatPath = "${MainActivity.appFilePath}/files/analysisReport/${
+                        dateFormatted.replace(
+                            '-',
+                            '.'
+                        )
+                    }/$time"
+                    val oldFormatFile = File("$oldFormatPath/resultData.sys")
+                    if (oldFormatFile.exists()) {
+                        Log.d(TAG, "找到旧格式的结果数据文件: $oldFormatPath/resultData.sys")
+                        val resultData =
+                            FileUtils.readFileToString("$oldFormatPath/", "resultData.sys")
+                        if (resultData.isNotEmpty()) {
+                            Log.d(TAG, "读取到旧格式的结果数据: ${resultData[0]}")
+                            val dataParts = resultData[0].split(" ")
+                            if (dataParts.size >= 3) {
+                                // 读取训练时长
+                                val duration = dataParts[0].toIntOrNull() ?: 0
+                                eventObj.setDuration(duration)
+
+                                // 读取动作组数
+                                val groupsOfPose = dataParts[1].toIntOrNull() ?: 0
+
+                                // 读取错误次数
+                                val errorCount = dataParts[2].toIntOrNull() ?: 0
+                                eventObj.setErrorCount(errorCount)
+
+                                // 计算分数
+                                val poseGroups = MainActivity.poseEntityArrayList?.size ?: 8
+                                val score =
+                                    60 + (40 * (1 - (errorCount.toFloat() / (20 * poseGroups)))).toInt()
+                                val finalScore = score.coerceIn(0, 100)
+                                eventObj.setScore(finalScore)
+
+                                // 更新正确的路径
+                                eventObj.setPoseDataPath(oldFormatPath)
+
+                                Log.d(
+                                    TAG,
+                                    "设置旧格式的训练数据 - 时长: $duration, 组数: $groupsOfPose, 错误数: $errorCount, 分数: $finalScore"
+                                )
+                            }
+                        }
+                    }
+                }
+            } catch (e: Exception) {
+                Log.e(TAG, "读取训练结果数据出错: ${e.message}")
+                e.printStackTrace()
+            }
+
             result.add(eventObj)
         }
         Log.d(
