@@ -11,12 +11,13 @@
         android:layout_height="match_parent"
         android:background="#826b48"
         tools:context="com.lindum.mlkit.vision.MainActivity">
-        <!-- 内容区域 -->
+        <!-- 内容区域 todo 这里的这段关系需要仔细计算-->
         <FrameLayout
             android:id="@+id/fragment_container"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_above="@+id/custom_tab_bar" />
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="56dp" />
 
         <!-- 自定义底部导航栏 -->
         <com.lindum.mlkit.vision.CustomTabBarView
