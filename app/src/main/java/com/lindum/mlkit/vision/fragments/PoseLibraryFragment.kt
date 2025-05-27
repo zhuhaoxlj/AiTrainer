@@ -110,11 +110,6 @@ class PoseLibraryFragment : Fragment(R.layout.fragment_pose_library), HomeAdapte
 
                 // 设置动作持续变量类型
                 if (poseEntities.isNotEmpty()) {
-//                    for (poseEntity in poseEntities) {
-//                        // 倒计时类型0 计数类型1
-//                        poseEntity.setPoseType(0)
-//                        poseEntity.setPoseProcessValue(30)
-//                    }
 
                     // 加载图片
                     loadImages()
@@ -144,6 +139,7 @@ class PoseLibraryFragment : Fragment(R.layout.fragment_pose_library), HomeAdapte
         // 准备新的图片数据
         val coverImages = ArrayList<Bitmap>()
         val feelingImages = ArrayList<Bitmap>()
+        val rightImages = ArrayList<Bitmap>()  // 添加正确姿势图片列表
 
         try {
             // 检查URL数组是否为空
@@ -156,12 +152,14 @@ class PoseLibraryFragment : Fragment(R.layout.fragment_pose_library), HomeAdapte
             for (i in MainActivity.Companion.poseLibraryCoverImageUrl.indices) {
                 coverImages.add(loadingPlaceHolderBitmap!!)
                 feelingImages.add(loadingPlaceHolderBitmap!!)
+                rightImages.add(loadingPlaceHolderBitmap!!)  // 为正确姿势图片添加占位图
             }
 
             // 在IO线程上先一次性更新空的图片集合并显示占位图
             withContext(Dispatchers.Main) {
                 mViewModel.updateCoverImages(coverImages)
                 mViewModel.updateFeelingImages(feelingImages)
+                mViewModel.updateRightImages(rightImages)  // 更新正确姿势图片
                 // 先使用占位图更新UI，让用户看到内容
                 updateLibraryItemsUI()
             }
@@ -186,6 +184,7 @@ class PoseLibraryFragment : Fragment(R.layout.fragment_pose_library), HomeAdapte
                                     .replace("file:///android_asset/", "")
                             )
                         )
+                        rightImages[i] = rightBitmap  // 保存正确姿势图片
 
                         // 感受图
                         try {
@@ -204,6 +203,7 @@ class PoseLibraryFragment : Fragment(R.layout.fragment_pose_library), HomeAdapte
                         withContext(Dispatchers.Main) {
                             mViewModel.updateCoverImages(ArrayList(coverImages))
                             mViewModel.updateFeelingImages(ArrayList(feelingImages))
+                            mViewModel.updateRightImages(ArrayList(rightImages))  // 更新正确姿势图片
                             updateLibraryItemsUI()
                         }
                     } catch (e: Exception) {

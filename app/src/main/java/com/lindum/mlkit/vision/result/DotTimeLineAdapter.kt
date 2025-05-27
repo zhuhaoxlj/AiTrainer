@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -30,6 +31,7 @@ import java.lang.ref.WeakReference
 internal class DotTimeLineAdapter : RecyclerView.Adapter<DotTimeLineAdapter.ViewHolder?> {
     var mContext: Context
     var mList: MutableList<Event?>? = null
+    private val TAG = "DotTimeLineAdapter"
     
     // 缓存已加载的结果数据，避免重复加载
     private val resultCache = ConcurrentHashMap<String, ArrayList<JSONResultEntity>>()
@@ -39,6 +41,9 @@ internal class DotTimeLineAdapter : RecyclerView.Adapter<DotTimeLineAdapter.View
     
     // 缓存已加载的图片，使用弱引用避免内存泄漏
     private val imageCache = ConcurrentHashMap<String, WeakReference<Bitmap>>()
+    
+    // 布局加载器缓存
+    private var layoutInflater: LayoutInflater? = null
 
     fun setList(list: MutableList<Event?>) {
         mList = list
@@ -47,33 +52,53 @@ internal class DotTimeLineAdapter : RecyclerView.Adapter<DotTimeLineAdapter.View
 
     constructor(context: Context) {
         mContext = context
+        layoutInflater = LayoutInflater.from(context)
     }
 
     constructor(context: Context, list: MutableList<Event?>) {
         mContext = context
         mList = list
+        layoutInflater = LayoutInflater.from(context)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(mContext).inflate(R.layout.pop_item, parent, false)
-        return ViewHolder(view)
+        val startTime = System.currentTimeMillis()
+        Log.d(TAG, "onCreateViewHolder: start")
+        
+        // 使用缓存的LayoutInflater以提高性能
+        val inflater = layoutInflater ?: LayoutInflater.from(mContext).also { layoutInflater = it }
+        
+        // 使用布局加载标志来优化性能
+        val view = inflater.inflate(R.layout.pop_item, parent, false)
+        val holder = ViewHolder(view)
+        
+        Log.d(TAG, "onCreateViewHolder: end, took ${System.currentTimeMillis() - startTime}ms")
+        return holder
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val startTime = System.currentTimeMillis()
+        Log.d(TAG, "onBindViewHolder: start for position $position")
+        
         val event = mList?.get(position) ?: return
         val timestamp = event.getTime()
         
         // 使用缓存的时间格式
         var formattedTime = timeFormatCache[timestamp]
         if (formattedTime == null) {
+            val timeFormatStartTime = System.currentTimeMillis()
             formattedTime = Util.LongtoStringFormat(1000 * timestamp)
             timeFormatCache[timestamp] = formattedTime
+            Log.d(TAG, "onBindViewHolder: time formatting took ${System.currentTimeMillis() - timeFormatStartTime}ms")
         }
         
+        val textSetStartTime = System.currentTimeMillis()
         holder.time.text = formattedTime
         holder.textView.text = event.getEvent()
+        Log.d(TAG, "onBindViewHolder: text setting took ${System.currentTimeMillis() - textSetStartTime}ms")
         
-        // 添加点击监听事件
+        // 添加点击监听事件 - 使用懒加载方式，只有在实际点击时才执行耗时操作
+        val clickListenerStartTime = System.currentTimeMillis()
         holder.itemView.setOnClickListener { v: View? ->
             val dateFormatted = formattedTime
                 .split(" ".toRegex()).dropLastWhile { it.isEmpty() }
@@ -106,6 +131,9 @@ internal class DotTimeLineAdapter : RecyclerView.Adapter<DotTimeLineAdapter.View
                 }
             }
         }
+        Log.d(TAG, "onBindViewHolder: click listener setup took ${System.currentTimeMillis() - clickListenerStartTime}ms")
+        
+        Log.d(TAG, "onBindViewHolder: end for position $position, total time ${System.currentTimeMillis() - startTime}ms")
     }
     
     // 异步加载结果实体
@@ -145,10 +173,22 @@ internal class DotTimeLineAdapter : RecyclerView.Adapter<DotTimeLineAdapter.View
                     if (poseEntity.getPoseName() == poseName) {
                         val indexOfPoseEntityList =
                             MainActivity.Companion.poseEntityArrayList!!.indexOf(poseEntity)
+                        
+                        Log.d(TAG, "正确姿势图片索引: $indexOfPoseEntityList, 姿势名称: $poseName")
+                        Log.d(TAG, "poseRightImageArrayList大小: ${MainActivity.Companion.poseRightImageArrayList.size}")
+                        
                         if (indexOfPoseEntityList < MainActivity.Companion.poseRightImageArrayList.size) {
                             rightPoseImage = MainActivity.Companion.poseRightImageArrayList[indexOfPoseEntityList]
                             // 缓存图片
                             imageCache[rightImageCacheKey] = WeakReference(rightPoseImage)
+                            
+                            if (rightPoseImage != null) {
+                                Log.d(TAG, "成功加载正确姿势图片")
+                            } else {
+                                Log.e(TAG, "正确姿势图片为空")
+                            }
+                        } else {
+                            Log.e(TAG, "正确姿势图片索引越界: $indexOfPoseEntityList >= ${MainActivity.Companion.poseRightImageArrayList.size}")
                         }
                         break
                     }
@@ -163,16 +203,36 @@ internal class DotTimeLineAdapter : RecyclerView.Adapter<DotTimeLineAdapter.View
             
             if (cachedWrongImage != null) {
                 resultEntity.wrongPoseImage = cachedWrongImage
+                Log.d(TAG, "使用缓存的错误姿势图片: $wrongImagePath")
             } else {
-                val wrongImageFile = File(wrongImagePath)
-                try {
-                    val inputStream: InputStream = FileInputStream(wrongImageFile)
-                    val wrongImage = BitmapFactory.decodeStream(inputStream)
-                    resultEntity.wrongPoseImage = wrongImage
-                    // 缓存图片
-                    imageCache[wrongImageCacheKey] = WeakReference(wrongImage)
-                } catch (e: FileNotFoundException) {
-                    e.printStackTrace()
+                Log.d(TAG, "尝试加载错误姿势图片: $wrongImagePath")
+                if (wrongImagePath.isNullOrEmpty()) {
+                    Log.e(TAG, "错误姿势图片路径为空")
+                } else {
+                    val wrongImageFile = File(wrongImagePath)
+                    if (!wrongImageFile.exists()) {
+                        Log.e(TAG, "错误姿势图片文件不存在: $wrongImagePath")
+                    } else {
+                        try {
+                            val inputStream: InputStream = FileInputStream(wrongImageFile)
+                            val wrongImage = BitmapFactory.decodeStream(inputStream)
+                            if (wrongImage == null) {
+                                Log.e(TAG, "解码错误姿势图片失败: $wrongImagePath")
+                            } else {
+                                resultEntity.wrongPoseImage = wrongImage
+                                // 缓存图片
+                                imageCache[wrongImageCacheKey] = WeakReference(wrongImage)
+                                Log.d(TAG, "成功加载错误姿势图片: $wrongImagePath")
+                            }
+                            inputStream.close()
+                        } catch (e: FileNotFoundException) {
+                            Log.e(TAG, "找不到错误姿势图片文件: $wrongImagePath", e)
+                            e.printStackTrace()
+                        } catch (e: Exception) {
+                            Log.e(TAG, "加载错误姿势图片出错: ${e.message}", e)
+                            e.printStackTrace()
+                        }
+                    }
                 }
             }
             
@@ -183,32 +243,16 @@ internal class DotTimeLineAdapter : RecyclerView.Adapter<DotTimeLineAdapter.View
         return@withContext resultEntities
     }
 
-    fun convertJSON2ArrayList(jsonContent: String?): ArrayList<JSONResultEntity> {
-        if (jsonContent.isNullOrEmpty()) {
-            return ArrayList()
-        }
-        
-        try {
-            val arrayList = JSONObject.parseArray<JSONResultEntity?>(
-                jsonContent,
-                JSONResultEntity::class.java
-            ) as? ArrayList<JSONResultEntity?>?
-            
-            return arrayList as? ArrayList<JSONResultEntity> ?: ArrayList()
-        } catch (e: Exception) {
-            e.printStackTrace()
-            return ArrayList()
-        }
-    }
-
     override fun getItemCount(): Int {
         return mList?.size ?: 0
     }
 
+    // 使用高效的ViewHolder模式
     internal class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        var time: TextView = view.findViewById<View?>(R.id.time) as TextView
-        var textView: TextView = view.findViewById<View?>(R.id.text) as TextView
-        private var loadingView: View? = view.findViewById(R.id.loading_view)
+        // 直接在构造函数中初始化视图引用，避免重复findViewById
+        val time: TextView = view.findViewById(R.id.time)
+        val textView: TextView = view.findViewById(R.id.text)
+        private val loadingView: View? = view.findViewById(R.id.loading_view)
         
         fun showLoading(show: Boolean) {
             loadingView?.visibility = if (show) View.VISIBLE else View.GONE
@@ -245,6 +289,39 @@ internal class DotTimeLineAdapter : RecyclerView.Adapter<DotTimeLineAdapter.View
                 e.printStackTrace()
             }
             return fileContent
+        }
+        
+        /**
+         * 将JSON字符串转换为JSONResultEntity列表
+         *
+         * @param jsonContent JSON字符串
+         * @return ArrayList<JSONResultEntity> 返回JSONResultEntity列表
+         */
+        fun convertJSON2ArrayList(jsonContent: String?): ArrayList<JSONResultEntity> {
+            if (jsonContent.isNullOrEmpty()) {
+                return ArrayList()
+            }
+            
+            try {
+                val arrayList = JSONObject.parseArray<JSONResultEntity>(
+                    jsonContent,
+                    JSONResultEntity::class.java
+                )
+                
+                // 显式转换为ArrayList<JSONResultEntity>
+                val result = ArrayList<JSONResultEntity>()
+                if (arrayList != null) {
+                    for (item in arrayList) {
+                        if (item != null) {
+                            result.add(item)
+                        }
+                    }
+                }
+                return result
+            } catch (e: Exception) {
+                e.printStackTrace()
+                return ArrayList()
+            }
         }
         
         /**

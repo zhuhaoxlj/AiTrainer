@@ -1,80 +1,105 @@
 package com.lindum.mlkit.vision.fragments
 
 import android.graphics.Color
-import android.os.Build
 import android.os.Bundle
-import android.view.LayoutInflater
+import android.util.Log
 import android.view.View
-import android.view.ViewGroup
-import android.widget.ProgressBar
-import androidx.annotation.RequiresApi
+import androidx.core.graphics.toColorInt
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.lindum.mlkit.vision.MainActivity
 import com.lindum.mlkit.vision.dev.R
+import com.lindum.mlkit.vision.dev.databinding.FragmentTrainDiaryBinding
 import com.lindum.mlkit.vision.result.DotTimeLineAdapter
 import com.lindum.mlkit.vision.result.Event
 import com.lindum.mlkit.vision.utils.FileUtils
 import com.lindum.mlkit.vision.view.BubbleView
 import com.vivian.timelineitemdecoration.itemdecoration.DotItemDecoration
-import com.vivian.timelineitemdecoration.util.Util
-import com.xuexiang.xui.utils.StatusBarUtils
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.async
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import java.util.ArrayList
-import java.util.Collections
 
-class DiaryFragment : Fragment() {
+class DiaryFragment : Fragment(R.layout.fragment_train_diary) {
 
-    private var rootView: View? = null
-    private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: DotTimeLineAdapter
-    private lateinit var progressBar: ProgressBar
     private lateinit var itemDecoration: DotItemDecoration
-    
+    private lateinit var binding: FragmentTrainDiaryBinding
+
+    private val TAG = "DiaryFragment"
+
     // 缓存数据
     private val eventList = ArrayList<Event?>()
-    
+
     // 分页加载参数
     private val PAGE_SIZE = 30
     private var currentPage = 0
     private var isLoading = false
     private var hasMoreData = true
-    
+
     // 预加载标志
     private var isPreloaded = false
 
-    @RequiresApi(Build.VERSION_CODES.O)
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        if (rootView == null) {
-            rootView = inflater.inflate(R.layout.fragment_train_diary, container, false)
-            initView()
+    // 用于追踪异步任务
+    private var preloadJob: Job? = null
+    private var decorationSetupJob: Job? = null
+    private var loadDataJob: Job? = null
+
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        Log.d(TAG, "onViewCreated: start")
+        val startTime = System.currentTimeMillis()
+        binding = FragmentTrainDiaryBinding.bind(view)
+
+        // 初始化基本视图结构，但延迟复杂操作
+        setupBasicViews()
+
+        // 延迟加载装饰和预加载数据，优先显示UI
+        lifecycleScope.launch {
+            delay(100) // 给UI主线程一点时间来渲染基本视图
+            setupTimelineDecoration()
+            preloadData()
         }
-        return rootView
+
+        Log.d(
+            TAG,
+            "onViewCreated: basic setup done, took ${System.currentTimeMillis() - startTime}ms"
+        )
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
     override fun onResume() {
         super.onResume()
+        Log.d(TAG, "onResume: start")
+        val startTime = System.currentTimeMillis()
+
         // 如果数据为空，才加载第一页数据
-        if (eventList.isEmpty()) {
+        if (eventList.isEmpty() && loadDataJob == null) {
             loadFirstPageData()
         }
+
+        Log.d(TAG, "onResume: end, took ${System.currentTimeMillis() - startTime}ms")
     }
-    
+
+    override fun onPause() {
+        super.onPause()
+        // 取消可能正在进行的预加载任务
+        preloadJob?.cancel()
+        decorationSetupJob?.cancel()
+    }
+
     // 预加载数据，可以在应用启动时调用
-    @RequiresApi(Build.VERSION_CODES.O)
     fun preloadData() {
-        if (isPreloaded) return
-        
-        lifecycleScope.launch(Dispatchers.IO) {
+        if (isPreloaded || preloadJob != null) return
+
+        preloadJob = lifecycleScope.launch(Dispatchers.IO) {
+            val startTime = System.currentTimeMillis()
+            Log.d(TAG, "preloadData: start")
+
             // 预加载第一页数据
             val records = FileUtils.readFileToStringPaged(
                 "${MainActivity.Companion.appFilePath}/files/analysisReport/",
@@ -82,111 +107,149 @@ class DiaryFragment : Fragment() {
                 PAGE_SIZE,
                 0
             )
-            
+            Log.d(TAG, "preloadData: file read took ${System.currentTimeMillis() - startTime}ms")
             if (records.isNotEmpty()) {
                 // 处理数据但不更新UI
+                val processStartTime = System.currentTimeMillis()
                 processRecords(records)
+                Log.d(
+                    TAG,
+                    "preloadData: processing took ${System.currentTimeMillis() - processStartTime}ms"
+                )
                 isPreloaded = true
             }
+            Log.d(TAG, "preloadData: end, total time ${System.currentTimeMillis() - startTime}ms")
+            preloadJob = null
         }
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
-    private fun initView() {
-        rootView?.let { view ->
-            // 状态栏背景条
-            val statusBar = view.findViewById<View>(R.id.v_fake_status_bar)
-            val params = statusBar.layoutParams
-            params.height = StatusBarUtils.getStatusBarHeight(requireContext())
-            statusBar.layoutParams = params
+    // 设置基本视图，快速完成以显示界面
+    private fun setupBasicViews() {
+        val startTime = System.currentTimeMillis()
 
-            // 添加进度条
-            progressBar = view.findViewById(R.id.progress_bar)
-            if (progressBar == null) {
-                // 如果布局中没有进度条，动态创建一个
-                progressBar = ProgressBar(context)
-                progressBar.id = View.generateViewId()
-                (view as ViewGroup).addView(progressBar)
-                val layoutParams = progressBar.layoutParams as ViewGroup.LayoutParams
-                layoutParams.width = ViewGroup.LayoutParams.WRAP_CONTENT
-                layoutParams.height = ViewGroup.LayoutParams.WRAP_CONTENT
-                progressBar.layoutParams = layoutParams
-                progressBar.visibility = View.GONE
-            }
+        try {
+            val statusBarStartTime = System.currentTimeMillis()
+            // 修复 StatusBarUtils 问题，使用安全的方式获取状态栏高度
+            val statusBarHeight = getStatusBarHeightSafely()
+            val layoutParams = binding.vFakeStatusBar.layoutParams
+            layoutParams.height = statusBarHeight
+            binding.vFakeStatusBar.layoutParams = layoutParams
+        } catch (e: Exception) {
+        }
 
-            // 初始化RecyclerView
-            recyclerView = view.findViewById(R.id.recycler_view)
-            
-            // 使用更高效的布局管理器配置
-            val layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
-            layoutManager.gapStrategy = StaggeredGridLayoutManager.GAP_HANDLING_MOVE_ITEMS_BETWEEN_SPANS
-            recyclerView.layoutManager = layoutManager
-            
-            // 设置RecyclerView优化选项
-            recyclerView.setHasFixedSize(true)
-            recyclerView.setItemViewCacheSize(20)
+        System.currentTimeMillis()
+        // 使用更高效的布局管理器配置
+        val layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
+        layoutManager.gapStrategy = StaggeredGridLayoutManager.GAP_HANDLING_MOVE_ITEMS_BETWEEN_SPANS
 
-            // 配置时间线装饰
-            itemDecoration = DotItemDecoration.Builder(requireContext())
-                .setOrientation(DotItemDecoration.VERTICAL)
-                .setItemStyle(DotItemDecoration.STYLE_DRAW)
-                .setTopDistance(20f) // dp
-                .setItemInterVal(10f) // dp
-                .setItemPaddingLeft(10f)
-                .setItemPaddingRight(10f)
-                .setDotColor(Color.parseColor("#FFFFFF"))
-                .setDotRadius(4) // dp
-                .setDotPaddingTop(20)
-                .setDotInItemOrientationCenter(false)
-                .setLineColor(Color.parseColor("#FFFFFF"))
-                .setLineWidth(1f) // dp
-                .setEndText("终")
-                .setTextColor(Color.WHITE)
-                .setTextSize(12f) // sp
-                .setDotPaddingText(15f)
-                .setBottomDistance(40f)
-                .create()
+        // 优化RecyclerView配置
+        binding.recyclerView.apply {
+            this.layoutManager = layoutManager
+            setHasFixedSize(true)
+            setItemViewCacheSize(20)
 
-            itemDecoration.setSpanIndexListener { view, spanIndex ->
-                val bubbleView = view.findViewById<BubbleView>(R.id.bv_background)
-                bubbleView.setArrow(spanIndex)
-            }
+            // 增加视图池大小以提高性能
+            recycledViewPool.setMaxRecycledViews(0, 20)
 
-            if (recyclerView.itemDecorationCount == 0) {
-                recyclerView.addItemDecoration(itemDecoration)
-            }
+            // 关闭动画以提高性能
+            itemAnimator = null
+        }
 
-            // 初始化适配器
-            adapter = DotTimeLineAdapter(requireContext(), eventList)
-            recyclerView.adapter = adapter
+        // 初始化适配器 - 这一步必须在主线程完成
+        adapter = DotTimeLineAdapter(requireContext(), eventList)
+        binding.recyclerView.adapter = adapter
 
-            // 添加滚动监听，实现上拉加载更多
-            recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-                override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                    super.onScrolled(recyclerView, dx, dy)
-                    
-                    val layoutManager = recyclerView.layoutManager as StaggeredGridLayoutManager
-                    val visibleItemCount = layoutManager.childCount
-                    val totalItemCount = layoutManager.itemCount
-                    
-                    // 获取最后一个可见项的位置
-                    val lastVisibleItems = IntArray(layoutManager.spanCount)
-                    layoutManager.findLastVisibleItemPositions(lastVisibleItems)
-                    val lastVisibleItemPosition = findMax(lastVisibleItems)
-                    
-                    // 当滚动到底部且不在加载中且还有更多数据时，加载更多数据
-                    if (!isLoading && hasMoreData && 
-                        (visibleItemCount + lastVisibleItemPosition >= totalItemCount - 5)) {
-                        loadMoreData()
-                    }
+        // 添加滚动监听，实现上拉加载更多
+        binding.recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+
+                val layoutManager = recyclerView.layoutManager as StaggeredGridLayoutManager
+                val visibleItemCount = layoutManager.childCount
+                val totalItemCount = layoutManager.itemCount
+
+                // 获取最后一个可见项的位置
+                val lastVisibleItems = IntArray(layoutManager.spanCount)
+                layoutManager.findLastVisibleItemPositions(lastVisibleItems)
+                val lastVisibleItemPosition = findMax(lastVisibleItems)
+
+                // 当滚动到底部且不在加载中且还有更多数据时，加载更多数据
+                if (!isLoading && hasMoreData &&
+                    (visibleItemCount + lastVisibleItemPosition >= totalItemCount - 5)
+                ) {
+                    loadMoreData()
                 }
-            })
-            
-            // 尝试预加载数据
-            preloadData()
+            }
+        })
+
+    }
+
+    // 设置时间线装饰 - 这一步可能比较耗时，所以延迟执行
+    private fun setupTimelineDecoration() {
+        if (decorationSetupJob != null) return
+
+        decorationSetupJob = lifecycleScope.launch {
+            val startTime = System.currentTimeMillis()
+            Log.d(TAG, "setupTimelineDecoration: start")
+
+            // 在后台线程创建装饰对象
+            val decoration = withContext(Dispatchers.Default) {
+                DotItemDecoration.Builder(requireContext())
+                    .setOrientation(DotItemDecoration.VERTICAL)
+                    .setItemStyle(DotItemDecoration.STYLE_DRAW)
+                    .setTopDistance(20f) // dp
+                    .setItemInterVal(10f) // dp
+                    .setItemPaddingLeft(10f)
+                    .setItemPaddingRight(10f)
+                    .setDotColor("#FFFFFF".toColorInt())
+                    .setDotRadius(4) // dp
+                    .setDotPaddingTop(20)
+                    .setDotInItemOrientationCenter(false)
+                    .setLineColor("#FFFFFF".toColorInt())
+                    .setLineWidth(1f) // dp
+                    .setEndText("终")
+                    .setTextColor(Color.WHITE)
+                    .setTextSize(12f) // sp
+                    .setDotPaddingText(15f)
+                    .setBottomDistance(40f)
+                    .create()
+            }
+
+            // 切换回主线程应用装饰
+            withContext(Dispatchers.Main) {
+                itemDecoration = decoration
+
+                itemDecoration.setSpanIndexListener { view, spanIndex ->
+                    val bubbleView = view.findViewById<BubbleView>(R.id.bv_background)
+                    bubbleView.setArrow(spanIndex)
+                }
+
+                if (binding.recyclerView.itemDecorationCount == 0) {
+                    binding.recyclerView.addItemDecoration(itemDecoration)
+                }
+            }
+
+            Log.d(
+                TAG,
+                "setupTimelineDecoration: end, total time ${System.currentTimeMillis() - startTime}ms"
+            )
+            decorationSetupJob = null
         }
     }
-    
+
+    // 安全获取状态栏高度的方法
+    private fun getStatusBarHeightSafely(): Int {
+        val resources = resources
+        val resourceId = resources.getIdentifier("status_bar_height", "dimen", "android")
+        return if (resourceId > 0) {
+            resources.getDimensionPixelSize(resourceId)
+        } else {
+            // 如果无法获取，使用默认值（25dp转为像素）
+            val scale = resources.displayMetrics.density
+            (25 * scale + 0.5f).toInt()
+        }
+    }
+
     private fun findMax(lastPositions: IntArray): Int {
         var max = lastPositions[0]
         for (value in lastPositions) {
@@ -197,112 +260,190 @@ class DiaryFragment : Fragment() {
         return max
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
     private fun loadFirstPageData() {
+        Log.d(TAG, "loadFirstPageData: start")
+        val startTime = System.currentTimeMillis()
+
+        if (loadDataJob != null) return
+
         // 显示进度条
-        progressBar.visibility = View.VISIBLE
+        binding.progressBar.visibility = View.VISIBLE
         isLoading = true
-        
+
         // 清空现有数据
         eventList.clear()
         currentPage = 0
-        
+
         // 异步加载第一页数据
-        lifecycleScope.launch {
-            val result = loadPagedTrainingHistory(currentPage)
+        loadDataJob = lifecycleScope.launch {
+            val loadStartTime = System.currentTimeMillis()
+
+            // 使用async以便可以同时加载数据和设置装饰
+            val dataDeferred = async(Dispatchers.IO) {
+                loadPagedTrainingHistory(currentPage)
+            }
+
+            // 确保装饰已设置完成
+            if (binding.recyclerView.itemDecorationCount == 0) {
+                setupTimelineDecoration()
+            }
+
+            // 等待数据加载完成
+            val result = dataDeferred.await()
+            Log.d(
+                TAG,
+                "loadFirstPageData: data loading took ${System.currentTimeMillis() - loadStartTime}ms"
+            )
+
             withContext(Dispatchers.Main) {
+                val uiUpdateStartTime = System.currentTimeMillis()
                 // 更新UI
                 eventList.addAll(result)
                 adapter.notifyDataSetChanged()
-                progressBar.visibility = View.GONE
+                binding.progressBar.visibility = View.GONE
                 isLoading = false
-                
+                Log.d(
+                    TAG,
+                    "loadFirstPageData: UI update took ${System.currentTimeMillis() - uiUpdateStartTime}ms"
+                )
+
                 // 更新是否还有更多数据的标志
                 hasMoreData = result.size >= PAGE_SIZE
-                
+
                 // 预加载下一页
                 if (hasMoreData) {
                     preloadNextPage()
                 }
             }
+            Log.d(
+                TAG,
+                "loadFirstPageData: end, total time ${System.currentTimeMillis() - startTime}ms"
+            )
+            loadDataJob = null
         }
     }
-    
-    @RequiresApi(Build.VERSION_CODES.O)
+
     private fun loadMoreData() {
-        if (isLoading || !hasMoreData) return
-        
+        if (isLoading || !hasMoreData || loadDataJob != null) return
+
+        Log.d(TAG, "loadMoreData: start page ${currentPage + 1}")
+        val startTime = System.currentTimeMillis()
+
         isLoading = true
-        progressBar.visibility = View.VISIBLE
-        
+        binding.progressBar.visibility = View.VISIBLE
+
         currentPage++
-        
-        lifecycleScope.launch {
+
+        loadDataJob = lifecycleScope.launch {
+            val loadStartTime = System.currentTimeMillis()
             val result = loadPagedTrainingHistory(currentPage)
+            Log.d(
+                TAG,
+                "loadMoreData: data loading took ${System.currentTimeMillis() - loadStartTime}ms"
+            )
+
             withContext(Dispatchers.Main) {
+                val uiUpdateStartTime = System.currentTimeMillis()
                 // 更新UI
                 val startPosition = eventList.size
                 eventList.addAll(result)
                 adapter.notifyItemRangeInserted(startPosition, result.size)
-                progressBar.visibility = View.GONE
+                binding.progressBar.visibility = View.GONE
                 isLoading = false
-                
+                Log.d(
+                    TAG,
+                    "loadMoreData: UI update took ${System.currentTimeMillis() - uiUpdateStartTime}ms"
+                )
+
                 // 更新是否还有更多数据的标志
                 hasMoreData = result.size >= PAGE_SIZE
-                
+
                 // 预加载下一页
                 if (hasMoreData) {
                     preloadNextPage()
                 }
             }
-        }
-    }
-    
-    private fun preloadNextPage() {
-        lifecycleScope.launch(Dispatchers.IO) {
-            // 预加载下一页，但不更新UI
-            loadPagedTrainingHistory(currentPage + 1)
+            Log.d(TAG, "loadMoreData: end, total time ${System.currentTimeMillis() - startTime}ms")
+            loadDataJob = null
         }
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
-    private suspend fun loadPagedTrainingHistory(page: Int): List<Event?> = withContext(Dispatchers.IO) {
-        val result = ArrayList<Event?>()
-        
-        // 使用分页读取方法
-        val records = FileUtils.readFileToStringPaged(
-            "${MainActivity.Companion.appFilePath}/files/analysisReport/",
-            "recordFile.sys",
-            PAGE_SIZE,
-            page
-        )
-        
-        // 处理记录
-        val processedRecords = processRecords(records)
-        result.addAll(processedRecords)
-        
-        return@withContext result
+    private fun preloadNextPage() {
+        lifecycleScope.launch(Dispatchers.IO) {
+            Log.d(TAG, "preloadNextPage: start for page ${currentPage + 1}")
+            val startTime = System.currentTimeMillis()
+            // 预加载下一页，但不更新UI
+            loadPagedTrainingHistory(currentPage + 1)
+            Log.d(TAG, "preloadNextPage: end, took ${System.currentTimeMillis() - startTime}ms")
+        }
     }
-    
+
+    private suspend fun loadPagedTrainingHistory(page: Int): List<Event?> =
+        withContext(Dispatchers.IO) {
+            Log.d(TAG, "loadPagedTrainingHistory: start for page $page")
+            val startTime = System.currentTimeMillis()
+
+            val result = ArrayList<Event?>()
+
+            // 使用分页读取方法
+            val fileStartTime = System.currentTimeMillis()
+            val records = FileUtils.readFileToStringPaged(
+                "${MainActivity.Companion.appFilePath}/files/analysisReport/",
+                "recordFile.sys",
+                PAGE_SIZE,
+                page
+            )
+            Log.d(
+                TAG,
+                "loadPagedTrainingHistory: file reading took ${System.currentTimeMillis() - fileStartTime}ms"
+            )
+
+            // 处理记录
+            val processStartTime = System.currentTimeMillis()
+            val processedRecords = processRecords(records)
+            result.addAll(processedRecords)
+            Log.d(
+                TAG,
+                "loadPagedTrainingHistory: processing took ${System.currentTimeMillis() - processStartTime}ms"
+            )
+
+            Log.d(
+                TAG,
+                "loadPagedTrainingHistory: end, total time ${System.currentTimeMillis() - startTime}ms"
+            )
+            return@withContext result
+        }
+
     private fun processRecords(records: ArrayList<String>): List<Event?> {
+        Log.d(TAG, "processRecords: start with ${records.size} records")
+        val startTime = System.currentTimeMillis()
+
         val result = ArrayList<Event?>()
-        
+
         // 按时间戳降序排序
+        val sortStartTime = System.currentTimeMillis()
         val sortedRecords = records.mapNotNull { record ->
             val parts = record.split(" ", limit = 2)
             if (parts.size >= 2) {
                 Pair(parts[0].toLong(), parts[1])
             } else null
         }.sortedByDescending { it.first }
-        
+        Log.d(TAG, "processRecords: sorting took ${System.currentTimeMillis() - sortStartTime}ms")
+
         // 创建事件对象
+        val createStartTime = System.currentTimeMillis()
         for ((time, event) in sortedRecords) {
             val eventObj = Event()
             eventObj.setTime(time)
             eventObj.setEvent(event)
             result.add(eventObj)
         }
-        
+        Log.d(
+            TAG,
+            "processRecords: creating events took ${System.currentTimeMillis() - createStartTime}ms"
+        )
+
+        Log.d(TAG, "processRecords: end, total time ${System.currentTimeMillis() - startTime}ms")
         return result
     }
 } 

@@ -3,7 +3,7 @@ package com.lindum.mlkit.vision.result
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.Bitmap
-import android.os.Build
+import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -11,7 +11,6 @@ import android.view.WindowManager
 import android.widget.AdapterView
 import android.widget.ImageView
 import android.widget.ListView
-import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.alibaba.fastjson.JSON
 import com.lindum.mlkit.vision.CameraXLivePreviewActivity
@@ -19,17 +18,22 @@ import com.lindum.mlkit.vision.MainActivity
 import com.lindum.mlkit.vision.dev.R
 import com.lindum.mlkit.vision.dev.databinding.TrainingResultBinding
 import com.lindum.mlkit.vision.entity.WrongPoseModel
-import com.lindum.mlkit.vision.utils.BaduanjinPoseEvaluator
 import com.lindum.mlkit.vision.utils.FileUtils
 import com.lindum.mlkit.vision.utils.StatusBarUtils
 import com.lindum.mlkit.vision.utils.TemporaryDataHolder
 import com.orhanobut.logger.Logger
 import com.xuexiang.xui.widget.progress.CircleProgressView.CircleProgressUpdateListener
 import com.xuexiang.xui.widget.progress.HorizontalProgressView.HorizontalProgressUpdateListener
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import nl.dionsegijn.konfetti.core.Party
 import nl.dionsegijn.konfetti.core.Position
 import nl.dionsegijn.konfetti.core.emitter.Emitter
-import java.io.Serializable
+import java.io.File
+import java.io.FileInputStream
+import java.io.FileOutputStream
 import java.util.concurrent.TimeUnit
 
 /**
@@ -106,16 +110,73 @@ class TrainingResultActivity : AppCompatActivity(), HorizontalProgressUpdateList
 
             // 初始化 jsonResultEntitiesArrayList
             jsonResultEntitiesArrayList = ArrayList()
-            for (wrongPose in wrongPoseModelList) {
-                val jsonResultEntity = JSONResultEntity()
-                jsonResultEntity.poseName = wrongPose.poseName
-                jsonResultEntity.tips = wrongPose.poseTips
-                jsonResultEntity.wrongPoseImagePath = "" // 这里需要保存图片路径，如果有的话
-                jsonResultEntitiesArrayList!!.add(jsonResultEntity)
+
+            // 在后台线程中处理所有图片保存
+            CoroutineScope(Dispatchers.Main).launch {
+                // 创建图片保存目录
+                withContext(Dispatchers.IO) {
+                    val imageDirPath = CameraXLivePreviewActivity.imageSavePath + "/images"
+                    val imageDir = File(imageDirPath)
+                    if (!imageDir.exists()) {
+                        imageDir.mkdirs()
+                    }
+                }
+
+                // 处理每个错误姿势
+                for (wrongPose in wrongPoseModelList) {
+                    val jsonResultEntity = JSONResultEntity()
+                    jsonResultEntity.poseName = wrongPose.poseName
+                    jsonResultEntity.tips = wrongPose.poseTips
+
+                    // 保存错误姿势图片到文件，并设置路径
+                    if (wrongPose.wrongPoseImage != null) {
+                        try {
+                            // 在IO线程中执行图片保存
+                            val imagePath = withContext(Dispatchers.IO) {
+                                // 生成唯一文件名
+                                val fileName =
+                                    "wrong_pose_${System.currentTimeMillis()}_${wrongPose.poseIndex}.jpg"
+                                val imageDirPath =
+                                    CameraXLivePreviewActivity.imageSavePath + "/images"
+                                val filePath = "$imageDirPath/$fileName"
+                                val imageFile = File(filePath)
+
+                                // 将图片保存到文件 - 在IO线程中执行
+                                val outputStream = FileOutputStream(imageFile)
+                                wrongPose.wrongPoseImage!!.compress(
+                                    Bitmap.CompressFormat.JPEG,
+                                    90,
+                                    outputStream
+                                )
+                                outputStream.flush()
+                                outputStream.close()
+
+                                Logger.e("保存错误姿势图片: $filePath")
+                                return@withContext filePath
+                            }
+
+                            // 设置图片路径
+                            jsonResultEntity.wrongPoseImagePath = imagePath
+                        } catch (e: Exception) {
+                            Logger.e("保存错误姿势图片失败: ${e.message}")
+                            e.printStackTrace()
+                            jsonResultEntity.wrongPoseImagePath = ""
+                        }
+                    } else {
+                        jsonResultEntity.wrongPoseImagePath = ""
+                    }
+
+                    jsonResultEntitiesArrayList!!.add(jsonResultEntity)
+                }
+
+                // 保存训练结果到本地
+                withContext(Dispatchers.IO) {
+                    saveTrainingResultToLocal()
+                }
             }
 
             // 初始化列表视图
-            listView = findViewById<ListView>(R.id.resultList)
+            listView = findViewById(R.id.resultList)
 
             // 创建适配器，这里需要编写一个新的适配器来显示 WrongPoseModel 数据
             val resultListAdapter =
@@ -174,10 +235,10 @@ class TrainingResultActivity : AppCompatActivity(), HorizontalProgressUpdateList
                 }
             }
             val list: MutableList<MutableMap.MutableEntry<String?, Int?>> =
-                ArrayList<MutableMap.MutableEntry<String?, Int?>>(poseResultMap.entries)
+                ArrayList(poseResultMap.entries)
             list.sortWith(compareBy { it.value })
             list.reverse()
-            val map2: MutableMap<String?, Int?> = LinkedHashMap<String?, Int?>()
+            val map2: MutableMap<String?, Int?> = LinkedHashMap()
             for (entry in list) {
                 map2.put(entry.key, entry.value)
             }
@@ -187,57 +248,46 @@ class TrainingResultActivity : AppCompatActivity(), HorizontalProgressUpdateList
                         .toTypedArray()[0].toInt()
                     var commonMistakes: String? = ""
                     var solveMethod = ""
-                    if (MainActivity.Companion.poseEntityArrayList!!.get(
-                            getPoseIndexByName(
-                                resultName.get(
-                                    index
-                                )
-                            )
-                        )
+                    if (MainActivity.Companion.poseEntityArrayList!![getPoseIndexByName(
+                            resultName[index]
+                        )]
                             .getCommonMistakes().size > 1
                     ) {
-                        commonMistakes = MainActivity.Companion.poseEntityArrayList!!.get(
-                            getPoseIndexByName(
-                                resultName.get(index)
-                            )
-                        ).getCommonMistakes()[0]
-                        solveMethod = MainActivity.Companion.poseEntityArrayList!!.get(
-                            getPoseIndexByName(
-                                resultName.get(index)
-                            )
-                        ).getCommonMistakes()[1].replace("解决：", "")
+                        commonMistakes =
+                            MainActivity.Companion.poseEntityArrayList!![getPoseIndexByName(
+                                resultName[index]
+                            )].getCommonMistakes()[0]
+                        solveMethod =
+                            MainActivity.Companion.poseEntityArrayList!![getPoseIndexByName(
+                                resultName[index]
+                            )].getCommonMistakes()[1].replace("解决：", "")
                     }
                     var rightPoseImage: Bitmap? = null
                     for (poseEntity in MainActivity.Companion.poseEntityArrayList!!) {
-                        if (poseEntity.getPoseName() === resultName.get(index)) {
+                        if (poseEntity.getPoseName() === resultName[index]) {
                             val indexOfPoseEntityList =
                                 MainActivity.Companion.poseEntityArrayList!!.indexOf(poseEntity)
                             rightPoseImage =
-                                MainActivity.Companion.poseRightImageArrayList.get(
-                                    indexOfPoseEntityList
-                                )
+                                MainActivity.Companion.poseRightImageArrayList[indexOfPoseEntityList]
                         }
                     }
                     val temp = ResultEntity()
                     //                    ResultEntity temp = new ResultEntity(resultName.get(index), "出错" + o2 + "次\n" + commonMistakes + "。" + "\nAi建议：" + "\n" + solveMethod + "。" + resultTips.get(index).substring(1) + "\n", resultImage.get(index), rightPoseImage);
-                    temp.setPoseName(resultName.get(index))
-                    temp.setTips(
-                        "该错误出错" + o2 + "次\n" + commonMistakes + "。" + "\nAi建议：" + "\n" + solveMethod + "。" + resultTips.get(
-                            index
-                        )!!
+                    temp.poseName = resultName[index]
+                    temp.tips =
+                        "该错误出错" + o2 + "次\n" + commonMistakes + "。" + "\nAi建议：" + "\n" + solveMethod + "。" + resultTips[index]!!
                             .substring(1) + "\n"
-                    )
-                    temp.setWrongPoseImage(resultImage.get(index))
-                    temp.setRightPoseImage(rightPoseImage)
-                    temp.setWrongPoseImagePath(wrongImagePath.get(index))
-                    Logger.e("出错图片路径" + wrongImagePath.get(index))
+                    temp.wrongPoseImage = resultImage[index]
+                    temp.rightPoseImage = rightPoseImage
+                    temp.wrongPoseImagePath = wrongImagePath[index]
+                    Logger.e("出错图片路径" + wrongImagePath[index])
                     resultEntityList!!.add(temp)
                 }
             }
             countWrongImage = resultImage.size
 
             // 原始代码中的列表适配器初始化
-            listView = findViewById<ListView>(R.id.resultList)
+            listView = findViewById(R.id.resultList)
             val resultListAdapter =
                 ResultListAdapter(this, R.layout.result_list_item, resultEntityList)
             listView!!.setAdapter(resultListAdapter)
@@ -279,8 +329,92 @@ class TrainingResultActivity : AppCompatActivity(), HorizontalProgressUpdateList
             countWrongImage =
                 data.split(" ".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()[2].toInt()
 
+            // 确保resultEntityList已经被正确初始化
+            if (resultEntityList == null || resultEntityList!!.isEmpty()) {
+                Logger.e("从历史记录加载，但结果列表为空，尝试从文件加载")
+
+                // 尝试从文件加载分析报告
+                val jsonContent = FileUtils.readFileToString(
+                    intent.getStringExtra("poseDataPath") + "/",
+                    "analysisReport.json"
+                )
+
+                if (jsonContent.isNotEmpty()) {
+                    // 解析JSON数据
+                    val jsonResultList = DotTimeLineAdapter.convertJSON2ArrayList(jsonContent[0])
+
+                    // 初始化结果实体列表
+                    resultEntityList = ArrayList()
+
+                    // 处理每个JSON结果实体
+                    for (jsonResult in jsonResultList) {
+                        val resultEntity = ResultEntity()
+                        resultEntity.poseName = jsonResult.poseName
+                        resultEntity.tips = jsonResult.tips
+                        resultEntity.wrongPoseImagePath = jsonResult.wrongPoseImagePath
+
+                        // 加载错误姿势图片
+                        if (jsonResult.wrongPoseImagePath != null && jsonResult.wrongPoseImagePath.isNotEmpty()) {
+                            try {
+                                val wrongImageFile = File(jsonResult.wrongPoseImagePath)
+                                Logger.e("尝试加载错误姿势图片: ${jsonResult.wrongPoseImagePath}")
+                                if (wrongImageFile.exists()) {
+                                    val inputStream = FileInputStream(wrongImageFile)
+                                    val wrongImage = BitmapFactory.decodeStream(inputStream)
+                                    if (wrongImage != null) {
+                                        resultEntity.wrongPoseImage = wrongImage
+                                        Logger.e("成功加载错误姿势图片")
+                                    } else {
+                                        Logger.e("解码错误姿势图片失败")
+                                    }
+                                    inputStream.close()
+                                } else {
+                                    Logger.e("错误姿势图片文件不存在: ${jsonResult.wrongPoseImagePath}")
+                                }
+                            } catch (e: Exception) {
+                                Logger.e("加载错误姿势图片失败: ${e.message}")
+                                e.printStackTrace()
+                            }
+                        } else {
+                            Logger.e("错误姿势图片路径为空或无效")
+                        }
+
+                        // 加载正确姿势图片
+                        for (poseEntity in MainActivity.Companion.poseEntityArrayList!!) {
+                            if (poseEntity.getPoseName() == jsonResult.poseName) {
+                                val indexOfPoseEntityList =
+                                    MainActivity.Companion.poseEntityArrayList!!.indexOf(poseEntity)
+
+                                Logger.e("正确姿势图片索引: $indexOfPoseEntityList, 姿势名称: ${poseEntity.getPoseName()}")
+                                Logger.e("poseRightImageArrayList大小: ${MainActivity.Companion.poseRightImageArrayList.size}")
+
+                                if (indexOfPoseEntityList < MainActivity.Companion.poseRightImageArrayList.size) {
+                                    resultEntity.rightPoseImage =
+                                        MainActivity.Companion.poseRightImageArrayList[indexOfPoseEntityList]
+
+                                    if (resultEntity.rightPoseImage != null) {
+                                        Logger.e("成功加载正确姿势图片")
+                                    } else {
+                                        Logger.e("正确姿势图片为空")
+                                    }
+                                } else {
+                                    Logger.e("正确姿势图片索引越界: $indexOfPoseEntityList >= ${MainActivity.Companion.poseRightImageArrayList.size}")
+                                }
+                                break
+                            }
+                        }
+
+                        resultEntityList!!.add(resultEntity)
+                    }
+                }
+            }
+
             // 初始化原始代码中的列表适配器
             listView = findViewById<ListView>(R.id.resultList)
+            resultEntityList?.forEach {
+                it.rightPoseImage =
+                    MainActivity.Companion.poseRightImageArrayList[getPoseIndexByName(it.poseName)]
+            }
             val resultListAdapter =
                 ResultListAdapter(this, R.layout.result_list_item, resultEntityList)
             listView!!.setAdapter(resultListAdapter)

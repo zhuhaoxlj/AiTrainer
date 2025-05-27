@@ -35,6 +35,16 @@ class BubbleView @JvmOverloads constructor(
     private var triangleTopMargin = -1f
     // 箭头方向，默认右侧
     private var arrowDirection = ARROW_RIGHT
+    
+    // 缓存绘制路径，避免重复创建
+    private var rectPath: Path? = null
+    private var trianglePath: Path? = null
+    
+    // 缓存矩形区域
+    private val rectF = RectF()
+    
+    // 标记是否需要重新计算路径
+    private var pathsDirty = true
 
     init {
         // 从XML中获取属性
@@ -44,6 +54,9 @@ class BubbleView @JvmOverloads constructor(
                 arrowDirection = getInt(R.styleable.BubbleView_arrowDirection, ARROW_RIGHT)
             }
         }
+        
+        // 设置硬件加速层类型以提高性能
+        setLayerType(LAYER_TYPE_HARDWARE, null)
     }
 
     /**
@@ -53,6 +66,7 @@ class BubbleView @JvmOverloads constructor(
     fun setArrow(direction: Int) {
         if (direction != arrowDirection) {
             arrowDirection = direction
+            pathsDirty = true
             invalidate()  // 重绘视图
         }
     }
@@ -64,12 +78,20 @@ class BubbleView @JvmOverloads constructor(
     fun setTriangleTopMargin(margin: Float) {
         if (margin != triangleTopMargin) {
             triangleTopMargin = margin
+            pathsDirty = true
             invalidate()  // 重绘视图
         }
     }
+    
+    override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
+        super.onSizeChanged(w, h, oldw, oldh)
+        // 尺寸变化时标记路径需要重新计算
+        pathsDirty = true
+    }
 
-    override fun onDraw(canvas: Canvas) {
-        super.onDraw(canvas)
+    // 计算所有绘制路径
+    private fun calculatePaths() {
+        if (!pathsDirty) return
         
         // 计算三角形的Y坐标
         val triangleY: Float = if (triangleTopMargin >= 0) {
@@ -79,34 +101,45 @@ class BubbleView @JvmOverloads constructor(
             // 否则居中显示
             height / 2f
         }
-
-        // 根据箭头方向绘制不同的形状
+        
+        // 根据箭头方向创建不同的路径
         if (arrowDirection == ARROW_RIGHT) {
             // 箭头在右侧，左边留出三角形高度的距离
-            val rect = RectF(triangleHeight, 0f, width - triangleWidth, height.toFloat())
-            // 画圆角矩形
-            canvas.drawRoundRect(rect, cornerRadius, cornerRadius, paint)
+            rectF.set(triangleHeight, 0f, width - triangleWidth, height.toFloat())
             
-            // 画右侧三角
-            val path = Path()
-            path.moveTo(width - triangleWidth, triangleY - triangleHeight / 2)
-            path.lineTo(width.toFloat(), triangleY)
-            path.lineTo(width - triangleWidth, triangleY + triangleHeight / 2)
-            path.close()
-            canvas.drawPath(path, paint)
+            // 创建三角形路径
+            if (trianglePath == null) trianglePath = Path()
+            trianglePath?.reset()
+            trianglePath?.moveTo(width - triangleWidth, triangleY - triangleHeight / 2)
+            trianglePath?.lineTo(width.toFloat(), triangleY)
+            trianglePath?.lineTo(width - triangleWidth, triangleY + triangleHeight / 2)
+            trianglePath?.close()
         } else {
             // 箭头在左侧，右边留出三角形高度的距离
-            val rect = RectF(triangleWidth, 0f, width - triangleHeight, height.toFloat())
-            // 画圆角矩形
-            canvas.drawRoundRect(rect, cornerRadius, cornerRadius, paint)
+            rectF.set(triangleWidth, 0f, width - triangleHeight, height.toFloat())
             
-            // 画左侧三角
-            val path = Path()
-            path.moveTo(triangleWidth, triangleY - triangleHeight / 2)
-            path.lineTo(0f, triangleY)
-            path.lineTo(triangleWidth, triangleY + triangleHeight / 2)
-            path.close()
-            canvas.drawPath(path, paint)
+            // 创建三角形路径
+            if (trianglePath == null) trianglePath = Path()
+            trianglePath?.reset()
+            trianglePath?.moveTo(triangleWidth, triangleY - triangleHeight / 2)
+            trianglePath?.lineTo(0f, triangleY)
+            trianglePath?.lineTo(triangleWidth, triangleY + triangleHeight / 2)
+            trianglePath?.close()
         }
+        
+        pathsDirty = false
+    }
+
+    override fun onDraw(canvas: Canvas) {
+        super.onDraw(canvas)
+        
+        // 确保路径已计算
+        calculatePaths()
+        
+        // 绘制圆角矩形
+        canvas.drawRoundRect(rectF, cornerRadius, cornerRadius, paint)
+        
+        // 绘制三角形
+        trianglePath?.let { canvas.drawPath(it, paint) }
     }
 }

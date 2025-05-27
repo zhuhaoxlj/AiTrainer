@@ -31,6 +31,7 @@ import com.xuexiang.xui.widget.dialog.materialdialog.MaterialDialog
 import com.xuexiang.xui.widget.dialog.materialdialog.MaterialDialog.SingleButtonCallback
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.time.LocalDate
 import java.util.Objects
 
@@ -123,6 +124,35 @@ class MainActivity : AppCompatActivity() {
         // 初始化文件夹
         initFiles()
 
+        // 确保静态列表已初始化
+        if (poseEntityArrayList == null) {
+            poseEntityArrayList = ArrayList()
+        }
+        
+        if (poseRightImageArrayList.isEmpty()) {
+            Logger.e("初始化正确姿势图片列表")
+            // 预加载正确姿势图片
+            lifecycleScope.launch(Dispatchers.IO) {
+                try {
+                    for (url in rightPoseImageUrl) {
+                        try {
+                            val bitmap = BitmapFactory.decodeStream(
+                                assets.open(url.replace("file:///android_asset/", ""))
+                            )
+                            withContext(Dispatchers.Main) {
+                                poseRightImageArrayList.add(bitmap)
+                                Logger.e("加载正确姿势图片: ${poseRightImageArrayList.size}/${rightPoseImageUrl.size}")
+                            }
+                        } catch (e: Exception) {
+                            Logger.e("加载正确姿势图片失败: ${e.message}")
+                        }
+                    }
+                } catch (e: Exception) {
+                    Logger.e("初始化正确姿势图片列表失败: ${e.message}")
+                }
+            }
+        }
+
         // 初始化Fragment
         initFragments()
 
@@ -139,10 +169,8 @@ class MainActivity : AppCompatActivity() {
     private fun preloadData() {
         lifecycleScope.launch(Dispatchers.IO) {
             // 预加载日记数据
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                diaryFragment.preloadData()
-            }
-            
+            diaryFragment.preloadData()
+
             // 预加载其他可能需要的数据
             // ...
         }

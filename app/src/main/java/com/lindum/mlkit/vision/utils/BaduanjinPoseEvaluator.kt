@@ -293,12 +293,6 @@ class BaduanjinPoseEvaluator {
 
     // 添加错误姿势模型，并限制数量
     private fun addWrongPoseToList(wrongPoseModel: WrongPoseModel) {
-        if (wrongPoseModel.wrongPart == "左腿") {
-            Log.i("test_part", "left")
-        }
-        if (wrongPoseModel.wrongPart == "右腿") {
-            Log.i("test_part", "right")
-        }
         // 检查是否已存在相同的提示信息，避免重复添加
         val existingModel = allWarningPoseList.find { model ->
             model.wrongPart == wrongPoseModel.wrongPart &&
