@@ -51,7 +51,7 @@ class TrainingResultActivity : AppCompatActivity(), HorizontalProgressUpdateList
     var countWrongImage: Int = 0
     private var listView: ListView? = null
     private lateinit var binding: TrainingResultBinding
-    
+
     // 添加 WrongPoseModel 列表
     private var wrongPoseModelList = mutableListOf<WrongPoseModel>()
 
@@ -69,11 +69,11 @@ class TrainingResultActivity : AppCompatActivity(), HorizontalProgressUpdateList
         binding.vFakeStatusBar.layoutParams = layoutParams
 
         val intent = getIntent()
-        
+
         if (intent.getBooleanExtra("hasWrongPoseList", false)) {
             // 从临时存储中获取错误姿势列表而不是从 intent 中获取
             wrongPoseModelList = TemporaryDataHolder.getAndClearWrongPoseModels().toMutableList()
-            
+
             // 获取运动总时长
             trainingTotalTimes = intent.getIntExtra("totalTrainingTime", 0)
             // 获取动作组数
@@ -85,10 +85,10 @@ class TrainingResultActivity : AppCompatActivity(), HorizontalProgressUpdateList
                 "recordFile.sys",
                 FileUtils.APPEND_TEXT
             )
-            
+
             // 设置错误动作数量
             countWrongImage = wrongPoseModelList.size
-            
+
             // 初始化 jsonResultEntitiesArrayList
             jsonResultEntitiesArrayList = ArrayList()
             for (wrongPose in wrongPoseModelList) {
@@ -98,14 +98,15 @@ class TrainingResultActivity : AppCompatActivity(), HorizontalProgressUpdateList
                 jsonResultEntity.wrongPoseImagePath = "" // 这里需要保存图片路径，如果有的话
                 jsonResultEntitiesArrayList!!.add(jsonResultEntity)
             }
-            
+
             // 初始化列表视图
             listView = findViewById<ListView>(R.id.resultList)
-            
+
             // 创建适配器，这里需要编写一个新的适配器来显示 WrongPoseModel 数据
-            val resultListAdapter = WrongPoseListAdapter(this, R.layout.result_list_item, wrongPoseModelList)
+            val resultListAdapter =
+                WrongPoseListAdapter(this, R.layout.result_list_item, wrongPoseModelList)
             listView!!.adapter = resultListAdapter
-            
+
             // 设置列表项点击事件
             listView?.onItemClickListener =
                 AdapterView.OnItemClickListener { _, view, position, _ ->
@@ -119,7 +120,7 @@ class TrainingResultActivity : AppCompatActivity(), HorizontalProgressUpdateList
                         wrongImageView.isDrawingCacheEnabled = false
                         startActivity(intent1)
                     }
-                    
+
                     // 正确姿势图片点击查看大图
                     val rightImageView = view.findViewById<ImageView>(R.id.rightPoseImage)
                     rightImageView.setOnClickListener {
@@ -131,7 +132,7 @@ class TrainingResultActivity : AppCompatActivity(), HorizontalProgressUpdateList
                         startActivity(intent1)
                     }
                 }
-            
+
         } else if (intent.getIntExtra("init", 0) == 0) {
             // 旧的初始化代码保持不变
             // 获取运动总时长
@@ -219,10 +220,11 @@ class TrainingResultActivity : AppCompatActivity(), HorizontalProgressUpdateList
                 }
             }
             countWrongImage = resultImage.size
-            
+
             // 原始代码中的列表适配器初始化
             listView = findViewById<ListView>(R.id.resultList)
-            val resultListAdapter = ResultListAdapter(this, R.layout.result_list_item, resultEntityList)
+            val resultListAdapter =
+                ResultListAdapter(this, R.layout.result_list_item, resultEntityList)
             listView!!.setAdapter(resultListAdapter)
             listView?.onItemClickListener =
                 AdapterView.OnItemClickListener { _, view, _, l ->
@@ -247,7 +249,7 @@ class TrainingResultActivity : AppCompatActivity(), HorizontalProgressUpdateList
                         startActivity(intent1)
                     }
                 }
-            
+
         } else {
             // 从已保存的数据文件加载
             Logger.e("===" + intent.getStringExtra("poseDataPath"))
@@ -261,10 +263,11 @@ class TrainingResultActivity : AppCompatActivity(), HorizontalProgressUpdateList
                 data.split(" ".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()[1].toInt()
             countWrongImage =
                 data.split(" ".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()[2].toInt()
-                
+
             // 初始化原始代码中的列表适配器
             listView = findViewById<ListView>(R.id.resultList)
-            val resultListAdapter = ResultListAdapter(this, R.layout.result_list_item, resultEntityList)
+            val resultListAdapter =
+                ResultListAdapter(this, R.layout.result_list_item, resultEntityList)
             listView!!.setAdapter(resultListAdapter)
             listView?.onItemClickListener =
                 AdapterView.OnItemClickListener { _, view, _, l ->
@@ -290,7 +293,7 @@ class TrainingResultActivity : AppCompatActivity(), HorizontalProgressUpdateList
                     }
                 }
         }
-        
+
         // ResultEntity 转 JSONResultEntity - 保留原有逻辑，如果使用新的 WrongPoseModel 则在上面已生成
         if (jsonResultEntitiesArrayList == null) {
             jsonResultEntitiesArrayList = ArrayList<JSONResultEntity?>()
@@ -318,9 +321,13 @@ class TrainingResultActivity : AppCompatActivity(), HorizontalProgressUpdateList
         binding.progressViewCircleMain.setProgressViewUpdateListener(this)
         // 初始化进度条
         startProcessBar()
-        
+
         // 如果是新创建的训练结果，保存到本地
-        if (intent.getIntExtra("init", 0) == 0 || intent.getBooleanExtra("hasWrongPoseList", false)) {
+        if (intent.getIntExtra("init", 0) == 0 || intent.getBooleanExtra(
+                "hasWrongPoseList",
+                false
+            )
+        ) {
             // 将训练结果保存到本地
             saveTrainingResultToLocal()
         }

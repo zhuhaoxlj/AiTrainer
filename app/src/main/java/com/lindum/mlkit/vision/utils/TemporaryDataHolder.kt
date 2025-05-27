@@ -3,23 +3,22 @@ package com.lindum.mlkit.vision.utils
 import com.lindum.mlkit.vision.entity.WrongPoseModel
 
 /**
- * Temporary data holder to store objects that can't be serialized
- * and passed through Intents directly
+ * 临时数据持有者，用于存储无法序列化且无法直接通过Intent传递的对象
  */
 object TemporaryDataHolder {
-    
+
     // Store the current wrong pose models list
     private var wrongPoseModels: List<WrongPoseModel>? = null
-    
+
     /**
-     * Set the list of wrong pose models
+     * 设置错误姿势模型列表
      */
     fun setWrongPoseModels(models: List<WrongPoseModel>) {
         wrongPoseModels = models
     }
-    
+
     /**
-     * Get the list of wrong pose models and clear the reference
+     * 获取错误姿势模型的列表并清除引用
      */
     fun getAndClearWrongPoseModels(): List<WrongPoseModel> {
         val result = wrongPoseModels ?: emptyList()

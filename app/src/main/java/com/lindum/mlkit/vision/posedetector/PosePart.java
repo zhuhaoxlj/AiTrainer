@@ -13,6 +13,10 @@ public class PosePart {
      * 部位的索引
      */
     int[] poseIndex;
+    /**
+     * 部位名称
+     */
+    String partName;
 
     /**
      * 0 固定观测角度 1 动态角度
@@ -95,16 +99,26 @@ public class PosePart {
         this.secondStandardRange = secondStandardRange;
     }
 
+    public String getPartName() {
+        return partName;
+    }
+
+    public void setPartName(String partName) {
+        this.partName = partName;
+    }
+
     @NonNull
     @Override
     public String toString() {
         return "PosePart{" +
                 "poseIndex=" + Arrays.toString(poseIndex) +
+                ", partName='" + partName + '\'' +
                 ", poseType=" + poseType +
                 ", poseAngleType=" + poseAngleType +
                 ", fixedRange=" + Arrays.toString(fixedRange) +
                 ", firstStandardRange=" + Arrays.toString(firstStandardRange) +
                 ", secondStandardRange=" + Arrays.toString(secondStandardRange) +
+                ", tips='" + tips + '\'' +
                 '}';
     }
 }

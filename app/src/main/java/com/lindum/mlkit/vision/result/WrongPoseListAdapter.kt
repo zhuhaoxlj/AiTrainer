@@ -34,7 +34,7 @@ class WrongPoseListAdapter(
             viewHolder = ViewHolder()
 
             // 找到各个控件
-            viewHolder.poseName = view.findViewById(R.id.poseName)
+            viewHolder.poseName = view.findViewById(R.id.poseResultName)
             viewHolder.tips = view.findViewById(R.id.poseResultTips)
             viewHolder.wrongPoseImage = view.findViewById(R.id.wrongPoseImage)
             viewHolder.rightPoseImage = view.findViewById(R.id.rightPoseImage)
@@ -49,10 +49,10 @@ class WrongPoseListAdapter(
         val wrongPose = wrongPoseList[position]
 
         // 设置姿势名称
-        viewHolder.poseName?.text = wrongPose.poseName ?: "未知姿势"
+        viewHolder.poseName?.text = wrongPose.poseName ?: "--"
 
         // 设置提示信息
-        viewHolder.tips?.text = wrongPose.poseTips ?: "未知错误"
+        viewHolder.tips?.text = wrongPose.poseTips ?: "--"
 
         // 设置错误姿势图片
         wrongPose.wrongPoseImage?.let {

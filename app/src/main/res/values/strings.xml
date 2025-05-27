@@ -97,7 +97,7 @@
     <string name="one">0\"</string>
     <string name="poseProcess">1/14</string>
     <string name="poseName">卷腹</string>
-    <string name="posename">PoseName</string>
-    <string name="tips">Tips</string>
+    <string name="posename">动作名称</string>
+    <string name="tips">纠正建议</string>
 
 </resources>

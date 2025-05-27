@@ -8,6 +8,7 @@ import android.os.Environment
 import android.util.Log
 import com.google.mlkit.vision.pose.Pose
 import com.google.mlkit.vision.pose.PoseLandmark
+import com.lindum.mlkit.vision.CameraXLivePreviewActivity
 import com.lindum.mlkit.vision.MainActivity.Companion.poseRightImageArrayList
 import com.lindum.mlkit.vision.entity.WrongPoseModel
 import com.lindum.mlkit.vision.posedetector.PoseAngleDetector
@@ -83,6 +84,13 @@ class BaduanjinPoseEvaluator {
 
     // 获取所有错误姿势的列表
     fun getAllWarningPoseList(): List<WrongPoseModel> {
+        allWarningPoseList.forEach {
+            val commonWrong = CameraXLivePreviewActivity.poseEntityList?.get(
+                it.poseIndex ?: 0
+            )?.commonMistakes[0]
+            it.poseTips =
+                (it.poseDetail ?: "") + " " + it.poseTips + "\n" + commonWrong
+        }
         return allWarningPoseList.toList()
     }
 
@@ -417,7 +425,7 @@ class BaduanjinPoseEvaluator {
             try {
                 wrongPoseModel.wrongPoseImage = bitmap.copy(bitmap.config!!, true)
                 wrongPoseModel.rightPoseBitmap =
-                    poseRightImageArrayList[maxUpWrongModel!!.poseIndex!!]
+                    poseRightImageArrayList[wrongPoseModel.poseIndex!!]
                 addWrongPoseToList(wrongPoseModel)
 
                 val directory = File(
@@ -497,43 +505,36 @@ class BaduanjinPoseEvaluator {
             val tempWrongModel = WrongPoseModel()
             tempWrongModel.poseIndex = 0
             tempWrongModel.poseName = "两手托天理三焦"
-            // 从detector中获取左右手臂角度
-            val leftArm = leftArmAngle
-            val rightArm = rightArmAngle
-
             if (poseStage.contains("up")) {
-                // 有最大值就更新，同时记录这一帧图片、错误地方、错误建议
+                // 找到最顶部的一帧
                 if (maxShoulderCombineAngle < angle3 + angle4) {
                     maxShoulderCombineAngle = angle3 + angle4
+                    leftMaxAngle = leftArmAngle
+                    rightMaxAngle = rightArmAngle
+                    val tempLeftWrongParts = mutableListOf<IntArray>()
+                    addWarnPart(tempLeftWrongParts, 5)
+                    tempWrongModel.poseTips = "左手臂伸直，不要弯腰驼背"
+                    tempWrongModel.poseDetail = "左手臂角度：$leftArmAngle"
+                    // 绘制人体关键点和错误区域，记录 up 最顶部关键帧
+                    leftMaxFrame = drawPoseOnBitmap(tempLeftWrongParts, currentFrame, pose)
+                    leftMaxWrongModel = tempWrongModel
 
-                    val tempWrongParts = mutableListOf<IntArray>()
-                    var countWrong = 0
-                    // 手臂角度不对
-                    if (leftArm !in 143..180) {
-                        addWarnPart(tempWrongParts, 5)
-                        tempWrongModel.poseTips = "手臂伸直，不要弯腰驼背"
-                        tempWrongModel.poseDetail = "$leftArm,$rightArm"
-                        countWrong += 1
-                    }
-                    if (rightArm !in 143..180) {
-                        addWarnPart(tempWrongParts, 2)
-                        tempWrongModel.poseTips = "手臂伸直，不要弯腰驼背"
-                        tempWrongModel.poseDetail = "$leftArm,$rightArm"
-                        countWrong += 1
-                    }
-
-                    if (countWrong > 0) {
-                        // 绘制人体关键点和错误区域，记录 up 最顶部关键帧
-                        maxUpFrame = drawPoseOnBitmap(tempWrongParts, currentFrame, pose)
-                        maxUpWrongModel = tempWrongModel
-                    }
+                    val tempRightWrongParts = mutableListOf<IntArray>()
+                    addWarnPart(tempRightWrongParts, 2)
+                    tempWrongModel.poseTips = "右手臂伸直，不要弯腰驼背"
+                    tempWrongModel.poseDetail = "右手臂角度：$rightArmAngle°"
+                    // 绘制人体关键点和错误区域，记录 up 最顶部关键帧
+                    rightMaxFrame = drawPoseOnBitmap(tempRightWrongParts, currentFrame, pose)
+                    rightMaxWrongModel = tempWrongModel
                 }
             } else if (poseStage.contains("down")) {
-                if (maxUpFrame != null) {
-                    saveFrame(true, maxUpFrame, "maxUpFrame_$maxUpFrame")
+                if (leftMaxFrame != null && leftMaxAngle !in 160..180) {
+                    saveFrame(true, leftMaxFrame, "leftMaxFrame_$leftMaxFrame")
+                }
+                if (rightMaxFrame != null && rightMaxAngle !in 160..180) {
+                    saveFrame(true, rightMaxFrame, "rightMaxFrame_$rightMaxFrame")
                 }
             }
-
             // 筛选出固定部位角度
             monitoringList.filter { it.poseType == 0 }.forEach {
                 val fixAngle = if (it.poseIndex.size == 3) {
@@ -547,6 +548,7 @@ class BaduanjinPoseEvaluator {
                         tempWrongParts.add(0, it.poseIndex)
                     }
                     tempWrongModel.poseTips = it.tips
+                    tempWrongModel.poseDetail = "${it.partName}角度：$fixAngle°"
                     val paintResult = drawPoseOnBitmap(tempWrongParts, currentFrame, pose)
                     saveFixedFrame(tempWrongModel, paintResult, "fixedFrame_$paintResult")
                 }
@@ -632,6 +634,7 @@ class BaduanjinPoseEvaluator {
                         tempWrongParts.add(0, it.poseIndex)
                     }
                     tempWrongModel.poseTips = it.tips
+                    tempWrongModel.poseDetail = "${it.partName}角度：$fixAngle°"
                     val paintResult = drawPoseOnBitmap(tempWrongParts, currentFrame, pose)
                     saveFixedFrame(tempWrongModel, paintResult, "fixedFrame_$paintResult")
                 }

@@ -50,41 +50,39 @@ internal class DotTimeLineAdapter : RecyclerView.Adapter<DotTimeLineAdapter.View
         holder.itemView.setOnClickListener(View.OnClickListener { v: View? ->
             val poseDataPath =
                 MainActivity.Companion.appFilePath + "/files/analysisReport/" + Util.LongtoStringFormat(
-                    1000 * mList!!.get(position)!!
+                    1000 * mList!![position]!!
                         .getTime()
                 ).split(" ".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()[0].replace(
                     ".",
                     "-"
                 ) + "/" + mList!!.get(position)!!
                     .getTime() + ""
-            if (File(poseDataPath).exists() && File(poseDataPath + "/analysisReport.json").exists()) {
+            if (File(poseDataPath).exists() && File("$poseDataPath/analysisReport.json").exists()) {
                 Logger.e("动作数据存在")
                 val arrayList =
-                    convertJSON2ArrayList(readFile2String(poseDataPath + "/analysisReport.json"))
+                    convertJSON2ArrayList(readFile2String("$poseDataPath/analysisReport.json"))
                 val resultEntities = ArrayList<ResultEntity>()
                 for (temp in arrayList) {
                     val resultEntity = ResultEntity()
-                    resultEntity.setPoseName(temp.getPoseName())
+                    resultEntity.poseName = temp.poseName
                     // 找到正确的图片
                     var rightPoseImage: Bitmap? = null
                     for (poseEntity in MainActivity.Companion.poseEntityArrayList!!) {
-                        if (poseEntity.getPoseName() == temp.getPoseName()) {
+                        if (poseEntity.getPoseName() == temp.poseName) {
                             val indexOfPoseEntityList =
                                 MainActivity.Companion.poseEntityArrayList!!.indexOf(poseEntity)
-                            rightPoseImage = MainActivity.Companion.poseRightImageArrayList.get(
-                                indexOfPoseEntityList
-                            )
+                            rightPoseImage = MainActivity.Companion.poseRightImageArrayList[indexOfPoseEntityList]
                         }
                     }
-                    resultEntity.setRightPoseImage(rightPoseImage)
-                    val wrongImageFile = File(temp.getWrongPoseImagePath())
+                    resultEntity.rightPoseImage = rightPoseImage
+                    val wrongImageFile = File(temp.wrongPoseImagePath)
                     try {
                         val inputStream: InputStream = FileInputStream(wrongImageFile)
-                        resultEntity.setWrongPoseImage(BitmapFactory.decodeStream(inputStream))
+                        resultEntity.wrongPoseImage = BitmapFactory.decodeStream(inputStream)
                     } catch (e: FileNotFoundException) {
                         e.printStackTrace()
                     }
-                    resultEntity.setTips(temp.getTips())
+                    resultEntity.tips = temp.tips
                     resultEntities.add(resultEntity)
                 }
                 TrainingResultActivity.resultEntityList = resultEntities
