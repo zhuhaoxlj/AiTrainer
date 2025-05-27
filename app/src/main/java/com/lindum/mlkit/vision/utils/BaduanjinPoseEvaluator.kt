@@ -293,6 +293,12 @@ class BaduanjinPoseEvaluator {
 
     // 添加错误姿势模型，并限制数量
     private fun addWrongPoseToList(wrongPoseModel: WrongPoseModel) {
+        if (wrongPoseModel.wrongPart == "左腿") {
+            Log.i("test_part", "left")
+        }
+        if (wrongPoseModel.wrongPart == "右腿") {
+            Log.i("test_part", "right")
+        }
         // 检查是否已存在相同的提示信息，避免重复添加
         val existingModel = allWarningPoseList.find { model ->
             model.wrongPart == wrongPoseModel.wrongPart &&
@@ -403,16 +409,8 @@ class BaduanjinPoseEvaluator {
         wrongPoseModel: WrongPoseModel,
         bitmap: Bitmap?, filename: String
     ) {
-        // 增加计数
-        countFrame++
-
-        // 如果计数小于冷却时间，直接返回不处理
-        if (countFrame < FRAME_COOLDOWN) {
-            return
-        }
-
-        // 重置计数
-        countFrame = 0
+        // 不再在这里增加计数和检查冷却时间
+        // 而是直接处理错误姿势
 
         bitmap?.let {
             try {
@@ -421,23 +419,30 @@ class BaduanjinPoseEvaluator {
                     poseRightImageArrayList[wrongPoseModel.poseIndex!!]
                 addWrongPoseToList(wrongPoseModel)
 
-                val directory = File(
-                    Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES),
-                    "AiTrainer"
-                )
-                if (!directory.exists()) {
-                    directory.mkdirs()
+                // 只有当需要保存图片到文件系统时才增加计数
+                countFrame++
+                if (countFrame >= FRAME_COOLDOWN) {
+                    // 重置计数
+                    countFrame = 0
+                    
+                    val directory = File(
+                        Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES),
+                        "AiTrainer"
+                    )
+                    if (!directory.exists()) {
+                        directory.mkdirs()
+                    }
+
+                    val timeStamp =
+                        SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(Date())
+                    val file = File(directory, "${filename}_$timeStamp.jpg")
+
+                    val outputStream = FileOutputStream(file)
+                    it.compress(Bitmap.CompressFormat.JPEG, 60, outputStream)
+                    outputStream.flush()
+                    outputStream.close()
+                    Log.d("PoseCapture", "Saved max angle frame to: ${file.absolutePath}")
                 }
-
-                val timeStamp =
-                    SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(Date())
-                val file = File(directory, "${filename}_$timeStamp.jpg")
-
-                val outputStream = FileOutputStream(file)
-                it.compress(Bitmap.CompressFormat.JPEG, 60, outputStream)
-                outputStream.flush()
-                outputStream.close()
-                Log.d("PoseCapture", "Saved max angle frame to: ${file.absolutePath}")
             } catch (e: Exception) {
                 Log.e("PoseCapture", "Error saving max angle frame", e)
             }
@@ -489,10 +494,9 @@ class BaduanjinPoseEvaluator {
         poseIndex: Int,
         poseName: String
     ) {
-        val tempWrongModel = WrongPoseModel()
-        tempWrongModel.poseIndex = poseIndex
-        tempWrongModel.poseName = poseName
-
+        // 用于收集当前帧中的所有错误
+        val frameErrors = mutableListOf<Pair<WrongPoseModel, MutableList<IntArray>>>()
+        
         // 筛选出固定部位角度
         monitoringList.filter { it.poseType == 0 }.forEach {
             val fixAngle = if (it.poseIndex.size == 3) {
@@ -501,15 +505,33 @@ class BaduanjinPoseEvaluator {
                 detector.getAnyAngleBy4Point(it.poseIndex)
             }
             if (fixAngle !in it.firstStandardRange[0]..it.firstStandardRange[1]) {
+                // 为每个错误创建新的WrongPoseModel实例
+                val wrongModel = WrongPoseModel()
+                wrongModel.poseIndex = poseIndex
+                wrongModel.poseName = poseName
+                wrongModel.poseTips = it.tips
+                wrongModel.wrongPart = it.partName
+                wrongModel.poseDetail = "${it.partName}角度：$fixAngle°"
+                
                 val tempWrongParts = mutableListOf<IntArray>()
                 if (it.poseIndex.size == 3) {
                     tempWrongParts.add(0, it.poseIndex)
                 }
-                tempWrongModel.poseTips = it.tips
-                tempWrongModel.wrongPart = it.partName
-                tempWrongModel.poseDetail = "${it.partName}角度：$fixAngle°"
-                val paintResult = drawPoseOnBitmap(tempWrongParts, currentFrame, pose)
-                saveFixedFrame(tempWrongModel, paintResult, "fixedFrame_$paintResult")
+                
+                // 将错误和对应的错误部位添加到集合中
+                frameErrors.add(Pair(wrongModel, tempWrongParts))
+            }
+        }
+        
+        // 处理所有收集到的错误
+        if (frameErrors.isNotEmpty()) {
+            // 复制当前帧，避免重复创建位图
+            val frameCopy = currentFrame.copy(currentFrame.config!!, true)
+            
+            // 处理每个错误
+            frameErrors.forEach { (wrongModel, wrongParts) ->
+                val paintResult = drawPoseOnBitmap(wrongParts, frameCopy, pose)
+                saveFixedFrame(wrongModel, paintResult, "fixedFrame_${wrongModel.wrongPart}")
             }
         }
     }
@@ -531,32 +553,41 @@ class BaduanjinPoseEvaluator {
         with(detector) {
             val angle3 = getAngle(13, 11, 23) // 左手腕，左肩，左胯
             val angle4 = getAngle(14, 12, 24) // 右手腕，右肩，右胯
-            val tempWrongModel = WrongPoseModel()
-            tempWrongModel.poseIndex = 0
-            tempWrongModel.poseName = "两手托天理三焦"
+
             if (poseStage.contains("up")) {
                 // 找到最顶部的一帧
                 if (maxShoulderCombineAngle < angle3 + angle4) {
                     maxShoulderCombineAngle = angle3 + angle4
                     leftMaxAngle = leftArmAngle
                     rightMaxAngle = rightArmAngle
+
+                    // 创建左手臂错误模型
+                    val leftWrongModel = WrongPoseModel()
+                    leftWrongModel.poseIndex = 0
+                    leftWrongModel.poseName = "两手托天理三焦"
+                    leftWrongModel.poseTips = "左手臂伸直，不要弯腰驼背"
+                    leftWrongModel.wrongPart = "左手臂"
+                    leftWrongModel.poseDetail = "左手臂角度：$leftArmAngle"
+
                     val tempLeftWrongParts = mutableListOf<IntArray>()
                     addWarnPart(tempLeftWrongParts, 5)
-                    tempWrongModel.poseTips = "左手臂伸直，不要弯腰驼背"
-                    tempWrongModel.wrongPart = "左手臂"
-                    tempWrongModel.poseDetail = "左手臂角度：$leftArmAngle"
                     // 绘制人体关键点和错误区域，记录 up 最顶部关键帧
                     leftMaxFrame = drawPoseOnBitmap(tempLeftWrongParts, currentFrame, pose)
-                    leftMaxWrongModel = tempWrongModel
+                    leftMaxWrongModel = leftWrongModel
+
+                    // 创建右手臂错误模型
+                    val rightWrongModel = WrongPoseModel()
+                    rightWrongModel.poseIndex = 0
+                    rightWrongModel.poseName = "两手托天理三焦"
+                    rightWrongModel.poseTips = "右手臂伸直，不要弯腰驼背"
+                    rightWrongModel.wrongPart = "右手臂"
+                    rightWrongModel.poseDetail = "右手臂角度：$rightArmAngle°"
 
                     val tempRightWrongParts = mutableListOf<IntArray>()
                     addWarnPart(tempRightWrongParts, 2)
-                    tempWrongModel.poseTips = "右手臂伸直，不要弯腰驼背"
-                    tempWrongModel.wrongPart = "右手臂"
-                    tempWrongModel.poseDetail = "右手臂角度：$rightArmAngle°"
                     // 绘制人体关键点和错误区域，记录 up 最顶部关键帧
                     rightMaxFrame = drawPoseOnBitmap(tempRightWrongParts, currentFrame, pose)
-                    rightMaxWrongModel = tempWrongModel
+                    rightMaxWrongModel = rightWrongModel
                 }
             } else if (poseStage.contains("down")) {
                 if (leftMaxFrame != null && leftMaxAngle !in 160..180) {
@@ -589,9 +620,6 @@ class BaduanjinPoseEvaluator {
         with(detector) {
             val leftShoulderAngle = getAngle(13, 11, 23)
             val rightShoulderAngle = getAngle(14, 12, 24)
-            val tempWrongModel = WrongPoseModel()
-            tempWrongModel.poseIndex = 1
-            tempWrongModel.poseName = "左右开弓似射雕"
 
             if (poseStage.contains("up")) {
                 if (leftArmAngle < 90 && rightArmAngle > 90 && leftShoulderAngle > 50 && rightShoulderAngle > 50) {
@@ -601,15 +629,20 @@ class BaduanjinPoseEvaluator {
                     if (rightMaxAngle < rightArmAngle) {
                         rightMaxAngle = rightArmAngle
                         result?.add("最大值:$rightMaxAngle")
+
+                        // 创建右手臂错误模型
+                        val rightWrongModel = WrongPoseModel()
+                        rightWrongModel.poseIndex = 1
+                        rightWrongModel.poseName = "左右开弓似射雕"
+                        rightWrongModel.poseTips = "开弓时需手臂伸直"
+                        rightWrongModel.wrongPart = "右手臂"
+                        rightWrongModel.angle = Pair(leftArmAngle, rightArmAngle)
+
                         // 绘制人体关键点和错误区域，记录 up 最顶部关键帧
                         val tempWrongParts = mutableListOf<IntArray>()
                         addWarnPart(tempWrongParts, 2)
-                        tempWrongModel.poseTips = "开弓时需手臂伸直"
-                        tempWrongModel.wrongPart = "右手臂"
-                        tempWrongModel.angle = Pair(leftArmAngle, rightArmAngle)
-                        rightMaxFrame =
-                            drawPoseOnBitmap(tempWrongParts, currentFrame, pose)
-                        rightMaxWrongModel = tempWrongModel
+                        rightMaxFrame = drawPoseOnBitmap(tempWrongParts, currentFrame, pose)
+                        rightMaxWrongModel = rightWrongModel
                     }
                 }
                 if (rightArmAngle < 90 && leftArmAngle > 90 && leftShoulderAngle > 50 && rightShoulderAngle > 50) {
@@ -618,15 +651,20 @@ class BaduanjinPoseEvaluator {
                     // 找到朝左且左手臂角度最大（伸直）的一帧
                     if (leftMaxAngle < leftArmAngle) {
                         leftMaxAngle = leftArmAngle
+
+                        // 创建左手臂错误模型
+                        val leftWrongModel = WrongPoseModel()
+                        leftWrongModel.poseIndex = 1
+                        leftWrongModel.poseName = "左右开弓似射雕"
+                        leftWrongModel.poseTips = "开弓时需手臂伸直"
+                        leftWrongModel.wrongPart = "左手臂"
+                        leftWrongModel.angle = Pair(leftArmAngle, rightArmAngle)
+
+                        // 绘制人体关键点和错误区域，记录 up 最顶部关键帧
                         val tempWrongParts = mutableListOf<IntArray>()
                         addWarnPart(tempWrongParts, 5)
-                        tempWrongModel.poseTips = "开弓时需手臂伸直"
-                        tempWrongModel.wrongPart = "左手臂"
-                        tempWrongModel.angle = Pair(leftArmAngle, rightArmAngle)
-                        // 绘制人体关键点和错误区域，记录 up 最顶部关键帧
-                        leftMaxFrame =
-                            drawPoseOnBitmap(tempWrongParts, currentFrame, pose)
-                        leftMaxWrongModel = tempWrongModel
+                        leftMaxFrame = drawPoseOnBitmap(tempWrongParts, currentFrame, pose)
+                        leftMaxWrongModel = leftWrongModel
                     }
                 }
 

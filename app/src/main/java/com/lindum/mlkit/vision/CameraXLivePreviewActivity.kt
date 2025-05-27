@@ -56,6 +56,7 @@ import androidx.cardview.widget.CardView
 import android.widget.TextView
 import android.widget.ImageView
 import android.widget.LinearLayout
+import com.lindum.mlkit.vision.utils.TemporaryDataHolder
 
 /**
  * 姿态识别
@@ -160,18 +161,10 @@ class CameraXLivePreviewActivity : AppCompatActivity(), OnRequestPermissionsResu
             isEnd = true
         }
 
-        val options: MutableList<String?> = ArrayList<String?>()
-        options.add(POSE_DETECTION)
-        // Creating adapter for spinner
-        val dataAdapter = ArrayAdapter<String?>(this, R.layout.spinner_style, options)
-        // Drop down layout style - list view with radio button
-        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        // attaching data adapter to spinner
-
         binding.facingSwitch.setOnCheckedChangeListener(this)
 
         ViewModelProvider(this, AndroidViewModelFactory.getInstance(application))
-            .get<CameraXViewModel>(CameraXViewModel::class.java)
+            .get(CameraXViewModel::class.java)
             .processCameraProvider!!
             .observe(
                 this,
@@ -181,17 +174,16 @@ class CameraXLivePreviewActivity : AppCompatActivity(), OnRequestPermissionsResu
                         bindAllCameraUseCases()
                     }
                 })
-        binding.settingsButton.setOnClickListener(
-            View.OnClickListener { v: View? ->
-                val intent = Intent(applicationContext, SettingsActivity::class.java)
-                intent.putExtra(
-                    SettingsActivity.EXTRA_LAUNCH_SOURCE,
-                    SettingsActivity.LaunchSource.CAMERAX_LIVE_PREVIEW
-                )
-                startActivity(intent)
-            })
+        binding.settingsButton.setOnClickListener { v: View? ->
+            val intent = Intent(applicationContext, SettingsActivity::class.java)
+            intent.putExtra(
+                SettingsActivity.EXTRA_LAUNCH_SOURCE,
+                SettingsActivity.LaunchSource.CAMERAX_LIVE_PREVIEW
+            )
+            startActivity(intent)
+        }
 
-        binding.nextPoseImage.setOnClickListener(View.OnClickListener { view: View? ->
+        binding.nextPoseImage.setOnClickListener { view: View? ->
             if (nowPoseIndex + 1 < (poseEntityList?.size ?: 0)) {
                 countdownSeconds = 3
                 nowPoseProcessSeconds = 0
@@ -209,16 +201,16 @@ class CameraXLivePreviewActivity : AppCompatActivity(), OnRequestPermissionsResu
                 }
                 binding.statusCapsule.callOnClick()
             }
-        })
-        binding.prePoseImage.setOnClickListener(View.OnClickListener { view: View? ->
+        }
+        binding.prePoseImage.setOnClickListener { view: View? ->
             if (nowPoseIndex - 1 >= 0) {
                 countdownSeconds = 3
                 nowPoseProcessSeconds = 0
                 updatePoseInfo()
                 nowPoseIndex--
             }
-        })
-        binding.nextButton.setOnClickListener(View.OnClickListener { view: View? ->
+        }
+        binding.nextButton.setOnClickListener { view: View? ->
             if (nowPoseIndex + 1 < poseEntityList!!.size) {
                 countdownSeconds = 3
                 nowPoseProcessSeconds = 0
@@ -231,15 +223,15 @@ class CameraXLivePreviewActivity : AppCompatActivity(), OnRequestPermissionsResu
                 )
                 isRemindedBreathingMethods = false
             }
-        })
-        binding.preButton.setOnClickListener(View.OnClickListener { view: View? ->
+        }
+        binding.preButton.setOnClickListener { view: View? ->
             if (nowPoseIndex - 1 >= 0) {
                 countdownSeconds = 3
                 nowPoseProcessSeconds = 0
                 updatePoseInfo()
                 nowPoseIndex--
             }
-        })
+        }
         if (!allPermissionsGranted()) {
             this.runtimePermissions
         }
@@ -254,6 +246,7 @@ class CameraXLivePreviewActivity : AppCompatActivity(), OnRequestPermissionsResu
         countdownSeconds = 5
         // zh-todo 记得改回来
         nowPoseIndex = 1
+        TemporaryDataHolder.needHandleTips = true
 
         val poseEntity = poseEntityList?.getOrNull(nowPoseIndex)
         if (poseEntity?.poseType == 0) {
@@ -269,7 +262,7 @@ class CameraXLivePreviewActivity : AppCompatActivity(), OnRequestPermissionsResu
         FileUtils.createFile(imageSavePath, FileUtils.CREATE_FOLDER)
 
         // 初始化组件
-        binding.explain.setOnClickListener(View.OnClickListener { view: View? ->
+        binding.explain.setOnClickListener { view: View? ->
             val intent = Intent(this@CameraXLivePreviewActivity, PoseDetailsActivity::class.java)
             intent.putExtra("feeling", poseEntityList!![nowPoseIndex].getPoseFeeling())
             intent.putExtra("steps", poseEntityList!![nowPoseIndex].getStepsOfPose())
@@ -281,9 +274,9 @@ class CameraXLivePreviewActivity : AppCompatActivity(), OnRequestPermissionsResu
             intent.putExtra("breath", poseEntityList!![nowPoseIndex].getBreathTips())
             intent.putExtra("poseIndex", nowPoseIndex)
             startActivity(intent)
-        })
+        }
         // TTS 初始化
-        textToSpeech = TextToSpeech(this, OnInitListener { i: Int ->
+        textToSpeech = TextToSpeech(this) { i: Int ->
             Logger.e("初始化中...")
             if (i == TextToSpeech.SUCCESS) {
                 Logger.e("语音初始化成功")
@@ -298,7 +291,7 @@ class CameraXLivePreviewActivity : AppCompatActivity(), OnRequestPermissionsResu
             } else {
                 Logger.e("语音初始化失败")
             }
-        })
+        }
     }
 
     fun clickNextPoseButton() {
