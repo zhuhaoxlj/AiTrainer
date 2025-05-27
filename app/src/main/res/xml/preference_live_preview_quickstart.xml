@@ -47,7 +47,7 @@
 
     <PreferenceCategory android:title="@string/pref_category_pose_detection">
         <ListPreference
-            android:defaultValue="@string/pref_entry_values_pose_detector_performance_mode_fast"
+            android:defaultValue="@string/pref_entry_values_pose_detector_performance_mode_accurate"
             android:entries="@array/pref_entries_values_pose_detector_performance_mode"
             android:entryValues="@array/pref_entry_values_pose_detector_performance_mode"
             android:key="@string/pref_key_live_preview_pose_detection_performance_mode"

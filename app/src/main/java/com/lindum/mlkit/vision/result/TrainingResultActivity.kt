@@ -380,9 +380,7 @@ class TrainingResultActivity : AppCompatActivity(), HorizontalProgressUpdateList
 
         // 时长
         var timeRate =
-            (100 * (trainingTotalTimes.toFloat() / (poseGroups * (MainActivity.Companion.poseEntityArrayList!!.get(
-                0
-            )
+            (100 * (trainingTotalTimes.toFloat() / (poseGroups * (MainActivity.Companion.poseEntityArrayList!![0]
                 .getPoseProcessValue() + 4)))).toInt()
         if (timeRate > 100) {
             timeRate = 100
@@ -390,18 +388,12 @@ class TrainingResultActivity : AppCompatActivity(), HorizontalProgressUpdateList
         binding.hpvTime.setEndProgress(timeRate.toFloat())
         binding.hpvTime.startProgressAnimation()
 
-        // 计算卡路里
-        Logger.e("动作个数" + MainActivity.Companion.poseEntityArrayList!!.size)
-        for (i in MainActivity.Companion.poseEntityArrayList!!.indices) {
-            val poseEntity = MainActivity.Companion.poseEntityArrayList!!.get(i)
-        }
-
         // 错误动作数
         var wrongRate: Int
-        if (groupsOfPose == 0) {
-            wrongRate = ((countWrongImage.toFloat() / ((groupsOfPose + 1) * 20)) * 100).toInt()
+        wrongRate = if (groupsOfPose == 0) {
+            ((countWrongImage.toFloat() / ((groupsOfPose + 1) * 20)) * 100).toInt()
         } else {
-            wrongRate = ((countWrongImage.toFloat() / ((groupsOfPose) * 20)) * 100).toInt()
+            ((countWrongImage.toFloat() / ((groupsOfPose) * 20)) * 100).toInt()
         }
         Log.i("test_wrong", wrongRate.toString() + "")
         if (wrongRate > 100) {

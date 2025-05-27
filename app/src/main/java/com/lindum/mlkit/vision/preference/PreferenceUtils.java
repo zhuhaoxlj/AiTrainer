@@ -21,6 +21,7 @@ import com.google.mlkit.vision.pose.defaults.PoseDetectorOptions;
 public class PreferenceUtils {
 
   private static final int POSE_DETECTOR_PERFORMANCE_MODE_FAST = 1;
+  private static final int POSE_DETECTOR_PERFORMANCE_MODE_ACCURATE = 2;
 
   static void saveString(Context context, @StringRes int prefKeyId, @Nullable String value) {
     PreferenceManager.getDefaultSharedPreferences(context)
@@ -80,12 +81,12 @@ public class PreferenceUtils {
 
 
   public static PoseDetectorOptionsBase getPoseDetectorOptionsForLivePreview(Context context) {
-    // 设置默认使用快 or 精准模型 POSE_DETECTOR_PERFORMANCE_MODE_FAST 默认为快模型
+    // 设置默认使用快 or 精准模型 POSE_DETECTOR_PERFORMANCE_MODE_ACCURATE 默认为精准模型
     int performanceMode =
         getModeTypePreferenceValue(
             context,
             R.string.pref_key_live_preview_pose_detection_performance_mode,
-            POSE_DETECTOR_PERFORMANCE_MODE_FAST);
+            POSE_DETECTOR_PERFORMANCE_MODE_ACCURATE);
     if (performanceMode == POSE_DETECTOR_PERFORMANCE_MODE_FAST) {
       return new PoseDetectorOptions.Builder()
           .setDetectorMode(PoseDetectorOptions.STREAM_MODE)
