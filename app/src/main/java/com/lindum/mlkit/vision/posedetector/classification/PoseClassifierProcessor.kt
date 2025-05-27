@@ -147,9 +147,9 @@ class PoseClassifierProcessor @WorkerThread constructor(
                         // 计数器更新时播放蜂鸣声
                         val tg = ToneGenerator(AudioManager.STREAM_NOTIFICATION, 100)
                         tg.startTone(ToneGenerator.TONE_PROP_BEEP);
-                        lastRepResult = String.format(
-                            Locale.US, "已做 %d 个", repsAfter
-                        )
+//                        lastRepResult = String.format(
+//                            Locale.US, "已做 %d 个", repsAfter
+//                        )
                         val currentPose =
                             poseEntityList?.getOrNull(CameraXLivePreviewActivity.nowPoseIndex)
                         var activity: CameraXLivePreviewActivity? = null
@@ -163,7 +163,6 @@ class PoseClassifierProcessor @WorkerThread constructor(
                                 if (repsAfter == pose.poseProcessValue && CameraXLivePreviewActivity.countdownSeconds == -1) {
                                     activity?.clickNextPoseButton()
                                 }
-                            } else {
                             }
                         }
 

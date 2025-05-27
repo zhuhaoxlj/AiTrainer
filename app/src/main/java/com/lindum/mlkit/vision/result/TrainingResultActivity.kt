@@ -72,7 +72,7 @@ class TrainingResultActivity : AppCompatActivity(), HorizontalProgressUpdateList
 
         if (intent.getBooleanExtra("hasWrongPoseList", false)) {
             // 从临时存储中获取错误姿势列表而不是从 intent 中获取
-            wrongPoseModelList = TemporaryDataHolder.getAndClearWrongPoseModels().toMutableList()
+            wrongPoseModelList = TemporaryDataHolder.getWrongPoseModels()!!.toMutableList()
             // 获取运动总时长
             trainingTotalTimes = intent.getIntExtra("totalTrainingTime", 0)
             // 获取动作组数

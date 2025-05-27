@@ -10,31 +10,28 @@ object TemporaryDataHolder {
 
     // Store the current wrong pose models list
     private var wrongPoseModels: List<WrongPoseModel>? = null
-    var needHandleTips = true
 
     /**
      * 设置错误姿势模型列表
      */
     fun setWrongPoseModels(models: List<WrongPoseModel>) {
-        if (needHandleTips) {
-            models.forEach {
+        models.forEach {
+            if (!it.isFormatedTips) {
                 val commonWrong = CameraXLivePreviewActivity.poseEntityList?.get(
                     it.poseIndex ?: 0
                 )?.commonMistakes[0]
                 it.poseTips =
                     (it.poseDetail ?: "") + " " + it.poseTips + "\n" + commonWrong
+                it.isFormatedTips = true
             }
-            needHandleTips = false
         }
         wrongPoseModels = models
     }
 
     /**
-     * 获取错误姿势模型的列表并清除引用
+     * 获取错误姿势模型的列表
      */
-    fun getAndClearWrongPoseModels(): List<WrongPoseModel> {
-        val result = wrongPoseModels ?: emptyList()
-        wrongPoseModels = null
-        return result
+    fun getWrongPoseModels(): List<WrongPoseModel>? {
+        return wrongPoseModels
     }
 } 

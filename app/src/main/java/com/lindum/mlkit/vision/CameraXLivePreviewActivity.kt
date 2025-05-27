@@ -107,6 +107,7 @@ class CameraXLivePreviewActivity : AppCompatActivity(), OnRequestPermissionsResu
 
     // 是否提醒过呼吸方法
     private var isRemindedBreathingMethods = false
+    private var lastWrongListSize = 0
 
     private lateinit var binding: ActivityVisionCameraxLivePreviewBinding
 
@@ -163,8 +164,10 @@ class CameraXLivePreviewActivity : AppCompatActivity(), OnRequestPermissionsResu
 
         binding.facingSwitch.setOnCheckedChangeListener(this)
 
-        ViewModelProvider(this, AndroidViewModelFactory.getInstance(application))
-            .get(CameraXViewModel::class.java)
+        ViewModelProvider(
+            this,
+            AndroidViewModelFactory.getInstance(application)
+        )[CameraXViewModel::class.java]
             .processCameraProvider!!
             .observe(
                 this,
@@ -184,6 +187,7 @@ class CameraXLivePreviewActivity : AppCompatActivity(), OnRequestPermissionsResu
         }
 
         binding.nextPoseImage.setOnClickListener { view: View? ->
+            lastWrongListSize = BaduanjinPoseEvaluator.getInstance().getAllWarningPoseList().size
             if (nowPoseIndex + 1 < (poseEntityList?.size ?: 0)) {
                 countdownSeconds = 3
                 nowPoseProcessSeconds = 0
@@ -203,6 +207,7 @@ class CameraXLivePreviewActivity : AppCompatActivity(), OnRequestPermissionsResu
             }
         }
         binding.prePoseImage.setOnClickListener { view: View? ->
+            lastWrongListSize = BaduanjinPoseEvaluator.getInstance().getAllWarningPoseList().size
             if (nowPoseIndex - 1 >= 0) {
                 countdownSeconds = 3
                 nowPoseProcessSeconds = 0
@@ -211,6 +216,7 @@ class CameraXLivePreviewActivity : AppCompatActivity(), OnRequestPermissionsResu
             }
         }
         binding.nextButton.setOnClickListener { view: View? ->
+            lastWrongListSize = BaduanjinPoseEvaluator.getInstance().getAllWarningPoseList().size
             if (nowPoseIndex + 1 < (poseEntityList?.size ?: 0)) {
                 countdownSeconds = 3
                 nowPoseProcessSeconds = 0
@@ -225,6 +231,7 @@ class CameraXLivePreviewActivity : AppCompatActivity(), OnRequestPermissionsResu
             }
         }
         binding.preButton.setOnClickListener { view: View? ->
+            lastWrongListSize = BaduanjinPoseEvaluator.getInstance().getAllWarningPoseList().size
             if (nowPoseIndex - 1 >= 0) {
                 countdownSeconds = 3
                 nowPoseProcessSeconds = 0
@@ -244,9 +251,7 @@ class CameraXLivePreviewActivity : AppCompatActivity(), OnRequestPermissionsResu
 
         // 初始化变量
         countdownSeconds = 5
-        // zh-todo 记得改回来
-        nowPoseIndex = 1
-        TemporaryDataHolder.needHandleTips = true
+        nowPoseIndex = 0
 
         val poseEntity = poseEntityList?.getOrNull(nowPoseIndex)
         if (poseEntity?.poseType == 0) {
@@ -674,7 +679,7 @@ class CameraXLivePreviewActivity : AppCompatActivity(), OnRequestPermissionsResu
                 val warningPoseList = BaduanjinPoseEvaluator.getInstance().getAllWarningPoseList()
 
                 runOnUiThread {
-                    if (warningPoseList.isEmpty()) {
+                    if (warningPoseList.size - lastWrongListSize == 0) {
                         // 正常状态
                         binding.capsuleBackground.setBackgroundResource(R.drawable.capsule_background_normal)
                         binding.statusText.text = "正常"

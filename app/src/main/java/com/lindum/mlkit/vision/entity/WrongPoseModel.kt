@@ -20,5 +20,6 @@ data class WrongPoseModel(
     var poseDetail: String? = null,// 动作细节描述
     var poseTips: String? = null,// 错误姿态建议
     var wrongPart: String? = null,// 错误部位
-    var angle: Pair<Int, Int>? = null,
+    var angle: Pair<Int, Int>? = null, // 调试用的角度
+    var isFormatedTips: Boolean = false, // 提示信息未被格式化
 ) : Serializable

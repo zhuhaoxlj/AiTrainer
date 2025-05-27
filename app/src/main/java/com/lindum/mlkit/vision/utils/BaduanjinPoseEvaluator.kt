@@ -305,7 +305,11 @@ class BaduanjinPoseEvaluator {
                     model.poseName == wrongPoseModel.poseName
         }
 
-        if (existingModel != null || CameraXLivePreviewActivity.countdownSeconds >= 0 || CameraXLivePreviewActivity.nowPoseIndex != wrongPoseModel.poseIndex) {
+        // 如果已存在相同提示的错误，或者倒计时未结束，或者当前姿势索引与错误模型不匹配，则不添加
+        if (existingModel != null ||
+            CameraXLivePreviewActivity.countdownSeconds >= 0 ||
+            CameraXLivePreviewActivity.nowPoseIndex != wrongPoseModel.poseIndex
+        ) {
             return
         }
 
@@ -326,7 +330,8 @@ class BaduanjinPoseEvaluator {
 
     fun saveFrame(
         isUp: Boolean,
-        bitmap: Bitmap?, filename: String
+        bitmap: Bitmap?, filename: String,
+        wrongModel: WrongPoseModel
     ) {
         // 增加计数
         countFrame++
@@ -341,30 +346,10 @@ class BaduanjinPoseEvaluator {
 
         bitmap?.let {
             try {
-                if (maxUpWrongModel != null) {
-                    maxUpWrongModel!!.wrongPoseImage = bitmap.copy(bitmap.config!!, true)
-                    maxUpWrongModel!!.rightPoseBitmap =
-                        poseRightImageArrayList[maxUpWrongModel!!.poseIndex!!]
-                    addWrongPoseToList(maxUpWrongModel!!)
-                }
-                if (minDownWrongModel != null) {
-                    minDownWrongModel!!.wrongPoseImage = bitmap.copy(bitmap.config!!, true)
-                    minDownWrongModel!!.rightPoseBitmap =
-                        poseRightImageArrayList[minDownWrongModel!!.poseIndex!!]
-                    addWrongPoseToList(minDownWrongModel!!)
-                }
-                if (leftMaxWrongModel != null) {
-                    leftMaxWrongModel!!.wrongPoseImage = bitmap.copy(bitmap.config!!, true)
-                    leftMaxWrongModel!!.rightPoseBitmap =
-                        poseRightImageArrayList[leftMaxWrongModel!!.poseIndex!!]
-                    addWrongPoseToList(leftMaxWrongModel!!)
-                }
-                if (rightMaxWrongModel != null) {
-                    rightMaxWrongModel!!.wrongPoseImage = bitmap.copy(bitmap.config!!, true)
-                    rightMaxWrongModel!!.rightPoseBitmap =
-                        poseRightImageArrayList[rightMaxWrongModel!!.poseIndex!!]
-                    addWrongPoseToList(rightMaxWrongModel!!)
-                }
+                wrongModel.wrongPoseImage = bitmap.copy(bitmap.config!!, true)
+                wrongModel.rightPoseBitmap =
+                    poseRightImageArrayList[wrongModel.poseIndex ?: 0]
+                addWrongPoseToList(wrongModel)
                 val directory = File(
                     Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES),
                     "AiTrainer"
@@ -588,10 +573,15 @@ class BaduanjinPoseEvaluator {
                 }
             } else if (poseStage.contains("down")) {
                 if (leftMaxFrame != null && leftMaxAngle !in 160..180) {
-                    saveFrame(true, leftMaxFrame, "leftMaxFrame_$leftMaxFrame")
+                    saveFrame(true, leftMaxFrame, "leftMaxFrame_$leftMaxFrame", leftMaxWrongModel!!)
                 }
                 if (rightMaxFrame != null && rightMaxAngle !in 160..180) {
-                    saveFrame(true, rightMaxFrame, "rightMaxFrame_$rightMaxFrame")
+                    saveFrame(
+                        true,
+                        rightMaxFrame,
+                        "rightMaxFrame_$rightMaxFrame",
+                        rightMaxWrongModel!!
+                    )
                 }
             }
 
@@ -661,10 +651,15 @@ class BaduanjinPoseEvaluator {
 
             } else if (poseStage.contains("down")) {
                 if (leftMaxFrame != null && leftMaxAngle !in 165..180) {
-                    saveFrame(true, leftMaxFrame, "leftMaxFrame_$leftMaxFrame")
+                    saveFrame(true, leftMaxFrame, "leftMaxFrame_$leftMaxFrame", leftMaxWrongModel!!)
                 }
                 if (rightMaxFrame != null && rightMaxAngle !in 165..180) {
-                    saveFrame(true, rightMaxFrame, "rightMaxFrame_$rightMaxFrame")
+                    saveFrame(
+                        true,
+                        rightMaxFrame,
+                        "rightMaxFrame_$rightMaxFrame",
+                        rightMaxWrongModel!!
+                    )
                 }
             }
 
