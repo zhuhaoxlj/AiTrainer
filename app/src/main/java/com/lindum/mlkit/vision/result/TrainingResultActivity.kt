@@ -479,6 +479,9 @@ class TrainingResultActivity : AppCompatActivity(), HorizontalProgressUpdateList
         ) {
             // 将训练结果保存到本地
             saveTrainingResultToLocal()
+            
+            // 清除文件缓存，确保日记页面能立即看到新记录
+            FileUtils.clearFileCache()
         }
     }
 

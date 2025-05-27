@@ -77,10 +77,8 @@ class DiaryFragment : Fragment(R.layout.fragment_train_diary) {
         Log.d(TAG, "onResume: start")
         val startTime = System.currentTimeMillis()
 
-        // 如果数据为空，才加载第一页数据
-        if (eventList.isEmpty() && loadDataJob == null) {
-            loadFirstPageData()
-        }
+        // 每次恢复可见状态时都重新加载第一页数据，确保显示最新记录
+        loadFirstPageData()
 
         Log.d(TAG, "onResume: end, took ${System.currentTimeMillis() - startTime}ms")
     }
@@ -264,7 +262,8 @@ class DiaryFragment : Fragment(R.layout.fragment_train_diary) {
         Log.d(TAG, "loadFirstPageData: start")
         val startTime = System.currentTimeMillis()
 
-        if (loadDataJob != null) return
+        // 如果已经在加载中，取消之前的加载任务
+        loadDataJob?.cancel()
 
         // 显示进度条
         binding.progressBar.visibility = View.VISIBLE
@@ -280,6 +279,8 @@ class DiaryFragment : Fragment(R.layout.fragment_train_diary) {
 
             // 使用async以便可以同时加载数据和设置装饰
             val dataDeferred = async(Dispatchers.IO) {
+                // 确保清除文件缓存，强制从文件读取最新数据
+                FileUtils.clearFileCache()
                 loadPagedTrainingHistory(currentPage)
             }
 
