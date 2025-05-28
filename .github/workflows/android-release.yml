@@ -1,68 +1,104 @@
-name: Android Release
+name: Android Release  # 工作流的名称，在GitHub Actions界面上显示
 
-on:
+on:  # 定义工作流的触发条件
   push:
     tags:
       - 'v*'  # 当推送带 v 前缀的标签时触发，如 v1.0.0
   # 添加手动触发选项，方便测试
-  workflow_dispatch:
+  workflow_dispatch:  # 允许在GitHub界面手动触发工作流
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+jobs:  # 定义工作流中的作业
+  build:  # 构建作业
+    runs-on: ubuntu-latest  # 指定运行环境为最新版Ubuntu
+    steps:  # 定义作业的执行步骤
+      - name: Checkout code  # 步骤1：检出代码
+        uses: actions/checkout@v3  # 使用checkout操作的v3版本
 
-      - name: Set up JDK 17
+      - name: Set up JDK 17  # 步骤2：设置Java开发环境
         uses: actions/setup-java@v3
         with:
-          distribution: 'temurin'
-          java-version: '17'
-          cache: gradle
+          distribution: 'temurin'  # 使用Temurin发行版
+          java-version: '17'  # 使用Java 17
+          cache: gradle  # 启用Gradle缓存以加速构建
 
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
 
-      - name: Setup Android SDK
+      - name: Setup Android SDK  # 步骤4：设置Android SDK环境
         uses: android-actions/setup-android@v2
 
-      - name: Decode Keystore
+      - name: Decode Keystore  # 步骤5：解码并准备签名密钥
         env:
-          ENCODED_KEYSTORE: ${{ secrets.SIGNING_KEY }}
+          ENCODED_KEYSTORE: ${{ secrets.SIGNING_KEY }}  # 从GitHub仓库密钥中获取编码的签名密钥
         run: |
-          mkdir -p $HOME/keystore
-          echo $ENCODED_KEYSTORE | base64 -d > $HOME/keystore/release.jks
+          mkdir -p $HOME/keystore  # 创建存放密钥的目录
+          echo $ENCODED_KEYSTORE | base64 -d > $HOME/keystore/release.jks  # 解码密钥并保存为JKS文件
           echo "Keystore generated at: $HOME/keystore/release.jks"
-          ls -la $HOME/keystore/
+          ls -la $HOME/keystore/  # 列出密钥文件信息
           
-      - name: Check Environment
+      - name: Check Environment  # 步骤6：检查环境设置
         run: |
           echo "HOME directory: $HOME"
           echo "Working directory: $(pwd)"
-          echo "Keystore exists: $(test -f $HOME/keystore/release.jks && echo 'Yes' || echo 'No')"
+          echo "Keystore exists: $(test -f $HOME/keystore/release.jks && echo 'Yes' || echo 'No')"  # 验证密钥库文件是否存在
 
-      - name: Build Debug APK First (for testing)
-        run: ./gradlew assembleDebug
-      
-      - name: Build Release APK with Debug Output
-        env:
-          SIGNING_KEY_ALIAS: ${{ secrets.ALIAS }}
-          SIGNING_KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
-          SIGNING_STORE_PASSWORD: ${{ secrets.KEY_STORE_PASSWORD }}
+      - name: Build Release APK with Debug Output  # 步骤8：构建发布版APK
+        env: # 要在 github 仓库里提前配置 secrets
+          SIGNING_KEY_ALIAS: ${{ secrets.ALIAS }}  # 签名密钥别名
+          SIGNING_KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}  # 签名密钥密码
+          SIGNING_STORE_PASSWORD: ${{ secrets.KEY_STORE_PASSWORD }}  # 密钥库密码
         run: |
-          ./gradlew assembleRelease --info \
-            -Pandroid.injected.signing.store.file=$HOME/keystore/release.jks \
-            -Pandroid.injected.signing.store.password=$SIGNING_STORE_PASSWORD \
-            -Pandroid.injected.signing.key.alias=$SIGNING_KEY_ALIAS \
-            -Pandroid.injected.signing.key.password=$SIGNING_KEY_PASSWORD
+          ./gradlew assembleRelease --info \  # 使用info模式获取更多构建信息
+            -Pandroid.injected.signing.store.file=$HOME/keystore/release.jks \  # 指定密钥库文件路径（这里的 -P 参数将签名信息作为项目属性注入，这些属性会覆盖 build.gradle 中的 signingConfigs 配置）
+            -Pandroid.injected.signing.store.password=$SIGNING_STORE_PASSWORD \  # 传入密钥库密码
+            -Pandroid.injected.signing.key.alias=$SIGNING_KEY_ALIAS \  # 传入密钥别名
+            -Pandroid.injected.signing.key.password=$SIGNING_KEY_PASSWORD  # 传入密钥密码
 
-      - name: Create Release
+      - name: Generate Professional Release Notes  # 步骤9：生成专业的发布说明
+        id: release_notes
+        run: |
+          # 获取版本号
+          VERSION=${GITHUB_REF#refs/tags/}
+          echo "Generating release notes for version $VERSION"
+          
+          # 检查是否存在CHANGELOG.md
+          if [ -f "CHANGELOG.md" ]; then
+            # 从CHANGELOG中提取当前版本的内容
+            echo "Using CHANGELOG.md for release notes"
+            # 提取当前版本部分，从版本号开始到下一个版本号或文件结束
+            sed -n "/## $VERSION/,/## \[/p" CHANGELOG.md | sed '/## \[/,$d' > release_notes.md
+          else
+            # 使用git log生成简单的变更日志
+            echo "## 🚀 新版本 $VERSION" > release_notes.md
+            echo "" >> release_notes.md
+            echo "### ✨ 新功能和改进" >> release_notes.md
+            git log $(git describe --tags --abbrev=0 HEAD^)..HEAD --pretty=format:"- %s" --grep="^feat" >> release_notes.md
+            echo "" >> release_notes.md
+            echo "### 🐛 问题修复" >> release_notes.md
+            git log $(git describe --tags --abbrev=0 HEAD^)..HEAD --pretty=format:"- %s" --grep="^fix" >> release_notes.md
+            echo "" >> release_notes.md
+            echo "### 📝 其他变更" >> release_notes.md
+            git log $(git describe --tags --abbrev=0 HEAD^)..HEAD --pretty=format:"- %s" | grep -v "^feat" | grep -v "^fix" >> release_notes.md
+          fi
+          
+          # 添加下载链接
+          echo "" >> release_notes.md
+          echo "### 📥 下载" >> release_notes.md
+          echo "- [下载APK](https://github.com/${{ github.repository }}/releases/download/$VERSION/app-release.apk)" >> release_notes.md
+          
+          # 添加应用大小和版本号等信息
+          APK_SIZE=$(du -h app/build/outputs/apk/release/app-release.apk | cut -f1)
+          echo "- APK大小: $APK_SIZE" >> release_notes.md
+          
+          cat release_notes.md
+
+      - name: Create Release  # 步骤10：创建GitHub Release发布
         id: create_release
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v1  # 使用GitHub发布操作
         with:
-          files: app/build/outputs/apk/release/*.apk
-          name: Release ${{ github.ref_name }}
-          draft: false
-          prerelease: false
-          generate_release_notes: true 
+          files: app/build/outputs/apk/release/*.apk  # 上传所有构建的APK文件
+          name: Release ${{ github.ref_name }}  # 使用标签名作为发布名称
+          body_path: release_notes.md  # 使用生成的发布说明文件
+          draft: false  # 设置为非草稿
+          prerelease: false  # 设置为正式发布而非预发布
+          # generate_release_notes: true  # 注释掉自动生成，改用自定义的发布说明 
