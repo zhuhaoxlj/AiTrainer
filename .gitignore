@@ -74,3 +74,4 @@ freeline_core
 /native_app/.cxx/
 # SpecStory explanation file
 .specstory/.what-is-this.md
+.cursor/
