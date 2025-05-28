@@ -24,6 +24,13 @@ jobs:  # 定义工作流中的作业
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
 
+      - name: Setup Gradle
+        run: |
+          mkdir -p ~/.gradle
+          echo "org.gradle.caching=true" >> ~/.gradle/gradle.properties
+          echo "org.gradle.parallel=true" >> ~/.gradle/gradle.properties
+          echo "org.gradle.jvmargs=-Xmx3g -XX:MaxPermSize=2048m -XX:+HeapDumpOnOutOfMemoryError" >> ~/.gradle/gradle.properties
+
       - name: Setup Android SDK  # 步骤4：设置Android SDK环境
         uses: android-actions/setup-android@v2
 
@@ -48,11 +55,7 @@ jobs:  # 定义工作流中的作业
           SIGNING_KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}  # 签名密钥密码
           SIGNING_STORE_PASSWORD: ${{ secrets.KEY_STORE_PASSWORD }}  # 密钥库密码
         run: |
-          ./gradlew assembleRelease --info \  # 使用info模式获取更多构建信息
-            -Pandroid.injected.signing.store.file=$HOME/keystore/release.jks \  # 指定密钥库文件路径（这里的 -P 参数将签名信息作为项目属性注入，这些属性会覆盖 build.gradle 中的 signingConfigs 配置）
-            -Pandroid.injected.signing.store.password=$SIGNING_STORE_PASSWORD \  # 传入密钥库密码
-            -Pandroid.injected.signing.key.alias=$SIGNING_KEY_ALIAS \  # 传入密钥别名
-            -Pandroid.injected.signing.key.password=$SIGNING_KEY_PASSWORD  # 传入密钥密码
+          ./gradlew assembleRelease --info --stacktrace -Pandroid.injected.signing.store.file=$HOME/keystore/release.jks -Pandroid.injected.signing.store.password=$SIGNING_STORE_PASSWORD -Pandroid.injected.signing.key.alias=$SIGNING_KEY_ALIAS -Pandroid.injected.signing.key.password=$SIGNING_KEY_PASSWORD
 
       - name: Generate Professional Release Notes  # 步骤9：生成专业的发布说明
         id: release_notes
