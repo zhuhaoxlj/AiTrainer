@@ -76,21 +76,39 @@ Unless required by applicable law or agreed to in writing, software distributed 
 
 ### 设置步骤
 
-1. 在 GitHub 仓库中设置以下 Secrets:
-
-   - `SIGNING_KEY`: Base64 编码的签名密钥文件内容
-   - `ALIAS`: 密钥别名
-   - `KEY_STORE_PASSWORD`: 密钥库密码
-   - `KEY_PASSWORD`: 密钥密码
-   - `PERSONAL_ACCESS_TOKEN`: 具有仓库写入权限的个人访问令牌（用于版本更新工作流）
-
-2. 将签名密钥转换为 Base64 格式:
+1. **创建签名密钥** (如果你还没有):
 
    ```bash
-   base64 -i your_keystore.jks | pbcopy  # macOS
-   # 或
-   base64 -w 0 your_keystore.jks | xclip -selection clipboard  # Linux
+   keytool -genkey -v -keystore release-key.keystore -alias aitrainer -keyalg RSA -keysize 2048 -validity 10000
    ```
+   
+   按照提示输入信息，可以使用以下默认值：
+   - 密钥库密码：aitrainer
+   - 密钥别名：aitrainer
+   - 密钥密码：aitrainer
+
+2. **将签名密钥转换为 Base64 格式**:
+
+   ```bash
+   # macOS
+   base64 -i release-key.keystore | pbcopy
+   
+   # Linux
+   base64 -w 0 release-key.keystore | xclip -selection clipboard
+   
+   # Windows (PowerShell)
+   [Convert]::ToBase64String([IO.File]::ReadAllBytes("release-key.keystore")) | Set-Clipboard
+   ```
+
+3. **在 GitHub 仓库中设置 Secrets**:
+
+   - 打开仓库 -> Settings -> Secrets and variables -> Actions
+   - 添加以下 Secrets:
+     - `SIGNING_KEY`: 上一步生成的 Base64 编码字符串
+     - `ALIAS`: 密钥别名 (例如: `aitrainer`)
+     - `KEY_STORE_PASSWORD`: 密钥库密码 (例如: `aitrainer`)
+     - `KEY_PASSWORD`: 密钥密码 (例如: `aitrainer`)
+     - `PERSONAL_ACCESS_TOKEN`: 具有仓库写入权限的个人访问令牌（用于版本更新工作流）
 
 ### 发布新版本
 
@@ -113,7 +131,20 @@ git push origin v1.0.0
 4. 输入新的版本名称（例如：1.0.0）和版本号（例如：10）
 5. 点击 "Run workflow" 按钮启动工作流
 
-工作流会自动更新 `build.gradle` 文件中的版本信息，提交更改，并创建新的标签，然后触发发布工作流。
+#### 方式三：手动触发构建流程
+
+1. 在 GitHub 仓库页面，点击 "Actions" 标签
+2. 在左侧选择 "Android Release" 工作流
+3. 点击 "Run workflow" 按钮
+4. 点击绿色的 "Run workflow" 按钮启动构建流程
+
+### 调试构建问题
+
+如果构建失败，可以查看 Actions 日志以了解具体原因。常见问题包括：
+
+- 签名密钥不正确：确保 `SIGNING_KEY` 是正确的 Base64 编码字符串
+- 密钥别名或密码错误：确保 `ALIAS`、`KEY_STORE_PASSWORD` 和 `KEY_PASSWORD` 与密钥设置一致
+- 构建脚本问题：检查 .github/workflows/android-release.yml 文件
 
 ### 自定义构建
 
@@ -121,3 +152,4 @@ git push origin v1.0.0
 
 - `.github/workflows/android-release.yml` - 发布工作流
 - `.github/workflows/update-version.yml` - 版本更新工作流
+- `app/build.gradle` - 应用构建配置

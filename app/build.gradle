@@ -8,10 +8,18 @@ android {
     
     signingConfigs {
         release {
-            storeFile file(System.getProperty("user.home") + "/android-keys/release-key.keystore")
-            storePassword "aitrainer"
-            keyAlias "aitrainer"
-            keyPassword "aitrainer"
+            storeFile file(System.getProperty('android.injected.signing.store.file') ?:
+                    System.getenv("KEYSTORE_FILE") ?:
+                    "${System.getProperty("user.home")}/android-keys/release-key.keystore")
+            
+            storePassword System.getProperty('android.injected.signing.store.password') ?:
+                    System.getenv("SIGNING_STORE_PASSWORD") ?: "aitrainer"
+            
+            keyAlias System.getProperty('android.injected.signing.key.alias') ?:
+                    System.getenv("SIGNING_KEY_ALIAS") ?: "aitrainer"
+            
+            keyPassword System.getProperty('android.injected.signing.key.password') ?:
+                    System.getenv("SIGNING_KEY_PASSWORD") ?: "aitrainer"
         }
     }
     

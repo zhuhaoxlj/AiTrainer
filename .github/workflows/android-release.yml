@@ -4,6 +4,8 @@ on:
   push:
     tags:
       - 'v*'  # 当推送带 v 前缀的标签时触发，如 v1.0.0
+  # 添加手动触发选项，方便测试
+  workflow_dispatch:
 
 jobs:
   build:
@@ -22,26 +24,44 @@ jobs:
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
 
-      - name: Build Release APK
-        run: ./gradlew assembleRelease
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v2
 
-      - name: Sign APK
-        uses: r0adkll/sign-android-release@v1
-        id: sign_app
-        with:
-          releaseDirectory: app/build/outputs/apk/release
-          signingKeyBase64: ${{ secrets.SIGNING_KEY }}
-          alias: ${{ secrets.ALIAS }}
-          keyStorePassword: ${{ secrets.KEY_STORE_PASSWORD }}
-          keyPassword: ${{ secrets.KEY_PASSWORD }}
+      - name: Decode Keystore
         env:
-          BUILD_TOOLS_VERSION: "33.0.0"
+          ENCODED_KEYSTORE: ${{ secrets.SIGNING_KEY }}
+        run: |
+          mkdir -p $HOME/keystore
+          echo $ENCODED_KEYSTORE | base64 -d > $HOME/keystore/release.jks
+          echo "Keystore generated at: $HOME/keystore/release.jks"
+          ls -la $HOME/keystore/
+          
+      - name: Check Environment
+        run: |
+          echo "HOME directory: $HOME"
+          echo "Working directory: $(pwd)"
+          echo "Keystore exists: $(test -f $HOME/keystore/release.jks && echo 'Yes' || echo 'No')"
+
+      - name: Build Debug APK First (for testing)
+        run: ./gradlew assembleDebug
+      
+      - name: Build Release APK with Debug Output
+        env:
+          SIGNING_KEY_ALIAS: ${{ secrets.ALIAS }}
+          SIGNING_KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+          SIGNING_STORE_PASSWORD: ${{ secrets.KEY_STORE_PASSWORD }}
+        run: |
+          ./gradlew assembleRelease --info \
+            -Pandroid.injected.signing.store.file=$HOME/keystore/release.jks \
+            -Pandroid.injected.signing.store.password=$SIGNING_STORE_PASSWORD \
+            -Pandroid.injected.signing.key.alias=$SIGNING_KEY_ALIAS \
+            -Pandroid.injected.signing.key.password=$SIGNING_KEY_PASSWORD
 
       - name: Create Release
         id: create_release
         uses: softprops/action-gh-release@v1
         with:
-          files: ${{steps.sign_app.outputs.signedReleaseFile}}
+          files: app/build/outputs/apk/release/*.apk
           name: Release ${{ github.ref_name }}
           draft: false
           prerelease: false
