@@ -1,0 +1,38 @@
+name: Update App Version
+
+on:
+  workflow_dispatch:
+    inputs:
+      version_name:
+        description: '版本名称 (例如: 1.0.0)'
+        required: true
+      version_code:
+        description: '版本号 (例如: 10)'
+        required: true
+
+jobs:
+  update-version:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+
+      - name: Update version in build.gradle
+        run: |
+          sed -i "s/versionCode [0-9]*/versionCode ${{ github.event.inputs.version_code }}/g" app/build.gradle
+          sed -i "s/versionName \"[^\"]*\"/versionName \"${{ github.event.inputs.version_name }}\"/g" app/build.gradle
+          
+      - name: Commit and push changes
+        run: |
+          git config --global user.name 'GitHub Actions Bot'
+          git config --global user.email 'actions@github.com'
+          git add app/build.gradle
+          git commit -m "Bump version to ${{ github.event.inputs.version_name }} (code: ${{ github.event.inputs.version_code }})"
+          git push
+          
+      - name: Create tag
+        run: |
+          git tag v${{ github.event.inputs.version_name }}
+          git push origin v${{ github.event.inputs.version_name }} 
