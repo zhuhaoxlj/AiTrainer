@@ -29,7 +29,7 @@ jobs:  # 定义工作流中的作业
           mkdir -p ~/.gradle
           echo "org.gradle.caching=true" >> ~/.gradle/gradle.properties
           echo "org.gradle.parallel=true" >> ~/.gradle/gradle.properties
-          echo "org.gradle.jvmargs=-Xmx3g -XX:MaxPermSize=2048m -XX:+HeapDumpOnOutOfMemoryError" >> ~/.gradle/gradle.properties
+          echo "org.gradle.jvmargs=-Xmx3g -XX:+HeapDumpOnOutOfMemoryError" >> ~/.gradle/gradle.properties
 
       - name: Setup Android SDK  # 步骤4：设置Android SDK环境
         uses: android-actions/setup-android@v2
