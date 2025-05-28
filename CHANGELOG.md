@@ -12,6 +12,7 @@
 
 ### 📝 变更 (Changed)
 - 重新修改了 `android-release.yml` 文件支持自动读取 `CHANGELOG.md` 自动生成 RELEASE 详细信息
+- 修改了 `android-release.yml` 支持任务成功后发送邮件通知
 
 ## [1.0.0] - 2025-05-28
 
