@@ -19,4 +19,4 @@
 ### ✨ 新增 (Added)
 - 新增 Github Action 自动构建打包功能
 
-[1.0.1]: https://github.com/zhuhaoxlj/AiTrainer/releases/download/v1.0.1/AiTrainer-release.apk
+[1.0.1]: https://github.com/zhuhaoxlj/AiTrainer/compare/v1.0.0...v1.0.1
