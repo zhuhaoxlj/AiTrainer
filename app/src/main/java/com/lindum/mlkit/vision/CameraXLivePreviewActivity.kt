@@ -66,8 +66,7 @@ import com.lindum.mlkit.vision.utils.TemporaryDataHolder
  */
 @KeepName
 class CameraXLivePreviewActivity : AppCompatActivity(), OnRequestPermissionsResultCallback,
-    CompoundButton.OnCheckedChangeListener,
-    QuickShot.QuickShotListener {
+    CompoundButton.OnCheckedChangeListener {
     // TTS 语音助手 zh-todo 说话太卡
     private var textToSpeech: TextToSpeech? = null
 
@@ -660,12 +659,6 @@ class CameraXLivePreviewActivity : AppCompatActivity(), OnRequestPermissionsResu
             bindAllCameraUseCases()
         }
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-    }
-
-    override fun onQuickShotSuccess(path: String?) {
-    }
-
-    override fun onQuickShotFailed(path: String?, errorMsg: String?) {
     }
 
     /**

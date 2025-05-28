@@ -5,6 +5,16 @@ apply plugin: 'org.jetbrains.kotlin.android'
 android {
     namespace "com.lindum.mlkit.vision.dev"
     compileSdk 35
+    
+    signingConfigs {
+        release {
+            storeFile file(System.getProperty("user.home") + "/android-keys/release-key.keystore")
+            storePassword "aitrainer"
+            keyAlias "aitrainer"
+            keyPassword "aitrainer"
+        }
+    }
+    
     sourceSets {
         main {
             res.srcDirs = [
@@ -29,7 +39,7 @@ android {
         versionName "1.11"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
-        setProperty("archivesBaseName", "vision-quickstart")
+        setProperty("archivesBaseName", "AiTrainer")
     }
     buildTypes {
         proguard {
@@ -44,6 +54,7 @@ android {
         release {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
         debug {
             minifyEnabled false
