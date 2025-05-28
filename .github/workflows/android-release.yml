@@ -102,3 +102,27 @@ jobs:  # 定义工作流中的作业
           draft: false  # 设置为非草稿
           prerelease: false  # 设置为正式发布而非预发布
           # generate_release_notes: true  # 注释掉自动生成，改用自定义的发布说明 
+
+  # 增加个notice的job，在打包完成后发邮件通知
+  notice:
+    runs-on: ubuntu-latest
+
+    # 依赖于build
+    needs: build
+
+    # 操作步骤
+    steps:
+      - name: Send email
+        uses: dawidd6/action-send-mail@v3
+        with:
+          # 邮箱配置，密码是SMTP服务的授权密码
+          server_address: smtp.qq.com
+          server_port: 465
+          username: ${{secrets.MAIL_USERNAME}}
+          password: ${{secrets.MAIL_PASSWORD}}
+
+          # 邮件内容
+          subject: Github Actions job result
+          from: ${{secrets.MAIL_USERNAME}}
+          to: ${{secrets.MAIL_TOUSERNAME}}
+          body: Build job of ${{github.repository}} completed successfully!
