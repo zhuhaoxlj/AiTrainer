@@ -57,6 +57,9 @@ jobs:  # 定义工作流中的作业
         run: |
           ./gradlew assembleRelease --info --stacktrace -Pandroid.injected.signing.store.file=$HOME/keystore/release.jks -Pandroid.injected.signing.store.password=$SIGNING_STORE_PASSWORD -Pandroid.injected.signing.key.alias=$SIGNING_KEY_ALIAS -Pandroid.injected.signing.key.password=$SIGNING_KEY_PASSWORD
 
+      - name: get latest changelog entry
+        run: mkdir -p build && ci/latest-changelog.py CHANGELOG.md > build/release_notes.md
+
       - name: Generate Professional Release Notes  # 步骤9：生成专业的发布说明
         id: release_notes
         run: |
@@ -93,15 +96,12 @@ jobs:  # 定义工作流中的作业
           cat release_notes.md
 
       - name: Create Release  # 步骤10：创建GitHub Release发布
-        id: create_release
-        uses: softprops/action-gh-release@v1  # 使用GitHub发布操作
+        uses: softprops/action-gh-release@v2
         with:
+          draft: false
+          body_path: build/release_notes.md
+          fail_on_unmatched_files: true
           files: app/build/outputs/apk/release/*.apk  # 上传所有构建的APK文件
-          name: Release ${{ github.ref_name }}  # 使用标签名作为发布名称
-          body_path: release_notes.md  # 使用生成的发布说明文件
-          draft: false  # 设置为非草稿
-          prerelease: false  # 设置为正式发布而非预发布
-          # generate_release_notes: true  # 注释掉自动生成，改用自定义的发布说明 
 
   # 增加个notice的job，在打包完成后发邮件通知
   notice:
