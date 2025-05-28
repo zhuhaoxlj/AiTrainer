@@ -134,16 +134,16 @@ class CameraXLivePreviewActivity : AppCompatActivity(), OnRequestPermissionsResu
         updateVariable()
         updatePoseStatus()
 
-        nowPoseName = poseEntityList!![nowPoseIndex].getPoseName()
+        nowPoseName = poseEntityList!![nowPoseIndex].poseName
 
         // 跳转至结果界面
         binding.statusCapsule.setOnClickListener { view: View? ->
             val poseEntity: PoseEntity = poseEntityList!![nowPoseIndex]
             countMinutes = nowPoseProcessSeconds / 60f
-            if (poseEntity.getPoseType() == 1) {
-                poseEntity.setCountTimes(countTimes)
+            if (poseEntity.poseType == 1) {
+                poseEntity.countTimes = countTimes
             } else {
-                poseEntity.setCountMinutes(countMinutes)
+                poseEntity.countMinutes = countMinutes
             }
             countMinutes = 0f
             countTimes = 0
@@ -193,7 +193,7 @@ class CameraXLivePreviewActivity : AppCompatActivity(), OnRequestPermissionsResu
                 updatePoseInfo()
                 nowPoseIndex++
                 textToSpeech!!.speak(
-                    "下一个动作" + poseEntityList!![nowPoseIndex].getPoseName(),
+                    "下一个动作" + poseEntityList!![nowPoseIndex].poseName,
                     TextToSpeech.QUEUE_FLUSH,
                     null
                 )
@@ -222,7 +222,7 @@ class CameraXLivePreviewActivity : AppCompatActivity(), OnRequestPermissionsResu
                 updatePoseInfo()
                 nowPoseIndex++
                 textToSpeech!!.speak(
-                    "下一个动作" + poseEntityList!![nowPoseIndex].getPoseName(),
+                    "下一个动作" + poseEntityList!![nowPoseIndex].poseName,
                     TextToSpeech.QUEUE_FLUSH,
                     null
                 )
@@ -268,14 +268,14 @@ class CameraXLivePreviewActivity : AppCompatActivity(), OnRequestPermissionsResu
         // 初始化组件
         binding.explain.setOnClickListener { view: View? ->
             val intent = Intent(this@CameraXLivePreviewActivity, PoseDetailsActivity::class.java)
-            intent.putExtra("feeling", poseEntityList!![nowPoseIndex].getPoseFeeling())
-            intent.putExtra("steps", poseEntityList!![nowPoseIndex].getStepsOfPose())
+            intent.putExtra("feeling", poseEntityList!![nowPoseIndex].poseFeeling)
+            intent.putExtra("steps", poseEntityList!![nowPoseIndex].stepsOfPose)
             intent.putExtra(
                 "commonMistakes",
-                poseEntityList!![nowPoseIndex].getCommonMistakes()
+                poseEntityList!![nowPoseIndex].commonMistakes
             )
-            intent.putExtra("details", poseEntityList!![nowPoseIndex].getDetailTips())
-            intent.putExtra("breath", poseEntityList!![nowPoseIndex].getBreathTips())
+            intent.putExtra("details", poseEntityList!![nowPoseIndex].detailTips)
+            intent.putExtra("breath", poseEntityList!![nowPoseIndex].breathTips)
             intent.putExtra("poseIndex", nowPoseIndex)
             startActivity(intent)
         }
@@ -287,7 +287,7 @@ class CameraXLivePreviewActivity : AppCompatActivity(), OnRequestPermissionsResu
                 if (nowPoseIndex == 0) {
                     textToSpeech!!.setSpeechRate(0.1f)
                     textToSpeech!!.speak(
-                        "第一个动作，" + poseEntityList!![nowPoseIndex].getPoseName(),
+                        "第一个动作，" + poseEntityList!![nowPoseIndex].poseName,
                         TextToSpeech.QUEUE_ADD,
                         null
                     )
@@ -338,8 +338,8 @@ class CameraXLivePreviewActivity : AppCompatActivity(), OnRequestPermissionsResu
                             if (!isRemindedBreathingMethods) {
                                 textToSpeech!!.speak(
                                     if (poseEntityList!![nowPoseIndex]
-                                            .getBreathTips() == null
-                                    ) "注意均匀呼吸，不要憋气" else poseEntityList!![nowPoseIndex].getBreathTips(),
+                                            .breathTips == null
+                                    ) "注意均匀呼吸，不要憋气" else poseEntityList!![nowPoseIndex].breathTips,
                                     TextToSpeech.QUEUE_ADD,
                                     null
                                 )
@@ -371,7 +371,7 @@ class CameraXLivePreviewActivity : AppCompatActivity(), OnRequestPermissionsResu
     @SuppressLint("SetTextI18n")
     fun updatePoseInfo() {
         // 更新姿势名称
-        nowPoseName = poseEntityList!![nowPoseIndex].getPoseName()
+        nowPoseName = poseEntityList!![nowPoseIndex].poseName
         binding.nowPoseIndexText.text = MessageFormat.format(
             "{0}/{1}",
             nowPoseIndex + 1,
@@ -379,9 +379,9 @@ class CameraXLivePreviewActivity : AppCompatActivity(), OnRequestPermissionsResu
         )
         binding.poseName.text = nowPoseName
         // 更新当前动作进度 个数
-        if (poseEntityList!![nowPoseIndex].getPoseType() == 1) {
+        if (poseEntityList!![nowPoseIndex].poseType == 1) {
             // 更新当前动作进度 个数
-        } else if (poseEntityList!![nowPoseIndex].getPoseType() == 0) {
+        } else if (poseEntityList!![nowPoseIndex].poseType == 0) {
             // 更新当前动作进度 秒数
             binding.poseProcessInfo.text = nowPoseProcessSeconds.toString() + "\""
         }

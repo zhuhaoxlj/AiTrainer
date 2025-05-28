@@ -1,225 +1,113 @@
-package com.lindum.mlkit.vision.entity;
+package com.lindum.mlkit.vision.entity
 
-import androidx.annotation.NonNull;
-
-import com.lindum.mlkit.vision.posedetector.PosePart;
-
-import java.util.Arrays;
-import java.util.List;
+import android.util.Log
+import androidx.annotation.Keep
+import com.lindum.mlkit.vision.posedetector.PosePart
 
 /**
  * @author: MarkGosling
  * @date: 2022/1/16 0:40
- **/
-public class PoseEntity {
+ */
+@Keep
+class PoseEntity {
     /**
      * 动作库封面图
      */
-    String poseCoverImage;
+    var poseCoverImage: String? = null
+
     /**
      * 动作详情三个面展示
      */
-    String[] poseSwiperImageUrl;
+    var poseSwiperImageUrl: Array<String?>? = null
+
     /**
      * 动作名称
      */
-    String poseName;
+    var poseName: String? = null
+
     /**
      * 动作类型 0 为保持性动作  1 为计数性动作
      */
-    int poseType;
+    var poseType: Int = 0
+
     /**
      * 动作的过程量  维持秒数  完成次数
      */
-    int poseProcessValue;
+    var poseProcessValue: Int = 0
 
     /**
      * 需要监测的部位列表
      */
-    List<PosePart> monitorPosePartList;
+    var monitorPosePartList: MutableList<PosePart>? = null
 
     // ↓↓↓ 注意事项 ↓↓↓
     /**
      * 动作步骤
      */
-    String[] stepsOfPose;
+    var stepsOfPose: Array<String?>? = null
+
     /**
      * 呼吸要点
      */
-    String breathTips;
+    var breathTips: String? = null
+
     /**
      * 动作感觉
      */
-    String[] poseFeeling;
+    var poseFeeling: Array<String?>? = null
+
     /**
      * 动作感觉配图
      */
-    String poseFeelingImage;
+    var poseFeelingImage: String? = null
+
     /**
      * 常见错误
      */
-    String[] commonMistakes;
+    var commonMistakes: Array<String?>? = null
+
     /**
      * 细节图示
      */
-    String[] detailImageUrl;
+    var detailImageUrl: Array<String?>? = null
+
     /**
      * 细节图示文字描述
      */
-    String[] detailTips;
+    var detailTips: Array<String?>? = null
 
 
     /**
      * 统计运动时长
      */
-    float countMinutes;
+    var countMinutes: Float = 0f
+
     /**
      * 统计运动次数
      */
-    int countTimes;
+    var countTimes: Int = 0
 
-    public float getCountMinutes() {
-        return countMinutes;
+    // 添加一个初始化块，用于在Release构建中验证类是否被正确保留
+    init {
+        Log.e("PoseLibraryDebug", "PoseEntity 实例化: ${this.javaClass.name}")
     }
 
-    public void setCountMinutes(float countMinutes) {
-        this.countMinutes = countMinutes;
-    }
-
-    public int getCountTimes() {
-        return countTimes;
-    }
-
-    public void setCountTimes(int countTimes) {
-        this.countTimes = countTimes;
-    }
-
-
-    public String[] getPoseSwiperImageUrl() {
-        return poseSwiperImageUrl;
-    }
-
-    public void setPoseSwiperImageUrl(String[] poseSwiperImageUrl) {
-        this.poseSwiperImageUrl = poseSwiperImageUrl;
-    }
-
-    public String getPoseCoverImage() {
-        return poseCoverImage;
-    }
-
-    public void setPoseCoverImage(String poseCoverImage) {
-        this.poseCoverImage = poseCoverImage;
-    }
-
-    public String[] getStepsOfPose() {
-        return stepsOfPose;
-    }
-
-    public void setStepsOfPose(String[] stepsOfPose) {
-        this.stepsOfPose = stepsOfPose;
-    }
-
-    public String getBreathTips() {
-        return breathTips;
-    }
-
-    public void setBreathTips(String breathTips) {
-        this.breathTips = breathTips;
-    }
-
-    public String[] getPoseFeeling() {
-        return poseFeeling;
-    }
-
-    public void setPoseFeeling(String[] poseFeeling) {
-        this.poseFeeling = poseFeeling;
-    }
-
-    public String getPoseFeelingImage() {
-        return poseFeelingImage;
-    }
-
-    public void setPoseFeelingImage(String poseFeelingImage) {
-        this.poseFeelingImage = poseFeelingImage;
-    }
-
-    public String[] getCommonMistakes() {
-        return commonMistakes;
-    }
-
-    public void setCommonMistakes(String[] commonMistakes) {
-        this.commonMistakes = commonMistakes;
-    }
-
-    public String[] getDetailImageUrl() {
-        return detailImageUrl;
-    }
-
-    public void setDetailImageUrl(String[] detailImageUrl) {
-        this.detailImageUrl = detailImageUrl;
-    }
-
-    public String[] getDetailTips() {
-        return detailTips;
-    }
-
-    public void setDetailTips(String[] detailTips) {
-        this.detailTips = detailTips;
-    }
-
-    public int getPoseType() {
-        return poseType;
-    }
-
-    public void setPoseType(int poseType) {
-        this.poseType = poseType;
-    }
-
-    public int getPoseProcessValue() {
-        return poseProcessValue;
-    }
-
-    public void setPoseProcessValue(int poseProcessValue) {
-        this.poseProcessValue = poseProcessValue;
-    }
-
-    public List<PosePart> getMonitorPosePartList() {
-        return monitorPosePartList;
-    }
-
-    public String getPoseName() {
-        return poseName;
-    }
-
-    public void setPoseName(String poseName) {
-        this.poseName = poseName;
-    }
-
-    public List<PosePart> getMonitoringPosePartList() {
-        return monitorPosePartList;
-    }
-
-    public void setMonitorPosePartList(List<PosePart> monitorPosePartList) {
-        this.monitorPosePartList = monitorPosePartList;
-    }
-
-    @NonNull
-    @Override
-    public String toString() {
+    override fun toString(): String {
+        Log.e("PoseLibraryDebug", "PoseEntity.toString() 被调用")
         return "PoseEntity{" +
                 ", poseCoverImage='" + poseCoverImage + '\'' +
-                ", poseSwiperImageUrl=" + Arrays.toString(poseSwiperImageUrl) +
+                ", poseSwiperImageUrl=" + poseSwiperImageUrl.contentToString() +
                 ", poseName='" + poseName + '\'' +
                 ", poseType=" + poseType +
                 ", poseProcessValue=" + poseProcessValue +
-                ", monitorPosePartList=" + monitorPosePartList +
-                ", stepsOfPose=" + Arrays.toString(stepsOfPose) +
+                ", monitorPosePartList=" + this.monitorPosePartList +
+                ", stepsOfPose=" + stepsOfPose.contentToString() +
                 ", breathTips='" + breathTips + '\'' +
-                ", poseFeeling=" + Arrays.toString(poseFeeling) +
+                ", poseFeeling=" + poseFeeling.contentToString() +
                 ", poseFeelingImage='" + poseFeelingImage + '\'' +
-                ", commonMistakes=" + Arrays.toString(commonMistakes) +
-                ", detailImageUrl=" + Arrays.toString(detailImageUrl) +
-                ", detailTips=" + Arrays.toString(detailTips) +
-                '}';
+                ", commonMistakes=" + commonMistakes.contentToString() +
+                ", detailImageUrl=" + detailImageUrl.contentToString() +
+                ", detailTips=" + detailTips.contentToString() +
+                '}'
     }
 }

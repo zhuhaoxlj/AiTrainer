@@ -19,7 +19,7 @@ object TemporaryDataHolder {
             if (!it.isFormatedTips) {
                 val commonWrong = CameraXLivePreviewActivity.poseEntityList?.get(
                     it.poseIndex ?: 0
-                )?.commonMistakes[0]
+                )?.commonMistakes?.get(0)
                 it.poseTips =
                     (it.poseDetail ?: "") + " " + it.poseTips + "\n" + commonWrong
                 it.isFormatedTips = true

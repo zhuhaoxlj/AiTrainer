@@ -480,12 +480,12 @@ class BaduanjinPoseEvaluator {
 
         // 筛选出固定部位角度
         monitoringList.filter { it.poseType == 0 }.forEach {
-            val fixAngle = if (it.poseIndex.size == 3) {
-                detector.getAnyAngleBy3Point(it.poseIndex)
+            val fixAngle = if (it.poseIndex!!.size == 3) {
+                detector.getAnyAngleBy3Point(it.poseIndex!!)
             } else {
-                detector.getAnyAngleBy4Point(it.poseIndex)
+                detector.getAnyAngleBy4Point(it.poseIndex!!)
             }
-            if (fixAngle !in it.firstStandardRange[0]..it.firstStandardRange[1]) {
+            if (fixAngle !in it.firstStandardRange!![0]..it.firstStandardRange!![1]) {
                 // 为每个错误创建新的WrongPoseModel实例
                 val wrongModel = WrongPoseModel()
                 wrongModel.poseIndex = poseIndex
@@ -495,8 +495,8 @@ class BaduanjinPoseEvaluator {
                 wrongModel.poseDetail = "${it.partName}角度：$fixAngle°"
 
                 val tempWrongParts = mutableListOf<IntArray>()
-                if (it.poseIndex.size == 3) {
-                    tempWrongParts.add(0, it.poseIndex)
+                if (it.poseIndex!!.size == 3) {
+                    tempWrongParts.add(0, it.poseIndex!!)
                 }
 
                 // 将错误和对应的错误部位添加到集合中

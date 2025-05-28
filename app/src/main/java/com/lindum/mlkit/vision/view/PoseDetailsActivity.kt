@@ -56,7 +56,7 @@ class PoseDetailsActivity : AppCompatActivity() {
         // 动作名称
         var poseDetailNameString: String? = null
         poseDetailNameString =
-            MainActivity.Companion.poseEntityArrayList!!.get(poseIndex).getPoseName()
+            MainActivity.Companion.poseEntityArrayList!!.get(poseIndex).poseName
         poseDetailName.text = poseDetailNameString
         val feeling = intent.getStringArrayExtra("feeling")
         val steps = intent.getStringArrayExtra("steps")

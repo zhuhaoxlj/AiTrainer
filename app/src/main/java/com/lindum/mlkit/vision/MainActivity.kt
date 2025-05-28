@@ -19,7 +19,6 @@ import com.hjq.permissions.XXPermissions
 import com.lindum.mlkit.vision.dev.R
 import com.lindum.mlkit.vision.dev.databinding.ActivityMainBinding
 import com.lindum.mlkit.vision.entity.PoseEntity
-import com.lindum.mlkit.vision.entity.UserEntity
 import com.lindum.mlkit.vision.fragments.DiaryFragment
 import com.lindum.mlkit.vision.fragments.PoseLibraryFragment
 import com.lindum.mlkit.vision.utils.FileUtils
@@ -46,7 +45,6 @@ class MainActivity : AppCompatActivity() {
 
     // 静态变量
     companion object {
-        var userEntity = UserEntity()
         var poseEntityArrayList: MutableList<PoseEntity>? = null
         var poseLibrarySwiperImageArrayList = ArrayList<Bitmap>()
         var poseDetailFeelingImageArrayList = ArrayList<Bitmap>()

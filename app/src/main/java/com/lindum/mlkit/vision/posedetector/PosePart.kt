@@ -1,124 +1,70 @@
-package com.lindum.mlkit.vision.posedetector;
+package com.lindum.mlkit.vision.posedetector
 
-import androidx.annotation.NonNull;
-
-import java.util.Arrays;
+import android.util.Log
+import androidx.annotation.Keep
 
 /**
  * @author: MarkGosling
  * @date: 2022-01-16 14:24
- **/
-public class PosePart {
+ */
+@Keep
+class PosePart {
     /**
      * 部位的索引
      */
-    int[] poseIndex;
+    var poseIndex: IntArray? = null
+
     /**
      * 部位名称
      */
-    String partName;
+    var partName: String? = null
 
     /**
      * 0 固定观测角度 1 动态角度
      */
-    int poseType;
+    var poseType: Int = 0
+
     /**
      * 监测的角度类型 2为二维角度 3为三维角度
      */
-    int poseAngleType;
+    var poseAngleType: Int = 0
+
     /**
      * 保持型部位标准角度范围
      */
-    int[] fixedRange;
+    var fixedRange: IntArray? = null
+
     /**
      * 计数型 该部位第一个标准角度范围；上，左
      */
-    int[] firstStandardRange;
+    var firstStandardRange: IntArray? = null
+
     /**
      * 计数型 该部位第二个标准角度范围；下，右
      */
-    int[] secondStandardRange;
+    var secondStandardRange: IntArray? = null
+
     /**
      * 固定角度错误纠正建议
      */
-    String tips;
+    var tips: String? = null
 
-    public String getTips() {
-        return tips;
+    // 添加一个初始化块，用于在Release构建中验证类是否被正确保留
+    init {
+        Log.e("PoseLibraryDebug", "PosePart 实例化: ${this.javaClass.name}")
     }
 
-    public void setTips(String tips) {
-        this.tips = tips;
-    }
-
-    public int[] getPoseIndex() {
-        return poseIndex;
-    }
-
-    public void setPoseIndex(int[] poseIndex) {
-        this.poseIndex = poseIndex;
-    }
-
-    public int getPoseType() {
-        return poseType;
-    }
-
-    public void setPoseType(int poseType) {
-        this.poseType = poseType;
-    }
-
-    public int getPoseAngleType() {
-        return poseAngleType;
-    }
-
-    public void setPoseAngleType(int poseAngleType) {
-        this.poseAngleType = poseAngleType;
-    }
-
-    public int[] getFixedRange() {
-        return fixedRange;
-    }
-
-    public void setFixedRange(int[] fixedRange) {
-        this.fixedRange = fixedRange;
-    }
-
-    public int[] getFirstStandardRange() {
-        return firstStandardRange;
-    }
-
-    public void setFirstStandardRange(int[] firstStandardRange) {
-        this.firstStandardRange = firstStandardRange;
-    }
-
-    public int[] getSecondStandardRange() {
-        return secondStandardRange;
-    }
-
-    public void setSecondStandardRange(int[] secondStandardRange) {
-        this.secondStandardRange = secondStandardRange;
-    }
-
-    public String getPartName() {
-        return partName;
-    }
-
-    public void setPartName(String partName) {
-        this.partName = partName;
-    }
-
-    @NonNull
-    @Override
-    public String toString() {
+    override fun toString(): String {
+        Log.e("PoseLibraryDebug", "PosePart.toString() 被调用")
         return "PosePart{" +
-                "poseIndex=" + Arrays.toString(poseIndex) +
+                "poseIndex=" + poseIndex.contentToString() +
                 ", partName='" + partName + '\'' +
                 ", poseType=" + poseType +
                 ", poseAngleType=" + poseAngleType +
-                ", fixedRange=" + Arrays.toString(fixedRange) +
-                ", firstStandardRange=" + Arrays.toString(firstStandardRange) +
-                ", secondStandardRange=" + Arrays.toString(secondStandardRange) +
+                ", fixedRange=" + fixedRange.contentToString() +
+                ", firstStandardRange=" + firstStandardRange.contentToString() +
+                ", secondStandardRange=" + secondStandardRange.contentToString() +
                 ", tips='" + tips + '\'' +
-                '}';
+                '}'
     }
 }

@@ -295,7 +295,7 @@ class PoseLibraryFragment : Fragment(R.layout.fragment_pose_library), HomeAdapte
                 newItems.add(
                     PoseLibraryItem(
                         i,
-                        poseEntity.getPoseName(),
+                        poseEntity.poseName,
                         "",
                         coverBitmap,
                         "#000000"
@@ -315,11 +315,11 @@ class PoseLibraryFragment : Fragment(R.layout.fragment_pose_library), HomeAdapte
 
         if (item.index < poseList.size) {
             val intent = Intent(activity, PoseDetailsActivity::class.java)
-            intent.putExtra("feeling", poseList[item.index].getPoseFeeling())
-            intent.putExtra("steps", poseList[item.index].getStepsOfPose())
-            intent.putExtra("commonMistakes", poseList[item.index].getCommonMistakes())
-            intent.putExtra("details", poseList[item.index].getDetailTips())
-            intent.putExtra("breath", poseList[item.index].getBreathTips())
+            intent.putExtra("feeling", poseList[item.index].poseFeeling)
+            intent.putExtra("steps", poseList[item.index].stepsOfPose)
+            intent.putExtra("commonMistakes", poseList[item.index].commonMistakes)
+            intent.putExtra("details", poseList[item.index].detailTips)
+            intent.putExtra("breath", poseList[item.index].breathTips)
             intent.putExtra("poseIndex", item.index)
             startActivity(intent)
         }

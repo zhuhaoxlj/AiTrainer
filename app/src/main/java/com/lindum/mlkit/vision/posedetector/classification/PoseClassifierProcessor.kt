@@ -200,11 +200,13 @@ class PoseClassifierProcessor @WorkerThread constructor(
         // 倒计时结束，开始检测
         if (CameraXLivePreviewActivity.countdownSeconds == -1) {
             // 获取监测的动作实体
-            val poseEntity = poseEntityList!!.getOrNull(CameraXLivePreviewActivity.nowPoseIndex)
+            val poseEntity = poseEntityList?.getOrNull(CameraXLivePreviewActivity.nowPoseIndex)
             // 获取监测部位列表
-            val monitoringList = poseEntity!!.monitoringPosePartList
+            val monitoringList = poseEntity?.monitorPosePartList
 
-            newLogic(maxConfidenceClass ?: "", result, monitoringList, poseAngleDetector)
+            if (monitoringList != null) {
+                newLogic(maxConfidenceClass ?: "", result, monitoringList, poseAngleDetector)
+            }
         }
         // 把结果顶上去
         result.add(" ")

@@ -242,7 +242,7 @@ internal class DotTimeLineAdapter : RecyclerView.Adapter<DotTimeLineAdapter.View
                 } else {
                     // 如果缓存中没有，则从主列表查找
                     for (poseEntity in MainActivity.Companion.poseEntityArrayList!!) {
-                        if (poseEntity.getPoseName() == poseName) {
+                        if (poseEntity.poseName == poseName) {
                             val indexOfPoseEntityList =
                                 MainActivity.Companion.poseEntityArrayList!!.indexOf(poseEntity)
 
