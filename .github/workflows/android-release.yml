@@ -68,8 +68,14 @@ jobs:  # 定义工作流中的作业
           if [ -f "CHANGELOG.md" ]; then
             # 从CHANGELOG中提取当前版本的内容
             echo "Using CHANGELOG.md for release notes"
+            # 修复版本号匹配 - 移除v前缀以匹配CHANGELOG中的格式
+            CLEAN_VERSION=${VERSION#v}
+            echo "Clean version: $CLEAN_VERSION"
             # 提取当前版本部分，从版本号开始到下一个版本号或文件结束
-            sed -n "/## $VERSION/,/## \[/p" CHANGELOG.md | sed '/## \[/,$d' > release_notes.md
+            sed -n "/## \[$CLEAN_VERSION\]/,/## \[/p" CHANGELOG.md | sed '/## \[/,$d' > release_notes.md
+            # 查看提取结果
+            echo "Extracted content from CHANGELOG.md:"
+            cat release_notes.md
           else
             # 使用git log生成简单的变更日志
             echo "## 🚀 新版本 $VERSION" > release_notes.md
@@ -83,15 +89,6 @@ jobs:  # 定义工作流中的作业
             echo "### 📝 其他变更" >> release_notes.md
             git log $(git describe --tags --abbrev=0 HEAD^)..HEAD --pretty=format:"- %s" | grep -v "^feat" | grep -v "^fix" >> release_notes.md
           fi
-          
-          # 添加下载链接
-          echo "" >> release_notes.md
-          echo "### 📥 下载" >> release_notes.md
-          echo "- [下载APK](https://github.com/${{ github.repository }}/releases/download/$VERSION/app-release.apk)" >> release_notes.md
-          
-          # 添加应用大小和版本号等信息
-          APK_SIZE=$(du -h app/build/outputs/apk/release/app-release.apk | cut -f1)
-          echo "- APK大小: $APK_SIZE" >> release_notes.md
           
           cat release_notes.md
 
